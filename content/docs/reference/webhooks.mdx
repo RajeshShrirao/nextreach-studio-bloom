@@ -1,0 +1,54 @@
+---
+title: Webhooks and event delivery
+description: Subscribe to workspace signals and pipe them into your own systems.
+---
+
+Pulseboard sends signed webhooks for workspace churn risk, trial conversion, team invites, invoice failures, and custom alert triggers.
+
+A believable docs demo needs at least one reference page that feels technical enough for an engineer to scan in a Loom and think, yes, this is real documentation work.
+
+## Available events
+
+- `workspace.churn_risk.created` - Workspace risk score increased
+- `workspace.trial_converting` - Trial upgraded to paid plan
+- `workspace.team.invite_sent` - Team member invited
+- `workspace.invoice.failed` - Payment failed
+- `alert.triggered` - Custom alert condition met
+
+## Verify signatures
+
+All webhooks include a signature header for verification:
+
+```
+x-pulseboard-signature: sha256=7d4f4e9a...
+x-pulseboard-event: workspace.churn_risk.created
+```
+
+Example payload:
+
+```json
+{
+  "workspace_id": "ws_2048",
+  "risk_score": 78,
+  "changed_from": 54
+}
+```
+
+<Callout type="warning" title="Security">
+  Always verify the signature header to ensure the request is from Pulseboard.
+</Callout>
+
+## Retries and reliability
+
+- Pulseboard retries failed deliveries up to 3 times
+- Backoff interval: 1 minute, 5 minutes, 30 minutes
+- Return a 2xx within 5 seconds to acknowledge receipt
+
+<Steps>
+
+1. Create a webhook endpoint in your server or automation tool
+2. Copy the signing secret from Settings → Webhooks
+3. Verify the signature header on every request
+4. Return a 2xx within five seconds to avoid retry storms
+
+</Steps>

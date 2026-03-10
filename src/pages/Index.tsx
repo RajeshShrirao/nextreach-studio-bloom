@@ -1,4 +1,4 @@
-import { ArrowRight, CheckCircle2, FileSearch, Files, MessageSquareMore, Search, Sparkles } from "lucide-react";
+import { ArrowRight, CheckCircle2, Eye, FileSearch, Files, MessageSquareMore, Search, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -24,6 +24,12 @@ const process = [
   { step: "01", title: "You send the brief", copy: "Product link, feature list, screenshots, and rough priorities through a form or chat." },
   { step: "02", title: "We write and structure", copy: "We turn your product into clear user-facing docs, information architecture, and page hierarchy." },
   { step: "03", title: "We ship the site", copy: "You get a live searchable docs site, deployed and ready to share with users." },
+];
+
+const demoHighlights = [
+  "Dedicated docs homepage plus multiple article types for onboarding, product guides, and technical reference",
+  "Believable fictional SaaS content with setup steps, code snippets, billing rules, and webhook examples",
+  "A stronger Loom walkthrough asset because the IA and content depth feel like a real shipped help center",
 ];
 
 const faqs = [
@@ -145,6 +151,57 @@ export default function Index() {
                   </CardContent>
                 </Card>
               ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="border-b border-border">
+          <div className="container mx-auto px-4 py-20">
+            <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+              <div>
+                <div className="font-mono text-xs uppercase tracking-[0.24em] text-muted-foreground">Showcase demo</div>
+                <h2 className="mt-4 text-4xl md:text-5xl">A comprehensive Fumadocs-style demo we can actually walk through in Loom.</h2>
+                <p className="mt-5 max-w-xl text-lg text-muted-foreground">
+                  Pulseboard is now a fuller fictional SaaS help center with a docs homepage, richer reference content, and multiple page types. It works as a portfolio piece and a realistic sales asset.
+                </p>
+                <div className="mt-8 space-y-3">
+                  {demoHighlights.map((item) => (
+                    <div key={item} className="flex items-start gap-3 text-muted-foreground">
+                      <CheckCircle2 className="mt-1 h-5 w-5 text-success" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+                  <Button
+                    size="lg"
+                    className="border-0 bg-foreground text-background hover:bg-foreground/90"
+                    onClick={() => {
+                      window.location.href = "/demo/pulseboard";
+                    }}
+                  >
+                    Open full demo
+                    <ArrowRight className="h-4 w-4" />
+                  </Button>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    onClick={() => {
+                      window.location.href = "/contact";
+                    }}
+                  >
+                    Build mine like this
+                  </Button>
+                </div>
+              </div>
+
+              <div className="rounded-[2rem] border border-border bg-[#fcfbf8] p-2 shadow-xl">
+                <iframe 
+                  src="/demo/pulseboard"
+                  className="w-full h-[500px] rounded-[1.5rem] bg-white"
+                  title="Docs Demo Preview"
+                />
+              </div>
             </div>
           </div>
         </section>
