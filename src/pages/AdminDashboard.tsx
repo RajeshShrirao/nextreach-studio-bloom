@@ -20,8 +20,8 @@ import {
 } from 'lucide-react';
 import { ContactFormData } from '@/services/emailService';
 
-// Admin password - change this to your preferred password
-const ADMIN_PASSWORD = 'nextreach2024';
+// Admin password - use environment variable or default (change in production!)
+const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || 'nextreach2024';
 
 interface StoredSubmission extends ContactFormData {
   id: string;
