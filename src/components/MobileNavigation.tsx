@@ -1,8 +1,7 @@
 import { motion, AnimatePresence } from "motion/react";
 import { useState, useEffect } from "react";
-import { Menu, X, ArrowRight, Phone, Mail } from "lucide-react";
+import { X, ArrowRight, FileText, MessageCircle, ScrollText } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 
 interface MobileNavigationProps {
   isOpen: boolean;
@@ -52,10 +51,10 @@ export const MobileNavigation = ({ isOpen, onToggle, onClose }: MobileNavigation
   }, [isOpen]);
 
   const navItems = [
-    { href: "/", label: "Home", description: "Back to homepage" },
-    { href: "/about", label: "About", description: "Learn about NextReach" },
-    { href: "/pricing", label: "Pricing", description: "Transparent pricing" },
-    { href: "/contact", label: "Contact", description: "Get in touch" },
+    { href: "/", label: "Home", description: "Docs funnel and delivery promise", icon: FileText },
+    { href: "/about", label: "About", description: "Why this service exists", icon: ScrollText },
+    { href: "/pricing", label: "Pricing", description: "Fixed-scope docs packages", icon: FileText },
+    { href: "/contact", label: "Contact", description: "Start async with a short brief", icon: MessageCircle },
   ];
 
   const menuVariants = {
@@ -141,7 +140,12 @@ export const MobileNavigation = ({ isOpen, onToggle, onClose }: MobileNavigation
                   alt="NextReach Logo"
                   className="w-8 h-8 rounded-lg"
                 />
-                <span className="font-bold text-lg text-foreground">NextReach</span>
+                <div>
+                  <span className="font-bold text-lg text-foreground">NextReach Studio</span>
+                  <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
+                    Docs-as-a-Service
+                  </div>
+                </div>
               </div>
               <Button
                 variant="ghost"
@@ -168,7 +172,8 @@ export const MobileNavigation = ({ isOpen, onToggle, onClose }: MobileNavigation
                 >
                   <div className="flex items-center justify-between">
                     <div>
-                      <div className="font-medium text-foreground group-hover:text-primary transition-colors">
+                      <div className="flex items-center gap-2 font-medium text-foreground group-hover:text-primary transition-colors">
+                        <item.icon className="h-4 w-4" />
                         {item.label}
                       </div>
                       <div className="text-sm text-muted-foreground">
@@ -183,33 +188,33 @@ export const MobileNavigation = ({ isOpen, onToggle, onClose }: MobileNavigation
 
             {/* Quick Contact */}
             <div className="p-6 border-t border-border">
-              <h3 className="font-semibold text-foreground mb-4">Quick Contact</h3>
+              <h3 className="font-semibold text-foreground mb-4">Async Contact</h3>
               <div className="space-y-3">
                 <motion.a
-                  href="tel:+919876543210"
+                  href="https://wa.me/919876543210"
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.6 }}
-                  className="flex items-center space-x-3 p-3 rounded-lg bg-accent/30 hover:bg-accent/50 transition-colors"
+                  className="flex items-center space-x-3 rounded-lg bg-accent/30 p-3 transition-colors hover:bg-accent/50"
                 >
-                  <Phone className="w-5 h-5 text-primary" />
+                  <MessageCircle className="w-5 h-5 text-primary" />
                   <div>
-                    <div className="font-medium text-foreground">Call Now</div>
-                    <div className="text-sm text-muted-foreground">+91 98765 43210</div>
+                    <div className="font-medium text-foreground">WhatsApp</div>
+                    <div className="text-sm text-muted-foreground">Share your product link and scope</div>
                   </div>
                 </motion.a>
 
                 <motion.a
-                  href="mailto:sales@nextreachstudio.com"
+                  href="mailto:admin@nextreachstudio.com"
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.7 }}
-                  className="flex items-center space-x-3 p-3 rounded-lg bg-accent/30 hover:bg-accent/50 transition-colors"
+                  className="flex items-center space-x-3 rounded-lg bg-accent/30 p-3 transition-colors hover:bg-accent/50"
                 >
-                  <Mail className="w-5 h-5 text-primary" />
+                  <FileText className="w-5 h-5 text-primary" />
                   <div>
-                    <div className="font-medium text-foreground">Email Us</div>
-                    <div className="text-sm text-muted-foreground">sales@nextreachstudio.com</div>
+                    <div className="font-medium text-foreground">Email brief</div>
+                    <div className="text-sm text-muted-foreground">admin@nextreachstudio.com</div>
                   </div>
                 </motion.a>
               </div>
@@ -225,11 +230,11 @@ export const MobileNavigation = ({ isOpen, onToggle, onClose }: MobileNavigation
                 <Button
                   className="w-full bg-gradient-to-r from-green-400 via-emerald-500 to-blue-500 hover:from-green-500 hover:via-emerald-600 hover:to-blue-600 border-0 text-white"
                   onClick={() => {
-                    window.location.href = '/contact';
+                    window.location.href = "/contact";
                     onClose();
                   }}
                 >
-                  Start Your Project
+                  Start a docs sprint
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </motion.div>
@@ -243,7 +248,7 @@ export const MobileNavigation = ({ isOpen, onToggle, onClose }: MobileNavigation
                 transition={{ delay: 0.9 }}
                 className="text-xs text-muted-foreground"
               >
-                © 2025 NextReach Studio. All rights reserved.
+                © 2026 NextReach Studio. Async docs for indie SaaS.
               </motion.p>
             </div>
           </motion.div>

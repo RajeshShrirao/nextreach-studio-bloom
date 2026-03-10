@@ -1,94 +1,60 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* NextReach Studio Design System - Modern Agency Aesthetic
-All colors MUST be HSL for optimal theming
-*/
-
 @layer base {
   :root {
-    /* Brand Colors - NextReach Studio Identity */
-    --background: 0 0% 100%;
-    --foreground: 220 26% 14%;
-    
-    /* Cards & Surfaces */
+    --background: 48 42% 96%;
+    --foreground: 220 14% 10%;
     --card: 0 0% 100%;
-    --card-foreground: 220 26% 14%;
-    --card-subtle: 220 14% 96%;
-    
-    /* Popover & Dialogs */
+    --card-foreground: 220 14% 10%;
+    --card-subtle: 48 33% 92%;
     --popover: 0 0% 100%;
-    --popover-foreground: 220 26% 14%;
-    
-    /* Primary Brand - Vibrant Blue */
-    --primary: 221 83% 53%;
-    --primary-foreground: 0 0% 100%;
-    --primary-light: 221 83% 60%;
-    --primary-dark: 221 83% 45%;
-    
-    /* Secondary - Clean Neutral */
-    --secondary: 220 14% 96%;
-    --secondary-foreground: 220 26% 14%;
-    --secondary-dark: 220 14% 90%;
-    
-    /* Accent - NextReach Green */
-    --accent: 142 71% 45%;
-    --accent-foreground: 0 0% 100%;
-    --accent-light: 142 71% 55%;
-    --accent-dark: 142 71% 35%;
-    
-    /* Highlight - NextReach Yellow */
-    --highlight: 45 93% 47%;
-    --highlight-foreground: 220 26% 14%;
-    --highlight-light: 45 93% 57%;
-    --highlight-dark: 45 93% 37%;
-    
-    /* Muted Tones */
-    --muted: 220 14% 96%;
-    --muted-foreground: 220 8% 46%;
-    
-    /* Interactive States */
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 221 83% 53%;
-    
-    /* Utility */
+    --popover-foreground: 220 14% 10%;
+    --primary: 220 14% 10%;
+    --primary-foreground: 48 42% 96%;
+    --primary-light: 220 10% 22%;
+    --primary-dark: 220 20% 6%;
+    --secondary: 48 33% 92%;
+    --secondary-foreground: 220 14% 10%;
+    --secondary-dark: 48 22% 86%;
+    --accent: 75 100% 70%;
+    --accent-foreground: 220 20% 8%;
+    --accent-light: 75 100% 76%;
+    --accent-dark: 75 72% 58%;
+    --highlight: 197 66% 56%;
+    --highlight-foreground: 0 0% 100%;
+    --highlight-light: 197 66% 64%;
+    --highlight-dark: 197 66% 48%;
+    --muted: 42 20% 89%;
+    --muted-foreground: 220 8% 38%;
+    --border: 40 14% 84%;
+    --input: 40 14% 84%;
+    --ring: 75 100% 70%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --success: 142 71% 45%;
+    --success: 151 55% 36%;
     --success-foreground: 0 0% 100%;
-    --warning: 45 93% 47%;
-    --warning-foreground: 220 26% 14%;
-    
-    /* Design System Values */
-    --radius: 0.75rem;
-    --radius-sm: 0.5rem;
-    --radius-lg: 1rem;
-    
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-light)));
-    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--accent-light)));
-    --gradient-highlight: linear-gradient(135deg, hsl(var(--highlight)), hsl(var(--highlight-light)));
+    --warning: 45 88% 58%;
+    --warning-foreground: 220 14% 10%;
+    --radius: 0.85rem;
+    --radius-sm: 0.55rem;
+    --radius-lg: 1.15rem;
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary-dark)), hsl(var(--primary-light)));
+    --gradient-accent: linear-gradient(135deg, hsl(var(--accent-dark)), hsl(var(--accent-light)));
+    --gradient-highlight: linear-gradient(135deg, hsl(var(--highlight-dark)), hsl(var(--highlight-light)));
     --gradient-brand: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
-    --gradient-subtle: linear-gradient(180deg, hsl(var(--background)), hsl(var(--muted)));
-    
-    /* Shadows */
+    --gradient-subtle: radial-gradient(circle at top left, hsl(var(--card)) 0%, hsl(var(--background)) 58%, hsl(var(--muted)) 100%);
     --shadow-sm: 0 1px 2px 0 hsl(var(--foreground) / 0.05);
-    --shadow-md: 0 4px 6px -1px hsl(var(--foreground) / 0.1), 0 2px 4px -1px hsl(var(--foreground) / 0.06);
-    --shadow-lg: 0 10px 15px -3px hsl(var(--foreground) / 0.1), 0 4px 6px -2px hsl(var(--foreground) / 0.05);
-    --shadow-xl: 0 20px 25px -5px hsl(var(--foreground) / 0.1), 0 10px 10px -5px hsl(var(--foreground) / 0.04);
-    --shadow-brand: 0 10px 30px -10px hsl(var(--primary) / 0.3);
-    --shadow-accent: 0 10px 30px -10px hsl(var(--accent) / 0.3);
-    
-    /* Animation Curves */
+    --shadow-md: 0 4px 12px -4px hsl(var(--foreground) / 0.08);
+    --shadow-lg: 0 18px 40px -24px hsl(var(--foreground) / 0.28);
+    --shadow-xl: 0 30px 60px -32px hsl(var(--foreground) / 0.28);
+    --shadow-brand: 0 20px 48px -28px hsl(var(--primary) / 0.45);
+    --shadow-accent: 0 18px 40px -28px hsl(var(--accent-dark) / 0.55);
     --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
     --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    
-    /* Sidebar (inherited from shadcn) */
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
@@ -100,33 +66,25 @@ All colors MUST be HSL for optimal theming
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
+    --background: 220 19% 8%;
+    --foreground: 48 42% 96%;
+    --card: 220 18% 10%;
+    --card-foreground: 48 42% 96%;
+    --popover: 220 18% 10%;
+    --popover-foreground: 48 42% 96%;
+    --primary: 48 42% 96%;
+    --primary-foreground: 220 19% 8%;
+    --secondary: 220 12% 16%;
+    --secondary-foreground: 48 42% 96%;
+    --muted: 220 12% 16%;
+    --muted-foreground: 40 16% 70%;
+    --accent: 75 100% 70%;
+    --accent-foreground: 220 19% 8%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --destructive-foreground: 48 42% 96%;
+    --border: 220 12% 16%;
+    --input: 220 12% 16%;
+    --ring: 75 100% 70%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -143,153 +101,90 @@ All colors MUST be HSL for optimal theming
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-background text-foreground font-sans;
-    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
-    font-variant-numeric: oldstyle-nums;
+    @apply bg-background font-sans text-foreground;
+    background-image:
+      radial-gradient(circle at top, hsl(var(--card)) 0%, transparent 42%),
+      linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--background)) 100%);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Professional Typography Hierarchy */
   h1, h2, h3, h4, h5, h6 {
     @apply font-display font-semibold tracking-tight;
-    line-height: 1.2;
+    line-height: 1.05;
   }
 
-  h1 {
-    @apply text-4xl md:text-5xl lg:text-6xl;
-  }
-
-  h2 {
-    @apply text-3xl md:text-4xl lg:text-5xl;
-  }
-
-  h3 {
-    @apply text-2xl md:text-3xl lg:text-4xl;
-  }
-
-  h4 {
-    @apply text-xl md:text-2xl lg:text-3xl;
-  }
-
-  h5 {
-    @apply text-lg md:text-xl lg:text-2xl;
-  }
-
-  h6 {
-    @apply text-base md:text-lg lg:text-xl;
-  }
-
-  /* Body text optimization */
   p {
     @apply text-base leading-relaxed;
   }
 
-  /* Professional link styling */
   a {
     @apply transition-colors duration-200;
   }
 
-  /* Code and monospace */
   code, pre {
     @apply font-mono;
   }
 
-  /* Focus styles for accessibility */
   :focus-visible {
     @apply outline-2 outline-offset-2 outline-primary;
   }
 }
 
 @layer components {
-  /* Professional Typography Components */
   .text-display-1 {
-    @apply text-6xl md:text-7xl lg:text-8xl font-display font-bold tracking-tighter leading-none;
+    @apply font-display text-6xl font-bold leading-none tracking-tighter md:text-7xl lg:text-8xl;
   }
 
   .text-display-2 {
-    @apply text-5xl md:text-6xl lg:text-7xl font-display font-bold tracking-tighter leading-none;
+    @apply font-display text-5xl font-bold leading-none tracking-tighter md:text-6xl lg:text-7xl;
   }
 
   .text-display-3 {
-    @apply text-4xl md:text-5xl lg:text-6xl font-display font-semibold tracking-tight leading-tight;
+    @apply font-display text-4xl font-semibold leading-tight tracking-tight md:text-5xl lg:text-6xl;
   }
 
   .text-headline-1 {
-    @apply text-3xl md:text-4xl lg:text-5xl font-display font-semibold tracking-tight leading-tight;
+    @apply font-display text-3xl font-semibold leading-tight tracking-tight md:text-4xl lg:text-5xl;
   }
 
   .text-headline-2 {
-    @apply text-2xl md:text-3xl lg:text-4xl font-display font-semibold tracking-tight leading-tight;
+    @apply font-display text-2xl font-semibold leading-tight tracking-tight md:text-3xl lg:text-4xl;
   }
 
   .text-headline-3 {
-    @apply text-xl md:text-2xl lg:text-3xl font-display font-medium tracking-tight leading-snug;
+    @apply font-display text-xl font-medium leading-snug tracking-tight md:text-2xl lg:text-3xl;
   }
 
   .text-body-large {
-    @apply text-lg md:text-xl font-sans font-normal leading-relaxed;
-  }
-
-  .text-body {
-    @apply text-base md:text-lg font-sans font-normal leading-relaxed;
-  }
-
-  .text-body-small {
-    @apply text-sm md:text-base font-sans font-normal leading-normal;
+    @apply text-lg font-normal leading-relaxed md:text-xl;
   }
 
   .text-caption {
-    @apply text-xs md:text-sm font-sans font-medium leading-normal tracking-wide uppercase;
+    @apply text-xs font-medium uppercase tracking-[0.22em] md:text-sm;
   }
 
-  .text-overline {
-    @apply text-xs font-sans font-semibold leading-none tracking-widest uppercase;
+  .docs-grid {
+    background-image:
+      linear-gradient(to right, hsl(var(--border) / 0.45) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.45) 1px, transparent 1px);
+    background-size: 24px 24px;
   }
 
-  /* Professional spacing utilities */
-  .prose-spacing > * + * {
-    @apply mt-6;
-  }
-
-  .prose-spacing > h1 + *,
-  .prose-spacing > h2 + *,
-  .prose-spacing > h3 + * {
-    @apply mt-4;
-  }
-
-  .prose-spacing > h4 + *,
-  .prose-spacing > h5 + *,
-  .prose-spacing > h6 + * {
-    @apply mt-3;
-  }
-
-  /* Professional button typography */
-  .btn-text {
-    @apply font-medium tracking-wide;
-  }
-
-  .btn-text-large {
-    @apply font-semibold tracking-wide;
-  }
-
-  /* Professional form typography */
-  .form-label {
-    @apply text-sm font-medium tracking-wide;
-  }
-
-  .form-helper {
-    @apply text-xs text-muted-foreground;
-  }
-
-  .form-error {
-    @apply text-xs text-destructive font-medium;
+  .noise-card {
+    background:
+      linear-gradient(180deg, hsl(var(--card)) 0%, hsl(var(--background)) 100%),
+      radial-gradient(circle at top left, hsl(var(--accent) / 0.12), transparent 30%);
   }
 }
 
-/* Gradient animation for loading screen */
 @keyframes gradient {
   0%, 100% {
     background-size: 200% 200%;
@@ -304,90 +199,4 @@ All colors MUST be HSL for optimal theming
 .animate-gradient {
   background-size: 200% 200%;
   animation: gradient 3s ease infinite;
-}
-
-@layer components {
-  /* Professional Typography Components */
-  .text-display-1 {
-    @apply text-6xl md:text-7xl lg:text-8xl font-display font-bold tracking-tighter leading-none;
-  }
-
-  .text-display-2 {
-    @apply text-5xl md:text-6xl lg:text-7xl font-display font-bold tracking-tighter leading-none;
-  }
-
-  .text-display-3 {
-    @apply text-4xl md:text-5xl lg:text-6xl font-display font-semibold tracking-tight leading-tight;
-  }
-
-  .text-headline-1 {
-    @apply text-3xl md:text-4xl lg:text-5xl font-display font-semibold tracking-tight leading-tight;
-  }
-
-  .text-headline-2 {
-    @apply text-2xl md:text-3xl lg:text-4xl font-display font-semibold tracking-tight leading-tight;
-  }
-
-  .text-headline-3 {
-    @apply text-xl md:text-2xl lg:text-3xl font-display font-medium tracking-tight leading-snug;
-  }
-
-  .text-body-large {
-    @apply text-lg md:text-xl font-sans font-normal leading-relaxed;
-  }
-
-  .text-body {
-    @apply text-base md:text-lg font-sans font-normal leading-relaxed;
-  }
-
-  .text-body-small {
-    @apply text-sm md:text-base font-sans font-normal leading-normal;
-  }
-
-  .text-caption {
-    @apply text-xs md:text-sm font-sans font-medium leading-normal tracking-wide uppercase;
-  }
-
-  .text-overline {
-    @apply text-xs font-sans font-semibold leading-none tracking-widest uppercase;
-  }
-
-  /* Professional spacing utilities */
-  .prose-spacing > * + * {
-    @apply mt-6;
-  }
-
-  .prose-spacing > h1 + *,
-  .prose-spacing > h2 + *,
-  .prose-spacing > h3 + * {
-    @apply mt-4;
-  }
-
-  .prose-spacing > h4 + *,
-  .prose-spacing > h5 + *,
-  .prose-spacing > h6 + * {
-    @apply mt-3;
-  }
-
-  /* Professional button typography */
-  .btn-text {
-    @apply font-medium tracking-wide;
-  }
-
-  .btn-text-large {
-    @apply font-semibold tracking-wide;
-  }
-
-  /* Professional form typography */
-  .form-label {
-    @apply text-sm font-medium tracking-wide;
-  }
-
-  .form-helper {
-    @apply text-xs text-muted-foreground;
-  }
-
-  .form-error {
-    @apply text-xs text-destructive font-medium;
-  }
 }

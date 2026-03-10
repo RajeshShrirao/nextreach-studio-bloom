@@ -1,126 +1,120 @@
-import { motion } from "motion/react";
-import { Bot, Mail, MessageCircle } from "lucide-react";
+import { BookOpenText, Mail, MessageCircle } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="py-16 bg-gradient-to-br from-slate-50 to-gray-50 dark:from-slate-950 dark:to-gray-950 border-t border-border">
+    <footer className="border-t border-border bg-[#121316] py-16 text-white">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-4 gap-8">
-            {/* Brand Section */}
             <div>
               <div className="flex items-center space-x-2 mb-4">
-                <div className="w-10 h-10 bg-gradient-to-r from-green-400 via-emerald-500 to-blue-500 rounded-xl flex items-center justify-center">
-                  <Bot className="w-6 h-6 text-white" />
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#d9ff66] text-[#121316]">
+                  <BookOpenText className="w-5 h-5" />
                 </div>
-                <span className="font-bold text-xl bg-gradient-to-r from-green-400 via-emerald-500 to-blue-500 bg-clip-text text-transparent">
+                <span className="font-bold text-xl text-white">
                   NextReach Studio
                 </span>
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Custom AI agents that automate your business operations, support, and workflows — built by automation specialists.
+              <p className="text-sm leading-relaxed text-white/70">
+                Done-for-you docs sites for indie SaaS founders who keep postponing documentation. Async intake, written content, searchable docs, and launch in 5 days.
               </p>
             </div>
 
-            {/* AI Solutions */}
             <div>
-              <h4 className="font-semibold text-foreground mb-4">AI Solutions</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
+              <h4 className="mb-4 font-semibold text-white">Service</h4>
+              <ul className="space-y-2 text-sm text-white/70">
                 <li>
-                  <a href="/ai-agents" className="hover:text-primary transition-colors flex items-center">
-                    Custom AI Agents
+                  <a href="/pricing" className="transition-colors hover:text-[#d9ff66]">
+                    Docs Sprint
                   </a>
                 </li>
                 <li>
-                  <a href="/ai-agents#chatbots" className="hover:text-primary transition-colors">
-                    AI Chatbots
+                  <a href="/pricing" className="transition-colors hover:text-[#d9ff66]">
+                    Docs + IA
                   </a>
                 </li>
                 <li>
-                  <a href="/ai-agents#automation" className="hover:text-primary transition-colors">
-                    Workflow Automation
+                  <a href="/pricing" className="transition-colors hover:text-[#d9ff66]">
+                    Searchable Docs
                   </a>
                 </li>
                 <li>
-                  <a href="/ai-agents#multi-agent" className="hover:text-primary transition-colors">
-                    Multi-Agent Systems
+                  <a href="/contact" className="transition-colors hover:text-[#d9ff66]">
+                    Async Delivery
                   </a>
                 </li>
               </ul>
             </div>
 
-            {/* Company */}
             <div>
-              <h4 className="font-semibold text-foreground mb-4">Company</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
+              <h4 className="mb-4 font-semibold text-white">Company</h4>
+              <ul className="space-y-2 text-sm text-white/70">
                 <li>
-                  <a href="/about" className="hover:text-primary transition-colors">
-                    About NextReach
+                  <a href="/about" className="transition-colors hover:text-[#d9ff66]">
+                    About
                   </a>
                 </li>
                 <li>
-                  <a href="/pricing" className="hover:text-primary transition-colors">
+                  <a href="/pricing" className="transition-colors hover:text-[#d9ff66]">
                     Pricing
                   </a>
                 </li>
                 <li>
-                  <a href="/ai-agents#portfolio" className="hover:text-primary transition-colors">
-                    Case Studies
+                  <a href="/contact" className="transition-colors hover:text-[#d9ff66]">
+                    Start a project
                   </a>
                 </li>
                 <li>
-                  <a href="/contact" className="hover:text-primary transition-colors">
-                    Contact Us
+                  <a href="/privacy" className="transition-colors hover:text-[#d9ff66]">
+                    Privacy
                   </a>
                 </li>
               </ul>
             </div>
 
-            {/* Contact */}
             <div>
-              <h4 className="font-semibold text-foreground mb-4">Get Started</h4>
+              <h4 className="mb-4 font-semibold text-white">Contact</h4>
               <ul className="space-y-3 text-sm">
                 <li>
                   <a
                     href="https://wa.me/919876543210"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center space-x-2 text-muted-foreground hover:text-green-600 transition-colors group"
+                    className="group flex items-center space-x-2 text-white/70 transition-colors hover:text-[#d9ff66]"
                   >
-                    <div className="w-8 h-8 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center group-hover:bg-green-200 dark:group-hover:bg-green-900/50 transition-colors">
-                      <MessageCircle className="w-4 h-4 text-green-600" />
+                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/10 transition-colors group-hover:bg-[#d9ff66] group-hover:text-[#121316]">
+                      <MessageCircle className="w-4 h-4" />
                     </div>
-                    <span>WhatsApp Chat</span>
+                    <span>WhatsApp intake</span>
                   </a>
                 </li>
                 <li>
                   <a
                     href="mailto:admin@nextreachstudio.com"
-                    className="flex items-center space-x-2 text-muted-foreground hover:text-blue-600 transition-colors group"
+                    className="group flex items-center space-x-2 text-white/70 transition-colors hover:text-[#d9ff66]"
                   >
-                    <div className="w-8 h-8 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center group-hover:bg-blue-200 dark:group-hover:bg-blue-900/50 transition-colors">
-                      <Mail className="w-4 h-4 text-blue-600" />
+                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/10 transition-colors group-hover:bg-[#d9ff66] group-hover:text-[#121316]">
+                      <Mail className="w-4 h-4" />
                     </div>
-                    <span>Email Us</span>
+                    <span>admin@nextreachstudio.com</span>
                   </a>
                 </li>
-                <li className="text-muted-foreground pt-2">
-                  <p className="text-xs">Available 9AM-7PM IST</p>
-                  <p className="text-xs">🇷🇴 Romania • 🇵🇱 Poland • 🇲🇾 Malaysia</p>
+                <li className="pt-2 text-white/60">
+                  <p className="text-xs">Replies within 24 hours</p>
+                  <p className="text-xs">Fully async. No calls required.</p>
                 </li>
               </ul>
             </div>
           </div>
 
-          {/* Bottom Bar */}
-          <div className="border-t border-border mt-8 pt-8">
+          <div className="mt-8 border-t border-white/10 pt-8">
             <div className="flex flex-col md:flex-row justify-between items-center">
-              <p className="text-sm text-muted-foreground mb-4 md:mb-0">
-                © 2025 NextReach Studio. Custom AI Agents & Automation Specialists.
+              <p className="mb-4 text-sm text-white/50 md:mb-0">
+                © 2026 NextReach Studio. Docs-as-a-Service for indie SaaS.
               </p>
-              <div className="flex space-x-6 text-sm text-muted-foreground">
-                <a href="/privacy" className="hover:text-primary transition-colors">Privacy Policy</a>
-                <a href="/terms" className="hover:text-primary transition-colors">Terms of Service</a>
+              <div className="flex space-x-6 text-sm text-white/50">
+                <a href="/privacy" className="transition-colors hover:text-[#d9ff66]">Privacy Policy</a>
+                <a href="/terms" className="transition-colors hover:text-[#d9ff66]">Terms of Service</a>
               </div>
             </div>
           </div>
