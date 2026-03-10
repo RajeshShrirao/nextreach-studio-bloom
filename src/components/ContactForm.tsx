@@ -8,8 +8,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Mail, Send, CheckCircle, AlertCircle } from "lucide-react";
-import { sendContactEmail, ContactFormData } from "@/services/emailService";
+import { Send, CheckCircle, AlertCircle } from "lucide-react";
+import { sendContactEmail } from "@/services/emailService";
 
 const contactSchema = z.object({
   firstName: z.string().min(2, "First name must be at least 2 characters"),
@@ -46,10 +46,6 @@ export default function ContactForm({ className = "", onSuccess, compact = false
     resolver: zodResolver(contactSchema),
   });
 
-  const watchedService = watch("service");
-  const watchedBudget = watch("budget");
-
-  // Function to store submission locally for admin dashboard
   const storeSubmissionLocally = (data: ContactFormType) => {
     try {
       const submission = {
@@ -74,25 +70,18 @@ export default function ContactForm({ className = "", onSuccess, compact = false
     setSubmitStatus('idle');
 
     try {
-      // Always store locally first for admin dashboard
       storeSubmissionLocally(data);
-      
-      // Try to send email (this may fail, but we still have local storage)
-      const success = await sendContactEmail(data);
-      
-      // Show success regardless of email status since we have local storage
+      await sendContactEmail(data);
       setSubmitStatus('success');
       reset();
       if (onSuccess) {
         onSuccess();
       }
-      // Auto-hide success message after 5 seconds
       setTimeout(() => setSubmitStatus('idle'), 5000);
       
     } catch (error) {
-      // Even if email fails, we still have the submission stored locally
       console.warn('Email sending failed, but submission stored locally:', error);
-      setSubmitStatus('success'); // Still show success since we stored locally
+      setSubmitStatus('success');
       reset();
       if (onSuccess) {
         onSuccess();
@@ -104,26 +93,25 @@ export default function ContactForm({ className = "", onSuccess, compact = false
   };
 
   const services = [
-    "Healthcare Website",
-    "Restaurant Website",
-    "E-commerce Store",
-    "Service Business Website",
-    "Fitness/Gym Website",
-    "SEO Services",
-    "Custom Solution"
+    "Starter Docs Sprint",
+    "Growth Docs Sprint",
+    "Docs + Information Architecture",
+    "Migration from Notion or GitBook",
+    "Searchable Help Center Refresh",
+    "Need help choosing"
   ];
 
   const budgets = [
-    "₹0 - ₹25,000",
-    "₹25,000 - ₹50,000",
-    "₹50,000 - ₹75,000",
-    "₹75,000+"
+    "$149 - $199",
+    "$199 - $249",
+    "$249 - $299",
+    "$300+"
   ];
 
   const locations = [
-    "Pune",
-    "Mumbai",
-    "Other Maharashtra",
+    "US / Canada",
+    "Europe / UK",
+    "India / APAC",
     "Other Location"
   ];
 
@@ -133,7 +121,7 @@ export default function ContactForm({ className = "", onSuccess, compact = false
         <Alert className="mb-6 border-green-200 bg-green-50">
           <CheckCircle className="h-4 w-4 text-green-600" />
           <AlertDescription className="text-green-700">
-            Thank you! Your message has been sent successfully. We'll get back to you within 2 hours.
+            Your brief is in. Expect an async reply within 24 hours.
           </AlertDescription>
         </Alert>
       )}
@@ -142,7 +130,7 @@ export default function ContactForm({ className = "", onSuccess, compact = false
         <Alert className="mb-6 border-red-200 bg-red-50">
           <AlertCircle className="h-4 w-4 text-red-600" />
           <AlertDescription className="text-red-700">
-            Sorry, there was an error sending your message. Please try again or contact us directly at admin@nextreachstudio.com
+            Something failed while sending the form. Email `admin@nextreachstudio.com` and include your product URL.
           </AlertDescription>
         </Alert>
       )}
@@ -205,7 +193,7 @@ export default function ContactForm({ className = "", onSuccess, compact = false
         )}
 
         <div>
-          <Label htmlFor="email" className="text-white">Email Address *</Label>
+          <Label htmlFor="email" className="text-white">Work Email *</Label>
           <Input
             {...register("email")}
             id="email"
@@ -220,11 +208,11 @@ export default function ContactForm({ className = "", onSuccess, compact = false
         </div>
 
         <div>
-          <Label htmlFor="business" className="text-white">Business Name *</Label>
+          <Label htmlFor="business" className="text-white">Product / SaaS Name *</Label>
           <Input
             {...register("business")}
             id="business"
-            placeholder="Your Business/Clinic Name"
+            placeholder="Acme Analytics"
             className="mt-1 bg-white/10 border-white/20 text-white placeholder-white/60"
             disabled={isSubmitting}
           />
@@ -234,10 +222,10 @@ export default function ContactForm({ className = "", onSuccess, compact = false
         </div>
 
         <div>
-          <Label htmlFor="location" className="text-white">Location *</Label>
+          <Label htmlFor="location" className="text-white">Primary Market *</Label>
           <Select onValueChange={(value) => setValue("location", value)} disabled={isSubmitting}>
             <SelectTrigger className="mt-1 bg-white/10 border-white/20 text-white">
-              <SelectValue placeholder="Select your location" />
+              <SelectValue placeholder="Where are most of your users?" />
             </SelectTrigger>
             <SelectContent>
               {locations.map((location) => (
@@ -253,25 +241,24 @@ export default function ContactForm({ className = "", onSuccess, compact = false
         </div>
 
         <div>
-          <Label htmlFor="phone" className="text-white">Phone Number</Label>
-          <div className="relative mt-1">
-            <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/80 text-sm">+91</span>
+          <Label htmlFor="phone" className="text-white">WhatsApp / Discord / Phone</Label>
+          <div className="mt-1">
             <Input
               {...register("phone")}
               id="phone"
               type="tel"
-              placeholder="XXXXXXXXXX"
-              className="pl-12 bg-white/10 border-white/20 text-white placeholder-white/60"
+              placeholder="@founderhandle or +1..."
+              className="bg-white/10 border-white/20 text-white placeholder-white/60"
               disabled={isSubmitting}
             />
           </div>
         </div>
 
         <div>
-          <Label htmlFor="service" className="text-white">Service Needed</Label>
+          <Label htmlFor="service" className="text-white">Package</Label>
           <Select onValueChange={(value) => setValue("service", value)} disabled={isSubmitting}>
             <SelectTrigger className="mt-1 bg-white/10 border-white/20 text-white">
-              <SelectValue placeholder="Select a service" />
+              <SelectValue placeholder="Choose a docs package" />
             </SelectTrigger>
             <SelectContent>
               {services.map((service) => (
@@ -287,7 +274,7 @@ export default function ContactForm({ className = "", onSuccess, compact = false
           <Label htmlFor="budget" className="text-white">Budget Range</Label>
           <Select onValueChange={(value) => setValue("budget", value)} disabled={isSubmitting}>
             <SelectTrigger className="mt-1 bg-white/10 border-white/20 text-white">
-              <SelectValue placeholder="Select budget range" />
+              <SelectValue placeholder="Select your budget" />
             </SelectTrigger>
             <SelectContent>
               {budgets.map((budget) => (
@@ -300,11 +287,11 @@ export default function ContactForm({ className = "", onSuccess, compact = false
         </div>
 
         <div>
-          <Label htmlFor="message" className="text-white">Tell us about your project (Optional)</Label>
+          <Label htmlFor="message" className="text-white">What needs documenting?</Label>
           <Textarea
             {...register("message")}
             id="message"
-            placeholder="Tell us about your business, website goals, and any specific requirements..."
+            placeholder="Share your product URL, key features, current docs gap, and launch timeline."
             className="mt-1 bg-white/10 border-white/20 text-white placeholder-white/60 min-h-24"
             disabled={isSubmitting}
           />
@@ -318,12 +305,12 @@ export default function ContactForm({ className = "", onSuccess, compact = false
           {isSubmitting ? (
             <>
               <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-              Sending...
+              Submitting...
             </>
           ) : (
             <>
               <Send className="w-4 h-4 mr-2" />
-              Send Message
+              Start My Docs Sprint
             </>
           )}
         </Button>

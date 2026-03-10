@@ -1,476 +1,265 @@
-import { useState, useEffect } from "react";
-import { motion, useInView } from "motion/react";
-import { ArrowRight, Globe, Heart, MessageCircle, Monitor, Users, Star, CheckCircle, Mail, Phone, MapPin, Clock, Shield, Zap, Target, Menu, Bot, Workflow } from "lucide-react";
+import { ArrowRight, CheckCircle2, FileSearch, Files, MessageSquareMore, Search, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import ContactForm from "@/components/ContactForm";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { SEO } from "@/components/SEO";
-import MobileNavigation from "@/components/MobileNavigation";
+import SiteHeader from "@/components/SiteHeader";
 import Footer from "@/components/Footer";
-import {
-  fadeInVariants,
-  fadeInUpVariants,
-  fadeInLeftVariants,
-  fadeInRightVariants,
-  staggerContainer,
-  staggerItem,
-  cardHoverVariants
-} from "@/lib/motion";
-import smilecareDentalImage from "@/assets/smilecare-dental.png";
-import brightskinDermatologyImage from "@/assets/brightskin-dermatology.png";
-import tasteJunctionCafeImage from "@/assets/taste-junctio-cafe.png";
+import ContactForm from "@/components/ContactForm";
 
-const Index = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
+const painPoints = [
+  "Your launch is live, but support questions keep repeating.",
+  "Docs are still in Notion, scattered Slack replies, or nowhere.",
+  "You know documentation matters, but it never beats shipping features.",
+];
 
-  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
-  const closeMobileMenu = () => setIsMobileMenuOpen(false);
+const deliverables = [
+  "Live docs site built in Next.js with Nextra or Fumadocs",
+  "Core product docs written for your main features and flows",
+  "Searchable help center structure with clean navigation",
+  "Deployment on Vercel with your domain and async handoff video",
+];
 
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+const process = [
+  { step: "01", title: "You send the brief", copy: "Product link, feature list, screenshots, and rough priorities through a form or chat." },
+  { step: "02", title: "We write and structure", copy: "We turn your product into clear user-facing docs, information architecture, and page hierarchy." },
+  { step: "03", title: "We ship the site", copy: "You get a live searchable docs site, deployed and ready to share with users." },
+];
 
+const faqs = [
+  {
+    question: "Who is this for?",
+    answer: "Indie SaaS founders, solo developers, and tiny product teams who need docs but keep delaying them.",
+  },
+  {
+    question: "Do I need existing content?",
+    answer: "No. Existing notes help, but the sprint is designed for founders starting with rough bullets, product UI, and a live app.",
+  },
+  {
+    question: "How async is it?",
+    answer: "Completely async. Intake happens by form, email, WhatsApp, or Discord. No calls are required.",
+  },
+  {
+    question: "How fast is delivery?",
+    answer: "Standard scope ships in 5 days once the brief and product access are in.",
+  },
+];
+
+export default function Index() {
   return (
     <div className="min-h-screen bg-background">
       <SEO pageKey="home" />
-      {/* Navigation */}
-      <motion.nav
-        className={`border-b border-border sticky top-0 z-50 transition-all duration-300 ${scrollY > 50
-          ? 'bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 shadow-sm'
-          : 'bg-transparent'
-          }`}
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
-      >
-        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <img
-              src="/nextreach-logo.jpg"
-              alt="NextReach Logo"
-              className="w-10 h-10"
-            />
-            <span className="font-bold text-xl text-foreground">NextReach Studio</span>
-          </div>
-          <div className="hidden md:flex items-center space-x-8">
-            <a href="/ai-agents" className="text-muted-foreground hover:text-primary transition-colors">AI Agents</a>
-            <a href="/about" className="text-muted-foreground hover:text-primary transition-colors">About</a>
-            <a href="/contact" className="text-muted-foreground hover:text-primary transition-colors">Contact</a>
-          </div>
-          <Button
-            variant="ghost"
-            size="sm"
-            className="md:hidden"
-            onClick={toggleMobileMenu}
-          >
-            <Menu className="w-6 h-6" />
-          </Button>
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <Button className="bg-gradient-to-r from-green-400 via-emerald-500 to-blue-500 hover:from-green-500 hover:via-emerald-600 hover:to-blue-600 border-0 text-white" size="sm" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
-              Get Started <ArrowRight className="w-4 h-4" />
-            </Button>
-          </motion.div>
-        </div>
-      </motion.nav>
+      <SiteHeader />
 
-      {/* Hero Section */}
-      <section className="py-20 lg:py-32 bg-gradient-subtle overflow-hidden">
-        <div className="container mx-auto px-4">
-          <motion.div
-            className="max-w-4xl mx-auto text-center"
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-          >
-            <motion.h1
-              className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6"
-              variants={fadeInUpVariants}
-            >
-              NextReach Studio — Custom AI Agents
-              <motion.span
-                className="block bg-gradient-to-r from-green-400 via-emerald-500 to-blue-500 bg-clip-text text-transparent"
-                variants={fadeInUpVariants}
-              >
-                That Automate Your Business 24/7
-              </motion.span>
-            </motion.h1>
-            <motion.p
-              className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed"
-              variants={fadeInUpVariants}
-            >
-              We build intelligent AI agents that handle customer support, lead qualification, data processing, and workflows — custom automation designed for your business needs.
-            </motion.p>
-            <motion.div
-              className="flex flex-col sm:flex-row gap-4 justify-center"
-              variants={fadeInUpVariants}
-            >
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button variant="hero" size="xl" className="group bg-gradient-to-r from-green-400 via-emerald-500 to-blue-500 hover:from-green-500 hover:via-emerald-600 hover:to-blue-600 border-0 text-white" onClick={() => window.location.href = '/ai-agents'}>
-                  Get Your AI Agent
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </motion.div>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button variant="outline" size="xl" onClick={() => window.location.href = '/ai-agents#portfolio'}>
-                  See AI Solutions
-                </Button>
-              </motion.div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Why Choose NextReach Studio */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <motion.div
-            className="max-w-3xl mx-auto text-center mb-16"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-100px' }}
-            variants={fadeInUpVariants}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Why Choose NextReach Studio</h2>
-            <p className="text-lg text-muted-foreground">
-              We specialize in custom AI automation that works 24/7. Here's what makes our AI agents different.
-            </p>
-          </motion.div>
-          <motion.div
-            className="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-100px' }}
-            variants={staggerContainer}
-          >
-            <motion.div
-              className="text-center"
-              variants={staggerItem}
-            >
-              <motion.div
-                className="w-16 h-16 bg-gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-4"
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                transition={{ type: 'spring', stiffness: 300 }}
-              >
-                <Bot className="w-8 h-8 text-white" />
-              </motion.div>
-              <h3 className="text-xl font-semibold text-foreground mb-2">24/7 AI Automation</h3>
-              <p className="text-muted-foreground">AI agents that work around the clock without breaks, handling support, sales, and operations automatically.</p>
-            </motion.div>
-            <motion.div
-              className="text-center"
-              variants={staggerItem}
-            >
-              <motion.div
-                className="w-16 h-16 bg-gradient-accent rounded-2xl flex items-center justify-center mx-auto mb-4"
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                transition={{ type: 'spring', stiffness: 300 }}
-              >
-                <Target className="w-8 h-8 text-white" />
-              </motion.div>
-              <h3 className="text-xl font-semibold text-foreground mb-2">100% Custom Built</h3>
-              <p className="text-muted-foreground">Every AI agent is tailored to your exact workflows. No templates, just solutions designed for your business needs.</p>
-            </motion.div>
-            <motion.div
-              className="text-center"
-              variants={staggerItem}
-            >
-              <motion.div
-                className="w-16 h-16 bg-gradient-highlight rounded-2xl flex items-center justify-center mx-auto mb-4"
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                transition={{ type: 'spring', stiffness: 300 }}
-              >
-                <Zap className="w-8 h-8 text-highlight-foreground" />
-              </motion.div>
-              <h3 className="text-xl font-semibold text-foreground mb-2">Fast Delivery</h3>
-              <p className="text-muted-foreground">Simple agents in 3-5 days, complex systems in 7-14 days. Live quickly, optimize continuously.</p>
-            </motion.div>
-            <motion.div
-              className="text-center"
-              variants={staggerItem}
-            >
-              <motion.div
-                className="w-16 h-16 bg-gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-4"
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                transition={{ type: 'spring', stiffness: 300 }}
-              >
-                <Workflow className="w-8 h-8 text-white" />
-              </motion.div>
-              <h3 className="text-xl font-semibold text-foreground mb-2">Full Integration</h3>
-              <p className="text-muted-foreground">Connect with CRMs, WhatsApp, email, databases, APIs—your AI agents work with your entire tech stack.</p>
-            </motion.div>
-            <motion.div
-              className="text-center"
-              variants={staggerItem}
-            >
-              <motion.div
-                className="w-16 h-16 bg-gradient-accent rounded-2xl flex items-center justify-center mx-auto mb-4"
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                transition={{ type: 'spring', stiffness: 300 }}
-              >
-                <Shield className="w-8 h-8 text-white" />
-              </motion.div>
-              <h3 className="text-xl font-semibold text-foreground mb-2">Expert AI Team</h3>
-              <p className="text-muted-foreground">Built by NextReach automation specialists with deep expertise in OpenAI, LangChain, and vector databases.</p>
-            </motion.div>
-            <motion.div
-              className="text-center"
-              variants={staggerItem}
-            >
-              <motion.div
-                className="w-16 h-16 bg-gradient-highlight rounded-2xl flex items-center justify-center mx-auto mb-4"
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                transition={{ type: 'spring', stiffness: 300 }}
-              >
-                <CheckCircle className="w-8 h-8 text-highlight-foreground" />
-              </motion.div>
-              <h3 className="text-xl font-semibold text-foreground mb-2">Ongoing Support</h3>
-              <p className="text-muted-foreground">Continuous optimization and dedicated support to ensure your AI performs at its best.</p>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* AI Solutions */}
-      <section id="portfolio" className="py-24 bg-gradient-to-br from-background via-card-subtle to-background">
-        <div className="container mx-auto px-4">
-          <motion.div
-            className="max-w-4xl mx-auto text-center mb-20"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-100px' }}
-            variants={fadeInUpVariants}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">AI Solutions in Action</h2>
-            <p className="text-xl text-muted-foreground leading-relaxed">
-              Real AI agents delivering 24/7 automation for businesses worldwide
-            </p>
-          </motion.div>
-          <motion.div
-            className="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-100px' }}
-            variants={staggerContainer}
-          >
-            <motion.div variants={staggerItem}>
-              <motion.div
-                whileHover={{ y: -8, scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ type: 'spring', stiffness: 300 }}
-              >
-                <Card className="group cursor-pointer border border-border/20 shadow-lg hover:shadow-xl transition-all h-full bg-white/50 backdrop-blur-sm hover:border-border/40">
-                  <div className="overflow-hidden rounded-t-lg relative">
-                    <motion.img
-                      src={smilecareDentalImage}
-                      alt="AI Customer Support Agent"
-                      className="w-full h-56 object-cover"
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
-                  <CardContent className="p-6 flex-grow">
-                    <h3 className="text-xl font-semibold text-foreground mb-3">AI Customer Support Agent</h3>
-                    <p className="text-muted-foreground mb-4 flex-grow">WhatsApp chatbot handling 500+ inquiries/month → 85% automated resolution rate, 24/7 availability.</p>
-                    <div className="flex items-center text-sm text-muted-foreground mt-auto">
-                      <Target className="w-4 h-4 mr-2" />
-                      <span>E-commerce Business</span>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </motion.div>
-
-            <motion.div variants={staggerItem}>
-              <motion.div
-                whileHover={{ y: -8, scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ type: 'spring', stiffness: 300 }}
-              >
-                <Card className="group cursor-pointer border border-border/20 shadow-lg hover:shadow-xl transition-all h-full bg-white/50 backdrop-blur-sm hover:border-border/40">
-                  <div className="overflow-hidden rounded-t-lg relative">
-                    <motion.img
-                      src={brightskinDermatologyImage}
-                      alt="Lead Qualification System"
-                      className="w-full h-56 object-cover"
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
-                  <CardContent className="p-6 flex-grow">
-                    <h3 className="text-xl font-semibold text-foreground mb-3">Lead Qualification System</h3>
-                    <p className="text-muted-foreground mb-4 flex-grow">Multi-agent CRM automation → 3x faster lead scoring, 40% increase in qualified conversions.</p>
-                    <div className="flex items-center text-sm text-muted-foreground mt-auto">
-                      <Target className="w-4 h-4 mr-2" />
-                      <span>SaaS Company</span>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </motion.div>
-
-            <motion.div variants={staggerItem}>
-              <motion.div
-                whileHover={{ y: -8, scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ type: 'spring', stiffness: 300 }}
-              >
-                <Card className="group cursor-pointer border border-border/20 shadow-lg hover:shadow-xl transition-all h-full bg-white/50 backdrop-blur-sm hover:border-border/40">
-                  <div className="overflow-hidden rounded-t-lg relative">
-                    <motion.img
-                      src={tasteJunctionCafeImage}
-                      alt="Document Processing AI"
-                      className="w-full h-56 object-cover"
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
-                  <CardContent className="p-6 flex-grow">
-                    <h3 className="text-xl font-semibold text-foreground mb-3">Document Processing AI</h3>
-                    <p className="text-muted-foreground mb-4 flex-grow">Automated data extraction from invoices → 10 hours/week saved, 99.2% accuracy rate.</p>
-                    <div className="flex items-center text-sm text-muted-foreground mt-auto">
-                      <Target className="w-4 h-4 mr-2" />
-                      <span>Finance Team</span>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-
-
-      {/* About Section */}
-      <section id="about" className="py-24 bg-gradient-to-br from-background via-card-subtle to-background">
-        <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
-            <motion.div
-              className="text-center mb-16"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: '-100px' }}
-              variants={fadeInUpVariants}
-            >
-              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-8">About NextReach</h2>
-              <div className="space-y-8 text-lg md:text-xl text-muted-foreground leading-relaxed max-w-4xl mx-auto">
-                <p>
-                  At NextReach Studio, we build custom AI agents that transform how businesses operate. From customer support automation to intelligent lead qualification, our AI solutions work 24/7 to help your business scale efficiently.
+      <main>
+        <section className="docs-grid overflow-hidden border-b border-border">
+          <div className="container mx-auto px-4 py-20 md:py-28">
+            <div className="grid gap-14 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+              <div className="max-w-3xl">
+                <Badge className="mb-6 bg-accent text-accent-foreground hover:bg-accent" variant="secondary">
+                  Async docs delivery for indie SaaS
+                </Badge>
+                <h1 className="max-w-3xl text-5xl font-bold leading-[0.96] tracking-[-0.04em] md:text-7xl">
+                  Stop postponing docs.
+                  <span className="block text-muted-foreground">Get a live help center in 5 days.</span>
+                </h1>
+                <p className="mt-6 max-w-2xl text-lg text-muted-foreground md:text-xl">
+                  NextReach Studio turns your product into a clean, searchable docs site. We write the content, structure the help center, build the site, and ship it fully async.
                 </p>
-                <p>
-                  Our team specializes in creating tailored AI automation systems using cutting-edge technologies like OpenAI, LangChain, and vector databases. Every AI agent we build is designed specifically for your workflows, ensuring maximum impact and ROI.
-                </p>
-                <p>
-                  We've partnered with e-commerce businesses, SaaS companies, and teams across industries to deliver AI agents that save time, reduce costs, and handle complex tasks with precision and reliability.
-                </p>
+                <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+                  <Button
+                    size="lg"
+                    className="border-0 bg-foreground text-background hover:bg-foreground/90"
+                    onClick={() => {
+                      window.location.href = "/contact";
+                    }}
+                  >
+                    Start a docs sprint
+                    <ArrowRight className="h-4 w-4" />
+                  </Button>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    onClick={() => {
+                      document.getElementById("deliverables")?.scrollIntoView({ behavior: "smooth" });
+                    }}
+                  >
+                    See deliverables
+                  </Button>
+                </div>
+                <div className="mt-10 grid gap-4 text-sm text-muted-foreground sm:grid-cols-3">
+                  <div className="rounded-2xl border border-border bg-card px-4 py-4">
+                    <div className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">Timeline</div>
+                    <div className="mt-2 text-2xl font-semibold text-foreground">5 days</div>
+                  </div>
+                  <div className="rounded-2xl border border-border bg-card px-4 py-4">
+                    <div className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">Package</div>
+                    <div className="mt-2 text-2xl font-semibold text-foreground">$149-$299</div>
+                  </div>
+                  <div className="rounded-2xl border border-border bg-card px-4 py-4">
+                    <div className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">Workflow</div>
+                    <div className="mt-2 text-2xl font-semibold text-foreground">Async only</div>
+                  </div>
+                </div>
               </div>
-            </motion.div>
 
-            <motion.div
-              className="bg-gradient-to-r from-blue-500 via-emerald-500 to-green-500 p-8 md:p-12 rounded-3xl text-white shadow-2xl"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: '-100px' }}
-              variants={fadeInUpVariants}
-            >
-              <div className="text-center max-w-3xl mx-auto">
-                <h3 className="text-3xl md:text-4xl font-bold mb-6">Our Mission</h3>
-                <p className="text-xl md:text-2xl leading-relaxed text-white/95">
-                  To empower businesses worldwide with intelligent AI automation that works 24/7, making advanced AI technology accessible and impactful for companies of all sizes.
-                </p>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section id="contact" className="py-20 bg-gradient-brand text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Build Your Custom AI Agent?</h2>
-            <p className="text-xl text-white/90">
-              Let's create intelligent AI automation that works 24/7 for your business. Get in touch today to discuss your custom AI solution!
-            </p>
-          </div>
-          <div className="max-w-4xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-12">
-              <Card className="border-0 bg-white/10 backdrop-blur">
-                <CardHeader>
-                  <CardTitle className="text-2xl text-white">Start Your Project</CardTitle>
-                  <CardDescription className="text-white/80">We'll provide a detailed proposal within 24 hours</CardDescription>
+              <Card className="noise-card overflow-hidden border-border/70 shadow-xl">
+                <CardHeader className="border-b border-border/70 bg-[#121316] text-white">
+                  <div className="font-mono text-xs uppercase tracking-[0.24em] text-[#d9ff66]">docs-scope.md</div>
+                  <CardTitle className="mt-4 text-3xl font-semibold">What you hand off</CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <ContactForm compact={true} />
+                <CardContent className="space-y-4 p-6">
+                  {painPoints.map((item) => (
+                    <div key={item} className="flex gap-3 rounded-2xl border border-border bg-card p-4">
+                      <Sparkles className="mt-1 h-5 w-5 text-highlight" />
+                      <p className="text-sm text-muted-foreground">{item}</p>
+                    </div>
+                  ))}
+                  <div className="rounded-2xl bg-[#121316] p-5 text-white">
+                    <div className="font-mono text-xs uppercase tracking-[0.24em] text-[#d9ff66]">includes</div>
+                    <div className="mt-3 grid gap-2 text-sm text-white/80">
+                      <span>Feature docs</span>
+                      <span>Quickstart and onboarding</span>
+                      <span>FAQs and troubleshooting</span>
+                      <span>Deploy + handoff</span>
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
+            </div>
+          </div>
+        </section>
 
-              <div className="space-y-8">
-                <div>
-                  <h3 className="text-2xl font-bold mb-6">Get in touch</h3>
-                  <div className="space-y-4">
-                    <div className="flex items-center">
-                      <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mr-4">
-                        <Phone className="w-6 h-6 text-white" />
-                      </div>
-                      <div>
-                        <div className="font-semibold">Call us</div>
-                        <div className="text-white/80">+91 98765 43210</div>
-                      </div>
-                    </div>
-                    <div className="flex items-center">
-                      <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mr-4">
-                        <Mail className="w-6 h-6 text-white" />
-                      </div>
-                      <div>
-                        <div className="font-semibold">Email us</div>
-                        <div className="text-white/80">admin@nextreachstudio.com</div>
-                      </div>
-                    </div>
-                    <div className="flex items-center">
-                      <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mr-4">
-                        <MessageCircle className="w-6 h-6 text-white" />
-                      </div>
-                      <div>
-                        <div className="font-semibold">WhatsApp</div>
-                        <div className="text-white/80">+91 98765 43210</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+        <section id="deliverables" className="border-b border-border bg-card/40">
+          <div className="container mx-auto px-4 py-20">
+            <div className="max-w-3xl">
+              <div className="font-mono text-xs uppercase tracking-[0.24em] text-muted-foreground">What you get</div>
+              <h2 className="mt-4 text-4xl md:text-5xl">A docs stack that feels shipped, not improvised.</h2>
+            </div>
+            <div className="mt-12 grid gap-6 md:grid-cols-2">
+              {deliverables.map((item) => (
+                <Card key={item} className="border-border/70 bg-card">
+                  <CardContent className="flex items-start gap-4 p-6">
+                    <CheckCircle2 className="mt-1 h-5 w-5 text-success" />
+                    <p className="text-base text-muted-foreground">{item}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
 
-                <div className="bg-white/10 backdrop-blur p-8 rounded-2xl">
-                  <h4 className="text-xl font-bold mb-4">24/7 AI Automation</h4>
-                  <p className="text-white/80">
-                    We build custom AI agents for businesses worldwide, delivering intelligent automation that handles customer support, lead qualification, data processing, and complex workflows around the clock.
+        <section className="border-b border-border">
+          <div className="container mx-auto px-4 py-20">
+            <div className="grid gap-8 lg:grid-cols-3">
+              {process.map((item) => (
+                <Card key={item.step} className="border-border/70 bg-card">
+                  <CardHeader>
+                    <div className="font-mono text-xs uppercase tracking-[0.24em] text-muted-foreground">{item.step}</div>
+                    <CardTitle className="mt-3 text-2xl">{item.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground">{item.copy}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="border-b border-border bg-card/40">
+          <div className="container mx-auto px-4 py-20">
+            <div className="grid gap-6 lg:grid-cols-4">
+              <Card className="border-border/70 lg:col-span-2">
+                <CardHeader>
+                  <FileSearch className="h-6 w-6 text-highlight" />
+                  <CardTitle className="mt-4">Content first</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    We write for the questions users actually ask after signup, not generic placeholder docs.
                   </p>
-                </div>
+                </CardContent>
+              </Card>
+              <Card className="border-border/70">
+                <CardHeader>
+                  <Search className="h-6 w-6 text-highlight" />
+                  <CardTitle className="mt-4">Searchable structure</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    Categories, navigation, and page titles built so users can self-serve faster.
+                  </p>
+                </CardContent>
+              </Card>
+              <Card className="border-border/70">
+                <CardHeader>
+                  <Files className="h-6 w-6 text-highlight" />
+                  <CardTitle className="mt-4">Production-ready handoff</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    Delivered live on Vercel with your domain plus an async walkthrough for future edits.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        <section className="border-b border-border">
+          <div className="container mx-auto px-4 py-20">
+            <div className="grid gap-14 lg:grid-cols-[0.85fr_1.15fr]">
+              <div>
+                <div className="font-mono text-xs uppercase tracking-[0.24em] text-muted-foreground">Fast validation</div>
+                <h2 className="mt-4 text-4xl md:text-5xl">Start with one docs sprint, not a giant content project.</h2>
+                <p className="mt-5 text-lg text-muted-foreground">
+                  The offer is scoped for founders who want momentum: core docs, clean IA, live site, and no meeting overhead.
+                </p>
+              </div>
+              <div className="grid gap-4 md:grid-cols-2">
+                {faqs.map((item) => (
+                  <Card key={item.question} className="border-border/70 bg-card">
+                    <CardHeader>
+                      <CardTitle className="text-xl">{item.question}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-sm text-muted-foreground">{item.answer}</p>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Footer */}
+        <section className="bg-[#121316] py-20 text-white">
+          <div className="container mx-auto px-4">
+            <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+              <div>
+                <div className="font-mono text-xs uppercase tracking-[0.24em] text-[#d9ff66]">Start async</div>
+                <h2 className="mt-4 text-4xl md:text-5xl">Send the product link. We’ll map the docs sprint.</h2>
+                <p className="mt-5 max-w-xl text-white/70">
+                  Best fit for launched or near-launch SaaS products that need quickstart docs, feature pages, FAQs, and a clean searchable help center.
+                </p>
+                <div className="mt-8 flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 text-sm text-white/70">
+                  <MessageSquareMore className="mt-1 h-5 w-5 text-[#d9ff66]" />
+                  <p>
+                    Include your app URL, target user, top 3 features, and whether you want Nextra or Fumadocs. That’s enough to start.
+                  </p>
+                </div>
+              </div>
+              <Card className="border-white/10 bg-white/5 shadow-none">
+                <CardContent className="p-6">
+                  <ContactForm />
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+      </main>
+
       <Footer />
-
-      {/* Mobile Navigation */}
-      <MobileNavigation
-        isOpen={isMobileMenuOpen}
-        onToggle={toggleMobileMenu}
-        onClose={closeMobileMenu}
-      />
     </div>
   );
-};
-
-export default Index;
+}

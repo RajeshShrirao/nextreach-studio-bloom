@@ -32,15 +32,15 @@ export const sendContactEmail = async (formData: ContactFormData): Promise<boole
     
     // Fallback to mailto if API fails
     console.warn('API failed, falling back to mailto');
-    const subject = encodeURIComponent(`New Lead from NextReach Website`);
+    const subject = encodeURIComponent(`New Docs Sprint Lead from NextReach Studio`);
     const body = encodeURIComponent(
       `Name: ${formData.firstName} ${formData.lastName}
 Email: ${formData.email}
-Business: ${formData.business}
+Product: ${formData.business}
 Location: ${formData.location}
 ${formData.service ? `Service: ${formData.service}` : ''}
 ${formData.budget ? `Budget: ${formData.budget}` : ''}
-${formData.phone ? `Phone: +91${formData.phone}` : ''}
+${formData.phone ? `WhatsApp/Phone: ${formData.phone}` : ''}
 
 Message: ${formData.message || 'No message provided'}`
     );
@@ -62,7 +62,7 @@ export const sendContactEmailViaFormspree = async (formData: ContactFormData): P
       body: JSON.stringify({
         ...formData,
         _replyto: formData.email,
-        _subject: 'New Lead from NextReach Website',
+        _subject: 'New Docs Sprint Lead from NextReach Studio',
         _to: 'admin@nextreachstudio.com'
       }),
     });
@@ -90,7 +90,7 @@ export const sendContactEmailViaAPI = async (formData: ContactFormData): Promise
       body: JSON.stringify({
         ...formData,
         to: 'admin@nextreachstudio.com',
-        subject: 'New Lead from NextReach Website'
+        subject: 'New Docs Sprint Lead from NextReach Studio'
       }),
     });
 
