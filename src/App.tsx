@@ -10,6 +10,7 @@ import Index from "./pages/Index";
 import About from "./pages/About";
 import Pricing from "./pages/Pricing";
 import Contact from "./pages/Contact";
+import DemoDocs from "./pages/DemoDocs";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Terms from "./pages/Terms";
 import NotFound from "./pages/NotFound";
@@ -30,6 +31,8 @@ const AppContent = () => {
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/ai-agents" element={<Navigate to="/" replace />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/demo/pulseboard" element={<DemoDocs />} />
+        <Route path="/demo/pulseboard/:articleId" element={<DemoDocs />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/admin-nextreach-studio-2024" element={<AdminDashboard />} />
