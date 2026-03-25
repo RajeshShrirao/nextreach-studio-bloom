@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Blackbox Rescue | NextReach Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        glass: 'rgba(255, 255, 255, 0.03)',
+                        glassBorder: 'rgba(255, 255, 255, 0.08)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #050505; background-image: radial-gradient(circle at 50% 0%, #1a1a24 0%, #050505 50%); }
+        .glass-panel { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+    </style>
+</head>
+<body class="text-zinc-300 font-sans antialiased min-h-screen selection:bg-zinc-800 selection:text-white">
+
+    <nav class="fixed w-full top-0 z-50 glass-panel border-b border-t-0 border-x-0">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <span class="text-white font-semibold tracking-wide text-sm uppercase tracking-widest">NextReach Studio</span>
+            <a href="#checkout" class="text-xs font-medium bg-white text-black px-4 py-2 rounded-full hover:bg-zinc-200 transition-colors">Get Rescued</a>
+        </div>
+    </nav>
+
+    <header class="pt-40 pb-20 px-6 max-w-4xl mx-auto text-center">
+        <div class="inline-block mb-4 px-3 py-1 rounded-full border border-zinc-800 bg-zinc-900/50 text-xs text-zinc-400 font-medium tracking-wide">
+            THE BLACKBOX RESCUE
+        </div>
+        <h1 class="text-5xl md:text-6xl font-bold text-white tracking-tight leading-tight mb-6">
+            Your AI MVP Looks Great Locally. <br>
+            <span class="text-zinc-500">On Vercel, It’s a 500 Error Nightmare.</span>
+        </h1>
+        <p class="text-lg text-zinc-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+            You built it in Bolt or Lovable. You got excited. But the second you tried to connect Supabase auth, fire a Stripe webhook, or deploy to production, everything broke. AI keeps rewriting files and making it worse.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="#checkout" class="w-full sm:w-auto px-8 py-4 bg-white text-black font-semibold rounded-lg hover:bg-zinc-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+                Rescue My Code — $79 Flat Fee
+            </a>
+            <p class="text-sm text-zinc-500 sm:ml-4">Zero calls. 24hr turnaround.</p>
+        </div>
+    </header>
+
+    <section class="max-w-6xl mx-auto px-6 mb-24">
+        <div class="glass-panel rounded-2xl p-6 md:p-8 flex flex-wrap justify-center md:justify-between gap-8 text-center">
+            <div><p class="text-white font-semibold text-xl">24 Hours</p><p class="text-xs text-zinc-500 uppercase tracking-widest mt-1">Turnaround Time</p></div>
+            <div><p class="text-white font-semibold text-xl">100% Async</p><p class="text-xs text-zinc-500 uppercase tracking-widest mt-1">Zero Live Meetings</p></div>
+            <div><p class="text-white font-semibold text-xl">$79 Flat</p><p class="text-xs text-zinc-500 uppercase tracking-widest mt-1">No Scope Creep</p></div>
+            <div><p class="text-white font-semibold text-xl">Next.js</p><p class="text-xs text-zinc-500 uppercase tracking-widest mt-1">Native Expertise</p></div>
+        </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto px-6 mb-32">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-white mb-4">Get unstuck without saying a single word.</h2>
+            <p class="text-zinc-400">A high-end, zero-friction process engineered for solo founders.</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="glass-panel p-8 rounded-2xl relative overflow-hidden">
+                <div class="text-5xl font-black text-white/5 absolute -top-2 -right-2">01</div>
+                <h3 class="text-xl font-semibold text-white mb-3 relative z-10">Drop the Link</h3>
+                <p class="text-sm text-zinc-400 leading-relaxed relative z-10">Click checkout and paste three things: your GitHub repo URL, your Vercel URL, and the exact terminal error. No onboarding docs required.</p>
+            </div>
+            <div class="glass-panel p-8 rounded-2xl relative overflow-hidden">
+                <div class="text-5xl font-black text-white/5 absolute -top-2 -right-2">02</div>
+                <h3 class="text-xl font-semibold text-white mb-3 relative z-10">The Silent Fix</h3>
+                <p class="text-sm text-zinc-400 leading-relaxed relative z-10">I pull your code into an isolated environment. I find the broken state logic, fix the routing, correct the ENVs, and neutralize the deployment blocker.</p>
+            </div>
+            <div class="glass-panel p-8 rounded-2xl relative overflow-hidden">
+                <div class="text-5xl font-black text-white/5 absolute -top-2 -right-2">03</div>
+                <h3 class="text-xl font-semibold text-white mb-3 relative z-10">You Launch</h3>
+                <p class="text-sm text-zinc-400 leading-relaxed relative z-10">Within 24 hours, you get a clean PR and a 2-minute Loom video explaining exactly what broke so you don't repeat the mistake. You merge and launch.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-6 mb-32">
+        <h2 class="text-3xl font-bold text-white mb-12 text-center">Stop letting a single routing error hold your launch hostage.</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="glass-panel p-8 rounded-2xl">
+                <p class="text-zinc-300 text-sm leading-relaxed mb-6">"I spent 3 weeks in tutorial hell trying to get Supabase auth to work on my Lovable export. I felt completely stupid and was ready to quit. Sent the repo over, woke up to a perfectly working Vercel link. Saved my sanity."</p>
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-zinc-800 border border-zinc-700"></div>
+                    <div><p class="text-white text-sm font-medium">Marcus K.</p><p class="text-xs text-zinc-500">Solo Founder</p></div>
+                </div>
+            </div>
+            <div class="glass-panel p-8 rounded-2xl">
+                <p class="text-zinc-300 text-sm leading-relaxed mb-6">"Every dev I contacted wanted a $3,000 retainer and a 4-week timeline to 'refactor' my app. I just needed the Stripe webhook fixed. Paid the $79, got a clean PR the next morning, and launched to my beta users."</p>
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-zinc-800 border border-zinc-700"></div>
+                    <div><p class="text-white text-sm font-medium">Sarah T.</p><p class="text-xs text-zinc-500">SaaS Creator</p></div>
+                </div>
+            </div>
+            <div class="glass-panel p-8 rounded-2xl">
+                <p class="text-zinc-300 text-sm leading-relaxed mb-6">"The best part was not having to get on a Zoom call and embarrass myself trying to explain my messy, AI-generated spaghetti code. The completely async process is an introvert's dream."</p>
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-zinc-800 border border-zinc-700"></div>
+                    <div><p class="text-white text-sm font-medium">David L.</p><p class="text-xs text-zinc-500">Indie Builder</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto px-6 mb-32">
+        <h2 class="text-3xl font-bold text-white mb-10 text-center">The only logical next step for your MVP.</h2>
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="border-b border-white/10 text-sm text-zinc-500 uppercase tracking-widest">
+                        <th class="py-4 font-normal">Feature</th>
+                        <th class="py-4 font-medium text-white px-6 glass-panel rounded-t-xl">The Blackbox Rescue</th>
+                        <th class="py-4 font-normal px-4">Dev Agencies</th>
+                        <th class="py-4 font-normal px-4">AI Tools</th>
+                        <th class="py-4 font-normal px-4">DIY Tutorials</th>
+                    </tr>
+                </thead>
+                <tbody class="text-sm">
+                    <tr class="border-b border-white/5">
+                        <td class="py-4 text-zinc-400">Price</td>
+                        <td class="py-4 text-white font-medium px-6 glass-panel border-y-0">$79 Flat</td>
+                        <td class="py-4 px-4 text-zinc-500">$3,000+</td>
+                        <td class="py-4 px-4 text-zinc-500">$20/mo</td>
+                        <td class="py-4 px-4 text-zinc-500">$0</td>
+                    </tr>
+                    <tr class="border-b border-white/5">
+                        <td class="py-4 text-zinc-400">Time to Fix</td>
+                        <td class="py-4 text-white font-medium px-6 glass-panel border-y-0">< 24 Hours</td>
+                        <td class="py-4 px-4 text-zinc-500">4-6 Weeks</td>
+                        <td class="py-4 px-4 text-zinc-500">Endless Loops</td>
+                        <td class="py-4 px-4 text-zinc-500">40+ Hours</td>
+                    </tr>
+                    <tr class="border-b border-white/5">
+                        <td class="py-4 text-zinc-400">Meetings</td>
+                        <td class="py-4 text-white font-medium px-6 glass-panel border-y-0">0</td>
+                        <td class="py-4 px-4 text-zinc-500">3+ Calls</td>
+                        <td class="py-4 px-4 text-zinc-500">0</td>
+                        <td class="py-4 px-4 text-zinc-500">0</td>
+                    </tr>
+                    <tr class="border-b border-white/5">
+                        <td class="py-4 text-zinc-400">Emotional Toll</td>
+                        <td class="py-4 text-white font-medium px-6 glass-panel rounded-b-xl border-t-0">Complete Relief</td>
+                        <td class="py-4 px-4 text-zinc-500">High Friction</td>
+                        <td class="py-4 px-4 text-zinc-500">Total Exhaustion</td>
+                        <td class="py-4 px-4 text-zinc-500">Paralyzing</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto px-6 mb-32">
+        <h2 class="text-3xl font-bold text-white mb-12 text-center">Why founders quietly use this service to cross the finish line.</h2>
+        <div class="grid md:grid-cols-2 gap-x-12 gap-y-8">
+            <div class="flex items-start gap-4">
+                <div class="mt-1 w-2 h-2 rounded-full bg-white shrink-0"></div>
+                <div><h4 class="text-white font-medium mb-1">Zero Discovery Calls</h4><p class="text-sm text-zinc-400">Your time is better spent talking to users, not explaining environment variables to a freelancer on Zoom.</p></div>
+            </div>
+            <div class="flex items-start gap-4">
+                <div class="mt-1 w-2 h-2 rounded-full bg-white shrink-0"></div>
+                <div><h4 class="text-white font-medium mb-1">Surgical Precision</h4><p class="text-sm text-zinc-400">I don't rebuild your app from scratch to inflate the bill. I find the exact broken dependency and neutralize it.</p></div>
+            </div>
+            <div class="flex items-start gap-4">
+                <div class="mt-1 w-2 h-2 rounded-full bg-white shrink-0"></div>
+                <div><h4 class="text-white font-medium mb-1">Safe Space for Messy Code</h4><p class="text-sm text-zinc-400">AI writes weird code. I don't care. There is zero judgment here—just rapid problem-solving.</p></div>
+            </div>
+            <div class="flex items-start gap-4">
+                <div class="mt-1 w-2 h-2 rounded-full bg-white shrink-0"></div>
+                <div><h4 class="text-white font-medium mb-1">The Loom Post-Mortem</h4><p class="text-sm text-zinc-400">You don't just get fixed code; you get a quick private video explaining the why behind the bug.</p></div>
+            </div>
+            <div class="flex items-start gap-4">
+                <div class="mt-1 w-2 h-2 rounded-full bg-white shrink-0"></div>
+                <div><h4 class="text-white font-medium mb-1">Deep Stack Mastery</h4><p class="text-sm text-zinc-400">Next.js routing, Supabase state management, and Stripe webhook handshakes are my native language.</p></div>
+            </div>
+            <div class="flex items-start gap-4">
+                <div class="mt-1 w-2 h-2 rounded-full bg-white shrink-0"></div>
+                <div><h4 class="text-white font-medium mb-1">No Scope Creep</h4><p class="text-sm text-zinc-400">A flat $79 fee means you never get hit with an unexpected invoice because a bug took an hour longer.</p></div>
+            </div>
+            <div class="flex items-start gap-4">
+                <div class="mt-1 w-2 h-2 rounded-full bg-white shrink-0"></div>
+                <div><h4 class="text-white font-medium mb-1">No Retainer Dependency</h4><p class="text-sm text-zinc-400">I fix the blocker and get out of your way. I build my own studio products; I don’t want to be your permanent CTO.</p></div>
+            </div>
+            <div class="flex items-start gap-4">
+                <div class="mt-1 w-2 h-2 rounded-full bg-white shrink-0"></div>
+                <div><h4 class="text-white font-medium mb-1">Identity Restoration</h4><p class="text-sm text-zinc-400">The psychological weight of a broken app is heavy. We remove the block so you can get back to leading.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-3xl mx-auto px-6 mb-32">
+        <h2 class="text-3xl font-bold text-white mb-10 text-center">Frequently Asked Questions</h2>
+        <div class="space-y-4">
+            <details class="glass-panel rounded-xl group overflow-hidden" open>
+                <summary class="font-medium text-white cursor-pointer p-6 bg-white/5 hover:bg-white/10 transition-colors flex justify-between items-center">
+                    What if you dive into the repo and actually can't fix it?
+                    <span class="text-zinc-500 group-open:rotate-45 transition-transform">+</span>
+                </summary>
+                <div class="p-6 pt-0 text-sm text-zinc-400 mt-2">
+                    If the AI generated something so fundamentally broken that a surgical fix is impossible within the bounds of this service, you get a 100% refund immediately, along with a clear explanation of what architectural shift you need to make. Zero risk.
+                </div>
+            </details>
+            <details class="glass-panel rounded-xl group overflow-hidden">
+                <summary class="font-medium text-white cursor-pointer p-6 bg-white/5 hover:bg-white/10 transition-colors flex justify-between items-center">
+                    Do we need to jump on a call so I can explain the codebase?
+                    <span class="text-zinc-500 group-open:rotate-45 transition-transform">+</span>
+                </summary>
+                <div class="p-6 pt-0 text-sm text-zinc-400 mt-2">
+                    Absolutely not. You know enough to give me the Vercel URL, the repo, and the exact error message your terminal is spitting out. That is all the context I need to trace the stack trace and deploy a fix.
+                </div>
+            </details>
+            <details class="glass-panel rounded-xl group overflow-hidden">
+                <summary class="font-medium text-white cursor-pointer p-6 bg-white/5 hover:bg-white/10 transition-colors flex justify-between items-center">
+                    Is it safe to share my codebase? Will you steal my idea?
+                    <span class="text-zinc-500 group-open:rotate-45 transition-transform">+</span>
+                </summary>
+                <div class="p-6 pt-0 text-sm text-zinc-400 mt-2">
+                    I run a dedicated studio building complex AI frameworks and developer tooling. I have zero interest in stealing your niche booking app or lead tracker. My reputation is built on silent, secure infrastructure support.
+                </div>
+            </details>
+            <details class="glass-panel rounded-xl group overflow-hidden">
+                <summary class="font-medium text-white cursor-pointer p-6 bg-white/5 hover:bg-white/10 transition-colors flex justify-between items-center">
+                    What tech stacks do you support?
+                    <span class="text-zinc-500 group-open:rotate-45 transition-transform">+</span>
+                </summary>
+                <div class="p-6 pt-0 text-sm text-zinc-400 mt-2">
+                    This offer is hyper-optimized for the standard AI-builder output: Next.js (Pages or App router), React, Supabase, Firebase, Stripe, and Vercel deployments. If your app is built on this stack, I can fix it.
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <footer id="checkout" class="border-t border-white/10 bg-[#020202] pt-20 pb-10 px-6 text-center">
+        <h2 class="text-4xl font-bold text-white mb-6">Ready to cross the finish line?</h2>
+        <p class="text-zinc-400 mb-10">Hand over the repo. Go to sleep. Wake up to a working app.</p>
+        <button class="px-10 py-5 bg-white text-black font-bold text-lg rounded-xl hover:bg-zinc-200 transition-all shadow-[0_0_30px_rgba(255,255,255,0.15)] mb-20">
+            Submit Your Broken Repo — $79
+        </button>
+        <div class="flex flex-col md:flex-row justify-between items-center max-w-6xl mx-auto text-xs text-zinc-600 border-t border-white/5 pt-8">
+            <p>© 2026 NextReach Studio. All rights reserved.</p>
+            <p class="mt-2 md:mt-0">Premium Asynchronous Infrastructure Support.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,14 +1,11 @@
-# Robots.txt for NextReach Studio
-# https://nextreachstudio.com/robots.txt
+# Robots.txt for Blackbox Rescue
+# https://blackboxrescue.com/robots.txt
 
 User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://nextreachstudio.com/sitemap.xml
-
-# Crawl delay for respectful crawling
-Crawl-delay: 1
+Sitemap: https://blackboxrescue.com/sitemap.xml
 
 # Allow all major search engines
 User-agent: Googlebot
@@ -23,29 +20,6 @@ Allow: /
 User-agent: DuckDuckBot
 Allow: /
 
-# Block access to admin areas - CRITICAL FOR SECURITY
-Disallow: /admin*
-Disallow: /admin-*
-Disallow: /private/
-Disallow: /.env
-Disallow: /api/internal/
-
-# Block access to development and staging
-Disallow: /dev/
-Disallow: /staging/
-Disallow: /test/
-
-# Allow access to important assets
-Allow: /assets/
-Allow: /images/
-Allow: /css/
-Allow: /js/
-
-# Block access to sensitive files but allow important ones
-Disallow: /*.json$
-Allow: /sitemap.xml
-Allow: /robots.txt
-
 # Block common spam bots
 User-agent: AhrefsBot
 Disallow: /
@@ -56,5 +30,4 @@ Disallow: /
 User-agent: SemrushBot
 Disallow: /
 
-# Host directive (helps with canonicalization)
-Host: https://nextreachstudio.com
+Host: https://blackboxrescue.com

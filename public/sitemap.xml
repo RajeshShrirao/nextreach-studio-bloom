@@ -3,71 +3,32 @@
          xmlns:xhtml="http://www.w3.org/1999/xhtml"
          xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   
-  <!-- Homepage -->
   <url>
-    <loc>https://nextreachstudio.com/</loc>
-    <lastmod>2025-03-10</lastmod>
+    <loc>https://blackboxrescue.com/</loc>
+    <lastmod>2026-03-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://nextreachstudio.com/"/>
-    <image:image>
-      <image:loc>https://nextreachstudio.com/nextreach-logo.jpg</image:loc>
-      <image:title>NextReach Studio - Docs-as-a-Service</image:title>
-    </image:image>
+    <xhtml:link rel="alternate" hreflang="en" href="https://blackboxrescue.com/"/>
   </url>
-  
-  <!-- About Page -->
   <url>
-    <loc>https://nextreachstudio.com/about</loc>
-    <lastmod>2025-03-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://nextreachstudio.com/about"/>
-  </url>
-  
-  <!-- Pricing Page -->
-  <url>
-    <loc>https://nextreachstudio.com/pricing</loc>
-    <lastmod>2025-03-10</lastmod>
+    <loc>https://blackboxrescue.com/contact</loc>
+    <lastmod>2026-03-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://nextreachstudio.com/pricing"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://blackboxrescue.com/contact"/>
   </url>
-  
-  <!-- Contact Page -->
   <url>
-    <loc>https://nextreachstudio.com/contact</loc>
-    <lastmod>2025-03-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://nextreachstudio.com/contact"/>
-  </url>
-  
-  <!-- Demo Docs Page -->
-  <url>
-    <loc>https://nextreachstudio.com/demo/pulseboard</loc>
-    <lastmod>2025-03-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://nextreachstudio.com/demo/pulseboard"/>
-  </url>
-  
-  <!-- Privacy Policy -->
-  <url>
-    <loc>https://nextreachstudio.com/privacy</loc>
-    <lastmod>2025-03-10</lastmod>
+    <loc>https://blackboxrescue.com/privacy</loc>
+    <lastmod>2026-03-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://nextreachstudio.com/privacy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://blackboxrescue.com/privacy"/>
   </url>
-  
-  <!-- Terms of Service -->
   <url>
-    <loc>https://nextreachstudio.com/terms</loc>
-    <lastmod>2025-03-10</lastmod>
+    <loc>https://blackboxrescue.com/terms</loc>
+    <lastmod>2026-03-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://nextreachstudio.com/terms"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://blackboxrescue.com/terms"/>
   </url>
-  
 </urlset>
