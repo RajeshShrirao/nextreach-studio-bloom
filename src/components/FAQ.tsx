@@ -32,20 +32,20 @@ export default function FAQ() {
       <h2 className="text-3xl font-bold text-white mb-10 text-center">
         Frequently Asked Questions
       </h2>
-      <div className="space-y-4">
+      <div className="space-y-3">
         {items.map((item, i) => (
           <details
             key={item.question}
             className="glass-panel rounded-xl group overflow-hidden"
             open={i === 0}
           >
-            <summary className="font-medium text-white cursor-pointer p-6 bg-white/5 hover:bg-white/10 transition-colors flex justify-between items-center">
-              {item.question}
-              <span className="text-zinc-500 group-open:rotate-45 transition-transform">
+            <summary className="font-medium text-white cursor-pointer p-6 bg-white/[0.03] hover:bg-white/[0.06] transition-all duration-300 flex justify-between items-center gap-4 select-none">
+              <span>{item.question}</span>
+              <span className="text-zinc-500 group-open:rotate-45 transition-transform duration-300 ease-out shrink-0 text-lg font-light">
                 +
               </span>
             </summary>
-            <div className="p-6 pt-0 text-sm text-zinc-400 mt-2">
+            <div className="px-6 pb-6 text-sm text-zinc-400 leading-relaxed">
               {item.answer}
             </div>
           </details>

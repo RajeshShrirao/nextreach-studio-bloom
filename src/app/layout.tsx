@@ -5,12 +5,34 @@ import "./globals.css";
 const inter = Inter({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
   title: "Your 24/7 AI Employee | NextReach Studio",
   description:
     "Custom AI chatbots for small businesses. Answers questions, books appointments, captures leads — 24/7. From $299. Live in 3-5 days.",
+  keywords: [
+    "AI chatbot",
+    "small business",
+    "lead capture",
+    "customer service",
+    "automation",
+  ],
+  openGraph: {
+    title: "Your 24/7 AI Employee | NextReach Studio",
+    description:
+      "Custom AI chatbots for small businesses. Answers questions, books appointments, captures leads — 24/7. From $299. Live in 3-5 days.",
+    type: "website",
+    siteName: "NextReach Studio",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Your 24/7 AI Employee | NextReach Studio",
+    description:
+      "Custom AI chatbots for small businesses. Answers questions, books appointments, captures leads — 24/7. From $299. Live in 3-5 days.",
+  },
 };
 
 export default function RootLayout({
@@ -19,7 +41,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className={`${inter.variable} scroll-smooth`}>
       <body
         className={`${inter.className} text-zinc-300 antialiased min-h-screen selection:bg-zinc-800 selection:text-white`}
       >

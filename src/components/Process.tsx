@@ -30,13 +30,25 @@ export default function Process() {
           From &quot;I want one&quot; to &quot;it&apos;s live on my site&quot; in under a week.
         </p>
       </div>
-      <div className="grid md:grid-cols-3 gap-6">
-        {steps.map((step) => (
+      <div className="grid md:grid-cols-3 gap-6 relative">
+        {/* Connecting line between steps */}
+        <div className="hidden md:block absolute top-1/2 left-[16%] right-[16%] h-px bg-gradient-to-r from-transparent via-zinc-700 to-transparent -translate-y-1/2 z-0" />
+
+        {/* Connecting dots */}
+        <div className="hidden md:block absolute top-1/2 left-[33%] w-1.5 h-1.5 rounded-full bg-zinc-600 -translate-x-1/2 -translate-y-1/2 z-10" />
+        <div className="hidden md:block absolute top-1/2 left-[66%] w-1.5 h-1.5 rounded-full bg-zinc-600 -translate-x-1/2 -translate-y-1/2 z-10" />
+
+        {steps.map((step, i) => (
           <div
             key={step.number}
-            className="glass-panel p-8 rounded-2xl relative overflow-hidden"
+            className="glass-panel glass-panel-hover p-8 rounded-2xl relative overflow-hidden group"
+            style={{ animationDelay: `${i * 150}ms` }}
           >
-            <div className="text-5xl font-black text-white/5 absolute -top-2 -right-2">
+            <div className="text-5xl font-black text-white/[0.03] absolute -top-2 -right-2 group-hover:text-white/[0.06] transition-colors duration-500">
+              {step.number}
+            </div>
+            {/* Step number badge */}
+            <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-5 text-xs text-zinc-400 font-mono">
               {step.number}
             </div>
             <h3 className="text-xl font-semibold text-white mb-3 relative z-10">

@@ -6,6 +6,7 @@ export default function ComparisonTable() {
       receptionist: "$2,000+/mo",
       otherChatbots: "$100-300/mo",
       missed: "Lost customers",
+      check: [true, false, false, false],
     },
     {
       feature: "Availability",
@@ -13,6 +14,7 @@ export default function ComparisonTable() {
       receptionist: "9-5 (maybe)",
       otherChatbots: "Limited",
       missed: "Never there",
+      check: [true, false, false, false],
     },
     {
       feature: "Setup Time",
@@ -20,6 +22,7 @@ export default function ComparisonTable() {
       receptionist: "2-4 Weeks",
       otherChatbots: "DIY (weeks)",
       missed: "N/A",
+      check: [true, false, false, false],
     },
     {
       feature: "Handles Complexity",
@@ -27,6 +30,7 @@ export default function ComparisonTable() {
       receptionist: "Depends on person",
       otherChatbots: "Generic scripts",
       missed: "No",
+      check: [true, true, false, false],
     },
   ];
 
@@ -35,13 +39,16 @@ export default function ComparisonTable() {
       <h2 className="text-3xl font-bold text-white mb-10 text-center">
         The math is simple.
       </h2>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto rounded-2xl">
         <table className="w-full text-left border-collapse">
           <thead>
             <tr className="border-b border-white/10 text-sm text-zinc-500 uppercase tracking-widest">
               <th className="py-4 font-normal">Feature</th>
               <th className="py-4 font-medium text-white px-6 glass-panel rounded-t-xl">
-                NextReach AI
+                <div className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  NextReach AI
+                </div>
               </th>
               <th className="py-4 font-normal px-4">Hire Receptionist</th>
               <th className="py-4 font-normal px-4">Other Chatbots</th>
@@ -50,7 +57,12 @@ export default function ComparisonTable() {
           </thead>
           <tbody className="text-sm">
             {rows.map((row, i) => (
-              <tr key={row.feature} className="border-b border-white/5">
+              <tr
+                key={row.feature}
+                className={`border-b border-white/5 ${
+                  i % 2 === 1 ? "bg-white/[0.015]" : ""
+                }`}
+              >
                 <td className="py-4 text-zinc-400">{row.feature}</td>
                 <td
                   className={`py-4 text-white font-medium px-6 glass-panel ${
@@ -59,11 +71,33 @@ export default function ComparisonTable() {
                       : "border-y-0"
                   }`}
                 >
-                  {row.ours}
+                  <div className="flex items-center gap-2">
+                    <span className="text-emerald-400 text-xs">✓</span>
+                    {row.ours}
+                  </div>
                 </td>
-                <td className="py-4 px-4 text-zinc-500">{row.receptionist}</td>
-                <td className="py-4 px-4 text-zinc-500">{row.otherChatbots}</td>
-                <td className="py-4 px-4 text-zinc-500">{row.missed}</td>
+                <td className="py-4 px-4 text-zinc-500">
+                  <div className="flex items-center gap-2">
+                    <span className="text-zinc-600 text-xs">
+                      {row.check[1] ? "✓" : "✗"}
+                    </span>
+                    {row.receptionist}
+                  </div>
+                </td>
+                <td className="py-4 px-4 text-zinc-500">
+                  <div className="flex items-center gap-2">
+                    <span className="text-zinc-600 text-xs">
+                      {row.check[2] ? "✓" : "✗"}
+                    </span>
+                    {row.otherChatbots}
+                  </div>
+                </td>
+                <td className="py-4 px-4 text-zinc-500">
+                  <div className="flex items-center gap-2">
+                    <span className="text-red-400/60 text-xs">✗</span>
+                    {row.missed}
+                  </div>
+                </td>
               </tr>
             ))}
           </tbody>
