@@ -1,9 +1,9 @@
 export default function StatsBar() {
   const stats = [
-    { value: "24 Hours", label: "Turnaround Time" },
-    { value: "100% Async", label: "Zero Live Meetings" },
-    { value: "$79 Flat", label: "No Scope Creep" },
-    { value: "Next.js", label: "Native Expertise" },
+    { value: "3–5 Days", label: "To Go Live" },
+    { value: "24/7", label: "Never Offline" },
+    { value: "$299", label: "Starting Price" },
+    { value: "$49/mo", label: "Hosting & Support" },
   ];
 
   return (

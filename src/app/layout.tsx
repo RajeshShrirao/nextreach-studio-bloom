@@ -8,9 +8,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "The Blackbox Rescue | NextReach Studio",
+  title: "Your 24/7 AI Employee | NextReach Studio",
   description:
-    "Your AI MVP looks great locally. On Vercel, it's a 500 error nightmare. We fix it — $79 flat, 24hr turnaround, zero calls.",
+    "Custom AI chatbots for small businesses. Answers questions, books appointments, captures leads — 24/7. From $299. Live in 3-5 days.",
 };
 
 export default function RootLayout({

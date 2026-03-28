@@ -2,28 +2,28 @@ export default function Testimonials() {
   const testimonials = [
     {
       quote:
-        "I spent 3 weeks in tutorial hell trying to get Supabase auth to work on my Lovable export. I felt completely stupid and was ready to quit. Sent the repo over, woke up to a perfectly working Vercel link. Saved my sanity.",
-      name: "Marcus K.",
-      role: "Solo Founder",
+        "We were getting 20+ calls a day asking about our hours and pricing. Now the chatbot handles all of that. My staff can finally focus on actual customers instead of answering the same questions on repeat.",
+      name: "Priya M.",
+      role: "Salon Owner",
     },
     {
       quote:
-        "Every dev I contacted wanted a $3,000 retainer and a 4-week timeline to 'refactor' my app. I just needed the Stripe webhook fixed. Paid the $79, got a clean PR the next morning, and launched to my beta users.",
-      name: "Sarah T.",
-      role: "SaaS Creator",
+        "I was skeptical, but the chatbot booked 3 appointments on its first night. THREE. While I was sleeping. The $299 paid for itself in 48 hours.",
+      name: "James R.",
+      role: "Dental Clinic",
     },
     {
       quote:
-        "The best part was not having to get on a Zoom call and embarrass myself trying to explain my messy, AI-generated spaghetti code. The completely async process is an introvert's dream.",
-      name: "David L.",
-      role: "Indie Builder",
+        "I couldn't afford a receptionist at $2,000/month. This chatbot does 80% of the job for $49/month. It's the best investment I've made for my practice.",
+      name: "Dr. Anika S.",
+      role: "Physiotherapy Clinic",
     },
   ];
 
   return (
     <section className="max-w-6xl mx-auto px-6 mb-32">
       <h2 className="text-3xl font-bold text-white mb-12 text-center">
-        Stop letting a single routing error hold your launch hostage.
+        Business owners are sleeping better. Literally.
       </h2>
       <div className="grid md:grid-cols-3 gap-6">
         {testimonials.map((t) => (

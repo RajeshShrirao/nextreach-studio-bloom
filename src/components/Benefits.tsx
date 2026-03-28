@@ -1,51 +1,51 @@
 export default function Benefits() {
   const benefits = [
     {
-      title: "Zero Discovery Calls",
+      title: "Answers Questions 24/7",
       description:
-        "Your time is better spent talking to users, not explaining environment variables to a freelancer on Zoom.",
+        "\"What are your hours?\" \"Do you accept insurance?\" \"How much does X cost?\" — handled automatically, even at 2 AM.",
     },
     {
-      title: "Surgical Precision",
+      title: "Books Appointments",
       description:
-        "I don&apos;t rebuild your app from scratch to inflate the bill. I find the exact broken dependency and neutralize it.",
+        "Customers can schedule directly through the chatbot. No phone tag, no missed calls, no lost bookings.",
     },
     {
-      title: "Safe Space for Messy Code",
+      title: "Captures Every Lead",
       description:
-        "AI writes weird code. I don&apos;t care. There is zero judgment here — just rapid problem-solving.",
+        "Website visitors who leave without calling? The chatbot grabs their info before they bounce. You wake up to new leads.",
     },
     {
-      title: "The Loom Post-Mortem",
+      title: "Custom Trained on YOUR Business",
       description:
-        "You don&apos;t just get fixed code; you get a quick private video explaining the why behind the bug.",
+        "Not a generic bot. It knows your services, pricing, policies, and personality. Customers can't tell it's not a person.",
     },
     {
-      title: "Deep Stack Mastery",
+      title: "Cheaper Than a Receptionist",
       description:
-        "Next.js routing, Supabase state management, and Stripe webhook handshakes are my native language.",
+        "A part-time receptionist costs $1,500-2,500/month. Your AI employee? $49/month. And it never calls in sick.",
     },
     {
-      title: "No Scope Creep",
+      title: "Works on Your Website",
       description:
-        "A flat $79 fee means you never get hit with an unexpected invoice because a bug took an hour longer.",
+        "Seamlessly embedded on your site. No redirects, no pop-ups from third parties. It looks and feels like part of your brand.",
     },
     {
-      title: "No Retainer Dependency",
+      title: "You Stay in Control",
       description:
-        "I fix the blocker and get out of your way. I build my own studio products; I don&apos;t want to be your permanent CTO.",
+        "Full dashboard to review conversations, update answers, and see what customers are actually asking. Real insights, real data.",
     },
     {
-      title: "Identity Restoration",
+      title: "One Customer Pays for It",
       description:
-        "The psychological weight of a broken app is heavy. We remove the block so you can get back to leading.",
+        "One captured lead, one booked appointment, one question answered at midnight — and the chatbot has already paid for itself.",
     },
   ];
 
   return (
     <section className="max-w-5xl mx-auto px-6 mb-32">
       <h2 className="text-3xl font-bold text-white mb-12 text-center">
-        Why founders quietly use this service to cross the finish line.
+        What your AI employee does while you&apos;re sleeping.
       </h2>
       <div className="grid md:grid-cols-2 gap-x-12 gap-y-8">
         {benefits.map((b) => (

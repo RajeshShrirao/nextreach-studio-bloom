@@ -1,24 +1,29 @@
 export default function FAQ() {
   const items = [
     {
-      question: "What if you dive into the repo and actually can't fix it?",
+      question: "How is this different from ChatGPT on my website?",
       answer:
-        "If the AI generated something so fundamentally broken that a surgical fix is impossible within the bounds of this service, you get a 100% refund immediately, along with a clear explanation of what architectural shift you need to make. Zero risk.",
+        "ChatGPT is generic — it doesn't know your business, your pricing, or your policies. Our chatbot is custom-trained on YOUR specific information. It knows your hours, your services, your FAQs. Customers get accurate answers, not hallucinations.",
     },
     {
-      question: "Do we need to jump on a call so I can explain the codebase?",
+      question: "What if my customers ask something the bot doesn't know?",
       answer:
-        "Absolutely not. You know enough to give me the Vercel URL, the repo, and the exact error message your terminal is spitting out. That is all the context I need to trace the stack trace and deploy a fix.",
+        "The chatbot gracefully hands off complex questions to you. It collects the customer's info and question, then notifies you so you can follow up. No customer is ever left hanging.",
     },
     {
-      question: "Is it safe to share my codebase? Will you steal my idea?",
+      question: "How long does setup take?",
       answer:
-        "I run a dedicated studio building complex AI frameworks and developer tooling. I have zero interest in stealing your niche booking app or lead tracker. My reputation is built on silent, secure infrastructure support.",
+        "3-5 business days from the day you send us your business info. We build it, train it, test it, and embed it on your site. You just approve and go live.",
     },
     {
-      question: "What tech stacks do you support?",
+      question: "What's included in the $49/month support?",
       answer:
-        "This offer is hyper-optimized for the standard AI-builder output: Next.js (Pages or App router), React, Supabase, Firebase, Stripe, and Vercel deployments. If your app is built on this stack, I can fix it.",
+        "Hosting, uptime monitoring, monthly performance reports, and up to 5 content updates per month (new services, changed hours, etc.). We keep your chatbot accurate and running.",
+    },
+    {
+      question: "Can I see a demo first?",
+      answer:
+        "Absolutely. Scroll up — there's a live demo chatbot on this page. Try asking it questions. That's exactly what your customers will experience.",
     },
   ];
 

@@ -2,21 +2,21 @@ export default function Process() {
   const steps = [
     {
       number: "01",
-      title: "Drop the Link",
+      title: "Tell Us About Your Business",
       description:
-        "Click checkout and paste three things: your GitHub repo URL, your Vercel URL, and the exact terminal error. No onboarding docs required.",
+        "Fill out a quick form: your business name, what you do, and the top 10-20 questions your customers ask most. That's all we need.",
     },
     {
       number: "02",
-      title: "The Silent Fix",
+      title: "We Build Your AI Chatbot",
       description:
-        "I pull your code into an isolated environment. I find the broken state logic, fix the routing, correct the ENVs, and neutralize the deployment blocker.",
+        "We train a custom chatbot on your business — your hours, services, pricing, FAQs, everything. It knows your business better than your newest employee.",
     },
     {
       number: "03",
-      title: "You Launch",
+      title: "It Goes Live & Captures Leads",
       description:
-        "Within 24 hours, you get a clean PR and a 2-minute Loom video explaining exactly what broke so you don&apos;t repeat the mistake. You merge and launch.",
+        "We embed it on your website. It starts answering questions, booking appointments, and capturing leads 24/7. You get notified of every qualified lead.",
     },
   ];
 
@@ -24,10 +24,10 @@ export default function Process() {
     <section className="max-w-5xl mx-auto px-6 mb-32">
       <div className="text-center mb-16">
         <h2 className="text-3xl font-bold text-white mb-4">
-          Get unstuck without saying a single word.
+          Live in 3 days. No headaches.
         </h2>
         <p className="text-zinc-400">
-          A high-end, zero-friction process engineered for solo founders.
+          From &quot;I want one&quot; to &quot;it&apos;s live on my site&quot; in under a week.
         </p>
       </div>
       <div className="grid md:grid-cols-3 gap-6">

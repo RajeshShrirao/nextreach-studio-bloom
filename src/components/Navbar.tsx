@@ -6,10 +6,10 @@ export default function Navbar() {
           NextReach Studio
         </span>
         <a
-          href="#checkout"
+          href="#pricing"
           className="text-xs font-medium bg-white text-black px-4 py-2 rounded-full hover:bg-zinc-200 transition-colors"
         >
-          Get Rescued
+          Get Your AI Employee
         </a>
       </div>
     </nav>
