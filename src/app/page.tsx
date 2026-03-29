@@ -7,6 +7,7 @@ import ComparisonTable from "@/components/ComparisonTable";
 import Benefits from "@/components/Benefits";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
+import ChatWidget from "@/components/chatbot/ChatWidget";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <Benefits />
       <FAQ />
       <Footer />
+      <ChatWidget />
     </>
   );
 }
