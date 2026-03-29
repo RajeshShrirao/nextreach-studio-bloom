@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { Sparkles, Circle } from "lucide-react";
 
@@ -34,12 +36,12 @@ export default function Hero() {
             An AI receptionist that handles bookings, answers pet parent questions, and captures leads — even when you&apos;re elbow-deep in a golden doodle at 7 PM.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-            <a
-              href="#pricing"
+            <button
+              onClick={() => window.dispatchEvent(new Event("open-chat-widget"))}
               className="w-full sm:w-auto px-8 py-4 bg-amber-400 text-black font-semibold rounded-lg hover:bg-amber-300 transition-all duration-300 btn-primary-glow focus-visible:outline-2 focus-visible:outline-amber-400 focus-visible:outline-offset-2"
             >
               See It in Action — Free Demo
-            </a>
+            </button>
             <p className="text-sm text-zinc-500">
               Live on your site in 3 days. No credit card.
             </p>

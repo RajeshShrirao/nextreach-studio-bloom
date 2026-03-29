@@ -17,13 +17,13 @@ export default function Footer() {
       </p>
       <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
         <a
-          href="mailto:hello@nextreachstudio.com?subject=AI receptionist for my grooming salon"
+          href="https://tally.so/r/1AMoR1"
           className="px-10 py-5 bg-amber-400 text-black font-bold text-lg rounded-xl hover:bg-amber-300 transition-all duration-300 btn-primary-glow focus-visible:outline-2 focus-visible:outline-amber-400 focus-visible:outline-offset-2 min-h-[44px]"
         >
           Starter — $299
         </a>
         <a
-          href="mailto:hello@nextreachstudio.com?subject=Pro AI receptionist package"
+          href="https://tally.so/r/1AMoR1"
           className="px-10 py-5 bg-zinc-800 text-white font-bold text-lg rounded-xl hover:bg-zinc-700 transition-all duration-300 border border-zinc-700 hover:border-zinc-600 btn-secondary focus-visible:outline-2 focus-visible:outline-amber-400 focus-visible:outline-offset-2 min-h-[44px]"
         >
           Pro — $499

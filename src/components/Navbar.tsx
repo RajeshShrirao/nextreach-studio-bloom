@@ -12,12 +12,12 @@ export default function Navbar() {
             NextReach Studio
           </span>
         </a>
-        <a
-          href="#pricing"
+        <button
+          onClick={() => window.dispatchEvent(new Event("open-chat-widget"))}
           className="text-xs font-medium bg-amber-400 text-black px-5 py-2.5 rounded-full hover:bg-amber-300 transition-all duration-300 hover:shadow-[0_0_20px_rgba(245,158,11,0.2)] min-h-[44px] flex items-center focus-visible:outline-2 focus-visible:outline-amber-400 focus-visible:outline-offset-2"
         >
           Free Demo
-        </a>
+        </button>
       </div>
     </nav>
   );

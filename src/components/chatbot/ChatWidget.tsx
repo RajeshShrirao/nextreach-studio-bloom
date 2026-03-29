@@ -26,6 +26,12 @@ export default function ChatWidget() {
     messagesEnd.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
+  useEffect(() => {
+    const handler = () => setOpen(true);
+    window.addEventListener("open-chat-widget", handler);
+    return () => window.removeEventListener("open-chat-widget", handler);
+  }, []);
+
   async function send() {
     const text = input.trim();
     if (!text || loading) return;
