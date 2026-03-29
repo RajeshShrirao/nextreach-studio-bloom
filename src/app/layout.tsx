@@ -10,6 +10,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://nextreachstudio.com"),
   title: "Your 24/7 AI Employee | NextReach Studio",
   description:
     "Custom AI chatbots for small businesses. Answers questions, books appointments, captures leads — 24/7. From $299. Live in 3-5 days.",
