@@ -13,7 +13,7 @@ export default function ChatWidget() {
     {
       role: "assistant",
       content:
-        "Hi! I'm the NextReach AI receptionist. Ask me anything about our services, pricing, or book a free demo. 🐾",
+        "Hi! I'm the NextReach AI receptionist. Ask me anything about our services, pricing, or book a free demo.",
     },
   ]);
   const [input, setInput] = useState("");
@@ -86,7 +86,7 @@ export default function ChatWidget() {
       {/* Floating button */}
       <button
         onClick={() => setOpen(!open)}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-white text-black flex items-center justify-center shadow-[0_0_20px_rgba(255,255,255,0.15)] hover:shadow-[0_0_30px_rgba(255,255,255,0.25)] transition-all hover:scale-105"
+        className="fixed bottom-6 right-6 z-[60] w-14 h-14 rounded-full bg-white text-black flex items-center justify-center shadow-[0_0_20px_rgba(255,255,255,0.15)] hover:shadow-[0_0_30px_rgba(255,255,255,0.25)] transition-all hover:scale-105"
         aria-label="Open chat"
       >
         {open ? (
@@ -121,7 +121,7 @@ export default function ChatWidget() {
 
       {/* Chat panel */}
       {open && (
-        <div className="fixed bottom-24 right-6 z-50 w-[360px] max-w-[calc(100vw-2rem)] h-[500px] max-h-[70vh] flex flex-col rounded-2xl overflow-hidden border border-white/10 bg-[#0a0a0f]/95 backdrop-blur-xl shadow-2xl animate-in">
+        <div role="dialog" aria-label="Chat with NextReach AI" className="fixed bottom-24 right-6 z-[60] w-[360px] max-w-[calc(100vw-1.5rem)] h-[500px] max-h-[70vh] flex flex-col rounded-2xl overflow-hidden border border-white/8 bg-[rgba(255,255,255,0.02)] backdrop-blur-xl shadow-2xl animate-in">
           {/* Header */}
           <div className="px-4 py-3 border-b border-white/10 bg-white/5">
             <div className="flex items-center gap-3">
@@ -188,13 +188,14 @@ export default function ChatWidget() {
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
                 placeholder="Ask about our services..."
-                className="flex-1 bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-sm text-white placeholder:text-zinc-600 outline-none focus:border-white/20 transition-colors"
+                className="flex-1 bg-white/5 border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white placeholder:text-zinc-600 outline-none focus:ring-2 focus:ring-white/20 focus:border-white/20 transition-colors"
                 disabled={loading}
               />
               <button
                 onClick={send}
                 disabled={loading || !input.trim()}
-                className="w-9 h-9 rounded-xl bg-white text-black flex items-center justify-center hover:bg-zinc-200 transition-colors disabled:opacity-30 disabled:cursor-not-allowed shrink-0"
+                aria-label="Send message"
+                className="h-11 min-w-[44px] w-11 rounded-xl bg-white text-black flex items-center justify-center hover:bg-zinc-200 transition-colors disabled:opacity-30 disabled:cursor-not-allowed shrink-0"
               >
                 <svg
                   width="16"

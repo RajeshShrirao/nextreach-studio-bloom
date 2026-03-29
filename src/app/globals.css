@@ -209,7 +209,7 @@
   }
 
   .animate-in {
-    animation: animate-in 0.2s ease-out;
+    animation: animate-in 0.25s ease-out;
   }
 
   @keyframes border-flow {
