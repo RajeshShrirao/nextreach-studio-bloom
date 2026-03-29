@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { X, MessageCircle, Send } from "lucide-react";
+import { X, Send } from "lucide-react";
+import Image from "next/image";
 
 interface Message {
   role: "user" | "assistant";
@@ -93,7 +94,7 @@ export default function ChatWidget() {
         {open ? (
           <X size={20} />
         ) : (
-          <MessageCircle size={22} />
+          <Image src="/chat-icon.png" alt="Chat" width={28} height={28} className="rounded-full" />
         )}
       </button>
 
@@ -103,9 +104,7 @@ export default function ChatWidget() {
           {/* Header */}
           <div className="px-4 py-3 border-b border-white/10 bg-white/5">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-blue-500 flex items-center justify-center text-white text-xs font-bold">
-                N
-              </div>
+              <Image src="/chat-icon.png" alt="NextReach" width={32} height={32} className="rounded-lg" />
               <div>
                 <p className="text-white text-sm font-medium">
                   NextReach AI Receptionist
