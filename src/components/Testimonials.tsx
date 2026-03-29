@@ -1,33 +1,41 @@
+import Image from "next/image";
+
 export default function Testimonials() {
   const testimonials = [
     {
       quote:
-        "We were getting 20+ calls a day asking about our hours and pricing. Now the chatbot handles all of that. My staff can finally focus on actual customers instead of answering the same questions on repeat.",
-      name: "Priya M.",
-      role: "Salon Owner",
+        "I used to miss calls constantly — you can't answer the phone with a wet poodle on the table. The AI receptionist booked 8 appointments on its first weekend. I didn't change a thing.",
+      name: "Sarah K.",
+      role: "Owner, Paws & Bubbles Grooming",
+      avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80",
       rating: 5,
     },
     {
       quote:
-        "I was skeptical, but the chatbot booked 3 appointments on its first night. THREE. While I was sleeping. The $299 paid for itself in 48 hours.",
-      name: "James R.",
-      role: "Dental Clinic",
+        "Pet parents ask the same 15 questions: Do you do doodles? What vaccines do you need? How much for a full groom? Now the bot handles all of that and just sends me the bookings.",
+      name: "Marcus T.",
+      role: "Happy Tails Mobile Grooming",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80",
       rating: 5,
     },
     {
       quote:
-        "I couldn't afford a receptionist at $2,000/month. This chatbot does 80% of the job for $49/month. It's the best investment I've made for my practice.",
-      name: "Dr. Anika S.",
-      role: "Physiotherapy Clinic",
+        "We're a vet clinic with 3 groomers. The chatbot handles grooming bookings separately from vet appointments. Even knows which groomer handles which breed. Wild.",
+      name: "Dr. Lisa Chen",
+      role: "Furry Friends Vet & Groom",
+      avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&q=80",
       rating: 5,
     },
   ];
 
   return (
     <section className="max-w-6xl mx-auto px-6 mb-32">
-      <h2 className="text-3xl font-bold text-white mb-12 text-center">
-        Business owners are sleeping better. Literally.
+      <h2 className="text-3xl font-bold text-white mb-4 text-center">
+        Groomers are booking more. Sleeping better.
       </h2>
+      <p className="text-zinc-500 text-center mb-12 max-w-lg mx-auto">
+        Real results from salons and clinics that stopped losing customers after hours.
+      </p>
       <div className="grid md:grid-cols-3 gap-6">
         {testimonials.map((t, i) => (
           <div
@@ -35,11 +43,6 @@ export default function Testimonials() {
             className="glass-panel glass-panel-hover p-8 rounded-2xl relative"
             style={{ animationDelay: `${i * 100}ms` }}
           >
-            {/* Quote mark */}
-            <div className="absolute top-4 right-6 text-5xl text-white/[0.03] font-serif leading-none select-none">
-              &ldquo;
-            </div>
-
             {/* Star rating */}
             <div className="flex gap-0.5 mb-4">
               {Array.from({ length: t.rating }).map((_, j) => (
@@ -53,9 +56,13 @@ export default function Testimonials() {
               &ldquo;{t.quote}&rdquo;
             </p>
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-zinc-700 to-zinc-800 border border-zinc-700 flex items-center justify-center text-xs text-zinc-400 font-medium">
-                {t.name.charAt(0)}
-              </div>
+              <Image
+                src={t.avatar}
+                alt={t.name}
+                width={40}
+                height={40}
+                className="w-10 h-10 rounded-full object-cover border border-zinc-700"
+              />
               <div>
                 <p className="text-white text-sm font-medium">{t.name}</p>
                 <p className="text-xs text-zinc-500">{t.role}</p>

@@ -1,62 +1,65 @@
-import { MessageCircle, Calendar, Target, Brain, DollarSign, Globe, Settings, Zap } from "lucide-react";
+import { MessageCircle, Calendar, Target, Shield, Dog, Clock, Settings, DollarSign } from "lucide-react";
 
 export default function Benefits() {
   const benefits = [
     {
-      icon: MessageCircle,
-      title: "Answers Questions 24/7",
+      icon: Calendar,
+      title: "Books Grooming Appointments",
       description:
-        "\"What are your hours?\" \"Do you accept insurance?\" \"How much does X cost?\" — handled automatically, even at 2 AM.",
+        "Pet parents pick a service, breed, and time slot — right from your website. No phone tag. No DMs lost in Instagram.",
     },
     {
-      icon: Calendar,
-      title: "Books Appointments",
+      icon: Dog,
+      title: "Knows Your Breeds",
       description:
-        "Customers can schedule directly through the chatbot. No phone tag, no missed calls, no lost bookings.",
+        "\"Do you groom Great Pyrenees?\" \"How much for a poodle cut?\" It knows your breed-specific pricing and services off the bat.",
+    },
+    {
+      icon: Shield,
+      title: "Handles Vaccination Checks",
+      description:
+        "Automatically asks about rabies and other required vaccines before booking. You stay compliant without the awkward phone calls.",
+    },
+    {
+      icon: MessageCircle,
+      title: "Answers at Midnight",
+      description:
+        "\"What are your hours?\" \"Do you do nail trims?\" \"Can I bring two dogs?\" — answered instantly, even when you're closed.",
     },
     {
       icon: Target,
-      title: "Captures Every Lead",
+      title: "Captures Leads Before They Leave",
       description:
-        "Website visitors who leave without calling? The chatbot grabs their info before they bounce. You wake up to new leads.",
+        "Someone visits your site at 11 PM but doesn't book? The bot gets their info and what they needed. You follow up in the morning.",
     },
     {
-      icon: Brain,
-      title: "Custom Trained on YOUR Business",
+      icon: Clock,
+      title: "Cuts No-Shows in Half",
       description:
-        "Not a generic bot. It knows your services, pricing, policies, and personality. Customers can't tell it's not a person.",
+        "Sends automatic reminders before each appointment. Pet parents confirm or reschedule with one click. Fewer empty slots.",
     },
     {
       icon: DollarSign,
-      title: "Cheaper Than a Receptionist",
+      title: "Costs Less Than One Groom",
       description:
-        "A part-time receptionist costs $1,500-2,500/month. Your AI employee? $49/month. And it never calls in sick.",
-    },
-    {
-      icon: Globe,
-      title: "Works on Your Website",
-      description:
-        "Seamlessly embedded on your site. No redirects, no pop-ups from third parties. It looks and feels like part of your brand.",
+        "At $49/month, it costs less than a single large-breed grooming session. And it works every hour of every day.",
     },
     {
       icon: Settings,
       title: "You Stay in Control",
       description:
-        "Full dashboard to review conversations, update answers, and see what customers are actually asking. Real insights, real data.",
-    },
-    {
-      icon: Zap,
-      title: "One Customer Pays for It",
-      description:
-        "One captured lead, one booked appointment, one question answered at midnight — and the chatbot has already paid for itself.",
+        "Update services, pricing, or availability anytime. See every conversation. The bot works for you, not the other way around.",
     },
   ];
 
   return (
     <section className="max-w-5xl mx-auto px-6 mb-32">
-      <h2 className="text-3xl font-bold text-white mb-12 text-center">
-        What your AI employee does while you&apos;re sleeping.
+      <h2 className="text-3xl font-bold text-white mb-4 text-center">
+        What your AI receptionist handles.
       </h2>
+      <p className="text-zinc-500 text-center mb-12 max-w-lg mx-auto">
+        So you can focus on the dogs on your table, not the phone ringing off the hook.
+      </p>
       <div className="grid md:grid-cols-2 gap-x-12 gap-y-6">
         {benefits.map((b, i) => (
           <div
@@ -64,11 +67,11 @@ export default function Benefits() {
             className="flex items-start gap-4 p-5 rounded-xl hover:bg-white/[0.02] transition-all duration-300 group"
             style={{ animationDelay: `${i * 80}ms` }}
           >
-            <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-zinc-400 shrink-0">
+            <div className="w-10 h-10 rounded-xl bg-amber-400/[0.08] flex items-center justify-center text-amber-400/70 shrink-0">
               <b.icon className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="text-white font-medium mb-1 group-hover:text-zinc-100 transition-colors">
+              <h4 className="text-white font-medium mb-1 group-hover:text-amber-100 transition-colors">
                 {b.title}
               </h4>
               <p className="text-sm text-zinc-400 leading-relaxed">

@@ -5,7 +5,7 @@ export default function ComparisonTable() {
       ours: "$49/mo",
       receptionist: "$2,000+/mo",
       otherChatbots: "$100-300/mo",
-      missed: "Lost customers",
+      missed: "Lost bookings",
       check: [true, false, false, false],
     },
     {
@@ -13,23 +13,23 @@ export default function ComparisonTable() {
       ours: "24/7/365",
       receptionist: "9-5 (maybe)",
       otherChatbots: "Limited",
-      missed: "Never there",
+      missed: "Gone at night",
       check: [true, false, false, false],
     },
     {
       feature: "Setup Time",
-      ours: "3-5 Days",
+      ours: "3 Days",
       receptionist: "2-4 Weeks",
       otherChatbots: "DIY (weeks)",
       missed: "N/A",
       check: [true, false, false, false],
     },
     {
-      feature: "Handles Complexity",
+      feature: "Breed Knowledge",
       ours: "Custom trained",
       receptionist: "Depends on person",
-      otherChatbots: "Generic scripts",
-      missed: "No",
+      otherChatbots: "Generic",
+      missed: "None",
       check: [true, true, false, false],
     },
   ];
@@ -37,7 +37,7 @@ export default function ComparisonTable() {
   return (
     <section className="max-w-5xl mx-auto px-6 mb-32">
       <h2 className="text-3xl font-bold text-white mb-10 text-center">
-        The math is simple.
+        Compare your options.
       </h2>
       <div className="overflow-x-auto rounded-2xl">
         <table className="w-full text-left border-collapse">
@@ -72,14 +72,14 @@ export default function ComparisonTable() {
                   }`}
                 >
                   <div className="flex items-center gap-2">
-                    <span className="text-emerald-400 text-xs">✓</span>
+                    <span className="text-emerald-400 text-xs">&#10003;</span>
                     {row.ours}
                   </div>
                 </td>
                 <td className="py-4 px-4 text-zinc-500">
                   <div className="flex items-center gap-2">
                     <span className="text-zinc-600 text-xs">
-                      {row.check[1] ? "✓" : "✗"}
+                      {row.check[1] ? "\u2713" : "\u2717"}
                     </span>
                     {row.receptionist}
                   </div>
@@ -87,14 +87,14 @@ export default function ComparisonTable() {
                 <td className="py-4 px-4 text-zinc-500">
                   <div className="flex items-center gap-2">
                     <span className="text-zinc-600 text-xs">
-                      {row.check[2] ? "✓" : "✗"}
+                      {row.check[2] ? "\u2713" : "\u2717"}
                     </span>
                     {row.otherChatbots}
                   </div>
                 </td>
                 <td className="py-4 px-4 text-zinc-500">
                   <div className="flex items-center gap-2">
-                    <span className="text-red-400/60 text-xs">✗</span>
+                    <span className="text-red-400/60 text-xs">&#10007;</span>
                     {row.missed}
                   </div>
                 </td>

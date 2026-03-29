@@ -11,30 +11,30 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://nextreachstudio.com"),
-  title: "Your 24/7 AI Employee | NextReach Studio",
+  title: "AI Receptionist for Pet Grooming & Vet Clinics | NextReach Studio",
   description:
-    "Custom AI chatbots for small businesses. Answers questions, books appointments, captures leads — 24/7. From $299. Live in 3-5 days.",
+    "An AI receptionist built for pet grooming salons and vet clinics. Books appointments, answers pet parent questions, handles breed inquiries — 24/7. From $299. Live in 3 days.",
   keywords: [
-    "AI chatbot",
-    "small business",
-    "lead capture",
-    "customer service",
-    "automation",
+    "pet grooming chatbot",
+    "vet clinic AI",
+    "grooming salon software",
+    "pet booking system",
+    "AI receptionist",
   ],
   icons: { icon: "/logo.png", apple: "/logo.png" },
   openGraph: {
-    title: "Your 24/7 AI Employee | NextReach Studio",
+    title: "AI Receptionist for Pet Grooming & Vet Clinics | NextReach Studio",
     description:
-      "Custom AI chatbots for small businesses. Answers questions, books appointments, captures leads — 24/7. From $299. Live in 3-5 days.",
+      "An AI receptionist built for pet grooming salons and vet clinics. Books appointments, answers pet parent questions — 24/7. From $299.",
     type: "website",
     siteName: "NextReach Studio",
     images: ["/link-previews.png"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Your 24/7 AI Employee | NextReach Studio",
+    title: "AI Receptionist for Pet Grooming & Vet Clinics | NextReach Studio",
     description:
-      "Custom AI chatbots for small businesses. Answers questions, books appointments, captures leads — 24/7. From $299. Live in 3-5 days.",
+      "An AI receptionist built for pet grooming salons and vet clinics. Books appointments, answers pet parent questions — 24/7. From $299.",
     images: ["/link-previews.png"],
   },
 };

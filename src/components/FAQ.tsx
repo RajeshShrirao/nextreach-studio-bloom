@@ -1,36 +1,41 @@
 export default function FAQ() {
   const items = [
     {
-      question: "How is this different from ChatGPT on my website?",
+      question: "Does it know about different breeds and grooming styles?",
       answer:
-        "ChatGPT is generic — it doesn't know your business, your pricing, or your policies. Our chatbot is custom-trained on YOUR specific information. It knows your hours, your services, your FAQs. Customers get accurate answers, not hallucinations.",
+        "Yes. We train it on your specific services per breed — a poodle cut vs. a teddy bear trim vs. a lion cut. It quotes the right price for the right dog, every time.",
     },
     {
-      question: "What if my customers ask something the bot doesn't know?",
+      question: "Can it handle vaccination requirements?",
       answer:
-        "The chatbot gracefully hands off complex questions to you. It collects the customer's info and question, then notifies you so you can follow up. No customer is ever left hanging.",
+        "Absolutely. It asks about rabies and other required vaccines before confirming any booking. You set the rules, it enforces them. No more awkward \"did you bring your records?\" conversations.",
     },
     {
-      question: "How long does setup take?",
+      question: "What if someone asks something the bot doesn't know?",
       answer:
-        "3-5 business days from the day you send us your business info. We build it, train it, test it, and embed it on your site. You just approve and go live.",
+        "It collects their name, number, and question, then sends you a notification. The pet parent gets a message like \"Sarah will get back to you within the hour.\" Nobody's left hanging.",
     },
     {
-      question: "What's included in the $49/month support?",
+      question: "How long until it's live on my site?",
       answer:
-        "Hosting, uptime monitoring, monthly performance reports, and up to 5 content updates per month (new services, changed hours, etc.). We keep your chatbot accurate and running.",
+        "3 business days. You fill out a form about your services, breeds, and pricing. We build, train, test, and embed it. You approve, it goes live. No tech work on your end.",
+    },
+    {
+      question: "Can it work alongside my existing booking system?",
+      answer:
+        "Yes. It can link to your existing system (like Gingr, PetExec, or even Google Calendar) or work standalone with email notifications. We'll figure out the best setup during onboarding.",
     },
     {
       question: "Can I see a demo first?",
       answer:
-        "Absolutely. Scroll up — there's a live demo chatbot on this page. Try asking it questions. That's exactly what your customers will experience.",
+        "That chat bubble in the bottom-right corner? That's a live demo. Try asking it about grooming services, pricing, or booking. That's exactly what your pet parents will see.",
     },
   ];
 
   return (
     <section className="max-w-3xl mx-auto px-6 mb-32">
       <h2 className="text-3xl font-bold text-white mb-10 text-center">
-        Frequently Asked Questions
+        Questions groomers ask us.
       </h2>
       <div className="space-y-3">
         {items.map((item, i) => (

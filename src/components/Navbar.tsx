@@ -14,9 +14,9 @@ export default function Navbar() {
         </a>
         <a
           href="#pricing"
-          className="text-xs font-medium bg-white text-black px-4 py-2 rounded-full hover:bg-zinc-200 transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,255,255,0.15)]"
+          className="text-xs font-medium bg-amber-400 text-black px-4 py-2 rounded-full hover:bg-amber-300 transition-all duration-300 hover:shadow-[0_0_20px_rgba(245,158,11,0.2)]"
         >
-          Get Your AI Employee
+          Free Demo
         </a>
       </div>
     </nav>
