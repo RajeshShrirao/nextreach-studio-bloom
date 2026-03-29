@@ -1,3 +1,5 @@
+import { Sparkles } from "lucide-react";
+
 export default function Hero() {
   return (
     <header className="relative pt-40 pb-20 px-6 max-w-4xl mx-auto text-center overflow-hidden">
@@ -19,8 +21,9 @@ export default function Hero() {
       </div>
 
       <div className="relative z-10">
-        <div className="inline-block mb-4 px-3 py-1 rounded-full border border-zinc-800 bg-zinc-900/50 text-xs text-zinc-400 font-medium tracking-wide backdrop-blur-sm">
-          🌸 NEXTREACH STUDIO
+        <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full border border-zinc-800 bg-zinc-900/50 text-xs text-zinc-400 font-medium tracking-wide backdrop-blur-sm">
+          <Sparkles className="w-3.5 h-3.5" />
+          <span>NEXTREACH STUDIO</span>
         </div>
         <h1 className="text-5xl md:text-6xl font-bold text-white tracking-tight leading-tight mb-6 glow-text">
           Your 24/7 AI Employee. <br />

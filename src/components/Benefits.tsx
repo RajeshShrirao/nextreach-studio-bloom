@@ -1,49 +1,51 @@
+import { MessageCircle, Calendar, Target, Brain, DollarSign, Globe, Settings, Zap } from "lucide-react";
+
 export default function Benefits() {
   const benefits = [
     {
-      icon: "💬",
+      icon: MessageCircle,
       title: "Answers Questions 24/7",
       description:
         "\"What are your hours?\" \"Do you accept insurance?\" \"How much does X cost?\" — handled automatically, even at 2 AM.",
     },
     {
-      icon: "📅",
+      icon: Calendar,
       title: "Books Appointments",
       description:
         "Customers can schedule directly through the chatbot. No phone tag, no missed calls, no lost bookings.",
     },
     {
-      icon: "🎯",
+      icon: Target,
       title: "Captures Every Lead",
       description:
         "Website visitors who leave without calling? The chatbot grabs their info before they bounce. You wake up to new leads.",
     },
     {
-      icon: "🧠",
+      icon: Brain,
       title: "Custom Trained on YOUR Business",
       description:
         "Not a generic bot. It knows your services, pricing, policies, and personality. Customers can't tell it's not a person.",
     },
     {
-      icon: "💰",
+      icon: DollarSign,
       title: "Cheaper Than a Receptionist",
       description:
         "A part-time receptionist costs $1,500-2,500/month. Your AI employee? $49/month. And it never calls in sick.",
     },
     {
-      icon: "🌐",
+      icon: Globe,
       title: "Works on Your Website",
       description:
         "Seamlessly embedded on your site. No redirects, no pop-ups from third parties. It looks and feels like part of your brand.",
     },
     {
-      icon: "🎛️",
+      icon: Settings,
       title: "You Stay in Control",
       description:
         "Full dashboard to review conversations, update answers, and see what customers are actually asking. Real insights, real data.",
     },
     {
-      icon: "⚡",
+      icon: Zap,
       title: "One Customer Pays for It",
       description:
         "One captured lead, one booked appointment, one question answered at midnight — and the chatbot has already paid for itself.",
@@ -62,8 +64,8 @@ export default function Benefits() {
             className="flex items-start gap-4 p-5 rounded-xl hover:bg-white/[0.02] transition-all duration-300 group"
             style={{ animationDelay: `${i * 80}ms` }}
           >
-            <div className="mt-0.5 w-9 h-9 rounded-lg bg-white/[0.04] border border-white/[0.06] flex items-center justify-center text-base shrink-0 group-hover:bg-white/[0.07] group-hover:border-white/[0.1] transition-all duration-300">
-              {b.icon}
+            <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-zinc-400 shrink-0">
+              <b.icon className="w-5 h-5" />
             </div>
             <div>
               <h4 className="text-white font-medium mb-1 group-hover:text-zinc-100 transition-colors">
