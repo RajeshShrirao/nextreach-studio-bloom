@@ -9,22 +9,22 @@ export default function Footer() {
       {/* Gradient divider */}
       <div className="absolute top-0 left-0 right-0 gradient-divider" />
 
-      <h2 className="text-4xl font-bold text-white mb-6">
+      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
         Every missed call is a pet parent who went somewhere else.
       </h2>
-      <p className="text-zinc-400 mb-10 max-w-xl mx-auto">
+      <p className="text-zinc-400 mb-10 max-w-xl mx-auto leading-relaxed">
         Your AI receptionist catches every inquiry, books every appointment, and never takes a day off. Live on your site in 3 days.
       </p>
       <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
         <a
           href="mailto:hello@nextreachstudio.com?subject=AI receptionist for my grooming salon"
-          className="px-10 py-5 bg-amber-400 text-black font-bold text-lg rounded-xl hover:bg-amber-300 transition-all btn-primary-glow"
+          className="px-10 py-5 bg-amber-400 text-black font-bold text-lg rounded-xl hover:bg-amber-300 transition-all duration-300 btn-primary-glow focus-visible:outline-2 focus-visible:outline-amber-400 focus-visible:outline-offset-2 min-h-[44px]"
         >
           Starter — $299
         </a>
         <a
           href="mailto:hello@nextreachstudio.com?subject=Pro AI receptionist package"
-          className="px-10 py-5 bg-zinc-800 text-white font-bold text-lg rounded-xl hover:bg-zinc-700 transition-all border border-zinc-700 hover:border-zinc-600"
+          className="px-10 py-5 bg-zinc-800 text-white font-bold text-lg rounded-xl hover:bg-zinc-700 transition-all duration-300 border border-zinc-700 hover:border-zinc-600 btn-secondary focus-visible:outline-2 focus-visible:outline-amber-400 focus-visible:outline-offset-2 min-h-[44px]"
         >
           Pro — $499
         </a>

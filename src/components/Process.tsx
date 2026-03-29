@@ -20,7 +20,7 @@ export default function Process() {
       number: "03",
       title: "It Goes Live & Books While You Groom",
       description:
-        "Embedded on your site. Answers questions, books appointments, captures leads — all while you're busy with a pup. You get a notification for every new booking.",
+        "Embedded on your site. Answers questions, books appointments, captures leads — all while you&apos;re busy with a pup. You get a notification for every new booking.",
       image: "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=400&q=80",
     },
   ];
@@ -28,10 +28,11 @@ export default function Process() {
   return (
     <section className="max-w-5xl mx-auto px-6 mb-32">
       <div className="text-center mb-16">
-        <h2 className="text-3xl font-bold text-white mb-4">
+        <p className="text-xs uppercase tracking-widest text-zinc-500 mb-3">How It Works</p>
+        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
           Live in 3 days. No tech headaches.
         </h2>
-        <p className="text-zinc-400 max-w-lg mx-auto">
+        <p className="text-zinc-400 max-w-lg mx-auto leading-relaxed">
           From &quot;I want this&quot; to &quot;it&apos;s booking on my site&quot; in under a week. We handle everything.
         </p>
       </div>
@@ -61,7 +62,7 @@ export default function Process() {
                 {step.number}
               </div>
             </div>
-            <div className="p-6">
+            <div className="p-8">
               <h3 className="text-lg font-semibold text-white mb-2 relative z-10">
                 {step.title}
               </h3>

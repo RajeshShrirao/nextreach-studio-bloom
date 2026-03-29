@@ -1,3 +1,5 @@
+import { Plus } from "lucide-react";
+
 export default function FAQ() {
   const items = [
     {
@@ -34,9 +36,12 @@ export default function FAQ() {
 
   return (
     <section className="max-w-3xl mx-auto px-6 mb-32">
-      <h2 className="text-3xl font-bold text-white mb-10 text-center">
-        Questions groomers ask us.
-      </h2>
+      <div className="text-center mb-16">
+        <p className="text-xs uppercase tracking-widest text-zinc-500 mb-3">FAQ</p>
+        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+          Questions groomers ask us.
+        </h2>
+      </div>
       <div className="space-y-3">
         {items.map((item, i) => (
           <details
@@ -44,11 +49,9 @@ export default function FAQ() {
             className="glass-panel rounded-xl group overflow-hidden"
             open={i === 0}
           >
-            <summary className="font-medium text-white cursor-pointer p-6 bg-white/[0.03] hover:bg-white/[0.06] transition-all duration-300 flex justify-between items-center gap-4 select-none">
+            <summary className="font-medium text-white cursor-pointer p-6 bg-white/[0.03] hover:bg-white/[0.06] transition-all duration-300 flex justify-between items-center gap-4 select-none min-h-[44px]">
               <span>{item.question}</span>
-              <span className="text-zinc-500 group-open:rotate-45 transition-transform duration-300 ease-out shrink-0 text-lg font-light">
-                +
-              </span>
+              <Plus className="w-4 h-4 text-zinc-500 group-open:rotate-45 transition-transform duration-300 ease-out shrink-0" />
             </summary>
             <div className="px-6 pb-6 text-sm text-zinc-400 leading-relaxed">
               {item.answer}

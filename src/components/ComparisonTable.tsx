@@ -1,3 +1,5 @@
+import { Check, X } from "lucide-react";
+
 export default function ComparisonTable() {
   const rows = [
     {
@@ -36,13 +38,16 @@ export default function ComparisonTable() {
 
   return (
     <section className="max-w-5xl mx-auto px-6 mb-32">
-      <h2 className="text-3xl font-bold text-white mb-10 text-center">
-        Compare your options.
-      </h2>
-      <div className="overflow-x-auto rounded-2xl">
-        <table className="w-full text-left border-collapse">
+      <div className="text-center mb-16">
+        <p className="text-xs uppercase tracking-widest text-zinc-500 mb-3">Comparison</p>
+        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+          Compare your options.
+        </h2>
+      </div>
+      <div className="overflow-x-auto rounded-2xl -mx-6 px-6">
+        <table className="w-full text-left border-collapse min-w-[640px]">
           <thead>
-            <tr className="border-b border-white/10 text-sm text-zinc-500 uppercase tracking-widest">
+            <tr className="border-b border-white/10 text-xs text-zinc-500 uppercase tracking-widest">
               <th className="py-4 font-normal">Feature</th>
               <th className="py-4 font-medium text-white px-6 glass-panel rounded-t-xl">
                 <div className="flex items-center gap-2">
@@ -72,29 +77,33 @@ export default function ComparisonTable() {
                   }`}
                 >
                   <div className="flex items-center gap-2">
-                    <span className="text-emerald-400 text-xs">&#10003;</span>
+                    <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
                     {row.ours}
                   </div>
                 </td>
                 <td className="py-4 px-4 text-zinc-500">
                   <div className="flex items-center gap-2">
-                    <span className="text-zinc-600 text-xs">
-                      {row.check[1] ? "\u2713" : "\u2717"}
-                    </span>
+                    {row.check[1] ? (
+                      <Check className="w-3.5 h-3.5 text-emerald-400/60 shrink-0" />
+                    ) : (
+                      <X className="w-3.5 h-3.5 text-zinc-600 shrink-0" />
+                    )}
                     {row.receptionist}
                   </div>
                 </td>
                 <td className="py-4 px-4 text-zinc-500">
                   <div className="flex items-center gap-2">
-                    <span className="text-zinc-600 text-xs">
-                      {row.check[2] ? "\u2713" : "\u2717"}
-                    </span>
+                    {row.check[2] ? (
+                      <Check className="w-3.5 h-3.5 text-emerald-400/60 shrink-0" />
+                    ) : (
+                      <X className="w-3.5 h-3.5 text-zinc-600 shrink-0" />
+                    )}
                     {row.otherChatbots}
                   </div>
                 </td>
                 <td className="py-4 px-4 text-zinc-500">
                   <div className="flex items-center gap-2">
-                    <span className="text-red-400/60 text-xs">&#10007;</span>
+                    <X className="w-3.5 h-3.5 text-red-400/60 shrink-0" />
                     {row.missed}
                   </div>
                 </td>

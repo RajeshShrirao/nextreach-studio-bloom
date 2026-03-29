@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Star } from "lucide-react";
 
 export default function Testimonials() {
   const testimonials = [
@@ -30,12 +31,15 @@ export default function Testimonials() {
 
   return (
     <section className="max-w-6xl mx-auto px-6 mb-32">
-      <h2 className="text-3xl font-bold text-white mb-4 text-center">
-        Groomers are booking more. Sleeping better.
-      </h2>
-      <p className="text-zinc-500 text-center mb-12 max-w-lg mx-auto">
-        Real results from salons and clinics that stopped losing customers after hours.
-      </p>
+      <div className="text-center mb-16">
+        <p className="text-xs uppercase tracking-widest text-zinc-500 mb-3">Testimonials</p>
+        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+          Groomers are booking more. Sleeping better.
+        </h2>
+        <p className="text-zinc-400 max-w-lg mx-auto leading-relaxed">
+          Real results from salons and clinics that stopped losing customers after hours.
+        </p>
+      </div>
       <div className="grid md:grid-cols-3 gap-6">
         {testimonials.map((t, i) => (
           <div
@@ -46,9 +50,7 @@ export default function Testimonials() {
             {/* Star rating */}
             <div className="flex gap-0.5 mb-4">
               {Array.from({ length: t.rating }).map((_, j) => (
-                <span key={j} className="text-amber-400/80 text-sm">
-                  ★
-                </span>
+                <Star key={j} className="w-4 h-4 fill-amber-400 text-amber-400" />
               ))}
             </div>
 
