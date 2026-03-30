@@ -10,7 +10,7 @@ export default function FAQ() {
     {
       question: "Can it handle vaccination requirements?",
       answer:
-        "Absolutely. It asks about rabies and other required vaccines before confirming any booking. You set the rules, it enforces them. No more awkward \"did you bring your records?\" conversations.",
+        "Absolutely. It asks about rabies and other required vaccines before capturing a booking request. You set the rules, it enforces them. No more awkward \"did you bring your records?\" conversations.",
     },
     {
       question: "What if someone asks something the bot doesn't know?",
@@ -20,12 +20,12 @@ export default function FAQ() {
     {
       question: "How long until it's live on my site?",
       answer:
-        "3 business days. You fill out a form about your services, breeds, and pricing. We build, train, test, and embed it. You approve, it goes live. No tech work on your end.",
+        "3 business days. You fill out a form about your services, breeds, and pricing. We build, train, test, and embed it on your site. You approve, it goes live. No tech work on your end.",
     },
     {
-      question: "Can it work alongside my existing booking system?",
+      question: "Can it work with my existing website?",
       answer:
-        "Yes. It can link to your existing system (like Gingr, PetExec, or even Google Calendar) or work standalone with email notifications. We'll figure out the best setup during onboarding.",
+        "Yes! It works on any website — WordPress, Wix, Squarespace, even a plain HTML page. When someone wants to book, the bot captures their breed, service, and preferred time, then sends you a summary by email. You keep your current booking process — we just make sure you never miss a request.",
     },
     {
       question: "Can I see a demo first?",

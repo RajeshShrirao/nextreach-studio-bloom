@@ -52,7 +52,7 @@ export default function Hero() {
 
           {/* Body copy */}
           <p className="text-lg text-zinc-400 mb-12 max-w-lg mx-auto lg:mx-0 leading-[1.7] font-light animate-fade-in-up" style={{ animationDelay: '100ms' }}>
-            An AI receptionist that handles bookings, answers pet parent questions, and captures leads — even when you&apos;re elbow-deep in a golden doodle.
+            An AI receptionist that captures bookings, answers pet parent questions, and sends you every lead — even when you&apos;re elbow-deep in a golden doodle.
           </p>
 
           {/* CTA group */}

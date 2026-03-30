@@ -5,15 +5,15 @@ export default function Footer() {
     {
       name: "Starter",
       price: "$299 + $49/mo",
-      features: "1 location, basic booking, email notifications",
+      features: "AI receptionist, FAQ & services, 1,000 messages/mo, email support",
       href: "https://tally.so/r/1AMoR1?plan=starter",
       primary: true,
     },
     {
-      name: "Pro",
-      price: "$499 + $79/mo",
-      features: "Multi-location, booking integration, SMS reminders, custom branding",
-      href: "https://tally.so/r/1AMoR1?plan=pro",
+      name: "Business",
+      price: "$499 + $49/mo",
+      features: "Everything in Starter + breed-aware guidance, booking capture, 3,000 messages/mo, priority support",
+      href: "https://tally.so/r/1AMoR1?plan=business",
       primary: false,
     },
   ];

@@ -3,9 +3,9 @@ import { Calendar, Shield, MessageCircle, Clock, DollarSign, Target } from "luci
 const bookingBenefits = [
   {
     icon: Calendar,
-    title: "Books Grooming Appointments",
+    title: "Captures Every Booking Request",
     description:
-      "Pet parents pick a service, breed, and time slot — right from your website. No phone tag. No DMs lost in Instagram.",
+      "Pet parents share their breed, preferred service, and time slot — right from your website. You get a structured summary in your inbox, ready to confirm. No phone tag, no lost DMs.",
   },
   {
     icon: Target,
@@ -17,7 +17,7 @@ const bookingBenefits = [
     icon: Shield,
     title: "Handles Vaccination Checks",
     description:
-      "Automatically asks about rabies and other required vaccines before booking. You stay compliant without the awkward phone calls.",
+      "Automatically asks about rabies and other required vaccines before capturing a booking. You stay compliant without the awkward phone calls.",
   },
 ];
 
@@ -30,9 +30,9 @@ const opsBenefits = [
   },
   {
     icon: Clock,
-    title: "Cuts No-Shows in Half",
+    title: "Never Misses a Midnight Inquiry",
     description:
-      "Sends automatic reminders before each appointment. Pet parents confirm or reschedule with one click. Fewer empty slots.",
+      "Someone finds you at 11 PM and wants to know if you groom bernedoodles? Your AI answers, captures their details, and you wake up to a lead instead of a ghost.",
   },
   {
     icon: DollarSign,
