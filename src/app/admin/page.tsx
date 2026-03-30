@@ -4,12 +4,6 @@ import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-// --- Types ---
-interface GoogleReviews {
-  rating: number;
-  count: number;
-}
-
 interface Lead {
   id: string;
   businessName: string;
@@ -17,58 +11,54 @@ interface Lead {
   email: string;
   phone?: string;
   city?: string;
+  state?: string;
   website?: string;
   instagram?: string;
-  googleReviews?: GoogleReviews;
+  googleRating?: number;
+  googleReviewCount?: number;
   bookingSystem?: string;
+  painPoint?: string;
   status: string;
-  demoUrl?: string;
-  trackingLink?: string;
-  plan?: "starter" | "business";
-  paymentStatus?: "pending" | "partial" | "paid";
+  planInterest?: string;
+  demoSlug?: string;
+  trackedLink?: string;
+  emailSentAt?: string;
+  lastReplyAt?: string;
+  demoClickedAt?: string;
   notes?: string;
   createdAt: string;
   updatedAt: string;
-  lastContactedAt?: string;
-  nextFollowUpAt?: string;
 }
 
 interface LeadStats {
   total: number;
-  notContacted: number;
+  new: number;
   inPipeline: number;
-  clients: number;
-  nurture: number;
-  notInterested: number;
+  won: number;
+  lost: number;
   byStatus: Record<string, number>;
 }
 
 const STATUSES = [
-  "not-contacted",
-  "demo-built",
-  "email-1-sent",
-  "email-2-sent",
-  "email-3-sent",
-  "clicked-demo",
+  "new",
+  "researched",
+  "demo_built",
+  "email_sent",
   "replied",
-  "call-scheduled",
-  "client",
-  "not-interested",
-  "nurture",
+  "call_booked",
+  "won",
+  "lost",
 ] as const;
 
 const STATUS_COLORS: Record<string, string> = {
-  "not-contacted": "bg-zinc-600/40 text-zinc-300 border-zinc-500/30",
-  "demo-built": "bg-blue-500/20 text-blue-300 border-blue-400/30",
-  "email-1-sent": "bg-sky-500/20 text-sky-300 border-sky-400/30",
-  "email-2-sent": "bg-cyan-500/20 text-cyan-300 border-cyan-400/30",
-  "email-3-sent": "bg-teal-500/20 text-teal-300 border-teal-400/30",
-  "clicked-demo": "bg-purple-500/20 text-purple-300 border-purple-400/30",
+  new: "bg-zinc-600/40 text-zinc-300 border-zinc-500/30",
+  researched: "bg-blue-500/20 text-blue-300 border-blue-400/30",
+  demo_built: "bg-purple-500/20 text-purple-300 border-purple-400/30",
+  email_sent: "bg-sky-500/20 text-sky-300 border-sky-400/30",
   replied: "bg-green-500/20 text-green-300 border-green-400/30",
-  "call-scheduled": "bg-amber-500/20 text-amber-300 border-amber-400/30",
-  client: "bg-emerald-500/30 text-emerald-200 border-emerald-400/40",
-  "not-interested": "bg-red-500/15 text-red-300 border-red-400/30",
-  nurture: "bg-orange-500/20 text-orange-300 border-orange-400/30",
+  call_booked: "bg-amber-500/20 text-amber-300 border-amber-400/30",
+  won: "bg-emerald-500/30 text-emerald-200 border-emerald-400/40",
+  lost: "bg-red-500/15 text-red-300 border-red-400/30",
 };
 
 function formatDate(iso?: string) {
@@ -89,7 +79,6 @@ function formatDateTime(iso?: string) {
   });
 }
 
-// --- Login Form ---
 function LoginForm({ onLogin }: { onLogin: (token: string) => void }) {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -136,7 +125,6 @@ function LoginForm({ onLogin }: { onLogin: (token: string) => void }) {
   );
 }
 
-// --- Status Badge ---
 function StatusBadge({ status }: { status: string }) {
   return (
     <span
@@ -147,7 +135,6 @@ function StatusBadge({ status }: { status: string }) {
   );
 }
 
-// --- Add Lead Modal ---
 function AddLeadModal({
   onClose,
   onAdded,
@@ -161,9 +148,11 @@ function AddLeadModal({
     email: "",
     phone: "",
     city: "",
+    state: "",
     website: "",
     instagram: "",
     bookingSystem: "",
+    painPoint: "",
     notes: "",
   });
   const [saving, setSaving] = useState(false);
@@ -224,8 +213,8 @@ function AddLeadModal({
               <input name="city" value={form.city} onChange={handleChange} className={inputClass} />
             </div>
             <div>
-              <label className="text-xs text-zinc-500 mb-1 block">Booking System</label>
-              <input name="bookingSystem" value={form.bookingSystem} onChange={handleChange} className={inputClass} />
+              <label className="text-xs text-zinc-500 mb-1 block">State</label>
+              <input name="state" value={form.state} onChange={handleChange} className={inputClass} />
             </div>
           </div>
           <div className="grid grid-cols-2 gap-3">
@@ -236,6 +225,16 @@ function AddLeadModal({
             <div>
               <label className="text-xs text-zinc-500 mb-1 block">Instagram</label>
               <input name="instagram" value={form.instagram} onChange={handleChange} className={inputClass} />
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-3">
+            <div>
+              <label className="text-xs text-zinc-500 mb-1 block">Booking System</label>
+              <input name="bookingSystem" value={form.bookingSystem} onChange={handleChange} className={inputClass} />
+            </div>
+            <div>
+              <label className="text-xs text-zinc-500 mb-1 block">Pain Point</label>
+              <input name="painPoint" value={form.painPoint} onChange={handleChange} className={inputClass} />
             </div>
           </div>
           <div>
@@ -264,7 +263,6 @@ function AddLeadModal({
   );
 }
 
-// --- Lead Row ---
 function LeadRow({
   lead,
   onStatusChange,
@@ -299,9 +297,9 @@ function LeadRow({
           </select>
         </td>
         <td className="px-4 py-3 text-sm hidden md:table-cell">
-          {lead.demoUrl ? (
+          {lead.demoSlug ? (
             <a
-              href={lead.demoUrl}
+              href={`/demo/${lead.demoSlug}`}
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
@@ -314,10 +312,10 @@ function LeadRow({
           )}
         </td>
         <td className="px-4 py-3 text-sm text-zinc-500 hidden lg:table-cell">
-          {formatDate(lead.lastContactedAt)}
+          {formatDate(lead.emailSentAt)}
         </td>
         <td className="px-4 py-3 text-sm text-zinc-500 hidden xl:table-cell">
-          {formatDate(lead.nextFollowUpAt)}
+          {formatDate(lead.lastReplyAt)}
         </td>
         <td className="px-4 py-3 text-right" onClick={(e) => e.stopPropagation()}>
           <button
@@ -342,10 +340,10 @@ function LeadRow({
                   <p className="text-zinc-300">{lead.phone}</p>
                 </div>
               )}
-              {lead.city && (
+              {(lead.city || lead.state) && (
                 <div>
-                  <span className="text-zinc-600 text-xs">City</span>
-                  <p className="text-zinc-300">{lead.city}</p>
+                  <span className="text-zinc-600 text-xs">Location</span>
+                  <p className="text-zinc-300">{[lead.city, lead.state].filter(Boolean).join(", ")}</p>
                 </div>
               )}
               {lead.website && (
@@ -370,34 +368,35 @@ function LeadRow({
                   <p className="text-zinc-300">{lead.bookingSystem}</p>
                 </div>
               )}
-              {lead.googleReviews && (
+              {(lead.googleRating !== undefined || lead.googleReviewCount !== undefined) && (
                 <div>
                   <span className="text-zinc-600 text-xs">Google Reviews</span>
                   <p className="text-zinc-300">
-                    ⭐ {lead.googleReviews.rating} ({lead.googleReviews.count} reviews)
+                    {lead.googleRating !== undefined ? `⭐ ${lead.googleRating}` : ""}
+                    {lead.googleReviewCount !== undefined ? ` (${lead.googleReviewCount} reviews)` : ""}
                   </p>
                 </div>
               )}
-              {lead.plan && (
+              {lead.planInterest && (
                 <div>
-                  <span className="text-zinc-600 text-xs">Plan</span>
-                  <p className="text-zinc-300 capitalize">{lead.plan}</p>
+                  <span className="text-zinc-600 text-xs">Plan Interest</span>
+                  <p className="text-zinc-300 capitalize">{lead.planInterest}</p>
                 </div>
               )}
-              {lead.paymentStatus && (
-                <div>
-                  <span className="text-zinc-600 text-xs">Payment</span>
-                  <p className="text-zinc-300 capitalize">{lead.paymentStatus}</p>
-                </div>
-              )}
-              {lead.trackingLink && (
+              {lead.trackedLink && (
                 <div>
                   <span className="text-zinc-600 text-xs">Tracking Link</span>
                   <p>
-                    <a href={lead.trackingLink} target="_blank" rel="noopener noreferrer" className="text-amber-400 hover:text-amber-300 transition">
-                      {lead.trackingLink}
+                    <a href={lead.trackedLink} target="_blank" rel="noopener noreferrer" className="text-amber-400 hover:text-amber-300 transition">
+                      {lead.trackedLink}
                     </a>
                   </p>
+                </div>
+              )}
+              {lead.painPoint && (
+                <div>
+                  <span className="text-zinc-600 text-xs">Pain Point</span>
+                  <p className="text-zinc-300">{lead.painPoint}</p>
                 </div>
               )}
               <div>
@@ -422,7 +421,6 @@ function LeadRow({
   );
 }
 
-// --- Dashboard ---
 export default function AdminPage() {
   const [authenticated, setAuthenticated] = useState(false);
   const [checking, setChecking] = useState(true);
@@ -432,7 +430,6 @@ export default function AdminPage() {
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  // Check auth
   useEffect(() => {
     const cookies = document.cookie.split(";").map((c) => c.trim());
     const token = cookies.find((c) => c.startsWith("admin_token="));
@@ -480,7 +477,6 @@ export default function AdminPage() {
 
   return (
     <div className="min-h-screen bg-[#050505]">
-      {/* Header */}
       <header className="border-b border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2.5">
@@ -513,15 +509,14 @@ export default function AdminPage() {
       </header>
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
-        {/* Stats Cards */}
         {stats && (
           <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-8">
             {[
               { label: "Total Leads", value: stats.total, color: "text-white" },
-              { label: "Not Contacted", value: stats.notContacted, color: "text-zinc-400" },
+              { label: "New", value: stats.new, color: "text-zinc-400" },
               { label: "In Pipeline", value: stats.inPipeline, color: "text-amber-400" },
-              { label: "Clients", value: stats.clients, color: "text-emerald-400" },
-              { label: "Nurture", value: stats.nurture, color: "text-orange-400" },
+              { label: "Won", value: stats.won, color: "text-emerald-400" },
+              { label: "Lost", value: stats.lost, color: "text-red-400" },
             ].map((card) => (
               <div key={card.label} className="glass-panel rounded-xl p-4">
                 <p className={`text-2xl font-semibold ${card.color}`}>{card.value}</p>
@@ -531,21 +526,18 @@ export default function AdminPage() {
           </div>
         )}
 
-        {/* Funnel */}
         {stats && (
           <div className="glass-panel rounded-xl p-5 mb-8">
             <h2 className="text-sm font-medium text-zinc-400 mb-4">Conversion Funnel</h2>
             <div className="flex flex-wrap items-center gap-2 text-xs">
               {[
-                { key: "not-contacted", label: "Not Contacted" },
-                { key: "demo-built", label: "Demo Built" },
-                { key: "email-1-sent", label: "Email 1" },
-                { key: "email-2-sent", label: "Email 2" },
-                { key: "email-3-sent", label: "Email 3" },
-                { key: "clicked-demo", label: "Clicked Demo" },
+                { key: "new", label: "New" },
+                { key: "researched", label: "Researched" },
+                { key: "demo_built", label: "Demo Built" },
+                { key: "email_sent", label: "Email Sent" },
                 { key: "replied", label: "Replied" },
-                { key: "call-scheduled", label: "Call" },
-                { key: "client", label: "Client" },
+                { key: "call_booked", label: "Call Booked" },
+                { key: "won", label: "Won" },
               ].map((step, i) => {
                 const count = stats.byStatus[step.key] || 0;
                 return (
@@ -556,7 +548,7 @@ export default function AdminPage() {
                       </p>
                       <p className="text-zinc-600 mt-0.5">{step.label}</p>
                     </div>
-                    {i < 8 && <span className="text-zinc-700">→</span>}
+                    {i < 6 && <span className="text-zinc-700">→</span>}
                   </div>
                 );
               })}
@@ -564,7 +556,6 @@ export default function AdminPage() {
           </div>
         )}
 
-        {/* Filter */}
         <div className="flex items-center gap-3 mb-4">
           <select
             value={filter}
@@ -583,7 +574,6 @@ export default function AdminPage() {
           </span>
         </div>
 
-        {/* Table */}
         <div className="glass-panel rounded-xl overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full">
@@ -605,10 +595,10 @@ export default function AdminPage() {
                     Demo
                   </th>
                   <th className="px-4 py-3 text-left text-xs font-medium text-zinc-500 uppercase tracking-wider hidden lg:table-cell">
-                    Last Contact
+                    Email Sent
                   </th>
                   <th className="px-4 py-3 text-left text-xs font-medium text-zinc-500 uppercase tracking-wider hidden xl:table-cell">
-                    Follow-up
+                    Last Reply
                   </th>
                   <th className="px-4 py-3 text-right text-xs font-medium text-zinc-500 uppercase tracking-wider">
                     Actions
@@ -644,7 +634,6 @@ export default function AdminPage() {
         </div>
       </main>
 
-      {/* Add Lead Modal */}
       {showModal && <AddLeadModal onClose={() => setShowModal(false)} onAdded={fetchLeads} />}
     </div>
   );

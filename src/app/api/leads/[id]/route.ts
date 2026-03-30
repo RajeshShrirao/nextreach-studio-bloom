@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
-import { readLeads, writeLeads, type Lead } from "@/lib/leads";
+import { readLeads, updateLead, deleteLead } from "@/lib/leads";
 
 export async function GET(
   _request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
-  const leads = readLeads();
+  const leads = await readLeads();
   const lead = leads.find((l) => l.id === id);
 
   if (!lead) {
@@ -23,23 +23,12 @@ export async function PATCH(
   try {
     const { id } = await params;
     const body = await request.json();
-    const leads = readLeads();
-    const index = leads.findIndex((l) => l.id === id);
+    
+    const updated = await updateLead(id, body);
 
-    if (index === -1) {
+    if (!updated) {
       return NextResponse.json({ error: "Lead not found" }, { status: 404 });
     }
-
-    const updated: Lead = {
-      ...leads[index],
-      ...body,
-      id, // prevent id overwrite
-      createdAt: leads[index].createdAt, // prevent createdAt overwrite
-      updatedAt: new Date().toISOString(),
-    };
-
-    leads[index] = updated;
-    writeLeads(leads);
 
     return NextResponse.json(updated);
   } catch {
@@ -52,15 +41,11 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
-  const leads = readLeads();
-  const index = leads.findIndex((l) => l.id === id);
+  const success = await deleteLead(id);
 
-  if (index === -1) {
+  if (!success) {
     return NextResponse.json({ error: "Lead not found" }, { status: 404 });
   }
-
-  leads.splice(index, 1);
-  writeLeads(leads);
 
   return NextResponse.json({ success: true });
 }

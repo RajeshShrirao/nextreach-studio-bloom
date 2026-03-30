@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import { readLeads, writeLeads, generateId, type Lead, type LeadStatus } from "@/lib/leads";
+import { readLeads, createLead, type Lead } from "@/lib/leads";
 
 export async function GET(request: NextRequest) {
-  const leads = readLeads();
   const status = request.nextUrl.searchParams.get("status");
+  const leads = await readLeads(status || undefined);
 
   if (status) {
     const filtered = leads.filter((l) => l.status === status);
@@ -16,34 +16,29 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const leads = readLeads();
-
-    const now = new Date().toISOString();
-    const newLead: Lead = {
-      id: generateId(),
+    const newLead = await createLead({
       businessName: body.businessName || "",
       ownerName: body.ownerName || "",
       email: body.email || "",
       phone: body.phone,
       city: body.city,
+      state: body.state,
       website: body.website,
       instagram: body.instagram,
-      googleReviews: body.googleReviews,
+      googleRating: body.googleRating,
+      googleReviewCount: body.googleReviewCount,
       bookingSystem: body.bookingSystem,
-      status: body.status || "not-contacted",
-      demoUrl: body.demoUrl,
-      trackingLink: body.trackingLink,
-      plan: body.plan,
-      paymentStatus: body.paymentStatus,
+      painPoint: body.painPoint,
+      status: body.status || "new",
+      planInterest: body.planInterest,
+      demoSlug: body.demoSlug,
+      trackedLink: body.trackedLink,
       notes: body.notes,
-      createdAt: now,
-      updatedAt: now,
-      lastContactedAt: body.lastContactedAt,
-      nextFollowUpAt: body.nextFollowUpAt,
-    };
+    });
 
-    leads.push(newLead);
-    writeLeads(leads);
+    if (!newLead) {
+      return NextResponse.json({ error: "Failed to create lead" }, { status: 500 });
+    }
 
     return NextResponse.json(newLead, { status: 201 });
   } catch {
