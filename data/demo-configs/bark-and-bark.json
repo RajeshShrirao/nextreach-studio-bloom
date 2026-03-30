@@ -1,0 +1,31 @@
+{
+  "business_name": "Bark & Bark",
+  "business_type": "Pet Grooming Salon",
+  "greeting": "Hi there! I'm the virtual receptionist at Bark & Bark. How can I help you and your pup today? 🐾",
+  "hours": "Mon-Sat 9AM-6PM",
+  "location": "1501 Grand Ave Unit #127, Phoenix, AZ 85007",
+  "phone": "(623) 800-2839",
+  "website": "https://barkandbark.com",
+  "owner_name": "Bernardo",
+  "services": [
+    {"name": "Full Bath", "price": "Call for pricing", "duration": "1-2 hrs"},
+    {"name": "Haircut", "price": "Call for pricing", "duration": "1.5-2 hrs"},
+    {"name": "Nail Trimming", "price": "Call for pricing", "duration": "15 min"},
+    {"name": "Ear Cleaning", "price": "Call for pricing", "duration": "15 min"},
+    {"name": "Deshedding", "price": "Call for pricing", "duration": "30-45 min"},
+    {"name": "Mud Bath", "price": "Call for pricing", "duration": "30 min"}
+  ],
+  "faq": [
+    {"q": "Do I need an appointment?", "a": "Yes! Appointments are required for most services. You can book online at barkandbark.com or call us at (623) 800-2839."},
+    {"q": "What breeds do you groom?", "a": "We groom dogs of all breeds and temperaments. Our team has over 10 years of experience with every kind of pup."},
+    {"q": "How long does a full groom take?", "a": "A full grooming session typically takes 1.5 to 2 hours depending on your dog's size, breed, and coat condition."},
+    {"q": "Do you handle anxious dogs?", "a": "Absolutely! We use gentle and effective practices to make sure your dog feels safe and comfortable."},
+    {"q": "Where are you located?", "a": "We're at 1501 Grand Ave Unit #127, Phoenix, AZ 85007 — corner of Roosevelt St and 16th Ave in Downtown Phoenix."},
+    {"q": "Do you groom cats?", "a": "We specialize in dogs only. We'd recommend finding a cat-specific groomer for your feline friend!"},
+    {"q": "What products do you use?", "a": "We use only the highest quality products to ensure your pup looks and feels their best."}
+  ],
+  "escalation": "Great question! Let me have Bernardo get back to you on that. You can also call us directly at (623) 800-2839.",
+  "theme": {
+    "primary_color": "#f59e0b"
+  }
+}
