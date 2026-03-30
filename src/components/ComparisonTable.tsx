@@ -51,25 +51,25 @@ function StatusIcon({ positive, faint }: { positive: boolean; faint?: boolean })
 
 export default function ComparisonTable() {
   return (
-    <section className="max-w-5xl mx-auto px-4 sm:px-6 mb-32">
+    <section className="max-w-7xl mx-auto px-6 sm:px-8 mb-40">
       {/* Section header */}
-      <div className="text-center mb-16">
-        <p className="text-[11px] uppercase tracking-[0.1em] text-zinc-500 mb-3">Comparison</p>
-        <h2 className="text-[28px] sm:text-[34px] font-bold text-white tracking-tight mb-4 leading-[1.15]">
-          Compare your options.
+      <div className="text-center mb-20">
+        <p className="text-xs uppercase tracking-[0.12em] text-zinc-500 mb-4 font-light">Comparison</p>
+        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light text-white tracking-[-0.01em] mb-6 leading-[1.2]">
+          See how we compare.
         </h2>
       </div>
 
       {/* Desktop table */}
-      <div className="hidden sm:block overflow-x-auto rounded-2xl">
+      <div className="hidden sm:block overflow-x-auto rounded-3xl border border-white/[0.06]">
         <table className="w-full text-left border-collapse min-w-[600px]">
           <thead>
-            <tr className="border-b border-white/[0.1] text-[11px] text-zinc-500 uppercase tracking-[0.08em]">
-              <th className="py-4 font-normal text-left pl-4">Feature</th>
+            <tr className="border-b border-white/[0.06] text-xs text-zinc-500 uppercase tracking-[0.1em] font-light">
+              <th className="py-6 font-light text-left pl-6">Feature</th>
               {columns.map((col) => (
                 <th
                   key={col.key}
-                  className={`py-4 px-5 text-left ${col.key === "ours" ? "font-medium text-white" : "font-normal"}`}
+                  className={`py-6 px-6 text-left ${col.key === "ours" ? "font-light text-white" : "font-light"}`}
                 >
                   <div className="flex items-center gap-2">
                     {col.key === "ours" && (
@@ -81,24 +81,24 @@ export default function ComparisonTable() {
               ))}
             </tr>
           </thead>
-          <tbody className="text-[14px]">
+          <tbody className="text-base">
             {rows.map((row, i) => (
               <tr
                 key={row.feature}
-                className={`border-b border-white/[0.05] ${i % 2 === 1 ? "bg-white/[0.012]" : ""}`}
+                className={`border-b border-white/[0.04] ${i % 2 === 1 ? "bg-white/[0.008]" : ""}`}
               >
-                <td className="py-4 pl-4 text-zinc-400">{row.feature}</td>
+                <td className="py-6 pl-6 text-zinc-400 font-light">{row.feature}</td>
                 {columns.map((col, ci) => {
                   const val = row[col.key as keyof typeof row] as string;
                   const checked = row.check[ci];
                   return (
                     <td
                       key={col.key}
-                      className={`py-4 px-5 ${col.key === "ours" ? "text-white font-medium" : "text-zinc-500"}`}
+                      className={`py-6 px-6 ${col.key === "ours" ? "text-white font-light" : "text-zinc-500"}`}
                     >
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-3">
                         <StatusIcon positive={checked} faint={col.key !== "ours"} />
-                        {val}
+                        <span className="font-light">{val}</span>
                       </div>
                     </td>
                   );
@@ -110,32 +110,32 @@ export default function ComparisonTable() {
       </div>
 
       {/* Mobile stacked cards */}
-      <div className="sm:hidden space-y-3">
+      <div className="sm:hidden space-y-4">
         {columns.map((col) => (
           <div
             key={col.key}
-            className={`glass-panel rounded-xl p-5 ${
-              col.highlight ? "border-amber-400/20" : ""
+            className={`glass-panel rounded-2xl p-6 ${
+              col.highlight ? "border-amber-400/15" : ""
             }`}
           >
-            <div className="flex items-center gap-2 mb-4">
+            <div className="flex items-center gap-2.5 mb-6">
               {col.highlight && (
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse-glow" />
               )}
-              <h3 className={`text-[14px] font-medium ${col.highlight ? "text-amber-400" : "text-white"}`}>
+              <h3 className={`text-base font-light ${col.highlight ? "text-amber-400" : "text-white"}`}>
                 {col.label}
               </h3>
             </div>
-            <div className="space-y-3">
+            <div className="space-y-4">
               {rows.map((row) => {
                 const val = row[col.key as keyof typeof row] as string;
                 const ci = columns.indexOf(col);
                 const checked = row.check[ci];
                 return (
                   <div key={row.feature} className="flex items-center justify-between">
-                    <span className="text-[12px] text-zinc-500">{row.feature}</span>
-                    <div className="flex items-center gap-1.5">
-                      <span className={`text-[13px] ${col.highlight ? "text-white font-medium" : "text-zinc-400"}`}>
+                    <span className="text-sm text-zinc-500 font-light">{row.feature}</span>
+                    <div className="flex items-center gap-2">
+                      <span className={`text-sm ${col.highlight ? "text-white font-light" : "text-zinc-400 font-light"}`}>
                         {val}
                       </span>
                       <StatusIcon positive={checked} faint={!col.highlight} />

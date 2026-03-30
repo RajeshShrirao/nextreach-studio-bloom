@@ -30,40 +30,39 @@ const integrations = [
 
 export default function Integrations() {
   return (
-    <section className="max-w-5xl mx-auto px-4 sm:px-6 mb-32">
+    <section className="max-w-7xl mx-auto px-6 sm:px-8 mb-40">
       {/* Section header */}
-      <div className="text-center mb-16">
-        <p className="text-[11px] uppercase tracking-[0.1em] text-zinc-500 mb-3">
+      <div className="text-center mb-20">
+        <p className="text-xs uppercase tracking-[0.12em] text-zinc-500 mb-4 font-light">
           Integrations
         </p>
-        <h2 className="text-[28px] sm:text-[34px] font-bold text-white tracking-tight mb-4 leading-[1.15]">
-          Works with your existing tools.
+        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light text-white tracking-[-0.01em] mb-6 leading-[1.2]">
+          Works with your tools.
         </h2>
-        <p className="text-zinc-400 max-w-lg mx-auto leading-[1.65] text-[16px]">
-          Already using a booking system? We plug right in. Or use it
-          standalone with email and SMS notifications.
+        <p className="text-zinc-400 max-w-xl mx-auto leading-[1.7] text-lg font-light">
+          Plug into existing systems or use standalone. We integrate seamlessly.
         </p>
       </div>
 
       {/* Integration cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-[13px]">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
         {integrations.map((integ) => (
           <div
             key={integ.name}
-            className="glass-panel glass-panel-hover rounded-xl p-5 flex flex-col items-center justify-center text-center group min-h-[120px]"
+            className="glass-panel glass-panel-hover rounded-2xl p-6 flex flex-col items-center justify-center text-center group min-h-[140px] transition-all duration-300"
           >
             {/* Logo container */}
-            <div className="w-12 h-12 flex items-center justify-center mb-3 transition-transform duration-200 group-hover:scale-105">
+            <div className="w-14 h-14 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110">
               <Image
                 src={integ.logo}
                 alt={`${integ.name} logo`}
-                width={44}
-                height={44}
-                className="object-contain"
+                width={48}
+                height={48}
+                className="object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-300"
               />
             </div>
-            <p className="text-white text-[13px] font-medium leading-tight mb-0.5">{integ.name}</p>
-            <p className="text-zinc-500 text-[11px] leading-tight">{integ.description}</p>
+            <p className="text-white text-sm font-light leading-tight mb-1">{integ.name}</p>
+            <p className="text-zinc-500 text-xs leading-tight font-light">{integ.description}</p>
           </div>
         ))}
       </div>
