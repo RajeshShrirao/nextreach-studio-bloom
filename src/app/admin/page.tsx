@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 // --- Types ---
 interface GoogleReviews {
@@ -103,10 +105,15 @@ function LoginForm({ onLogin }: { onLogin: (token: string) => void }) {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4" style={{ background: "#050505" }}>
+    <div className="min-h-screen flex items-center justify-center px-4 bg-[#050505]">
       <div className="glass-panel rounded-2xl p-8 w-full max-w-sm">
-        <h1 className="text-xl font-semibold text-white mb-2">NextReach Admin</h1>
-        <p className="text-zinc-500 text-sm mb-6">Enter the admin password to continue.</p>
+        <div className="flex items-center justify-center gap-2 mb-6">
+          <Image src="/logo.png" alt="NextReach" width={32} height={32} />
+          <span className="text-white font-semibold text-sm uppercase tracking-widest">
+            NextReach <span className="text-amber-400">Admin</span>
+          </span>
+        </div>
+        <p className="text-zinc-500 text-sm mb-6 text-center">Enter the admin password to continue.</p>
         <form onSubmit={handleSubmit}>
           <input
             type="password"
@@ -472,16 +479,19 @@ export default function AdminPage() {
   }
 
   return (
-    <div className="min-h-screen" style={{ background: "#050505" }}>
+    <div className="min-h-screen bg-[#050505]">
       {/* Header */}
       <header className="border-b border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
-          <div>
-            <h1 className="text-lg font-semibold text-white tracking-tight">
-              NextReach <span className="text-amber-400">Admin</span>
-            </h1>
-            <p className="text-xs text-zinc-600 mt-0.5">Lead Tracking Dashboard</p>
-          </div>
+          <Link href="/" className="flex items-center gap-2.5">
+            <Image src="/logo.png" alt="NextReach" width={28} height={28} />
+            <div>
+              <h1 className="text-lg font-semibold text-white tracking-tight">
+                NextReach <span className="text-amber-400">Admin</span>
+              </h1>
+              <p className="text-xs text-zinc-600 mt-0.5">Lead Tracking Dashboard</p>
+            </div>
+          </Link>
           <div className="flex items-center gap-3">
             <button
               onClick={() => setShowModal(true)}

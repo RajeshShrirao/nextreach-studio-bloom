@@ -35,13 +35,16 @@ export default function FAQ() {
   ];
 
   return (
-    <section className="max-w-3xl mx-auto px-6 mb-32">
+    <section className="max-w-3xl mx-auto px-4 sm:px-6 mb-32">
+      {/* Section header */}
       <div className="text-center mb-16">
-        <p className="text-xs uppercase tracking-widest text-zinc-500 mb-3">FAQ</p>
-        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+        <p className="text-[11px] uppercase tracking-[0.1em] text-zinc-500 mb-3">FAQ</p>
+        <h2 className="text-[28px] sm:text-[34px] font-bold text-white tracking-tight mb-4 leading-[1.15]">
           Questions groomers ask us.
         </h2>
       </div>
+
+      {/* Accordion items */}
       <div className="space-y-3">
         {items.map((item, i) => (
           <details
@@ -49,11 +52,11 @@ export default function FAQ() {
             className="glass-panel rounded-xl group overflow-hidden"
             open={i === 0}
           >
-            <summary className="font-medium text-white cursor-pointer p-6 bg-white/[0.03] hover:bg-white/[0.06] transition-all duration-300 flex justify-between items-center gap-4 select-none min-h-[44px]">
-              <span>{item.question}</span>
-              <Plus className="w-4 h-4 text-zinc-500 group-open:rotate-45 transition-transform duration-300 ease-out shrink-0" />
+            <summary className="font-medium text-white cursor-pointer p-5 sm:p-6 bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-200 flex justify-between items-center gap-4 select-none min-h-[52px]">
+              <span className="text-[15px] leading-tight">{item.question}</span>
+              <Plus className="w-4 h-4 text-zinc-500 group-open:rotate-45 transition-transform duration-200 ease-out shrink-0" />
             </summary>
-            <div className="px-6 pb-6 text-sm text-zinc-400 leading-relaxed">
+            <div className="px-5 sm:px-6 pb-6 text-[14px] text-zinc-400 leading-[1.65]">
               {item.answer}
             </div>
           </details>

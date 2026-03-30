@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import StatsBar from "@/components/StatsBar";
 import Process from "@/components/Process";
+import Integrations from "@/components/Integrations";
 import Testimonials from "@/components/Testimonials";
 import ComparisonTable from "@/components/ComparisonTable";
 import Benefits from "@/components/Benefits";
@@ -16,6 +17,7 @@ export default function Home() {
       <Hero />
       <StatsBar />
       <Process />
+      <Integrations />
       <Testimonials />
       <ComparisonTable />
       <Benefits />
