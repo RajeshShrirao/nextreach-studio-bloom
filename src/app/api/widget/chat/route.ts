@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { getSupabase } from "@/lib/supabase";
 import fs from "fs";
 import path from "path";
 
@@ -16,6 +17,7 @@ interface Config {
   hours?: string;
   location?: string;
   phone?: string;
+  owner_phone?: string;
   website?: string;
   owner_name?: string;
   services?: Array<{ name: string; price: string; duration: string }>;
@@ -35,7 +37,8 @@ function buildSystemPrompt(cfg: Config): string {
 
   if (cfg.location) lines.push(`Location: ${cfg.location}`);
   if (cfg.hours) lines.push(`Hours: ${cfg.hours}`);
-  if (cfg.phone) lines.push(`Phone: ${cfg.phone}`);
+  const phone = cfg.owner_phone || cfg.phone;
+  if (phone) lines.push(`Phone: ${phone}`);
   if (cfg.website) lines.push(`Website: ${cfg.website}`);
   if (cfg.owner_name) lines.push(`Owner: ${cfg.owner_name}`);
   lines.push("");
@@ -72,6 +75,26 @@ function buildSystemPrompt(cfg: Config): string {
   return lines.join("\n");
 }
 
+async function logConversation(
+  clientSlug: string,
+  sessionId: string,
+  role: string,
+  content: string
+) {
+  try {
+    const supabase = getSupabase();
+    if (!supabase) return;
+    await supabase.from("conversations").insert({
+      client_slug: clientSlug,
+      session_id: sessionId,
+      role,
+      content,
+    });
+  } catch {
+    // Non-critical — don't block the response
+  }
+}
+
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
@@ -87,13 +110,49 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Load config
-    const filePath = path.join(CONFIG_DIR, `${client_id}.json`);
-    if (!fs.existsSync(filePath)) {
+    // Generate session ID from request fingerprint
+    const sessionId =
+      req.headers.get("x-session-id") ||
+      `${client_id}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+
+    // 1. Try Supabase first
+    let cfg: Config | null = null;
+    const supabase = getSupabase();
+    if (supabase) {
+      try {
+        const { data, error } = await supabase
+          .from("clients")
+          .select("*")
+          .eq("slug", client_id)
+          .single();
+
+      if (!error && data) {
+        cfg = data as unknown as Config;
+      }
+    } catch {
+      // Fall through to JSON
+    }
+    }
+
+    // 2. Fallback: JSON demo config
+    if (!cfg) {
+      const filePath = path.join(CONFIG_DIR, `${client_id}.json`);
+      if (fs.existsSync(filePath)) {
+        cfg = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+      }
+    }
+
+    if (!cfg) {
       return NextResponse.json({ error: "Config not found" }, { status: 404 });
     }
-    const cfg: Config = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+
     const systemPrompt = cfg.system_prompt || buildSystemPrompt(cfg);
+    const lastMessage = messages[messages.length - 1];
+
+    // Log user message
+    if (lastMessage?.role === "user") {
+      logConversation(client_id, sessionId, "user", lastMessage.content);
+    }
 
     // Call Cerebras API
     const response = await fetch(
@@ -119,9 +178,16 @@ export async function POST(req: NextRequest) {
     if (!response.ok) {
       const err = await response.text();
       console.error("Cerebras API error:", err);
+      const fallback = cfg.escalation || "Sorry, I'm having trouble right now. Please try again later.";
       return NextResponse.json(
-        { error: "AI service unavailable" },
-        { status: 502 }
+        { reply: fallback },
+        {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "POST, OPTIONS",
+            "Access-Control-Allow-Headers": "Content-Type",
+          },
+        }
       );
     }
 
@@ -129,6 +195,9 @@ export async function POST(req: NextRequest) {
     const reply =
       data.choices?.[0]?.message?.content ??
       "Sorry, I had trouble processing that. Can you try again?";
+
+    // Log assistant reply
+    logConversation(client_id, sessionId, "assistant", reply);
 
     return NextResponse.json(
       { reply },
