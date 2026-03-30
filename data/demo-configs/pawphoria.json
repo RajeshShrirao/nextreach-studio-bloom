@@ -1,0 +1,30 @@
+{
+  "business_name": "Pawphoria Grooming",
+  "business_type": "Pet Grooming Salon",
+  "greeting": "Hi there! I'm the virtual receptionist at Pawphoria. How can I help you and your fur baby today? 🐾",
+  "hours": "Tue-Fri 8:30AM-5PM, Sat 9AM-5PM",
+  "location": "101 S 12th St, Unit 101, Tampa, FL 33602",
+  "phone": "(813) 954-9528",
+  "website": "https://pawphoriagrooming.com",
+  "owner_name": "Pawphoria Team",
+  "services": [
+    {"name": "Full Grooming", "price": "Call for pricing", "duration": "2-3 hrs"},
+    {"name": "Mini Grooming", "price": "Call for pricing", "duration": "1.5 hrs"},
+    {"name": "Bath, Nail & Ear", "price": "Call for pricing", "duration": "1 hr"},
+    {"name": "Nail Trim", "price": "Call for pricing", "duration": "15 min"},
+    {"name": "Teeth Brushing & Breath Freshener", "price": "Call for pricing", "duration": "15 min"},
+    {"name": "Flea Bath", "price": "Call for pricing", "duration": "45 min"},
+    {"name": "Nail Painting", "price": "Call for pricing", "duration": "15 min"}
+  ],
+  "faq": [
+    {"q": "Do I need an appointment?", "a": "Yes, we work by appointment only. You can request one through this chat!"},
+    {"q": "What does full grooming include?", "a": "Full grooming includes a bath with natural shampoo, hand fluff drying, nail trimming & filing, ear cleaning, anal gland expression if needed, brushing, and a stylish haircut."},
+    {"q": "Do you offer walk-ins?", "a": "We primarily work by appointment, but give us a call and we'll do our best to fit you in!"},
+    {"q": "Where are you located?", "a": "We're at 101 S 12th St, Unit 101 in Channelside, Tampa — right next to Victory Cafe!"},
+    {"q": "What are your hours?", "a": "Tuesday through Friday 8:30 AM to 5 PM, Saturday 9 AM to 5 PM. We're closed Sunday and Monday."}
+  ],
+  "escalation": "Great question! Let me have someone from the team get back to you on that.",
+  "theme": {
+    "primary_color": "#f59e0b"
+  }
+}

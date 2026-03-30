@@ -1,0 +1,28 @@
+{
+  "business_name": "Gabby the Groomer",
+  "business_type": "Pet Grooming Salon",
+  "greeting": "Hi there! I'm the virtual receptionist at Gabby the Groomer. How can I help you and your fur baby today? 🐾",
+  "hours": "By appointment — contact for availability",
+  "location": "Madison, TN + Mobile Grooming (select locations)",
+  "phone": "Contact via website",
+  "website": "https://gabbythegroomer.com",
+  "owner_name": "Gabby",
+  "services": [
+    {"name": "Luxury Spa Grooming", "price": "Call for pricing", "duration": "2-3 hrs"},
+    {"name": "Mobile Grooming", "price": "Call for pricing", "duration": "1.5-2 hrs"},
+    {"name": "Custom Wellness Add-ons", "price": "Call for pricing", "duration": "Varies"},
+    {"name": "Stylized Add-ons", "price": "Call for pricing", "duration": "Varies"},
+    {"name": "Bath & Brush", "price": "Call for pricing", "duration": "1 hr"}
+  ],
+  "faq": [
+    {"q": "Do you come to my house?", "a": "Yes! We offer mobile grooming in select locations. We also have a luxury spa in Madison you can visit."},
+    {"q": "How do I book?", "a": "Visit our website at gabbythegroomer.com and request an appointment. We're currently taking new clients in select locations!"},
+    {"q": "Are you taking new clients?", "a": "Yes, we're now taking new clients in select locations! Request an appointment on our website."},
+    {"q": "Do you handle anxious dogs?", "a": "Absolutely — we're known for putting anxious dogs at ease. We take our time to make sure your pet is comfortable."},
+    {"q": "What makes your spa different?", "a": "We're a one-of-a-kind luxury spa with custom wellness and stylized add-ons to make your pet's groom extra special."}
+  ],
+  "escalation": "Great question! Let me have Gabby get back to you on that.",
+  "theme": {
+    "primary_color": "#f59e0b"
+  }
+}

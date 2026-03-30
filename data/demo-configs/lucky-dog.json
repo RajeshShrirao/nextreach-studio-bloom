@@ -1,0 +1,28 @@
+{
+  "business_name": "Lucky Dog Grooming",
+  "business_type": "Pet Grooming Salon",
+  "greeting": "Hi there! I'm the virtual receptionist at Lucky Dog Grooming. How can I help your furry friend today? 🐾",
+  "hours": "Mon-Fri 7AM-1:30PM",
+  "location": "1950 S Holly St. #2, Denver, CO 80222",
+  "phone": "(303) 568-9590",
+  "website": "https://luckydoggrooming.co",
+  "owner_name": "Brandi",
+  "services": [
+    {"name": "Full Groom", "price": "Call for pricing", "duration": "1.5-2 hrs"},
+    {"name": "Bath & Brush", "price": "Call for pricing", "duration": "45 min"},
+    {"name": "Nail Trimming", "price": "Call for pricing", "duration": "15 min"},
+    {"name": "Breed-Specific Cuts", "price": "Call for pricing", "duration": "1.5-2 hrs"},
+    {"name": "De-matting", "price": "Call for pricing", "duration": "Varies"}
+  ],
+  "faq": [
+    {"q": "How do I book?", "a": "Give us a call at (303) 568-9590! Please leave your pet's breed and weight when requesting a booking."},
+    {"q": "Do you groom all sizes?", "a": "Yes! We groom pets big and small."},
+    {"q": "What if my dog is matted?", "a": "No worries — we're experienced with matted coats. We'll be transparent about what to expect based on your dog's coat condition."},
+    {"q": "What are your hours?", "a": "We're open Monday through Friday, 7 AM to 1:30 PM. We're closed Saturday and Sunday."},
+    {"q": "Where are you located?", "a": "We're in Virginia Village at 1950 S Holly St. #2, Denver, CO 80222."}
+  ],
+  "escalation": "Great question! Let me have Brandi get back to you on that.",
+  "theme": {
+    "primary_color": "#f59e0b"
+  }
+}

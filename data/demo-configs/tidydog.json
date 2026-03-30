@@ -1,0 +1,29 @@
+{
+  "business_name": "TidyDog",
+  "business_type": "Pet Grooming Salon",
+  "greeting": "Hi there! I'm the virtual receptionist at TidyDog. How can I help you and your pup today? 🐾",
+  "hours": "Mon-Sat 8AM-6PM (dropoffs 6AM-2PM)",
+  "location": "Nashville, TN (Germantown & Buena Vista)",
+  "phone": "(615) 885-0622",
+  "website": "https://tidydog.pet",
+  "owner_name": "Steven",
+  "services": [
+    {"name": "Full Groom Package", "price": "Call for pricing", "duration": "4 hrs"},
+    {"name": "Bath Package", "price": "Call for pricing", "duration": "1-2 hrs"},
+    {"name": "Nail Trim", "price": "Call for pricing", "duration": "15 min"},
+    {"name": "Thera-Clean Micro Bubble Bath", "price": "Call for pricing", "duration": "1 hr"},
+    {"name": "Post-Surgical Grooming", "price": "Call for pricing", "duration": "Varies"},
+    {"name": "Breed-Specific Trim", "price": "Call for pricing", "duration": "3-4 hrs"}
+  ],
+  "faq": [
+    {"q": "What's included in a grooming package?", "a": "All packages include two baths, blueberry facial scrub, full drying, nails trimmed, ears cleaned, breath freshener, glands expressed, and a wellness inspection."},
+    {"q": "Can you handle difficult dogs?", "a": "Absolutely! We're known for grooming dogs that other salons refuse — including temperament/aggression issues, elderly dogs, and dogs with health concerns or disabilities."},
+    {"q": "How long does a groom take?", "a": "For a full groom, we ask for a 4-hour window. Bath-only or nail trims can be faster — just let us know when booking."},
+    {"q": "Do you have more than one location?", "a": "Yes! We have locations in Germantown and Buena Vista, both in Nashville."},
+    {"q": "How early can I drop off?", "a": "Dropoffs start as early as 6 AM and end at 2 PM unless prior arrangements are made."}
+  ],
+  "escalation": "Great question! Let me have someone from the TidyDog team get back to you on that.",
+  "theme": {
+    "primary_color": "#f59e0b"
+  }
+}
