@@ -359,6 +359,37 @@
     50% { opacity: 0.7; transform: scale(1.08); }
   }
 
+  /* Interactive spotlight effect */
+  @keyframes spotlight-sweep {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  /* Gradient shift for text */
+  @keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Typing indicator animation */
+  @keyframes typing-dot {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.6; }
+    30% { transform: translateY(-8px); opacity: 1; }
+  }
+
+  /* Subtle scale pulse */
+  @keyframes scale-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+  }
+
+  /* Image zoom on scroll */
+  @keyframes image-zoom-subtle {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.04); }
+  }
+
   /* Entrance: fade + rise */
   @keyframes fade-in-up {
     from {
@@ -421,6 +452,22 @@
 
   .animate-shimmer {
     animation: shimmer 3s ease-in-out infinite;
+  }
+
+  .animate-gradient {
+    animation: gradient-shift 4s ease-in-out infinite;
+  }
+
+  .animate-typing-dot {
+    animation: typing-dot 1.4s ease-in-out infinite;
+  }
+
+  .animate-scale-pulse {
+    animation: scale-pulse 2s ease-in-out infinite;
+  }
+
+  .animate-image-zoom {
+    animation: image-zoom-subtle 8s ease-out forwards;
   }
 }
 
