@@ -44,15 +44,15 @@ const opsBenefits = [
 
 function BenefitCard({ b }: { b: (typeof bookingBenefits)[number] }) {
   return (
-    <div className="flex items-start gap-4 p-5 rounded-xl hover:bg-white/[0.015] transition-all duration-200 group cursor-pointer">
-      <div className="w-11 h-11 rounded-xl bg-amber-400/[0.08] flex items-center justify-center text-amber-400 shrink-0 transition-transform duration-200 group-hover:scale-[1.05]">
-        <b.icon className="w-5 h-5" />
+    <div className="flex items-start gap-5 p-6 rounded-2xl hover:bg-white/[0.02] transition-all duration-300 group cursor-pointer border border-transparent hover:border-white/[0.04]">
+      <div className="w-12 h-12 rounded-xl bg-amber-400/[0.08] flex items-center justify-center text-amber-400/80 shrink-0 transition-all duration-300 group-hover:bg-amber-400/[0.12] group-hover:text-amber-400">
+        <b.icon className="w-6 h-6" />
       </div>
       <div>
-        <h4 className="text-white font-medium text-[15px] mb-1.5 group-hover:text-amber-100 transition-colors duration-200">
+        <h4 className="text-white font-light text-base mb-2 group-hover:text-amber-100 transition-colors duration-300">
           {b.title}
         </h4>
-        <p className="text-[13px] text-zinc-400 leading-[1.6]">
+        <p className="text-sm text-zinc-400 leading-[1.7] font-light">
           {b.description}
         </p>
       </div>
@@ -62,23 +62,23 @@ function BenefitCard({ b }: { b: (typeof bookingBenefits)[number] }) {
 
 export default function Benefits() {
   return (
-    <section className="max-w-5xl mx-auto px-4 sm:px-6 mb-32">
+    <section className="max-w-7xl mx-auto px-6 sm:px-8 mb-40">
       {/* Section header */}
-      <div className="text-center mb-16">
-        <p className="text-[11px] uppercase tracking-[0.1em] text-zinc-500 mb-3">Features</p>
-        <h2 className="text-[28px] sm:text-[34px] font-bold text-white tracking-tight mb-4 leading-[1.15]">
-          What your AI receptionist handles.
+      <div className="text-center mb-20">
+        <p className="text-xs uppercase tracking-[0.12em] text-zinc-500 mb-4 font-light">Capabilities</p>
+        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light text-white tracking-[-0.01em] mb-6 leading-[1.2]">
+          What your AI handles.
         </h2>
-        <p className="text-zinc-400 max-w-lg mx-auto leading-[1.65] text-[16px]">
-          So you can focus on the dogs on your table, not the phone ringing off the hook.
+        <p className="text-zinc-400 max-w-xl mx-auto leading-[1.7] text-lg font-light">
+          So you focus on grooming. We handle the bookings, questions, and follow-ups.
         </p>
       </div>
 
-      <div className="space-y-8">
+      <div className="space-y-12">
         {/* Booking & Client Management */}
         <div>
-          <p className="text-[11px] uppercase tracking-[0.08em] text-zinc-600 mb-4 px-1">Booking & Client Management</p>
-          <div className="grid grid-cols-1 gap-y-2">
+          <p className="text-xs uppercase tracking-[0.1em] text-zinc-600 mb-6 px-1 font-light">Booking &amp; Client Management</p>
+          <div className="grid grid-cols-1 gap-4">
             {bookingBenefits.map((b) => (
               <BenefitCard key={b.title} b={b} />
             ))}
@@ -89,8 +89,8 @@ export default function Benefits() {
 
         {/* Operations & Revenue */}
         <div>
-          <p className="text-[11px] uppercase tracking-[0.08em] text-zinc-600 mb-4 px-1">Operations & Revenue</p>
-          <div className="grid grid-cols-1 gap-y-2">
+          <p className="text-xs uppercase tracking-[0.1em] text-zinc-600 mb-6 px-1 font-light">Operations &amp; Revenue</p>
+          <div className="grid grid-cols-1 gap-4">
             {opsBenefits.map((b) => (
               <BenefitCard key={b.title} b={b} />
             ))}

@@ -35,28 +35,28 @@ export default function FAQ() {
   ];
 
   return (
-    <section className="max-w-3xl mx-auto px-4 sm:px-6 mb-32">
+    <section className="max-w-4xl mx-auto px-6 sm:px-8 mb-40">
       {/* Section header */}
-      <div className="text-center mb-16">
-        <p className="text-[11px] uppercase tracking-[0.1em] text-zinc-500 mb-3">FAQ</p>
-        <h2 className="text-[28px] sm:text-[34px] font-bold text-white tracking-tight mb-4 leading-[1.15]">
-          Questions groomers ask us.
+      <div className="text-center mb-20">
+        <p className="text-xs uppercase tracking-[0.12em] text-zinc-500 mb-4 font-light">Questions</p>
+        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light text-white tracking-[-0.01em] mb-6 leading-[1.2]">
+          Answered.
         </h2>
       </div>
 
       {/* Accordion items */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         {items.map((item, i) => (
           <details
             key={item.question}
-            className="glass-panel rounded-xl group overflow-hidden"
+            className="glass-panel rounded-2xl group overflow-hidden"
             open={i === 0}
           >
-            <summary className="font-medium text-white cursor-pointer p-5 sm:p-6 bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-200 flex justify-between items-center gap-4 select-none min-h-[52px]">
-              <span className="text-[15px] leading-tight">{item.question}</span>
-              <Plus className="w-4 h-4 text-zinc-500 group-open:rotate-45 transition-transform duration-200 ease-out shrink-0" />
+            <summary className="font-light text-white cursor-pointer p-6 sm:p-8 bg-white/[0.015] hover:bg-white/[0.025] transition-all duration-300 flex justify-between items-start gap-6 select-none min-h-[60px]">
+              <span className="text-lg leading-[1.5] font-light text-left">{item.question}</span>
+              <Plus className="w-5 h-5 text-zinc-500 group-open:rotate-45 transition-transform duration-300 ease-out shrink-0 mt-1" />
             </summary>
-            <div className="px-5 sm:px-6 pb-6 text-[14px] text-zinc-400 leading-[1.65]">
+            <div className="px-6 sm:px-8 pb-8 text-base text-zinc-400 leading-[1.8] font-light">
               {item.answer}
             </div>
           </details>

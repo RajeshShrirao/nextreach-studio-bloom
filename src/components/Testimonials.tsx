@@ -35,51 +35,50 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-32">
+    <section className="max-w-7xl mx-auto px-6 sm:px-8 mb-40">
       {/* Section header */}
-      <div className="text-center mb-16">
-        <p className="text-[11px] uppercase tracking-[0.1em] text-zinc-500 mb-3">
-          Testimonials
+      <div className="text-center mb-20">
+        <p className="text-xs uppercase tracking-[0.12em] text-zinc-500 mb-4 font-light">
+          Social Proof
         </p>
-        <h2 className="text-[28px] sm:text-[34px] font-bold text-white tracking-tight mb-4 leading-[1.15]">
-          Groomers are booking more. Sleeping better.
+        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light text-white tracking-[-0.01em] mb-6 leading-[1.2]">
+          Groomers are booking more.
         </h2>
-        <p className="text-zinc-400 max-w-lg mx-auto leading-[1.65] text-[16px]">
-          Real results from salons and clinics that stopped losing customers
-          after hours.
+        <p className="text-zinc-400 max-w-xl mx-auto leading-[1.7] text-lg font-light">
+          Real results from salons that stopped losing customers after hours.
         </p>
       </div>
 
       {/* Testimonial cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-[21px]">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {testimonials.map((t) => (
           <div
             key={t.name}
-            className="glass-panel glass-panel-hover p-7 rounded-2xl relative"
+            className="glass-panel glass-panel-hover p-8 rounded-3xl relative"
           >
             {/* Quote text */}
-            <p className="text-zinc-300 text-[15px] leading-[1.65] mb-6 relative z-10">
+            <p className="text-zinc-300 text-base leading-[1.8] mb-8 relative z-10 font-light">
               &ldquo;{t.quote}&rdquo;
             </p>
 
             {/* Author info */}
-            <div className="flex items-center gap-3 mb-4">
+            <div className="flex items-center gap-3 mb-5">
               <div
-                className={`w-10 h-10 rounded-full flex items-center justify-center text-[13px] font-semibold border shrink-0 ${t.color}`}
+                className={`w-11 h-11 rounded-full flex items-center justify-center text-sm font-light border shrink-0 ${t.color}`}
               >
                 {t.initials}
               </div>
               <div>
-                <p className="text-white text-[14px] font-medium leading-tight">{t.name}</p>
-                <p className="text-zinc-500 text-[12px] leading-tight mt-0.5">
+                <p className="text-white text-sm font-light leading-tight">{t.name}</p>
+                <p className="text-zinc-500 text-xs leading-tight mt-1 font-light">
                   {t.role} — {t.city}
                 </p>
               </div>
             </div>
 
             {/* Results highlight */}
-            <div className="border-t border-white/[0.06] pt-3">
-              <p className="text-[12px] text-emerald-400/80 leading-relaxed">{t.results}</p>
+            <div className="border-t border-white/[0.04] pt-4">
+              <p className="text-xs text-emerald-400/70 leading-relaxed font-light">{t.results}</p>
             </div>
           </div>
         ))}

@@ -4,49 +4,55 @@
 
 @layer base {
   :root {
-    /* Golden Ratio Spacing Scale (φ = 1.618) */
+    /* Premium Spacing Scale */
     --space-1: 4px;
     --space-2: 8px;
-    --space-3: 13px;
-    --space-4: 21px;
-    --space-5: 34px;
-    --space-6: 55px;
-    --space-7: 89px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 24px;
+    --space-6: 32px;
+    --space-7: 48px;
+    --space-8: 64px;
+    --space-9: 96px;
 
-    /* Semantic Colors */
-    --color-bg-base: #050505;
-    --color-bg-elevated: #0a0a0a;
-    --color-bg-surface: rgba(255, 255, 255, 0.03);
-    --color-bg-overlay: rgba(255, 255, 255, 0.06);
+    /* Premium Color Palette */
+    --color-bg-base: #0a0a0a;
+    --color-bg-elevated: #111111;
+    --color-bg-surface: rgba(255, 255, 255, 0.025);
+    --color-bg-overlay: rgba(255, 255, 255, 0.04);
+    --color-bg-hover: rgba(255, 255, 255, 0.06);
 
     --color-text-primary: #ffffff;
-    --color-text-secondary: #a1a1aa;
-    --color-text-tertiary: #71717a;
-    --color-text-disabled: #52525b;
+    --color-text-secondary: #b3b3b3;
+    --color-text-tertiary: #808080;
+    --color-text-disabled: #5a5a5a;
+    --color-text-muted: #666666;
 
+    /* Gold accent (premium, warm) */
     --color-accent: #fbbf24;
     --color-accent-hover: #f59e0b;
-    --color-accent-subtle: rgba(251, 191, 36, 0.08);
-    --color-accent-glow: rgba(251, 191, 36, 0.15);
+    --color-accent-active: #d97706;
+    --color-accent-subtle: rgba(251, 191, 36, 0.06);
+    --color-accent-glow: rgba(251, 191, 36, 0.12);
 
     --color-success: #34d399;
-    --color-success-subtle: rgba(52, 211, 153, 0.1);
+    --color-success-subtle: rgba(52, 211, 153, 0.08);
     --color-danger: #f87171;
 
-    --color-border-subtle: rgba(255, 255, 255, 0.06);
-    --color-border-default: rgba(255, 255, 255, 0.1);
-    --color-border-strong: rgba(255, 255, 255, 0.15);
+    --color-border-subtle: rgba(255, 255, 255, 0.04);
+    --color-border-default: rgba(255, 255, 255, 0.08);
+    --color-border-strong: rgba(255, 255, 255, 0.12);
 
-    /* Glass System */
+    /* Premium Glass System */
     --glass-bg: linear-gradient(
       135deg,
-      rgba(255, 255, 255, 0.04) 0%,
-      rgba(255, 255, 255, 0.01) 100%
+      rgba(255, 255, 255, 0.035) 0%,
+      rgba(255, 255, 255, 0.008) 100%
     );
-    --glass-border: 1px solid rgba(255, 255, 255, 0.08);
-    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
-      0 0 0 1px rgba(255, 255, 255, 0.02) inset;
-    --glass-blur: blur(20px) saturate(180%);
+    --glass-border: 1px solid rgba(255, 255, 255, 0.06);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.5),
+      0 0 0 1px rgba(255, 255, 255, 0.015) inset;
+    --glass-blur: blur(24px) saturate(190%);
 
     /* Spring Physics (Apple-style) */
     --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -71,9 +77,8 @@
   body {
     background-color: var(--color-bg-base);
     background-image:
-      radial-gradient(ellipse 80% 60% at 50% -10%, rgba(245, 158, 11, 0.05) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 40% at 80% 50%, rgba(16, 185, 129, 0.03) 0%, transparent 50%),
-      radial-gradient(circle at 50% 0%, #1a1612 0%, #050505 50%);
+      radial-gradient(ellipse 85% 50% at 50% 0%, rgba(251, 191, 36, 0.04) 0%, transparent 50%),
+      radial-gradient(ellipse 70% 45% at 85% 30%, rgba(251, 191, 36, 0.02) 0%, transparent 55%);
     overflow-x: hidden;
     min-height: 100dvh;
   }
@@ -134,17 +139,17 @@
   }
 
   .glass-panel-hover:hover {
-    transform: translateY(-3px);
+    transform: translateY(-4px);
     background: linear-gradient(
       135deg,
-      rgba(255, 255, 255, 0.06) 0%,
-      rgba(255, 255, 255, 0.02) 100%
+      rgba(255, 255, 255, 0.05) 0%,
+      rgba(255, 255, 255, 0.012) 100%
     );
-    border-color: var(--color-border-default);
+    border-color: rgba(251, 191, 36, 0.15);
     box-shadow:
-      0 16px 48px rgba(0, 0, 0, 0.5),
-      0 0 0 1px rgba(255, 255, 255, 0.04) inset,
-      0 0 80px rgba(251, 191, 36, 0.04);
+      0 20px 64px rgba(0, 0, 0, 0.6),
+      0 0 0 1px rgba(255, 255, 255, 0.03) inset,
+      0 0 100px rgba(251, 191, 36, 0.05);
   }
 
   .glass-panel-hover:active {
@@ -190,12 +195,11 @@
      BUTTONS (Apple-style)
      ============================================ */
   .btn-primary-glow {
-    /* Height 48px for Apple touch target minimum */
     min-height: 48px;
-    padding: 13px 28px;
+    padding: 14px 32px;
     box-shadow:
-      0 0 20px var(--color-accent-glow),
-      0 4px 12px rgba(0, 0, 0, 0.3);
+      0 0 24px var(--color-accent-glow),
+      0 6px 16px rgba(0, 0, 0, 0.35);
     transition:
       transform var(--duration-normal) var(--ease-spring),
       box-shadow var(--duration-normal) var(--ease-smooth),
@@ -204,14 +208,14 @@
   }
 
   .btn-primary-glow:hover {
-    transform: scale(1.01) translateY(-1px);
+    transform: translateY(-2px);
     box-shadow:
-      0 0 30px rgba(251, 191, 36, 0.25),
-      0 8px 20px rgba(0, 0, 0, 0.4);
+      0 0 36px rgba(251, 191, 36, 0.28),
+      0 12px 28px rgba(0, 0, 0, 0.45);
   }
 
   .btn-primary-glow:active {
-    transform: scale(0.97);
+    transform: translateY(0px);
     transition-duration: var(--duration-fast);
   }
 
@@ -302,6 +306,26 @@
 
 @layer utilities {
   /* ============================================
+     PREMIUM TYPOGRAPHY UTILITIES
+     ============================================ */
+  .text-balance-wide {
+    text-wrap: balance;
+    word-spacing: 0.1em;
+  }
+
+  .font-display {
+    font-family: inherit;
+    font-weight: 300;
+    letter-spacing: -0.015em;
+  }
+
+  .font-body {
+    font-family: inherit;
+    font-weight: 400;
+    letter-spacing: 0.005em;
+  }
+
+  /* ============================================
      KEYFRAME ANIMATIONS
      ============================================ */
 
@@ -320,13 +344,13 @@
   /* Floating with slight delay */
   @keyframes float-delayed {
     0%, 100% { transform: translateY(0px) scale(1); }
-    50% { transform: translateY(-13px) scale(1.01); }
+    50% { transform: translateY(-16px) scale(1.01); }
   }
 
   /* Slow ambient float */
   @keyframes float-slow {
     0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-8px); }
+    50% { transform: translateY(-10px); }
   }
 
   /* Pulsing glow for live indicators */
