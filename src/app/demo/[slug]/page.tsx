@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import fs from "fs";
 import path from "path";
 import Link from "next/link";
-import WidgetLoader from "@/components/demo/WidgetLoader";
+import Script from "next/script";
 
 const CONFIG_DIR = path.join(process.cwd(), "data", "demo-configs");
 
@@ -68,8 +68,18 @@ export default async function DemoPage({
 
   return (
     <main className="min-h-screen bg-[#050505] text-white selection:bg-amber-400/20 selection:text-amber-200">
-      {/* Inject the widget via client component */}
-      <WidgetLoader clientId={slug} />
+      {/* Inject the widget */}
+      <Script id="nr-widget-init" strategy="afterInteractive">
+        {`
+          (function() {
+            var s = document.createElement('script');
+            s.src = '/widget.js';
+            s.setAttribute('data-client-id', '${slug}');
+            s.setAttribute('data-api-base', window.location.origin);
+            document.head.appendChild(s);
+          })();
+        `}
+      </Script>
 
       {/* Top bar */}
       <nav className="border-b border-white/[0.06] bg-[#050505]/80 backdrop-blur-xl">
