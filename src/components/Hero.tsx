@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { Sparkles } from "lucide-react";
 
 export default function Hero() {
@@ -71,56 +70,26 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Hero image with chat overlay — right side */}
+        {/* Hero video — right side */}
         <div className="flex-1 max-w-md lg:max-w-lg relative w-full animate-fade-in-up group" style={{ animationDelay: '200ms' }}>
           {/* Premium frame with glow effect */}
           <div className="absolute -inset-3 bg-gradient-to-r from-amber-500/20 via-amber-500/10 to-amber-500/20 rounded-4xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
-          
-          <div className="relative rounded-3xl overflow-hidden border border-white/[0.06] shadow-2xl shadow-black/60 group-hover:shadow-black/80 transition-all duration-500">
-            <Image
-              src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=800&q=80"
-              alt="Happy golden retriever being groomed at a professional salon"
-              width={600}
-              height={450}
-              className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700"
-              priority
-            />
-            {/* Premium gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-            
-            {/* Ambient light effect on hover */}
-            <div className="absolute -top-1/2 right-0 w-96 h-96 bg-amber-500/20 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-            {/* Premium Chat UI overlay with staggered animations */}
-            <div className="absolute bottom-6 left-6 right-6 sm:bottom-8 sm:left-8 sm:right-8 animate-fade-in-up" style={{ animationDelay: '300ms' }}>
-              <div className="glass-panel rounded-2xl p-5 space-y-4 backdrop-blur-md">
-                {/* Header row */}
-                <div className="flex items-center gap-2.5 pb-4 border-b border-white/[0.06]">
-                  <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse-glow shrink-0" />
-                  <span className="text-white text-sm font-light tracking-wide">AI Receptionist</span>
-                </div>
-                
-                {/* User bubble with stagger */}
-                <div className="flex gap-3 animate-fade-in-up" style={{ animationDelay: '350ms' }}>
-                  <div className="bg-white/[0.05] text-zinc-300 text-sm rounded-2xl rounded-bl-md px-4 py-3 max-w-[78%] leading-relaxed font-light hover:bg-white/[0.08] transition-colors duration-300">
-                    Do you groom huskies?
-                  </div>
-                </div>
-                
-                {/* AI bubble with typing effect */}
-                <div className="flex gap-3 justify-end animate-fade-in-up" style={{ animationDelay: '450ms' }}>
-                  <div className="bg-gradient-to-r from-amber-400 to-amber-300 text-black text-sm rounded-2xl rounded-br-md px-4 py-3 max-w-[78%] leading-relaxed font-medium shadow-lg shadow-amber-500/20">
-                    <span>Yes! Absolutely.</span>
-                    {/* Typing indicator dots */}
-                    <div className="flex gap-1.5 mt-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-black/30 animate-typing-dot" style={{ animationDelay: '0ms' }} />
-                      <span className="w-1.5 h-1.5 rounded-full bg-black/30 animate-typing-dot" style={{ animationDelay: '150ms' }} />
-                      <span className="w-1.5 h-1.5 rounded-full bg-black/30 animate-typing-dot" style={{ animationDelay: '300ms' }} />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div className="relative rounded-3xl overflow-hidden border border-white/[0.06] shadow-2xl shadow-black/60 group-hover:shadow-black/80 transition-all duration-500">
+            {/* Animated hero video */}
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-auto object-cover"
+              poster="/hero-video-poster.png"
+            >
+              <source src="/hero-video.mp4" type="video/mp4" />
+            </video>
+
+            {/* Subtle gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
           </div>
         </div>
       </div>

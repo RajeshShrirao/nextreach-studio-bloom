@@ -1,0 +1,16 @@
+{
+  "name": "nextreach-remotion",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "remotion preview src/index.tsx",
+    "render": "remotion render src/index.tsx LandingPageVideo out/video.mp4",
+    "render:hero": "remotion render src/index.tsx HeroVideo ../public/hero-video.mp4"
+  },
+  "dependencies": {
+    "remotion": "^4.0.0"
+  },
+  "devDependencies": {
+    "@remotion/cli": "^4.0.441"
+  }
+}
