@@ -53,8 +53,8 @@ const ChatBubble = ({ type, text, showTyping }: ChatBubbleProps) => {
               ? COLORS.success
               : COLORS.accent,
           borderRadius: 16,
-          borderRadiusBottomLeft: isUser ? 16 : 4,
-          borderRadiusBottomRight: isUser ? 4 : 16,
+          borderBottomLeftRadius: isUser ? 16 : 4,
+          borderBottomRightRadius: isUser ? 4 : 16,
           padding: "10px 14px",
           boxShadow: isSuccess
             ? "0 4px 20px rgba(52, 211, 153, 0.3)"
@@ -142,7 +142,6 @@ export const ChatBubbles = () => {
           key={index}
           from={msg.delay}
           durationInFrames={150 - msg.delay}
-          premountFor={10}
           layout="none"
         >
           <ChatBubble
