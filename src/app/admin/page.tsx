@@ -23,8 +23,12 @@ interface Lead {
   demoSlug?: string;
   trackedLink?: string;
   emailSentAt?: string;
+  email2SentAt?: string;
+  email3SentAt?: string;
   lastReplyAt?: string;
   demoClickedAt?: string;
+  followUpAt?: string;
+  enrichmentComplete?: boolean;
   notes?: string;
   createdAt: string;
   updatedAt: string;
@@ -36,29 +40,38 @@ interface LeadStats {
   inPipeline: number;
   won: number;
   lost: number;
+  conversionRate: string;
   byStatus: Record<string, number>;
 }
 
 const STATUSES = [
   "new",
+  "enriching",
   "researched",
   "demo_built",
   "email_sent",
+  "email_2_sent",
+  "email_3_sent",
   "replied",
   "call_booked",
   "won",
   "lost",
+  "nurture",
 ] as const;
 
 const STATUS_COLORS: Record<string, string> = {
   new: "bg-zinc-600/40 text-zinc-300 border-zinc-500/30",
+  enriching: "bg-orange-500/20 text-orange-300 border-orange-400/30",
   researched: "bg-blue-500/20 text-blue-300 border-blue-400/30",
   demo_built: "bg-purple-500/20 text-purple-300 border-purple-400/30",
   email_sent: "bg-sky-500/20 text-sky-300 border-sky-400/30",
+  email_2_sent: "bg-cyan-500/20 text-cyan-300 border-cyan-400/30",
+  email_3_sent: "bg-teal-500/20 text-teal-300 border-teal-400/30",
   replied: "bg-green-500/20 text-green-300 border-green-400/30",
   call_booked: "bg-amber-500/20 text-amber-300 border-amber-400/30",
   won: "bg-emerald-500/30 text-emerald-200 border-emerald-400/40",
   lost: "bg-red-500/15 text-red-300 border-red-400/30",
+  nurture: "bg-violet-500/20 text-violet-300 border-violet-400/30",
 };
 
 function formatDate(iso?: string) {
@@ -153,6 +166,11 @@ function AddLeadModal({
     instagram: "",
     bookingSystem: "",
     painPoint: "",
+    googleRating: "",
+    googleReviewCount: "",
+    demoSlug: "",
+    trackedLink: "",
+    enrichmentComplete: false,
     notes: "",
   });
   const [saving, setSaving] = useState(false);
@@ -161,13 +179,20 @@ function AddLeadModal({
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.checked }));
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSaving(true);
+    const payload: Record<string, unknown> = { ...form };
+    if (payload.googleRating) payload.googleRating = Number(payload.googleRating);
+    if (payload.googleReviewCount) payload.googleReviewCount = Number(payload.googleReviewCount);
     await fetch("/api/leads", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
+      body: JSON.stringify(payload),
     });
     setSaving(false);
     onAdded();
@@ -236,6 +261,30 @@ function AddLeadModal({
               <label className="text-xs text-zinc-500 mb-1 block">Pain Point</label>
               <input name="painPoint" value={form.painPoint} onChange={handleChange} className={inputClass} />
             </div>
+          </div>
+          <div className="grid grid-cols-2 gap-3">
+            <div>
+              <label className="text-xs text-zinc-500 mb-1 block">Google Rating</label>
+              <input name="googleRating" type="number" step="0.1" min="0" max="5" value={form.googleRating} onChange={handleChange} className={inputClass} placeholder="0.0 - 5.0" />
+            </div>
+            <div>
+              <label className="text-xs text-zinc-500 mb-1 block">Google Review Count</label>
+              <input name="googleReviewCount" type="number" min="0" value={form.googleReviewCount} onChange={handleChange} className={inputClass} placeholder="0" />
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-3">
+            <div>
+              <label className="text-xs text-zinc-500 mb-1 block">Demo Slug</label>
+              <input name="demoSlug" value={form.demoSlug} onChange={handleChange} className={inputClass} placeholder="e.g. happy-paws-grooming" />
+            </div>
+            <div>
+              <label className="text-xs text-zinc-500 mb-1 block">Tracked Link</label>
+              <input name="trackedLink" value={form.trackedLink} onChange={handleChange} className={inputClass} placeholder="https://..." />
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <input name="enrichmentComplete" type="checkbox" checked={form.enrichmentComplete} onChange={handleCheckboxChange} className="rounded bg-white/5 border-white/10 text-amber-400 focus:ring-amber-400/40" />
+            <label className="text-xs text-zinc-500">Enrichment Complete</label>
           </div>
           <div>
             <label className="text-xs text-zinc-500 mb-1 block">Notes</label>
@@ -399,6 +448,28 @@ function LeadRow({
                   <p className="text-zinc-300">{lead.painPoint}</p>
                 </div>
               )}
+              <div className="glass-panel rounded-lg p-3 border-amber-400/10">
+                <span className="text-amber-400/70 text-xs font-medium">Follow-Up At</span>
+                <p className="text-zinc-200 font-medium">{formatDateTime(lead.followUpAt)}</p>
+              </div>
+              <div className="glass-panel rounded-lg p-3 border-cyan-400/10">
+                <span className="text-cyan-400/70 text-xs font-medium">Email 2 Sent At</span>
+                <p className="text-zinc-200 font-medium">{formatDateTime(lead.email2SentAt)}</p>
+              </div>
+              <div className="glass-panel rounded-lg p-3 border-teal-400/10">
+                <span className="text-teal-400/70 text-xs font-medium">Email 3 Sent At</span>
+                <p className="text-zinc-200 font-medium">{formatDateTime(lead.email3SentAt)}</p>
+              </div>
+              <div className="glass-panel rounded-lg p-3 border-violet-400/10">
+                <span className="text-violet-400/70 text-xs font-medium">Enrichment Complete</span>
+                <p className={`font-medium ${lead.enrichmentComplete ? "text-emerald-400" : "text-zinc-500"}`}>
+                  {lead.enrichmentComplete ? "Yes" : "No"}
+                </p>
+              </div>
+              <div className="glass-panel rounded-lg p-3 border-purple-400/10">
+                <span className="text-purple-400/70 text-xs font-medium">Demo Clicked At</span>
+                <p className="text-zinc-200 font-medium">{formatDateTime(lead.demoClickedAt)}</p>
+              </div>
               <div>
                 <span className="text-zinc-600 text-xs">Created</span>
                 <p className="text-zinc-300">{formatDateTime(lead.createdAt)}</p>
@@ -421,13 +492,124 @@ function LeadRow({
   );
 }
 
+function BulkImportModal({
+  onClose,
+  onImported,
+}: {
+  onClose: () => void;
+  onImported: () => void;
+}) {
+  const [jsonInput, setJsonInput] = useState("");
+  const [importing, setImporting] = useState(false);
+  const [result, setResult] = useState<{ created: number; failed: number; errors: string[] } | null>(null);
+
+  const handleImport = async () => {
+    setImporting(true);
+    setResult(null);
+    try {
+      const leads = JSON.parse(jsonInput);
+      const res = await fetch("/api/leads/bulk", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ leads }),
+      });
+      const data = await res.json();
+      setResult(data);
+      if (data.created > 0) {
+        onImported();
+      }
+    } catch {
+      setResult({ created: 0, failed: 1, errors: ["Invalid JSON format"] });
+    }
+    setImporting(false);
+  };
+
+  const inputClass =
+    "w-full px-3 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white placeholder-zinc-600 focus:outline-none focus:border-amber-400/40 focus:ring-1 focus:ring-amber-400/20 transition text-sm font-mono";
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm px-4">
+      <div className="glass-panel rounded-2xl p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto animate-in">
+        <div className="flex items-center justify-between mb-5">
+          <h2 className="text-lg font-semibold text-white">Bulk Import Leads</h2>
+          <button onClick={onClose} className="text-zinc-500 hover:text-white transition text-xl">
+            ×
+          </button>
+        </div>
+        <div className="space-y-4">
+          <div>
+            <label className="text-xs text-zinc-500 mb-1 block">JSON Array of Leads</label>
+            <textarea
+              value={jsonInput}
+              onChange={(e) => setJsonInput(e.target.value)}
+              rows={12}
+              className={inputClass}
+              placeholder={`[
+  {
+    "businessName": "Happy Paws Grooming",
+    "ownerName": "Jane Smith",
+    "email": "jane@happypaws.com",
+    "city": "Austin",
+    "state": "TX",
+    "phone": "555-1234"
+  }
+]`}
+            />
+          </div>
+          {result && (
+            <div className="glass-panel rounded-lg p-4">
+              <div className="flex gap-6 text-sm">
+                <div>
+                  <span className="text-emerald-400 font-medium">{result.created}</span>
+                  <span className="text-zinc-600 ml-1">created</span>
+                </div>
+                <div>
+                  <span className="text-red-400 font-medium">{result.failed}</span>
+                  <span className="text-zinc-600 ml-1">failed</span>
+                </div>
+              </div>
+              {result.errors.length > 0 && (
+                <div className="mt-2 text-xs text-red-400">
+                  {result.errors.map((err, i) => (
+                    <div key={i}>• {err}</div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+          <div className="flex gap-3 pt-2">
+            <button
+              type="button"
+              onClick={onClose}
+              className="flex-1 py-2.5 rounded-xl border border-white/10 text-zinc-400 hover:text-white hover:border-white/20 transition text-sm"
+            >
+              Close
+            </button>
+            <button
+              onClick={handleImport}
+              disabled={importing || !jsonInput.trim()}
+              className="flex-1 py-2.5 rounded-xl bg-amber-400/90 text-black font-medium hover:bg-amber-400 transition btn-primary-glow text-sm disabled:opacity-50"
+            >
+              {importing ? "Importing..." : "Import Leads"}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function AdminPage() {
   const [authenticated, setAuthenticated] = useState(false);
   const [checking, setChecking] = useState(true);
   const [leads, setLeads] = useState<Lead[]>([]);
   const [stats, setStats] = useState<LeadStats | null>(null);
   const [filter, setFilter] = useState<string>("");
+  const [cityFilter, setCityFilter] = useState<string>("");
+  const [search, setSearch] = useState<string>("");
+  const [debouncedSearch, setDebouncedSearch] = useState<string>("");
   const [showModal, setShowModal] = useState(false);
+  const [showBulkModal, setShowBulkModal] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -439,16 +621,27 @@ export default function AdminPage() {
     setChecking(false);
   }, []);
 
+  useEffect(() => {
+    const timer = setTimeout(() => setDebouncedSearch(search), 300);
+    return () => clearTimeout(timer);
+  }, [search]);
+
+  const uniqueCities = Array.from(new Set(leads.map((l) => l.city).filter(Boolean))).sort();
+
   const fetchLeads = useCallback(async () => {
     setLoading(true);
-    const url = filter ? `/api/leads?status=${filter}` : "/api/leads";
+    const params = new URLSearchParams();
+    if (filter) params.set("status", filter);
+    if (debouncedSearch) params.set("search", debouncedSearch);
+    if (cityFilter) params.set("city", cityFilter);
+    const url = `/api/leads?${params.toString()}`;
     const [leadsRes, statsRes] = await Promise.all([fetch(url), fetch("/api/leads/stats")]);
     const leadsData = await leadsRes.json();
     const statsData = await statsRes.json();
     setLeads(leadsData);
     setStats(statsData);
     setLoading(false);
-  }, [filter]);
+  }, [filter, debouncedSearch, cityFilter]);
 
   useEffect(() => {
     if (authenticated) fetchLeads();
@@ -490,6 +683,12 @@ export default function AdminPage() {
           </Link>
           <div className="flex items-center gap-3">
             <button
+              onClick={() => setShowBulkModal(true)}
+              className="px-4 py-2 rounded-xl border border-white/10 text-zinc-400 hover:text-white hover:border-white/20 transition text-sm"
+            >
+              Bulk Import
+            </button>
+            <button
               onClick={() => setShowModal(true)}
               className="px-4 py-2 rounded-xl bg-amber-400/90 text-black text-sm font-medium hover:bg-amber-400 transition btn-primary-glow"
             >
@@ -510,13 +709,14 @@ export default function AdminPage() {
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
         {stats && (
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mb-8">
             {[
               { label: "Total Leads", value: stats.total, color: "text-white" },
               { label: "New", value: stats.new, color: "text-zinc-400" },
               { label: "In Pipeline", value: stats.inPipeline, color: "text-amber-400" },
               { label: "Won", value: stats.won, color: "text-emerald-400" },
               { label: "Lost", value: stats.lost, color: "text-red-400" },
+              { label: "Conversion Rate", value: stats.conversionRate, color: "text-cyan-400" },
             ].map((card) => (
               <div key={card.label} className="glass-panel rounded-xl p-4">
                 <p className={`text-2xl font-semibold ${card.color}`}>{card.value}</p>
@@ -532,6 +732,7 @@ export default function AdminPage() {
             <div className="flex flex-wrap items-center gap-2 text-xs">
               {[
                 { key: "new", label: "New" },
+                { key: "enriching", label: "Enriching" },
                 { key: "researched", label: "Researched" },
                 { key: "demo_built", label: "Demo Built" },
                 { key: "email_sent", label: "Email Sent" },
@@ -548,7 +749,7 @@ export default function AdminPage() {
                       </p>
                       <p className="text-zinc-600 mt-0.5">{step.label}</p>
                     </div>
-                    {i < 6 && <span className="text-zinc-700">→</span>}
+                    {i < 7 && <span className="text-zinc-700">→</span>}
                   </div>
                 );
               })}
@@ -556,16 +757,35 @@ export default function AdminPage() {
           </div>
         )}
 
-        <div className="flex items-center gap-3 mb-4">
+        <div className="flex flex-wrap items-center gap-3 mb-4">
+          <input
+            type="text"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search business, owner, email, city..."
+            className="text-sm rounded-lg px-3 py-2 bg-white/5 border border-white/10 text-white placeholder-zinc-600 focus:outline-none focus:border-amber-400/40 transition min-w-[220px]"
+          />
           <select
             value={filter}
             onChange={(e) => setFilter(e.target.value)}
             className="text-sm rounded-lg px-3 py-2 bg-white/5 border border-white/10 text-white focus:outline-none focus:border-amber-400/40 cursor-pointer"
           >
-            <option value="" className="bg-zinc-900">All Leads</option>
+            <option value="" className="bg-zinc-900">All Statuses</option>
             {STATUSES.map((s) => (
               <option key={s} value={s} className="bg-zinc-900">
                 {s}
+              </option>
+            ))}
+          </select>
+          <select
+            value={cityFilter}
+            onChange={(e) => setCityFilter(e.target.value)}
+            className="text-sm rounded-lg px-3 py-2 bg-white/5 border border-white/10 text-white focus:outline-none focus:border-amber-400/40 cursor-pointer"
+          >
+            <option value="" className="bg-zinc-900">All Cities</option>
+            {uniqueCities.map((c) => (
+              <option key={c} value={c} className="bg-zinc-900">
+                {c}
               </option>
             ))}
           </select>
@@ -635,6 +855,12 @@ export default function AdminPage() {
       </main>
 
       {showModal && <AddLeadModal onClose={() => setShowModal(false)} onAdded={fetchLeads} />}
+      {showBulkModal && (
+        <BulkImportModal
+          onClose={() => setShowBulkModal(false)}
+          onImported={fetchLeads}
+        />
+      )}
     </div>
   );
 }

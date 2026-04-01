@@ -3,11 +3,28 @@ import { readLeads, createLead, type Lead } from "@/lib/leads";
 
 export async function GET(request: NextRequest) {
   const status = request.nextUrl.searchParams.get("status");
-  const leads = await readLeads(status || undefined);
+  const search = request.nextUrl.searchParams.get("search");
+  const city = request.nextUrl.searchParams.get("city");
+  let leads = await readLeads(status || undefined);
 
-  if (status) {
-    const filtered = leads.filter((l) => l.status === status);
-    return NextResponse.json(filtered);
+  if (search) {
+    const q = search.toLowerCase();
+    leads = leads.filter(
+      (l) =>
+        l.businessName.toLowerCase().includes(q) ||
+        l.ownerName.toLowerCase().includes(q) ||
+        l.email.toLowerCase().includes(q) ||
+        (l.city || "").toLowerCase().includes(q) ||
+        (l.state || "").toLowerCase().includes(q) ||
+        (l.website || "").toLowerCase().includes(q)
+    );
+  }
+
+  if (city) {
+    leads = leads.filter(
+      (l) => (l.city || "").toLowerCase() === city.toLowerCase() ||
+             (l.state || "").toLowerCase() === city.toLowerCase()
+    );
   }
 
   return NextResponse.json(leads);

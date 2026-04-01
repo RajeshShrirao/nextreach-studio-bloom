@@ -7,13 +7,17 @@ const LEADS_FILE = path.join(DATA_DIR, "leads.json");
 
 export const LEAD_STATUSES = [
   "new",
+  "enriching",
   "researched",
   "demo_built",
   "email_sent",
+  "email_2_sent",
+  "email_3_sent",
   "replied",
   "call_booked",
   "won",
   "lost",
+  "nurture",
 ] as const;
 
 export type LeadStatus = (typeof LEAD_STATUSES)[number];
@@ -39,6 +43,10 @@ export interface Lead {
   emailSentAt?: string;
   lastReplyAt?: string;
   demoClickedAt?: string;
+  followUpAt?: string;
+  email2SentAt?: string;
+  email3SentAt?: string;
+  enrichmentComplete?: boolean;
   notes?: string;
   createdAt: string;
   updatedAt: string;
@@ -65,6 +73,10 @@ interface LeadRow {
   email_sent_at?: string;
   last_reply_at?: string;
   demo_clicked_at?: string;
+  follow_up_at?: string;
+  email_2_sent_at?: string;
+  email_3_sent_at?: string;
+  enrichment_complete?: boolean;
   notes?: string;
   created_at: string;
   updated_at: string;
@@ -92,6 +104,10 @@ function leadRowToLead(row: LeadRow): Lead {
     emailSentAt: row.email_sent_at,
     lastReplyAt: row.last_reply_at,
     demoClickedAt: row.demo_clicked_at,
+    followUpAt: row.follow_up_at,
+    email2SentAt: row.email_2_sent_at,
+    email3SentAt: row.email_3_sent_at,
+    enrichmentComplete: row.enrichment_complete,
     notes: row.notes,
     createdAt: row.created_at,
     updatedAt: row.updated_at,
@@ -120,6 +136,10 @@ function leadToRow(lead: Partial<Lead>): Partial<LeadRow> {
     email_sent_at: lead.emailSentAt,
     last_reply_at: lead.lastReplyAt,
     demo_clicked_at: lead.demoClickedAt,
+    follow_up_at: lead.followUpAt,
+    email_2_sent_at: lead.email2SentAt,
+    email_3_sent_at: lead.email3SentAt,
+    enrichment_complete: lead.enrichmentComplete,
     notes: lead.notes,
     created_at: lead.createdAt,
     updated_at: lead.updatedAt,
@@ -254,6 +274,7 @@ export async function getLeadStats(leads?: Lead[]): Promise<{
   inPipeline: number;
   won: number;
   lost: number;
+  conversionRate: string;
   byStatus: Record<string, number>;
 }> {
   const allLeads = leads || await readLeads();
@@ -264,18 +285,27 @@ export async function getLeadStats(leads?: Lead[]): Promise<{
   }
 
   const pipeline =
+    (byStatus["enriching"] || 0) +
     (byStatus["researched"] || 0) +
     (byStatus["demo_built"] || 0) +
     (byStatus["email_sent"] || 0) +
+    (byStatus["email_2_sent"] || 0) +
+    (byStatus["email_3_sent"] || 0) +
     (byStatus["replied"] || 0) +
     (byStatus["call_booked"] || 0);
+
+  const won = byStatus["won"] || 0;
+  const conversionRate = allLeads.length > 0
+    ? ((won / allLeads.length) * 100).toFixed(1) + "%"
+    : "0%";
 
   return {
     total: allLeads.length,
     new: byStatus["new"] || 0,
     inPipeline: pipeline,
-    won: byStatus["won"] || 0,
+    won,
     lost: byStatus["lost"] || 0,
+    conversionRate,
     byStatus,
   };
 }
