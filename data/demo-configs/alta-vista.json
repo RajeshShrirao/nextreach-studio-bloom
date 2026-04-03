@@ -1,0 +1,31 @@
+{
+  "business_name": "Alta Vista Boarding & Grooming",
+  "business_type": "Pet Boarding & Grooming",
+  "greeting": "Welcome to Alta Vista Pet! I'm the virtual receptionist. How can we help your furry family member today?",
+  "hours": "Call for hours",
+  "location": "Phoenix, AZ",
+  "phone": "(602) 482-0204",
+  "website": "https://www.altavistapets.com/",
+  "owner_name": "",
+  "services": [
+    {"name": "Full Groom", "price": "Call for pricing", "duration": "1.5-2 hrs"},
+    {"name": "Bath & Brush", "price": "Call for pricing", "duration": "1-1.5 hrs"},
+    {"name": "Pet Boarding", "price": "Call for pricing", "duration": "Per night"},
+    {"name": "Nail Trimming", "price": "Call for pricing", "duration": "15 min"},
+    {"name": "Ear Cleaning", "price": "Call for pricing", "duration": "15 min"},
+    {"name": "De-shedding Treatment", "price": "Call for pricing", "duration": "30-45 min"}
+  ],
+  "faq": [
+    {"q": "Do I need an appointment?", "a": "Yes! Call us at (602) 482-0204 to schedule your grooming visit."},
+    {"q": "Do you offer pet boarding?", "a": "Yes! We offer both pet boarding and grooming services under one roof."},
+    {"q": "How long does grooming take?", "a": "Most grooming sessions are 1.5-2 hours depending on breed and coat condition."},
+    {"q": "Where are you located?", "a": "We're in Phoenix, Arizona. Call us for our exact location and directions."},
+    {"q": "Do you groom cats?", "a": "We offer both dog and cat grooming services. Call to confirm availability for your cat."},
+    {"q": "Can I board my pets while they're being groomed?", "a": "Yes! We offer the convenience of boarding and grooming at the same facility."},
+    {"q": "What size dogs do you work with?", "a": "All sizes! With 229+ reviews at 4.4 stars, we're experienced with dogs from chihuahuas to great danes."}
+  ],
+  "escalation": "Great question! Let me have a team member get back to you. Call us at (602) 482-0204.",
+  "theme": {
+    "primary_color": "#6366f1"
+  }
+}

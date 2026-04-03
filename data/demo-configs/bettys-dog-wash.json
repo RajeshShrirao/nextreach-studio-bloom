@@ -1,0 +1,31 @@
+{
+  "business_name": "Betty's Dog Wash & Grooming",
+  "business_type": "Pet Grooming Salon",
+  "greeting": "Hi there! Welcome to Betty's Dog Wash & Grooming. I'm the virtual receptionist. How can we help your pup today?",
+  "hours": "Mon-Sat 8AM-3PM, Sun Closed",
+  "location": "15425 S 48th St #104, Phoenix, AZ 85044",
+  "phone": "(480) 893-9180",
+  "website": "http://bettyspetgrooming.com/",
+  "owner_name": "",
+  "services": [
+    {"name": "Full Groom", "price": "Call for pricing", "duration": "1-2 hrs"},
+    {"name": "Bath & Brush", "price": "Call for pricing", "duration": "45 min-1.5 hrs"},
+    {"name": "Cat Grooming", "price": "Call for pricing", "duration": "1-1.5 hrs"},
+    {"name": "Nail Trimming", "price": "Call for pricing", "duration": "15 min"},
+    {"name": "Specialty Cuts", "price": "Call for pricing", "duration": "By appointment"},
+    {"name": "Ear Cleaning", "price": "Call for pricing", "duration": "15 min"}
+  ],
+  "faq": [
+    {"q": "Do I need an appointment?", "a": "Yes! Please call us at (480) 893-9180 or book online through our scheduling system."},
+    {"q": "What are your hours?", "a": "We're open Monday-Saturday 8AM-3PM, Closed Sundays."},
+    {"q": "How long does a full groom take?", "a": "Usually 1-2 hours depending on breed, size, and coat condition."},
+    {"q": "Where are you located?", "a": "We're at 15425 S 48th St #104, Phoenix, AZ 85044."},
+    {"q": "Do you groom cats?", "a": "Yes! We offer cat grooming services. Call us to schedule."},
+    {"q": "How are prices determined?", "a": "Pricing depends on your dog's breed, temperament, size, coat condition, and age."},
+    {"q": "Do you handle anxious dogs?", "a": "Absolutely! With 189 reviews at 4.4 stars over 12+ years, we're experienced with all temperaments."}
+  ],
+  "escalation": "Great question! Let me have one of our groomers get back to you. Call us at (480) 893-9180.",
+  "theme": {
+    "primary_color": "#f97316"
+  }
+}

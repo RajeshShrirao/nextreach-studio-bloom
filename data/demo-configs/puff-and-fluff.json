@@ -1,0 +1,30 @@
+{
+  "business_name": "Puff & Fluff Grooming",
+  "business_type": "Pet Grooming Salon",
+  "greeting": "Hi there! Welcome to Puff & Fluff Grooming. I'm the virtual receptionist. How can we pamper your pet today?",
+  "hours": "Call for hours",
+  "location": "Phoenix, AZ",
+  "phone": "602-266-5360",
+  "website": "https://puffandfluffspa.com/",
+  "owner_name": "",
+  "services": [
+    {"name": "Full Groom", "price": "Call for pricing", "duration": "1.5-2 hrs"},
+    {"name": "Bath & Brush", "price": "Call for pricing", "duration": "1-1.5 hrs"},
+    {"name": "Nail Trimming", "price": "Call for pricing", "duration": "15 min"},
+    {"name": "Ear Cleaning", "price": "Call for pricing", "duration": "15 min"},
+    {"name": "De-shedding", "price": "Call for pricing", "duration": "30 min"},
+    {"name": "Specialty Cuts", "price": "Call for pricing", "duration": "By appointment"}
+  ],
+  "faq": [
+    {"q": "Do I need an appointment?", "a": "Yes! Please call us at 602-266-5360 or visit our website to schedule."},
+    {"q": "How long does a full groom take?", "a": "Most sessions take 1.5-2 hours depending on breed and coat condition."},
+    {"q": "Where are you located?", "a": "We have a location in Phoenix, Arizona. Call us or visit our website for the exact address."},
+    {"q": "Do you groom cats?", "a": "We primarily specialize in dog grooming. Please call to confirm if we can accommodate your cat."},
+    {"q": "Do you handle all breeds?", "a": "Absolutely! Our experienced groomers work with all breeds and sizes with care and expertise."},
+    {"q": "What services do you offer?", "a": "We offer full grooms, bath & brush, nail trimming, ear cleaning, de-shedding, and specialty cuts."}
+  ],
+  "escalation": "Great question! Let me have a groomer get back to you. Call us at 602-266-5360.",
+  "theme": {
+    "primary_color": "#14b8a6"
+  }
+}

@@ -268,6 +268,95 @@ export async function deleteLead(id: string): Promise<boolean> {
   return true;
 }
 
+export async function bulkUpdateLeads(ids: string[], updates: Partial<LeadRow>): Promise<number> {
+  const sb = getSupabase();
+  const now = new Date().toISOString();
+  const updateRow = { ...updates, updated_at: now };
+
+  if (sb) {
+    const result = await sb.from("leads").update(updateRow).in("id", ids);
+    if (result.error) {
+      // Fallback: update one at a time
+      let count = 0;
+      for (const id of ids) {
+        const r = await sb.from("leads").update({ ...updates, id, updated_at: now }).eq("id", id);
+        if (!r.error) count++;
+      }
+      return count;
+    }
+    return ids.length;
+  }
+
+  // JSON fallback
+  let count = 0;
+  const leads = readLeadsJson();
+  for (const lead of leads) {
+    if (ids.includes(lead.id)) {
+      Object.assign(lead, updates, { updatedAt: now });
+      count++;
+    }
+  }
+  writeLeadsJson(leads);
+  return count;
+}
+
+export async function bulkDeleteLeads(ids: string[]): Promise<number> {
+  const sb = getSupabase();
+
+  if (sb) {
+    const result = await sb.from("leads").delete().in("id", ids);
+    if (result.error) {
+      console.error("Supabase bulkDelete error:", result.error);
+      // Fallback: delete one at a time
+      let count = 0;
+      for (const id of ids) {
+        if (await deleteLead(id)) count++;
+      }
+      return count;
+    }
+    return ids.length;
+  }
+
+  // JSON fallback
+  const leads = readLeadsJson().filter((l) => !ids.includes(l.id));
+  const deleted = ids.filter((id) => readLeadsJson().some((l) => l.id === id));
+  writeLeadsJson(leads);
+  return deleted.length;
+}
+
+export async function bulkCreateLeads(leadData: Partial<LeadRow>[]): Promise<Lead[]> {
+  const sb = getSupabase();
+  const now = new Date().toISOString();
+
+  const rows: LeadRow[] = leadData.map((d) => ({
+    id: generateId(),
+    status: d.status || "new",
+    created_at: now,
+    updated_at: now,
+    ...d,
+  })) as LeadRow[];
+
+  if (sb) {
+    const result = await sb.from("leads").insert(rows).select();
+    if (result.error) {
+      console.error("Supabase bulkCreate error:", result.error);
+      // Fallback: one at a time
+      for (const row of rows) {
+        await sb.from("leads").insert(row);
+      }
+      return rows.map(leadRowToLead);
+    }
+    return (result.data as LeadRow[]).map(leadRowToLead);
+  }
+
+  // JSON fallback
+  const leads = readLeadsJson();
+  const newLeads = rows.map(leadRowToLead);
+  leads.push(...newLeads);
+  writeLeadsJson(leads);
+  return newLeads;
+}
+
 export async function getLeadStats(leads?: Lead[]): Promise<{
   total: number;
   new: number;

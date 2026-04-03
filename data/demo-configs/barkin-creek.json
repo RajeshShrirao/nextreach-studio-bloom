@@ -1,0 +1,30 @@
+{
+  "business_name": "Barkin' Creek Dog Kitchen & Bath",
+  "business_type": "Pet Grooming & Bathing Salon",
+  "greeting": "Hey there! Welcome to Barkin' Creek Dog Kitchen & Bath. I'm the virtual receptionist. How can I help you and your pup today? 🐾",
+  "hours": "Call for hours",
+  "location": "Austin, TX",
+  "phone": "(512) 982-6700",
+  "website": "https://barkincreek.com/locations/lamar/",
+  "owner_name": "",
+  "services": [
+    {"name": "Bath Package", "price": "Call for pricing", "duration": "1-1.5 hrs"},
+    {"name": "Full Groom", "price": "Call for pricing", "duration": "1.5-2 hrs"},
+    {"name": "Nail Trim", "price": "Call for pricing", "duration": "15 min"},
+    {"name": "Ear Cleaning", "price": "Call for pricing", "duration": "15 min"},
+    {"name": "De-shedding Treatment", "price": "Call for pricing", "duration": "30 min"},
+    {"name": "Flea & Tick Bath", "price": "Call for pricing", "duration": "30-45 min"}
+  ],
+  "faq": [
+    {"q": "Do I need an appointment?", "a": "Yes! Call us at (512) 982-6700 or visit our website to schedule."},
+    {"q": "How long does a full groom take?", "a": "Most full grooming sessions take 1.5-2 hours depending on your dog's breed and coat."},
+    {"q": "Do you groom cats?", "a": "We specialize in dog grooming. Please reach out to a cat-specific groomer for your feline friend."},
+    {"q": "Where are you located?", "a": "We're in Austin, Texas. Call us for the exact location and directions."},
+    {"q": "What breeds do you work with?", "a": "We groom dogs of all breeds and sizes — from tiny poodles to massive double-coated breeds."},
+    {"q": "Do you handle anxious dogs?", "a": "Absolutely. We use gentle techniques to make sure your pup feels safe and comfortable."}
+  ],
+  "escalation": "Great question! Let me have a team member get back to you. Call us at (512) 982-6700.",
+  "theme": {
+    "primary_color": "#f59e0b"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "business_name": "Cut & Dry Pet Salon",
+  "business_type": "Pet Grooming Salon",
+  "greeting": "Hi there! I'm the virtual receptionist at Cut & Dry Pet Salon. How can I help your pet today?",
+  "hours": "Mon-Sun 8AM-4PM",
+  "location": "5270 N 59th Ave #3, Glendale, AZ 85301",
+  "phone": "(623) 939-6058",
+  "website": "https://www.cutndrypetsalon.com/",
+  "owner_name": "",
+  "services": [
+    {"name": "Full Service Bath & Brush", "price": "Call for pricing", "duration": "1-2 hrs"},
+    {"name": "Full Groom & Haircut", "price": "Call for pricing", "duration": "1.5-2 hrs"},
+    {"name": "De-shedding Treatment", "price": "Add-on available", "duration": "30-45 min"},
+    {"name": "Furminator De-shedding", "price": "Add-on available", "duration": "30 min"},
+    {"name": "Nail Trimming", "price": "Call for pricing", "duration": "15 min"},
+    {"name": "Ear Cleaning", "price": "Call for pricing", "duration": "15 min"}
+  ],
+  "faq": [
+    {"q": "Do I need an appointment?", "a": "Yes! Please call us at (623) 939-6058 between 8AM-4PM to book your appointment."},
+    {"q": "How long does grooming take?", "a": "Most sessions take 1-2 hours depending on your dog's size and coat type."},
+    {"q": "Do you groom cats?", "a": "Please call us to confirm — we primarily specialize in dog grooming."},
+    {"q": "Where are you located?", "a": "We're at 5270 N 59th Ave #3, Glendale, AZ 85301."},
+    {"q": "Do you handle difficult or anxious dogs?", "a": "Absolutely! With 684+ Google reviews, our experienced groomers know how to handle all temperaments."},
+    {"q": "What de-shedding treatments do you offer?", "a": "We offer Furminator and de-shedding packages — great for seasonal shedding!"},
+    {"q": "What days are you open?", "a": "We're open 7 days a week, Mon-Sun 8AM-4PM."}
+  ],
+  "escalation": "Great question! Let me have one of our groomers get back to you. Call us directly at (623) 939-6058.",
+  "theme": {
+    "primary_color": "#3b82f6"
+  }
+}

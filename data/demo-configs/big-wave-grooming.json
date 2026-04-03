@@ -1,0 +1,31 @@
+{
+  "business_name": "Big Wave Mobile Grooming",
+  "business_type": "Mobile Pet Grooming",
+  "greeting": "Hi there! Welcome to Big Wave Mobile Grooming. I'm the virtual receptionist. What can we do for your pup today?",
+  "hours": "Call for hours",
+  "location": "Gilbert, AZ",
+  "phone": "(480) 610-2385",
+  "website": "https://bigwavegrooming.com/",
+  "owner_name": "Bill",
+  "services": [
+    {"name": "Full Mobile Groom", "price": "Call for pricing", "duration": "1-2 hrs"},
+    {"name": "Bath & Brush", "price": "Call for pricing", "duration": "45 min-1.5 hrs"},
+    {"name": "Nail Trimming", "price": "Call for pricing", "duration": "15 min"},
+    {"name": "Ear Cleaning", "price": "Call for pricing", "duration": "15 min"},
+    {"name": "De-shedding Treatment", "price": "Call for pricing", "duration": "30-45 min"},
+    {"name": "Flea & Tick Bath", "price": "Call for pricing", "duration": "30 min"}
+  ],
+  "faq": [
+    {"q": "Do you come to my house?", "a": "Yes! We're a fully mobile grooming service — we come to you in Gilbert and the surrounding area."},
+    {"q": "How long does grooming take?", "a": "Most full grooms take 1-2 hours depending on breed and coat condition."},
+    {"q": "Where are you located?", "a": "We're based in Gilbert, Arizona. We serve the surrounding Phoenix-metro area."},
+    {"q": "Do you groom cats?", "a": "We primarily specialize in dogs. Please call us at (480) 610-2385 to discuss your specific pet's needs."},
+    {"q": "Do you handle all breeds?", "a": "Absolutely! With 166 reviews at 4.9 stars, Bill and the team are experienced with all breeds and sizes."},
+    {"q": "How do I book?", "a": "Call us at (480) 610-2385 or reach out through our website to schedule your mobile grooming appointment."},
+    {"q": "What if my dog has matted fur?", "a": "No problem! We handle matting during the grooming session. It may take a bit longer depending on severity."}
+  ],
+  "escalation": "Great question! Let me have Bill get back to you. Call us at (480) 610-2385.",
+  "theme": {
+    "primary_color": "#06b6d4"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "business_name": "The Hairy Dog",
+  "business_type": "Pet Grooming Salon",
+  "greeting": "Hi! Welcome to The Hairy Dog. I'm the virtual receptionist. What can we help your furry friend with today?",
+  "hours": "Call for hours",
+  "location": "Phoenix, AZ",
+  "phone": "(602) 333-0447",
+  "website": "http://www.thehairydog.net/",
+  "owner_name": "",
+  "services": [
+    {"name": "Full Groom", "price": "Call for pricing", "duration": "1.5-2 hrs"},
+    {"name": "Bath & Brush", "price": "Call for pricing", "duration": "1-2 hrs"},
+    {"name": "Nail Trimming", "price": "Call for pricing", "duration": "15 min"},
+    {"name": "Ear Cleaning", "price": "Call for pricing", "duration": "15 min"},
+    {"name": "De-shedding", "price": "Call for pricing", "duration": "30 min"},
+    {"name": "Hand Stripping", "price": "Call for pricing", "duration": "By appointment"}
+  ],
+  "faq": [
+    {"q": "Do I need an appointment?", "a": "Yes! Call us at (602) 333-0447 to schedule your grooming appointment."},
+    {"q": "How long does grooming take?", "a": "Most sessions take 1.5-2 hours depending on breed, size, and coat condition."},
+    {"q": "Where are you located?", "a": "We're in Phoenix, Arizona. Call for the exact address."},
+    {"q": "Do you groom cats?", "a": "We specialize in dogs. Please call us to see if we can accommodate cats."},
+    {"q": "Do you handle all breeds?", "a": "Yes! With 266+ reviews at 4.6 stars, our experienced groomers handle dogs of all sizes and breeds."},
+    {"q": "What if my dog is anxious?", "a": "We're experienced with nervous pups and use gentle, patient techniques."}
+  ],
+  "escalation": "Great question! Let me have a groomer get back to you. Call us at (602) 333-0447.",
+  "theme": {
+    "primary_color": "#0ea5e9"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "business_name": "Paws with Claws Pet Spa & Resort",
+  "business_type": "Pet Grooming, Boarding & Daycare",
+  "greeting": "Welcome to Paws with Claws Pet Spa & Resort! I'm the virtual receptionist. How can I help your pet today?",
+  "hours": "Mon-Sun 7AM-9PM",
+  "location": "Ahwatukee, AZ",
+  "phone": "(480) 791-4197",
+  "website": "https://www.pawswclaws.com/",
+  "owner_name": "",
+  "services": [
+    {"name": "Dog Grooming", "price": "Call for pricing", "duration": "1-2 hrs"},
+    {"name": "Cat Grooming", "price": "Call for pricing", "duration": "1-1.5 hrs"},
+    {"name": "Dog Boarding", "price": "Call for pricing", "duration": "Per night"},
+    {"name": "Cat Boarding", "price": "Call for pricing", "duration": "Per night"},
+    {"name": "Cage-Free Daycare", "price": "Call for pricing", "duration": "Full day"},
+    {"name": "VIP Grooming Suite", "price": "Call for pricing", "duration": "2+ hrs"}
+  ],
+  "faq": [
+    {"q": "What are your hours?", "a": "We're open daily from 7AM to 9PM — seven days a week!"},
+    {"q": "Do you handle cats?", "a": "Yes! We offer both cat and dog grooming and boarding services."},
+    {"q": "Do you need appointments for grooming?", "a": "Yes, we recommend calling (480) 791-4197 to schedule your pet's grooming appointment."},
+    {"q": "What is cage-free daycare?", "a": "Our daycare lets dogs play freely in a safe, supervised environment instead of being in cages or kennels."},
+    {"q": "Where are you located?", "a": "We're in Ahwatukee, Arizona. Call us for the exact address and directions."},
+    {"q": "Do you offer cage-free grooming?", "a": "Yes! We offer cage-free grooming options for pets who prefer a more comfortable environment."},
+    {"q": "Can I board my dog long-term?", "a": "Absolutely! We offer both short-term and extended boarding options."}
+  ],
+  "escalation": "Great question! Let me have a team member get back to you. Call us directly at (480) 791-4197.",
+  "theme": {
+    "primary_color": "#8b5cf6"
+  }
+}

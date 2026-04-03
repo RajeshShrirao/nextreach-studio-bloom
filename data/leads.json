@@ -8,7 +8,10 @@
     "city": "Austin, TX",
     "website": "https://pawsandbubbles.com",
     "instagram": "@pawsandbubbles",
-    "googleReviews": { "rating": 4.8, "count": 127 },
+    "googleReviews": {
+      "rating": 4.8,
+      "count": 127
+    },
     "bookingSystem": "Gingr",
     "status": "not-contacted",
     "notes": "Found via Instagram. High-end grooming salon, 3 locations. Good fit for starter plan.",
@@ -24,7 +27,10 @@
     "city": "Denver, CO",
     "website": "https://happytailsgrooming.com",
     "instagram": "@happytailsgroom",
-    "googleReviews": { "rating": 4.5, "count": 89 },
+    "googleReviews": {
+      "rating": 4.5,
+      "count": 89
+    },
     "bookingSystem": "PetExec",
     "status": "email-1-sent",
     "demoUrl": "https://happy-tails-demo.railway.app",
@@ -45,7 +51,10 @@
     "city": "Portland, OR",
     "website": "https://fluffyfriendssalon.com",
     "instagram": "@fluffyfriendssalon",
-    "googleReviews": { "rating": 4.9, "count": 203 },
+    "googleReviews": {
+      "rating": 4.9,
+      "count": 203
+    },
     "bookingSystem": "Gingr",
     "status": "clicked-demo",
     "demoUrl": "https://fluffy-friends-demo.railway.app",
@@ -66,7 +75,10 @@
     "city": "Phoenix, AZ",
     "website": "https://barkandbark.com",
     "instagram": "@bark.grooming",
-    "googleReviews": { "rating": 5.0, "count": 100 },
+    "googleReviews": {
+      "rating": 5,
+      "count": 100
+    },
     "bookingSystem": "Online",
     "status": "not-contacted",
     "notes": "Solo owner/groomer since 2013. 10+ yrs experience. Gay-owned boutique salon in Downtown Phoenix. Active Instagram. Top priority lead.",
@@ -82,7 +94,10 @@
     "city": "Tampa, FL",
     "website": "https://www.pawphoriagrooming.com",
     "instagram": "@pawphoriagrooming",
-    "googleReviews": { "rating": 5.0, "count": 0 },
+    "googleReviews": {
+      "rating": 5,
+      "count": 0
+    },
     "bookingSystem": "Online",
     "status": "not-contacted",
     "notes": "Women-owned. Award-winning groomers. Channelside location. New business (only 3 IG posts). Full + mini grooming + bath/nail/ear + à la carte.",
@@ -98,7 +113,10 @@
     "city": "Austin, TX",
     "website": "https://www.modmuttsalon.com",
     "instagram": "@modmuttsalon",
-    "googleReviews": { "rating": 5.0, "count": 0 },
+    "googleReviews": {
+      "rating": 5,
+      "count": 0
+    },
     "bookingSystem": "Online",
     "status": "not-contacted",
     "notes": "Est. 2017. Dogs + cats. Appointment-only. Nail trims walk-in 11am-2pm. Tue-Fri 7:30-6, Mon & Sat 8-5. Need to find owner name.",
@@ -114,7 +132,10 @@
     "city": "Denver, CO",
     "website": "https://www.luckydoggrooming.co",
     "instagram": "",
-    "googleReviews": { "rating": 5.0, "count": 0 },
+    "googleReviews": {
+      "rating": 5,
+      "count": 0
+    },
     "bookingSystem": "Phone",
     "status": "not-contacted",
     "notes": "Solo groomer, 39 yrs experience. Mon-Fri 7:00AM-1:30PM only (short hours = overwhelmed?). High pain point: limited availability, phone-only bookings.",
@@ -130,7 +151,10 @@
     "city": "Nashville, TN",
     "website": "https://tidydog.pet",
     "instagram": "",
-    "googleReviews": { "rating": 5.0, "count": 0 },
+    "googleReviews": {
+      "rating": 5,
+      "count": 0
+    },
     "bookingSystem": "Online",
     "status": "not-contacted",
     "notes": "Est. 2010. Army vet owner (Steven M. Dixon). 2 locations (Germantown/Buena Vista). Award-winning. Specializes in difficult dogs. Thera-Clean micro bubble bath. Mon-Sat 8-6.",
@@ -146,7 +170,10 @@
     "city": "Nashville, TN (Madison)",
     "website": "https://www.gabbythegroomer.com",
     "instagram": "",
-    "googleReviews": { "rating": 5.0, "count": 0 },
+    "googleReviews": {
+      "rating": 5,
+      "count": 0
+    },
     "bookingSystem": "Online",
     "status": "not-contacted",
     "notes": "Mobile grooming + luxury spa. Very popular (booked out). Strong testimonials. Multi-location = need better call management. Need to find email.",
@@ -162,7 +189,10 @@
     "city": "Raleigh, NC",
     "website": "https://woofinwaggle.com",
     "instagram": "",
-    "googleReviews": { "rating": 5.0, "count": 0 },
+    "googleReviews": {
+      "rating": 5,
+      "count": 0
+    },
     "bookingSystem": "",
     "status": "not-contacted",
     "notes": "North Raleigh's premier dog spa + boutique. Retail shop. Featured in publications. Need to find owner name, email, phone, and IG.",
@@ -178,7 +208,10 @@
     "city": "Phoenix, AZ",
     "website": "",
     "instagram": "",
-    "googleReviews": { "rating": 5.0, "count": 945 },
+    "googleReviews": {
+      "rating": 5,
+      "count": 945
+    },
     "bookingSystem": "",
     "status": "not-contacted",
     "notes": "5555 N 7th St #126, Phoenix, AZ 85014. 945 reviews on Birdeye = very high volume. Huge missed call potential. Need to enrich: owner, email, website.",
@@ -194,7 +227,10 @@
     "city": "Nashville, TN",
     "website": "https://www.thedogspot.com",
     "instagram": "",
-    "googleReviews": { "rating": 5.0, "count": 0 },
+    "googleReviews": {
+      "rating": 5,
+      "count": 0
+    },
     "bookingSystem": "",
     "status": "not-contacted",
     "notes": "Hundreds of 5-star Google reviews. Grooming + boarding + daycare. High volume multi-service facility. Need to enrich: owner, email, phone.",
@@ -210,7 +246,10 @@
     "city": "Denver, CO",
     "website": "",
     "instagram": "",
-    "googleReviews": { "rating": 5.0, "count": 190 },
+    "googleReviews": {
+      "rating": 5,
+      "count": 190
+    },
     "bookingSystem": "",
     "status": "not-contacted",
     "notes": "3333 S Tamarac Dr, Ste P, Denver, CO 80231. 190 reviews. Need to enrich: find website, owner name, email, phone.",

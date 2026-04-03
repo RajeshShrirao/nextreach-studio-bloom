@@ -1,0 +1,30 @@
+{
+  "business_name": "Art of Pet Grooming",
+  "business_type": "Pet Grooming Salon",
+  "greeting": "Hi there! I'm the virtual receptionist at Art of Pet Grooming. How can I help your pet today?",
+  "hours": "Call for hours",
+  "location": "Glendale, AZ",
+  "phone": "(623) 522-0077",
+  "website": "http://artofpetgroomingandsunshine.com/",
+  "owner_name": "",
+  "services": [
+    {"name": "Full Groom", "price": "Call for pricing", "duration": "1.5-2 hrs"},
+    {"name": "Bath & Brush", "price": "Call for pricing", "duration": "1-2 hrs"},
+    {"name": "Doodle & Poodle Full Groom", "price": "Call for pricing", "duration": "2+ hrs"},
+    {"name": "Mobile Grooming", "price": "Call for pricing", "duration": "By appointment"},
+    {"name": "Nail Trimming", "price": "Call for pricing", "duration": "15 min"},
+    {"name": "De-shedding", "price": "Call for pricing", "duration": "30-45 min"}
+  ],
+  "faq": [
+    {"q": "Do I need an appointment?", "a": "Yes! Call us at (623) 522-0077 to schedule your grooming appointment."},
+    {"q": "Do you handle doodles and poodles?", "a": "Absolutely! We specialize in doodle and poodle grooms with breed-specific haircuts."},
+    {"q": "Do you offer mobile grooming?", "a": "Yes! We offer mobile grooming through our Sunshine Pet Grooming mobile service."},
+    {"q": "Where are you located?", "a": "We're in Glendale, Arizona. Call us for exact location details."},
+    {"q": "How long does a full groom take?", "a": "Most full grooming sessions take 1.5-2 hours depending on your pet's breed and coat condition."},
+    {"q": "Do you groom cats?", "a": "We primarily specialize in dog grooming. Please call us to confirm if we can help with your cat."}
+  ],
+  "escalation": "Great question! Let me have one of our groomers get back to you. Call us at (623) 522-0077.",
+  "theme": {
+    "primary_color": "#10b981"
+  }
+}

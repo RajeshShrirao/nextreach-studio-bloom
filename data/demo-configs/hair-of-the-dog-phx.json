@@ -1,0 +1,30 @@
+{
+  "business_name": "Hair of the Dog",
+  "business_type": "Pet Grooming Salon",
+  "greeting": "Hi there! Welcome to Hair of the Dog. I'm the virtual receptionist. How can I help your pup today?",
+  "hours": "Call for hours",
+  "location": "Phoenix, AZ",
+  "phone": "(602) 266-4500",
+  "website": "http://hairofthedogphx.com/",
+  "owner_name": "",
+  "services": [
+    {"name": "Full Groom", "price": "Call for pricing", "duration": "1.5-2 hrs"},
+    {"name": "Bath & Brush", "price": "Call for pricing", "duration": "1-1.5 hrs"},
+    {"name": "Nail Trim", "price": "Call for pricing", "duration": "15 min"},
+    {"name": "Ear Cleaning", "price": "Call for pricing", "duration": "15 min"},
+    {"name": "De-shedding", "price": "Call for pricing", "duration": "30 min"},
+    {"name": "Sanitary Trim", "price": "Call for pricing", "duration": "20 min"}
+  ],
+  "faq": [
+    {"q": "Do I need an appointment?", "a": "Yes! Please call us at (602) 266-4500 to book your appointment."},
+    {"q": "How long does a full groom take?", "a": "Most sessions take 1.5-2 hours depending on your dog's size and coat."},
+    {"q": "Where are you located?", "a": "We're in Phoenix, Arizona. Call us for our exact address."},
+    {"q": "Do you groom cats?", "a": "We specialize in dogs only. We'd recommend a cat-specific groomer for your feline friend!"},
+    {"q": "What breeds do you groom?", "a": "All breeds and sizes! With 255+ reviews at 4.7 stars, our team has seen and groomed it all."},
+    {"q": "What if my dog has matting?", "a": "No problem! We handle matting as part of our grooming process — it may take a bit longer depending on severity."}
+  ],
+  "escalation": "Great question! Let me have one of our groomers reach out. Call us at (602) 266-4500.",
+  "theme": {
+    "primary_color": "#f43f5e"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "business_name": "Fancy Pets",
+  "business_type": "Pet Grooming Salon",
+  "greeting": "Hi there! Welcome to Fancy Pets. I'm the virtual receptionist. How can we pamper your pet today?",
+  "hours": "Call for hours",
+  "location": "Phoenix, AZ",
+  "phone": "(480) 699-1077",
+  "website": "http://fancypetsaz.com/",
+  "owner_name": "",
+  "services": [
+    {"name": "Full Groom", "price": "Call for pricing", "duration": "1.5-2 hrs"},
+    {"name": "Bath & Brush", "price": "Call for pricing", "duration": "1-1.5 hrs"},
+    {"name": "Nail Trimming", "price": "Call for pricing", "duration": "15 min"},
+    {"name": "Ear Cleaning", "price": "Call for pricing", "duration": "15 min"},
+    {"name": "De-shedding", "price": "Call for pricing", "duration": "30 min"},
+    {"name": "Specialty Cuts", "price": "Call for pricing", "duration": "By appointment"}
+  ],
+  "faq": [
+    {"q": "Do I need an appointment?", "a": "Yes! Please call us at (480) 699-1077 to schedule your grooming appointment."},
+    {"q": "How long does a full groom take?", "a": "Most sessions take 1.5-2 hours depending on your dog's size, breed, and coat condition."},
+    {"q": "Where are you located?", "a": "We're in Phoenix, Arizona. Call us for our exact address and directions."},
+    {"q": "Do you groom cats?", "a": "We primarily specialize in dog grooming. Please call to confirm if we can accommodate your cat."},
+    {"q": "Do you handle all breeds?", "a": "Yes! With 225+ reviews at 4.6 stars, our experienced groomers work with dogs of all breeds and sizes."}
+  ],
+  "escalation": "Great question! Let me have a team member get back to you. Call us at (480) 699-1077.",
+  "theme": {
+    "primary_color": "#ec4899"
+  }
+}
