@@ -52,7 +52,7 @@ export interface Lead {
   updatedAt: string;
 }
 
-interface LeadRow {
+export interface LeadRow {
   id: string;
   business_name: string;
   owner_name: string;
