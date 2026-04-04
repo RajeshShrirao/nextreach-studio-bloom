@@ -12,7 +12,7 @@ const limitArg = process.argv.find(a => a.startsWith("--limit="));
 const limit = limitArg ? parseInt(limitArg.split("=")[1]) : 25;
 
 const BREVO_KEY = process.env.BREVO_API_KEY;
-const BREVO_BASE = "https://api.brevo.com/v3";
+const BREVO_BASE = "https://api.brevo.com";
 const TEMPLATE_ID = 10; // Email 1
 const LIST_ID = 6;
 
@@ -26,7 +26,8 @@ async function brevo(path, body, method = "POST") {
     headers: { "api-key": BREVO_KEY, "Content-Type": "application/json", accept: "application/json" },
     body: JSON.stringify(body)
   });
-  return { ok: r.ok, status: r.status, data: r.ok ? await r.json() : null };
+  const text = await r.text();
+  return { ok: r.ok, status: r.status, data: r.ok && text ? JSON.parse(text) : null };
 }
 
 // Create/update contact with businessName attribute, then send transactional

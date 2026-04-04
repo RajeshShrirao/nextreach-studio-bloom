@@ -9,7 +9,7 @@ const __dirname = import.meta.dirname || import.meta.url.split("/").slice(0, -1)
 
 const dryRun = process.argv.includes("--dry-run");
 const BREVO_KEY = process.env.BREVO_API_KEY;
-const BREVO_BASE = "https://api.brevo.com/v3";
+const BREVO_BASE = "https://api.brevo.com";
 const LIST_ID = 6;
 
 const TEMPLATES = {
@@ -28,7 +28,8 @@ async function brevo(path, body) {
     headers: { "api-key": BREVO_KEY, "Content-Type": "application/json", accept: "application/json" },
     body: JSON.stringify(body)
   });
-  return { ok: r.ok, status: r.status, data: r.ok ? await r.json() : null };
+  const text = await r.text();
+  return { ok: r.ok, status: r.status, data: r.ok && text ? JSON.parse(text) : null };
 }
 
 // SAFETY: never send to leads who have replied, won, call_booked, or lost
