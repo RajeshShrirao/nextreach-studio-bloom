@@ -4,6 +4,7 @@
 
 import { createClient } from "@supabase/supabase-js";
 import { fileURLToPath } from "url";
+import { COMPLIMENTS, pickFrom, formatLocation } from "./lib/email.js";
 
 const __dirname = import.meta.dirname || import.meta.url.split("/").slice(0, -1).join("/");
 
@@ -38,6 +39,9 @@ const SAFE_STATUSES = ["email_sent", "email_2_sent", "email_3_sent"];
 const MS_PER_DAY = 86400000;
 
 async function sendFollowup(lead, templateId, label) {
+  const slug = lead.demo_slug || "";
+  const city = formatLocation(lead);
+
   await brevo("/v3/contacts", {
     email: lead.email,
     listIds: [LIST_ID],
@@ -50,7 +54,10 @@ async function sendFollowup(lead, templateId, label) {
     to: [{ email: lead.email, name: lead.owner_name || lead.business_name }],
     params: {
       businessName: lead.business_name,
-      ownerName: lead.owner_name || "Team"
+      ownerName: lead.owner_name || "Team",
+      city,
+      compliment: pickFrom(COMPLIMENTS, lead.business_name),
+      demoLink: `https://nextreachstudio.com/demo/${slug}`
     }
   });
 

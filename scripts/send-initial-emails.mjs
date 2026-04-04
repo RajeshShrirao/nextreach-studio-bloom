@@ -4,6 +4,7 @@
 
 import { createClient } from "@supabase/supabase-js";
 import { fileURLToPath } from "url";
+import { COMPLIMENTS, OBSERVATIONS, pickFrom, formatLocation } from "./lib/email.js";
 
 const __dirname = import.meta.dirname || import.meta.url.split("/").slice(0, -1).join("/");
 
@@ -32,7 +33,24 @@ async function brevo(path, body, method = "POST") {
 
 // Create/update contact with businessName attribute, then send transactional
 async function sendEmail(lead) {
-  // Step 1: Upsert contact with businessName
+  const slug = lead.demo_slug || "";
+  const city = formatLocation(lead);
+  const compliment = pickFrom(COMPLIMENTS, lead.business_name);
+  const observation = pickFrom(OBSERVATIONS, lead.business_name + lead.city);
+
+  // Step 1: Mark as sending (only if still demo_built — prevents double-send)
+  const { error: statusError } = await supabase
+    .from("leads")
+    .update({ status: "email_sent", email_sent_at: new Date().toISOString(), updated_at: new Date().toISOString() })
+    .eq("id", lead.id)
+    .eq("status", "demo_built");
+
+  if (statusError) {
+    console.error(`  STATUS ERROR ${lead.business_name}:`, statusError.message);
+    return false;
+  }
+
+  // Step 2: Upsert contact
   await brevo("/v3/contacts", {
     email: lead.email,
     listIds: [LIST_ID],
@@ -40,17 +58,24 @@ async function sendEmail(lead) {
     updateEnabled: true
   });
 
-  // Step 2: Send template email
-  const slug = lead.demo_slug || "";
+  // Step 3: Send template email
   const result = await brevo("/v3/smtp/email", {
     templateId: TEMPLATE_ID,
     to: [{ email: lead.email, name: lead.owner_name || lead.business_name }],
     params: {
       businessName: lead.business_name,
       ownerName: lead.owner_name || "Team",
+      city,
+      compliment,
+      observation,
       demoLink: `https://nextreachstudio.com/demo/${slug}`
     }
   });
+
+  if (!result.ok) {
+    // Revert status on send failure so lead can be retried
+    await supabase.from("leads").update({ status: "demo_built" }).eq("id", lead.id);
+  }
 
   return result.ok;
 }
@@ -86,18 +111,8 @@ async function main() {
     }
 
     const ok = await sendEmail(lead);
-    if (ok) {
-      // Update status optimistically
-      await supabase
-        .from("leads")
-        .update({ status: "email_sent", email_sent_at: new Date().toISOString(), updated_at: new Date().toISOString() })
-        .eq("id", lead.id);
-      console.log(`SENT: ${preview}`);
-      sent++;
-    } else {
-      console.error(`FAILED: ${preview}`);
-      failed++;
-    }
+    if (ok) { console.log(`SENT: ${preview}`); sent++; }
+    else { console.error(`FAILED: ${preview}`); failed++; }
     // Small delay for rate limiting
     await new Promise(r => setTimeout(r, 200));
   }
