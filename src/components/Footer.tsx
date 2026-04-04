@@ -27,13 +27,13 @@ export default function Footer() {
       <div className="absolute top-0 left-0 right-0 gradient-divider" />
 
       {/* Hero text */}
-      <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light text-white mb-8 leading-[1.2] max-w-3xl mx-auto">
-        Every missed call goes to a competitor.
-      </h2>
-      <p className="text-zinc-400 mb-6 max-w-xl mx-auto leading-[1.8] text-lg font-light">
-        Your AI receptionist catches every inquiry, books every appointment, and never sleeps.
+      <p className="text-sm text-zinc-500 italic font-normal mb-6 max-w-xl mx-auto leading-relaxed">
+        Every call that goes unanswered is a booking you&apos;ll never see on your calendar.
       </p>
-      <p className="text-zinc-500 text-sm mb-16 font-light">
+      <h2 className="font-display font-semibold text-4xl sm:text-5xl lg:text-6xl text-white mb-6 leading-[1.2] max-w-3xl mx-auto">
+        Stop losing clients to voicemail.
+      </h2>
+      <p className="text-zinc-500 text-sm mb-16">
         No payment until you approve your demo. Cancel anytime.
       </p>
 
@@ -49,31 +49,34 @@ export default function Footer() {
                 : "bg-white/[0.015] border-white/[0.06] hover:bg-white/[0.03] hover:border-white/[0.1]"
             }`}
           >
-            <p className={`text-xs font-light mb-2 uppercase tracking-[0.08em] ${plan.primary ? "text-amber-400/70" : "text-zinc-500"}`}>
+            <p className={`text-xs mb-2 uppercase tracking-[0.08em] font-medium ${plan.primary ? "text-amber-400/70" : "text-zinc-500"}`}>
               {plan.name}
             </p>
-            <p className={`text-3xl font-light mb-3 ${plan.primary ? "text-amber-300" : "text-white"}`}>
+            <p className={`text-3xl font-display font-bold mb-3 ${plan.primary ? "text-amber-300" : "text-white"}`}>
               {plan.price}
             </p>
-            <p className="text-sm text-zinc-400 leading-[1.6] font-light">{plan.features}</p>
+            <p className="text-sm text-zinc-400 leading-[1.6]">{plan.features}</p>
+            <p className={`text-sm mt-4 ${plan.primary ? "text-amber-400" : "text-zinc-500 group-hover:text-amber-400 transition-colors duration-300"}`}>
+              Get started &rarr;
+            </p>
           </a>
         ))}
       </div>
 
       {/* Social proof */}
-      <div className="mb-16 text-sm text-zinc-500 font-light">
+      <div className="mb-16 text-sm text-zinc-500">
         <p>Trusted by salons in Denver, Phoenix, Austin, Seattle, Miami &amp; more.</p>
       </div>
 
       <div className="gradient-divider max-w-6xl mx-auto mb-8" />
 
       {/* Founder blurb */}
-      <p className="text-xs text-zinc-600 mb-8 font-light">
+      <p className="text-xs text-zinc-600 mb-8">
         Built by pet business operators who hated missing calls.
       </p>
 
       {/* Footer links */}
-      <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 mb-8 text-xs text-zinc-600 font-light">
+      <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 mb-8 text-xs text-zinc-600">
         <a
           href="mailto:hello@nextreachstudio.com"
           className="hover:text-zinc-400 transition-colors duration-300 cursor-pointer"
@@ -87,7 +90,7 @@ export default function Footer() {
       </div>
 
       {/* Copyright */}
-      <div className="flex flex-col md:flex-row justify-center items-center gap-2 sm:gap-0 text-xs text-zinc-600 font-light">
+      <div className="flex flex-col md:flex-row justify-center items-center gap-2 sm:gap-0 text-xs text-zinc-600">
         <p>&copy; 2026 NextReach Studio.</p>
         <p className="md:ml-4">AI Receptionists for Pet Grooming &amp; Vet Clinics.</p>
       </div>

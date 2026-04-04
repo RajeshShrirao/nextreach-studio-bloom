@@ -54,9 +54,9 @@ export default function ComparisonTable() {
     <section className="max-w-7xl mx-auto px-6 sm:px-8 mb-40">
       {/* Section header */}
       <div className="text-center mb-20">
-        <p className="text-xs uppercase tracking-[0.12em] text-zinc-500 mb-4 font-light">Comparison</p>
-        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light text-white tracking-[-0.01em] mb-6 leading-[1.2]">
-          See how we compare.
+        <p className="text-xs uppercase tracking-[0.12em] text-zinc-500 mb-4">Comparison</p>
+        <h2 className="font-display font-semibold text-4xl sm:text-5xl lg:text-6xl text-white tracking-[-0.01em] mb-6 leading-[1.2]">
+          Why groomers choose this over everything else.
         </h2>
       </div>
 
@@ -64,12 +64,12 @@ export default function ComparisonTable() {
       <div className="hidden sm:block overflow-x-auto rounded-3xl border border-white/[0.06]">
         <table className="w-full text-left border-collapse min-w-[600px]">
           <thead>
-            <tr className="border-b border-white/[0.06] text-xs text-zinc-500 uppercase tracking-[0.1em] font-light">
-              <th className="py-6 font-light text-left pl-6">Feature</th>
+            <tr className="border-b border-white/[0.06] text-xs text-zinc-500 uppercase tracking-[0.1em]">
+              <th className="py-6 text-left pl-6">Feature</th>
               {columns.map((col) => (
                 <th
                   key={col.key}
-                  className={`py-6 px-6 text-left ${col.key === "ours" ? "font-light text-white" : "font-light"}`}
+                  className={`py-6 px-6 text-left ${col.key === "ours" ? "text-white" : ""}`}
                 >
                   <div className="flex items-center gap-2">
                     {col.key === "ours" && (
@@ -87,18 +87,18 @@ export default function ComparisonTable() {
                 key={row.feature}
                 className={`border-b border-white/[0.04] ${i % 2 === 1 ? "bg-white/[0.008]" : ""}`}
               >
-                <td className="py-6 pl-6 text-zinc-400 font-light">{row.feature}</td>
+                <td className="py-6 pl-6 text-zinc-400">{row.feature}</td>
                 {columns.map((col, ci) => {
                   const val = row[col.key as keyof typeof row] as string;
                   const checked = row.check[ci];
                   return (
                     <td
                       key={col.key}
-                      className={`py-6 px-6 ${col.key === "ours" ? "text-white font-light" : "text-zinc-500"}`}
+                      className={`py-6 px-6 ${col.key === "ours" ? "text-white" : "text-zinc-500"}`}
                     >
                       <div className="flex items-center gap-3">
                         <StatusIcon positive={checked} faint={col.key !== "ours"} />
-                        <span className="font-light">{val}</span>
+                        <span>{val}</span>
                       </div>
                     </td>
                   );
@@ -122,7 +122,7 @@ export default function ComparisonTable() {
               {col.highlight && (
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse-glow" />
               )}
-              <h3 className={`text-base font-light ${col.highlight ? "text-amber-400" : "text-white"}`}>
+              <h3 className={`text-base ${col.highlight ? "text-amber-400" : "text-white"}`}>
                 {col.label}
               </h3>
             </div>
@@ -133,9 +133,9 @@ export default function ComparisonTable() {
                 const checked = row.check[ci];
                 return (
                   <div key={row.feature} className="flex items-center justify-between">
-                    <span className="text-sm text-zinc-500 font-light">{row.feature}</span>
+                    <span className="text-sm text-zinc-500">{row.feature}</span>
                     <div className="flex items-center gap-2">
-                      <span className={`text-sm ${col.highlight ? "text-white font-light" : "text-zinc-400 font-light"}`}>
+                      <span className={`text-sm ${col.highlight ? "text-white" : "text-zinc-400"}`}>
                         {val}
                       </span>
                       <StatusIcon positive={checked} faint={!col.highlight} />

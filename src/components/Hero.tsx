@@ -28,45 +28,40 @@ export default function Hero() {
       <div className="relative z-10 flex flex-col lg:flex-row items-center gap-16 lg:gap-20">
         {/* Copy — left side */}
         <div className="flex-1 text-center lg:text-left">
-          {/* Premium label */}
-          <div className="inline-flex items-center gap-2.5 mb-8 px-4 py-2 rounded-full border border-white/[0.06] bg-white/[0.02] text-[12px] text-zinc-400 font-light tracking-wider backdrop-blur-sm animate-fade-in-up">
-            <Sparkles className="w-3.5 h-3.5 text-amber-400/70 shrink-0" />
-            <span>AI FOR PET GROOMING &amp; VET CLINICS</span>
+          {/* Interruption line */}
+          <div className="mb-8 border-l-[3px] border-amber-400 pl-4 max-w-lg animate-fade-in-up">
+            <p className="text-sm text-zinc-500 italic leading-relaxed font-display font-normal">
+              Right now, someone&apos;s calling your salon. You&apos;re with a client.
+              It rings out. They book somewhere else. This happens 12&ndash;16 times a week.
+            </p>
           </div>
 
-          {/* Premium heading with gradient text effect */}
-          <h1 className="text-[48px] sm:text-[64px] lg:text-[72px] font-light text-white tracking-[-0.02em] leading-[1.1] mb-8 animate-fade-in-up" style={{ animationDelay: '50ms' }}>
-            Your salon&apos;s
+          {/* Headline */}
+          <h1 className="font-display font-bold text-[48px] sm:text-[64px] lg:text-[72px] text-white tracking-[-0.03em] leading-[1.1] mb-8 animate-fade-in-up" style={{ animationDelay: '50ms' }}>
+            That&apos;s the last time
             <br />
-            <span className="relative inline-block">
-              <span className="absolute inset-0 bg-gradient-to-r from-amber-400 via-amber-300 to-amber-400 text-transparent bg-clip-text opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{
-                backgroundSize: '200% 100%',
-                animation: 'gradient-shift 4s ease-in-out infinite'
-              }}>
-                new best hire.
-              </span>
-              <span className="text-amber-400 font-normal">new best hire.</span>
-            </span>
+            <span className="text-amber-400">it happens.</span>
           </h1>
 
           {/* Body copy */}
-          <p className="text-lg text-zinc-400 mb-12 max-w-lg mx-auto lg:mx-0 leading-[1.7] font-light animate-fade-in-up" style={{ animationDelay: '100ms' }}>
-            An AI receptionist that captures bookings, answers pet parent questions, and sends you every lead — even when you&apos;re elbow-deep in a golden doodle.
+          <p className="text-lg text-zinc-400 mb-12 max-w-lg mx-auto lg:mx-0 leading-[1.7] animate-fade-in-up" style={{ animationDelay: '100ms' }}>
+            An AI that books appointments, answers questions, and follows up &mdash;
+            while you do the work you actually love.
           </p>
 
           {/* CTA group */}
           <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6 animate-fade-in-up" style={{ animationDelay: '150ms' }}>
             <button
               onClick={() => window.dispatchEvent(new Event("open-chat-widget"))}
-              className="group relative w-full sm:w-auto px-10 py-4 bg-amber-400 text-black font-medium text-base rounded-lg hover:bg-amber-300 transition-all duration-300 btn-primary-glow focus-visible:outline-2 focus-visible:outline-amber-400 focus-visible:outline-offset-3 cursor-pointer overflow-hidden"
+              className="group relative w-full sm:w-auto px-10 py-4 bg-amber-400 text-black font-bold text-base rounded-lg tracking-[0.08em] uppercase hover:bg-amber-300 transition-all duration-300 btn-primary-glow focus-visible:outline-2 focus-visible:outline-amber-400 focus-visible:outline-offset-3 cursor-pointer overflow-hidden"
             >
               {/* Shine effect on hover */}
               <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-              <span className="relative">See It in Action</span>
+              <span className="relative">See it in action</span>
             </button>
-            <p className="text-sm text-zinc-500 font-light">
-              No payment until you approve.
-            </p>
+            <a href="https://tally.so/r/1AMoR1" target="_blank" rel="noopener noreferrer" className="text-sm text-zinc-500 hover:text-amber-400 transition-colors duration-300">
+              Book a demo &rarr;
+            </a>
           </div>
         </div>
 

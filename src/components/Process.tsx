@@ -4,23 +4,23 @@ export default function Process() {
   const steps = [
     {
       number: "01",
-      title: "Tell Us About Your Salon",
+      title: "Share your salon",
       description:
-        "Share your services, breeds, pricing, hours. 10 minutes to set up.",
+        "Tell us your services, breeds, pricing, hours. 10 min.",
       image: "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=400&q=80",
     },
     {
       number: "02",
-      title: "We Build Your AI",
+      title: "We build your AI",
       description:
-        "Trained on your breed-specific packages, vaccination requirements, and booking flow.",
+        "Trained on your prices, services, and booking flow.",
       image: "https://images.unsplash.com/photo-1586671267731-da2cf3ceeb80?w=400&q=80",
     },
     {
       number: "03",
-      title: "Go Live & Profit",
+      title: "Go live & profit",
       description:
-        "Live on your site. Answering questions, booking appointments, capturing leads 24/7.",
+        "Live on your site. Answering questions, booking appointments.",
       image: "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=400&q=80",
     },
   ];
@@ -29,12 +29,14 @@ export default function Process() {
     <section className="max-w-7xl mx-auto px-6 sm:px-8 mb-40">
       {/* Section header */}
       <div className="text-center mb-20">
-        <p className="text-xs uppercase tracking-[0.12em] text-zinc-500 mb-4 font-light">Process</p>
-        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light text-white tracking-[-0.01em] mb-6 leading-[1.2]">
-          Live in 3 days.
+        <p className="text-xs uppercase tracking-[0.12em] text-zinc-500 mb-4">Process</p>
+        <h2 className="font-display font-semibold text-4xl sm:text-5xl lg:text-6xl text-white tracking-[-0.01em] mb-6 leading-[1.2]">
+          You didn&apos;t build this to manage a phone.
         </h2>
-        <p className="text-zinc-400 max-w-xl mx-auto leading-[1.7] text-lg font-light">
-          From setup to booking on your site. We handle everything.
+        <p className="text-zinc-400 max-w-xl mx-auto leading-[1.7] text-lg">
+          You started because you&apos;re good at what you do. Every call you can&apos;t take
+          is a business leaking money while you work. We built this so you can get back
+          to the reason you started.
         </p>
       </div>
 
@@ -61,17 +63,17 @@ export default function Process() {
               />
               <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-black/80" />
               {/* Step number badge */}
-              <div className="absolute top-4 left-4 w-10 h-10 rounded-full bg-black/40 backdrop-blur-md border border-white/[0.08] flex items-center justify-center text-xs text-amber-400 font-light tracking-wide">
+              <div className="absolute top-4 left-4 w-10 h-10 rounded-full bg-black/40 backdrop-blur-md border border-white/[0.08] flex items-center justify-center text-xs text-amber-400 tracking-wide font-medium">
                 {step.number}
               </div>
             </div>
 
             {/* Content */}
             <div className="p-7">
-              <h3 className="text-lg font-light text-white mb-3 leading-[1.4]">
+              <h3 className="text-lg text-white mb-3 leading-[1.4]">
                 {step.title}
               </h3>
-              <p className="text-sm text-zinc-400 leading-[1.7] font-light">
+              <p className="text-sm text-zinc-400 leading-[1.7]">
                 {step.description}
               </p>
             </div>

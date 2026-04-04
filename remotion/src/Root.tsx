@@ -8,6 +8,7 @@ import {
   useVideoConfig,
 } from "remotion";
 import { HeroVideo } from "./compositions/HeroVideo/HeroVideo";
+import { HeroLoop } from "./compositions/HeroLoop/HeroLoop";
 
 const TITLE_FRAMES = 30;
 const PHONE_FRAMES = 60;
@@ -306,6 +307,14 @@ export const RemotionRoot = () => {
         component={HeroVideo}
         durationInFrames={450}
         fps={30}
+        width={640}
+        height={480}
+      />
+      <Composition
+        id="HeroLoop"
+        component={HeroLoop}
+        durationInFrames={720}
+        fps={60}
         width={640}
         height={480}
       />

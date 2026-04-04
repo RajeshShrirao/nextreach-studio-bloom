@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@icons-pack/react-simple-icons": "^13.13.0",
     "@remotion/cli": "^4.0.441",
     "@supabase/supabase-js": "^2.101.0",
     "lucide-react": "^1.7.0",

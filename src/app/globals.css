@@ -4,7 +4,13 @@
 
 @layer base {
   :root {
+    /* Font Families */
+    --font-display: var(--font-display), Georgia, serif;
+    --font-body-fallback: var(--font-body), system-ui, sans-serif;
+    --font-body-preferred: "Cabinet Grotesk", var(--font-body-fallback);
+
     /* Premium Spacing Scale */
+
     --space-1: 4px;
     --space-2: 8px;
     --space-3: 12px;
@@ -314,15 +320,56 @@
   }
 
   .font-display {
-    font-family: inherit;
-    font-weight: 300;
-    letter-spacing: -0.015em;
+    font-family: var(--font-display);
   }
 
   .font-body {
-    font-family: inherit;
+    font-family: var(--font-body-preferred);
     font-weight: 400;
     letter-spacing: 0.005em;
+  }
+
+  .text-hero {
+    font-size: clamp(52px, 7vw, 88px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .text-heading {
+    font-size: clamp(36px, 5vw, 56px);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  .text-subheading {
+    font-size: clamp(18px, 2.5vw, 24px);
+    line-height: 1.7;
+  }
+
+  .text-label {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .text-cta {
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  .text-nav {
+    letter-spacing: 0.04em;
+    font-weight: 500;
+  }
+
+  .text-stat {
+    font-weight: 700;
+  }
+
+  .text-quote {
+    font-style: italic;
+    font-weight: 400;
   }
 
   /* ============================================

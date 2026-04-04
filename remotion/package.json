@@ -5,7 +5,7 @@
   "scripts": {
     "start": "remotion preview src/index.tsx",
     "render": "remotion render src/index.tsx LandingPageVideo out/video.mp4",
-    "render:hero": "remotion render src/index.tsx HeroVideo ../public/hero-video.mp4"
+    "render:hero": "remotion render src/index.tsx HeroLoop ../public/hero-video.mp4"
   },
   "dependencies": {
     "remotion": "^4.0.0"

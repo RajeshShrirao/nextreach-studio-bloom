@@ -1,58 +1,55 @@
 import { Calendar, Shield, MessageCircle, Clock, DollarSign, Target } from "lucide-react";
 
-const bookingBenefits = [
+const benefits = [
   {
     icon: Calendar,
-    title: "Captures Every Booking Request",
+    title: "Books while you groom",
     description:
-      "Pet parents share their breed, preferred service, and time slot — right from your website. You get a structured summary in your inbox, ready to confirm. No phone tag, no lost DMs.",
+      "Takes calls, locks in appointments — without you leaving your station.",
   },
   {
     icon: Target,
-    title: "Knows Your Breeds",
+    title: "Knows your prices",
     description:
-      "\"Do you groom Great Pyrenees?\" \"How much for a poodle cut?\" It knows your breed-specific pricing and services off the bat.",
+      "Answers pricing questions correctly every time.",
   },
   {
     icon: Shield,
-    title: "Handles Vaccination Checks",
+    title: "Sends reminders automatically",
     description:
-      "Automatically asks about rabies and other required vaccines before capturing a booking. You stay compliant without the awkward phone calls.",
+      "No-shows drop. Your schedule stays full without lifting a finger.",
   },
-];
-
-const opsBenefits = [
   {
     icon: MessageCircle,
-    title: "Answers Questions & Captures Leads 24/7",
+    title: "Handles rescheduling",
     description:
-      "Midnight pricing questions, breed inquiries, booking requests — answered instantly. Visitors who don't book get their info captured for morning follow-up.",
+      "Client cancels? It fills the slot immediately.",
   },
   {
     icon: Clock,
-    title: "Never Misses a Midnight Inquiry",
+    title: "Answers FAQs 24/7",
     description:
-      "Someone finds you at 11 PM and wants to know if you groom bernedoodles? Your AI answers, captures their details, and you wake up to a lead instead of a ghost.",
+      "Hours, location, breeds, products — handled before you wake up.",
   },
   {
     icon: DollarSign,
-    title: "Costs Less Than One Groom",
+    title: "Works on any site",
     description:
-      "At $49/month, it costs less than a single large-breed grooming session. And it works every hour of every day.",
+      "One line of code. Live in 3 days.",
   },
 ];
 
-function BenefitCard({ b }: { b: (typeof bookingBenefits)[number] }) {
+function BenefitCard({ b }: { b: (typeof benefits)[number] }) {
   return (
     <div className="flex items-start gap-5 p-6 rounded-2xl hover:bg-white/[0.02] transition-all duration-300 group cursor-pointer border border-transparent hover:border-white/[0.04]">
       <div className="w-12 h-12 rounded-xl bg-amber-400/[0.08] flex items-center justify-center text-amber-400/80 shrink-0 transition-all duration-300 group-hover:bg-amber-400/[0.12] group-hover:text-amber-400">
         <b.icon className="w-6 h-6" />
       </div>
       <div>
-        <h4 className="text-white font-light text-base mb-2 group-hover:text-amber-100 transition-colors duration-300">
+        <h4 className="text-white text-base mb-2 group-hover:text-amber-100 transition-colors duration-300">
           {b.title}
         </h4>
-        <p className="text-sm text-zinc-400 leading-[1.7] font-light">
+        <p className="text-sm text-zinc-400 leading-[1.7]">
           {b.description}
         </p>
       </div>
@@ -65,37 +62,16 @@ export default function Benefits() {
     <section className="max-w-7xl mx-auto px-6 sm:px-8 mb-40">
       {/* Section header */}
       <div className="text-center mb-20">
-        <p className="text-xs uppercase tracking-[0.12em] text-zinc-500 mb-4 font-light">Capabilities</p>
-        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light text-white tracking-[-0.01em] mb-6 leading-[1.2]">
-          What your AI handles.
+        <p className="text-xs uppercase tracking-[0.12em] text-zinc-500 mb-4">Capabilities</p>
+        <h2 className="font-display font-semibold text-4xl sm:text-5xl lg:text-6xl text-white tracking-[-0.01em] mb-6 leading-[1.2]">
+          Your new employee. Without the overhead.
         </h2>
-        <p className="text-zinc-400 max-w-xl mx-auto leading-[1.7] text-lg font-light">
-          So you focus on grooming. We handle the bookings, questions, and follow-ups.
-        </p>
       </div>
 
-      <div className="space-y-12">
-        {/* Booking & Client Management */}
-        <div>
-          <p className="text-xs uppercase tracking-[0.1em] text-zinc-600 mb-6 px-1 font-light">Booking &amp; Client Management</p>
-          <div className="grid grid-cols-1 gap-4">
-            {bookingBenefits.map((b) => (
-              <BenefitCard key={b.title} b={b} />
-            ))}
-          </div>
-        </div>
-
-        <div className="gradient-divider" />
-
-        {/* Operations & Revenue */}
-        <div>
-          <p className="text-xs uppercase tracking-[0.1em] text-zinc-600 mb-6 px-1 font-light">Operations &amp; Revenue</p>
-          <div className="grid grid-cols-1 gap-4">
-            {opsBenefits.map((b) => (
-              <BenefitCard key={b.title} b={b} />
-            ))}
-          </div>
-        </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+        {benefits.map((b) => (
+          <BenefitCard key={b.title} b={b} />
+        ))}
       </div>
     </section>
   );

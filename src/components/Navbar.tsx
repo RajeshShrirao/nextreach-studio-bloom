@@ -19,7 +19,7 @@ export default function Navbar() {
             height={32}
             className="transition-transform duration-300 group-hover:scale-110"
           />
-          <span className="text-white font-light text-sm tracking-[0.08em] hidden sm:inline">
+          <span className="text-white text-sm tracking-[0.08em] font-medium hidden sm:inline">
             NextReach Studio
           </span>
         </a>
@@ -37,7 +37,7 @@ export default function Navbar() {
           {/* CTA Button */}
           <button
             onClick={() => window.dispatchEvent(new Event("open-chat-widget"))}
-            className="text-sm font-medium bg-amber-400 text-black px-6 py-2.5 rounded-full hover:bg-amber-300 transition-all duration-300 hover:shadow-[0_0_28px_rgba(251,191,36,0.25)] min-h-[44px] flex items-center focus-visible:outline-2 focus-visible:outline-amber-400 focus-visible:outline-offset-2 cursor-pointer"
+            className="text-sm font-bold bg-amber-400 text-black px-6 py-2.5 rounded-full tracking-[0.08em] uppercase hover:bg-amber-300 transition-all duration-300 hover:shadow-[0_0_28px_rgba(251,191,36,0.25)] min-h-[44px] flex items-center focus-visible:outline-2 focus-visible:outline-amber-400 focus-visible:outline-offset-2 cursor-pointer"
           >
             Free Demo
           </button>
