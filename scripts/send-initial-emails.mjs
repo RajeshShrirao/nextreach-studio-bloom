@@ -89,20 +89,31 @@ async function main() {
     .select("*")
     .eq("status", "demo_built")
     .not("email", "is", null)
-    .neq("email", "")
     .not("demo_slug", "is", null)
-    .order("google_rating", { ascending: false, nullsFirst: false })
-    .limit(limit);
+    .order("google_rating", { ascending: false, nullsFirst: false });
 
   if (error) { console.error("Error:", error.message); process.exit(1); }
   if (!leads?.length) { console.log("No leads to email. All caught up."); return; }
 
-  console.log(`Found ${leads.length} leads ready to email`);
+  // Filter out invalid emails (placeholders, junk data)
+  const isInvalidEmail = (e) => {
+    if (!e || e.length < 6) return true;
+    const lower = e.toLowerCase();
+    return lower.includes("no email") || lower.includes("not found") ||
+           lower.includes("n/a") || lower.includes("undefined") ||
+           lower.includes("pending") || lower.includes("missing") ||
+           lower === "unknown";
+  };
+  const cleanedLeads = leads.filter(l => !isInvalidEmail(l.email)).slice(0, limit);
+  const skipped = leads.length - cleanedLeads.length;
+  if (skipped > 0) console.log(`Skipped ${skipped} leads with invalid email placeholders`);
+
+  console.log(`Found ${cleanedLeads.length} leads ready to email`);
 
   let sent = 0;
   let failed = 0;
 
-  for (const lead of leads) {
+  for (const lead of cleanedLeads) {
     const preview = `${lead.business_name} (${lead.email})`;
     if (dryRun) {
       console.log(`WOULD SEND: ${preview}`);
