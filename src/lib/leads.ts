@@ -290,8 +290,9 @@ export async function bulkUpdateLeads(ids: string[], updates: Partial<LeadRow>):
   // JSON fallback
   let count = 0;
   const leads = readLeadsJson();
+  const idSet = new Set(ids);
   for (const lead of leads) {
-    if (ids.includes(lead.id)) {
+    if (idSet.has(lead.id)) {
       Object.assign(lead, updates, { updatedAt: now });
       count++;
     }
@@ -318,10 +319,12 @@ export async function bulkDeleteLeads(ids: string[]): Promise<number> {
   }
 
   // JSON fallback
-  const leads = readLeadsJson().filter((l) => !ids.includes(l.id));
-  const deleted = ids.filter((id) => readLeadsJson().some((l) => l.id === id));
-  writeLeadsJson(leads);
-  return deleted.length;
+  const allLeads = readLeadsJson();
+  const idSet = new Set(ids);
+  const remainingLeads = allLeads.filter((l) => !idSet.has(l.id));
+  const deletedCount = allLeads.length - remainingLeads.length;
+  writeLeadsJson(remainingLeads);
+  return deletedCount;
 }
 
 export async function bulkCreateLeads(leadData: Partial<LeadRow>[]): Promise<Lead[]> {
