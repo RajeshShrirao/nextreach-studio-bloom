@@ -13,7 +13,7 @@
       "count": 127
     },
     "bookingSystem": "Gingr",
-    "status": "not-contacted",
+    "status": "new",
     "notes": "Found via Instagram. High-end grooming salon, 3 locations. Good fit for starter plan.",
     "createdAt": "2026-03-28T10:00:00.000Z",
     "updatedAt": "2026-03-28T10:00:00.000Z"
@@ -32,15 +32,17 @@
       "count": 89
     },
     "bookingSystem": "PetExec",
-    "status": "email-1-sent",
+    "status": "email_2_sent",
     "demoUrl": "https://happy-tails-demo.railway.app",
     "trackingLink": "https://nr.link/ht01",
     "plan": "starter",
     "notes": "Emailed on 3/27. Uses PetExec for bookings. Interested but wants to see ROI numbers first.",
     "createdAt": "2026-03-25T14:30:00.000Z",
-    "updatedAt": "2026-03-27T09:15:00.000Z",
+    "updatedAt": "2026-04-10T08:55:24.710Z",
     "lastContactedAt": "2026-03-27T09:15:00.000Z",
-    "nextFollowUpAt": "2026-04-01T09:00:00.000Z"
+    "nextFollowUpAt": "2026-04-01T09:00:00.000Z",
+    "emailSentAt": "2026-03-27T09:15:00.000Z",
+    "email2SentAt": "2026-04-10T08:55:24.710Z"
   },
   {
     "id": "a1b2c3d4-0003-4000-8000-000000000003",
@@ -56,7 +58,7 @@
       "count": 203
     },
     "bookingSystem": "Gingr",
-    "status": "clicked-demo",
+    "status": "replied",
     "demoUrl": "https://fluffy-friends-demo.railway.app",
     "trackingLink": "https://nr.link/ff01",
     "plan": "business",
@@ -64,7 +66,8 @@
     "createdAt": "2026-03-20T08:00:00.000Z",
     "updatedAt": "2026-03-26T16:45:00.000Z",
     "lastContactedAt": "2026-03-26T16:45:00.000Z",
-    "nextFollowUpAt": "2026-03-30T10:00:00.000Z"
+    "nextFollowUpAt": "2026-03-30T10:00:00.000Z",
+    "emailSentAt": "2026-03-26T16:45:00.000Z"
   },
   {
     "id": "a1b2c3d4-0004-4000-8000-000000000004",
@@ -80,7 +83,7 @@
       "count": 100
     },
     "bookingSystem": "Online",
-    "status": "not-contacted",
+    "status": "new",
     "notes": "Solo owner/groomer since 2013. 10+ yrs experience. Gay-owned boutique salon in Downtown Phoenix. Active Instagram. Top priority lead.",
     "createdAt": "2026-03-29T13:00:00.000Z",
     "updatedAt": "2026-03-29T13:00:00.000Z"
@@ -99,7 +102,7 @@
       "count": 0
     },
     "bookingSystem": "Online",
-    "status": "not-contacted",
+    "status": "new",
     "notes": "Women-owned. Award-winning groomers. Channelside location. New business (only 3 IG posts). Full + mini grooming + bath/nail/ear + à la carte.",
     "createdAt": "2026-03-29T13:00:00.000Z",
     "updatedAt": "2026-03-29T13:00:00.000Z"
@@ -118,7 +121,7 @@
       "count": 0
     },
     "bookingSystem": "Online",
-    "status": "not-contacted",
+    "status": "new",
     "notes": "Est. 2017. Dogs + cats. Appointment-only. Nail trims walk-in 11am-2pm. Tue-Fri 7:30-6, Mon & Sat 8-5. Need to find owner name.",
     "createdAt": "2026-03-29T13:00:00.000Z",
     "updatedAt": "2026-03-29T13:00:00.000Z"
@@ -137,7 +140,7 @@
       "count": 0
     },
     "bookingSystem": "Phone",
-    "status": "not-contacted",
+    "status": "new",
     "notes": "Solo groomer, 39 yrs experience. Mon-Fri 7:00AM-1:30PM only (short hours = overwhelmed?). High pain point: limited availability, phone-only bookings.",
     "createdAt": "2026-03-29T13:00:00.000Z",
     "updatedAt": "2026-03-29T13:00:00.000Z"
@@ -156,7 +159,7 @@
       "count": 0
     },
     "bookingSystem": "Online",
-    "status": "not-contacted",
+    "status": "new",
     "notes": "Est. 2010. Army vet owner (Steven M. Dixon). 2 locations (Germantown/Buena Vista). Award-winning. Specializes in difficult dogs. Thera-Clean micro bubble bath. Mon-Sat 8-6.",
     "createdAt": "2026-03-29T13:00:00.000Z",
     "updatedAt": "2026-03-29T13:00:00.000Z"
@@ -175,7 +178,7 @@
       "count": 0
     },
     "bookingSystem": "Online",
-    "status": "not-contacted",
+    "status": "new",
     "notes": "Mobile grooming + luxury spa. Very popular (booked out). Strong testimonials. Multi-location = need better call management. Need to find email.",
     "createdAt": "2026-03-29T13:00:00.000Z",
     "updatedAt": "2026-03-29T13:00:00.000Z"
@@ -194,7 +197,7 @@
       "count": 0
     },
     "bookingSystem": "",
-    "status": "not-contacted",
+    "status": "new",
     "notes": "North Raleigh's premier dog spa + boutique. Retail shop. Featured in publications. Need to find owner name, email, phone, and IG.",
     "createdAt": "2026-03-29T13:00:00.000Z",
     "updatedAt": "2026-03-29T13:00:00.000Z"
@@ -213,7 +216,7 @@
       "count": 945
     },
     "bookingSystem": "",
-    "status": "not-contacted",
+    "status": "new",
     "notes": "5555 N 7th St #126, Phoenix, AZ 85014. 945 reviews on Birdeye = very high volume. Huge missed call potential. Need to enrich: owner, email, website.",
     "createdAt": "2026-03-29T13:00:00.000Z",
     "updatedAt": "2026-03-29T13:00:00.000Z"
@@ -232,7 +235,7 @@
       "count": 0
     },
     "bookingSystem": "",
-    "status": "not-contacted",
+    "status": "new",
     "notes": "Hundreds of 5-star Google reviews. Grooming + boarding + daycare. High volume multi-service facility. Need to enrich: owner, email, phone.",
     "createdAt": "2026-03-29T13:00:00.000Z",
     "updatedAt": "2026-03-29T13:00:00.000Z"
@@ -251,7 +254,7 @@
       "count": 190
     },
     "bookingSystem": "",
-    "status": "not-contacted",
+    "status": "new",
     "notes": "3333 S Tamarac Dr, Ste P, Denver, CO 80231. 190 reviews. Need to enrich: find website, owner name, email, phone.",
     "createdAt": "2026-03-29T13:00:00.000Z",
     "updatedAt": "2026-03-29T13:00:00.000Z"
