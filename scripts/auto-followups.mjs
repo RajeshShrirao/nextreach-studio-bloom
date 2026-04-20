@@ -33,7 +33,8 @@ async function brevo(path, body) {
   return { ok: r.ok, status: r.status, data: r.ok && text ? JSON.parse(text) : null };
 }
 
-// SAFETY: never send to leads who have replied, won, call_booked, or lost
+// SAFETY: never send to leads who have replied, won, call_booked, lost, or nurture
+const UNSAFE_STATUSES = ["replied", "call_booked", "won", "lost", "nurture"];
 const SAFE_STATUSES = ["email_sent", "email_2_sent", "email_3_sent"];
 
 const MS_PER_DAY = 86400000;
@@ -88,14 +89,14 @@ async function main() {
   let skips = 0;
 
   for (const lead of leads) {
-    // Skip if not safe (double-check)
-    if (!SAFE_STATUSES.includes(lead.status)) { skips++; continue; }
+    // Skip if unsafe status (replied/call_booked/won/lost/nurture)
+    if (UNSAFE_STATUSES.includes(lead.status)) { skips++; continue; }
 
-    // Day 4: Email 2
+    // Email 2: send if status=email_sent and email_sent_at is >=4 days ago
     if (lead.status === "email_sent") {
       const days = daysSince(lead.email_sent_at);
-      if (days >= 4 && days < 8) {
-        if (dryRun) { console.log(`WOULD SEND Email 2: ${lead.business_name} (${days.toFixed(1)}d)`); }
+      if (days >= 4) {
+        if (dryRun) { console.log(`WOULD SEND Email 2: ${lead.business_name} (${days.toFixed(1)}d overdue)`); }
         else {
           const ok = await sendFollowup(lead, TEMPLATES.email_2.id, "Email 2");
           if (ok) {
@@ -109,15 +110,14 @@ async function main() {
         await new Promise(r => setTimeout(r, 200));
         continue;
       }
-      if (days > 15) { skips++; }
       continue;
     }
 
-    // Day 8: Email 3
+    // Email 3: send if status=email_2_sent and email_2_sent_at is >=4 days ago
     if (lead.status === "email_2_sent") {
       const days = daysSince(lead.email_2_sent_at);
-      if (days >= 4 && days < 8) {
-        if (dryRun) { console.log(`WOULD SEND Email 3: ${lead.business_name} (${days.toFixed(1)}d)`); }
+      if (days >= 4) {
+        if (dryRun) { console.log(`WOULD SEND Email 3: ${lead.business_name} (${days.toFixed(1)}d overdue)`); }
         else {
           const ok = await sendFollowup(lead, TEMPLATES.email_3.id, "Email 3");
           if (ok) {
@@ -133,11 +133,11 @@ async function main() {
       continue;
     }
 
-    // Day 15: Nurture
+    // Nurture: send if status=email_3_sent and email_3_sent_at is >=7 days ago
     if (lead.status === "email_3_sent") {
       const days = daysSince(lead.email_3_sent_at);
       if (days >= 7) {
-        if (dryRun) { console.log(`WOULD SEND Nurture: ${lead.business_name} (${days.toFixed(1)}d)`); }
+        if (dryRun) { console.log(`WOULD SEND Nurture: ${lead.business_name} (${days.toFixed(1)}d overdue)`); }
         else {
           const ok = await sendFollowup(lead, TEMPLATES.nurture.id, "Nurture");
           if (ok) {
@@ -149,17 +149,21 @@ async function main() {
         }
         followUps++;
         await new Promise(r => setTimeout(r, 200));
+        continue;
       }
-      // Day 12 flag for phone call
+      // Phone flag for leads between 4-7 days after email_3_sent
       if (days >= 4 && days < 7) {
-        console.log(`PHONE FLAG: ${lead.business_name} — recommend phone call (Day 12)`);
+        console.log(`PHONE FLAG: ${lead.business_name} — recommend phone call (${days.toFixed(1)}d since Email 3)`);
         phoneFlags++;
       }
       continue;
     }
+
+    // Skip leads with other statuses
+    skips++;
   }
 
-  console.log(`\nDone: ${followUps} follow-ups sent, ${phoneFlags} phone flags`);
+  console.log(`\nDone: ${followUps} follow-ups sent, ${phoneFlags} phone flags, ${skips} skipped`);
 }
 
 main().catch(err => { console.error(err); process.exit(1); });
