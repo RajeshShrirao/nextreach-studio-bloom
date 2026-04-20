@@ -8,6 +8,8 @@
     "render:hero": "remotion render src/index.tsx HeroLoop ../public/hero-video.mp4"
   },
   "dependencies": {
+    "@remotion/google-fonts": "4.0.441",
+    "@remotion/media": "4.0.441",
     "remotion": "^4.0.0"
   },
   "devDependencies": {

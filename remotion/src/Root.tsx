@@ -9,6 +9,9 @@ import {
 } from "remotion";
 import { HeroVideo } from "./compositions/HeroVideo/HeroVideo";
 import { HeroLoop } from "./compositions/HeroLoop/HeroLoop";
+import { TwoAMBooking } from "./compositions/TwoAMBooking/TwoAMBooking";
+import { MissedCallReel } from "./compositions/MissedCallReel/MissedCallReel";
+import { PipelineReel } from "./compositions/PipelineReel/PipelineReel";
 
 const TITLE_FRAMES = 30;
 const PHONE_FRAMES = 60;
@@ -317,6 +320,30 @@ export const RemotionRoot = () => {
         fps={60}
         width={640}
         height={480}
+      />
+      <Composition
+        id="TwoAMBooking"
+        component={TwoAMBooking}
+        durationInFrames={1755}
+        fps={60}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="MissedCallReel"
+        component={MissedCallReel}
+        durationInFrames={1350}
+        fps={60}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="PipelineReel"
+        component={PipelineReel}
+        durationInFrames={1080}
+        fps={60}
+        width={1080}
+        height={1920}
       />
     </>
   );
