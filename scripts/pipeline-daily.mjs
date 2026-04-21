@@ -4,6 +4,7 @@
 // Runs: demo build → send emails → followups
 // Each step is idempotent — safe to re-run
 
+import "dotenv/config";
 import { execSync } from "child_process";
 import fs from "fs";
 import path from "path";

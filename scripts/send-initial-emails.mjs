@@ -2,6 +2,7 @@
 // send-initial-emails.mjs — Send Email 1 to leads with demos built
 // Usage: node scripts/send-initial-emails.mjs [--dry-run] [--limit N]
 
+import "dotenv/config";
 import { createClient } from "@supabase/supabase-js";
 import { fileURLToPath } from "url";
 import { COMPLIMENTS, OBSERVATIONS, pickFrom, formatLocation } from "./lib/email.js";
@@ -19,7 +20,9 @@ const LIST_ID = 6;
 
 if (!BREVO_KEY) { console.error("Missing BREVO_API_KEY"); process.exit(1); }
 
-const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY);
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_SERVICE_KEY || process.env.SUPABASE_ACCESS_TOKEN;
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 async function brevo(path, body, method = "POST") {
   const r = await fetch(`${BREVO_BASE}${path}`, {

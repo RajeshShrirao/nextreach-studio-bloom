@@ -2,6 +2,7 @@
 // auto-followups.mjs — Day 4/8/12/15 follow-up automation
 // Usage: node scripts/auto-followups.mjs [--dry-run]
 
+import "dotenv/config";
 import { createClient } from "@supabase/supabase-js";
 import { fileURLToPath } from "url";
 import { COMPLIMENTS, pickFrom, formatLocation } from "./lib/email.js";
@@ -21,7 +22,9 @@ const TEMPLATES = {
 
 if (!BREVO_KEY) { console.error("Missing BREVO_API_KEY"); process.exit(1); }
 
-const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY);
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_SERVICE_KEY || process.env.SUPABASE_ACCESS_TOKEN;
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 async function brevo(path, body) {
   const r = await fetch(`${BREVO_BASE}${path}`, {

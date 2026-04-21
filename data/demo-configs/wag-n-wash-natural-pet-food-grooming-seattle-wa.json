@@ -1,0 +1,72 @@
+{
+  "business_name": "Wag N' Wash Natural Pet Food & Grooming",
+  "business_type": "Professional Pet Grooming Salon",
+  "greeting": "Hi there! I'm the virtual receptionist at Wag N' Wash Natural Pet Food & Grooming. How can I help you and your pup today? 🐾",
+  "hours": "Mon-Sat 9AM-6PM",
+  "location": "Seattle, WA",
+  "phone": "(206) 669-2818",
+  "website": "https://www.wagnwash.com/store/wa/seattle/3015-seattle/3015",
+  "owner_name": "",
+  "services": [
+    {
+      "name": "Bath & Brush",
+      "price": "From $35",
+      "duration": "45-60 min"
+    },
+    {
+      "name": "Full Groom",
+      "price": "From $55",
+      "duration": "1.5-2 hrs"
+    },
+    {
+      "name": "Breed-Specific Groom",
+      "price": "From $65",
+      "duration": "1.5-2.5 hrs"
+    },
+    {
+      "name": "Nail Trim",
+      "price": "From $15",
+      "duration": "15 min"
+    },
+    {
+      "name": "De-shedding Treatment",
+      "price": "From $45",
+      "duration": "30-45 min"
+    },
+    {
+      "name": "Teeth Brushing",
+      "price": "From $20",
+      "duration": "15 min"
+    }
+  ],
+  "faq": [
+    {
+      "q": "Do I need an appointment?",
+      "a": "Yes! Appointments are recommended for most services. You can book online at https://www.wagnwash.com/store/wa/seattle/3015-seattle/3015 or call us directly."
+    },
+    {
+      "q": "What breeds do you groom?",
+      "a": "We groom dogs of all breeds and sizes. Our team has experience with every breed and coat type."
+    },
+    {
+      "q": "How long does a full groom take?",
+      "a": "A full grooming session typically takes 1.5 to 2 hours depending on your dog's size, breed, and coat condition."
+    },
+    {
+      "q": "Do you handle anxious dogs?",
+      "a": "Absolutely! We use gentle and patient practices to make sure your dog feels safe and comfortable throughout the process."
+    },
+    {
+      "q": "Do you require vaccinations?",
+      "a": "Yes, we ask that all pets are up-to-date on their vaccinations for the safety of all our furry clients. Please bring records to your first visit."
+    },
+    {
+      "q": "How early can I start grooming my puppy?",
+      "a": "We recommend starting grooming as early as 8-10 weeks old once they've had their first round of vaccinations. Early exposure helps them become comfortable with the process."
+    }
+  ],
+  "escalation": "Great question! Let me have our team get back to you on that. You can also reach us directly at (206) 669-2818.",
+  "theme": {
+    "primary_color": "#8B5CF6"
+  }
+}

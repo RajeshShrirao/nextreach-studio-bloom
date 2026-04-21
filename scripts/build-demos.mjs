@@ -2,6 +2,7 @@
 // build-demos.mjs — Generate demo configs for leads without demos
 // Usage: node scripts/build-demos.mjs [--dry-run] [--limit N]
 
+import "dotenv/config";
 import { createClient } from "@supabase/supabase-js";
 import fs from "fs";
 import path from "path";
@@ -14,12 +15,12 @@ const dryRun = process.argv.includes("--dry-run");
 const limitArg = process.argv.find(a => a.startsWith("--limit="));
 const limit = limitArg ? parseInt(limitArg.split("=")[1]) : Infinity;
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_KEY || process.env.SUPABASE_ACCESS_TOKEN
-);
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_SERVICE_KEY || process.env.SUPABASE_ACCESS_TOKEN;
 
-if (!process.env.SUPABASE_URL || !process.env.SUPABASE_SERVICE_KEY) {
+const supabase = createClient(supabaseUrl, supabaseKey);
+
+if (!supabaseUrl || !supabaseKey) {
   console.error("Missing SUPABASE_URL or SUPABASE_SERVICE_KEY in env");
   process.exit(1);
 }
