@@ -15,6 +15,8 @@ NextReach Studio’s production + demo system for our **AI receptionist** (pet g
   - Storage: **Supabase first**, JSON fallback (`data/leads.json`) when Supabase env is missing
 - **Outbound pipeline scripts** (run locally or via GitHub Actions)
   - Build demo configs from Supabase leads → send Email 1 → send follow-ups
+- **Observability & resilience scripts**
+  - Brevo reporting, bounce suppression, demo click tracking
 
 ## The funnel (complete flow)
 
@@ -148,22 +150,40 @@ Per-script:
 
 ### Observability & Resilience Scripts
 
-New scripts for pipeline monitoring and maintenance:
+Enhanced scripts for comprehensive pipeline monitoring, maintenance, and data integrity:
 
-- Brevo reporting:
-  - `node scripts/brevo-report.mjs [--start=YYYY-MM-DD] [--end=YYYY-MM-DD] [--tag-prefix=prospect-]`
-  - Pulls transactional email events from Brevo API
-  - Shows summary counts, breakdowns by tag/template, and lists of hard bounces/blocked emails
+- **Brevo reporting** (`scripts/brevo-report.mjs`):
+  - Usage: `node scripts/brevo-report.mjs --start=2026-04-01 --end=2026-04-21 --tag-prefix=prospect-`
+  - Defaults: last 30 days, `tag-prefix=prospect-`
+  - Features:
+    - Full pagination support (handles thousands of events)
+    - Unique message counting by event type (requests, delivered, opened, clicks, bounces)
+    - Delivery/open/click rate calculations as percentages
+    - Detailed breakdowns by tag and template ID
+    - Hard bounce and blocked email lists for suppression
+    - JSON output with structured report data
 
-- Suppress undeliverable:
-  - `node scripts/suppress-undeliverable.mjs [--dry-run]`
-  - Uses Brevo hard bounce/blocked events to identify undeliverable emails
-  - Updates matching Supabase leads: adds note and sets status to `lost` (skips replied/won/call_booked leads)
+- **Suppress undeliverable** (`scripts/suppress-undeliverable.mjs`):
+  - Usage: `node scripts/suppress-undeliverable.mjs --dry-run --start=2026-01-01 --end=2026-04-21 --tag-prefix=prospect-`
+  - Defaults: last 90 days, `tag-prefix=prospect-`
+  - Features:
+    - Parallel fetching of hardBounces and blocked events from Brevo
+    - Chunked Supabase queries (100 emails at a time) for performance
+    - Protected status handling: skips `replied`, `call_booked`, `won` leads
+    - Appends detailed UNDRLBL notes with reasons and timestamps
+    - Safe dry-run mode for testing before execution
+    - Comprehensive JSON summary output
 
-- Sync Brevo clicks:
-  - `node scripts/sync-brevo-clicks.mjs [--dry-run]`
-  - Uses Brevo click events to track demo page visits
-  - Sets `demo_clicked_at` timestamp on matching Supabase leads (only if not already set)
+- **Sync Brevo clicks** (`scripts/sync-brevo-clicks.mjs`):
+  - Usage: `node scripts/sync-brevo-clicks.mjs --dry-run --start=2026-01-01 --end=2026-04-21 --tag-prefix=prospect-`
+  - Defaults: last 90 days, `tag-prefix=prospect-`
+  - Features:
+    - Tracks earliest click date per email address from Brevo events
+    - Sets `demo_clicked_at` timestamp on matching Supabase leads
+    - Idempotent updates (only sets if not already present)
+    - Handles missing leads gracefully with count reporting
+    - Safe dry-run mode for validation
+    - Detailed JSON output with matched/updated/skipped counts
 
 ### Email templates (Brevo)
 Template IDs are hard-coded in scripts:

@@ -1,0 +1,137 @@
+[
+  {
+    "business_name": "Wag N' Wash Natural Pet Food & Grooming",
+    "owner_name": null,
+    "email": "wag@wagnwash.com",
+    "city": "Seattle",
+    "demo_clicked_at": "2026-04-21T10:50:04.816+00:00",
+    "status": "email_sent",
+    "tracked_link": null
+  },
+  {
+    "business_name": "Heart + Paw",
+    "owner_name": null,
+    "email": "brand@heartandpaw.com",
+    "city": "Philadelphia",
+    "demo_clicked_at": "2026-04-21T10:49:48.795+00:00",
+    "status": "email_sent",
+    "tracked_link": null
+  },
+  {
+    "business_name": "Adore Dog Salon",
+    "owner_name": null,
+    "email": "info@adoredogsalon.com",
+    "city": "Minneapolis",
+    "demo_clicked_at": "2026-04-21T10:48:43.276+00:00",
+    "status": "email_sent",
+    "tracked_link": null
+  },
+  {
+    "business_name": "Doggie Day Spa of Little River",
+    "owner_name": null,
+    "email": "aedlabetamembership@gmail.com",
+    "city": "Salt",
+    "demo_clicked_at": "2026-04-21T10:33:09.48+00:00",
+    "status": "email_sent",
+    "tracked_link": null
+  },
+  {
+    "business_name": "Grooming by Court",
+    "owner_name": null,
+    "email": "ctl@usd.edu",
+    "city": "Miami",
+    "demo_clicked_at": "2026-04-21T09:22:31.092+00:00",
+    "status": "email_sent",
+    "tracked_link": null
+  },
+  {
+    "business_name": "Kontota Mobile Dog Grooming of Scottsdale",
+    "owner_name": null,
+    "email": "lancaster@kontota.com",
+    "city": "Scottsdale",
+    "demo_clicked_at": "2026-04-21T09:22:16.315+00:00",
+    "status": "email_sent",
+    "tracked_link": null
+  },
+  {
+    "business_name": "Bowie Barker North Scottsdale",
+    "owner_name": null,
+    "email": "info@bowiebarker.com",
+    "city": "Scottsdale",
+    "demo_clicked_at": "2026-04-21T09:21:58.807+00:00",
+    "status": "email_sent",
+    "tracked_link": null
+  },
+  {
+    "business_name": "Alta Vista Boarding & Grooming",
+    "owner_name": "Unknown",
+    "email": "info@altavistapets.com",
+    "city": "Phoenix",
+    "demo_clicked_at": "2026-04-06T18:17:24.38+00:00",
+    "status": "email_2_sent",
+    "tracked_link": null
+  },
+  {
+    "business_name": "Kontota Mobile Dog Grooming",
+    "owner_name": null,
+    "email": "scottsdale@kontota.com",
+    "city": null,
+    "demo_clicked_at": "2026-04-05T05:45:48.122+00:00",
+    "status": "email_2_sent",
+    "tracked_link": null
+  },
+  {
+    "business_name": "Furry Land of Phoenix",
+    "owner_name": null,
+    "email": "info@furryland.us",
+    "city": null,
+    "demo_clicked_at": "2026-04-05T05:45:45.267+00:00",
+    "status": "email_2_sent",
+    "tracked_link": null
+  },
+  {
+    "business_name": "Paws 48 Dog Wash & Gym",
+    "owner_name": "Unknown",
+    "email": "info@paws48.com",
+    "city": "Phoenix",
+    "demo_clicked_at": "2026-04-04T04:36:02.792+00:00",
+    "status": "email_2_sent",
+    "tracked_link": null
+  },
+  {
+    "business_name": "Woof Gang Bakery & Grooming Mueller",
+    "owner_name": null,
+    "email": "mueller@woofgangbakery.com",
+    "city": "Austin",
+    "demo_clicked_at": "2026-04-04T04:18:24.052+00:00",
+    "status": "email_2_sent",
+    "tracked_link": null
+  },
+  {
+    "business_name": "Red Dog Pet Resort & Spa Boston",
+    "owner_name": null,
+    "email": "cincinnati@reddogpetresort.com",
+    "city": "Boston",
+    "demo_clicked_at": "2026-04-04T04:17:55.843+00:00",
+    "status": "email_2_sent",
+    "tracked_link": null
+  },
+  {
+    "business_name": "Barkin' Creek Dog Kitchen & Bath",
+    "owner_name": null,
+    "email": "hello@barkincreek.com",
+    "city": "Austin",
+    "demo_clicked_at": "2026-04-03T18:16:33.624+00:00",
+    "status": "email_3_sent",
+    "tracked_link": null
+  },
+  {
+    "business_name": "The Hairy Dog",
+    "owner_name": "Unknown",
+    "email": "info@thehairydog.net",
+    "city": "Phoenix",
+    "demo_clicked_at": "2026-04-03T18:16:33.624+00:00",
+    "status": "email_2_sent",
+    "tracked_link": null
+  }
+]

@@ -75,15 +75,15 @@ src/
     ├── leads.ts             # Lead data utilities (Supabase + JSON fallback)
     └── supabase.ts          # Lazy Supabase client initialization
 
-scripts/                     # Automation and utility scripts
-├── pipeline-daily.mjs       # Daily pipeline processing
-├── build-demos.mjs          # Build demo pages
-├── auto-followups.mjs       # Automated email follow-ups
-├── brevo-report.mjs         # Brevo analytics reporting
-├── suppress-undeliverable.mjs # Handle undeliverable emails
-├── sync-brevo-clicks.mjs    # Sync Brevo click tracking
-├── send-initial-emails.mjs  # Send initial outreach emails
-└── lib/email.js             # Email utilities
+scripts/                     # Pipeline automation, observability & resilience scripts
+├── pipeline-daily.mjs       # Master orchestrator (idempotent daily run)
+├── build-demos.mjs          # Build demo configs from Supabase leads
+├── send-initial-emails.mjs  # Send initial outreach emails (Brevo template 10)
+├── auto-followups.mjs       # Automated follow-up emails (templates 13/12/11)
+├── brevo-report.mjs         # Brevo analytics reporting with full event breakdown
+├── suppress-undeliverable.mjs # Auto-suppress hard-bounced/blocked leads
+├── sync-brevo-clicks.mjs    # Sync demo page visits from Brevo click events
+└── lib/email.js             # Shared email utilities and helpers
 
 data/
 ├── leads.json               # Lead database fallback (auto-created)
@@ -144,10 +144,25 @@ The outbound pipeline (run locally or via GitHub Actions) drives revenue:
 3. `scripts/auto-followups.mjs` — Sends follow-ups (templates 13/12/11) based on time windows → updates status accordingly
 4. `scripts/pipeline-daily.mjs` — Master orchestrator that runs all three above (idempotent, daily)
 
-**Observability scripts:**
-- `scripts/brevo-report.mjs` — Pulls transactional email events from Brevo API
-- `scripts/suppress-undeliverable.mjs` — Marks hard-bounced leads as `lost` in Supabase
-- `scripts/sync-brevo-clicks.mjs` — Tracks demo page visits from Brevo click events
+**Observability & resilience scripts:**
+- `scripts/brevo-report.mjs --start=YYYY-MM-DD --end=YYYY-MM-DD --tag-prefix=prospect-`
+  - Pulls transactional email events from Brevo API with full pagination
+  - Reports unique messages by event type (requests, delivered, opened, clicks, bounces, etc.)
+  - Calculates delivery/open/click rates as percentages
+  - Groups results by tag and template ID for detailed analysis
+  - Lists hard-bounced and blocked emails for suppression
+- `scripts/suppress-undeliverable.mjs --dry-run --start=YYYY-MM-DD --end=YYYY-MM-DD --tag-prefix=prospect-`
+  - Fetches hardBounces and blocked events from Brevo in parallel
+  - Matches emails to Supabase leads using chunked queries (100 at a time)
+  - Skips protected statuses: `replied`, `call_booked`, `won`
+  - Updates matching leads to `lost` status with UNDRLBL notes
+  - Appends suppression reasons and timestamps to existing notes
+- `scripts/sync-brevo-clicks.mjs --dry-run --start=YYYY-MM-DD --end=YYYY-MM-DD --tag-prefix=prospect-`
+  - Fetches click events from Brevo API with pagination
+  - Tracks earliest click date per email address
+  - Sets `demo_clicked_at` timestamp on matching Supabase leads
+  - Only updates leads where `demo_clicked_at` is not already set
+  - Reports matched/updated/skipped/missing counts
 
 **GitHub Actions**: `.github/workflows/pipeline-daily.yml` runs daily at 9 AM IST (build-only; sending requires manual dispatch).
 
