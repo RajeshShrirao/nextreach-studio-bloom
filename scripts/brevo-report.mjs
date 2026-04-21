@@ -4,6 +4,8 @@
 //   node scripts/brevo-report.mjs --start=YYYY-MM-DD --end=YYYY-MM-DD --tag-prefix=prospect-
 // Defaults: last 30 days, tag-prefix=prospect-
 
+import "dotenv/config";
+
 const BASE = "https://api.brevo.com/v3";
 const KEY = process.env.BREVO_API_KEY;
 if (!KEY) {

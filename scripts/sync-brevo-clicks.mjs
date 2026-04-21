@@ -4,11 +4,12 @@
 //   node scripts/sync-brevo-clicks.mjs --dry-run --start=YYYY-MM-DD --end=YYYY-MM-DD --tag-prefix=prospect-
 // Defaults: last 90 days, tag-prefix=prospect-
 
+import "dotenv/config";
 import { createClient } from "@supabase/supabase-js";
 
 const BREVO_BASE = "https://api.brevo.com/v3";
 const BREVO_KEY = process.env.BREVO_API_KEY;
-const SUPABASE_URL = process.env.SUPABASE_URL;
+const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL;
 const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY;
 
 if (!BREVO_KEY) {
