@@ -89,10 +89,8 @@ const canonical = canonicalURL || Astro.url.href;
       <meta property="article:tag" content={tag} />
     ))}
 
-    <!-- Security Headers -->
+    <!-- Security Headers (meta tags for docs/guidance; X-Frame-Options must be set via server header) -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-    <meta http-equiv="X-Frame-Options" content="DENY" />
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
 
     <!-- Structured Data: Organization -->
