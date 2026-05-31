@@ -52,6 +52,15 @@ const canonical = canonicalURL || Astro.url.href;
     <!-- RSS -->
     <link rel="alternate" type="application/rss+xml" title="NextReach Studio Blog" href="/rss.xml" />
 
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1DVFSD0J9Y"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-1DVFSD0J9Y');
+    </script>
+
     <!-- Open Graph -->
     <meta property="og:title" content={siteTitle} />
     <meta property="og:description" content={siteDescription} />
