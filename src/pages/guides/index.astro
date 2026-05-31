@@ -7,7 +7,6 @@ import { getCollection } from "astro:content";
 const guides = await getCollection("guides", ({ data }) => !data.draft);
 guides.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 
-const difficultyOrder = { beginner: 0, intermediate: 1, advanced: 2 };
 ---
 
 <Layout
@@ -60,9 +59,9 @@ const difficultyOrder = { beginner: 0, intermediate: 1, advanced: 2 };
                   {guide.data.title}
                 </h2>
                 <p class="text-sm text-zinc-500 leading-relaxed">{guide.data.description}</p>
-                {guide.data.tags.length > 0 && (
+                {(guide.data.tags ?? []).length > 0 && (
                   <div class="flex flex-wrap gap-1.5 mt-3">
-                    {guide.data.tags.slice(0, 4).map((tag) => (
+                    {(guide.data.tags ?? []).slice(0, 4).map((tag) => (
                       <span class="rounded-full bg-zinc-800 px-2 py-0.5 text-xs text-zinc-600">{tag}</span>
                     ))}
                   </div>

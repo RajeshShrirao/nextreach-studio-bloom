@@ -2,6 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import Nav from "@/components/Nav.astro";
 import Footer from "@/components/Footer.astro";
+import Prose from "@/components/Prose.astro";
 import CostCalculator from "@/components/tools/CostCalculator";
 ---
 
@@ -21,10 +22,11 @@ import CostCalculator from "@/components/tools/CostCalculator";
       </p>
     </header>
 
-    <CostCalculator client:load />
+    <CostCalculator client:idle />
 
-    <section class="mt-16 prose prose-invert max-w-none prose-headings:font-display prose-headings:font-semibold prose-headings:text-white prose-a:text-amber-400 prose-a:no-underline hover:prose-a:text-amber-300">
-      <h2>How LLM pricing works</h2>
+    <section class="mt-16">
+      <Prose>
+        <h2>How LLM pricing works</h2>
       <p>
         Most LLM providers charge per million tokens — separately for input (your prompt) and output (the model's response).
         Output tokens are usually 3–5x more expensive than input tokens because generation is computationally heavier.
@@ -56,6 +58,7 @@ import CostCalculator from "@/components/tools/CostCalculator";
         <li><a href="/guides/ai-api-cost-optimization">AI API Cost Optimization: Reduce Your Bill by 60%</a></li>
         <li><a href="/guides/choosing-right-llm-for-coding">Choosing the Right LLM for Your Coding Workflow</a></li>
       </ul>
+      </Prose>
     </section>
   </main>
   <Footer />

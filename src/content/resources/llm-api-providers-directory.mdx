@@ -5,12 +5,15 @@ pubDate: 2026-05-10
 author: "NextReach Studio"
 tags: ["llm-apis", "directory", "comparison"]
 draft: false
+updatedDate: 2026-05-31
 category: "API Providers"
 ---
 
 Choosing an LLM API provider in 2026 is not just picking the smartest model — it's a systems decision that affects your latency, reliability, compliance posture, and monthly burn rate. This directory covers every provider worth considering, with honest assessments of where each one excels and where it falls short.
 
 Pricing is as of May 2026 and reflects standard public API rates. Many providers have enterprise pricing that differs significantly. Use the [LLM Cost Calculator](/tools/llm-cost-calculator) to model costs for your specific volume.
+
+> **May 2026 update:** This directory has been updated to include Claude 4 Sonnet, GPT-5, Gemini 3, Llama 4, and DeepSeek. Previous-generation models remain listed for reference and backward compatibility.
 
 ---
 
@@ -36,9 +39,12 @@ Each provider listing includes:
 
 | Model | Context | Input ($/1M) | Output ($/1M) |
 |---|---|---|---|
+| Claude 4 Sonnet | 200K | $3.00 | $15.00 |
 | Claude 3.7 Sonnet | 200K | $3.00 | $15.00 |
 | Claude 3.5 Sonnet | 200K | $3.00 | $15.00 |
 | Claude 3.5 Haiku | 200K | $0.80 | $4.00 |
+
+**Claude 4 Sonnet** is Anthropic's latest (May 2026), offering improved instruction-following, reduced hallucinations, and better recall of decisions across long sessions compared to Claude 3.7 Sonnet. It maintains the same pricing and 200K context window while delivering measurable gains on SWE-bench (74.1% vs 70.3%).
 
 ### Rate Limits (Tier 2 / Standard)
 
@@ -53,11 +59,12 @@ Each provider listing includes:
 - **Batch API:** 50% discount for async batch processing, results within 24 hours
 
 ### Strengths
-- Best-in-class performance on SWE-bench (real software engineering tasks)
+- Best-in-class performance on SWE-bench (real software engineering tasks) — Claude 4 Sonnet leads at 74.1%
 - Most reliable instruction-following among all providers
 - Extended thinking mode for complex reasoning tasks
 - Best JSON/structured output reliability
 - Strong safety profile with predictable refusal behavior
+- Claude 4 Sonnet further improves decision recall across long sessions
 
 ### Weaknesses
 - No image generation
@@ -79,7 +86,7 @@ import anthropic
 client = anthropic.Anthropic(api_key="your-key")
 
 message = client.messages.create(
-    model="claude-3-7-sonnet-20250219",
+    model="claude-4-sonnet-20260515",  # or "claude-3-7-sonnet-20250219" for previous gen
     max_tokens=4096,
     messages=[{"role": "user", "content": "Review this code: ..."}]
 )
@@ -96,11 +103,14 @@ message = client.messages.create(
 
 | Model | Context | Input ($/1M) | Output ($/1M) |
 |---|---|---|---|
+| GPT-5 | 256K | $3.00 | $12.00 |
 | GPT-4o | 128K | $2.50 | $10.00 |
 | GPT-4o mini | 128K | $0.15 | $0.60 |
 | o3 | 200K | $10.00 | $40.00 |
 | o3-mini | 200K | $1.10 | $4.40 |
 | GPT-4.1 | 1M | $2.00 | $8.00 |
+
+**GPT-5** (released in 2026) is OpenAI's latest flagship, offering a 256K context window and improved reasoning over GPT-4o. It strikes a balance between GPT-4o's affordability and o3's reasoning depth — performing well on both code generation (92.1% HumanEval+) and complex reasoning (81.5% GPQA Diamond).
 
 ### Rate Limits (Tier 2)
 
@@ -115,10 +125,11 @@ message = client.messages.create(
 - **Batch API:** 50% discount, 24-hour turnaround
 
 ### Strengths
-- Largest model family — from ultra-cheap mini to reasoning-specialized o3
+- Largest model family — from ultra-cheap mini to reasoning-specialized o3 and the new GPT-5 flagship
+- GPT-5 offers improved reasoning (81.5% GPQA Diamond) while being significantly cheaper than o3
 - Broadest ecosystem support (every framework, tool, and library integrates with OpenAI first)
 - Best fine-tuning pipeline — most mature, documentation, and cost transparency
-- Strong multimodal capability (vision, audio with GPT-4o)
+- Strong multimodal capability (vision, audio with GPT-4o and GPT-5)
 - Assistants API for stateful, multi-turn applications
 
 ### Weaknesses
@@ -141,7 +152,7 @@ from openai import OpenAI
 client = OpenAI(api_key="your-key")
 
 response = client.chat.completions.create(
-    model="gpt-4o",
+    model="gpt-5",  # or "gpt-4o" for lower cost
     messages=[{"role": "user", "content": "Debug this function..."}],
     response_format={"type": "json_object"}  # Force JSON output
 )
@@ -157,11 +168,16 @@ response = client.chat.completions.create(
 ### Models
 
 | Model | Context | Input ($/1M) | Output ($/1M) |
-|---|---|---|---|
+|---|---|---|---|---|
+| Gemini 3 Pro | 2M | $1.50 (under 200K) | $12.00 |
+| Gemini 3 Pro | 2M | $3.00 (over 200K) | $18.00 |
 | Gemini 2.5 Pro | 2M | $1.25 (under 200K) | $10.00 |
 | Gemini 2.5 Pro | 2M | $2.50 (over 200K) | $15.00 |
+| Gemini 2.5 Flash | 1M | $0.15 | $0.60 |
 | Gemini 2.0 Flash | 1M | $0.075 | $0.30 |
 | Gemini 2.0 Flash-Lite | 1M | $0.018 | $0.075 |
+
+**Gemini 3 Pro** is Google's latest reasoning model (May 2026), with further improvements in instruction-following, code generation, and multilingual performance. It retains the 2M token context window and adds better structured output handling. **Gemini 2.5 Flash** fills the gap between 2.0 Flash and 2.5 Pro, offering better quality than Flash at $0.15/1M input — a price/performance sweet spot for high-volume tasks.
 
 ### Rate Limits (Pay-as-you-go)
 
@@ -172,10 +188,11 @@ response = client.chat.completions.create(
 
 ### Strengths
 - Lowest cost per token at every quality tier — Flash is exceptionally cheap
-- Largest context window available (2M tokens on 2.5 Pro)
+- Largest context window available (2M tokens on 2.5 Pro and 3 Pro)
 - Best performance on reasoning benchmarks (GPQA Diamond, MATH)
 - Native Google Search grounding for RAG-free real-time knowledge
 - Generous free tier for development
+- Gemini 2.5 Flash adds a quality mid-point at $0.15/1M input between 2.0 Flash and 2.5 Pro
 
 ### Weaknesses
 - Slightly less consistent instruction-following vs. Claude on complex structured tasks
@@ -195,7 +212,7 @@ response = client.chat.completions.create(
 import google.generativeai as genai
 
 genai.configure(api_key="your-key")
-model = genai.GenerativeModel("gemini-2.0-flash")
+model = genai.GenerativeModel("gemini-2.0-flash")  # or "gemini-3-pro" for latest reasoning
 
 response = model.generate_content(
     "Generate unit tests for this function:\n\n{code}",
@@ -217,10 +234,13 @@ response = model.generate_content(
 
 | Model | Parameters | Context | Typical Cost ($/1M) |
 |---|---|---|---|
+| Llama 4 17B | 17B | 256K | $0.10–$0.40 |
 | Llama 3.3 70B | 70B | 128K | $0.20–$0.90 |
 | Llama 3.1 405B | 405B | 128K | $1.50–$5.00 |
 | Llama 3.2 11B Vision | 11B | 128K | $0.08–$0.20 |
 | CodeLlama 70B | 70B | 100K | $0.20–$0.60 |
+
+**Llama 4 17B** is Meta's latest open-weight model, offering a 256K context window and improved multimodal capabilities. Despite its smaller parameter count (17B vs 70B for Llama 3.3), it delivers competitive reasoning quality thanks to architectural improvements, including interleaved MoE layers and improved training data curation. Ideal for self-hosting on modest hardware.
 
 *Cost varies by inference provider. See provider-specific pricing below.*
 
@@ -252,9 +272,11 @@ response = model.generate_content(
 ### Models Hosted
 
 | Model | Input ($/1M) | Output ($/1M) | Speed |
-|---|---|---|---|
+|---|---|---|---|---|
+| Llama 4 17B | $0.30 | $0.40 | ~1,200 tokens/sec |
 | Llama 3.3 70B | $0.59 | $0.79 | ~800 tokens/sec |
 | Mixtral 8x7B | $0.24 | $0.24 | ~500 tokens/sec |
+| Gemma 3 12B | $0.25 | $0.25 | ~1,100 tokens/sec |
 | Gemma 2 9B | $0.20 | $0.20 | ~1,200 tokens/sec |
 
 ### Strengths
@@ -282,9 +304,12 @@ response = model.generate_content(
 ### Notable Models
 
 | Model | Input ($/1M) | Output ($/1M) |
-|---|---|---|
+|---|---|---|---|
+| Llama 4 17B | $0.30 | $0.30 |
 | Llama 3.1 405B | $3.50 | $3.50 |
 | Llama 3.3 70B | $0.54 | $0.54 |
+| DeepSeek R1 | $0.55 | $2.19 |
+| DeepSeek V3 | $0.27 | $1.10 |
 | Mistral 7B | $0.10 | $0.10 |
 | DeepSeek Coder V2 | $0.14 | $0.28 |
 
@@ -301,6 +326,37 @@ response = model.generate_content(
 
 ---
 
+## DeepSeek
+
+**Website:** platform.deepseek.com  
+**Status:** Production-ready
+
+### Models
+
+| Model | Context | Input ($/1M) | Output ($/1M) |
+|---|---|---|---|
+| DeepSeek R1 | 128K | $0.55 | $2.19 |
+| DeepSeek V3 | 128K | $0.27 | $1.10 |
+
+### Strengths
+- **DeepSeek R1** offers strong reasoning at a fraction of the cost of o3 — comparable GPQA Diamond scores (78.6%) at ~5% of the price
+- V3 is an excellent budget choice for coding tasks, competitive with GPT-4o mini at similar pricing
+- Both models support OpenAI-compatible API format for easy integration
+- Available via deep infrastructure providers (Together AI, Fireworks) as well as direct API
+
+### Weaknesses
+- Smaller context window (128K) compared to Gemini or Claude
+- R1 can be verbose in its reasoning traces, increasing token costs for the thinking budget
+- Less ecosystem support and fewer third-party integrations than OpenAI/Anthropic
+- Data residency limited to US/Asia — not ideal for EU compliance
+
+### Best For
+- Cost-sensitive reasoning tasks where o3 pricing is prohibitive
+- Code generation and structured output at budget-friendly rates
+- Teams comfortable with OpenAI-compatible APIs and minimal vendor lock-in
+
+---
+
 ## Mistral AI
 
 **Website:** console.mistral.ai  
@@ -309,10 +365,13 @@ response = model.generate_content(
 ### Models
 
 | Model | Context | Input ($/1M) | Output ($/1M) |
-|---|---|---|---|
+|---|---|---|---|---|
+| Mistral Large 3 | 256K | $2.50 | $8.00 |
 | Mistral Large 2 | 128K | $2.00 | $6.00 |
 | Mistral Small 3 | 128K | $0.10 | $0.30 |
 | Codestral | 256K | $0.20 | $0.60 |
+
+**Mistral Large 3** (released 2026) extends the context window to 256K and improves reasoning quality, narrowing the gap with Claude 4 Sonnet on complex coding tasks. Pricing remains competitive.
 
 ### Strengths
 - **Codestral** is purpose-built for code generation and performs above its weight class
@@ -322,7 +381,7 @@ response = model.generate_content(
 
 ### Weaknesses
 - Smaller ecosystem than Anthropic/OpenAI
-- Mistral Large 2 trails Claude Sonnet and GPT-4o on complex reasoning
+- Mistral Large 2 (previous gen) trails Claude Sonnet and GPT-4o on complex reasoning; Large 3 closes this gap significantly
 
 ### Best For
 - European teams with GDPR data residency requirements
@@ -377,12 +436,13 @@ Claude (all Anthropic models), Llama (all Meta models), Mistral, Titan, Cohere, 
 Don't forget: you need embeddings for RAG pipelines. These are separate from generation APIs.
 
 | Provider | Model | Dimensions | Cost ($/1M tokens) |
-|---|---|---|---|
+|---|---|---|---|---|
 | OpenAI | text-embedding-3-large | 3072 | $0.13 |
 | OpenAI | text-embedding-3-small | 1536 | $0.02 |
-| Cohere | embed-v4.0 | 1024 | $0.10 |
+| Cohere | embed-v5.0 | 1024 | $0.10 |
 | Voyage AI | voyage-3-large | 1024 | $0.06 |
 | Google | text-embedding-004 | 768 | Free (Gemini API) |
+| Anthropic | (uses third-party — no native embedding API) | — | — |
 
 For most applications, `text-embedding-3-small` at $0.02/1M is the right default. Use `voyage-3-large` if you need best-in-class retrieval quality.
 
@@ -391,17 +451,18 @@ For most applications, `text-embedding-3-small` at $0.02/1M is the right default
 ## Quick Provider Selection Guide
 
 | If you need... | Use |
-|---|---|
-| Best code generation quality | Anthropic (Claude Sonnet) |
+|---|---|---|
+| Best code generation quality | Anthropic (Claude 4 Sonnet) |
 | Cheapest high-volume inference | Google (Gemini Flash) |
+| Best reasoning value | DeepSeek (R1) |
 | Widest model selection / fine-tuning | OpenAI |
 | Fastest inference latency | Groq |
-| Data privacy / self-hosting | Meta Llama + Ollama or Together AI |
+| Data privacy / self-hosting | Meta Llama 4 + Ollama or Together AI |
 | EU data residency | Mistral or Anthropic (EU endpoints) |
 | Enterprise compliance (AWS) | AWS Bedrock |
 | Code completion / FIM | Mistral Codestral |
-| Long context (200K+ tokens) | Google Gemini 2.5 Pro |
-| Complex reasoning | OpenAI o3 or Gemini 2.5 Pro |
+| Long context (200K+ tokens) | Google Gemini 2.5/3 Pro |
+| Complex reasoning | OpenAI o3, Gemini 3 Pro, or DeepSeek R1 |
 
 ---
 

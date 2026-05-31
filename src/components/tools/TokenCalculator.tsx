@@ -1,7 +1,5 @@
 import { useState, useCallback } from "react";
-
-// Approximate tokenization based on well-known rules
-// This mirrors cl100k_base behavior closely enough for estimates
+import { estimateTokens } from "@/utils/tokens";
 
 const MODEL_CONFIGS = {
   "claude-3-5-sonnet": { label: "Claude 3.5 Sonnet", contextWindow: 200000, provider: "Anthropic" },
@@ -22,27 +20,6 @@ const MODEL_CONFIGS = {
 };
 
 type ModelKey = keyof typeof MODEL_CONFIGS;
-
-function estimateTokens(text: string): number {
-  if (!text) return 0;
-  // BPE-like approximation: ~4 chars per token for English prose
-  // Code tends to have smaller tokens (~3 chars each)
-  // We do a simple heuristic split
-  const words = text.split(/\s+/).filter(Boolean);
-  let tokens = 0;
-  for (const word of words) {
-    if (word.length <= 4) {
-      tokens += 1;
-    } else if (word.length <= 8) {
-      tokens += 2;
-    } else {
-      tokens += Math.ceil(word.length / 3.5);
-    }
-  }
-  // Add tokens for punctuation and whitespace
-  tokens += Math.ceil((text.match(/[^a-zA-Z0-9\s]/g) || []).length * 0.5);
-  return Math.max(1, tokens);
-}
 
 export default function TokenCalculator() {
   const [text, setText] = useState("");

@@ -1,19 +1,20 @@
 ---
 title: "Claude Code Workflow: 15 Patterns That Actually Speed Up Development"
-description: "Real workflow patterns for Claude Code users that save hours. Covers context management, CLAUDE.md tricks, multi-file edits, slash commands."
+description: "Real workflow patterns for Claude Code users that save hours. Covers context management, AGENTS.md tricks, multi-file edits, slash commands."
 pubDate: 2026-05-20
 author: "NextReach Studio"
 tags: ["claude-code", "workflow", "developer-tools"]
 draft: false
+updatedDate: 2026-05-31
 ---
 
 After months of daily use, Claude Code stops feeling like a novelty and starts revealing its real texture. Some patterns genuinely cut hours off common workflows. Others sound useful in demos but collapse under real project complexity. This post skips the obvious stuff — you already know how to run `/init` and ask for refactors — and goes straight to the patterns that actually matter when you're shipping.
 
-## 1. CLAUDE.md Is Your Persistent Memory
+## 1. AGENTS.md (Formerly CLAUDE.md) Is Your Persistent Memory
 
-Claude Code reads `CLAUDE.md` at startup and injects it into every session. Most developers treat it as a README variant. It's actually a control file for your AI collaborator's behavior.
+Claude Code reads `AGENTS.md` at startup and injects it into every session. Most developers treat it as a README variant. It's actually a control file for your AI collaborator's behavior.
 
-The difference between a weak `CLAUDE.md` and a strong one is specificity. A weak one says "This is a Next.js project." A strong one says exactly what decisions have already been made so Claude stops suggesting alternatives.
+The difference between a weak `AGENTS.md` and a strong one is specificity. A weak one says "This is a Next.js project." A strong one says exactly what decisions have already been made so Claude stops suggesting alternatives.
 
 ```markdown
 # Project: NextReach Studio API
@@ -38,13 +39,13 @@ Don't touch auth files unless explicitly asked.
 - Email sending uses two different providers (Resend for transactional, SendGrid for bulk)
 ```
 
-Key things to put in CLAUDE.md:
+Key things to put in AGENTS.md:
 - Decisions that are final — saves re-litigating architecture every session
 - What's off-limits in the current sprint
 - Naming conventions and file layout rules
 - Known debt that Claude shouldn't "fix" spontaneously
 
-Rebuild your CLAUDE.md every few sprints. Old constraints pollute new work.
+Rebuild your AGENTS.md every few sprints. Old constraints pollute new work.
 
 ## 2. Use `/clear` Strategically, Not Reactively
 
@@ -245,9 +246,9 @@ The question is about how subscription upgrades are handled.
 
 This prevents Claude from making changes that seem locally reasonable but break global invariants, and it keeps the context lean.
 
-## 14. Build a Prompt Library in Your CLAUDE.md
+## 14. Build a Prompt Library in Your AGENTS.md (Formerly CLAUDE.md)
 
-Add a section to your CLAUDE.md for reusable prompt patterns specific to your project:
+Add a section to your AGENTS.md for reusable prompt patterns specific to your project:
 
 ```markdown
 ## Common task patterns
@@ -281,7 +282,7 @@ Summarize what we accomplished today in this format:
 - Suggested starting point for the next session
 ```
 
-Save this output. At the start of your next session, paste it as the first message after the CLAUDE.md loads. This creates continuity across sessions without burning tokens on re-exploration.
+Save this output. At the start of your next session, paste it as the first message after the AGENTS.md loads. This creates continuity across sessions without burning tokens on re-exploration.
 
 ---
 

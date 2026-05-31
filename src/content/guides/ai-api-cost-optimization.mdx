@@ -5,6 +5,7 @@ pubDate: 2026-05-15
 author: "NextReach Studio"
 tags: ["api-costs", "optimization", "llm"]
 draft: false
+updatedDate: 2026-05-31
 difficulty: intermediate
 readingTime: "14 min read"
 ---
@@ -12,6 +13,8 @@ readingTime: "14 min read"
 If you're calling LLM APIs at any meaningful scale, the bill lands fast. A team running Claude Sonnet for code review, documentation, and test generation across a 10-engineer org can easily hit $2,000–5,000/month without realizing it. Most of that cost is preventable.
 
 This is not a "use a cheaper model" guide. That advice is obvious and often wrong — swapping Claude Sonnet for GPT-4o mini on complex tasks causes quality degradation that creates downstream engineering debt. Instead, this guide covers architectural and prompt-level techniques that reduce costs without meaningful quality loss. Real numbers included.
+
+> **May 2026 update:** Prompt caching is now available across all major providers (Anthropic, OpenAI, Google, Mistral), making it the single highest-leverage optimization. The routing strategies have also been updated to account for Claude 4 Sonnet, GPT-5, and Gemini 2.5 Flash — all of which shift the cost-quality tradeoffs.
 
 ---
 
@@ -36,7 +39,7 @@ Use the [LLM Cost Calculator](/tools/llm-cost-calculator) and [AI Token Calculat
 
 ## Technique 1: Prompt Caching
 
-Prompt caching is the single highest-leverage optimization available in 2026. Both Anthropic and Google support it; OpenAI has a limited version.
+Prompt caching is the single highest-leverage optimization available in 2026. As of mid-2026, prompt caching is widely available across all major providers: Anthropic (since late 2024), Google (Gemini API), OpenAI (now expanded beyond the limited version), and Mistral AI. This means you can apply caching regardless of which provider you're using.
 
 **How it works:** When you send the same prefix (system prompt + static context) across multiple requests, the provider caches the processed tokens after the first call. Subsequent calls with the same prefix only charge for the new/unique tokens.
 
@@ -153,7 +156,7 @@ def get_model(complexity: TaskComplexity) -> str:
     return {
         TaskComplexity.SIMPLE: "gemini-2.0-flash",        # $0.075/1M input
         TaskComplexity.MEDIUM: "claude-3-5-haiku-20241022",  # $0.80/1M input
-        TaskComplexity.COMPLEX: "claude-3-7-sonnet-20250219"  # $3.00/1M input
+        TaskComplexity.COMPLEX: "claude-4-sonnet-20260515"   # $3.00/1M input
     }[complexity]
 ```
 
@@ -313,7 +316,7 @@ batch = client.messages.batches.create(
         {
             "custom_id": f"doc-gen-{file_path}",
             "params": {
-                "model": "claude-3-5-haiku-20241022",
+                "model": "claude-3-5-haiku-20241022",  # Or claude-4-sonnet-20260515 for complex docs
                 "max_tokens": 1024,
                 "messages": [
                     {
@@ -415,6 +418,8 @@ def semantic_cache_set(prompt: str, response: str):
 **Effective for:** repetitive tasks like "explain this function," "write a test for this," or "add error handling to this code" where the code pattern varies slightly but the task is structurally identical.
 
 **Cache hit rates in practice:** 15–35% for developer tooling applications, 40–60% for customer-facing coding assistants with repeated user patterns.
+
+> **Note:** Semantic caching becomes even more valuable with higher-cost models like Claude 4 Sonnet and GPT-5. If you're using a frontier model for repetitive analysis tasks, a semantic cache can cut effective costs by 30–50% on top of provider-level prompt caching.
 
 ---
 

@@ -2,6 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import Nav from "@/components/Nav.astro";
 import Footer from "@/components/Footer.astro";
+import Prose from "@/components/Prose.astro";
 import TokenCalculator from "@/components/tools/TokenCalculator";
 ---
 
@@ -21,10 +22,11 @@ import TokenCalculator from "@/components/tools/TokenCalculator";
       </p>
     </header>
 
-    <TokenCalculator client:load />
+    <TokenCalculator client:idle />
 
-    <section class="mt-16 prose prose-invert max-w-none prose-headings:font-display prose-headings:font-semibold prose-headings:text-white prose-a:text-amber-400 prose-a:no-underline hover:prose-a:text-amber-300">
-      <h2>What is token counting?</h2>
+    <section class="mt-16">
+      <Prose>
+        <h2>What is token counting?</h2>
       <p>
         LLMs don't process text word-by-word — they work with <strong>tokens</strong>, which are chunks of characters
         roughly corresponding to 0.75 words on average. Every model has a maximum context window measured in tokens,
@@ -62,6 +64,7 @@ import TokenCalculator from "@/components/tools/TokenCalculator";
         <li><a href="/blog/llm-context-window-management">LLM Context Window Management: When Your AI Forgets Everything</a></li>
         <li><a href="/guides/ai-api-cost-optimization">AI API Cost Optimization: Reduce Your Bill by 60%</a></li>
       </ul>
+      </Prose>
     </section>
   </main>
   <Footer />

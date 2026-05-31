@@ -5,6 +5,7 @@ pubDate: 2026-05-24
 author: "NextReach Studio"
 tags: ["mcp", "claude", "tutorial"]
 draft: false
+updatedDate: 2026-05-31
 ---
 
 The Model Context Protocol (MCP) lets you give Claude access to custom tools — databases, internal APIs, file systems, anything with a network interface. It's not magic: it's a JSON-RPC spec that describes how a client (Claude Desktop, Claude Code) discovers and calls tools on a server you control. This tutorial builds a real MCP server from scratch, explains what's actually happening at each step, and gets you to a working tool integration in under 30 minutes.
@@ -34,7 +35,7 @@ This is a useful developer utility that gives Claude visibility into your local 
 ## Prerequisites
 
 ```bash
-node --version  # Need Node 18+
+node --version  # Need Node 22+
 npm --version   # Any recent version
 ```
 
@@ -55,8 +56,8 @@ Update `tsconfig.json` for Node ESM:
 {
   "compilerOptions": {
     "target": "ES2022",
-    "module": "Node16",
-    "moduleResolution": "Node16",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "outDir": "./dist",
     "rootDir": "./src",
     "strict": true,
@@ -66,6 +67,8 @@ Update `tsconfig.json` for Node ESM:
   "include": ["src/**/*"]
 }
 ```
+
+> **Note:** With Node 22+, use `"module": "NodeNext"` instead of `"Node16"`. The `NodeNext` resolution mode aligns with Node's latest ESM handling and is required for compatibility with the MCP SDK's export map.
 
 Update `package.json`:
 

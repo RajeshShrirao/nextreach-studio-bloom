@@ -1,12 +1,10 @@
-// Service Worker for Blackbox Rescue PWA
-const CACHE_NAME = 'blackbox-rescue-v1';
+// Service Worker for NextReach Studio PWA
+const CACHE_NAME = 'nextreach-studio-v1';
 const STATIC_ASSETS = [
   '/',
-  '/index.html',
   '/manifest.json',
-  '/blackbox-rescue-mark.svg',
-  '/robots.txt',
-  '/sitemap.xml'
+  '/placeholder.svg',
+  '/robots.txt'
 ];
 
 // Install event - cache static assets
@@ -96,9 +94,9 @@ async function syncContactForm() {
 self.addEventListener('push', (event) => {
   const data = event.data?.json() || {};
   const options = {
-    body: data.body || 'New notification from Blackbox Rescue',
-    icon: '/blackbox-rescue-mark.svg',
-    badge: '/blackbox-rescue-mark.svg',
+    body: data.body || 'New notification from NextReach Studio',
+    icon: '/placeholder.svg',
+    badge: '/placeholder.svg',
     vibrate: [100, 50, 100],
     data: {
       dateOfArrival: Date.now(),
@@ -112,7 +110,7 @@ self.addEventListener('push', (event) => {
   };
 
   event.waitUntil(
-    self.registration.showNotification(data.title || 'Blackbox Rescue', options)
+    self.registration.showNotification(data.title || 'NextReach Studio', options)
   );
 });
 

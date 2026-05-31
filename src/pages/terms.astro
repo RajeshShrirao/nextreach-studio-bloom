@@ -1,0 +1,81 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Nav from "@/components/Nav.astro";
+import Footer from "@/components/Footer.astro";
+import Prose from "@/components/Prose.astro";
+---
+
+<Layout
+  title="Terms & Conditions"
+  description="Terms and Conditions for NextReach Studio. Read the rules and guidelines for using our AI developer tools, calculators, and content."
+>
+  <Nav />
+  <main class="pt-28 pb-20 px-6 sm:px-8 max-w-3xl mx-auto">
+    <header class="mb-12">
+      <p class="text-xs uppercase tracking-[0.12em] text-zinc-600 mb-3">Legal</p>
+      <h1 class="font-display font-semibold text-4xl sm:text-5xl text-white tracking-[-0.01em] mb-4">
+        Terms & Conditions
+      </h1>
+      <p class="text-zinc-500 text-sm">Last updated: May 31, 2026</p>
+    </header>
+
+    <Prose>
+      <p>
+        By accessing or using <strong>www.nextreachstudio.com</strong> (the "Site"), you agree to be bound by these Terms & Conditions. If you do not agree, do not use the Site.
+      </p>
+
+      <h2>1. Use of the Site</h2>
+      <p>You agree to use the Site only for lawful purposes and in a way that does not infringe the rights of others or restrict their use of the Site.</p>
+      <ul>
+        <li>All tools are provided "as is" without any warranty</li>
+        <li>You may not use the tools for any illegal or unauthorized purpose</li>
+        <li>You may not attempt to disrupt, overload, or compromise the Site's infrastructure</li>
+        <li>You may not scrape, reverse-engineer, or systematically extract data from the Site</li>
+      </ul>
+
+      <h2>2. Intellectual Property</h2>
+      <p>
+        All content on the Site — including tools, articles, guides, graphics, logos, and code — is the property of NextReach Studio unless otherwise stated. You may not reproduce, distribute, modify, or create derivative works without our prior written consent.
+      </p>
+      <p>
+        The interactive tools (token calculator, cost calculator, VRAM estimator, context window calculator, prompt formatter) are provided for your personal or internal business use. You may not re-host, sublicense, or sell these tools.
+      </p>
+
+      <h2>3. Accuracy of Information</h2>
+      <p>
+        While we strive to keep all information accurate and up to date, model pricing, context windows, and technical specifications may change. Tool outputs are estimates and should be verified against official provider documentation. We make no representations or warranties about the completeness or accuracy of the information on this Site.
+      </p>
+
+      <h2>4. Chat Widget and API</h2>
+      <p>
+        If you use the chat widget or API endpoints, you agree not to submit any content that is illegal, harmful, threatening, abusive, or violates any third-party rights. We reserve the right to block or throttle usage that we deem abusive or excessive.
+      </p>
+
+      <h2>5. Limitation of Liability</h2>
+      <p>
+        NextReach Studio shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the Site or any tool provided herein. Our total liability for any claim shall not exceed the amount you have paid us in the preceding 12 months (if any).
+      </p>
+
+      <h2>6. External Links</h2>
+      <p>
+        The Site contains links to third-party websites, tools, and services. We are not responsible for the content, accuracy, or practices of these external sites. Use them at your own risk.
+      </p>
+
+      <h2>7. Changes to Terms</h2>
+      <p>
+        We reserve the right to modify these terms at any time. Changes will be posted on this page with an updated date. Continued use of the Site after changes constitutes acceptance of the new terms.
+      </p>
+
+      <h2>8. Governing Law</h2>
+      <p>
+        These terms shall be governed by and construed in accordance with the laws of the State of California, United States, without regard to its conflict of law provisions.
+      </p>
+
+      <h2>9. Contact</h2>
+      <p>
+        For questions about these terms, please reach out to <a href="mailto:hello@nextreachstudio.com">hello@nextreachstudio.com</a>.
+      </p>
+    </Prose>
+  </main>
+  <Footer />
+</Layout>

@@ -5,6 +5,7 @@ pubDate: 2026-05-28
 author: "NextReach Studio"
 tags: ["llm", "context-window", "developer-tools"]
 draft: false
+updatedDate: 2026-05-31
 ---
 
 Every developer who uses LLMs heavily hits the same wall eventually. The session starts well, the model has the full context, and answers are sharp. An hour later, after a long back-and-forth, the responses get vague. The model starts contradicting decisions made earlier in the conversation. You ask about code it just wrote and it acts like it's never seen it. The context window is full, and the model is silently degrading.
@@ -20,11 +21,16 @@ Common limits at time of writing:
 | Model | Context Window |
 |-------|---------------|
 | GPT-4o | 128K tokens |
+| GPT-5 | 256K tokens |
 | Claude 3.5 Sonnet | 200K tokens |
 | Claude 3.7 Sonnet | 200K tokens |
-| Gemini 2.5 Pro | 1M tokens |
+| Claude 4 Sonnet | 200K tokens |
+| Gemini 2.5 Pro | 2M tokens |
 | Gemini 2.5 Flash | 1M tokens |
 | Llama 3.1 70B | 128K tokens |
+| Llama 4 17B | 256K tokens |
+| DeepSeek V3 | 128K tokens |
+| DeepSeek R1 | 128K tokens |
 
 A 200K token context holds roughly 150,000 words — around 500 pages of text. That sounds enormous until you start loading files. A medium-sized TypeScript project with 50 files of 200 lines each is around 500KB of source code, which is roughly 125K tokens before you've said a word.
 

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { estimateTokens } from "@/utils/tokens";
 
 const MODELS = [
   // Anthropic
@@ -31,19 +32,6 @@ const TOKEN_TYPES = [
   { id: "query", label: "Current Query", color: "bg-amber-500", placeholder: "Current user message..." },
   { id: "reserved", label: "Reserved for Output", color: "bg-red-500", placeholder: "Expected output length..." },
 ];
-
-function estimateTokens(text: string): number {
-  if (!text) return 0;
-  const words = text.split(/\s+/).filter(Boolean);
-  let tokens = 0;
-  for (const word of words) {
-    if (word.length <= 4) tokens += 1;
-    else if (word.length <= 8) tokens += 2;
-    else tokens += Math.ceil(word.length / 3.5);
-  }
-  tokens += Math.ceil((text.match(/[^a-zA-Z0-9\s]/g) || []).length * 0.5);
-  return Math.max(0, tokens);
-}
 
 export default function ContextCalculator() {
   const [selectedModel, setSelectedModel] = useState("claude-3-5-sonnet");

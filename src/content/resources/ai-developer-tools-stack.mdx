@@ -5,6 +5,7 @@ pubDate: 2026-05-12
 author: "NextReach Studio"
 tags: ["developer-tools", "ai-tools", "stack"]
 draft: false
+updatedDate: 2026-05-31
 category: "Developer Tools"
 ---
 
@@ -54,7 +55,7 @@ from langchain_anthropic import ChatAnthropic
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
-llm = ChatAnthropic(model="claude-3-7-sonnet-20250219")
+llm = ChatAnthropic(model="claude-4-sonnet-20260515")
 
 prompt = ChatPromptTemplate.from_messages([
     ("system", "You are a senior code reviewer. Be direct and specific."),
@@ -91,7 +92,7 @@ documents = SimpleDirectoryReader("./docs").load_data()
 index = VectorStoreIndex.from_documents(
     documents,
     embed_model=OpenAIEmbedding(model="text-embedding-3-small"),
-    llm=Anthropic(model="claude-3-7-sonnet-20250219")
+    llm=Anthropic(model="claude-4-sonnet-20260515")
 )
 
 # Query the index
@@ -123,7 +124,7 @@ class CodeReview(BaseModel):
     suggested_fix: str
 
 agent = Agent(
-    "claude-3-7-sonnet-20250219",
+    "claude-4-sonnet-20260515",
     result_type=CodeReview,
     system_prompt="Review the code. Return structured findings."
 )
@@ -153,13 +154,13 @@ reviewer = Agent(
     role="Senior Code Reviewer",
     goal="Identify bugs and security issues in code",
     backstory="You've reviewed millions of lines of production code.",
-    llm="claude-3-7-sonnet-20250219"
+    llm="claude-4-sonnet-20260515"
 )
 
 documenter = Agent(
     role="Technical Writer",
     goal="Write clear documentation for developers",
-    llm="gemini/gemini-2.0-flash"  # Cheaper model for docs
+    llm="gemini/gemini-2.5-flash"  # Cheaper model for docs
 )
 
 review_task = Task(description="Review: {code}", agent=reviewer)
@@ -282,7 +283,7 @@ prompts:
   - "You are a senior engineer. Find bugs in: {{code}}"
 
 providers:
-  - anthropic:claude-3-7-sonnet-20250219
+  - anthropic:claude-4-sonnet-20260515
   - openai:gpt-4o
 
 tests:
@@ -316,7 +317,7 @@ import braintrust
 @braintrust.traced
 def review_code(code: str) -> str:
     response = client.messages.create(
-        model="claude-3-7-sonnet-20250219",
+        model="claude-4-sonnet-20260515",
         messages=[{"role": "user", "content": f"Review: {code}"}]
     )
     return response.content[0].text
@@ -337,7 +338,7 @@ result = review_code(your_code)
 **Website:** cursor.com  
 **Platform:** macOS, Windows, Linux
 
-VS Code fork with deep LLM integration. The most popular AI-augmented editor in 2026 among professional developers. Supports Claude, GPT-4o, and their own hosted models.
+VS Code fork with deep LLM integration. The most popular AI-augmented editor in 2026 among professional developers. Supports Claude 4, GPT-5, GPT-4o, and their own hosted models.
 
 **What makes it different from GitHub Copilot:**
 - Codebase-wide context (not just the current file)
@@ -348,12 +349,31 @@ VS Code fork with deep LLM integration. The most popular AI-augmented editor in 
 
 ---
 
+### Windsurf (by Codeium)
+
+**Website:** codeium.com/windsurf  
+**Platform:** macOS, Windows, Linux
+
+Windsurf is Codeium's AI-native IDE (not a fork — built from the ground up). It offers deep agentic AI integration with multi-file editing, automatic context gathering, and a "cascade" mode for complex multi-step tasks. Windsurf supports Claude, GPT-4o, and its own hosted models.
+
+**What makes it different from Cursor:**
+- "Cascade" mode for autonomous multi-step workflows (read files, edit, run tests, fix failures)
+- Automatic context detection — the IDE proactively gathers relevant files without being asked
+- Built-in terminal integration where the AI can run commands and interpret output
+- Generous free tier (500 requests/month) vs Cursor's 200
+
+**Cost:** Free tier (500 requests/month), Pro $15/mo
+
+**Honest assessment:** Windsurf's Cascade mode genuinely handles multi-step workflows better than Cursor's Composer for complex tasks like "add a new API endpoint — write the handler, the test, and update the docs." The automatic context detection is impressive but sometimes pulls in irrelevant files. For simple chat and completion, Cursor and Windsurf are comparable.
+
+---
+
 ### Continue.dev
 
 **GitHub:** continuedev/continue  
 **License:** Apache 2.0
 
-Open-source alternative to Cursor that integrates into VS Code and JetBrains. Lets you BYO-API-key, so you control model selection and costs. Useful for teams that can't use Cursor for compliance reasons.
+Open-source alternative to Cursor that integrates into VS Code and JetBrains. Lets you BYO-API-key, so you control model selection and costs. Useful for teams that can't use Cursor or Windsurf for compliance reasons.
 
 ```json
 // .continue/config.json
@@ -362,7 +382,7 @@ Open-source alternative to Cursor that integrates into VS Code and JetBrains. Le
     {
       "title": "Claude Sonnet",
       "provider": "anthropic",
-      "model": "claude-3-7-sonnet-20250219",
+      "model": "claude-4-sonnet-20260515",
       "apiKey": "your-key"
     },
     {
@@ -396,7 +416,7 @@ The simplest way to run open-weight models locally. Handles model downloads, qua
 ```bash
 # Install and run
 brew install ollama
-ollama pull llama3.3:70b
+ollama pull llama4
 ollama serve
 
 # Use with any OpenAI-compatible client
@@ -408,7 +428,7 @@ curl http://localhost:11434/v1/chat/completions \
   }'
 ```
 
-**Honest assessment:** Best local inference tool for Mac users. On Apple Silicon, 7B–14B models run comfortably. 70B models are usable but slow on most MacBook Pros. For heavy local inference, you need dedicated GPU hardware.
+**Honest assessment:** Best local inference tool for Mac users. On Apple Silicon, 7B–14B models run comfortably. Llama 4 17B runs well on 32GB+ Macs thanks to architectural improvements. 70B models are usable but slow on most MacBook Pros. For heavy local inference, you need dedicated GPU hardware.
 
 **Cost:** Free
 
@@ -489,7 +509,7 @@ Supports OpenAI, Anthropic, Google, and any OpenAI-compatible API.
 | Orchestration | PydanticAI or direct API calls | Free |
 | Vector DB | pgvector or Qdrant (local) | Free |
 | Local inference | Ollama | Free |
-| Editor | Cursor (free tier) | Free |
+| Editor | Cursor (free tier) or Windsurf (free tier) | Free |
 | Monitoring | Helicone (free tier) | Free |
 
 ---
@@ -503,7 +523,7 @@ Supports OpenAI, Anthropic, Google, and any OpenAI-compatible API.
 | Vector DB | Qdrant Cloud or Pinecone | $25–70/mo |
 | Prompt testing | Promptfoo | Free |
 | Monitoring | LangSmith or Helicone | $20–39/mo |
-| Editor | Cursor Pro (per seat) | $20/seat/mo |
+| Editor | Cursor Pro ($20/seat/mo) or Windsurf Pro ($15/seat/mo) | $15–20/seat/mo |
 
 ---
 

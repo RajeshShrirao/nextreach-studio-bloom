@@ -2,6 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import Nav from "@/components/Nav.astro";
 import Footer from "@/components/Footer.astro";
+import Prose from "@/components/Prose.astro";
 import VRAMEstimator from "@/components/tools/VRAMEstimator";
 ---
 
@@ -21,10 +22,11 @@ import VRAMEstimator from "@/components/tools/VRAMEstimator";
       </p>
     </header>
 
-    <VRAMEstimator client:load />
+    <VRAMEstimator client:idle />
 
-    <section class="mt-16 prose prose-invert max-w-none prose-headings:font-display prose-headings:font-semibold prose-headings:text-white prose-a:text-amber-400 prose-a:no-underline hover:prose-a:text-amber-300">
-      <h2>Understanding VRAM requirements</h2>
+    <section class="mt-16">
+      <Prose>
+        <h2>Understanding VRAM requirements</h2>
       <p>
         The total VRAM needed to run a local LLM comes from three components:
       </p>
@@ -62,6 +64,7 @@ import VRAMEstimator from "@/components/tools/VRAMEstimator";
         <li><a href="/blog/local-llm-setup-ollama-macos">Running Local LLMs on macOS with Ollama</a></li>
         <li><a href="/resources/llm-api-providers-directory">LLM API Providers Directory</a></li>
       </ul>
+      </Prose>
     </section>
   </main>
   <Footer />

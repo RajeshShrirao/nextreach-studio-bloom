@@ -2,6 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import Nav from "@/components/Nav.astro";
 import Footer from "@/components/Footer.astro";
+import Prose from "@/components/Prose.astro";
 import PromptFormatter from "@/components/tools/PromptFormatter";
 ---
 
@@ -21,10 +22,11 @@ import PromptFormatter from "@/components/tools/PromptFormatter";
       </p>
     </header>
 
-    <PromptFormatter client:load />
+    <PromptFormatter client:idle />
 
-    <section class="mt-16 prose prose-invert max-w-none prose-headings:font-display prose-headings:font-semibold prose-headings:text-white prose-a:text-amber-400 prose-a:no-underline hover:prose-a:text-amber-300">
-      <h2>Why prompt formats matter</h2>
+    <section class="mt-16">
+      <Prose>
+        <h2>Why prompt formats matter</h2>
       <p>
         When you use an LLM API or a fine-tuned model locally, the model expects input in a specific format.
         Using the wrong format will cause the model to ignore your system prompt, produce worse outputs, or
@@ -62,6 +64,7 @@ import PromptFormatter from "@/components/tools/PromptFormatter";
         <li><a href="/blog/local-llm-setup-ollama-macos">Running Local LLMs on macOS with Ollama</a></li>
         <li><a href="/blog/mcp-server-build-from-scratch">Build Your First MCP Server in 30 Minutes</a></li>
       </ul>
+      </Prose>
     </section>
   </main>
   <Footer />

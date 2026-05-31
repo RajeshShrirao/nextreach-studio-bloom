@@ -1,10 +1,11 @@
 ---
 title: "Running Local LLMs on macOS with Ollama: A Complete Setup Guide"
-description: "Step-by-step guide to running Llama 3, Mistral, and Phi-3 locally on macOS using Ollama. Covers Apple Silicon performance, model selection, and API integration."
+description: "Step-by-step guide to running Llama 3/4, Mistral, Phi-3/4, and Gemma 3 locally on macOS using Ollama. Covers Apple Silicon performance, model selection, and API integration."
 pubDate: 2026-05-22
 author: "NextReach Studio"
 tags: ["local-llm", "ollama", "macos"]
 draft: false
+updatedDate: 2026-05-31
 ---
 
 Running language models locally used to mean a Linux tower with an Nvidia GPU and a weekend of configuration. On Apple Silicon Macs, it's now a legitimate option for daily development work — with real throughput, offline operation, and zero per-token cost. This guide covers the actual setup, the tradeoffs, and how to integrate local models into development workflows without friction.
@@ -28,12 +29,12 @@ Practical minimums:
 
 | RAM | What runs well |
 |-----|---------------|
-| 8GB | Phi-3 Mini (3.8B), Llama 3.2 3B |
-| 16GB | Llama 3.1 8B, Mistral 7B, Gemma 2 9B |
-| 32GB | Llama 3.1 70B (quantized), Mixtral 8x7B |
-| 64GB | Llama 3.1 70B (full), most 70B models |
+| 8GB | Phi-3 Mini (3.8B), Phi-4 Mini (5B), Llama 3.2 3B |
+| 16GB | Llama 3.1 8B, Llama 4 8B, Mistral 7B, Gemma 2 9B, Gemma 3 12B |
+| 32GB | Llama 3.1 70B (quantized), Llama 4 17B (quantized), Mixtral 8x7B |
+| 64GB | Llama 3.1 70B (full), Llama 4 17B (full), most 70B models |
 
-M1/M2/M3 chips all run Ollama well. The difference between chip generations matters less than RAM amount for most workloads.
+M1/M2/M3/M4 chips all run Ollama well. The M4 Ultra and Max variants offer particularly strong inference performance thanks to increased memory bandwidth. The difference between chip generations matters less than RAM amount for most workloads.
 
 ## Installing Ollama
 
@@ -67,8 +68,14 @@ Models are pulled by name. Ollama's library handles versioning and quantization:
 # Llama 3.1 8B — good all-around choice for 16GB systems
 ollama pull llama3.1
 
+# Llama 4 8B — latest generation, improved reasoning and context handling
+ollama pull llama4
+
 # Phi-3 Mini — excellent for 8GB systems, surprisingly capable
 ollama pull phi3
+
+# Phi-4 14B — Microsoft's latest, strong reasoning at a compact size
+ollama pull phi-4
 
 # Mistral 7B — strong at code and structured output
 ollama pull mistral
@@ -76,7 +83,10 @@ ollama pull mistral
 # Gemma 2 9B — Google's model, good instruction following
 ollama pull gemma2
 
-# Code Llama — specifically tuned for code generation
+# Gemma 3 12B — Google's latest, improved multilingual and long-context performance
+ollama pull gemma3
+
+# Code Llama — specifically tuned for code generation (note: superseded by CodeGemma and DeepSeek Coder)
 ollama pull codellama
 ```
 
@@ -309,12 +319,13 @@ This creates a persistent custom model you can call by name.
 
 Approximate tokens-per-second on different chips (Q4 quantized, 2048 context):
 
-| Model | M1 Pro 16GB | M2 Max 32GB | M3 Max 64GB |
-|-------|-------------|-------------|-------------|
-| Phi-3 Mini 3.8B | ~35 t/s | ~55 t/s | ~70 t/s |
-| Llama 3.1 8B | ~18 t/s | ~35 t/s | ~45 t/s |
-| Mistral 7B | ~20 t/s | ~38 t/s | ~48 t/s |
-| Llama 3.1 70B | — | ~8 t/s | ~15 t/s |
+| Model | M1 Pro 16GB | M2 Max 32GB | M3 Max 64GB | M4 Max 64GB |
+|-------|-------------|-------------|-------------|-------------|
+| Phi-3 Mini 3.8B | ~35 t/s | ~55 t/s | ~70 t/s | ~90 t/s |
+| Llama 3.1 8B | ~18 t/s | ~35 t/s | ~45 t/s | ~60 t/s |
+| Llama 4 8B | ~15 t/s | ~30 t/s | ~40 t/s | ~55 t/s |
+| Mistral 7B | ~20 t/s | ~38 t/s | ~48 t/s | ~62 t/s |
+| Llama 3.1 70B | — | ~8 t/s | ~15 t/s | ~22 t/s |
 
 These are estimates — actual performance varies with context length and concurrent load. 15–20 t/s for an 8B model is fast enough for interactive use. Below ~8 t/s starts to feel slow for chat but is fine for batch processing.
 
@@ -359,11 +370,11 @@ The `"format": "json"` parameter forces Ollama to return valid JSON, which is us
 
 For most development tasks, start with one of these:
 
-- **General coding + chat**: `llama3.1` (8B)
-- **Code generation specifically**: `codellama` or `deepseek-coder`
-- **Low RAM / fast responses**: `phi3` or `llama3.2:3b`
-- **Structured output / JSON**: `mistral` (good instruction following)
-- **Long documents**: `llama3.1` with `--num-ctx 8192`
+- **General coding + chat**: `llama4` (8B) or `llama3.1` (8B)
+- **Code generation specifically**: `deepseek-coder` or `codellama` (note: codellama is increasingly superseded by CodeGemma and DeepSeek Coder)
+- **Low RAM / fast responses**: `phi-4` or `phi3` or `llama3.2:3b`
+- **Structured output / JSON**: `mistral` (good instruction following) or `gemma3`
+- **Long documents**: `llama3.1` with `--num-ctx 8192` or `gemma3` with its extended context support
 
 The [LLM Cost Calculator](/tools/llm-cost-calculator) on this site doesn't apply to local models (there's no per-token cost), but the [Context Window Calculator](/tools/context-window-calculator) helps you understand how much of a document you can fit in the model's context at once.
 
@@ -397,3 +408,9 @@ Be clear-eyed about the limits. Local 8B models consistently underperform fronti
 The right mental model: use local LLMs the way you'd use a capable junior developer. They can handle clearly scoped tasks well. They need more guidance on ambiguous problems, and you should review their output carefully.
 
 For the tasks where that's fine — and there are many — running local cuts API costs to zero and keeps sensitive code off external servers entirely.
+
+## May 2026 Update: New Model Landscape
+
+Since the original publication, the local LLM landscape has evolved significantly. Ollama now supports the latest model architectures including Llama 4 (Meta's multimodal generation), Phi-4 (Microsoft's compact reasoning model), and Gemma 3 (Google's improved multilingual model). These newer models offer substantially better reasoning at comparable RAM requirements, making local inference more viable than ever for development workflows.
+
+Ollama also added support for newer GGUF format variants, safetensors-based model loading, and improved Metal GPU acceleration on M4 Macs. Run `ollama --version` and update to the latest release to take advantage of these improvements.

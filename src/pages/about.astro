@@ -1,0 +1,59 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Nav from "@/components/Nav.astro";
+import Footer from "@/components/Footer.astro";
+import Prose from "@/components/Prose.astro";
+---
+
+<Layout
+  title="About Us — AI Developer Tools & Resources"
+  description="NextReach Studio builds free tools, guides, and resources for AI developers, indie hackers, and teams building with LLMs. Learn about our mission."
+>
+  <Nav />
+  <main class="pt-28 pb-20 px-6 sm:px-8 max-w-3xl mx-auto">
+    <header class="mb-12">
+      <p class="text-xs uppercase tracking-[0.12em] text-zinc-600 mb-3">About</p>
+      <h1 class="font-display font-semibold text-4xl sm:text-5xl text-white tracking-[-0.01em] mb-4">
+        About NextReach Studio
+      </h1>
+      <p class="text-zinc-400 text-lg leading-relaxed">
+        Practical tools and honest knowledge for developers building with LLMs.
+      </p>
+    </header>
+
+    <Prose>
+      <h2>What We Do</h2>
+      <p>
+        NextReach Studio creates free, browser-based tools for AI developers — token counters, cost calculators, VRAM estimators, context window planners, and prompt formatters. No signup, no API keys, no data leaves your browser.
+      </p>
+      <p>
+        Alongside the tools, we publish in-depth guides and blog posts covering Claude Code workflows, Gemini CLI patterns, local LLM setup, MCP server development, context management, and cost optimization strategies.
+      </p>
+
+      <h2>Our Philosophy</h2>
+      <p>We believe AI development tools should be:</p>
+      <ul>
+        <li><strong>Free and accessible</strong> — no paywalls, no signup gates, no data collection</li>
+        <li><strong>Transparent</strong> — tool calculations are documented, not black-boxed</li>
+        <li><strong>Practical</strong> — built from real development workflows, not theory</li>
+        <li><strong>Up to date</strong> — we track the rapidly changing LLM landscape and update accordingly</li>
+      </ul>
+
+      <h2>Who It's For</h2>
+      <p>
+        Whether you're an indie hacker prototyping with Claude Code, a full-stack developer optimizing GPT-4 API costs, a researcher running local models on a Mac Studio, or a team evaluating provider pricing — our tools and content are built for you.
+      </p>
+
+      <h2>How We Operate</h2>
+      <p>
+        All tools run entirely client-side. Your data never touches our servers unless you explicitly use the chat widget. We use minimal analytics (Google Analytics) to understand what's useful and what isn't. No advertising, no affiliate links disguised as recommendations.
+      </p>
+
+      <h2>Get In Touch</h2>
+      <p>
+        Have feedback, a tool idea, or found something inaccurate? Email us at <a href="mailto:hello@nextreachstudio.com">hello@nextreachstudio.com</a>. We read every message.
+      </p>
+    </Prose>
+  </main>
+  <Footer />
+</Layout>
