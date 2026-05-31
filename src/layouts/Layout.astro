@@ -1,0 +1,61 @@
+---
+import "@/styles/globals.css";
+
+export interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const { title, description, image } = Astro.props;
+
+const siteTitle = title
+  ? `${title} | NextReach Studio`
+  : "NextReach Studio — AI Receptionist for Pet Grooming & Vet Clinics";
+
+const siteDescription = description
+  ? description
+  : "An AI receptionist built for pet grooming salons and vet clinics. Books appointments, answers pet parent questions, handles breed inquiries — 24/7. From $299. Live in 3 days.";
+
+const ogImage = image || "/link-previews.png";
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{siteTitle}</title>
+    <meta name="description" content={siteDescription} />
+    <meta name="keywords" content="pet grooming chatbot, vet clinic AI, grooming salon software, pet booking system, AI receptionist" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+    <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&display=swap" rel="stylesheet" media="all" />
+
+    <link rel="icon" href="/logo.png" />
+    <link rel="apple-touch-icon" href="/logo.png" />
+
+    <!-- OG / Twitter -->
+    <meta property="og:title" content={siteTitle} />
+    <meta property="og:description" content={siteDescription} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="NextReach Studio" />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={siteTitle} />
+    <meta name="twitter:description" content={siteDescription} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Security Headers (set by Vercel) -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+  </head>
+  <body class="font-body text-zinc-300 antialiased min-h-screen selection:bg-zinc-800 selection:text-white">
+    <slot />
+  </body>
+</html>

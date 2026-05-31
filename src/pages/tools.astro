@@ -1,0 +1,53 @@
+---
+import Layout from "@/layouts/Layout.astro";
+---
+
+<Layout title="Tools">
+  <main class="min-h-screen">
+    <nav class="fixed w-full top-0 z-50 glass-panel border-b border-t-0 border-x-0">
+      <div class="max-w-7xl mx-auto px-6 sm:px-8 h-16 flex items-center justify-between">
+        <a href="/" class="flex items-center gap-3 group -ml-2" aria-label="NextReach Studio - Home">
+          <img src="/logo.png" alt="NextReach Studio" width="32" height="32" class="transition-transform duration-300 group-hover:scale-110" />
+          <span class="text-white text-sm tracking-[0.08em] font-medium hidden sm:inline">NextReach Studio</span>
+        </a>
+        <div class="flex items-center gap-6">
+          <a href="mailto:hello@nextreachstudio.com" class="text-zinc-500 text-xs hover:text-zinc-300 transition-colors duration-300 hidden sm:block">hello@nextreachstudio.com</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="pt-32 px-6 sm:px-8 max-w-4xl mx-auto">
+      <div class="text-center mb-20">
+        <h1 class="font-display font-semibold text-4xl sm:text-5xl lg:text-6xl text-white tracking-[-0.01em] mb-6 leading-[1.2]">
+          Tools
+        </h1>
+        <p class="text-zinc-400 max-w-xl mx-auto leading-[1.7] text-lg">
+          Free tools for developers, builders, and AI enthusiasts.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-40">
+        <div class="glass-panel glass-panel-hover rounded-2xl p-8">
+          <h2 class="text-white text-xl font-display font-semibold mb-3">AI Token Calculator</h2>
+          <p class="text-zinc-400 text-sm leading-relaxed mb-4">Estimate token counts, costs, and context windows for any LLM model.</p>
+          <span class="text-xs text-zinc-600">Coming soon</span>
+        </div>
+        <div class="glass-panel glass-panel-hover rounded-2xl p-8">
+          <h2 class="text-white text-xl font-display font-semibold mb-3">Context Window Planner</h2>
+          <p class="text-zinc-400 text-sm leading-relaxed mb-4">Plan your LLM context usage with visual breakdowns by model.</p>
+          <span class="text-xs text-zinc-600">Coming soon</span>
+        </div>
+        <div class="glass-panel glass-panel-hover rounded-2xl p-8">
+          <h2 class="text-white text-xl font-display font-semibold mb-3">Prompt Engineering Playground</h2>
+          <p class="text-zinc-400 text-sm leading-relaxed mb-4">Test and iterate on system prompts with instant feedback.</p>
+          <span class="text-xs text-zinc-600">Coming soon</span>
+        </div>
+        <div class="glass-panel glass-panel-hover rounded-2xl p-8">
+          <h2 class="text-white text-xl font-display font-semibold mb-3">MCP Server Generator</h2>
+          <p class="text-zinc-400 text-sm leading-relaxed mb-4">Scaffold Model Context Protocol servers from a simple config.</p>
+          <span class="text-xs text-zinc-600">Coming soon</span>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

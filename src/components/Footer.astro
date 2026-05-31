@@ -1,0 +1,83 @@
+---
+const plans = [
+  {
+    name: "Starter",
+    price: "$299 + $49/mo",
+    features: "AI receptionist, FAQ & services, 1,000 messages/mo, email support",
+    href: "https://tally.so/r/1AMoR1?plan=starter",
+    primary: true,
+  },
+  {
+    name: "Business",
+    price: "$499 + $49/mo",
+    features: "Everything in Starter + breed-aware guidance, booking capture, 3,000 messages/mo, priority support",
+    href: "https://tally.so/r/1AMoR1?plan=business",
+    primary: false,
+  },
+];
+---
+
+<footer id="pricing" class="relative bg-[#020202] pt-32 pb-16 px-6 sm:px-8 text-center">
+  <div class="absolute top-0 left-0 right-0 gradient-divider" />
+
+  <p class="text-sm text-zinc-500 italic font-normal mb-6 max-w-xl mx-auto leading-relaxed">
+    Every call that goes unanswered is a booking you&rsquo;ll never see on your calendar.
+  </p>
+  <h2 class="font-display font-semibold text-4xl sm:text-5xl lg:text-6xl text-white mb-6 leading-[1.2] max-w-3xl mx-auto">
+    Stop losing clients to voicemail.
+  </h2>
+  <p class="text-zinc-500 text-sm mb-16">
+    No payment until you approve your demo. Cancel anytime.
+  </p>
+
+  <div class="flex flex-col sm:flex-row gap-6 justify-center mb-16 max-w-2xl mx-auto">
+    {plans.map((plan) => (
+      <a
+        href={plan.href}
+        class={`flex-1 p-8 rounded-3xl border transition-all duration-300 cursor-pointer group ${
+          plan.primary
+            ? "bg-amber-400/[0.06] border-amber-400/15 hover:bg-amber-400/[0.1] hover:border-amber-400/25"
+            : "bg-white/[0.015] border-white/[0.06] hover:bg-white/[0.03] hover:border-white/[0.1]"
+        }`}
+      >
+        <p class={`text-xs mb-2 uppercase tracking-[0.08em] font-medium ${plan.primary ? "text-amber-400/70" : "text-zinc-500"}`}>
+          {plan.name}
+        </p>
+        <p class={`text-3xl font-display font-bold mb-3 ${plan.primary ? "text-amber-300" : "text-white"}`}>
+          {plan.price}
+        </p>
+        <p class="text-sm text-zinc-400 leading-[1.6]">{plan.features}</p>
+        <p class={`text-sm mt-4 ${plan.primary ? "text-amber-400" : "text-zinc-500 group-hover:text-amber-400 transition-colors duration-300"}`}>
+          Get started &rarr;
+        </p>
+      </a>
+    ))}
+  </div>
+
+  <div class="mb-16 text-sm text-zinc-500">
+    <p>Trusted by salons in Denver, Phoenix, Austin, Seattle, Miami &amp; more.</p>
+  </div>
+
+  <div class="gradient-divider max-w-6xl mx-auto mb-8" />
+
+  <p class="text-xs text-zinc-600 mb-8">
+    Built by pet business operators who hated missing calls.
+  </p>
+
+  <div class="flex flex-wrap justify-center items-center gap-4 sm:gap-6 mb-8 text-xs text-zinc-600">
+    <a href="mailto:hello@nextreachstudio.com" class="hover:text-zinc-400 transition-colors duration-300 cursor-pointer">
+      hello@nextreachstudio.com
+    </a>
+    <span class="text-zinc-800">|</span>
+    <a href="/privacy" class="hover:text-zinc-400 transition-colors duration-300">Privacy Policy</a>
+    <span class="text-zinc-800">|</span>
+    <a href="/terms" class="hover:text-zinc-400 transition-colors duration-300">Terms of Service</a>
+    <span class="text-zinc-800">|</span>
+    <a href="/blog" class="hover:text-zinc-400 transition-colors duration-300">Blog</a>
+  </div>
+
+  <div class="flex flex-col md:flex-row justify-center items-center gap-2 sm:gap-0 text-xs text-zinc-600">
+    <p>&copy; 2026 NextReach Studio.</p>
+    <p class="md:ml-4">AI Receptionists for Pet Grooming &amp; Vet Clinics.</p>
+  </div>
+</footer>

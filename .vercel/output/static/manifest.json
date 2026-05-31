@@ -1,0 +1,38 @@
+{
+  "name": "Blackbox Rescue",
+  "short_name": "Blackbox",
+  "description": "Async code rescue for AI-built MVPs. Fix the blocker, return a clean PR, and send a Loom post-mortem in 24 hours.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#121316",
+  "theme_color": "#121316",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/blackbox-rescue-mark.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/blackbox-rescue-mark.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity", "utilities"],
+  "lang": "en-US",
+  "dir": "ltr",
+  "prefer_related_applications": false,
+  "shortcuts": [
+    {
+      "name": "Start a Rescue",
+      "short_name": "Rescue",
+      "description": "Submit the blocker and start the rescue",
+      "url": "/contact",
+      "icons": [{ "src": "/blackbox-rescue-mark.svg", "sizes": "96x96", "type": "image/svg+xml" }]
+    }
+  ]
+}

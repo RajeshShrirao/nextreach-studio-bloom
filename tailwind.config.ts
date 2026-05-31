@@ -1,8 +1,8 @@
+import typography from "@tailwindcss/typography";
+
 const config = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
   ],
   theme: {
     extend: {
@@ -27,7 +27,7 @@ const config = {
       },
     },
   },
-  plugins: [],
+  plugins: [typography],
 };
 
 export default config;

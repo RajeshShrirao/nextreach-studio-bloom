@@ -1,0 +1,73 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const posts = await getCollection("blog", ({ data }) => !data.draft);
+posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+---
+
+<Layout title="Blog" description="Tutorials, guides, and insights on AI, automation, and building software that works.">
+  <main class="min-h-screen">
+    <nav class="fixed w-full top-0 z-50 glass-panel border-b border-t-0 border-x-0">
+      <div class="max-w-7xl mx-auto px-6 sm:px-8 h-16 flex items-center justify-between">
+        <a href="/" class="flex items-center gap-3 group -ml-2" aria-label="NextReach Studio - Home">
+          <img src="/logo.png" alt="NextReach Studio" width="32" height="32" class="transition-transform duration-300 group-hover:scale-110" />
+          <span class="text-white text-sm tracking-[0.08em] font-medium hidden sm:inline">NextReach Studio</span>
+        </a>
+        <div class="flex items-center gap-6">
+          <a href="mailto:hello@nextreachstudio.com" class="text-zinc-500 text-xs hover:text-zinc-300 transition-colors duration-300 hidden sm:block">hello@nextreachstudio.com</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="pt-32 px-6 sm:px-8 max-w-4xl mx-auto">
+      <div class="text-center mb-16">
+        <p class="text-xs uppercase tracking-[0.12em] text-zinc-500 mb-4">Blog</p>
+        <h1 class="font-display font-semibold text-4xl sm:text-5xl lg:text-6xl text-white tracking-[-0.01em] mb-6 leading-[1.2]">
+          Building things that work
+        </h1>
+        <p class="text-zinc-400 max-w-xl mx-auto leading-[1.7] text-lg">
+          Tutorials, guides, and insights on AI, automation, and shipping real software.
+        </p>
+      </div>
+
+      <div class="space-y-6 mb-40">
+        {posts.length === 0 && (
+          <div class="glass-panel rounded-2xl p-8 text-center">
+            <p class="text-zinc-500">No posts yet. Check back soon.</p>
+          </div>
+        )}
+
+        {posts.map((post) => (
+          <a href={`/blog/${post.slug}`} class="block glass-panel glass-panel-hover rounded-2xl p-6 sm:p-8 group">
+            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+              <div class="flex-1">
+                <h2 class="text-xl sm:text-2xl font-display font-semibold text-white mb-3 group-hover:text-amber-300 transition-colors duration-300">
+                  {post.data.title}
+                </h2>
+                <p class="text-sm text-zinc-400 leading-relaxed mb-4">
+                  {post.data.description}
+                </p>
+                <div class="flex flex-wrap items-center gap-3 text-xs text-zinc-600">
+                  <time datetime={post.data.pubDate.toISOString()}>
+                    {post.data.pubDate.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+                  </time>
+                  {post.data.tags.length > 0 && (
+                    <>
+                      <span>&middot;</span>
+                      <div class="flex gap-2">
+                        {post.data.tags.map((tag) => (
+                          <span class="px-2 py-0.5 rounded-full bg-zinc-800 text-zinc-400">{tag}</span>
+                        ))}
+                      </div>
+                    </>
+                  )}
+                </div>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </main>
+</Layout>

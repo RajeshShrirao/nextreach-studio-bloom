@@ -1,0 +1,52 @@
+---
+const platforms = [
+  { name: "WordPress", description: "Most popular CMS" },
+  { name: "Wix", description: "Drag & drop sites" },
+  { name: "Squarespace", description: "Beautiful templates" },
+  { name: "Shopify", description: "E-commerce stores" },
+  { name: "Custom HTML", description: "Any website, really" },
+];
+
+interface PlatformIconProps {
+  name: string;
+}
+
+const platformIcons: Record<string, string> = {
+  WordPress: `<svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-.18 18.42l-3.76-10.5h2.46l2.2 6.26 2.2-6.26h2.46l-3.76 10.5h-1.8zm6.48-14.1c.6.66 1.06 1.44 1.32 2.3h-1.92c-.36-.96-1.02-1.8-1.86-2.3h2.46zM5.7 7.9c-.24-.38-.46-.78-.64-1.2h2.46c.12.38.28.74.48 1.08L5.7 7.9z"/></svg>`,
+  Wix: `<svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5.5 6.5l-2.5 7h-2l-1.5-4.5-1.5 4.5h-2l-2.5-7h2l1.5 5 1.5-5h2l1.5 5 1.5-5h2z"/></svg>`,
+  Squarespace: `<svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1.5 14l-2.5-5 2.5-5h4l2.5 5-2.5 5h-4z"/></svg>`,
+  Shopify: `<svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.5 14h-3v-4.5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5V16h-3V8h3v1.5c.55-.95 1.5-1.5 2.5-1.5 1.93 0 3.5 1.57 3.5 3.5V16z"/></svg>`,
+  "Custom HTML": `<svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>`,
+};
+---
+
+<section class="max-w-7xl mx-auto px-6 sm:px-8 mb-40">
+  <div class="text-center mb-20">
+    <p class="text-xs uppercase tracking-[0.2em] text-zinc-500 mb-4 font-bold">Compatibility</p>
+    <h2 class="font-display font-semibold text-4xl sm:text-5xl lg:text-6xl text-white tracking-[-0.01em] mb-6 leading-[1.2]">
+      Works on any website.
+    </h2>
+    <p class="text-zinc-400 max-w-xl mx-auto leading-[1.7] text-lg">
+      One line of code. Works everywhere &mdash; no matter what platform your site runs on.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+    {platforms.map((platform) => (
+      <div class="glass-panel glass-panel-hover rounded-2xl p-6 flex flex-col items-center justify-center text-center group min-h-[140px] transition-all duration-300">
+        <div class="w-14 h-14 rounded-2xl bg-amber-400/[0.08] flex items-center justify-center mb-4 text-amber-400/80 transition-all duration-300 group-hover:bg-amber-400/[0.12] group-hover:text-amber-400 group-hover:scale-110" set:html={platformIcons[platform.name]} />
+        <p class="text-white text-sm leading-tight mb-1">{platform.name}</p>
+        <p class="text-zinc-500 text-xs leading-tight">{platform.description}</p>
+      </div>
+    ))}
+  </div>
+
+  <div class="mt-12 max-w-2xl mx-auto">
+    <div class="glass-panel rounded-2xl p-6 text-center">
+      <p class="text-xs uppercase tracking-[0.2em] text-zinc-500 mb-3 font-bold">Just one line of code</p>
+      <code class="text-sm text-amber-400/80 font-mono break-all leading-relaxed">
+        &lt;script src="nextreachstudio.com/widget.js" data-client-id="your-salon"&gt;
+      </code>
+    </div>
+  </div>
+</section>
