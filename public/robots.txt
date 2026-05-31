@@ -1,13 +1,8 @@
-# Robots.txt for NextReach Studio
-# https://nextreachstudio.com/robots.txt
-
 User-agent: *
 Allow: /
 
-# Sitemap location
-Sitemap: https://nextreachstudio.com/sitemap-index.xml
+Sitemap: https://www.nextreachstudio.com/sitemap-index.xml
 
-# Allow all major search engines
 User-agent: Googlebot
 Allow: /
 
@@ -20,7 +15,6 @@ Allow: /
 User-agent: DuckDuckBot
 Allow: /
 
-# Block common scraper/SEO audit bots that add no value
 User-agent: AhrefsBot
 Disallow: /
 
@@ -30,4 +24,4 @@ Disallow: /
 User-agent: SemrushBot
 Disallow: /
 
-Host: https://nextreachstudio.com
+Host: https://www.nextreachstudio.com
