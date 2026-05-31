@@ -1,0 +1,213 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Claude Code Workflow: 15 Patterns That Actually Speed Up Development | NextReach Studio</title><meta name="description" content="Real workflow patterns for Claude Code users that save hours. Covers context management, CLAUDE.md tricks, multi-file edits, slash commands."><link rel="canonical" href="https://nextreachstudio.com/blog/claude-code-workflow-tips/"><!-- Fonts --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"><link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&display=swap" rel="stylesheet" media="all"><!-- Icons --><link rel="icon" href="/logo.png"><link rel="apple-touch-icon" href="/logo.png"><!-- RSS --><link rel="alternate" type="application/rss+xml" title="NextReach Studio Blog" href="/rss.xml"><!-- Open Graph --><meta property="og:title" content="Claude Code Workflow: 15 Patterns That Actually Speed Up Development | NextReach Studio"><meta property="og:description" content="Real workflow patterns for Claude Code users that save hours. Covers context management, CLAUDE.md tricks, multi-file edits, slash commands."><meta property="og:type" content="article"><meta property="og:url" content="https://nextreachstudio.com/blog/claude-code-workflow-tips/"><meta property="og:site_name" content="NextReach Studio"><meta property="og:image" content="https://nextreachstudio.com/link-previews.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:locale" content="en_US"><!-- Twitter / X --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Claude Code Workflow: 15 Patterns That Actually Speed Up Development | NextReach Studio"><meta name="twitter:description" content="Real workflow patterns for Claude Code users that save hours. Covers context management, CLAUDE.md tricks, multi-file edits, slash commands."><meta name="twitter:image" content="https://nextreachstudio.com/link-previews.png"><!-- Article-specific meta --><meta property="article:published_time" content="2026-05-20T00:00:00.000Z"><meta property="article:author" content="NextReach Studio"><meta property="article:tag" content="claude-code"><meta property="article:tag" content="workflow"><meta property="article:tag" content="developer-tools"><!-- Security Headers --><meta http-equiv="X-Content-Type-Options" content="nosniff"><meta http-equiv="X-Frame-Options" content="DENY"><meta http-equiv="X-XSS-Protection" content="1; mode=block"><meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin"><!-- Structured Data: Organization --><script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"NextReach Studio","url":"https://nextreachstudio.com","logo":"https://nextreachstudio.com/logo.png","description":"Real workflow patterns for Claude Code users that save hours. Covers context management, CLAUDE.md tricks, multi-file edits, slash commands."}</script><!-- Structured Data: Article (if article type) --><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Claude Code Workflow: 15 Patterns That Actually Speed Up Development","description":"Real workflow patterns for Claude Code users that save hours. Covers context management, CLAUDE.md tricks, multi-file edits, slash commands.","image":"https://nextreachstudio.com/link-previews.png","author":{"@type":"Organization","name":"NextReach Studio"},"publisher":{"@type":"Organization","name":"NextReach Studio","url":"https://nextreachstudio.com"},"datePublished":"2026-05-20T00:00:00.000Z","url":"https://nextreachstudio.com/blog/claude-code-workflow-tips/"}</script><link rel="stylesheet" href="/_astro/_slug_.DNrM4yVl.css"></head> <body class="font-body text-zinc-300 antialiased min-h-screen">  <nav class="fixed w-full top-0 z-50 glass-panel border-b border-t-0 border-x-0" aria-label="Main navigation"> <div class="max-w-7xl mx-auto px-6 sm:px-8 h-16 flex items-center justify-between"> <a href="/" class="flex items-center gap-3 group -ml-2" aria-label="NextReach Studio — Home"> <img src="/logo.png" alt="NextReach Studio" width="32" height="32" class="transition-transform duration-300 group-hover:scale-110"> <span class="text-white text-sm tracking-[0.08em] font-medium hidden sm:inline">NextReach Studio</span> </a> <div class="flex items-center gap-1" role="menubar"> <a href="/blog" role="menuitem" class="px-3 py-1.5 rounded-lg text-sm transition-colors duration-200 text-white bg-white/5"> Blog </a><a href="/guides" role="menuitem" class="px-3 py-1.5 rounded-lg text-sm transition-colors duration-200 text-zinc-500 hover:text-zinc-200 hover:bg-white/5"> Guides </a><a href="/tools" role="menuitem" class="px-3 py-1.5 rounded-lg text-sm transition-colors duration-200 text-zinc-500 hover:text-zinc-200 hover:bg-white/5"> Tools </a><a href="/resources" role="menuitem" class="px-3 py-1.5 rounded-lg text-sm transition-colors duration-200 text-zinc-500 hover:text-zinc-200 hover:bg-white/5"> Resources </a> </div> </div> </nav> <main class="pt-28 pb-20"> <article class="px-6 sm:px-8 max-w-3xl mx-auto"> <header class="mb-12"> <div class="flex flex-wrap items-center gap-3 mb-6"> <a href="/blog" class="text-xs text-zinc-600 hover:text-zinc-400 transition-colors">
+← All articles
+</a> </div> <h1 class="font-display font-semibold text-3xl sm:text-4xl lg:text-5xl text-white tracking-[-0.01em] leading-[1.2] mb-4"> Claude Code Workflow: 15 Patterns That Actually Speed Up Development </h1> <p class="text-lg text-zinc-400 leading-relaxed mb-6">Real workflow patterns for Claude Code users that save hours. Covers context management, CLAUDE.md tricks, multi-file edits, slash commands.</p> <div class="flex flex-wrap items-center gap-3 text-xs text-zinc-600"> <time datetime="2026-05-20T00:00:00.000Z"> May 20, 2026 </time>  <span>·</span> <span>NextReach Studio</span>  <span>·</span> <div class="flex gap-1.5 flex-wrap"> <span class="rounded-full bg-zinc-800 px-2 py-0.5 text-zinc-500">claude-code</span><span class="rounded-full bg-zinc-800 px-2 py-0.5 text-zinc-500">workflow</span><span class="rounded-full bg-zinc-800 px-2 py-0.5 text-zinc-500">developer-tools</span> </div>  </div> </header> <div class="glass-panel rounded-2xl p-8 sm:p-10 mb-12"> <div class="prose prose-invert max-w-none
+          prose-headings:text-white prose-headings:font-display prose-headings:font-semibold
+          prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
+          prose-h3:text-lg prose-h3:mt-6 prose-h3:mb-3
+          prose-p:text-zinc-400 prose-p:leading-relaxed
+          prose-a:text-amber-400 prose-a:no-underline hover:prose-a:text-amber-300
+          prose-strong:text-white
+          prose-code:text-amber-400 prose-code:bg-zinc-800 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
+          prose-pre:bg-zinc-900 prose-pre:border prose-pre:border-zinc-800 prose-pre:rounded-xl
+          prose-blockquote:border-amber-400 prose-blockquote:text-zinc-400
+          prose-ul:text-zinc-400 prose-ol:text-zinc-400
+          prose-li:marker:text-zinc-600
+          prose-table:text-sm prose-th:text-zinc-300 prose-td:text-zinc-400 prose-th:bg-zinc-900 prose-tr:border-zinc-800
+        "> <p>After months of daily use, Claude Code stops feeling like a novelty and starts revealing its real texture. Some patterns genuinely cut hours off common workflows. Others sound useful in demos but collapse under real project complexity. This post skips the obvious stuff — you already know how to run <code>/init</code> and ask for refactors — and goes straight to the patterns that actually matter when you’re shipping.</p>
+<h2 id="1-claudemd-is-your-persistent-memory">1. CLAUDE.md Is Your Persistent Memory</h2>
+<p>Claude Code reads <code>CLAUDE.md</code> at startup and injects it into every session. Most developers treat it as a README variant. It’s actually a control file for your AI collaborator’s behavior.</p>
+<p>The difference between a weak <code>CLAUDE.md</code> and a strong one is specificity. A weak one says “This is a Next.js project.” A strong one says exactly what decisions have already been made so Claude stops suggesting alternatives.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="markdown"><code><span class="line"><span style="color:#79B8FF;font-weight:bold"># Project: NextReach Studio API</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">## Stack decisions (not up for debate)</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> Runtime: Node 20 + TypeScript strict mode</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> ORM: Drizzle, NOT Prisma. Don&#39;t suggest Prisma.</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> Auth: Lucia v3. Sessions in Postgres, not Redis.</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> API style: tRPC over HTTP. No REST routes unless adding a webhook.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">## File conventions</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> All server actions live in src/server/actions/</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> DB schemas in src/db/schema/ — one file per domain</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> Environment vars: always typed through src/env.ts (T3 env)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">## Current sprint focus</span></span>
+<span class="line"><span style="color:#E1E4E8">Working on billing module. Stripe webhooks are in /api/webhooks/stripe.ts.</span></span>
+<span class="line"><span style="color:#E1E4E8">Don&#39;t touch auth files unless explicitly asked.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">## Known technical debt (acknowledge but don&#39;t fix unless asked)</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> User table has a legacy </span><span style="color:#79B8FF">`plan_name`</span><span style="color:#E1E4E8"> column alongside the new </span><span style="color:#79B8FF">`subscription_id`</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> Email sending uses two different providers (Resend for transactional, SendGrid for bulk)</span></span></code></pre>
+<p>Key things to put in CLAUDE.md:</p>
+<ul>
+<li>Decisions that are final — saves re-litigating architecture every session</li>
+<li>What’s off-limits in the current sprint</li>
+<li>Naming conventions and file layout rules</li>
+<li>Known debt that Claude shouldn’t “fix” spontaneously</li>
+</ul>
+<p>Rebuild your CLAUDE.md every few sprints. Old constraints pollute new work.</p>
+<h2 id="2-use-clear-strategically-not-reactively">2. Use <code>/clear</code> Strategically, Not Reactively</h2>
+<p>Most people hit <code>/clear</code> when Claude seems confused. That’s reactive. The better habit is clearing proactively after finishing a discrete unit of work.</p>
+<p>Context window accumulation is real. After a long refactor session, the model is reasoning over thousands of tokens of intermediate reasoning, file snippets, and back-and-forth. That noise degrades quality on the next task even if it’s unrelated.</p>
+<p>The pattern that works well:</p>
+<ul>
+<li>Finish feature → <code>/clear</code></li>
+<li>Write tests for that feature → <code>/clear</code></li>
+<li>Move to next feature</li>
+</ul>
+<p>This keeps each session focused and prevents cross-contamination where Claude makes decisions based on context from a completely different part of the codebase. Track your token usage with <a href="/tools/context-window-calculator">our Context Window Calculator</a> to build intuition for when you’re approaching the limit.</p>
+<h2 id="3-prime-the-context-before-complex-tasks">3. Prime the Context Before Complex Tasks</h2>
+<p>Instead of dropping a complex request cold, spend two messages building context first.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>You: Read these three files and tell me what you understand about </span></span>
+<span class="line"><span>how the subscription state machine works. Don&#39;t write any code yet.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>[paste file paths or content]</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Claude: [explains its understanding]</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>You: Good. Now, the bug is that downgrade events aren&#39;t being </span></span>
+<span class="line"><span>captured when a user switches from Pro to Starter mid-cycle. </span></span>
+<span class="line"><span>Fix it.</span></span></code></pre>
+<p>This two-step approach surfaces misunderstandings before Claude writes 200 lines of code based on a wrong assumption. It’s slower in the short run but faster when you account for the review and correction cycle.</p>
+<h2 id="4-the-explain-then-implement-pattern-for-risky-changes">4. The “Explain Then Implement” Pattern for Risky Changes</h2>
+<p>For anything touching auth, payments, or data migrations, always ask for an explanation before code.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>Before you write any code, explain in plain English:</span></span>
+<span class="line"><span>1. What files you&#39;re going to change</span></span>
+<span class="line"><span>2. What the current behavior is</span></span>
+<span class="line"><span>3. What the new behavior will be</span></span>
+<span class="line"><span>4. Any edge cases you see</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Then I&#39;ll tell you to proceed.</span></span></code></pre>
+<p>This catches architectural misunderstandings and forces Claude to plan rather than pattern-match to the first solution that seems plausible. You’ll catch about 30% of potential problems before any code is written.</p>
+<h2 id="5-slash-commands-youre-probably-not-using">5. Slash Commands You’re Probably Not Using</h2>
+<p>Beyond <code>/init</code> and <code>/clear</code>, these deserve a place in your workflow:</p>
+<p><strong><code>/compact</code></strong> — Summarizes the conversation and continues in a condensed form. Use this instead of <code>/clear</code> when you’re mid-task and need to preserve the goal context but trim the noise.</p>
+<p><strong><code>/cost</code></strong> — Shows token usage for the current session. Run this periodically to build intuition. Surprises here usually mean you’ve added large files to context unnecessarily.</p>
+<p><strong><code>/doctor</code></strong> — Diagnoses environment issues. Useful when Claude Code starts behaving strangely — wrong Node version, missing API key, etc.</p>
+<p><strong><code>/memory</code></strong> — Manages what’s in the persistent memory. Useful for adding one-off decisions mid-session that you want to survive a <code>/clear</code>.</p>
+<h2 id="6-multi-file-edits-give-claude-the-map-first">6. Multi-File Edits: Give Claude the Map First</h2>
+<p>When asking Claude to refactor across multiple files, don’t just describe what you want. Show the dependency graph.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>I need to rename the `UserProfile` type to `ProfileData` everywhere. </span></span>
+<span class="line"><span>Here&#39;s where it&#39;s used:</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>- src/types/user.ts (definition)</span></span>
+<span class="line"><span>- src/components/ProfileCard.tsx (import + usage)</span></span>
+<span class="line"><span>- src/server/actions/profile.ts (function return types)</span></span>
+<span class="line"><span>- src/db/schema/users.ts (inferred type usage)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Start with the definition, then update each file in that order. </span></span>
+<span class="line"><span>After each file, tell me what you changed.</span></span></code></pre>
+<p>Doing it this way avoids the failure mode where Claude updates three files and misses two, leaving you with TypeScript errors and a half-migrated codebase.</p>
+<h2 id="7-use-git-as-a-checkpoint-system">7. Use Git as a Checkpoint System</h2>
+<p>Claude Code works best when you commit frequently — not because of any technical reason, but because it changes how you interact with the model.</p>
+<p>When you have a clean commit to fall back to, you can give Claude more latitude. “Try this refactor, and if it doesn’t work we’ll revert” becomes a real option instead of a gamble.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># Before a significant Claude Code session</span></span>
+<span class="line"><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> add</span><span style="color:#79B8FF"> -A</span><span style="color:#E1E4E8"> &amp;&amp; </span><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> commit</span><span style="color:#79B8FF"> -m</span><span style="color:#9ECBFF"> &quot;checkpoint: before Claude refactor session&quot;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># After each discrete change that works</span></span>
+<span class="line"><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> add</span><span style="color:#79B8FF"> -A</span><span style="color:#E1E4E8"> &amp;&amp; </span><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> commit</span><span style="color:#79B8FF"> -m</span><span style="color:#9ECBFF"> &quot;feat: [description of what Claude did]&quot;</span></span></code></pre>
+<p>This also keeps your diff reviewable. If Claude makes 10 changes across 6 files in one message, reviewing a single large diff is hard. Incremental commits let you review each change in isolation.</p>
+<h2 id="8-feed-claude-errors-directly-with-context">8. Feed Claude Errors Directly, With Context</h2>
+<p>When something breaks, the instinct is to paste just the error message. Do this instead:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>This command failed:</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>$ npm run build</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Error output:</span></span>
+<span class="line"><span>[paste full error output including stack trace]</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Here&#39;s the relevant source file at the time of the error:</span></span>
+<span class="line"><span>[paste file content]</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>I haven&#39;t changed anything else recently. What&#39;s wrong?</span></span></code></pre>
+<p>Adding the “I haven’t changed anything else recently” framing matters. It stops Claude from speculating about other possible causes and focuses it on what you’ve actually provided.</p>
+<h2 id="9-the-diff-only-pattern-for-code-review-sessions">9. The “Diff Only” Pattern for Code Review Sessions</h2>
+<p>When you want Claude to review code without rewriting it, be explicit that you want observations rather than edits.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>Review this code for:</span></span>
+<span class="line"><span>1. Security issues (especially around user input)</span></span>
+<span class="line"><span>2. Edge cases that aren&#39;t handled  </span></span>
+<span class="line"><span>3. Performance problems</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Do NOT rewrite or refactor. Give me a numbered list of concerns </span></span>
+<span class="line"><span>with file and line numbers. I&#39;ll tell you which ones to fix.</span></span></code></pre>
+<p>Without this constraint, Claude will often start rewriting. Sometimes that’s fine. But when you want a code review — not a rewrite — this framing keeps it focused.</p>
+<h2 id="10-scope-isolation-for-long-sessions">10. Scope Isolation for Long Sessions</h2>
+<p>For sessions spanning multiple hours or features, create a scope file:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="markdown"><code><span class="line"><span style="color:#79B8FF;font-weight:bold"># Session Scope — May 20</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">## In scope today</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> Billing module: Stripe webhook handling</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> Tests for payment_intent.succeeded and customer.subscription.deleted</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">## Explicitly out of scope</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> UI changes</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> Auth refactoring (ticket for next sprint)</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> Database migrations (need DBA review)</span></span></code></pre>
+<p>Paste this at the start of the session. When Claude starts drifting — “while I’m in this file, I noticed the auth check could be simplified…” — you can reference the scope file: “That’s out of scope for today. Stick to the billing module.”</p>
+<h2 id="11-typescript-type-generation-claudes-best-trick">11. TypeScript Type Generation: Claude’s Best Trick</h2>
+<p>Claude Code is genuinely excellent at generating TypeScript types from unstructured data. Feed it a sample API response and ask for the type:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>Here&#39;s a raw API response from our payments provider. </span></span>
+<span class="line"><span>Generate a TypeScript type that covers all the fields. </span></span>
+<span class="line"><span>Use `z.infer&lt;typeof schema&gt;` pattern with Zod for runtime validation.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>[paste JSON response]</span></span></code></pre>
+<p>This alone can save an hour per integration. The types are usually accurate, and Claude naturally handles optional fields and union types that you’d otherwise spend time puzzling out from documentation.</p>
+<h2 id="12-test-generation-thats-actually-useful">12. Test Generation That’s Actually Useful</h2>
+<p>Generic “write tests for this function” prompts produce generic tests. Get more useful output by specifying the failure modes you care about:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>Write Vitest unit tests for this function: [paste function]</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Specifically test:</span></span>
+<span class="line"><span>1. What happens when the user&#39;s subscription is expired</span></span>
+<span class="line"><span>2. What happens when the Stripe API call times out (mock it)</span></span>
+<span class="line"><span>3. The happy path with a valid active subscription</span></span>
+<span class="line"><span>4. Input validation — what if userId is an empty string?</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Use vi.mock() for the Stripe SDK. Don&#39;t test implementation details, </span></span>
+<span class="line"><span>test behavior.</span></span></code></pre>
+<p>This approach produces tests that actually catch bugs rather than just confirming the function returns something.</p>
+<h2 id="13-handling-large-codebases-the-just-this-slice-pattern">13. Handling Large Codebases: The “Just This Slice” Pattern</h2>
+<p>Claude Code can’t hold your entire codebase in context. For large projects, explicitly bound what you’re working on:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>For this task, we&#39;re only working in the billing/ directory. </span></span>
+<span class="line"><span>Ignore everything outside of it. Here are the relevant files:</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>[paste only billing/ files]</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>The question is about how subscription upgrades are handled.</span></span></code></pre>
+<p>This prevents Claude from making changes that seem locally reasonable but break global invariants, and it keeps the context lean.</p>
+<h2 id="14-build-a-prompt-library-in-your-claudemd">14. Build a Prompt Library in Your CLAUDE.md</h2>
+<p>Add a section to your CLAUDE.md for reusable prompt patterns specific to your project:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="markdown"><code><span class="line"><span style="color:#79B8FF;font-weight:bold">## Common task patterns</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">### Adding a new API endpoint</span></span>
+<span class="line"><span style="color:#E1E4E8">When I say &quot;add endpoint for X&quot;, follow this pattern:</span></span>
+<span class="line"><span style="color:#FFAB70">1.</span><span style="color:#E1E4E8"> Add tRPC procedure in src/server/routers/[</span><span style="color:#DBEDFF;text-decoration:underline">domain</span><span style="color:#E1E4E8">].ts</span></span>
+<span class="line"><span style="color:#FFAB70">2.</span><span style="color:#E1E4E8"> Add input validation with Zod</span></span>
+<span class="line"><span style="color:#FFAB70">3.</span><span style="color:#E1E4E8"> Add the procedure to the router index</span></span>
+<span class="line"><span style="color:#FFAB70">4.</span><span style="color:#E1E4E8"> Generate the client-side hook with useQuery/useMutation</span></span>
+<span class="line"><span style="color:#FFAB70">5.</span><span style="color:#E1E4E8"> Don&#39;t create a new router file — fit it in the existing domain router</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">### Database migrations</span></span>
+<span class="line"><span style="color:#E1E4E8">When I say &quot;add column X to table Y&quot;:</span></span>
+<span class="line"><span style="color:#FFAB70">1.</span><span style="color:#E1E4E8"> Update the Drizzle schema file</span></span>
+<span class="line"><span style="color:#FFAB70">2.</span><span style="color:#E1E4E8"> Generate migration with </span><span style="color:#79B8FF">`npm run db:generate`</span></span>
+<span class="line"><span style="color:#FFAB70">3.</span><span style="color:#E1E4E8"> Show me the migration SQL for review before running it</span></span></code></pre>
+<p>Over time this builds a project-specific protocol that Claude follows consistently, cutting the overhead of repeating instructions every session.</p>
+<h2 id="15-session-handoff-notes">15. Session Handoff Notes</h2>
+<p>At the end of a long session, before closing Claude Code, do this:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>Summarize what we accomplished today in this format:</span></span>
+<span class="line"><span>- What we changed (file names and what changed)</span></span>
+<span class="line"><span>- What we started but didn&#39;t finish</span></span>
+<span class="line"><span>- Any open questions or decisions we deferred</span></span>
+<span class="line"><span>- Suggested starting point for the next session</span></span></code></pre>
+<p>Save this output. At the start of your next session, paste it as the first message after the CLAUDE.md loads. This creates continuity across sessions without burning tokens on re-exploration.</p>
+<hr/>
+<h2 id="putting-it-together">Putting It Together</h2>
+<p>These patterns aren’t about squeezing performance out of the model — they’re about managing the collaboration systematically. Claude Code is most useful when you treat it as a capable collaborator who needs clear briefings, defined scope, and explicit checkpoints, not a magic box you describe problems to and expect perfect output from.</p>
+<p>The developers who get the most out of Claude Code aren’t the ones who write the cleverest prompts. They’re the ones who’ve built structured workflows around the tool’s actual strengths and failure modes.</p>
+<p>Track your session costs and token usage regularly using <a href="/tools/llm-cost-calculator">our LLM Cost Calculator</a> — it’ll help you understand where you’re spending context budget and where you can trim.</p>
+<p>Start with patterns 1, 2, and 7. Get those into muscle memory before adding the rest. The compounding effect is real.</p> </div> </div> <div class="flex flex-col sm:flex-row gap-4 justify-between items-start border-t border-zinc-800 pt-8"> <a href="/blog" class="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 transition-colors text-sm font-medium"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+Back to all articles
+</a> <a href="/tools" class="inline-flex items-center gap-2 text-zinc-500 hover:text-zinc-300 transition-colors text-sm">
+Browse free tools →
+</a> </div> </article> </main> <footer class="border-t border-zinc-800/60 mt-24 py-12 px-6 sm:px-8"> <div class="max-w-7xl mx-auto"> <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 mb-10"> <div class="col-span-2 sm:col-span-1"> <a href="/" class="flex items-center gap-2 mb-3 group" aria-label="NextReach Studio"> <img src="/logo.png" alt="" width="24" height="24" class="opacity-80 group-hover:opacity-100 transition-opacity"> <span class="text-sm font-medium text-zinc-400 group-hover:text-white transition-colors">NextReach Studio</span> </a> <p class="text-xs text-zinc-600 leading-relaxed max-w-[180px]">
+Tools, guides, and resources for AI builders and indie hackers.
+</p> </div> <div> <h3 class="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">Content</h3> <ul class="space-y-2"> <li><a href="/blog" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">Blog</a></li> <li><a href="/guides" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">Guides</a></li> <li><a href="/resources" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">Resources</a></li> </ul> </div> <div> <h3 class="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">Tools</h3> <ul class="space-y-2"> <li><a href="/tools/ai-token-calculator" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">Token Calculator</a></li> <li><a href="/tools/context-window-calculator" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">Context Window</a></li> <li><a href="/tools/llm-cost-calculator" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">Cost Calculator</a></li> <li><a href="/tools/vram-estimator" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">VRAM Estimator</a></li> <li><a href="/tools/prompt-formatter" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">Prompt Formatter</a></li> <li><a href="/tools" class="text-xs text-amber-600 hover:text-amber-400 transition-colors">All tools →</a></li> </ul> </div> <div> <h3 class="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">Site</h3> <ul class="space-y-2"> <li><a href="/rss.xml" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">RSS Feed</a></li> <li><a href="/sitemap-index.xml" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">Sitemap</a></li> </ul> </div> </div> <div class="gradient-divider mb-6"></div> <div class="flex flex-col sm:flex-row items-center justify-between gap-3"> <p class="text-xs text-zinc-700">&copy; 2026 NextReach Studio. All rights reserved.</p> <p class="text-xs text-zinc-700">Built for AI builders, indie hackers &amp; developers.</p> </div> </div> </footer>  </body></html>

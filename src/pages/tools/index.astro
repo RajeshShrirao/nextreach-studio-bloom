@@ -1,0 +1,123 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Nav from "@/components/Nav.astro";
+import Footer from "@/components/Footer.astro";
+
+const tools = [
+  {
+    name: "AI Token Calculator",
+    description: "Count tokens for Claude, GPT-4, Gemini, Llama, and 15+ other models before sending prompts. Avoid context limit errors.",
+    href: "/tools/ai-token-calculator",
+    icon: "⚡",
+    category: "Estimation",
+    tags: ["tokens", "context", "pricing"],
+  },
+  {
+    name: "LLM Cost Calculator",
+    description: "Calculate monthly API costs across providers. Compare Claude vs GPT-4 vs Gemini side-by-side and find the cheapest option.",
+    href: "/tools/llm-cost-calculator",
+    icon: "💰",
+    category: "Estimation",
+    tags: ["cost", "api", "comparison"],
+  },
+  {
+    name: "Context Window Calculator",
+    description: "Break down your context window by type — system prompt, history, documents, query, and output reserve. Visual stacked bar.",
+    href: "/tools/context-window-calculator",
+    icon: "📐",
+    category: "Planning",
+    tags: ["context", "tokens", "planning"],
+  },
+  {
+    name: "VRAM Estimator",
+    description: "Estimate GPU memory requirements for running any local LLM. Supports all quantization levels. Shows which GPUs are compatible.",
+    href: "/tools/vram-estimator",
+    icon: "🖥️",
+    category: "Local LLM",
+    tags: ["vram", "gpu", "local-llm", "quantization"],
+  },
+  {
+    name: "Prompt Formatter",
+    description: "Convert prompts between ChatML, Llama 3, Mistral, Gemma, Phi-3, and API JSON formats. Copy-ready output.",
+    href: "/tools/prompt-formatter",
+    icon: "✏️",
+    category: "Formatting",
+    tags: ["prompts", "format", "local-llm"],
+  },
+];
+
+const categories = [...new Set(tools.map((t) => t.category))];
+---
+
+<Layout
+  title="Free AI Developer Tools — Token Counter, Cost Calculator, VRAM Estimator"
+  description="Free tools for AI builders: count tokens, calculate LLM costs, estimate VRAM, format prompts, and plan context windows. No signup required."
+>
+  <Nav />
+  <main class="pt-28 pb-20 px-6 sm:px-8 max-w-5xl mx-auto">
+    <header class="mb-12">
+      <p class="text-xs uppercase tracking-[0.12em] text-zinc-600 mb-3">Developer Tools</p>
+      <h1 class="font-display font-semibold text-4xl sm:text-5xl text-white tracking-[-0.01em] mb-4">
+        Free AI tools
+      </h1>
+      <p class="text-zinc-400 text-lg leading-relaxed max-w-2xl">
+        Practical calculators and formatters for developers working with LLMs. All tools are free and run in your browser — no API keys, no signup.
+      </p>
+    </header>
+
+    {categories.map((category) => (
+      <section class="mb-12" aria-labelledby={`category-${category.toLowerCase().replace(/\s+/g, "-")}`}>
+        <h2 id={`category-${category.toLowerCase().replace(/\s+/g, "-")}`} class="text-xs uppercase tracking-[0.12em] text-zinc-600 mb-4 font-medium">
+          {category}
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {tools
+            .filter((t) => t.category === category)
+            .map((tool) => (
+              <a
+                href={tool.href}
+                id={`tool-${tool.name.toLowerCase().replace(/\s+/g, "-")}`}
+                class="group rounded-xl border border-zinc-800 bg-zinc-900/40 p-5 transition-all duration-200 hover:border-amber-700/40 hover:bg-zinc-900/80 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/30"
+              >
+                <div class="flex items-start gap-4">
+                  <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-zinc-800 text-xl">
+                    {tool.icon}
+                  </div>
+                  <div class="min-w-0 flex-1">
+                    <div class="flex items-center gap-2 mb-1.5">
+                      <h3 class="font-semibold text-white group-hover:text-amber-300 transition-colors text-sm leading-snug">
+                        {tool.name}
+                      </h3>
+                      <span class="shrink-0 rounded-full bg-emerald-500/10 px-2 py-0.5 text-xs font-medium text-emerald-400 border border-emerald-700/30">
+                        Free
+                      </span>
+                    </div>
+                    <p class="text-xs text-zinc-500 leading-relaxed mb-3">{tool.description}</p>
+                    <div class="flex flex-wrap gap-1.5">
+                      {tool.tags.map((tag) => (
+                        <span class="rounded-full bg-zinc-800 px-2 py-0.5 text-xs text-zinc-600">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4 shrink-0 text-zinc-700 group-hover:text-amber-500 transition-colors mt-0.5">
+                    <path d="M9 18l6-6-6-6"/>
+                  </svg>
+                </div>
+              </a>
+            ))}
+        </div>
+      </section>
+    ))}
+
+    <div class="mt-8 rounded-xl border border-zinc-800 bg-zinc-900/40 p-6 text-center">
+      <p class="text-zinc-500 text-sm mb-2">More tools coming soon</p>
+      <p class="text-zinc-600 text-xs">
+        Have a suggestion? Something missing from your workflow?
+        <a href="mailto:hello@nextreachstudio.com" class="text-amber-500 hover:text-amber-400 transition-colors ml-1">Let us know →</a>
+      </p>
+    </div>
+  </main>
+  <Footer />
+</Layout>

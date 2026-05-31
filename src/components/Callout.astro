@@ -1,0 +1,53 @@
+---
+export interface Props {
+  type?: "note" | "tip" | "warning" | "danger";
+  title?: string;
+}
+
+const { type = "note", title } = Astro.props;
+
+const config = {
+  note: {
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`,
+    label: title || "Note",
+    classes: "border-zinc-600 bg-zinc-900/50 text-zinc-300",
+    iconClass: "text-zinc-400",
+    labelClass: "text-zinc-300",
+  },
+  tip: {
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/><line x1="9" y1="21" x2="15" y2="21"/><line x1="9" y1="18" x2="15" y2="18"/></svg>`,
+    label: title || "Tip",
+    classes: "border-emerald-800/60 bg-emerald-950/30 text-emerald-300",
+    iconClass: "text-emerald-400",
+    labelClass: "text-emerald-300",
+  },
+  warning: {
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`,
+    label: title || "Warning",
+    classes: "border-amber-700/60 bg-amber-950/30 text-amber-300",
+    iconClass: "text-amber-400",
+    labelClass: "text-amber-300",
+  },
+  danger: {
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>`,
+    label: title || "Danger",
+    classes: "border-red-800/60 bg-red-950/30 text-red-300",
+    iconClass: "text-red-400",
+    labelClass: "text-red-300",
+  },
+};
+
+const c = config[type];
+---
+
+<div class={`not-prose my-6 rounded-xl border p-4 ${c.classes}`}>
+  <div class="flex items-start gap-3">
+    <span class={`mt-0.5 shrink-0 ${c.iconClass}`} set:html={c.icon} />
+    <div class="min-w-0 flex-1">
+      <p class={`mb-1 text-sm font-semibold leading-none ${c.labelClass}`}>{c.label}</p>
+      <div class="text-sm leading-relaxed opacity-90">
+        <slot />
+      </div>
+    </div>
+  </div>
+</div>

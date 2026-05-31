@@ -1,0 +1,68 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Nav from "@/components/Nav.astro";
+import Footer from "@/components/Footer.astro";
+import PromptFormatter from "@/components/tools/PromptFormatter";
+---
+
+<Layout
+  title="Prompt Formatter — Convert Between LLM Prompt Formats"
+  description="Format and convert prompts between ChatML, Llama 3, Mistral, Gemma, Phi-3, and API JSON formats. Free tool for LLM developers."
+>
+  <Nav />
+  <main class="pt-28 pb-20 px-6 sm:px-8 max-w-4xl mx-auto">
+    <header class="mb-10">
+      <p class="text-xs uppercase tracking-[0.12em] text-zinc-600 mb-3">Free Tool</p>
+      <h1 class="font-display font-semibold text-4xl sm:text-5xl text-white tracking-[-0.01em] mb-4">
+        Prompt Formatter
+      </h1>
+      <p class="text-zinc-400 text-lg leading-relaxed max-w-2xl">
+        Convert prompts between different model formats. Enter your system prompt and user message, pick a format, copy the output.
+      </p>
+    </header>
+
+    <PromptFormatter client:load />
+
+    <section class="mt-16 prose prose-invert max-w-none prose-headings:font-display prose-headings:font-semibold prose-headings:text-white prose-a:text-amber-400 prose-a:no-underline hover:prose-a:text-amber-300">
+      <h2>Why prompt formats matter</h2>
+      <p>
+        When you use an LLM API or a fine-tuned model locally, the model expects input in a specific format.
+        Using the wrong format will cause the model to ignore your system prompt, produce worse outputs, or
+        fail entirely.
+      </p>
+      <p>
+        This is especially important when:
+      </p>
+      <ul>
+        <li>Running instruct-tuned models locally via Ollama or llama.cpp</li>
+        <li>Fine-tuning models on your own dataset</li>
+        <li>Switching between API providers</li>
+        <li>Creating synthetic training data</li>
+      </ul>
+
+      <h2>Supported formats</h2>
+      <ul>
+        <li><strong>ChatML:</strong> Used by OpenAI's GPT models and most compatible derivatives. <code>&lt;|im_start|&gt;</code>/<code>&lt;|im_end|&gt;</code> tokens.</li>
+        <li><strong>Llama 3:</strong> Meta's format using <code>&lt;|begin_of_text|&gt;</code>, <code>&lt;|start_header_id|&gt;</code>, and <code>&lt;|eot_id|&gt;</code> tokens.</li>
+        <li><strong>Mistral:</strong> Simple <code>[INST]</code>/<code>[/INST]</code> wrapping. System prompt is merged into the first user message.</li>
+        <li><strong>Gemma 2:</strong> Google's format using <code>&lt;start_of_turn&gt;</code>/<code>&lt;end_of_turn&gt;</code>.</li>
+        <li><strong>Phi-3:</strong> Microsoft's format using <code>&lt;|system|&gt;</code>, <code>&lt;|user|&gt;</code>, <code>&lt;|assistant|&gt;</code> with <code>&lt;|end|&gt;</code>.</li>
+        <li><strong>Anthropic Messages API:</strong> JSON format for the Claude API.</li>
+        <li><strong>OpenAI Chat API:</strong> JSON messages format for GPT-4 and compatible APIs.</li>
+      </ul>
+
+      <h2>Related tools</h2>
+      <ul>
+        <li><a href="/tools/ai-token-calculator">AI Token Calculator</a> — Count tokens in your formatted prompts</li>
+        <li><a href="/tools/context-window-calculator">Context Window Calculator</a> — Plan context allocation</li>
+      </ul>
+
+      <h2>Related reading</h2>
+      <ul>
+        <li><a href="/blog/local-llm-setup-ollama-macos">Running Local LLMs on macOS with Ollama</a></li>
+        <li><a href="/blog/mcp-server-build-from-scratch">Build Your First MCP Server in 30 Minutes</a></li>
+      </ul>
+    </section>
+  </main>
+  <Footer />
+</Layout>

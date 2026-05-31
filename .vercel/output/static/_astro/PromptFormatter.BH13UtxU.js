@@ -1,0 +1,28 @@
+import{j as e}from"./jsx-runtime.ClP7wGfN.js";import{r as i}from"./index.DK-fsZOb.js";const m=[{id:"raw",label:"Raw Prompt",description:"Plain text, no special formatting",convert:(t,s)=>t?`${t}
+
+${s}`:s},{id:"chatml",label:"ChatML",description:"OpenAI / compatible models",convert:(t,s)=>{let r="";return t&&(r+=`<|im_start|>system
+${t}<|im_end|>
+`),r+=`<|im_start|>user
+${s}<|im_end|>
+<|im_start|>assistant
+`,r}},{id:"llama3",label:"Llama 3 / 3.1",description:"Meta Llama 3 instruct format",convert:(t,s)=>{let r="<|begin_of_text|>";return t&&(r+=`<|start_header_id|>system<|end_header_id|>
+
+${t}<|eot_id|>
+`),r+=`<|start_header_id|>user<|end_header_id|>
+
+${s}<|eot_id|>
+<|start_header_id|>assistant<|end_header_id|>
+
+`,r}},{id:"mistral",label:"Mistral / Mixtral",description:"Mistral instruct format",convert:(t,s)=>`[INST] ${t?`${t}
+
+${s}`:s} [/INST]`},{id:"gemma",label:"Gemma 2",description:"Google Gemma format",convert:(t,s)=>`<start_of_turn>user
+${t?`${t}
+
+${s}`:s}<end_of_turn>
+<start_of_turn>model
+`},{id:"phi3",label:"Phi-3 / Phi-3.5",description:"Microsoft Phi format",convert:(t,s)=>{let r="";return t&&(r+=`<|system|>
+${t}<|end|>
+`),r+=`<|user|>
+${s}<|end|>
+<|assistant|>
+`,r}},{id:"anthropic",label:"Anthropic Messages API",description:"Claude API JSON format",convert:(t,s)=>{const r={model:"claude-3-5-sonnet-20241022",max_tokens:1024,messages:[{role:"user",content:s}]};return t&&(r.system=t),JSON.stringify(r,null,2)}},{id:"openai",label:"OpenAI Chat API",description:"GPT-4 / compatible models JSON",convert:(t,s)=>{const r=[];return t&&r.push({role:"system",content:t}),r.push({role:"user",content:s}),JSON.stringify({model:"gpt-4o",messages:r},null,2)}}];function g(){const[t,s]=i.useState(""),[r,x]=i.useState(""),[n,p]=i.useState("chatml"),[l,d]=i.useState(!1),c=m.find(o=>o.id===n),a=c.convert(t,r),u=i.useCallback(async()=>{if(a)try{await navigator.clipboard.writeText(a),d(!0),setTimeout(()=>d(!1),2e3)}catch{}},[a]);return e.jsxs("div",{className:"space-y-6",children:[e.jsxs("div",{className:"rounded-xl border border-zinc-800 bg-zinc-900/60 p-5",children:[e.jsx("h2",{className:"text-sm font-semibold text-zinc-200 mb-4",children:"Target Format"}),e.jsx("div",{className:"grid grid-cols-2 sm:grid-cols-4 gap-2",children:m.map(o=>e.jsxs("button",{onClick:()=>p(o.id),className:`rounded-lg px-3 py-2.5 text-left transition-all ${n===o.id?"bg-amber-500/15 border border-amber-600/40 text-amber-300":"bg-zinc-800 border border-zinc-700 text-zinc-500 hover:text-zinc-300 hover:border-zinc-600"}`,children:[e.jsx("p",{className:"text-xs font-semibold",children:o.label}),e.jsx("p",{className:"text-xs opacity-60 mt-0.5 leading-tight",children:o.description})]},o.id))})]}),e.jsxs("div",{className:"grid grid-cols-1 sm:grid-cols-2 gap-4",children:[e.jsxs("div",{className:"rounded-xl border border-zinc-800 bg-zinc-900/60 p-5",children:[e.jsxs("label",{htmlFor:"sys-prompt",className:"block text-sm font-medium text-zinc-300 mb-3",children:["System Prompt",e.jsx("span",{className:"ml-2 text-xs font-normal text-zinc-600",children:"(optional)"})]}),e.jsx("textarea",{id:"sys-prompt",value:t,onChange:o=>s(o.target.value),placeholder:"You are a helpful assistant...",rows:8,className:"w-full rounded-lg bg-zinc-800 border border-zinc-700 text-zinc-200 px-3 py-2.5 text-sm font-mono resize-y focus:outline-none focus:ring-2 focus:ring-amber-500/50 placeholder:text-zinc-700"})]}),e.jsxs("div",{className:"rounded-xl border border-zinc-800 bg-zinc-900/60 p-5",children:[e.jsx("label",{htmlFor:"user-message",className:"block text-sm font-medium text-zinc-300 mb-3",children:"User Message"}),e.jsx("textarea",{id:"user-message",value:r,onChange:o=>x(o.target.value),placeholder:"Write a function that...",rows:8,className:"w-full rounded-lg bg-zinc-800 border border-zinc-700 text-zinc-200 px-3 py-2.5 text-sm font-mono resize-y focus:outline-none focus:ring-2 focus:ring-amber-500/50 placeholder:text-zinc-700"})]})]}),e.jsxs("div",{className:"rounded-xl border border-zinc-800 bg-zinc-900/60 overflow-hidden",children:[e.jsxs("div",{className:"flex items-center justify-between px-5 py-3 border-b border-zinc-800 bg-zinc-900/40",children:[e.jsxs("div",{children:[e.jsx("span",{className:"text-sm font-medium text-zinc-300",children:c.label}),e.jsx("span",{className:"ml-2 text-xs text-zinc-600",children:"formatted output"})]}),e.jsx("button",{onClick:u,disabled:!a,className:`flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${l?"bg-emerald-500/15 border border-emerald-600/40 text-emerald-400":"bg-zinc-800 border border-zinc-700 text-zinc-400 hover:text-zinc-200 hover:border-zinc-600 disabled:opacity-40 disabled:cursor-not-allowed"}`,children:l?e.jsxs(e.Fragment,{children:[e.jsx("svg",{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",className:"w-3.5 h-3.5",children:e.jsx("polyline",{points:"20 6 9 17 4 12"})}),"Copied!"]}):e.jsxs(e.Fragment,{children:[e.jsxs("svg",{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",className:"w-3.5 h-3.5",children:[e.jsx("rect",{x:"9",y:"9",width:"13",height:"13",rx:"2",ry:"2"}),e.jsx("path",{d:"M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"})]}),"Copy"]})})]}),e.jsx("pre",{className:"p-5 text-sm font-mono text-zinc-300 overflow-x-auto whitespace-pre-wrap min-h-[200px] max-h-[400px] overflow-y-auto",children:a||e.jsx("span",{className:"text-zinc-700",children:"Enter a system prompt and/or user message above to see the formatted output..."})})]}),e.jsx("p",{className:"text-xs text-zinc-600 text-center",children:"Formats are based on each model's official documentation. Some providers may have updated their formats — verify before using in production."})]})}export{g as default};

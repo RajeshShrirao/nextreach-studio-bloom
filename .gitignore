@@ -3,6 +3,8 @@ node_modules/
 
 # Astro
 dist/
+.astro/
+node_modules/.astro/
 *.tsbuildinfo
 
 # Environment

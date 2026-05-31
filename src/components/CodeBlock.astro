@@ -1,0 +1,28 @@
+---
+export interface Props {
+  filename?: string;
+  lang?: string;
+  showLineNumbers?: boolean;
+}
+
+const { filename, lang = "text", showLineNumbers = false } = Astro.props;
+---
+
+<div class="not-prose my-6 overflow-hidden rounded-xl border border-zinc-800 bg-zinc-950">
+  {filename && (
+    <div class="flex items-center gap-3 border-b border-zinc-800 bg-zinc-900/60 px-4 py-2.5">
+      <div class="flex gap-1.5">
+        <span class="h-2.5 w-2.5 rounded-full bg-zinc-700"></span>
+        <span class="h-2.5 w-2.5 rounded-full bg-zinc-700"></span>
+        <span class="h-2.5 w-2.5 rounded-full bg-zinc-700"></span>
+      </div>
+      <span class="text-xs font-mono text-zinc-500">{filename}</span>
+      {lang && lang !== "text" && (
+        <span class="ml-auto rounded px-1.5 py-0.5 text-xs font-mono text-zinc-600 bg-zinc-800">{lang}</span>
+      )}
+    </div>
+  )}
+  <div class="overflow-x-auto p-4">
+    <slot />
+  </div>
+</div>

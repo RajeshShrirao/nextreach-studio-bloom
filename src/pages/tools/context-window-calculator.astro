@@ -1,0 +1,67 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Nav from "@/components/Nav.astro";
+import Footer from "@/components/Footer.astro";
+import ContextCalculator from "@/components/tools/ContextCalculator";
+---
+
+<Layout
+  title="Context Window Calculator — Visualize Token Usage by Type"
+  description="Break down your LLM context window by system prompt, conversation history, documents, and query. See exactly how much space you have left."
+>
+  <Nav />
+  <main class="pt-28 pb-20 px-6 sm:px-8 max-w-4xl mx-auto">
+    <header class="mb-10">
+      <p class="text-xs uppercase tracking-[0.12em] text-zinc-600 mb-3">Free Tool</p>
+      <h1 class="font-display font-semibold text-4xl sm:text-5xl text-white tracking-[-0.01em] mb-4">
+        Context Window Calculator
+      </h1>
+      <p class="text-zinc-400 text-lg leading-relaxed max-w-2xl">
+        Visualize how your context window is distributed across system prompts, chat history, documents, and queries. Plan your prompts before hitting limits.
+      </p>
+    </header>
+
+    <ContextCalculator client:load />
+
+    <section class="mt-16 prose prose-invert max-w-none prose-headings:font-display prose-headings:font-semibold prose-headings:text-white prose-a:text-amber-400 prose-a:no-underline hover:prose-a:text-amber-300">
+      <h2>Why context window planning matters</h2>
+      <p>
+        A 200K context window sounds enormous, but in practice it fills up fast. A moderately-sized codebase,
+        a long conversation history, and a detailed system prompt can push you over the limit before you've
+        even gotten to your actual query.
+      </p>
+      <p>
+        The calculator breaks down usage into the key components of a typical LLM conversation:
+      </p>
+      <ul>
+        <li><strong>System Prompt:</strong> Your base instructions and persona</li>
+        <li><strong>Conversation History:</strong> Previous messages in the thread</li>
+        <li><strong>Documents / Context:</strong> Files, code, or content you've pasted in</li>
+        <li><strong>Current Query:</strong> What you're actually asking</li>
+        <li><strong>Reserved for Output:</strong> Space you need for the model's response</li>
+      </ul>
+
+      <h2>Context window sizes by model (2026)</h2>
+      <ul>
+        <li><strong>Claude 3.5 Sonnet:</strong> 200,000 tokens</li>
+        <li><strong>GPT-4o:</strong> 128,000 tokens</li>
+        <li><strong>Gemini 1.5 Pro:</strong> 2,000,000 tokens</li>
+        <li><strong>Llama 3 70B:</strong> 128,000 tokens</li>
+        <li><strong>Mistral Large 2:</strong> 131,072 tokens</li>
+      </ul>
+
+      <h2>Related tools</h2>
+      <ul>
+        <li><a href="/tools/ai-token-calculator">AI Token Calculator</a> — Count the exact tokens in your text</li>
+        <li><a href="/tools/llm-cost-calculator">LLM Cost Calculator</a> — Estimate API costs for your usage</li>
+      </ul>
+
+      <h2>Related reading</h2>
+      <ul>
+        <li><a href="/blog/llm-context-window-management">LLM Context Window Management: When Your AI Forgets Everything</a></li>
+        <li><a href="/guides/ai-api-cost-optimization">AI API Cost Optimization: Reduce Your Bill by 60%</a></li>
+      </ul>
+    </section>
+  </main>
+  <Footer />
+</Layout>

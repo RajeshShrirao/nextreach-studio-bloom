@@ -12,7 +12,7 @@ export default function ChatWidget() {
     {
       role: "assistant",
       content:
-        "Hi! I'm the NextReach AI receptionist. Ask me anything about our services, pricing, or book a free demo.",
+        "Hi! How can I help you today?",
     },
   ]);
   const [input, setInput] = useState("");
@@ -62,7 +62,7 @@ export default function ChatWidget() {
           ...prev,
           {
             role: "assistant",
-            content: "Sorry, something went wrong. Try again or email us at hello@nextreachstudio.com",
+            content: "Sorry, something went wrong. Please try again.",
           },
         ]);
       }
@@ -71,7 +71,7 @@ export default function ChatWidget() {
         ...prev,
         {
           role: "assistant",
-          content: "I'm having trouble connecting. You can email us directly at hello@nextreachstudio.com",
+          content: "I'm having trouble connecting. Please try again.",
         },
       ]);
     } finally {
@@ -104,7 +104,7 @@ export default function ChatWidget() {
       {open && (
         <div
           role="dialog"
-          aria-label="Chat with NextReach AI"
+          aria-label="Chat"
           className="fixed bottom-24 right-5 z-[60] w-[340px] sm:w-[360px] max-w-[calc(100vw-2rem)] h-[480px] max-h-[70vh] flex flex-col rounded-2xl overflow-hidden border border-white/[0.08] bg-[#0a0a0a] backdrop-blur-xl shadow-2xl animate-in"
         >
           <div className="px-4 py-3.5 border-b border-white/[0.08] bg-amber-400/[0.06]">
@@ -114,7 +114,7 @@ export default function ChatWidget() {
               </div>
               <div>
                 <p className="text-white text-[14px] font-medium">
-                  NextReach AI Receptionist
+                  AI Assistant
                 </p>
                 <p className="text-zinc-500 text-[12px]">
                   Usually replies instantly
@@ -163,7 +163,7 @@ export default function ChatWidget() {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder="Ask about our services..."
+                placeholder="Type a message..."
                 className="flex-1 bg-white/[0.04] border border-white/[0.08] rounded-xl px-3 py-2.5 text-[14px] text-white placeholder:text-zinc-600 outline-none focus:ring-2 focus:ring-amber-400/25 focus:border-amber-400/25 transition-all duration-200 min-h-[44px]"
                 disabled={loading}
                 aria-label="Type your message"

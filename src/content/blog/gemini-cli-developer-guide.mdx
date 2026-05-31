@@ -1,0 +1,459 @@
+---
+title: "Gemini CLI for Developers: Beyond the Basics"
+description: "Advanced usage patterns for Gemini CLI in real development workflows. Covers context injection, pipe chaining, scripting, and integrating with existing toolchains."
+pubDate: 2026-05-26
+author: "NextReach Studio"
+tags: ["gemini-cli", "workflow", "cli"]
+draft: false
+---
+
+Gemini CLI gets less attention than Claude Code or Copilot, but it has a genuinely different strength: it's a proper Unix citizen. It reads stdin, writes stdout, accepts file arguments, and composes naturally with every other tool in your terminal. If you work heavily in the shell, that matters more than a polished GUI. This post covers the patterns that actually work in production workflows, not the ones that look good in a demo.
+
+## Installation and Auth
+
+```bash
+npm install -g @google/generative-ai-cli
+# or
+npx @google/generative-ai-cli
+```
+
+Authenticate with your API key:
+
+```bash
+export GEMINI_API_KEY="your-key-here"
+# Add to ~/.zshrc to persist
+```
+
+Or use the interactive login:
+
+```bash
+gemini auth login
+```
+
+Verify it works:
+
+```bash
+echo "What is 2+2?" | gemini
+```
+
+If you get a response, you're good. If you're cost-conscious, use [our LLM Cost Calculator](/tools/llm-cost-calculator) to estimate your usage before running large batch jobs.
+
+## Model Selection
+
+Gemini CLI defaults to a model based on your subscription tier. Be explicit:
+
+```bash
+# Flash — faster, cheaper, good for most tasks
+gemini --model gemini-2.5-flash "summarize this"
+
+# Pro — stronger reasoning, slower, more expensive  
+gemini --model gemini-2.5-pro "analyze this architecture"
+```
+
+For interactive work, Flash is the right default. For deep analysis tasks where quality matters more than speed, switch to Pro explicitly.
+
+## Piping: Where Gemini CLI Shines
+
+The fundamental pattern is piping data into Gemini as context:
+
+```bash
+# Pipe file content
+cat src/auth/session.ts | gemini "Find security issues in this code"
+
+# Pipe command output
+git diff HEAD~1 | gemini "Write a conventional commit message for these changes"
+
+# Pipe logs
+tail -n 100 /var/log/app.log | gemini "What errors are occurring and what's the likely cause?"
+
+# Pipe JSON
+curl -s https://api.example.com/users | gemini "Describe the shape of this API response as a TypeScript type"
+```
+
+This is Gemini CLI's actual superpower. You can bring any data into the model's context without manually copying and pasting.
+
+## Context Injection with -f
+
+For longer files, use the `-f` flag instead of piping:
+
+```bash
+gemini -f src/components/PaymentForm.tsx "What validation is missing from this form?"
+
+# Multiple files
+gemini -f src/db/schema.ts -f src/server/actions/billing.ts "Are the types consistent between these two files?"
+
+# Mix files and stdin
+cat package.json | gemini -f tsconfig.json "Is the module format in package.json compatible with tsconfig?"
+```
+
+The `-f` flag handles large files more gracefully than piping, and it preserves the filename as context so the model knows what it's looking at.
+
+## Writing a Code Review Shell Function
+
+Put this in your `~/.zshrc`:
+
+```bash
+# Review staged changes before committing
+review-staged() {
+  local focus="${1:-general issues, security, and edge cases}"
+  git diff --cached | gemini --model gemini-2.5-pro \
+    "You are a senior developer doing a code review.
+    
+Focus on: ${focus}
+
+Review format:
+- Critical issues (must fix before merge)
+- Warnings (should address)
+- Suggestions (optional improvements)
+- Summary verdict: APPROVE / REQUEST CHANGES
+
+Code diff:
+"
+}
+
+# Usage
+review-staged
+review-staged "authentication and authorization only"
+review-staged "performance and database queries"
+```
+
+This replaces the "paste diff into browser" workflow with a single command that runs from the terminal.
+
+## Generating Commit Messages
+
+```bash
+# Add to ~/.zshrc
+commit-msg() {
+  local changes=$(git diff --cached)
+  if [ -z "$changes" ]; then
+    echo "No staged changes. Stage your changes first with git add."
+    return 1
+  fi
+  
+  echo "$changes" | gemini \
+    "Generate a conventional commit message for these git changes.
+    
+Format: <type>(<scope>): <description>
+
+Where type is one of: feat, fix, docs, style, refactor, test, chore
+Keep the description under 72 characters.
+If there are multiple concerns, use a body to list them.
+Output only the commit message, nothing else."
+}
+
+# Usage: generates message and optionally commits
+commit-with-msg() {
+  local msg=$(commit-msg)
+  echo "Generated message: $msg"
+  echo ""
+  read "confirm?Commit with this message? [y/N] "
+  if [[ "$confirm" == "y" ]]; then
+    git commit -m "$msg"
+  fi
+}
+```
+
+## Batch Processing Files
+
+Gemini CLI composes with `find`, `xargs`, and standard shell patterns:
+
+```bash
+# Review all TypeScript files in a directory for a specific pattern
+find src/server -name "*.ts" | while read file; do
+  echo "=== $file ==="
+  gemini -f "$file" "Does this file have any missing error handling? Answer with YES or NO and one sentence explanation."
+  echo ""
+done
+
+# Generate documentation for all exported functions
+find src/lib -name "*.ts" | xargs -I{} sh -c '
+  echo "# {}"
+  gemini -f "{}" "Generate JSDoc comments for all exported functions in this file. Output only the documented functions."
+  echo ""
+' > docs/auto-generated.md
+```
+
+For large batch jobs, add rate limiting:
+
+```bash
+find src -name "*.ts" | while read file; do
+  gemini -f "$file" "your prompt"
+  sleep 0.5  # Stay within rate limits
+done
+```
+
+## Extracting Structured Data
+
+Force JSON output for pipeline-friendly processing:
+
+```bash
+# Extract dependencies and their purposes from a file
+cat package.json | gemini \
+  "Analyze the dependencies in this package.json. 
+Return a JSON array where each item has: name, version, purpose (one sentence), category (dev/prod/peer).
+Return ONLY valid JSON, no explanation." | jq '.[] | select(.category == "dev") | .name'
+```
+
+Gemini isn't always reliable about outputting only JSON without preamble. Add explicit extraction:
+
+```bash
+extract_json() {
+  # Extract JSON from response even if wrapped in explanation text
+  python3 -c "
+import sys
+import json
+import re
+
+text = sys.stdin.read()
+
+# Try to find JSON array or object in the response
+patterns = [
+  r'\[[\s\S]*\]',   # JSON array
+  r'\{[\s\S]*\}',   # JSON object
+]
+
+for pattern in patterns:
+  matches = re.findall(pattern, text)
+  for match in matches:
+    try:
+      parsed = json.loads(match)
+      print(json.dumps(parsed, indent=2))
+      sys.exit(0)
+    except json.JSONDecodeError:
+      continue
+
+print(text, file=sys.stderr)
+sys.exit(1)
+"
+}
+
+# Usage
+cat data.json | gemini "Convert this to a flat list of key-value pairs as JSON" | extract_json | jq .
+```
+
+## Scripting Multi-Step Workflows
+
+Chain multiple Gemini calls for complex tasks:
+
+```bash
+#!/bin/bash
+# analyze-pr.sh — Full PR analysis pipeline
+
+set -e
+
+PR_NUMBER="$1"
+if [ -z "$PR_NUMBER" ]; then
+  echo "Usage: $0 <pr-number>"
+  exit 1
+fi
+
+echo "Fetching PR diff..."
+DIFF=$(gh pr diff "$PR_NUMBER")
+
+echo ""
+echo "=== SECURITY REVIEW ==="
+echo "$DIFF" | gemini --model gemini-2.5-pro \
+  "Review this PR diff for security vulnerabilities only. 
+Be specific: file name, line, issue, severity (HIGH/MEDIUM/LOW)."
+
+echo ""
+echo "=== PERFORMANCE REVIEW ==="
+echo "$DIFF" | gemini \
+  "Review this PR diff for performance issues only.
+Focus on: N+1 queries, missing indexes, synchronous blocking, unnecessary re-renders."
+
+echo ""
+echo "=== SUGGESTED PR DESCRIPTION ==="
+echo "$DIFF" | gemini \
+  "Write a GitHub PR description for these changes.
+Format:
+## What this PR does
+[2-3 sentences]
+
+## Changes
+- [bullet list]
+
+## Testing
+[what was tested]"
+```
+
+```bash
+chmod +x analyze-pr.sh
+./analyze-pr.sh 42
+```
+
+## Using System Prompts for Consistent Behavior
+
+```bash
+# Create a reusable system prompt file
+cat > ~/.config/gemini-prompts/code-reviewer.txt << 'EOF'
+You are a code reviewer with expertise in TypeScript, Node.js, and PostgreSQL.
+
+Your review style:
+- Focus on correctness and security first
+- Point out specific file and line numbers
+- Be concise — no padding or filler
+- Distinguish between bugs (must fix) and style issues (optional)
+- Don't suggest rewrites unless the current approach is fundamentally broken
+EOF
+
+# Use it
+review_with_persona() {
+  local prompt_file="$HOME/.config/gemini-prompts/code-reviewer.txt"
+  local system_prompt=$(cat "$prompt_file")
+  
+  git diff --cached | gemini \
+    --system "$system_prompt" \
+    "Review these staged changes."
+}
+```
+
+## Integrating with Git Hooks
+
+Add Gemini-powered checks to your pre-commit hook:
+
+```bash
+# .git/hooks/pre-commit
+#!/bin/bash
+
+DIFF=$(git diff --cached)
+
+if [ -z "$DIFF" ]; then
+  exit 0
+fi
+
+# Check for obvious security issues
+SECURITY_CHECK=$(echo "$DIFF" | gemini \
+  "Check this diff for critical security issues ONLY:
+- Hardcoded secrets/API keys/passwords
+- SQL injection vectors
+- Unsafe eval() or innerHTML usage
+
+If you find any, output: SECURITY_ISSUE: [description]
+If none found, output: OK" 2>/dev/null)
+
+if echo "$SECURITY_CHECK" | grep -q "SECURITY_ISSUE"; then
+  echo "⚠️  Security check flagged an issue:"
+  echo "$SECURITY_CHECK"
+  echo ""
+  echo "Commit blocked. Fix the issue or use git commit --no-verify to bypass."
+  exit 1
+fi
+
+exit 0
+```
+
+Make it executable:
+
+```bash
+chmod +x .git/hooks/pre-commit
+```
+
+Note: This adds latency to every commit. Keep the prompt narrow and use Flash model to minimize the delay.
+
+## Watching Files and Rerunning Analysis
+
+For longer development sessions, watch for changes and re-analyze automatically:
+
+```bash
+# Install fswatch if needed: brew install fswatch
+watch-and-analyze() {
+  local target="${1:-.}"
+  local prompt="${2:-Check this file for issues}"
+  
+  fswatch -o "$target" | while read; do
+    clear
+    echo "=== Analysis at $(date) ==="
+    find "$target" -name "*.ts" -newer /tmp/.last-analysis 2>/dev/null | head -5 | while read file; do
+      echo "Changed: $file"
+      gemini -f "$file" "$prompt"
+    done
+    touch /tmp/.last-analysis
+  done
+}
+
+# Watch TypeScript files for type issues
+watch-and-analyze src "List any TypeScript type issues or missing null checks in this file."
+```
+
+## Context Management for Large Codebases
+
+Gemini has a large context window, but dumping your entire codebase in is rarely the right approach. Use [our Context Window Calculator](/tools/context-window-calculator) to estimate token counts before running expensive queries.
+
+Better pattern — build a focused context snapshot:
+
+```bash
+# Generate a focused context for a specific subsystem
+build-context() {
+  local subsystem="$1"
+  
+  echo "# Project Context: $subsystem subsystem"
+  echo ""
+  echo "## File structure"
+  find "src/$subsystem" -type f | head -30
+  echo ""
+  echo "## Key files"
+  find "src/$subsystem" -name "*.ts" | head -5 | while read f; do
+    echo "### $f"
+    cat "$f"
+    echo ""
+  done
+}
+
+# Use it
+build-context billing | gemini "What are the data flow paths through this subsystem?"
+```
+
+## Debugging API Calls
+
+When Gemini CLI behaves unexpectedly, debug at the HTTP level:
+
+```bash
+# Enable verbose output
+GEMINI_DEBUG=1 gemini "test prompt"
+
+# Or use curl directly to inspect the raw API
+curl -s \
+  -H "Content-Type: application/json" \
+  -H "x-goog-api-key: $GEMINI_API_KEY" \
+  "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent" \
+  -d '{
+    "contents": [{"parts": [{"text": "Hello"}]}]
+  }' | jq .candidates[0].content.parts[0].text
+```
+
+This bypasses the CLI entirely and shows you exactly what the API is returning.
+
+## A Practical Workflow Integration
+
+Put it all together: here's a `.zshrc` block that gives you a usable AI-powered development workflow:
+
+```bash
+# ~/.zshrc additions
+
+# Quick inline question
+ai() { gemini "$*"; }
+
+# File analysis
+analyze() { gemini -f "$1" "${2:-What are the issues with this code?}"; }
+
+# Review staged changes
+review() { git diff --cached | gemini --model gemini-2.5-pro "Code review: focus on bugs and security. Be specific."; }
+
+# Generate commit message
+gcm() {
+  local msg
+  msg=$(git diff --cached | gemini "Write a conventional commit message. Output only the message.")
+  echo "$msg"
+  read "ok?Commit? [y/N] "
+  [[ "$ok" == "y" ]] && git commit -m "$msg"
+}
+
+# Explain an error
+explain() { echo "$*" | gemini "Explain this error and suggest the most likely fix:"; }
+
+# Summarize a PR
+pr-summary() { gh pr diff "${1:-HEAD}" | gemini "Summarize what this PR changes in 3 bullet points."; }
+```
+
+The goal isn't to replace your workflow — it's to remove the friction points where you'd otherwise switch to a browser, open a chat interface, and manually copy-paste context. When the model is one pipe away, you actually use it.

@@ -1,0 +1,38 @@
+---
+const navLinks = [
+  { href: "/blog", label: "Blog" },
+  { href: "/guides", label: "Guides" },
+  { href: "/tools", label: "Tools" },
+  { href: "/resources", label: "Resources" },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav class="fixed w-full top-0 z-50 glass-panel border-b border-t-0 border-x-0" aria-label="Main navigation">
+  <div class="max-w-7xl mx-auto px-6 sm:px-8 h-16 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-3 group -ml-2" aria-label="NextReach Studio — Home">
+      <img src="/logo.png" alt="NextReach Studio" width="32" height="32" class="transition-transform duration-300 group-hover:scale-110" />
+      <span class="text-white text-sm tracking-[0.08em] font-medium hidden sm:inline">NextReach Studio</span>
+    </a>
+
+    <div class="flex items-center gap-1" role="menubar">
+      {navLinks.map(({ href, label }) => {
+        const isActive = currentPath === href || (href !== "/" && currentPath.startsWith(href));
+        return (
+          <a
+            href={href}
+            role="menuitem"
+            class={`px-3 py-1.5 rounded-lg text-sm transition-colors duration-200 ${
+              isActive
+                ? "text-white bg-white/5"
+                : "text-zinc-500 hover:text-zinc-200 hover:bg-white/5"
+            }`}
+          >
+            {label}
+          </a>
+        );
+      })}
+    </div>
+  </div>
+</nav>

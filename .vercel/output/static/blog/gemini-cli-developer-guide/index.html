@@ -1,0 +1,363 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Gemini CLI for Developers: Beyond the Basics | NextReach Studio</title><meta name="description" content="Advanced usage patterns for Gemini CLI in real development workflows. Covers context injection, pipe chaining, scripting, and integrating with existing toolchains."><link rel="canonical" href="https://nextreachstudio.com/blog/gemini-cli-developer-guide/"><!-- Fonts --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"><link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&display=swap" rel="stylesheet" media="all"><!-- Icons --><link rel="icon" href="/logo.png"><link rel="apple-touch-icon" href="/logo.png"><!-- RSS --><link rel="alternate" type="application/rss+xml" title="NextReach Studio Blog" href="/rss.xml"><!-- Open Graph --><meta property="og:title" content="Gemini CLI for Developers: Beyond the Basics | NextReach Studio"><meta property="og:description" content="Advanced usage patterns for Gemini CLI in real development workflows. Covers context injection, pipe chaining, scripting, and integrating with existing toolchains."><meta property="og:type" content="article"><meta property="og:url" content="https://nextreachstudio.com/blog/gemini-cli-developer-guide/"><meta property="og:site_name" content="NextReach Studio"><meta property="og:image" content="https://nextreachstudio.com/link-previews.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:locale" content="en_US"><!-- Twitter / X --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Gemini CLI for Developers: Beyond the Basics | NextReach Studio"><meta name="twitter:description" content="Advanced usage patterns for Gemini CLI in real development workflows. Covers context injection, pipe chaining, scripting, and integrating with existing toolchains."><meta name="twitter:image" content="https://nextreachstudio.com/link-previews.png"><!-- Article-specific meta --><meta property="article:published_time" content="2026-05-26T00:00:00.000Z"><meta property="article:author" content="NextReach Studio"><meta property="article:tag" content="gemini-cli"><meta property="article:tag" content="workflow"><meta property="article:tag" content="cli"><!-- Security Headers --><meta http-equiv="X-Content-Type-Options" content="nosniff"><meta http-equiv="X-Frame-Options" content="DENY"><meta http-equiv="X-XSS-Protection" content="1; mode=block"><meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin"><!-- Structured Data: Organization --><script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"NextReach Studio","url":"https://nextreachstudio.com","logo":"https://nextreachstudio.com/logo.png","description":"Advanced usage patterns for Gemini CLI in real development workflows. Covers context injection, pipe chaining, scripting, and integrating with existing toolchains."}</script><!-- Structured Data: Article (if article type) --><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Gemini CLI for Developers: Beyond the Basics","description":"Advanced usage patterns for Gemini CLI in real development workflows. Covers context injection, pipe chaining, scripting, and integrating with existing toolchains.","image":"https://nextreachstudio.com/link-previews.png","author":{"@type":"Organization","name":"NextReach Studio"},"publisher":{"@type":"Organization","name":"NextReach Studio","url":"https://nextreachstudio.com"},"datePublished":"2026-05-26T00:00:00.000Z","url":"https://nextreachstudio.com/blog/gemini-cli-developer-guide/"}</script><link rel="stylesheet" href="/_astro/_slug_.DNrM4yVl.css"></head> <body class="font-body text-zinc-300 antialiased min-h-screen">  <nav class="fixed w-full top-0 z-50 glass-panel border-b border-t-0 border-x-0" aria-label="Main navigation"> <div class="max-w-7xl mx-auto px-6 sm:px-8 h-16 flex items-center justify-between"> <a href="/" class="flex items-center gap-3 group -ml-2" aria-label="NextReach Studio — Home"> <img src="/logo.png" alt="NextReach Studio" width="32" height="32" class="transition-transform duration-300 group-hover:scale-110"> <span class="text-white text-sm tracking-[0.08em] font-medium hidden sm:inline">NextReach Studio</span> </a> <div class="flex items-center gap-1" role="menubar"> <a href="/blog" role="menuitem" class="px-3 py-1.5 rounded-lg text-sm transition-colors duration-200 text-white bg-white/5"> Blog </a><a href="/guides" role="menuitem" class="px-3 py-1.5 rounded-lg text-sm transition-colors duration-200 text-zinc-500 hover:text-zinc-200 hover:bg-white/5"> Guides </a><a href="/tools" role="menuitem" class="px-3 py-1.5 rounded-lg text-sm transition-colors duration-200 text-zinc-500 hover:text-zinc-200 hover:bg-white/5"> Tools </a><a href="/resources" role="menuitem" class="px-3 py-1.5 rounded-lg text-sm transition-colors duration-200 text-zinc-500 hover:text-zinc-200 hover:bg-white/5"> Resources </a> </div> </div> </nav> <main class="pt-28 pb-20"> <article class="px-6 sm:px-8 max-w-3xl mx-auto"> <header class="mb-12"> <div class="flex flex-wrap items-center gap-3 mb-6"> <a href="/blog" class="text-xs text-zinc-600 hover:text-zinc-400 transition-colors">
+← All articles
+</a> </div> <h1 class="font-display font-semibold text-3xl sm:text-4xl lg:text-5xl text-white tracking-[-0.01em] leading-[1.2] mb-4"> Gemini CLI for Developers: Beyond the Basics </h1> <p class="text-lg text-zinc-400 leading-relaxed mb-6">Advanced usage patterns for Gemini CLI in real development workflows. Covers context injection, pipe chaining, scripting, and integrating with existing toolchains.</p> <div class="flex flex-wrap items-center gap-3 text-xs text-zinc-600"> <time datetime="2026-05-26T00:00:00.000Z"> May 26, 2026 </time>  <span>·</span> <span>NextReach Studio</span>  <span>·</span> <div class="flex gap-1.5 flex-wrap"> <span class="rounded-full bg-zinc-800 px-2 py-0.5 text-zinc-500">gemini-cli</span><span class="rounded-full bg-zinc-800 px-2 py-0.5 text-zinc-500">workflow</span><span class="rounded-full bg-zinc-800 px-2 py-0.5 text-zinc-500">cli</span> </div>  </div> </header> <div class="glass-panel rounded-2xl p-8 sm:p-10 mb-12"> <div class="prose prose-invert max-w-none
+          prose-headings:text-white prose-headings:font-display prose-headings:font-semibold
+          prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
+          prose-h3:text-lg prose-h3:mt-6 prose-h3:mb-3
+          prose-p:text-zinc-400 prose-p:leading-relaxed
+          prose-a:text-amber-400 prose-a:no-underline hover:prose-a:text-amber-300
+          prose-strong:text-white
+          prose-code:text-amber-400 prose-code:bg-zinc-800 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
+          prose-pre:bg-zinc-900 prose-pre:border prose-pre:border-zinc-800 prose-pre:rounded-xl
+          prose-blockquote:border-amber-400 prose-blockquote:text-zinc-400
+          prose-ul:text-zinc-400 prose-ol:text-zinc-400
+          prose-li:marker:text-zinc-600
+          prose-table:text-sm prose-th:text-zinc-300 prose-td:text-zinc-400 prose-th:bg-zinc-900 prose-tr:border-zinc-800
+        "> <p>Gemini CLI gets less attention than Claude Code or Copilot, but it has a genuinely different strength: it’s a proper Unix citizen. It reads stdin, writes stdout, accepts file arguments, and composes naturally with every other tool in your terminal. If you work heavily in the shell, that matters more than a polished GUI. This post covers the patterns that actually work in production workflows, not the ones that look good in a demo.</p>
+<h2 id="installation-and-auth">Installation and Auth</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> install</span><span style="color:#79B8FF"> -g</span><span style="color:#9ECBFF"> @google/generative-ai-cli</span></span>
+<span class="line"><span style="color:#6A737D"># or</span></span>
+<span class="line"><span style="color:#B392F0">npx</span><span style="color:#9ECBFF"> @google/generative-ai-cli</span></span></code></pre>
+<p>Authenticate with your API key:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#F97583">export</span><span style="color:#E1E4E8"> GEMINI_API_KEY</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">&quot;your-key-here&quot;</span></span>
+<span class="line"><span style="color:#6A737D"># Add to ~/.zshrc to persist</span></span></code></pre>
+<p>Or use the interactive login:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">gemini</span><span style="color:#9ECBFF"> auth</span><span style="color:#9ECBFF"> login</span></span></code></pre>
+<p>Verify it works:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> &quot;What is 2+2?&quot;</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> gemini</span></span></code></pre>
+<p>If you get a response, you’re good. If you’re cost-conscious, use <a href="/tools/llm-cost-calculator">our LLM Cost Calculator</a> to estimate your usage before running large batch jobs.</p>
+<h2 id="model-selection">Model Selection</h2>
+<p>Gemini CLI defaults to a model based on your subscription tier. Be explicit:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># Flash — faster, cheaper, good for most tasks</span></span>
+<span class="line"><span style="color:#B392F0">gemini</span><span style="color:#79B8FF"> --model</span><span style="color:#9ECBFF"> gemini-2.5-flash</span><span style="color:#9ECBFF"> &quot;summarize this&quot;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Pro — stronger reasoning, slower, more expensive  </span></span>
+<span class="line"><span style="color:#B392F0">gemini</span><span style="color:#79B8FF"> --model</span><span style="color:#9ECBFF"> gemini-2.5-pro</span><span style="color:#9ECBFF"> &quot;analyze this architecture&quot;</span></span></code></pre>
+<p>For interactive work, Flash is the right default. For deep analysis tasks where quality matters more than speed, switch to Pro explicitly.</p>
+<h2 id="piping-where-gemini-cli-shines">Piping: Where Gemini CLI Shines</h2>
+<p>The fundamental pattern is piping data into Gemini as context:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># Pipe file content</span></span>
+<span class="line"><span style="color:#B392F0">cat</span><span style="color:#9ECBFF"> src/auth/session.ts</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> gemini</span><span style="color:#9ECBFF"> &quot;Find security issues in this code&quot;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Pipe command output</span></span>
+<span class="line"><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> diff</span><span style="color:#9ECBFF"> HEAD~1</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> gemini</span><span style="color:#9ECBFF"> &quot;Write a conventional commit message for these changes&quot;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Pipe logs</span></span>
+<span class="line"><span style="color:#B392F0">tail</span><span style="color:#79B8FF"> -n</span><span style="color:#79B8FF"> 100</span><span style="color:#9ECBFF"> /var/log/app.log</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> gemini</span><span style="color:#9ECBFF"> &quot;What errors are occurring and what&#39;s the likely cause?&quot;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Pipe JSON</span></span>
+<span class="line"><span style="color:#B392F0">curl</span><span style="color:#79B8FF"> -s</span><span style="color:#9ECBFF"> https://api.example.com/users</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> gemini</span><span style="color:#9ECBFF"> &quot;Describe the shape of this API response as a TypeScript type&quot;</span></span></code></pre>
+<p>This is Gemini CLI’s actual superpower. You can bring any data into the model’s context without manually copying and pasting.</p>
+<h2 id="context-injection-with--f">Context Injection with -f</h2>
+<p>For longer files, use the <code>-f</code> flag instead of piping:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">gemini</span><span style="color:#79B8FF"> -f</span><span style="color:#9ECBFF"> src/components/PaymentForm.tsx</span><span style="color:#9ECBFF"> &quot;What validation is missing from this form?&quot;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Multiple files</span></span>
+<span class="line"><span style="color:#B392F0">gemini</span><span style="color:#79B8FF"> -f</span><span style="color:#9ECBFF"> src/db/schema.ts</span><span style="color:#79B8FF"> -f</span><span style="color:#9ECBFF"> src/server/actions/billing.ts</span><span style="color:#9ECBFF"> &quot;Are the types consistent between these two files?&quot;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Mix files and stdin</span></span>
+<span class="line"><span style="color:#B392F0">cat</span><span style="color:#9ECBFF"> package.json</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> gemini</span><span style="color:#79B8FF"> -f</span><span style="color:#9ECBFF"> tsconfig.json</span><span style="color:#9ECBFF"> &quot;Is the module format in package.json compatible with tsconfig?&quot;</span></span></code></pre>
+<p>The <code>-f</code> flag handles large files more gracefully than piping, and it preserves the filename as context so the model knows what it’s looking at.</p>
+<h2 id="writing-a-code-review-shell-function">Writing a Code Review Shell Function</h2>
+<p>Put this in your <code>~/.zshrc</code>:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># Review staged changes before committing</span></span>
+<span class="line"><span style="color:#B392F0">review-staged</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  local</span><span style="color:#E1E4E8"> focus</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">&quot;</span><span style="color:#79B8FF">${1</span><span style="color:#F97583">:-</span><span style="color:#E1E4E8">general</span><span style="color:#E1E4E8"> issues</span><span style="color:#9ECBFF">, </span><span style="color:#E1E4E8">security</span><span style="color:#9ECBFF">, </span><span style="color:#E1E4E8">and</span><span style="color:#E1E4E8"> edge</span><span style="color:#E1E4E8"> cases</span><span style="color:#79B8FF">}</span><span style="color:#9ECBFF">&quot;</span></span>
+<span class="line"><span style="color:#B392F0">  git</span><span style="color:#9ECBFF"> diff</span><span style="color:#79B8FF"> --cached</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> gemini</span><span style="color:#79B8FF"> --model</span><span style="color:#9ECBFF"> gemini-2.5-pro</span><span style="color:#79B8FF"> \</span></span>
+<span class="line"><span style="color:#9ECBFF">    &quot;You are a senior developer doing a code review.</span></span>
+<span class="line"><span style="color:#9ECBFF">    </span></span>
+<span class="line"><span style="color:#9ECBFF">Focus on: ${</span><span style="color:#E1E4E8">focus</span><span style="color:#9ECBFF">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#9ECBFF">Review format:</span></span>
+<span class="line"><span style="color:#9ECBFF">- Critical issues (must fix before merge)</span></span>
+<span class="line"><span style="color:#9ECBFF">- Warnings (should address)</span></span>
+<span class="line"><span style="color:#9ECBFF">- Suggestions (optional improvements)</span></span>
+<span class="line"><span style="color:#9ECBFF">- Summary verdict: APPROVE / REQUEST CHANGES</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#9ECBFF">Code diff:</span></span>
+<span class="line"><span style="color:#9ECBFF">&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Usage</span></span>
+<span class="line"><span style="color:#B392F0">review-staged</span></span>
+<span class="line"><span style="color:#B392F0">review-staged</span><span style="color:#9ECBFF"> &quot;authentication and authorization only&quot;</span></span>
+<span class="line"><span style="color:#B392F0">review-staged</span><span style="color:#9ECBFF"> &quot;performance and database queries&quot;</span></span></code></pre>
+<p>This replaces the “paste diff into browser” workflow with a single command that runs from the terminal.</p>
+<h2 id="generating-commit-messages">Generating Commit Messages</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># Add to ~/.zshrc</span></span>
+<span class="line"><span style="color:#B392F0">commit-msg</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  local</span><span style="color:#E1E4E8"> changes</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">$(</span><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> diff</span><span style="color:#79B8FF"> --cached</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> [ </span><span style="color:#F97583">-z</span><span style="color:#9ECBFF"> &quot;</span><span style="color:#E1E4E8">$changes</span><span style="color:#9ECBFF">&quot;</span><span style="color:#E1E4E8"> ]; </span><span style="color:#F97583">then</span></span>
+<span class="line"><span style="color:#79B8FF">    echo</span><span style="color:#9ECBFF"> &quot;No staged changes. Stage your changes first with git add.&quot;</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#79B8FF"> 1</span></span>
+<span class="line"><span style="color:#F97583">  fi</span></span>
+<span class="line"><span style="color:#E1E4E8">  </span></span>
+<span class="line"><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> &quot;</span><span style="color:#E1E4E8">$changes</span><span style="color:#9ECBFF">&quot;</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> gemini</span><span style="color:#79B8FF"> \</span></span>
+<span class="line"><span style="color:#9ECBFF">    &quot;Generate a conventional commit message for these git changes.</span></span>
+<span class="line"><span style="color:#9ECBFF">    </span></span>
+<span class="line"><span style="color:#9ECBFF">Format: &lt;type&gt;(&lt;scope&gt;): &lt;description&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#9ECBFF">Where type is one of: feat, fix, docs, style, refactor, test, chore</span></span>
+<span class="line"><span style="color:#9ECBFF">Keep the description under 72 characters.</span></span>
+<span class="line"><span style="color:#9ECBFF">If there are multiple concerns, use a body to list them.</span></span>
+<span class="line"><span style="color:#9ECBFF">Output only the commit message, nothing else.&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Usage: generates message and optionally commits</span></span>
+<span class="line"><span style="color:#B392F0">commit-with-msg</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  local</span><span style="color:#E1E4E8"> msg</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">$(</span><span style="color:#B392F0">commit-msg</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> &quot;Generated message: </span><span style="color:#E1E4E8">$msg</span><span style="color:#9ECBFF">&quot;</span></span>
+<span class="line"><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> &quot;&quot;</span></span>
+<span class="line"><span style="color:#79B8FF">  read</span><span style="color:#9ECBFF"> &quot;confirm?Commit with this message? [y/N] &quot;</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> [[ </span><span style="color:#9ECBFF">&quot;</span><span style="color:#E1E4E8">$confirm</span><span style="color:#9ECBFF">&quot;</span><span style="color:#F97583"> ==</span><span style="color:#9ECBFF"> &quot;y&quot;</span><span style="color:#E1E4E8"> ]]; </span><span style="color:#F97583">then</span></span>
+<span class="line"><span style="color:#B392F0">    git</span><span style="color:#9ECBFF"> commit</span><span style="color:#79B8FF"> -m</span><span style="color:#9ECBFF"> &quot;</span><span style="color:#E1E4E8">$msg</span><span style="color:#9ECBFF">&quot;</span></span>
+<span class="line"><span style="color:#F97583">  fi</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h2 id="batch-processing-files">Batch Processing Files</h2>
+<p>Gemini CLI composes with <code>find</code>, <code>xargs</code>, and standard shell patterns:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># Review all TypeScript files in a directory for a specific pattern</span></span>
+<span class="line"><span style="color:#B392F0">find</span><span style="color:#9ECBFF"> src/server</span><span style="color:#79B8FF"> -name</span><span style="color:#9ECBFF"> &quot;*.ts&quot;</span><span style="color:#F97583"> |</span><span style="color:#F97583"> while</span><span style="color:#79B8FF"> read</span><span style="color:#9ECBFF"> file</span><span style="color:#E1E4E8">; </span><span style="color:#F97583">do</span></span>
+<span class="line"><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> &quot;=== </span><span style="color:#E1E4E8">$file</span><span style="color:#9ECBFF"> ===&quot;</span></span>
+<span class="line"><span style="color:#B392F0">  gemini</span><span style="color:#79B8FF"> -f</span><span style="color:#9ECBFF"> &quot;</span><span style="color:#E1E4E8">$file</span><span style="color:#9ECBFF">&quot;</span><span style="color:#9ECBFF"> &quot;Does this file have any missing error handling? Answer with YES or NO and one sentence explanation.&quot;</span></span>
+<span class="line"><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> &quot;&quot;</span></span>
+<span class="line"><span style="color:#F97583">done</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Generate documentation for all exported functions</span></span>
+<span class="line"><span style="color:#B392F0">find</span><span style="color:#9ECBFF"> src/lib</span><span style="color:#79B8FF"> -name</span><span style="color:#9ECBFF"> &quot;*.ts&quot;</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> xargs</span><span style="color:#79B8FF"> -I</span><span style="color:#E1E4E8">{} sh -c &#39;</span></span>
+<span class="line"><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> &quot;# {}&quot;</span></span>
+<span class="line"><span style="color:#B392F0">  gemini</span><span style="color:#79B8FF"> -f</span><span style="color:#9ECBFF"> &quot;{}&quot;</span><span style="color:#9ECBFF"> &quot;Generate JSDoc comments for all exported functions in this file. Output only the documented functions.&quot;</span></span>
+<span class="line"><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> &quot;&quot;</span></span>
+<span class="line"><span style="color:#B392F0">&#39; &gt; docs/auto-generated.md</span></span></code></pre>
+<p>For large batch jobs, add rate limiting:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">find</span><span style="color:#9ECBFF"> src</span><span style="color:#79B8FF"> -name</span><span style="color:#9ECBFF"> &quot;*.ts&quot;</span><span style="color:#F97583"> |</span><span style="color:#F97583"> while</span><span style="color:#79B8FF"> read</span><span style="color:#9ECBFF"> file</span><span style="color:#E1E4E8">; </span><span style="color:#F97583">do</span></span>
+<span class="line"><span style="color:#B392F0">  gemini</span><span style="color:#79B8FF"> -f</span><span style="color:#9ECBFF"> &quot;</span><span style="color:#E1E4E8">$file</span><span style="color:#9ECBFF">&quot;</span><span style="color:#9ECBFF"> &quot;your prompt&quot;</span></span>
+<span class="line"><span style="color:#B392F0">  sleep</span><span style="color:#79B8FF"> 0.5</span><span style="color:#6A737D">  # Stay within rate limits</span></span>
+<span class="line"><span style="color:#F97583">done</span></span></code></pre>
+<h2 id="extracting-structured-data">Extracting Structured Data</h2>
+<p>Force JSON output for pipeline-friendly processing:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># Extract dependencies and their purposes from a file</span></span>
+<span class="line"><span style="color:#B392F0">cat</span><span style="color:#9ECBFF"> package.json</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> gemini</span><span style="color:#79B8FF"> \</span></span>
+<span class="line"><span style="color:#9ECBFF">  &quot;Analyze the dependencies in this package.json. </span></span>
+<span class="line"><span style="color:#9ECBFF">Return a JSON array where each item has: name, version, purpose (one sentence), category (dev/prod/peer).</span></span>
+<span class="line"><span style="color:#9ECBFF">Return ONLY valid JSON, no explanation.&quot;</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> jq</span><span style="color:#9ECBFF"> &#39;.[] | select(.category == &quot;dev&quot;) | .name&#39;</span></span></code></pre>
+<p>Gemini isn’t always reliable about outputting only JSON without preamble. Add explicit extraction:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">extract_json</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#6A737D">  # Extract JSON from response even if wrapped in explanation text</span></span>
+<span class="line"><span style="color:#B392F0">  python3</span><span style="color:#79B8FF"> -c</span><span style="color:#9ECBFF"> &quot;</span></span>
+<span class="line"><span style="color:#9ECBFF">import sys</span></span>
+<span class="line"><span style="color:#9ECBFF">import json</span></span>
+<span class="line"><span style="color:#9ECBFF">import re</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#9ECBFF">text = sys.stdin.read()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#9ECBFF"># Try to find JSON array or object in the response</span></span>
+<span class="line"><span style="color:#9ECBFF">patterns = [</span></span>
+<span class="line"><span style="color:#9ECBFF">  r&#39;\[[\s\S]*\]&#39;,   # JSON array</span></span>
+<span class="line"><span style="color:#9ECBFF">  r&#39;\{[\s\S]*\}&#39;,   # JSON object</span></span>
+<span class="line"><span style="color:#9ECBFF">]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#9ECBFF">for pattern in patterns:</span></span>
+<span class="line"><span style="color:#9ECBFF">  matches = re.findall(pattern, text)</span></span>
+<span class="line"><span style="color:#9ECBFF">  for match in matches:</span></span>
+<span class="line"><span style="color:#9ECBFF">    try:</span></span>
+<span class="line"><span style="color:#9ECBFF">      parsed = json.loads(match)</span></span>
+<span class="line"><span style="color:#9ECBFF">      print(json.dumps(parsed, indent=2))</span></span>
+<span class="line"><span style="color:#9ECBFF">      sys.exit(0)</span></span>
+<span class="line"><span style="color:#9ECBFF">    except json.JSONDecodeError:</span></span>
+<span class="line"><span style="color:#9ECBFF">      continue</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#9ECBFF">print(text, file=sys.stderr)</span></span>
+<span class="line"><span style="color:#9ECBFF">sys.exit(1)</span></span>
+<span class="line"><span style="color:#9ECBFF">&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Usage</span></span>
+<span class="line"><span style="color:#B392F0">cat</span><span style="color:#9ECBFF"> data.json</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> gemini</span><span style="color:#9ECBFF"> &quot;Convert this to a flat list of key-value pairs as JSON&quot;</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> extract_json</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> jq</span><span style="color:#9ECBFF"> .</span></span></code></pre>
+<h2 id="scripting-multi-step-workflows">Scripting Multi-Step Workflows</h2>
+<p>Chain multiple Gemini calls for complex tasks:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D">#!/bin/bash</span></span>
+<span class="line"><span style="color:#6A737D"># analyze-pr.sh — Full PR analysis pipeline</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">set</span><span style="color:#79B8FF"> -e</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">PR_NUMBER</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">&quot;</span><span style="color:#79B8FF">$1</span><span style="color:#9ECBFF">&quot;</span></span>
+<span class="line"><span style="color:#F97583">if</span><span style="color:#E1E4E8"> [ </span><span style="color:#F97583">-z</span><span style="color:#9ECBFF"> &quot;</span><span style="color:#E1E4E8">$PR_NUMBER</span><span style="color:#9ECBFF">&quot;</span><span style="color:#E1E4E8"> ]; </span><span style="color:#F97583">then</span></span>
+<span class="line"><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> &quot;Usage: </span><span style="color:#79B8FF">$0</span><span style="color:#9ECBFF"> &lt;pr-number&gt;&quot;</span></span>
+<span class="line"><span style="color:#79B8FF">  exit</span><span style="color:#79B8FF"> 1</span></span>
+<span class="line"><span style="color:#F97583">fi</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> &quot;Fetching PR diff...&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">DIFF</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">$(</span><span style="color:#B392F0">gh</span><span style="color:#9ECBFF"> pr</span><span style="color:#9ECBFF"> diff</span><span style="color:#9ECBFF"> &quot;</span><span style="color:#E1E4E8">$PR_NUMBER</span><span style="color:#9ECBFF">&quot;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> &quot;&quot;</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> &quot;=== SECURITY REVIEW ===&quot;</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> &quot;</span><span style="color:#E1E4E8">$DIFF</span><span style="color:#9ECBFF">&quot;</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> gemini</span><span style="color:#79B8FF"> --model</span><span style="color:#9ECBFF"> gemini-2.5-pro</span><span style="color:#79B8FF"> \</span></span>
+<span class="line"><span style="color:#9ECBFF">  &quot;Review this PR diff for security vulnerabilities only. </span></span>
+<span class="line"><span style="color:#9ECBFF">Be specific: file name, line, issue, severity (HIGH/MEDIUM/LOW).&quot;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> &quot;&quot;</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> &quot;=== PERFORMANCE REVIEW ===&quot;</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> &quot;</span><span style="color:#E1E4E8">$DIFF</span><span style="color:#9ECBFF">&quot;</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> gemini</span><span style="color:#79B8FF"> \</span></span>
+<span class="line"><span style="color:#9ECBFF">  &quot;Review this PR diff for performance issues only.</span></span>
+<span class="line"><span style="color:#9ECBFF">Focus on: N+1 queries, missing indexes, synchronous blocking, unnecessary re-renders.&quot;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> &quot;&quot;</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> &quot;=== SUGGESTED PR DESCRIPTION ===&quot;</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> &quot;</span><span style="color:#E1E4E8">$DIFF</span><span style="color:#9ECBFF">&quot;</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> gemini</span><span style="color:#79B8FF"> \</span></span>
+<span class="line"><span style="color:#9ECBFF">  &quot;Write a GitHub PR description for these changes.</span></span>
+<span class="line"><span style="color:#9ECBFF">Format:</span></span>
+<span class="line"><span style="color:#9ECBFF">## What this PR does</span></span>
+<span class="line"><span style="color:#9ECBFF">[2-3 sentences]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#9ECBFF">## Changes</span></span>
+<span class="line"><span style="color:#9ECBFF">- [bullet list]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#9ECBFF">## Testing</span></span>
+<span class="line"><span style="color:#9ECBFF">[what was tested]&quot;</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">chmod</span><span style="color:#9ECBFF"> +x</span><span style="color:#9ECBFF"> analyze-pr.sh</span></span>
+<span class="line"><span style="color:#B392F0">./analyze-pr.sh</span><span style="color:#79B8FF"> 42</span></span></code></pre>
+<h2 id="using-system-prompts-for-consistent-behavior">Using System Prompts for Consistent Behavior</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># Create a reusable system prompt file</span></span>
+<span class="line"><span style="color:#B392F0">cat</span><span style="color:#F97583"> &gt;</span><span style="color:#9ECBFF"> ~/.config/gemini-prompts/code-reviewer.txt</span><span style="color:#F97583"> &lt;&lt;</span><span style="color:#9ECBFF"> &#39;EOF&#39;</span></span>
+<span class="line"><span style="color:#9ECBFF">You are a code reviewer with expertise in TypeScript, Node.js, and PostgreSQL.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#9ECBFF">Your review style:</span></span>
+<span class="line"><span style="color:#9ECBFF">- Focus on correctness and security first</span></span>
+<span class="line"><span style="color:#9ECBFF">- Point out specific file and line numbers</span></span>
+<span class="line"><span style="color:#9ECBFF">- Be concise — no padding or filler</span></span>
+<span class="line"><span style="color:#9ECBFF">- Distinguish between bugs (must fix) and style issues (optional)</span></span>
+<span class="line"><span style="color:#9ECBFF">- Don&#39;t suggest rewrites unless the current approach is fundamentally broken</span></span>
+<span class="line"><span style="color:#9ECBFF">EOF</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Use it</span></span>
+<span class="line"><span style="color:#B392F0">review_with_persona</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  local</span><span style="color:#E1E4E8"> prompt_file</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">&quot;</span><span style="color:#E1E4E8">$HOME</span><span style="color:#9ECBFF">/.config/gemini-prompts/code-reviewer.txt&quot;</span></span>
+<span class="line"><span style="color:#F97583">  local</span><span style="color:#E1E4E8"> system_prompt</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">$(</span><span style="color:#B392F0">cat</span><span style="color:#9ECBFF"> &quot;</span><span style="color:#E1E4E8">$prompt_file</span><span style="color:#9ECBFF">&quot;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">  </span></span>
+<span class="line"><span style="color:#B392F0">  git</span><span style="color:#9ECBFF"> diff</span><span style="color:#79B8FF"> --cached</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> gemini</span><span style="color:#79B8FF"> \</span></span>
+<span class="line"><span style="color:#79B8FF">    --system</span><span style="color:#9ECBFF"> &quot;</span><span style="color:#E1E4E8">$system_prompt</span><span style="color:#9ECBFF">&quot;</span><span style="color:#79B8FF"> \</span></span>
+<span class="line"><span style="color:#9ECBFF">    &quot;Review these staged changes.&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h2 id="integrating-with-git-hooks">Integrating with Git Hooks</h2>
+<p>Add Gemini-powered checks to your pre-commit hook:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># .git/hooks/pre-commit</span></span>
+<span class="line"><span style="color:#6A737D">#!/bin/bash</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">DIFF</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">$(</span><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> diff</span><span style="color:#79B8FF"> --cached</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">if</span><span style="color:#E1E4E8"> [ </span><span style="color:#F97583">-z</span><span style="color:#9ECBFF"> &quot;</span><span style="color:#E1E4E8">$DIFF</span><span style="color:#9ECBFF">&quot;</span><span style="color:#E1E4E8"> ]; </span><span style="color:#F97583">then</span></span>
+<span class="line"><span style="color:#79B8FF">  exit</span><span style="color:#79B8FF"> 0</span></span>
+<span class="line"><span style="color:#F97583">fi</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Check for obvious security issues</span></span>
+<span class="line"><span style="color:#E1E4E8">SECURITY_CHECK</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">$(</span><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> &quot;</span><span style="color:#E1E4E8">$DIFF</span><span style="color:#9ECBFF">&quot;</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> gemini</span><span style="color:#79B8FF"> \</span></span>
+<span class="line"><span style="color:#9ECBFF">  &quot;Check this diff for critical security issues ONLY:</span></span>
+<span class="line"><span style="color:#9ECBFF">- Hardcoded secrets/API keys/passwords</span></span>
+<span class="line"><span style="color:#9ECBFF">- SQL injection vectors</span></span>
+<span class="line"><span style="color:#9ECBFF">- Unsafe eval() or innerHTML usage</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#9ECBFF">If you find any, output: SECURITY_ISSUE: [description]</span></span>
+<span class="line"><span style="color:#9ECBFF">If none found, output: OK&quot;</span><span style="color:#F97583"> 2&gt;</span><span style="color:#9ECBFF">/dev/null</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">if</span><span style="color:#79B8FF"> echo</span><span style="color:#9ECBFF"> &quot;</span><span style="color:#E1E4E8">$SECURITY_CHECK</span><span style="color:#9ECBFF">&quot;</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> grep</span><span style="color:#79B8FF"> -q</span><span style="color:#9ECBFF"> &quot;SECURITY_ISSUE&quot;</span><span style="color:#E1E4E8">; </span><span style="color:#F97583">then</span></span>
+<span class="line"><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> &quot;⚠️  Security check flagged an issue:&quot;</span></span>
+<span class="line"><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> &quot;</span><span style="color:#E1E4E8">$SECURITY_CHECK</span><span style="color:#9ECBFF">&quot;</span></span>
+<span class="line"><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> &quot;&quot;</span></span>
+<span class="line"><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> &quot;Commit blocked. Fix the issue or use git commit --no-verify to bypass.&quot;</span></span>
+<span class="line"><span style="color:#79B8FF">  exit</span><span style="color:#79B8FF"> 1</span></span>
+<span class="line"><span style="color:#F97583">fi</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">exit</span><span style="color:#79B8FF"> 0</span></span></code></pre>
+<p>Make it executable:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">chmod</span><span style="color:#9ECBFF"> +x</span><span style="color:#9ECBFF"> .git/hooks/pre-commit</span></span></code></pre>
+<p>Note: This adds latency to every commit. Keep the prompt narrow and use Flash model to minimize the delay.</p>
+<h2 id="watching-files-and-rerunning-analysis">Watching Files and Rerunning Analysis</h2>
+<p>For longer development sessions, watch for changes and re-analyze automatically:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># Install fswatch if needed: brew install fswatch</span></span>
+<span class="line"><span style="color:#B392F0">watch-and-analyze</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  local</span><span style="color:#E1E4E8"> target</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">&quot;</span><span style="color:#79B8FF">${1</span><span style="color:#F97583">:-</span><span style="color:#9ECBFF">.</span><span style="color:#79B8FF">}</span><span style="color:#9ECBFF">&quot;</span></span>
+<span class="line"><span style="color:#F97583">  local</span><span style="color:#E1E4E8"> prompt</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">&quot;</span><span style="color:#79B8FF">${2</span><span style="color:#F97583">:-</span><span style="color:#E1E4E8">Check</span><span style="color:#E1E4E8"> this</span><span style="color:#E1E4E8"> file</span><span style="color:#E1E4E8"> for</span><span style="color:#E1E4E8"> issues</span><span style="color:#79B8FF">}</span><span style="color:#9ECBFF">&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">  </span></span>
+<span class="line"><span style="color:#B392F0">  fswatch</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> &quot;</span><span style="color:#E1E4E8">$target</span><span style="color:#9ECBFF">&quot;</span><span style="color:#F97583"> |</span><span style="color:#F97583"> while</span><span style="color:#79B8FF"> read</span><span style="color:#E1E4E8">; </span><span style="color:#F97583">do</span></span>
+<span class="line"><span style="color:#B392F0">    clear</span></span>
+<span class="line"><span style="color:#79B8FF">    echo</span><span style="color:#9ECBFF"> &quot;=== Analysis at $(</span><span style="color:#B392F0">date</span><span style="color:#9ECBFF">) ===&quot;</span></span>
+<span class="line"><span style="color:#B392F0">    find</span><span style="color:#9ECBFF"> &quot;</span><span style="color:#E1E4E8">$target</span><span style="color:#9ECBFF">&quot;</span><span style="color:#79B8FF"> -name</span><span style="color:#9ECBFF"> &quot;*.ts&quot;</span><span style="color:#79B8FF"> -newer</span><span style="color:#9ECBFF"> /tmp/.last-analysis</span><span style="color:#F97583"> 2&gt;</span><span style="color:#9ECBFF">/dev/null</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> head</span><span style="color:#79B8FF"> -5</span><span style="color:#F97583"> |</span><span style="color:#F97583"> while</span><span style="color:#79B8FF"> read</span><span style="color:#9ECBFF"> file</span><span style="color:#E1E4E8">; </span><span style="color:#F97583">do</span></span>
+<span class="line"><span style="color:#79B8FF">      echo</span><span style="color:#9ECBFF"> &quot;Changed: </span><span style="color:#E1E4E8">$file</span><span style="color:#9ECBFF">&quot;</span></span>
+<span class="line"><span style="color:#B392F0">      gemini</span><span style="color:#79B8FF"> -f</span><span style="color:#9ECBFF"> &quot;</span><span style="color:#E1E4E8">$file</span><span style="color:#9ECBFF">&quot;</span><span style="color:#9ECBFF"> &quot;</span><span style="color:#E1E4E8">$prompt</span><span style="color:#9ECBFF">&quot;</span></span>
+<span class="line"><span style="color:#F97583">    done</span></span>
+<span class="line"><span style="color:#B392F0">    touch</span><span style="color:#9ECBFF"> /tmp/.last-analysis</span></span>
+<span class="line"><span style="color:#F97583">  done</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Watch TypeScript files for type issues</span></span>
+<span class="line"><span style="color:#B392F0">watch-and-analyze</span><span style="color:#9ECBFF"> src</span><span style="color:#9ECBFF"> &quot;List any TypeScript type issues or missing null checks in this file.&quot;</span></span></code></pre>
+<h2 id="context-management-for-large-codebases">Context Management for Large Codebases</h2>
+<p>Gemini has a large context window, but dumping your entire codebase in is rarely the right approach. Use <a href="/tools/context-window-calculator">our Context Window Calculator</a> to estimate token counts before running expensive queries.</p>
+<p>Better pattern — build a focused context snapshot:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># Generate a focused context for a specific subsystem</span></span>
+<span class="line"><span style="color:#B392F0">build-context</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  local</span><span style="color:#E1E4E8"> subsystem</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">&quot;</span><span style="color:#79B8FF">$1</span><span style="color:#9ECBFF">&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">  </span></span>
+<span class="line"><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> &quot;# Project Context: </span><span style="color:#E1E4E8">$subsystem</span><span style="color:#9ECBFF"> subsystem&quot;</span></span>
+<span class="line"><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> &quot;&quot;</span></span>
+<span class="line"><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> &quot;## File structure&quot;</span></span>
+<span class="line"><span style="color:#B392F0">  find</span><span style="color:#9ECBFF"> &quot;src/</span><span style="color:#E1E4E8">$subsystem</span><span style="color:#9ECBFF">&quot;</span><span style="color:#79B8FF"> -type</span><span style="color:#9ECBFF"> f</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> head</span><span style="color:#79B8FF"> -30</span></span>
+<span class="line"><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> &quot;&quot;</span></span>
+<span class="line"><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> &quot;## Key files&quot;</span></span>
+<span class="line"><span style="color:#B392F0">  find</span><span style="color:#9ECBFF"> &quot;src/</span><span style="color:#E1E4E8">$subsystem</span><span style="color:#9ECBFF">&quot;</span><span style="color:#79B8FF"> -name</span><span style="color:#9ECBFF"> &quot;*.ts&quot;</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> head</span><span style="color:#79B8FF"> -5</span><span style="color:#F97583"> |</span><span style="color:#F97583"> while</span><span style="color:#79B8FF"> read</span><span style="color:#9ECBFF"> f</span><span style="color:#E1E4E8">; </span><span style="color:#F97583">do</span></span>
+<span class="line"><span style="color:#79B8FF">    echo</span><span style="color:#9ECBFF"> &quot;### </span><span style="color:#E1E4E8">$f</span><span style="color:#9ECBFF">&quot;</span></span>
+<span class="line"><span style="color:#B392F0">    cat</span><span style="color:#9ECBFF"> &quot;</span><span style="color:#E1E4E8">$f</span><span style="color:#9ECBFF">&quot;</span></span>
+<span class="line"><span style="color:#79B8FF">    echo</span><span style="color:#9ECBFF"> &quot;&quot;</span></span>
+<span class="line"><span style="color:#F97583">  done</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Use it</span></span>
+<span class="line"><span style="color:#B392F0">build-context</span><span style="color:#9ECBFF"> billing</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> gemini</span><span style="color:#9ECBFF"> &quot;What are the data flow paths through this subsystem?&quot;</span></span></code></pre>
+<h2 id="debugging-api-calls">Debugging API Calls</h2>
+<p>When Gemini CLI behaves unexpectedly, debug at the HTTP level:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># Enable verbose output</span></span>
+<span class="line"><span style="color:#E1E4E8">GEMINI_DEBUG</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">1</span><span style="color:#B392F0"> gemini</span><span style="color:#9ECBFF"> &quot;test prompt&quot;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Or use curl directly to inspect the raw API</span></span>
+<span class="line"><span style="color:#B392F0">curl</span><span style="color:#79B8FF"> -s</span><span style="color:#79B8FF"> \</span></span>
+<span class="line"><span style="color:#79B8FF">  -H</span><span style="color:#9ECBFF"> &quot;Content-Type: application/json&quot;</span><span style="color:#79B8FF"> \</span></span>
+<span class="line"><span style="color:#79B8FF">  -H</span><span style="color:#9ECBFF"> &quot;x-goog-api-key: </span><span style="color:#E1E4E8">$GEMINI_API_KEY</span><span style="color:#9ECBFF">&quot;</span><span style="color:#79B8FF"> \</span></span>
+<span class="line"><span style="color:#9ECBFF">  &quot;https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent&quot;</span><span style="color:#79B8FF"> \</span></span>
+<span class="line"><span style="color:#79B8FF">  -d</span><span style="color:#9ECBFF"> &#39;{</span></span>
+<span class="line"><span style="color:#9ECBFF">    &quot;contents&quot;: [{&quot;parts&quot;: [{&quot;text&quot;: &quot;Hello&quot;}]}]</span></span>
+<span class="line"><span style="color:#9ECBFF">  }&#39;</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> jq</span><span style="color:#9ECBFF"> .candidates[0].content.parts[0].text</span></span></code></pre>
+<p>This bypasses the CLI entirely and shows you exactly what the API is returning.</p>
+<h2 id="a-practical-workflow-integration">A Practical Workflow Integration</h2>
+<p>Put it all together: here’s a <code>.zshrc</code> block that gives you a usable AI-powered development workflow:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># ~/.zshrc additions</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Quick inline question</span></span>
+<span class="line"><span style="color:#B392F0">ai</span><span style="color:#E1E4E8">() { </span><span style="color:#B392F0">gemini</span><span style="color:#9ECBFF"> &quot;</span><span style="color:#79B8FF">$*</span><span style="color:#9ECBFF">&quot;</span><span style="color:#E1E4E8">; }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># File analysis</span></span>
+<span class="line"><span style="color:#B392F0">analyze</span><span style="color:#E1E4E8">() { </span><span style="color:#B392F0">gemini</span><span style="color:#79B8FF"> -f</span><span style="color:#9ECBFF"> &quot;</span><span style="color:#79B8FF">$1</span><span style="color:#9ECBFF">&quot;</span><span style="color:#9ECBFF"> &quot;</span><span style="color:#79B8FF">${2</span><span style="color:#F97583">:-</span><span style="color:#E1E4E8">What</span><span style="color:#E1E4E8"> are</span><span style="color:#E1E4E8"> the</span><span style="color:#E1E4E8"> issues</span><span style="color:#E1E4E8"> with</span><span style="color:#E1E4E8"> this</span><span style="color:#E1E4E8"> code</span><span style="color:#9ECBFF">?</span><span style="color:#79B8FF">}</span><span style="color:#9ECBFF">&quot;</span><span style="color:#E1E4E8">; }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Review staged changes</span></span>
+<span class="line"><span style="color:#B392F0">review</span><span style="color:#E1E4E8">() { </span><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> diff</span><span style="color:#79B8FF"> --cached</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> gemini</span><span style="color:#79B8FF"> --model</span><span style="color:#9ECBFF"> gemini-2.5-pro</span><span style="color:#9ECBFF"> &quot;Code review: focus on bugs and security. Be specific.&quot;</span><span style="color:#E1E4E8">; }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Generate commit message</span></span>
+<span class="line"><span style="color:#B392F0">gcm</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  local</span><span style="color:#E1E4E8"> msg</span></span>
+<span class="line"><span style="color:#E1E4E8">  msg</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">$(</span><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> diff</span><span style="color:#79B8FF"> --cached</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> gemini</span><span style="color:#9ECBFF"> &quot;Write a conventional commit message. Output only the message.&quot;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> &quot;</span><span style="color:#E1E4E8">$msg</span><span style="color:#9ECBFF">&quot;</span></span>
+<span class="line"><span style="color:#79B8FF">  read</span><span style="color:#9ECBFF"> &quot;ok?Commit? [y/N] &quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">  [[ </span><span style="color:#9ECBFF">&quot;</span><span style="color:#E1E4E8">$ok</span><span style="color:#9ECBFF">&quot;</span><span style="color:#F97583"> ==</span><span style="color:#9ECBFF"> &quot;y&quot;</span><span style="color:#E1E4E8"> ]] &amp;&amp; </span><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> commit</span><span style="color:#79B8FF"> -m</span><span style="color:#9ECBFF"> &quot;</span><span style="color:#E1E4E8">$msg</span><span style="color:#9ECBFF">&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Explain an error</span></span>
+<span class="line"><span style="color:#B392F0">explain</span><span style="color:#E1E4E8">() { </span><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> &quot;</span><span style="color:#79B8FF">$*</span><span style="color:#9ECBFF">&quot;</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> gemini</span><span style="color:#9ECBFF"> &quot;Explain this error and suggest the most likely fix:&quot;</span><span style="color:#E1E4E8">; }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Summarize a PR</span></span>
+<span class="line"><span style="color:#B392F0">pr-summary</span><span style="color:#E1E4E8">() { </span><span style="color:#B392F0">gh</span><span style="color:#9ECBFF"> pr</span><span style="color:#9ECBFF"> diff</span><span style="color:#9ECBFF"> &quot;</span><span style="color:#79B8FF">${1</span><span style="color:#F97583">:-</span><span style="color:#E1E4E8">HEAD</span><span style="color:#79B8FF">}</span><span style="color:#9ECBFF">&quot;</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> gemini</span><span style="color:#9ECBFF"> &quot;Summarize what this PR changes in 3 bullet points.&quot;</span><span style="color:#E1E4E8">; }</span></span></code></pre>
+<p>The goal isn’t to replace your workflow — it’s to remove the friction points where you’d otherwise switch to a browser, open a chat interface, and manually copy-paste context. When the model is one pipe away, you actually use it.</p> </div> </div> <div class="flex flex-col sm:flex-row gap-4 justify-between items-start border-t border-zinc-800 pt-8"> <a href="/blog" class="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 transition-colors text-sm font-medium"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+Back to all articles
+</a> <a href="/tools" class="inline-flex items-center gap-2 text-zinc-500 hover:text-zinc-300 transition-colors text-sm">
+Browse free tools →
+</a> </div> </article> </main> <footer class="border-t border-zinc-800/60 mt-24 py-12 px-6 sm:px-8"> <div class="max-w-7xl mx-auto"> <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 mb-10"> <div class="col-span-2 sm:col-span-1"> <a href="/" class="flex items-center gap-2 mb-3 group" aria-label="NextReach Studio"> <img src="/logo.png" alt="" width="24" height="24" class="opacity-80 group-hover:opacity-100 transition-opacity"> <span class="text-sm font-medium text-zinc-400 group-hover:text-white transition-colors">NextReach Studio</span> </a> <p class="text-xs text-zinc-600 leading-relaxed max-w-[180px]">
+Tools, guides, and resources for AI builders and indie hackers.
+</p> </div> <div> <h3 class="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">Content</h3> <ul class="space-y-2"> <li><a href="/blog" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">Blog</a></li> <li><a href="/guides" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">Guides</a></li> <li><a href="/resources" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">Resources</a></li> </ul> </div> <div> <h3 class="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">Tools</h3> <ul class="space-y-2"> <li><a href="/tools/ai-token-calculator" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">Token Calculator</a></li> <li><a href="/tools/context-window-calculator" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">Context Window</a></li> <li><a href="/tools/llm-cost-calculator" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">Cost Calculator</a></li> <li><a href="/tools/vram-estimator" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">VRAM Estimator</a></li> <li><a href="/tools/prompt-formatter" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">Prompt Formatter</a></li> <li><a href="/tools" class="text-xs text-amber-600 hover:text-amber-400 transition-colors">All tools →</a></li> </ul> </div> <div> <h3 class="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">Site</h3> <ul class="space-y-2"> <li><a href="/rss.xml" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">RSS Feed</a></li> <li><a href="/sitemap-index.xml" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">Sitemap</a></li> </ul> </div> </div> <div class="gradient-divider mb-6"></div> <div class="flex flex-col sm:flex-row items-center justify-between gap-3"> <p class="text-xs text-zinc-700">&copy; 2026 NextReach Studio. All rights reserved.</p> <p class="text-xs text-zinc-700">Built for AI builders, indie hackers &amp; developers.</p> </div> </div> </footer>  </body></html>

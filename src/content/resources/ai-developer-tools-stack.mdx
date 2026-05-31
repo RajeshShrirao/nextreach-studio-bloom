@@ -1,0 +1,530 @@
+---
+title: "The AI Developer Tools Stack: What Serious Builders Actually Use"
+description: "A curated directory of tools, libraries, frameworks, and services that professional AI developers rely on. Organized by category with honest assessments."
+pubDate: 2026-05-12
+author: "NextReach Studio"
+tags: ["developer-tools", "ai-tools", "stack"]
+draft: false
+category: "Developer Tools"
+---
+
+There's no shortage of AI developer tools lists. Most of them are either outdated, paid placements, or written by people who've tried these tools for 20 minutes and declared them life-changing. This directory is different: it's what developers who ship AI-powered products actually use, with honest notes on where tools fall short.
+
+Organized by workflow stage. Each tool includes: what it actually does, who it's for, what it costs, and where it has genuine weaknesses.
+
+---
+
+## Evaluation & Cost Management
+
+Before you write a line of code, you need to understand your token costs and model options.
+
+### LLM Cost Calculator
+**URL:** [/tools/llm-cost-calculator](/tools/llm-cost-calculator)  
+**What it does:** Models your monthly API costs across providers based on volume, token counts, and model selection. Includes batch pricing and caching scenarios.  
+**Best for:** Pre-build cost modeling, comparing providers before committing  
+**Weakness:** Doesn't account for infrastructure costs of self-hosted models
+
+### AI Token Calculator
+**URL:** [/tools/ai-token-calculator](/tools/ai-token-calculator)  
+**What it does:** Estimates token counts for your prompts across different tokenizers (tiktoken for OpenAI, Claude's tokenizer, etc.)  
+**Best for:** Prompt budgeting before API integration  
+**Weakness:** Tokenizer behavior varies by model — treat estimates as approximations
+
+### Context Window Calculator
+**URL:** [/tools/context-window-calculator](/tools/context-window-calculator)  
+**What it does:** Calculates how much of a context window your content consumes, with visual breakdown  
+**Best for:** Planning RAG architectures, understanding long-context costs
+
+---
+
+## LLM Orchestration Frameworks
+
+These sit between your application and the LLM API. They handle chaining, memory, tool use, and multi-agent coordination.
+
+### LangChain
+
+**GitHub:** langchain-ai/langchain  
+**Language:** Python, JavaScript/TypeScript  
+**License:** MIT
+
+The most widely used orchestration framework. Mature ecosystem, extensive integrations with vector databases, APIs, and tools. The abstraction layer is thick — which is both its strength (batteries included) and its weakness (debugging is painful when things go wrong).
+
+```python
+from langchain_anthropic import ChatAnthropic
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.output_parsers import StrOutputParser
+
+llm = ChatAnthropic(model="claude-3-7-sonnet-20250219")
+
+prompt = ChatPromptTemplate.from_messages([
+    ("system", "You are a senior code reviewer. Be direct and specific."),
+    ("human", "Review this code:\n\n{code}")
+])
+
+chain = prompt | llm | StrOutputParser()
+result = chain.invoke({"code": your_code})
+```
+
+**Honest assessment:** LangChain is often overkill for simple applications. If you're making 3 LLM calls in a chain, you probably don't need LangChain. Use it when you need its integrations (vector stores, document loaders, tool libraries) or when you're building complex multi-agent workflows.
+
+**Cost:** Free (open source)  
+**Alternatives:** LlamaIndex (better for RAG-heavy), PydanticAI (lighter weight, type-safe)
+
+---
+
+### LlamaIndex
+
+**GitHub:** run-llama/llama_index  
+**Language:** Python, TypeScript  
+**License:** MIT
+
+Where LangChain is general-purpose orchestration, LlamaIndex is purpose-built for retrieval-augmented generation (RAG). Its data connectors, indexing strategies, and query engines are significantly better than LangChain's for document-heavy applications.
+
+```python
+from llama_index.core import VectorStoreIndex, SimpleDirectoryReader
+from llama_index.llms.anthropic import Anthropic
+from llama_index.embeddings.openai import OpenAIEmbedding
+
+# Load and index a directory of documents
+documents = SimpleDirectoryReader("./docs").load_data()
+
+index = VectorStoreIndex.from_documents(
+    documents,
+    embed_model=OpenAIEmbedding(model="text-embedding-3-small"),
+    llm=Anthropic(model="claude-3-7-sonnet-20250219")
+)
+
+# Query the index
+query_engine = index.as_query_engine()
+response = query_engine.query("What does the authentication flow look like?")
+```
+
+**Honest assessment:** Best-in-class for RAG pipelines. The abstractions make sense for document-centric tasks. But if you're not building RAG, LlamaIndex adds unnecessary complexity.
+
+**Cost:** Free (open source)
+
+---
+
+### PydanticAI
+
+**GitHub:** pydantic/pydantic-ai  
+**Language:** Python  
+**License:** MIT
+
+Newer framework that brings Pydantic's type-safety philosophy to LLM orchestration. Agents are defined as type-annotated Python functions, making them testable, debuggable, and IDE-friendly. Much lighter than LangChain.
+
+```python
+from pydantic_ai import Agent
+from pydantic import BaseModel
+
+class CodeReview(BaseModel):
+    issues: list[str]
+    severity: str
+    suggested_fix: str
+
+agent = Agent(
+    "claude-3-7-sonnet-20250219",
+    result_type=CodeReview,
+    system_prompt="Review the code. Return structured findings."
+)
+
+result = agent.run_sync("Review this:\n\n" + code)
+print(result.data.issues)  # Fully typed
+```
+
+**Honest assessment:** If you're building a new project today and don't need LangChain's extensive integrations, PydanticAI is the better starting point. Less magic, easier to debug, proper type safety.
+
+**Cost:** Free (open source)
+
+---
+
+### CrewAI
+
+**GitHub:** crewAIInc/crewAI  
+**Language:** Python  
+**License:** MIT
+
+Multi-agent orchestration framework where you define agents with roles, goals, and tools, then compose them into crews that tackle complex tasks collaboratively.
+
+```python
+from crewai import Agent, Task, Crew
+
+reviewer = Agent(
+    role="Senior Code Reviewer",
+    goal="Identify bugs and security issues in code",
+    backstory="You've reviewed millions of lines of production code.",
+    llm="claude-3-7-sonnet-20250219"
+)
+
+documenter = Agent(
+    role="Technical Writer",
+    goal="Write clear documentation for developers",
+    llm="gemini/gemini-2.0-flash"  # Cheaper model for docs
+)
+
+review_task = Task(description="Review: {code}", agent=reviewer)
+doc_task = Task(description="Document: {code}", agent=documenter)
+
+crew = Crew(agents=[reviewer, documenter], tasks=[review_task, doc_task])
+result = crew.kickoff(inputs={"code": your_code})
+```
+
+**Honest assessment:** Good when you genuinely need multiple agents with distinct roles. Overused for problems that a single well-prompted model could solve. The "agent framework" framing tempts over-engineering.
+
+**Cost:** Free (open source), CrewAI Enterprise for managed deployment
+
+---
+
+## Vector Databases
+
+Required for RAG and semantic search applications. The choice depends on scale, latency requirements, and whether you want managed or self-hosted.
+
+### Qdrant
+
+**Website:** qdrant.tech  
+**Self-hosted + managed cloud**
+
+| Tier | Cost | Storage | Vectors |
+|---|---|---|---|
+| Free | $0 | 1GB | 1M |
+| Starter | $25/mo | 25GB | 25M |
+| Production | From $70/mo | 100GB+ | Unlimited |
+
+Strong performance on filtered vector search — queries that combine semantic similarity with metadata filters (e.g., "find similar code snippets written in TypeScript after 2024"). Written in Rust, so it's fast.
+
+```python
+from qdrant_client import QdrantClient
+from qdrant_client.models import PointStruct, Distance, VectorParams
+
+client = QdrantClient(url="http://localhost:6333")
+
+client.create_collection(
+    collection_name="codebase",
+    vectors_config=VectorParams(size=1536, distance=Distance.COSINE)
+)
+
+client.upsert(
+    collection_name="codebase",
+    points=[
+        PointStruct(
+            id=1,
+            vector=embedding,
+            payload={"file": "auth.py", "function": "verify_token", "language": "python"}
+        )
+    ]
+)
+```
+
+**Best for:** Self-hosted deployments, filtered search, performance-critical applications
+
+---
+
+### Pinecone
+
+**Website:** pinecone.io  
+**Managed cloud only**
+
+| Tier | Cost | Includes |
+|---|---|---|
+| Starter | $0 | 2M vectors (serverless) |
+| Standard | ~$70/mo+ | Dedicated pods, higher throughput |
+
+Pinecone pioneered managed vector databases and still has the most mature ecosystem. Serverless tier is genuinely useful for development and small production workloads.
+
+**Best for:** Teams that want zero infrastructure management, AWS/GCP-native teams
+
+---
+
+### pgvector
+
+**GitHub:** pgvector/pgvector  
+**Self-hosted (PostgreSQL extension)**
+
+If you're already running Postgres, pgvector adds vector similarity search without adding another database to your stack. The performance ceiling is lower than purpose-built vector DBs, but for most applications under 10M vectors, it's more than sufficient.
+
+```sql
+-- Add vector extension
+CREATE EXTENSION vector;
+
+-- Create table with vector column
+CREATE TABLE code_embeddings (
+    id bigserial PRIMARY KEY,
+    file_path text,
+    function_name text,
+    embedding vector(1536)
+);
+
+-- Similarity search with metadata filter
+SELECT file_path, function_name
+FROM code_embeddings
+WHERE file_path LIKE '%.py'
+ORDER BY embedding <=> '[0.1, 0.2, ...]'::vector
+LIMIT 10;
+```
+
+**Best for:** Teams that want to minimize infrastructure complexity, existing Postgres users, smaller vector datasets
+
+---
+
+## Prompt Engineering & Testing
+
+### Promptfoo
+
+**GitHub:** promptfoo/promptfoo  
+**License:** MIT + Commercial
+
+Testing framework for LLM prompts. Define test cases with expected outputs, run them against multiple models, get structured reports. Essential for any team that iterates on prompts in production.
+
+```yaml
+# promptfooconfig.yaml
+prompts:
+  - "Review this code for bugs: {{code}}"
+  - "You are a senior engineer. Find bugs in: {{code}}"
+
+providers:
+  - anthropic:claude-3-7-sonnet-20250219
+  - openai:gpt-4o
+
+tests:
+  - vars:
+      code: |
+        def divide(a, b):
+            return a / b
+    assert:
+      - type: contains
+        value: "division by zero"
+      - type: llm-rubric
+        value: "identifies the missing zero-division check"
+```
+
+**Honest assessment:** The most practical eval framework in 2026. Not glamorous, but essential. If you're not testing prompt changes like you test code changes, you're flying blind.
+
+**Cost:** Free (open source), Promptfoo Cloud for team collaboration
+
+---
+
+### Braintrust
+
+**Website:** braintrustdata.com  
+**Managed cloud**
+
+More comprehensive than Promptfoo — includes dataset management, experiment tracking, and production monitoring. Closer to MLflow for LLMs.
+
+```python
+import braintrust
+
+@braintrust.traced
+def review_code(code: str) -> str:
+    response = client.messages.create(
+        model="claude-3-7-sonnet-20250219",
+        messages=[{"role": "user", "content": f"Review: {code}"}]
+    )
+    return response.content[0].text
+
+# All calls are automatically logged to Braintrust
+result = review_code(your_code)
+```
+
+**Best for:** Teams that need production observability beyond basic logging  
+**Cost:** Free tier available, paid plans from $150/mo
+
+---
+
+## Code Editors & Copilot Tools
+
+### Cursor
+
+**Website:** cursor.com  
+**Platform:** macOS, Windows, Linux
+
+VS Code fork with deep LLM integration. The most popular AI-augmented editor in 2026 among professional developers. Supports Claude, GPT-4o, and their own hosted models.
+
+**What makes it different from GitHub Copilot:**
+- Codebase-wide context (not just the current file)
+- Natural language editing with "Composer" mode
+- Better at multi-file refactoring
+
+**Cost:** Free tier (200 requests/month), Pro $20/mo
+
+---
+
+### Continue.dev
+
+**GitHub:** continuedev/continue  
+**License:** Apache 2.0
+
+Open-source alternative to Cursor that integrates into VS Code and JetBrains. Lets you BYO-API-key, so you control model selection and costs. Useful for teams that can't use Cursor for compliance reasons.
+
+```json
+// .continue/config.json
+{
+  "models": [
+    {
+      "title": "Claude Sonnet",
+      "provider": "anthropic",
+      "model": "claude-3-7-sonnet-20250219",
+      "apiKey": "your-key"
+    },
+    {
+      "title": "Gemini Flash (cheap)",
+      "provider": "google-gemini", 
+      "model": "gemini-2.0-flash",
+      "apiKey": "your-key"
+    }
+  ],
+  "tabAutocompleteModel": {
+    "title": "Codestral",
+    "provider": "mistral",
+    "model": "codestral-latest"
+  }
+}
+```
+
+**Cost:** Free (you pay API costs directly)
+
+---
+
+## Local Inference
+
+### Ollama
+
+**Website:** ollama.com  
+**Platform:** macOS, Linux, Windows
+
+The simplest way to run open-weight models locally. Handles model downloads, quantization, and serving. Exposes a REST API compatible with the OpenAI API format.
+
+```bash
+# Install and run
+brew install ollama
+ollama pull llama3.3:70b
+ollama serve
+
+# Use with any OpenAI-compatible client
+curl http://localhost:11434/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "llama3.3:70b",
+    "messages": [{"role": "user", "content": "Review this code..."}]
+  }'
+```
+
+**Honest assessment:** Best local inference tool for Mac users. On Apple Silicon, 7B–14B models run comfortably. 70B models are usable but slow on most MacBook Pros. For heavy local inference, you need dedicated GPU hardware.
+
+**Cost:** Free
+
+---
+
+### LM Studio
+
+**Website:** lmstudio.ai  
+**Platform:** macOS, Windows, Linux
+
+GUI-first local inference with model discovery, download management, and a chat interface. Less useful as a production inference server than Ollama, but excellent for model exploration and testing.
+
+**Best for:** Non-technical team members who need local AI access, model evaluation
+
+---
+
+## Observability & Monitoring
+
+### LangSmith
+
+**Website:** smith.langchain.com  
+**By:** LangChain team
+
+Tracing, evaluation, and monitoring specifically designed for LLM applications. If you use LangChain, LangSmith integration is trivial. Also works with non-LangChain applications via SDK.
+
+```python
+from langsmith import Client
+
+os.environ["LANGCHAIN_TRACING_V2"] = "true"
+os.environ["LANGCHAIN_API_KEY"] = "your-key"
+
+# All LangChain calls are automatically traced
+# Non-LangChain code requires decorator:
+from langsmith import traceable
+
+@traceable
+def my_llm_function(prompt: str) -> str:
+    # Your API call here
+    pass
+```
+
+**Cost:** Free tier (5K traces/month), Team plan $39/mo
+
+---
+
+### Helicone
+
+**Website:** helicone.ai  
+**Proxy-based monitoring**
+
+Drop-in observability by routing your API calls through Helicone's proxy. Zero code changes required — just change your base URL.
+
+```python
+from openai import OpenAI
+
+# Just change the base_url — all calls are logged automatically
+client = OpenAI(
+    api_key="your-openai-key",
+    base_url="https://oai.helicone.ai/v1",
+    default_headers={"Helicone-Auth": "Bearer your-helicone-key"}
+)
+```
+
+Supports OpenAI, Anthropic, Google, and any OpenAI-compatible API.
+
+**Best for:** Quick monitoring setup without framework lock-in  
+**Cost:** Free tier (10K requests/month), Growth $20/mo
+
+---
+
+## Summary: Recommended Stack by Team Size
+
+### Solo Developer / Indie Hacker
+
+| Category | Tool | Cost |
+|---|---|---|
+| LLM API | Anthropic + Gemini Flash | Pay per token |
+| Orchestration | PydanticAI or direct API calls | Free |
+| Vector DB | pgvector or Qdrant (local) | Free |
+| Local inference | Ollama | Free |
+| Editor | Cursor (free tier) | Free |
+| Monitoring | Helicone (free tier) | Free |
+
+---
+
+### Small Team (2–10 engineers)
+
+| Category | Tool | Cost |
+|---|---|---|
+| LLM APIs | Anthropic + OpenAI + Gemini | Pay per token |
+| Orchestration | LangChain or LlamaIndex | Free |
+| Vector DB | Qdrant Cloud or Pinecone | $25–70/mo |
+| Prompt testing | Promptfoo | Free |
+| Monitoring | LangSmith or Helicone | $20–39/mo |
+| Editor | Cursor Pro (per seat) | $20/seat/mo |
+
+---
+
+### Enterprise / Compliance-Sensitive
+
+| Category | Tool | Cost |
+|---|---|---|
+| LLM APIs | AWS Bedrock (multi-provider) | Pay per token |
+| Orchestration | LangChain Enterprise or in-house | Varies |
+| Vector DB | Qdrant (self-hosted) or Pinecone Enterprise | Varies |
+| Prompt testing | Promptfoo + Braintrust | $150+/mo |
+| Monitoring | Custom (LangSmith Enterprise or in-house) | Varies |
+| Local inference | vLLM (self-hosted) | Infrastructure cost |
+
+---
+
+## Related Resources
+
+- [LLM API Providers Directory](/resources/llm-api-providers-directory)
+- [Choosing the Right LLM for Your Coding Workflow](/guides/choosing-right-llm-for-coding)
+- [AI API Cost Optimization: Reduce Your Bill by 60%](/guides/ai-api-cost-optimization)
+- [Claude Code Workflow Tips](/blog/claude-code-workflow-tips)
+- [LLM Cost Calculator](/tools/llm-cost-calculator)
+- [AI Token Calculator](/tools/ai-token-calculator)

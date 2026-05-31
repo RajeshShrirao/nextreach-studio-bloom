@@ -1,11 +1,11 @@
-# Robots.txt for Blackbox Rescue
-# https://blackboxrescue.com/robots.txt
+# Robots.txt for NextReach Studio
+# https://nextreachstudio.com/robots.txt
 
 User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://blackboxrescue.com/sitemap.xml
+Sitemap: https://nextreachstudio.com/sitemap-index.xml
 
 # Allow all major search engines
 User-agent: Googlebot
@@ -20,7 +20,7 @@ Allow: /
 User-agent: DuckDuckBot
 Allow: /
 
-# Block common spam bots
+# Block common scraper/SEO audit bots that add no value
 User-agent: AhrefsBot
 Disallow: /
 
@@ -30,4 +30,4 @@ Disallow: /
 User-agent: SemrushBot
 Disallow: /
 
-Host: https://blackboxrescue.com
+Host: https://nextreachstudio.com

@@ -1,0 +1,415 @@
+---
+title: "LLM API Providers Directory: Every Major Provider Compared"
+description: "A comprehensive directory of every LLM API provider as of 2026. Pricing, rate limits, context windows, strengths, and ideal use cases for each."
+pubDate: 2026-05-10
+author: "NextReach Studio"
+tags: ["llm-apis", "directory", "comparison"]
+draft: false
+category: "API Providers"
+---
+
+Choosing an LLM API provider in 2026 is not just picking the smartest model — it's a systems decision that affects your latency, reliability, compliance posture, and monthly burn rate. This directory covers every provider worth considering, with honest assessments of where each one excels and where it falls short.
+
+Pricing is as of May 2026 and reflects standard public API rates. Many providers have enterprise pricing that differs significantly. Use the [LLM Cost Calculator](/tools/llm-cost-calculator) to model costs for your specific volume.
+
+---
+
+## How to Use This Directory
+
+Each provider listing includes:
+- **Models available** — current flagship and budget options
+- **Pricing** — per 1M input/output tokens
+- **Context window** — maximum tokens per request
+- **Rate limits** — default tier limits
+- **Strengths** — where this provider genuinely wins
+- **Weaknesses** — honest limitations
+- **Best for** — specific use cases where this provider is the right call
+
+---
+
+## Anthropic
+
+**Website:** api.anthropic.com  
+**Status:** Production-ready
+
+### Models
+
+| Model | Context | Input ($/1M) | Output ($/1M) |
+|---|---|---|---|
+| Claude 3.7 Sonnet | 200K | $3.00 | $15.00 |
+| Claude 3.5 Sonnet | 200K | $3.00 | $15.00 |
+| Claude 3.5 Haiku | 200K | $0.80 | $4.00 |
+
+### Rate Limits (Tier 2 / Standard)
+
+| Metric | Limit |
+|---|---|
+| Requests per minute | 2,000 |
+| Tokens per minute | 100,000 |
+| Tokens per day | 2,500,000 |
+
+### Pricing Features
+- **Prompt caching:** Cache hit tokens billed at 10% of normal input rate (Sonnet) or 8% (Haiku)
+- **Batch API:** 50% discount for async batch processing, results within 24 hours
+
+### Strengths
+- Best-in-class performance on SWE-bench (real software engineering tasks)
+- Most reliable instruction-following among all providers
+- Extended thinking mode for complex reasoning tasks
+- Best JSON/structured output reliability
+- Strong safety profile with predictable refusal behavior
+
+### Weaknesses
+- No image generation
+- No audio/speech models
+- Rate limits on lower tiers can be restrictive
+- No embedding models (need a separate provider)
+
+### Best For
+- Complex code generation and debugging
+- Agentic workflows requiring reliable tool use
+- Any task where output quality directly affects user-facing product
+- Teams with compliance requirements (SOC 2 Type II certified)
+
+### Integration
+
+```python
+import anthropic
+
+client = anthropic.Anthropic(api_key="your-key")
+
+message = client.messages.create(
+    model="claude-3-7-sonnet-20250219",
+    max_tokens=4096,
+    messages=[{"role": "user", "content": "Review this code: ..."}]
+)
+```
+
+---
+
+## OpenAI
+
+**Website:** platform.openai.com  
+**Status:** Production-ready
+
+### Models
+
+| Model | Context | Input ($/1M) | Output ($/1M) |
+|---|---|---|---|
+| GPT-4o | 128K | $2.50 | $10.00 |
+| GPT-4o mini | 128K | $0.15 | $0.60 |
+| o3 | 200K | $10.00 | $40.00 |
+| o3-mini | 200K | $1.10 | $4.40 |
+| GPT-4.1 | 1M | $2.00 | $8.00 |
+
+### Rate Limits (Tier 2)
+
+| Metric | Limit |
+|---|---|
+| Requests per minute | 5,000 |
+| Tokens per minute | 450,000 |
+| Requests per day | Unlimited (Tier 4+) |
+
+### Pricing Features
+- **Prompt caching:** Automatic (no code changes needed), billed at 50% discount for matching prefix
+- **Batch API:** 50% discount, 24-hour turnaround
+
+### Strengths
+- Largest model family — from ultra-cheap mini to reasoning-specialized o3
+- Broadest ecosystem support (every framework, tool, and library integrates with OpenAI first)
+- Best fine-tuning pipeline — most mature, documentation, and cost transparency
+- Strong multimodal capability (vision, audio with GPT-4o)
+- Assistants API for stateful, multi-turn applications
+
+### Weaknesses
+- o3's $40/1M output cost is prohibitive for high-volume use
+- GPT-4o mini quality noticeably lower than Claude Haiku for complex tasks
+- Rate limits on lower tiers require careful management
+- API reliability has had well-documented incidents in 2025
+
+### Best For
+- Teams wanting one API for everything (text, vision, audio, embeddings, fine-tuning)
+- Applications needing the broadest third-party integration support
+- When you need fine-tuned models — OpenAI's pipeline is the most mature
+- Reasoning-heavy tasks where o3 quality justifies cost
+
+### Integration
+
+```python
+from openai import OpenAI
+
+client = OpenAI(api_key="your-key")
+
+response = client.chat.completions.create(
+    model="gpt-4o",
+    messages=[{"role": "user", "content": "Debug this function..."}],
+    response_format={"type": "json_object"}  # Force JSON output
+)
+```
+
+---
+
+## Google (Gemini API / Vertex AI)
+
+**Website:** ai.google.dev (Gemini API), cloud.google.com/vertex-ai (Vertex)  
+**Status:** Production-ready
+
+### Models
+
+| Model | Context | Input ($/1M) | Output ($/1M) |
+|---|---|---|---|
+| Gemini 2.5 Pro | 2M | $1.25 (under 200K) | $10.00 |
+| Gemini 2.5 Pro | 2M | $2.50 (over 200K) | $15.00 |
+| Gemini 2.0 Flash | 1M | $0.075 | $0.30 |
+| Gemini 2.0 Flash-Lite | 1M | $0.018 | $0.075 |
+
+### Rate Limits (Pay-as-you-go)
+
+| Model | RPM | TPM |
+|---|---|---|
+| Gemini 2.5 Pro | 150 | 2,000,000 |
+| Gemini 2.0 Flash | 2,000 | 4,000,000 |
+
+### Strengths
+- Lowest cost per token at every quality tier — Flash is exceptionally cheap
+- Largest context window available (2M tokens on 2.5 Pro)
+- Best performance on reasoning benchmarks (GPQA Diamond, MATH)
+- Native Google Search grounding for RAG-free real-time knowledge
+- Generous free tier for development
+
+### Weaknesses
+- Slightly less consistent instruction-following vs. Claude on complex structured tasks
+- Vertex AI setup is more complex for teams without GCP infrastructure
+- Rate limits on Gemini 2.5 Pro (150 RPM) can block high-frequency workloads
+- Context above 200K tokens is billed at double the rate
+
+### Best For
+- High-volume, cost-sensitive applications (Flash is 40x cheaper than Sonnet)
+- Tasks requiring very long context (entire codebases, large document sets)
+- Applications that benefit from real-time web access via grounding
+- Teams already in the GCP ecosystem
+
+### Integration
+
+```python
+import google.generativeai as genai
+
+genai.configure(api_key="your-key")
+model = genai.GenerativeModel("gemini-2.0-flash")
+
+response = model.generate_content(
+    "Generate unit tests for this function:\n\n{code}",
+    generation_config=genai.GenerationConfig(
+        temperature=0,
+        max_output_tokens=2048,
+    )
+)
+```
+
+---
+
+## Meta (via Inference Providers)
+
+**Direct access:** Not available — Meta releases weights, not an API  
+**Via:** Groq, Together AI, Fireworks AI, Replicate, AWS Bedrock
+
+### Models (Llama Family)
+
+| Model | Parameters | Context | Typical Cost ($/1M) |
+|---|---|---|---|
+| Llama 3.3 70B | 70B | 128K | $0.20–$0.90 |
+| Llama 3.1 405B | 405B | 128K | $1.50–$5.00 |
+| Llama 3.2 11B Vision | 11B | 128K | $0.08–$0.20 |
+| CodeLlama 70B | 70B | 100K | $0.20–$0.60 |
+
+*Cost varies by inference provider. See provider-specific pricing below.*
+
+### Strengths
+- Open weights — you can fine-tune and run on your own infrastructure
+- No data leaves your infrastructure when self-hosted
+- Competitive quality for the cost, especially Llama 3.3 70B
+- No rate limits when self-hosted
+
+### Weaknesses
+- Requires infrastructure management when self-hosted
+- Managed providers add cost and their own rate limits
+- Llama models trail Claude/GPT-4o on complex reasoning and instruction-following
+- No official SLA or support for API stability
+
+### Best For
+- Privacy-sensitive applications where data cannot leave your infrastructure
+- High-volume tasks where open-model quality is sufficient
+- Teams wanting to fine-tune on proprietary code/data
+- Research and experimentation without API billing
+
+---
+
+## Groq
+
+**Website:** console.groq.com  
+**Status:** Production-ready (focuses on inference speed, not model ownership)
+
+### Models Hosted
+
+| Model | Input ($/1M) | Output ($/1M) | Speed |
+|---|---|---|---|
+| Llama 3.3 70B | $0.59 | $0.79 | ~800 tokens/sec |
+| Mixtral 8x7B | $0.24 | $0.24 | ~500 tokens/sec |
+| Gemma 2 9B | $0.20 | $0.20 | ~1,200 tokens/sec |
+
+### Strengths
+- **Fastest inference available** — LPU (Language Processing Unit) hardware delivers 5–10x faster throughput than GPU-based providers
+- No rate limit pain for throughput-heavy workloads
+- Simple pricing, no egress fees
+
+### Weaknesses
+- Limited model selection — only runs open-weight models
+- Not suitable for tasks requiring frontier model quality
+- Context windows capped at 128K even for Llama 3.1 405B
+
+### Best For
+- Real-time applications where latency matters (coding assistants, chat)
+- High-volume inference with open models
+- Testing and development with fast iteration loops
+
+---
+
+## Together AI
+
+**Website:** api.together.ai  
+**Status:** Production-ready
+
+### Notable Models
+
+| Model | Input ($/1M) | Output ($/1M) |
+|---|---|---|
+| Llama 3.1 405B | $3.50 | $3.50 |
+| Llama 3.3 70B | $0.54 | $0.54 |
+| Mistral 7B | $0.10 | $0.10 |
+| DeepSeek Coder V2 | $0.14 | $0.28 |
+
+### Strengths
+- Largest selection of open-weight models on a single API
+- Fine-tuning support for most hosted models
+- Serverless and dedicated deployment options
+- Good documentation and SDK support
+
+### Best For
+- Experimenting with and comparing open models
+- Fine-tuning workflows on open models
+- Teams that want open-weight model quality with managed infrastructure
+
+---
+
+## Mistral AI
+
+**Website:** console.mistral.ai  
+**Status:** Production-ready
+
+### Models
+
+| Model | Context | Input ($/1M) | Output ($/1M) |
+|---|---|---|---|
+| Mistral Large 2 | 128K | $2.00 | $6.00 |
+| Mistral Small 3 | 128K | $0.10 | $0.30 |
+| Codestral | 256K | $0.20 | $0.60 |
+
+### Strengths
+- **Codestral** is purpose-built for code generation and performs above its weight class
+- Strong European data residency options (GDPR-friendly by default)
+- Competitive pricing vs. comparable-quality models
+- Fill-in-the-middle (FIM) support for code completion tasks
+
+### Weaknesses
+- Smaller ecosystem than Anthropic/OpenAI
+- Mistral Large 2 trails Claude Sonnet and GPT-4o on complex reasoning
+
+### Best For
+- European teams with GDPR data residency requirements
+- Code completion and autocomplete (Codestral with FIM support)
+- Cost-sensitive teams wanting European-hosted inference
+
+```python
+from mistralai import Mistral
+
+client = Mistral(api_key="your-key")
+
+# Codestral fill-in-the-middle for code completion
+response = client.fim.complete(
+    model="codestral-latest",
+    prompt="def calculate_total(items):\n    ",
+    suffix="\n    return total"
+)
+```
+
+---
+
+## AWS Bedrock
+
+**Website:** aws.amazon.com/bedrock  
+**Status:** Production-ready (enterprise)
+
+### Models Available
+
+Claude (all Anthropic models), Llama (all Meta models), Mistral, Titan, Cohere, AI21 Jurassic — essentially a managed multi-provider API.
+
+### Strengths
+- Single billing relationship for multiple providers
+- Enterprise compliance: HIPAA, SOC 2, FedRAMP (for eligible models)
+- Native AWS IAM for access control
+- Guardrails built in for content filtering
+- VPC endpoints for private network access
+
+### Weaknesses
+- Adds latency vs. direct provider APIs
+- Sometimes lags direct providers on new model availability
+- More complex setup than direct provider SDKs
+
+### Best For
+- Enterprise teams already on AWS infrastructure
+- Healthcare, finance, or government applications needing compliance coverage
+- Teams wanting to avoid multiple vendor billing relationships
+
+---
+
+## Embedding Providers
+
+Don't forget: you need embeddings for RAG pipelines. These are separate from generation APIs.
+
+| Provider | Model | Dimensions | Cost ($/1M tokens) |
+|---|---|---|---|
+| OpenAI | text-embedding-3-large | 3072 | $0.13 |
+| OpenAI | text-embedding-3-small | 1536 | $0.02 |
+| Cohere | embed-v4.0 | 1024 | $0.10 |
+| Voyage AI | voyage-3-large | 1024 | $0.06 |
+| Google | text-embedding-004 | 768 | Free (Gemini API) |
+
+For most applications, `text-embedding-3-small` at $0.02/1M is the right default. Use `voyage-3-large` if you need best-in-class retrieval quality.
+
+---
+
+## Quick Provider Selection Guide
+
+| If you need... | Use |
+|---|---|
+| Best code generation quality | Anthropic (Claude Sonnet) |
+| Cheapest high-volume inference | Google (Gemini Flash) |
+| Widest model selection / fine-tuning | OpenAI |
+| Fastest inference latency | Groq |
+| Data privacy / self-hosting | Meta Llama + Ollama or Together AI |
+| EU data residency | Mistral or Anthropic (EU endpoints) |
+| Enterprise compliance (AWS) | AWS Bedrock |
+| Code completion / FIM | Mistral Codestral |
+| Long context (200K+ tokens) | Google Gemini 2.5 Pro |
+| Complex reasoning | OpenAI o3 or Gemini 2.5 Pro |
+
+---
+
+## Related Resources
+
+- [Choosing the Right LLM for Your Coding Workflow](/guides/choosing-right-llm-for-coding)
+- [AI API Cost Optimization: Reduce Your Bill by 60%](/guides/ai-api-cost-optimization)
+- [The AI Developer Tools Stack](/resources/ai-developer-tools-stack)
+- [LLM Cost Calculator](/tools/llm-cost-calculator)
+- [Context Window Calculator](/tools/context-window-calculator)
+- [Managing LLM Context Windows](/blog/llm-context-window-management)

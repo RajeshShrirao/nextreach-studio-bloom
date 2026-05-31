@@ -1,0 +1,574 @@
+---
+title: "Build Your First MCP Server in 30 Minutes: Claude Tool Integration"
+description: "A hands-on tutorial for building a custom Model Context Protocol server. Works with Claude Desktop, Claude Code, and any MCP-compatible client."
+pubDate: 2026-05-24
+author: "NextReach Studio"
+tags: ["mcp", "claude", "tutorial"]
+draft: false
+---
+
+The Model Context Protocol (MCP) lets you give Claude access to custom tools — databases, internal APIs, file systems, anything with a network interface. It's not magic: it's a JSON-RPC spec that describes how a client (Claude Desktop, Claude Code) discovers and calls tools on a server you control. This tutorial builds a real MCP server from scratch, explains what's actually happening at each step, and gets you to a working tool integration in under 30 minutes.
+
+## What MCP Actually Is
+
+Before writing code, clear up the abstraction. An MCP server is a process that:
+
+1. Announces what tools it provides (name, description, input schema)
+2. Listens for tool call requests over stdio or HTTP
+3. Executes the tool and returns a result
+
+That's the entire protocol surface you need to understand. The client (Claude) handles everything else — deciding when to call a tool, how to format the call, what to do with the result.
+
+The spec uses JSON-RPC 2.0 as the message format. You don't need to implement JSON-RPC from scratch; the official `@modelcontextprotocol/sdk` handles that.
+
+## What We're Building
+
+A simple MCP server with three tools:
+
+1. **`read_file`** — reads a file from a specified directory
+2. **`list_files`** — lists files in a directory
+3. **`run_command`** — runs a shell command from a whitelist
+
+This is a useful developer utility that gives Claude visibility into your local filesystem and lets it run specific commands. We'll add safety constraints throughout.
+
+## Prerequisites
+
+```bash
+node --version  # Need Node 18+
+npm --version   # Any recent version
+```
+
+Create the project:
+
+```bash
+mkdir my-mcp-server
+cd my-mcp-server
+npm init -y
+npm install @modelcontextprotocol/sdk zod
+npm install -D typescript @types/node tsx
+npx tsc --init
+```
+
+Update `tsconfig.json` for Node ESM:
+
+```json
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "Node16",
+    "moduleResolution": "Node16",
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*"]
+}
+```
+
+Update `package.json`:
+
+```json
+{
+  "name": "my-mcp-server",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "start": "node dist/index.js"
+  }
+}
+```
+
+## Building the Server
+
+Create `src/index.ts`:
+
+```typescript
+import { Server } from "@modelcontextprotocol/sdk/server/index.js";
+import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import {
+  CallToolRequestSchema,
+  ListToolsRequestSchema,
+} from "@modelcontextprotocol/sdk/types.js";
+import { z } from "zod";
+import { readFileSync, readdirSync, statSync } from "fs";
+import { execSync } from "child_process";
+import { join, resolve, relative } from "path";
+
+// Define the working directory — tools are sandboxed to this
+const WORKSPACE_DIR = process.env.WORKSPACE_DIR ?? process.cwd();
+
+// Whitelist of allowed shell commands
+const ALLOWED_COMMANDS = [
+  "git status",
+  "git log --oneline -20",
+  "git diff",
+  "npm run build",
+  "npm run test",
+  "npm run lint",
+  "npx tsc --noEmit",
+];
+
+// Input schemas using Zod
+const ReadFileSchema = z.object({
+  path: z.string().describe("Path to the file, relative to workspace"),
+});
+
+const ListFilesSchema = z.object({
+  path: z
+    .string()
+    .optional()
+    .default(".")
+    .describe("Directory to list, relative to workspace"),
+  recursive: z
+    .boolean()
+    .optional()
+    .default(false)
+    .describe("Whether to list recursively"),
+});
+
+const RunCommandSchema = z.object({
+  command: z
+    .string()
+    .describe("Command to run (must be in the allowed commands list)"),
+});
+
+// Create the MCP server
+const server = new Server(
+  {
+    name: "dev-tools-server",
+    version: "1.0.0",
+  },
+  {
+    capabilities: {
+      tools: {},
+    },
+  }
+);
+
+// Handle tool list requests
+server.setRequestHandler(ListToolsRequestSchema, async () => {
+  return {
+    tools: [
+      {
+        name: "read_file",
+        description:
+          "Read the contents of a file in the workspace. Use this to inspect source code, configs, or any text file.",
+        inputSchema: {
+          type: "object",
+          properties: {
+            path: {
+              type: "string",
+              description: "Path to the file, relative to workspace root",
+            },
+          },
+          required: ["path"],
+        },
+      },
+      {
+        name: "list_files",
+        description:
+          "List files in a directory. Useful for understanding project structure before reading specific files.",
+        inputSchema: {
+          type: "object",
+          properties: {
+            path: {
+              type: "string",
+              description:
+                "Directory path relative to workspace root. Defaults to root.",
+            },
+            recursive: {
+              type: "boolean",
+              description: "List files recursively. Defaults to false.",
+            },
+          },
+        },
+      },
+      {
+        name: "run_command",
+        description: `Run a whitelisted shell command in the workspace. 
+Allowed commands: ${ALLOWED_COMMANDS.join(", ")}`,
+        inputSchema: {
+          type: "object",
+          properties: {
+            command: {
+              type: "string",
+              description: "The exact command to run",
+            },
+          },
+          required: ["command"],
+        },
+      },
+    ],
+  };
+});
+
+// Safety helper: ensure path stays inside workspace
+function safePath(inputPath: string): string {
+  const resolved = resolve(WORKSPACE_DIR, inputPath);
+  const rel = relative(WORKSPACE_DIR, resolved);
+
+  if (rel.startsWith("..") || resolved === WORKSPACE_DIR + "..") {
+    throw new Error(`Path traversal detected: ${inputPath}`);
+  }
+
+  return resolved;
+}
+
+// Handle tool call requests
+server.setRequestHandler(CallToolRequestSchema, async (request) => {
+  const { name, arguments: args } = request.params;
+
+  try {
+    switch (name) {
+      case "read_file": {
+        const { path: filePath } = ReadFileSchema.parse(args);
+        const absolutePath = safePath(filePath);
+
+        const stat = statSync(absolutePath);
+        if (!stat.isFile()) {
+          return {
+            content: [
+              { type: "text", text: `Error: ${filePath} is not a file` },
+            ],
+            isError: true,
+          };
+        }
+
+        // Limit file size to 100KB to avoid overwhelming context
+        if (stat.size > 100 * 1024) {
+          return {
+            content: [
+              {
+                type: "text",
+                text: `Error: File too large (${Math.round(stat.size / 1024)}KB). Maximum is 100KB.`,
+              },
+            ],
+            isError: true,
+          };
+        }
+
+        const content = readFileSync(absolutePath, "utf-8");
+        return {
+          content: [
+            {
+              type: "text",
+              text: `File: ${filePath}\n\n${content}`,
+            },
+          ],
+        };
+      }
+
+      case "list_files": {
+        const { path: dirPath, recursive } = ListFilesSchema.parse(args);
+        const absolutePath = safePath(dirPath);
+
+        const stat = statSync(absolutePath);
+        if (!stat.isDirectory()) {
+          return {
+            content: [
+              { type: "text", text: `Error: ${dirPath} is not a directory` },
+            ],
+            isError: true,
+          };
+        }
+
+        function listDir(dir: string, depth: number = 0): string[] {
+          const entries = readdirSync(dir, { withFileTypes: true });
+          const results: string[] = [];
+
+          for (const entry of entries) {
+            // Skip common noise directories
+            if (["node_modules", ".git", ".next", "dist", ".cache"].includes(entry.name)) {
+              continue;
+            }
+
+            const entryPath = join(dir, entry.name);
+            const relPath = relative(WORKSPACE_DIR, entryPath);
+            const prefix = "  ".repeat(depth);
+
+            if (entry.isDirectory()) {
+              results.push(`${prefix}${entry.name}/`);
+              if (recursive && depth < 3) {
+                results.push(...listDir(entryPath, depth + 1));
+              }
+            } else {
+              const fileStat = statSync(entryPath);
+              const size = fileStat.size > 1024
+                ? `${Math.round(fileStat.size / 1024)}KB`
+                : `${fileStat.size}B`;
+              results.push(`${prefix}${entry.name} (${size})`);
+            }
+          }
+
+          return results;
+        }
+
+        const files = listDir(absolutePath);
+        return {
+          content: [
+            {
+              type: "text",
+              text: `Directory: ${dirPath}\n\n${files.join("\n")}`,
+            },
+          ],
+        };
+      }
+
+      case "run_command": {
+        const { command } = RunCommandSchema.parse(args);
+
+        // Strict whitelist check
+        const isAllowed = ALLOWED_COMMANDS.some(
+          (allowed) => command === allowed || command.startsWith(allowed + " ")
+        );
+
+        if (!isAllowed) {
+          return {
+            content: [
+              {
+                type: "text",
+                text: `Command not allowed: "${command}"\n\nAllowed commands:\n${ALLOWED_COMMANDS.map((c) => `  - ${c}`).join("\n")}`,
+              },
+            ],
+            isError: true,
+          };
+        }
+
+        try {
+          const output = execSync(command, {
+            cwd: WORKSPACE_DIR,
+            timeout: 30000, // 30 second timeout
+            encoding: "utf-8",
+            maxBuffer: 1024 * 1024, // 1MB output limit
+          });
+
+          return {
+            content: [
+              {
+                type: "text",
+                text: `$ ${command}\n\n${output}`,
+              },
+            ],
+          };
+        } catch (execError: unknown) {
+          const error = execError as { stdout?: string; stderr?: string; message?: string };
+          return {
+            content: [
+              {
+                type: "text",
+                text: `Command failed: ${command}\n\nStdout:\n${error.stdout ?? ""}\n\nStderr:\n${error.stderr ?? ""}\n\nError: ${error.message ?? "Unknown error"}`,
+              },
+            ],
+            isError: true,
+          };
+        }
+      }
+
+      default:
+        return {
+          content: [{ type: "text", text: `Unknown tool: ${name}` }],
+          isError: true,
+        };
+    }
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : String(error);
+    return {
+      content: [{ type: "text", text: `Error: ${message}` }],
+      isError: true,
+    };
+  }
+});
+
+// Start the server
+async function main() {
+  const transport = new StdioServerTransport();
+  await server.connect(transport);
+  console.error("MCP dev-tools server running on stdio");
+}
+
+main().catch((error) => {
+  console.error("Fatal error:", error);
+  process.exit(1);
+});
+```
+
+Build it:
+
+```bash
+npm run build
+```
+
+## Connecting to Claude Desktop
+
+Claude Desktop reads MCP server configurations from a JSON file.
+
+**macOS path**: `~/Library/Application Support/Claude/claude_desktop_config.json`
+
+```json
+{
+  "mcpServers": {
+    "dev-tools": {
+      "command": "node",
+      "args": ["/absolute/path/to/my-mcp-server/dist/index.js"],
+      "env": {
+        "WORKSPACE_DIR": "/absolute/path/to/your/project"
+      }
+    }
+  }
+}
+```
+
+Use absolute paths. Claude Desktop doesn't inherit your shell environment, so relative paths won't work.
+
+Restart Claude Desktop after saving the config. You should see a hammer icon in the interface indicating tools are available.
+
+## Connecting to Claude Code
+
+Claude Code uses the same MCP protocol but a different config location. In your project's `.claude/` directory:
+
+```json
+// .claude/mcp_settings.json
+{
+  "mcpServers": {
+    "dev-tools": {
+      "command": "node",
+      "args": ["../../my-mcp-server/dist/index.js"],
+      "env": {
+        "WORKSPACE_DIR": "."
+      }
+    }
+  }
+}
+```
+
+Or use the CLI:
+
+```bash
+claude mcp add dev-tools node /path/to/dist/index.js
+```
+
+## Testing the Tools
+
+Once connected, you can ask Claude to use the tools directly:
+
+```
+"List the files in the src directory"
+"Read the contents of src/index.ts"
+"Run npm run lint and tell me what errors there are"
+"Run git status and show me what's changed"
+```
+
+Claude will call your MCP tools automatically when the task calls for it.
+
+## Adding More Tools: A Database Query Tool
+
+Extending the server is straightforward. Here's a read-only SQLite query tool:
+
+```typescript
+import Database from "better-sqlite3";
+
+// Add to the tools list
+{
+  name: "query_database",
+  description: "Run a read-only SQL query against the local SQLite database.",
+  inputSchema: {
+    type: "object",
+    properties: {
+      query: {
+        type: "string",
+        description: "SQL SELECT query to run",
+      },
+      database: {
+        type: "string",
+        description: "Path to the SQLite database file",
+      },
+    },
+    required: ["query", "database"],
+  },
+}
+
+// Add to the switch statement
+case "query_database": {
+  const { query, database } = args as { query: string; database: string };
+
+  // Only allow SELECT queries
+  if (!query.trim().toUpperCase().startsWith("SELECT")) {
+    return {
+      content: [{ type: "text", text: "Only SELECT queries are allowed" }],
+      isError: true,
+    };
+  }
+
+  const db = new Database(safePath(database), { readonly: true });
+  try {
+    const rows = db.prepare(query).all();
+    return {
+      content: [
+        {
+          type: "text",
+          text: JSON.stringify(rows, null, 2),
+        },
+      ],
+    };
+  } finally {
+    db.close();
+  }
+}
+```
+
+## Common Mistakes
+
+**Mistake: Using `console.log` instead of `console.error`**
+
+The stdio transport uses stdout for protocol messages. Anything you `console.log` will corrupt the JSON-RPC stream and break the connection. Always use `console.error` for debug output.
+
+**Mistake: Not setting timeouts on external calls**
+
+Tool calls have implicit time limits in MCP clients. Long-running operations without timeouts will appear to hang and force a client disconnect.
+
+**Mistake: Returning raw errors to the client**
+
+Catch errors in each tool handler and return structured error messages. Unhandled exceptions crash the server process and disconnect all tools until the client restarts.
+
+**Mistake: Paths without the workspace sandbox**
+
+Always resolve paths relative to a defined workspace root and check for traversal attempts. Claude will call your tools with whatever path it thinks makes sense — don't assume it'll stay where you expect.
+
+## Debugging
+
+MCP servers communicate over stdio, which makes debugging awkward. Add a debug log file:
+
+```typescript
+import { appendFileSync } from "fs";
+
+function debugLog(message: string) {
+  appendFileSync("/tmp/mcp-debug.log", `${new Date().toISOString()} ${message}\n`);
+}
+
+// Then in your handlers:
+debugLog(`Tool called: ${name} with args: ${JSON.stringify(args)}`);
+```
+
+Watch the log file while Claude Desktop is running:
+
+```bash
+tail -f /tmp/mcp-debug.log
+```
+
+## Where to Go From Here
+
+The pattern here — schema declaration, input validation, sandboxed execution — generalizes to any tool you can imagine. Common extensions:
+
+- **HTTP API calls** — wrap internal REST APIs as MCP tools
+- **Browser automation** — wrap Playwright for controlled web access
+- **Document search** — index project docs and expose semantic search
+- **Ticket management** — read/write to Linear or GitHub Issues
+
+The MCP spec is deliberately minimal. Anthropic publishes it openly, and there's growing adoption across other AI clients beyond Claude. Servers you build now will work with any MCP-compatible client as the ecosystem matures.
+
+Keep your tools narrowly scoped and well-sandboxed. A tool that can do too many things is harder for the model to use correctly and harder for you to audit.

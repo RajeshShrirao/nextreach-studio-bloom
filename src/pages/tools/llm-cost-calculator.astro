@@ -1,0 +1,62 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Nav from "@/components/Nav.astro";
+import Footer from "@/components/Footer.astro";
+import CostCalculator from "@/components/tools/CostCalculator";
+---
+
+<Layout
+  title="LLM Cost Calculator — Compare API Pricing Across Providers"
+  description="Calculate and compare LLM API costs across Claude, GPT-4, Gemini, Mistral, and more. Find the cheapest model for your use case. Free, no signup."
+>
+  <Nav />
+  <main class="pt-28 pb-20 px-6 sm:px-8 max-w-4xl mx-auto">
+    <header class="mb-10">
+      <p class="text-xs uppercase tracking-[0.12em] text-zinc-600 mb-3">Free Tool</p>
+      <h1 class="font-display font-semibold text-4xl sm:text-5xl text-white tracking-[-0.01em] mb-4">
+        LLM Cost Calculator
+      </h1>
+      <p class="text-zinc-400 text-lg leading-relaxed max-w-2xl">
+        Calculate the monthly cost of your LLM API usage across providers. Enter your usage and compare side-by-side.
+      </p>
+    </header>
+
+    <CostCalculator client:load />
+
+    <section class="mt-16 prose prose-invert max-w-none prose-headings:font-display prose-headings:font-semibold prose-headings:text-white prose-a:text-amber-400 prose-a:no-underline hover:prose-a:text-amber-300">
+      <h2>How LLM pricing works</h2>
+      <p>
+        Most LLM providers charge per million tokens — separately for input (your prompt) and output (the model's response).
+        Output tokens are usually 3–5x more expensive than input tokens because generation is computationally heavier.
+      </p>
+      <p>
+        The formula is simple:
+      </p>
+      <pre><code>monthly_cost = (input_tokens / 1M) * input_price + (output_tokens / 1M) * output_price</code></pre>
+      <p>
+        Multiply by your monthly request volume to get your total bill.
+      </p>
+
+      <h2>Key cost factors</h2>
+      <ul>
+        <li><strong>Input vs output ratio:</strong> Prompts with short outputs (summarization, classification) are cheaper than open-ended generation</li>
+        <li><strong>Model tier:</strong> Frontier models (Claude 3 Opus, GPT-4 Turbo) cost 10–100x more than small models (Haiku, GPT-4o Mini)</li>
+        <li><strong>Prompt caching:</strong> Anthropic and OpenAI offer caching discounts of up to 90% on repeated context</li>
+        <li><strong>Batch mode:</strong> Many providers offer 50% discounts for non-real-time batch workloads</li>
+      </ul>
+
+      <h2>Related tools</h2>
+      <ul>
+        <li><a href="/tools/ai-token-calculator">AI Token Calculator</a> — Count tokens for any model before estimating costs</li>
+        <li><a href="/tools/context-window-calculator">Context Window Calculator</a> — Visualize your context usage</li>
+      </ul>
+
+      <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/ai-api-cost-optimization">AI API Cost Optimization: Reduce Your Bill by 60%</a></li>
+        <li><a href="/guides/choosing-right-llm-for-coding">Choosing the Right LLM for Your Coding Workflow</a></li>
+      </ul>
+    </section>
+  </main>
+  <Footer />
+</Layout>

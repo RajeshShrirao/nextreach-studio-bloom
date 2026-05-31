@@ -1,0 +1,68 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Nav from "@/components/Nav.astro";
+import Footer from "@/components/Footer.astro";
+import TokenCalculator from "@/components/tools/TokenCalculator";
+---
+
+<Layout
+  title="AI Token Calculator — Count Tokens for Any LLM"
+  description="Count tokens for Claude, GPT-4, Llama, Mistral, and 20+ other models before sending prompts. Free, instant, no signup required."
+>
+  <Nav />
+  <main class="pt-28 pb-20 px-6 sm:px-8 max-w-4xl mx-auto">
+    <header class="mb-10">
+      <p class="text-xs uppercase tracking-[0.12em] text-zinc-600 mb-3">Free Tool</p>
+      <h1 class="font-display font-semibold text-4xl sm:text-5xl text-white tracking-[-0.01em] mb-4">
+        AI Token Calculator
+      </h1>
+      <p class="text-zinc-400 text-lg leading-relaxed max-w-2xl">
+        Count tokens for any major LLM before sending your prompt. Avoid context limit errors and estimate costs accurately.
+      </p>
+    </header>
+
+    <TokenCalculator client:load />
+
+    <section class="mt-16 prose prose-invert max-w-none prose-headings:font-display prose-headings:font-semibold prose-headings:text-white prose-a:text-amber-400 prose-a:no-underline hover:prose-a:text-amber-300">
+      <h2>What is token counting?</h2>
+      <p>
+        LLMs don't process text word-by-word — they work with <strong>tokens</strong>, which are chunks of characters
+        roughly corresponding to 0.75 words on average. Every model has a maximum context window measured in tokens,
+        and every API call is priced per token.
+      </p>
+      <p>
+        Understanding token counts lets you:
+      </p>
+      <ul>
+        <li><strong>Avoid truncation:</strong> Know when you're approaching the context limit before your request fails</li>
+        <li><strong>Estimate costs:</strong> Calculate exact API costs before submitting requests</li>
+        <li><strong>Optimize prompts:</strong> Trim unnecessary content to reduce costs without losing quality</li>
+        <li><strong>Plan context:</strong> Budget tokens across system prompts, conversation history, and your actual query</li>
+      </ul>
+
+      <h2>How tokenization works</h2>
+      <p>
+        Different models use different tokenizers. GPT models use the <code>cl100k_base</code> tokenizer (tiktoken),
+        Claude uses a similar BPE tokenizer, and open-source models like Llama use SentencePiece. This means the same
+        text may have a different token count across models.
+      </p>
+      <p>
+        As a rough rule of thumb, 1 token ≈ 4 characters or 0.75 words in English. Code and non-English text
+        typically uses more tokens per character.
+      </p>
+
+      <h2>Related tools</h2>
+      <ul>
+        <li><a href="/tools/context-window-calculator">Context Window Calculator</a> — Visualize how much of your context window you're using</li>
+        <li><a href="/tools/llm-cost-calculator">LLM Cost Calculator</a> — Calculate exact API costs across providers</li>
+      </ul>
+
+      <h2>Related reading</h2>
+      <ul>
+        <li><a href="/blog/llm-context-window-management">LLM Context Window Management: When Your AI Forgets Everything</a></li>
+        <li><a href="/guides/ai-api-cost-optimization">AI API Cost Optimization: Reduce Your Bill by 60%</a></li>
+      </ul>
+    </section>
+  </main>
+  <Footer />
+</Layout>

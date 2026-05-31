@@ -1,0 +1,524 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>AI API Cost Optimization: Reduce Your Bill by 60% Without Sacrificing Quality | NextReach Studio</title><meta name="description" content="Proven techniques for cutting LLM API costs including prompt caching, batching, model routing, and smarter context management. With real cost calculations."><link rel="canonical" href="https://nextreachstudio.com/guides/ai-api-cost-optimization/"><!-- Fonts --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"><link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&display=swap" rel="stylesheet" media="all"><!-- Icons --><link rel="icon" href="/logo.png"><link rel="apple-touch-icon" href="/logo.png"><!-- RSS --><link rel="alternate" type="application/rss+xml" title="NextReach Studio Blog" href="/rss.xml"><!-- Open Graph --><meta property="og:title" content="AI API Cost Optimization: Reduce Your Bill by 60% Without Sacrificing Quality | NextReach Studio"><meta property="og:description" content="Proven techniques for cutting LLM API costs including prompt caching, batching, model routing, and smarter context management. With real cost calculations."><meta property="og:type" content="article"><meta property="og:url" content="https://nextreachstudio.com/guides/ai-api-cost-optimization/"><meta property="og:site_name" content="NextReach Studio"><meta property="og:image" content="https://nextreachstudio.com/link-previews.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:locale" content="en_US"><!-- Twitter / X --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="AI API Cost Optimization: Reduce Your Bill by 60% Without Sacrificing Quality | NextReach Studio"><meta name="twitter:description" content="Proven techniques for cutting LLM API costs including prompt caching, batching, model routing, and smarter context management. With real cost calculations."><meta name="twitter:image" content="https://nextreachstudio.com/link-previews.png"><!-- Article-specific meta --><meta property="article:published_time" content="2026-05-15T00:00:00.000Z"><meta property="article:author" content="NextReach Studio"><meta property="article:tag" content="api-costs"><meta property="article:tag" content="optimization"><meta property="article:tag" content="llm"><!-- Security Headers --><meta http-equiv="X-Content-Type-Options" content="nosniff"><meta http-equiv="X-Frame-Options" content="DENY"><meta http-equiv="X-XSS-Protection" content="1; mode=block"><meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin"><!-- Structured Data: Organization --><script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"NextReach Studio","url":"https://nextreachstudio.com","logo":"https://nextreachstudio.com/logo.png","description":"Proven techniques for cutting LLM API costs including prompt caching, batching, model routing, and smarter context management. With real cost calculations."}</script><!-- Structured Data: Article (if article type) --><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI API Cost Optimization: Reduce Your Bill by 60% Without Sacrificing Quality","description":"Proven techniques for cutting LLM API costs including prompt caching, batching, model routing, and smarter context management. With real cost calculations.","image":"https://nextreachstudio.com/link-previews.png","author":{"@type":"Organization","name":"NextReach Studio"},"publisher":{"@type":"Organization","name":"NextReach Studio","url":"https://nextreachstudio.com"},"datePublished":"2026-05-15T00:00:00.000Z","url":"https://nextreachstudio.com/guides/ai-api-cost-optimization/"}</script><link rel="stylesheet" href="/_astro/_slug_.DNrM4yVl.css"></head> <body class="font-body text-zinc-300 antialiased min-h-screen">  <nav class="fixed w-full top-0 z-50 glass-panel border-b border-t-0 border-x-0" aria-label="Main navigation"> <div class="max-w-7xl mx-auto px-6 sm:px-8 h-16 flex items-center justify-between"> <a href="/" class="flex items-center gap-3 group -ml-2" aria-label="NextReach Studio — Home"> <img src="/logo.png" alt="NextReach Studio" width="32" height="32" class="transition-transform duration-300 group-hover:scale-110"> <span class="text-white text-sm tracking-[0.08em] font-medium hidden sm:inline">NextReach Studio</span> </a> <div class="flex items-center gap-1" role="menubar"> <a href="/blog" role="menuitem" class="px-3 py-1.5 rounded-lg text-sm transition-colors duration-200 text-zinc-500 hover:text-zinc-200 hover:bg-white/5"> Blog </a><a href="/guides" role="menuitem" class="px-3 py-1.5 rounded-lg text-sm transition-colors duration-200 text-white bg-white/5"> Guides </a><a href="/tools" role="menuitem" class="px-3 py-1.5 rounded-lg text-sm transition-colors duration-200 text-zinc-500 hover:text-zinc-200 hover:bg-white/5"> Tools </a><a href="/resources" role="menuitem" class="px-3 py-1.5 rounded-lg text-sm transition-colors duration-200 text-zinc-500 hover:text-zinc-200 hover:bg-white/5"> Resources </a> </div> </div> </nav> <main class="pt-28 pb-20"> <article class="px-6 sm:px-8 max-w-3xl mx-auto"> <header class="mb-12"> <div class="flex flex-wrap items-center gap-3 mb-6"> <a href="/guides" class="text-xs text-zinc-600 hover:text-zinc-400 transition-colors">
+← All guides
+</a> <span class="text-zinc-800">·</span> <span class="rounded-full px-2 py-0.5 text-xs font-medium capitalize bg-blue-500/10 text-blue-400 border border-blue-700/30"> intermediate </span> <span class="text-xs text-zinc-600">14 min read</span> </div> <h1 class="font-display font-semibold text-3xl sm:text-4xl lg:text-5xl text-white tracking-[-0.01em] leading-[1.2] mb-4"> AI API Cost Optimization: Reduce Your Bill by 60% Without Sacrificing Quality </h1> <p class="text-lg text-zinc-400 leading-relaxed mb-6">Proven techniques for cutting LLM API costs including prompt caching, batching, model routing, and smarter context management. With real cost calculations.</p> <div class="flex flex-wrap items-center gap-3 text-xs text-zinc-600"> <time datetime="2026-05-15T00:00:00.000Z"> May 15, 2026 </time>  <span>·</span> <span>NextReach Studio</span>  <span>·</span> <div class="flex gap-1.5"> <span class="rounded-full bg-zinc-800 px-2 py-0.5 text-zinc-500">api-costs</span><span class="rounded-full bg-zinc-800 px-2 py-0.5 text-zinc-500">optimization</span><span class="rounded-full bg-zinc-800 px-2 py-0.5 text-zinc-500">llm</span> </div>  </div> </header> <div class="glass-panel rounded-2xl p-8 sm:p-10 mb-12"> <div class="prose prose-invert max-w-none
+          prose-headings:text-white prose-headings:font-display prose-headings:font-semibold
+          prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
+          prose-h3:text-lg prose-h3:mt-6 prose-h3:mb-3
+          prose-p:text-zinc-400 prose-p:leading-relaxed
+          prose-a:text-amber-400 prose-a:no-underline hover:prose-a:text-amber-300
+          prose-strong:text-white
+          prose-code:text-amber-400 prose-code:bg-zinc-800 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
+          prose-pre:bg-zinc-900 prose-pre:border prose-pre:border-zinc-800 prose-pre:rounded-xl
+          prose-blockquote:border-amber-400 prose-blockquote:text-zinc-400
+          prose-ul:text-zinc-400 prose-ol:text-zinc-400
+          prose-li:marker:text-zinc-600
+          prose-table:text-sm prose-th:text-zinc-300 prose-td:text-zinc-400 prose-th:bg-zinc-900 prose-tr:border-zinc-800
+        "> <p>If you’re calling LLM APIs at any meaningful scale, the bill lands fast. A team running Claude Sonnet for code review, documentation, and test generation across a 10-engineer org can easily hit $2,000–5,000/month without realizing it. Most of that cost is preventable.</p>
+<p>This is not a “use a cheaper model” guide. That advice is obvious and often wrong — swapping Claude Sonnet for GPT-4o mini on complex tasks causes quality degradation that creates downstream engineering debt. Instead, this guide covers architectural and prompt-level techniques that reduce costs without meaningful quality loss. Real numbers included.</p>
+<hr/>
+<h2 id="first-know-where-your-money-actually-goes">First: Know Where Your Money Actually Goes</h2>
+<p>Before optimizing, measure. Most teams discover their cost distribution looks nothing like they assumed.</p>
+<p>A typical developer tooling API bill breaks down like this:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Usage Pattern</th><th>% of Calls</th><th>% of Cost</th></tr></thead><tbody><tr><td>Large context reads (&gt;50K tokens)</td><td>8%</td><td>42%</td></tr><tr><td>Standard feature implementation</td><td>35%</td><td>30%</td></tr><tr><td>Test and docs generation</td><td>40%</td><td>18%</td></tr><tr><td>Simple completions / autocomplete</td><td>17%</td><td>10%</td></tr></tbody></table>
+<p>The insight: 8% of your calls eat 42% of your budget. Optimizing large-context patterns is where you’ll find the biggest wins.</p>
+<p>Use the <a href="/tools/llm-cost-calculator">LLM Cost Calculator</a> and <a href="/tools/ai-token-calculator">AI Token Calculator</a> to model your current and projected costs before diving into optimization.</p>
+<hr/>
+<h2 id="technique-1-prompt-caching">Technique 1: Prompt Caching</h2>
+<p>Prompt caching is the single highest-leverage optimization available in 2026. Both Anthropic and Google support it; OpenAI has a limited version.</p>
+<p><strong>How it works:</strong> When you send the same prefix (system prompt + static context) across multiple requests, the provider caches the processed tokens after the first call. Subsequent calls with the same prefix only charge for the new/unique tokens.</p>
+<p><strong>Real savings:</strong> Anthropic charges 10% of the normal input price for cache hits (vs. 100% for cache misses). If your system prompt is 8,000 tokens and you make 1,000 API calls/day:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>Without caching:</span></span>
+<span class="line"><span>8,000 tokens × 1,000 calls × $3.00/1M = $24.00/day</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>With caching (95% cache hit rate):</span></span>
+<span class="line"><span>8,000 tokens × 50 cache misses × $3.00/1M = $1.20</span></span>
+<span class="line"><span>8,000 tokens × 950 cache hits × $0.30/1M = $2.28</span></span>
+<span class="line"><span>Total: $3.48/day</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Savings: $20.52/day → $615/month on system prompts alone</span></span></code></pre>
+<h3 id="implementation-with-anthropic-python-sdk">Implementation with Anthropic Python SDK</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="python"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> anthropic</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">client </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> anthropic.Anthropic()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Cache the static parts of your prompt</span></span>
+<span class="line"><span style="color:#E1E4E8">response </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> client.messages.create(</span></span>
+<span class="line"><span style="color:#FFAB70">    model</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">&quot;claude-3-7-sonnet-20250219&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#FFAB70">    max_tokens</span><span style="color:#F97583">=</span><span style="color:#79B8FF">4096</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#FFAB70">    system</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">[</span></span>
+<span class="line"><span style="color:#E1E4E8">        {</span></span>
+<span class="line"><span style="color:#9ECBFF">            &quot;type&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;text&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">            &quot;text&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;You are an expert code reviewer specializing in Python...&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">            &quot;cache_control&quot;</span><span style="color:#E1E4E8">: {</span><span style="color:#9ECBFF">&quot;type&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;ephemeral&quot;</span><span style="color:#E1E4E8">}  </span><span style="color:#6A737D"># Cache this block</span></span>
+<span class="line"><span style="color:#E1E4E8">        },</span></span>
+<span class="line"><span style="color:#E1E4E8">        {</span></span>
+<span class="line"><span style="color:#9ECBFF">            &quot;type&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;text&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#6A737D">            # Large static context (e.g., coding standards doc, codebase conventions)</span></span>
+<span class="line"><span style="color:#9ECBFF">            &quot;text&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">STATIC_CODEBASE_CONTEXT</span><span style="color:#E1E4E8">,  </span><span style="color:#6A737D"># Could be 10K+ tokens</span></span>
+<span class="line"><span style="color:#9ECBFF">            &quot;cache_control&quot;</span><span style="color:#E1E4E8">: {</span><span style="color:#9ECBFF">&quot;type&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;ephemeral&quot;</span><span style="color:#E1E4E8">}  </span><span style="color:#6A737D"># Cache this too</span></span>
+<span class="line"><span style="color:#E1E4E8">        }</span></span>
+<span class="line"><span style="color:#E1E4E8">    ],</span></span>
+<span class="line"><span style="color:#FFAB70">    messages</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">[</span></span>
+<span class="line"><span style="color:#E1E4E8">        {</span></span>
+<span class="line"><span style="color:#9ECBFF">            &quot;role&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;user&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">            &quot;content&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">f</span><span style="color:#9ECBFF">&quot;Review this PR: </span><span style="color:#79B8FF">{</span><span style="color:#E1E4E8">dynamic_pr_content</span><span style="color:#79B8FF">}</span><span style="color:#9ECBFF">&quot;</span><span style="color:#6A737D">  # Only this varies</span></span>
+<span class="line"><span style="color:#E1E4E8">        }</span></span>
+<span class="line"><span style="color:#E1E4E8">    ]</span></span>
+<span class="line"><span style="color:#E1E4E8">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Check cache performance</span></span>
+<span class="line"><span style="color:#79B8FF">print</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">f</span><span style="color:#9ECBFF">&quot;Cache creation tokens: </span><span style="color:#79B8FF">{</span><span style="color:#E1E4E8">response.usage.cache_creation_input_tokens</span><span style="color:#79B8FF">}</span><span style="color:#9ECBFF">&quot;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#79B8FF">print</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">f</span><span style="color:#9ECBFF">&quot;Cache read tokens: </span><span style="color:#79B8FF">{</span><span style="color:#E1E4E8">response.usage.cache_read_input_tokens</span><span style="color:#79B8FF">}</span><span style="color:#9ECBFF">&quot;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#79B8FF">print</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">f</span><span style="color:#9ECBFF">&quot;Uncached input tokens: </span><span style="color:#79B8FF">{</span><span style="color:#E1E4E8">response.usage.input_tokens</span><span style="color:#79B8FF">}</span><span style="color:#9ECBFF">&quot;</span><span style="color:#E1E4E8">)</span></span></code></pre>
+<h3 id="what-to-cache">What to Cache</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Content Type</th><th>Cache?</th><th>Reason</th></tr></thead><tbody><tr><td>System prompt</td><td>Always</td><td>Highest reuse rate</td></tr><tr><td>Coding standards / style guides</td><td>Yes</td><td>Rarely changes</td></tr><tr><td>Codebase architecture docs</td><td>Yes</td><td>Changes weekly at most</td></tr><tr><td>The actual code being reviewed</td><td>No</td><td>Always unique</td></tr><tr><td>User message</td><td>No</td><td>Always unique</td></tr></tbody></table>
+<p><strong>Cache TTL:</strong> Anthropic’s ephemeral cache lasts 5 minutes by default. For longer retention, structure your caching architecture to re-warm the cache before it expires if you have continuous workloads.</p>
+<hr/>
+<h2 id="technique-2-model-routing">Technique 2: Model Routing</h2>
+<p>Model routing means sending different task types to different models based on a complexity classifier. It’s the most impactful architectural change for high-volume applications.</p>
+<p><strong>The principle:</strong> Not every task needs Claude Sonnet. Test generation, docstring writing, and simple completions can run on Haiku or Gemini Flash at 10–20x lower cost.</p>
+<h3 id="build-a-simple-classifier">Build a Simple Classifier</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="python"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> re</span></span>
+<span class="line"><span style="color:#F97583">from</span><span style="color:#E1E4E8"> enum </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> Enum</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> TaskComplexity</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">Enum</span><span style="color:#E1E4E8">):</span></span>
+<span class="line"><span style="color:#79B8FF">    SIMPLE</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> &quot;simple&quot;</span></span>
+<span class="line"><span style="color:#79B8FF">    MEDIUM</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> &quot;medium&quot;</span><span style="color:#E1E4E8">  </span></span>
+<span class="line"><span style="color:#79B8FF">    COMPLEX</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> &quot;complex&quot;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">def</span><span style="color:#B392F0"> classify_task</span><span style="color:#E1E4E8">(prompt: </span><span style="color:#79B8FF">str</span><span style="color:#E1E4E8">, context_tokens: </span><span style="color:#79B8FF">int</span><span style="color:#E1E4E8">) -&gt; TaskComplexity:</span></span>
+<span class="line"><span style="color:#6A737D">    # Large context always bumps to complex</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> context_tokens </span><span style="color:#F97583">&gt;</span><span style="color:#79B8FF"> 40_000</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#E1E4E8"> TaskComplexity.</span><span style="color:#79B8FF">COMPLEX</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span></span>
+<span class="line"><span style="color:#6A737D">    # Keywords suggesting complexity</span></span>
+<span class="line"><span style="color:#E1E4E8">    complex_keywords </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> [</span></span>
+<span class="line"><span style="color:#9ECBFF">        &quot;debug&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&quot;root cause&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&quot;race condition&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&quot;architecture&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">        &quot;design&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&quot;refactor&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&quot;security&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&quot;performance bottleneck&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">        &quot;concurrency&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&quot;memory leak&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">    ]</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span></span>
+<span class="line"><span style="color:#E1E4E8">    simple_keywords </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> [</span></span>
+<span class="line"><span style="color:#9ECBFF">        &quot;docstring&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&quot;comment&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&quot;rename&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&quot;format&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&quot;test for&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">        &quot;generate unit test&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&quot;explain this function&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&quot;add type hints&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">    ]</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span></span>
+<span class="line"><span style="color:#E1E4E8">    prompt_lower </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> prompt.lower()</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#79B8FF"> any</span><span style="color:#E1E4E8">(kw </span><span style="color:#F97583">in</span><span style="color:#E1E4E8"> prompt_lower </span><span style="color:#F97583">for</span><span style="color:#E1E4E8"> kw </span><span style="color:#F97583">in</span><span style="color:#E1E4E8"> complex_keywords):</span></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#E1E4E8"> TaskComplexity.</span><span style="color:#79B8FF">COMPLEX</span></span>
+<span class="line"><span style="color:#F97583">    elif</span><span style="color:#79B8FF"> any</span><span style="color:#E1E4E8">(kw </span><span style="color:#F97583">in</span><span style="color:#E1E4E8"> prompt_lower </span><span style="color:#F97583">for</span><span style="color:#E1E4E8"> kw </span><span style="color:#F97583">in</span><span style="color:#E1E4E8"> simple_keywords):</span></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#E1E4E8"> TaskComplexity.</span><span style="color:#79B8FF">SIMPLE</span></span>
+<span class="line"><span style="color:#F97583">    else</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#E1E4E8"> TaskComplexity.</span><span style="color:#79B8FF">MEDIUM</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">def</span><span style="color:#B392F0"> get_model</span><span style="color:#E1E4E8">(complexity: TaskComplexity) -&gt; </span><span style="color:#79B8FF">str</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">        TaskComplexity.</span><span style="color:#79B8FF">SIMPLE</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;gemini-2.0-flash&quot;</span><span style="color:#E1E4E8">,        </span><span style="color:#6A737D"># $0.075/1M input</span></span>
+<span class="line"><span style="color:#E1E4E8">        TaskComplexity.</span><span style="color:#79B8FF">MEDIUM</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;claude-3-5-haiku-20241022&quot;</span><span style="color:#E1E4E8">,  </span><span style="color:#6A737D"># $0.80/1M input</span></span>
+<span class="line"><span style="color:#E1E4E8">        TaskComplexity.</span><span style="color:#79B8FF">COMPLEX</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;claude-3-7-sonnet-20250219&quot;</span><span style="color:#6A737D">  # $3.00/1M input</span></span>
+<span class="line"><span style="color:#E1E4E8">    }[complexity]</span></span></code></pre>
+<h3 id="real-cost-comparison-with-vs-without-routing">Real Cost Comparison With vs. Without Routing</h3>
+<p>Assume a team making 10,000 API calls/day with average 2,000 input + 800 output tokens:</p>
+<p><strong>Without routing (all Claude Sonnet):</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>Input: 10,000 × 2,000 × $3.00/1M = $60.00/day</span></span>
+<span class="line"><span>Output: 10,000 × 800 × $15.00/1M = $120.00/day</span></span>
+<span class="line"><span>Total: $180/day → $5,400/month</span></span></code></pre>
+<p><strong>With routing (40% simple, 40% medium, 20% complex):</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>Simple (Flash):   4,000 calls × 2,800 tokens × $0.30/1M = $3.36/day</span></span>
+<span class="line"><span>Medium (Haiku):   4,000 calls × 2,800 tokens × $4.00/1M = $44.80/day  </span></span>
+<span class="line"><span>Complex (Sonnet): 2,000 calls × 2,800 tokens × $18.00/1M = $100.80/day</span></span>
+<span class="line"><span>Total: $148.96/day → $4,469/month</span></span></code></pre>
+<p>That’s a 17% reduction just from routing — and with better quality on complex tasks than you’d get running everything through a single mid-tier model. Refine the classifier over time and you can push this further.</p>
+<hr/>
+<h2 id="technique-3-aggressive-context-trimming">Technique 3: Aggressive Context Trimming</h2>
+<p>Output tokens cost 4–10x more than input tokens across every provider. But overstuffed input context is also expensive and often hurts quality.</p>
+<p>The most common waste: sending the entire conversation history on every turn when only the last 2–3 exchanges are relevant.</p>
+<h3 id="sliding-window-context">Sliding Window Context</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="python"><code><span class="line"><span style="color:#F97583">from</span><span style="color:#E1E4E8"> dataclasses </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> dataclass</span></span>
+<span class="line"><span style="color:#F97583">from</span><span style="color:#E1E4E8"> typing </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> List</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> tiktoken</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">@dataclass</span></span>
+<span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> Message</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">    role: </span><span style="color:#79B8FF">str</span></span>
+<span class="line"><span style="color:#E1E4E8">    content: </span><span style="color:#79B8FF">str</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">def</span><span style="color:#B392F0"> trim_context</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#E1E4E8">    messages: List[Message],</span></span>
+<span class="line"><span style="color:#E1E4E8">    system_prompt: </span><span style="color:#79B8FF">str</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    max_input_tokens: </span><span style="color:#79B8FF">int</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 8_000</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    model: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> &quot;gpt-4o&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">) -&gt; List[Message]:</span></span>
+<span class="line"><span style="color:#9ECBFF">    &quot;&quot;&quot;</span></span>
+<span class="line"><span style="color:#9ECBFF">    Keep only recent messages that fit within token budget.</span></span>
+<span class="line"><span style="color:#9ECBFF">    Always preserves the first user message (task context).</span></span>
+<span class="line"><span style="color:#9ECBFF">    &quot;&quot;&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">    enc </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> tiktoken.encoding_for_model(model)</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span></span>
+<span class="line"><span style="color:#E1E4E8">    system_tokens </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> len</span><span style="color:#E1E4E8">(enc.encode(system_prompt))</span></span>
+<span class="line"><span style="color:#E1E4E8">    budget </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> max_input_tokens </span><span style="color:#F97583">-</span><span style="color:#E1E4E8"> system_tokens </span><span style="color:#F97583">-</span><span style="color:#79B8FF"> 500</span><span style="color:#6A737D">  # Buffer for response</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span></span>
+<span class="line"><span style="color:#6A737D">    # Always keep the first message</span></span>
+<span class="line"><span style="color:#E1E4E8">    pinned </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> [messages[</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">]] </span><span style="color:#F97583">if</span><span style="color:#E1E4E8"> messages </span><span style="color:#F97583">else</span><span style="color:#E1E4E8"> []</span></span>
+<span class="line"><span style="color:#E1E4E8">    pinned_tokens </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> sum</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">len</span><span style="color:#E1E4E8">(enc.encode(m.content)) </span><span style="color:#F97583">for</span><span style="color:#E1E4E8"> m </span><span style="color:#F97583">in</span><span style="color:#E1E4E8"> pinned)</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span></span>
+<span class="line"><span style="color:#6A737D">    # Fill from recent messages backwards</span></span>
+<span class="line"><span style="color:#E1E4E8">    recent </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> []</span></span>
+<span class="line"><span style="color:#E1E4E8">    recent_tokens </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 0</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span></span>
+<span class="line"><span style="color:#F97583">    for</span><span style="color:#E1E4E8"> msg </span><span style="color:#F97583">in</span><span style="color:#79B8FF"> reversed</span><span style="color:#E1E4E8">(messages[</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">:]):</span></span>
+<span class="line"><span style="color:#E1E4E8">        msg_tokens </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> len</span><span style="color:#E1E4E8">(enc.encode(msg.content))</span></span>
+<span class="line"><span style="color:#F97583">        if</span><span style="color:#E1E4E8"> recent_tokens </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> msg_tokens </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> pinned_tokens </span><span style="color:#F97583">&gt;</span><span style="color:#E1E4E8"> budget:</span></span>
+<span class="line"><span style="color:#F97583">            break</span></span>
+<span class="line"><span style="color:#E1E4E8">        recent.insert(</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">, msg)</span></span>
+<span class="line"><span style="color:#E1E4E8">        recent_tokens </span><span style="color:#F97583">+=</span><span style="color:#E1E4E8"> msg_tokens</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> pinned </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> recent</span></span></code></pre>
+<h3 id="summarize-instead-of-truncate">Summarize Instead of Truncate</h3>
+<p>For long conversations, summarizing older turns is better than dropping them:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="python"><code><span class="line"><span style="color:#F97583">async</span><span style="color:#F97583"> def</span><span style="color:#B392F0"> summarize_old_turns</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#E1E4E8">    messages: List[Message],</span></span>
+<span class="line"><span style="color:#E1E4E8">    keep_recent: </span><span style="color:#79B8FF">int</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 6</span></span>
+<span class="line"><span style="color:#E1E4E8">) -&gt; List[Message]:</span></span>
+<span class="line"><span style="color:#9ECBFF">    &quot;&quot;&quot;Compress old messages into a summary to preserve context cheaply.&quot;&quot;&quot;</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#79B8FF"> len</span><span style="color:#E1E4E8">(messages) </span><span style="color:#F97583">&lt;=</span><span style="color:#E1E4E8"> keep_recent:</span></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#E1E4E8"> messages</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span></span>
+<span class="line"><span style="color:#E1E4E8">    old </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> messages[:</span><span style="color:#F97583">-</span><span style="color:#E1E4E8">keep_recent]</span></span>
+<span class="line"><span style="color:#E1E4E8">    recent </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> messages[</span><span style="color:#F97583">-</span><span style="color:#E1E4E8">keep_recent:]</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span></span>
+<span class="line"><span style="color:#E1E4E8">    old_text </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> &quot;</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">&quot;</span><span style="color:#E1E4E8">.join(</span><span style="color:#F97583">f</span><span style="color:#9ECBFF">&quot;</span><span style="color:#79B8FF">{</span><span style="color:#E1E4E8">m.role</span><span style="color:#79B8FF">}</span><span style="color:#9ECBFF">: </span><span style="color:#79B8FF">{</span><span style="color:#E1E4E8">m.content</span><span style="color:#79B8FF">}</span><span style="color:#9ECBFF">&quot;</span><span style="color:#F97583"> for</span><span style="color:#E1E4E8"> m </span><span style="color:#F97583">in</span><span style="color:#E1E4E8"> old)</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span></span>
+<span class="line"><span style="color:#6A737D">    # Use cheapest model for summarization</span></span>
+<span class="line"><span style="color:#E1E4E8">    summary_response </span><span style="color:#F97583">=</span><span style="color:#F97583"> await</span><span style="color:#E1E4E8"> gemini_flash.ainvoke(</span></span>
+<span class="line"><span style="color:#F97583">        f</span><span style="color:#9ECBFF">&quot;Summarize this conversation history in 200 words, preserving key decisions:</span><span style="color:#79B8FF">\n\n{</span><span style="color:#E1E4E8">old_text</span><span style="color:#79B8FF">}</span><span style="color:#9ECBFF">&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">    )</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span></span>
+<span class="line"><span style="color:#E1E4E8">    summary_message </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> Message(</span></span>
+<span class="line"><span style="color:#FFAB70">        role</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">&quot;user&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#FFAB70">        content</span><span style="color:#F97583">=</span><span style="color:#F97583">f</span><span style="color:#9ECBFF">&quot;[Previous conversation summary: </span><span style="color:#79B8FF">{</span><span style="color:#E1E4E8">summary_response.content</span><span style="color:#79B8FF">}</span><span style="color:#9ECBFF">]&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">    )</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> [summary_message] </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> recent</span></span></code></pre>
+<hr/>
+<h2 id="technique-4-response-length-control">Technique 4: Response Length Control</h2>
+<p>Every token you don’t generate is money you don’t spend. Most prompts that don’t constrain output length will get verbose responses.</p>
+<p><strong>Add these instructions to every prompt:</strong></p>
+<ul>
+<li>“Be concise. Answer in under [N] words.”</li>
+<li>“Return only the code, no explanation.”</li>
+<li>“List format, no prose.”</li>
+</ul>
+<p><strong>Impact of output length constraints:</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Prompt Type</th><th>Unconstrained Output</th><th>Constrained Output</th><th>Cost Reduction</th></tr></thead><tbody><tr><td>Code review</td><td>~1,200 tokens</td><td>~400 tokens</td><td>67%</td></tr><tr><td>Bug explanation</td><td>~800 tokens</td><td>~200 tokens</td><td>75%</td></tr><tr><td>Test generation</td><td>~600 tokens</td><td>~450 tokens</td><td>25%</td></tr><tr><td>Docs writing</td><td>~900 tokens</td><td>~600 tokens</td><td>33%</td></tr></tbody></table>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="python"><code><span class="line"><span style="color:#6A737D"># Verbose (expensive)</span></span>
+<span class="line"><span style="color:#E1E4E8">prompt_bad </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> &quot;Review this code for bugs.&quot;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Concise (cheap)</span></span>
+<span class="line"><span style="color:#E1E4E8">prompt_good </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> &quot;&quot;&quot;Review this code for bugs.</span></span>
+<span class="line"><span style="color:#9ECBFF">Output format:</span></span>
+<span class="line"><span style="color:#9ECBFF">- List only real bugs (not style issues)</span></span>
+<span class="line"><span style="color:#9ECBFF">- One line per bug: [LINE_NUMBER]: [BUG_DESCRIPTION]</span></span>
+<span class="line"><span style="color:#9ECBFF">- If no bugs, return: &quot;No bugs found&quot;</span></span>
+<span class="line"><span style="color:#9ECBFF">- Maximum 10 items</span></span>
+<span class="line"><span style="color:#9ECBFF">&quot;&quot;&quot;</span></span></code></pre>
+<hr/>
+<h2 id="technique-5-batch-processing">Technique 5: Batch Processing</h2>
+<p>If your use case includes non-real-time tasks (nightly doc generation, weekly code review reports, bulk test creation), use batch APIs. Anthropic and OpenAI both offer ~50% discounts for batch processing.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="python"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> anthropic</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">client </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> anthropic.Anthropic()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Create a batch of up to 10,000 requests</span></span>
+<span class="line"><span style="color:#E1E4E8">batch </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> client.messages.batches.create(</span></span>
+<span class="line"><span style="color:#FFAB70">    requests</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">[</span></span>
+<span class="line"><span style="color:#E1E4E8">        {</span></span>
+<span class="line"><span style="color:#9ECBFF">            &quot;custom_id&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">f</span><span style="color:#9ECBFF">&quot;doc-gen-</span><span style="color:#79B8FF">{</span><span style="color:#E1E4E8">file_path</span><span style="color:#79B8FF">}</span><span style="color:#9ECBFF">&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">            &quot;params&quot;</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#9ECBFF">                &quot;model&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;claude-3-5-haiku-20241022&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">                &quot;max_tokens&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">1024</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">                &quot;messages&quot;</span><span style="color:#E1E4E8">: [</span></span>
+<span class="line"><span style="color:#E1E4E8">                    {</span></span>
+<span class="line"><span style="color:#9ECBFF">                        &quot;role&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;user&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">                        &quot;content&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">f</span><span style="color:#9ECBFF">&quot;Generate a docstring for:</span><span style="color:#79B8FF">\n{</span><span style="color:#E1E4E8">code</span><span style="color:#79B8FF">}</span><span style="color:#9ECBFF">&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">                    }</span></span>
+<span class="line"><span style="color:#E1E4E8">                ]</span></span>
+<span class="line"><span style="color:#E1E4E8">            }</span></span>
+<span class="line"><span style="color:#E1E4E8">        }</span></span>
+<span class="line"><span style="color:#F97583">        for</span><span style="color:#E1E4E8"> file_path, code </span><span style="color:#F97583">in</span><span style="color:#E1E4E8"> files_to_document.items()</span></span>
+<span class="line"><span style="color:#E1E4E8">    ]</span></span>
+<span class="line"><span style="color:#E1E4E8">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">print</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">f</span><span style="color:#9ECBFF">&quot;Batch ID: </span><span style="color:#79B8FF">{</span><span style="color:#E1E4E8">batch.id</span><span style="color:#79B8FF">}</span><span style="color:#9ECBFF">&quot;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#6A737D"># Results are available within 24 hours at 50% cost</span></span></code></pre>
+<p><strong>Batch vs. real-time cost:</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Task</th><th>Real-time Cost</th><th>Batch Cost</th><th>Savings</th></tr></thead><tbody><tr><td>1,000 doc generations (Haiku)</td><td>$0.80</td><td>$0.40</td><td>50%</td></tr><tr><td>500 test suites (Haiku)</td><td>$1.20</td><td>$0.60</td><td>50%</td></tr><tr><td>100 code reviews (Sonnet)</td><td>$18.00</td><td>$9.00</td><td>50%</td></tr></tbody></table>
+<p>If latency doesn’t matter for a task, always batch.</p>
+<hr/>
+<h2 id="technique-6-structured-output-to-reduce-post-processing">Technique 6: Structured Output to Reduce Post-Processing</h2>
+<p>When you need JSON or specific formats, using the model’s built-in structured output support is cheaper than asking for prose and parsing it yourself (which often requires retry calls when parsing fails).</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="python"><code><span class="line"><span style="color:#6A737D"># OpenAI structured output</span></span>
+<span class="line"><span style="color:#F97583">from</span><span style="color:#E1E4E8"> openai </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> OpenAI</span></span>
+<span class="line"><span style="color:#F97583">from</span><span style="color:#E1E4E8"> pydantic </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> BaseModel</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> CodeReview</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">BaseModel</span><span style="color:#E1E4E8">):</span></span>
+<span class="line"><span style="color:#E1E4E8">    bugs: list[</span><span style="color:#79B8FF">str</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#E1E4E8">    suggestions: list[</span><span style="color:#79B8FF">str</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#E1E4E8">    severity: </span><span style="color:#79B8FF">str</span><span style="color:#6A737D">  # &quot;low&quot; | &quot;medium&quot; | &quot;high&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">    summary: </span><span style="color:#79B8FF">str</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">client </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> OpenAI()</span></span>
+<span class="line"><span style="color:#E1E4E8">completion </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> client.beta.chat.completions.parse(</span></span>
+<span class="line"><span style="color:#FFAB70">    model</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">&quot;gpt-4o-mini&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#FFAB70">    messages</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">[{</span><span style="color:#9ECBFF">&quot;role&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;user&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&quot;content&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">f</span><span style="color:#9ECBFF">&quot;Review: </span><span style="color:#79B8FF">{</span><span style="color:#E1E4E8">code</span><span style="color:#79B8FF">}</span><span style="color:#9ECBFF">&quot;</span><span style="color:#E1E4E8">}],</span></span>
+<span class="line"><span style="color:#FFAB70">    response_format</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">CodeReview,</span></span>
+<span class="line"><span style="color:#E1E4E8">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">review </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> completion.choices[</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">].message.parsed</span></span>
+<span class="line"><span style="color:#6A737D"># No retry logic needed — output is guaranteed valid</span></span></code></pre>
+<p>Structured output eliminates:</p>
+<ul>
+<li>Prose wrapper tokens (“Here is the JSON you requested…”)</li>
+<li>Retry API calls when your parser fails (1–5% failure rate without structured output)</li>
+<li>Post-processing compute</li>
+</ul>
+<hr/>
+<h2 id="technique-7-semantic-caching-at-the-application-layer">Technique 7: Semantic Caching at the Application Layer</h2>
+<p>Provider-level caching handles identical prompts. Application-layer semantic caching handles <em>similar</em> prompts — which is often more relevant.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="python"><code><span class="line"><span style="color:#F97583">from</span><span style="color:#E1E4E8"> sentence_transformers </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> SentenceTransformer</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> numpy </span><span style="color:#F97583">as</span><span style="color:#E1E4E8"> np</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> redis</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> json</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">model </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> SentenceTransformer(</span><span style="color:#9ECBFF">&#39;all-MiniLM-L6-v2&#39;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">cache </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> redis.Redis()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">def</span><span style="color:#B392F0"> semantic_cache_get</span><span style="color:#E1E4E8">(prompt: </span><span style="color:#79B8FF">str</span><span style="color:#E1E4E8">, threshold: </span><span style="color:#79B8FF">float</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 0.92</span><span style="color:#E1E4E8">) -&gt; </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> |</span><span style="color:#79B8FF"> None</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">    prompt_embedding </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> model.encode(prompt).tolist()</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span></span>
+<span class="line"><span style="color:#6A737D">    # Check cached prompts for semantic similarity</span></span>
+<span class="line"><span style="color:#E1E4E8">    keys </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> cache.keys(</span><span style="color:#9ECBFF">&quot;prompt:*&quot;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">    for</span><span style="color:#E1E4E8"> key </span><span style="color:#F97583">in</span><span style="color:#E1E4E8"> keys:</span></span>
+<span class="line"><span style="color:#E1E4E8">        cached </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> json.loads(cache.get(key))</span></span>
+<span class="line"><span style="color:#E1E4E8">        similarity </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> np.dot(prompt_embedding, cached[</span><span style="color:#9ECBFF">&quot;embedding&quot;</span><span style="color:#E1E4E8">])</span></span>
+<span class="line"><span style="color:#E1E4E8">        </span></span>
+<span class="line"><span style="color:#F97583">        if</span><span style="color:#E1E4E8"> similarity </span><span style="color:#F97583">&gt;</span><span style="color:#E1E4E8"> threshold:</span></span>
+<span class="line"><span style="color:#F97583">            return</span><span style="color:#E1E4E8"> cached[</span><span style="color:#9ECBFF">&quot;response&quot;</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#79B8FF"> None</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">def</span><span style="color:#B392F0"> semantic_cache_set</span><span style="color:#E1E4E8">(prompt: </span><span style="color:#79B8FF">str</span><span style="color:#E1E4E8">, response: </span><span style="color:#79B8FF">str</span><span style="color:#E1E4E8">):</span></span>
+<span class="line"><span style="color:#E1E4E8">    embedding </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> model.encode(prompt).tolist()</span></span>
+<span class="line"><span style="color:#E1E4E8">    cache.setex(</span></span>
+<span class="line"><span style="color:#F97583">        f</span><span style="color:#9ECBFF">&quot;prompt:</span><span style="color:#79B8FF">{hash</span><span style="color:#E1E4E8">(prompt)</span><span style="color:#79B8FF">}</span><span style="color:#9ECBFF">&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">        3600</span><span style="color:#E1E4E8">,  </span><span style="color:#6A737D"># 1-hour TTL</span></span>
+<span class="line"><span style="color:#E1E4E8">        json.dumps({</span><span style="color:#9ECBFF">&quot;embedding&quot;</span><span style="color:#E1E4E8">: embedding, </span><span style="color:#9ECBFF">&quot;response&quot;</span><span style="color:#E1E4E8">: response})</span></span>
+<span class="line"><span style="color:#E1E4E8">    )</span></span></code></pre>
+<p><strong>Effective for:</strong> repetitive tasks like “explain this function,” “write a test for this,” or “add error handling to this code” where the code pattern varies slightly but the task is structurally identical.</p>
+<p><strong>Cache hit rates in practice:</strong> 15–35% for developer tooling applications, 40–60% for customer-facing coding assistants with repeated user patterns.</p>
+<hr/>
+<h2 id="putting-it-all-together-a-realistic-savings-estimate">Putting It All Together: A Realistic Savings Estimate</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Technique</th><th>Typical Savings</th><th>Implementation Effort</th></tr></thead><tbody><tr><td>Prompt caching</td><td>30–60% on repeated prefixes</td><td>Low (1 day)</td></tr><tr><td>Model routing</td><td>15–40% overall</td><td>Medium (3–5 days)</td></tr><tr><td>Context trimming</td><td>10–25% on input costs</td><td>Low (1–2 days)</td></tr><tr><td>Output constraints</td><td>20–50% on output costs</td><td>Low (hours)</td></tr><tr><td>Batch processing</td><td>50% on async tasks</td><td>Low (1 day)</td></tr><tr><td>Structured output</td><td>5–15% (reduced retries)</td><td>Low (hours)</td></tr><tr><td>Semantic caching</td><td>15–35% hit rate</td><td>Medium (2–3 days)</td></tr></tbody></table>
+<p>Combined and applied to a $3,000/month bill, these techniques realistically deliver a 55–65% reduction to $1,050–$1,350/month. The most impactful are prompt caching, model routing, and output constraints — start there.</p>
+<hr/>
+<h2 id="quick-wins-checklist">Quick Wins Checklist</h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Add <code>cache_control: ephemeral</code> to your system prompts (Anthropic)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Set <code>temperature: 0</code> for all code tasks</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Add “Be concise. Answer in under X words.” to every prompt</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Route test generation and docs to Gemini Flash or Claude Haiku</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Move all non-real-time batch tasks to Batch API</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Trim conversation history to last 5–6 turns</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Use structured output (JSON mode / Pydantic) to eliminate parse retries</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Log token usage per call to identify expensive outliers</li>
+</ul>
+<hr/>
+<h2 id="related-resources">Related Resources</h2>
+<ul>
+<li><a href="/guides/choosing-right-llm-for-coding">Choosing the Right LLM for Your Coding Workflow</a></li>
+<li><a href="/blog/llm-context-window-management">Managing LLM Context Windows Without Losing Quality</a></li>
+<li><a href="/resources/llm-api-providers-directory">LLM API Providers Directory</a></li>
+<li><a href="/tools/llm-cost-calculator">LLM Cost Calculator</a></li>
+<li><a href="/tools/ai-token-calculator">AI Token Calculator</a></li>
+</ul> </div> </div> <div class="flex flex-col sm:flex-row gap-4 justify-between items-start border-t border-zinc-800 pt-8"> <a href="/guides" class="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 transition-colors text-sm font-medium"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+Back to guides
+</a> <a href="/tools" class="inline-flex items-center gap-2 text-zinc-500 hover:text-zinc-300 transition-colors text-sm">
+Browse free tools →
+</a> </div> </article> </main> <footer class="border-t border-zinc-800/60 mt-24 py-12 px-6 sm:px-8"> <div class="max-w-7xl mx-auto"> <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 mb-10"> <div class="col-span-2 sm:col-span-1"> <a href="/" class="flex items-center gap-2 mb-3 group" aria-label="NextReach Studio"> <img src="/logo.png" alt="" width="24" height="24" class="opacity-80 group-hover:opacity-100 transition-opacity"> <span class="text-sm font-medium text-zinc-400 group-hover:text-white transition-colors">NextReach Studio</span> </a> <p class="text-xs text-zinc-600 leading-relaxed max-w-[180px]">
+Tools, guides, and resources for AI builders and indie hackers.
+</p> </div> <div> <h3 class="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">Content</h3> <ul class="space-y-2"> <li><a href="/blog" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">Blog</a></li> <li><a href="/guides" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">Guides</a></li> <li><a href="/resources" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">Resources</a></li> </ul> </div> <div> <h3 class="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">Tools</h3> <ul class="space-y-2"> <li><a href="/tools/ai-token-calculator" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">Token Calculator</a></li> <li><a href="/tools/context-window-calculator" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">Context Window</a></li> <li><a href="/tools/llm-cost-calculator" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">Cost Calculator</a></li> <li><a href="/tools/vram-estimator" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">VRAM Estimator</a></li> <li><a href="/tools/prompt-formatter" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">Prompt Formatter</a></li> <li><a href="/tools" class="text-xs text-amber-600 hover:text-amber-400 transition-colors">All tools →</a></li> </ul> </div> <div> <h3 class="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">Site</h3> <ul class="space-y-2"> <li><a href="/rss.xml" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">RSS Feed</a></li> <li><a href="/sitemap-index.xml" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">Sitemap</a></li> </ul> </div> </div> <div class="gradient-divider mb-6"></div> <div class="flex flex-col sm:flex-row items-center justify-between gap-3"> <p class="text-xs text-zinc-700">&copy; 2026 NextReach Studio. All rights reserved.</p> <p class="text-xs text-zinc-700">Built for AI builders, indie hackers &amp; developers.</p> </div> </div> </footer>  </body></html>

@@ -1,0 +1,296 @@
+---
+title: "Claude Code Workflow: 15 Patterns That Actually Speed Up Development"
+description: "Real workflow patterns for Claude Code users that save hours. Covers context management, CLAUDE.md tricks, multi-file edits, slash commands."
+pubDate: 2026-05-20
+author: "NextReach Studio"
+tags: ["claude-code", "workflow", "developer-tools"]
+draft: false
+---
+
+After months of daily use, Claude Code stops feeling like a novelty and starts revealing its real texture. Some patterns genuinely cut hours off common workflows. Others sound useful in demos but collapse under real project complexity. This post skips the obvious stuff — you already know how to run `/init` and ask for refactors — and goes straight to the patterns that actually matter when you're shipping.
+
+## 1. CLAUDE.md Is Your Persistent Memory
+
+Claude Code reads `CLAUDE.md` at startup and injects it into every session. Most developers treat it as a README variant. It's actually a control file for your AI collaborator's behavior.
+
+The difference between a weak `CLAUDE.md` and a strong one is specificity. A weak one says "This is a Next.js project." A strong one says exactly what decisions have already been made so Claude stops suggesting alternatives.
+
+```markdown
+# Project: NextReach Studio API
+
+## Stack decisions (not up for debate)
+- Runtime: Node 20 + TypeScript strict mode
+- ORM: Drizzle, NOT Prisma. Don't suggest Prisma.
+- Auth: Lucia v3. Sessions in Postgres, not Redis.
+- API style: tRPC over HTTP. No REST routes unless adding a webhook.
+
+## File conventions
+- All server actions live in src/server/actions/
+- DB schemas in src/db/schema/ — one file per domain
+- Environment vars: always typed through src/env.ts (T3 env)
+
+## Current sprint focus
+Working on billing module. Stripe webhooks are in /api/webhooks/stripe.ts.
+Don't touch auth files unless explicitly asked.
+
+## Known technical debt (acknowledge but don't fix unless asked)
+- User table has a legacy `plan_name` column alongside the new `subscription_id`
+- Email sending uses two different providers (Resend for transactional, SendGrid for bulk)
+```
+
+Key things to put in CLAUDE.md:
+- Decisions that are final — saves re-litigating architecture every session
+- What's off-limits in the current sprint
+- Naming conventions and file layout rules
+- Known debt that Claude shouldn't "fix" spontaneously
+
+Rebuild your CLAUDE.md every few sprints. Old constraints pollute new work.
+
+## 2. Use `/clear` Strategically, Not Reactively
+
+Most people hit `/clear` when Claude seems confused. That's reactive. The better habit is clearing proactively after finishing a discrete unit of work.
+
+Context window accumulation is real. After a long refactor session, the model is reasoning over thousands of tokens of intermediate reasoning, file snippets, and back-and-forth. That noise degrades quality on the next task even if it's unrelated.
+
+The pattern that works well:
+
+- Finish feature → `/clear`
+- Write tests for that feature → `/clear`  
+- Move to next feature
+
+This keeps each session focused and prevents cross-contamination where Claude makes decisions based on context from a completely different part of the codebase. Track your token usage with [our Context Window Calculator](/tools/context-window-calculator) to build intuition for when you're approaching the limit.
+
+## 3. Prime the Context Before Complex Tasks
+
+Instead of dropping a complex request cold, spend two messages building context first.
+
+```
+You: Read these three files and tell me what you understand about 
+how the subscription state machine works. Don't write any code yet.
+
+[paste file paths or content]
+
+Claude: [explains its understanding]
+
+You: Good. Now, the bug is that downgrade events aren't being 
+captured when a user switches from Pro to Starter mid-cycle. 
+Fix it.
+```
+
+This two-step approach surfaces misunderstandings before Claude writes 200 lines of code based on a wrong assumption. It's slower in the short run but faster when you account for the review and correction cycle.
+
+## 4. The "Explain Then Implement" Pattern for Risky Changes
+
+For anything touching auth, payments, or data migrations, always ask for an explanation before code.
+
+```
+Before you write any code, explain in plain English:
+1. What files you're going to change
+2. What the current behavior is
+3. What the new behavior will be
+4. Any edge cases you see
+
+Then I'll tell you to proceed.
+```
+
+This catches architectural misunderstandings and forces Claude to plan rather than pattern-match to the first solution that seems plausible. You'll catch about 30% of potential problems before any code is written.
+
+## 5. Slash Commands You're Probably Not Using
+
+Beyond `/init` and `/clear`, these deserve a place in your workflow:
+
+**`/compact`** — Summarizes the conversation and continues in a condensed form. Use this instead of `/clear` when you're mid-task and need to preserve the goal context but trim the noise.
+
+**`/cost`** — Shows token usage for the current session. Run this periodically to build intuition. Surprises here usually mean you've added large files to context unnecessarily.
+
+**`/doctor`** — Diagnoses environment issues. Useful when Claude Code starts behaving strangely — wrong Node version, missing API key, etc.
+
+**`/memory`** — Manages what's in the persistent memory. Useful for adding one-off decisions mid-session that you want to survive a `/clear`.
+
+## 6. Multi-File Edits: Give Claude the Map First
+
+When asking Claude to refactor across multiple files, don't just describe what you want. Show the dependency graph.
+
+```
+I need to rename the `UserProfile` type to `ProfileData` everywhere. 
+Here's where it's used:
+
+- src/types/user.ts (definition)
+- src/components/ProfileCard.tsx (import + usage)
+- src/server/actions/profile.ts (function return types)
+- src/db/schema/users.ts (inferred type usage)
+
+Start with the definition, then update each file in that order. 
+After each file, tell me what you changed.
+```
+
+Doing it this way avoids the failure mode where Claude updates three files and misses two, leaving you with TypeScript errors and a half-migrated codebase.
+
+## 7. Use Git as a Checkpoint System
+
+Claude Code works best when you commit frequently — not because of any technical reason, but because it changes how you interact with the model.
+
+When you have a clean commit to fall back to, you can give Claude more latitude. "Try this refactor, and if it doesn't work we'll revert" becomes a real option instead of a gamble.
+
+```bash
+# Before a significant Claude Code session
+git add -A && git commit -m "checkpoint: before Claude refactor session"
+
+# After each discrete change that works
+git add -A && git commit -m "feat: [description of what Claude did]"
+```
+
+This also keeps your diff reviewable. If Claude makes 10 changes across 6 files in one message, reviewing a single large diff is hard. Incremental commits let you review each change in isolation.
+
+## 8. Feed Claude Errors Directly, With Context
+
+When something breaks, the instinct is to paste just the error message. Do this instead:
+
+```
+This command failed:
+
+$ npm run build
+
+Error output:
+[paste full error output including stack trace]
+
+Here's the relevant source file at the time of the error:
+[paste file content]
+
+I haven't changed anything else recently. What's wrong?
+```
+
+Adding the "I haven't changed anything else recently" framing matters. It stops Claude from speculating about other possible causes and focuses it on what you've actually provided.
+
+## 9. The "Diff Only" Pattern for Code Review Sessions
+
+When you want Claude to review code without rewriting it, be explicit that you want observations rather than edits.
+
+```
+Review this code for:
+1. Security issues (especially around user input)
+2. Edge cases that aren't handled  
+3. Performance problems
+
+Do NOT rewrite or refactor. Give me a numbered list of concerns 
+with file and line numbers. I'll tell you which ones to fix.
+```
+
+Without this constraint, Claude will often start rewriting. Sometimes that's fine. But when you want a code review — not a rewrite — this framing keeps it focused.
+
+## 10. Scope Isolation for Long Sessions
+
+For sessions spanning multiple hours or features, create a scope file:
+
+```markdown
+# Session Scope — May 20
+
+## In scope today
+- Billing module: Stripe webhook handling
+- Tests for payment_intent.succeeded and customer.subscription.deleted
+
+## Explicitly out of scope
+- UI changes
+- Auth refactoring (ticket for next sprint)
+- Database migrations (need DBA review)
+```
+
+Paste this at the start of the session. When Claude starts drifting — "while I'm in this file, I noticed the auth check could be simplified..." — you can reference the scope file: "That's out of scope for today. Stick to the billing module."
+
+## 11. TypeScript Type Generation: Claude's Best Trick
+
+Claude Code is genuinely excellent at generating TypeScript types from unstructured data. Feed it a sample API response and ask for the type:
+
+```
+Here's a raw API response from our payments provider. 
+Generate a TypeScript type that covers all the fields. 
+Use `z.infer<typeof schema>` pattern with Zod for runtime validation.
+
+[paste JSON response]
+```
+
+This alone can save an hour per integration. The types are usually accurate, and Claude naturally handles optional fields and union types that you'd otherwise spend time puzzling out from documentation.
+
+## 12. Test Generation That's Actually Useful
+
+Generic "write tests for this function" prompts produce generic tests. Get more useful output by specifying the failure modes you care about:
+
+```
+Write Vitest unit tests for this function: [paste function]
+
+Specifically test:
+1. What happens when the user's subscription is expired
+2. What happens when the Stripe API call times out (mock it)
+3. The happy path with a valid active subscription
+4. Input validation — what if userId is an empty string?
+
+Use vi.mock() for the Stripe SDK. Don't test implementation details, 
+test behavior.
+```
+
+This approach produces tests that actually catch bugs rather than just confirming the function returns something.
+
+## 13. Handling Large Codebases: The "Just This Slice" Pattern
+
+Claude Code can't hold your entire codebase in context. For large projects, explicitly bound what you're working on:
+
+```
+For this task, we're only working in the billing/ directory. 
+Ignore everything outside of it. Here are the relevant files:
+
+[paste only billing/ files]
+
+The question is about how subscription upgrades are handled.
+```
+
+This prevents Claude from making changes that seem locally reasonable but break global invariants, and it keeps the context lean.
+
+## 14. Build a Prompt Library in Your CLAUDE.md
+
+Add a section to your CLAUDE.md for reusable prompt patterns specific to your project:
+
+```markdown
+## Common task patterns
+
+### Adding a new API endpoint
+When I say "add endpoint for X", follow this pattern:
+1. Add tRPC procedure in src/server/routers/[domain].ts
+2. Add input validation with Zod
+3. Add the procedure to the router index
+4. Generate the client-side hook with useQuery/useMutation
+5. Don't create a new router file — fit it in the existing domain router
+
+### Database migrations
+When I say "add column X to table Y":
+1. Update the Drizzle schema file
+2. Generate migration with `npm run db:generate`
+3. Show me the migration SQL for review before running it
+```
+
+Over time this builds a project-specific protocol that Claude follows consistently, cutting the overhead of repeating instructions every session.
+
+## 15. Session Handoff Notes
+
+At the end of a long session, before closing Claude Code, do this:
+
+```
+Summarize what we accomplished today in this format:
+- What we changed (file names and what changed)
+- What we started but didn't finish
+- Any open questions or decisions we deferred
+- Suggested starting point for the next session
+```
+
+Save this output. At the start of your next session, paste it as the first message after the CLAUDE.md loads. This creates continuity across sessions without burning tokens on re-exploration.
+
+---
+
+## Putting It Together
+
+These patterns aren't about squeezing performance out of the model — they're about managing the collaboration systematically. Claude Code is most useful when you treat it as a capable collaborator who needs clear briefings, defined scope, and explicit checkpoints, not a magic box you describe problems to and expect perfect output from.
+
+The developers who get the most out of Claude Code aren't the ones who write the cleverest prompts. They're the ones who've built structured workflows around the tool's actual strengths and failure modes.
+
+Track your session costs and token usage regularly using [our LLM Cost Calculator](/tools/llm-cost-calculator) — it'll help you understand where you're spending context budget and where you can trim.
+
+Start with patterns 1, 2, and 7. Get those into muscle memory before adding the rest. The compounding effect is real.

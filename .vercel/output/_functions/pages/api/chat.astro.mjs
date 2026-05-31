@@ -5,21 +5,7 @@ const CEREBRAS_ENDPOINT = "https://api.cerebras.ai/v1/chat/completions";
 const MODEL = "llama3.1-8b";
 const MAX_TOKENS = 500;
 const TEMPERATURE = 0.7;
-const SYSTEM_PROMPT = `You are the AI receptionist for NextReach Studio. Your job is to answer questions about our AI receptionist service for pet grooming salons and vet clinics.
-
-Key info:
-- We build custom AI receptionists that answer calls and chat 24/7
-- Setup: $299 one-time + $49/month (Starter) or $499 + $49/month (Business)
-- Goes live in 3 days
-- Works on any website (WordPress, Wix, Squarespace, Shopify, custom HTML)
-- Trained on each salon's specific services, breeds, pricing, and hours
-- Never misses a call, answers FAQs, books appointments automatically
-- Pilot salons recovered 12-16 missed calls per week
-
-When asked about booking: direct to https://tally.so/r/1AMoR1
-Email: hello@nextreachstudio.com
-
-Be helpful, concise, and friendly. If you don't know something, say so honestly.`;
+const SYSTEM_PROMPT = `You are a helpful AI assistant. Answer questions clearly and concisely. If you don't know something, say so honestly.`;
 const POST = async ({ request }) => {
   try {
     const body = await request.json();
@@ -51,19 +37,19 @@ const POST = async ({ request }) => {
     const data = await response.json();
     if (!response.ok) {
       console.error("Cerebras API error:", data);
-      return new Response(JSON.stringify({ reply: "Sorry, I'm having trouble thinking right now. Please try again or email hello@nextreachstudio.com." }), {
+      return new Response(JSON.stringify({ reply: "Sorry, I'm having trouble thinking right now. Please try again." }), {
         status: 200,
         headers: { "Content-Type": "application/json" }
       });
     }
     const reply = data.choices?.[0]?.message?.content;
-    return new Response(JSON.stringify({ reply: reply || "I'm not sure how to answer that. Please email hello@nextreachstudio.com." }), {
+    return new Response(JSON.stringify({ reply: reply || "I'm not sure how to answer that." }), {
       status: 200,
       headers: { "Content-Type": "application/json" }
     });
   } catch (error) {
     console.error("Chat API error:", error);
-    return new Response(JSON.stringify({ reply: "I'm having trouble connecting. Please email hello@nextreachstudio.com." }), {
+    return new Response(JSON.stringify({ reply: "I'm having trouble connecting. Please try again." }), {
       status: 200,
       headers: { "Content-Type": "application/json" }
     });

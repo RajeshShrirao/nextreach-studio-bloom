@@ -1,83 +1,55 @@
 ---
-const plans = [
-  {
-    name: "Starter",
-    price: "$299 + $49/mo",
-    features: "AI receptionist, FAQ & services, 1,000 messages/mo, email support",
-    href: "https://tally.so/r/1AMoR1?plan=starter",
-    primary: true,
-  },
-  {
-    name: "Business",
-    price: "$499 + $49/mo",
-    features: "Everything in Starter + breed-aware guidance, booking capture, 3,000 messages/mo, priority support",
-    href: "https://tally.so/r/1AMoR1?plan=business",
-    primary: false,
-  },
-];
+const currentYear = new Date().getFullYear();
 ---
 
-<footer id="pricing" class="relative bg-[#020202] pt-32 pb-16 px-6 sm:px-8 text-center">
-  <div class="absolute top-0 left-0 right-0 gradient-divider" />
-
-  <p class="text-sm text-zinc-500 italic font-normal mb-6 max-w-xl mx-auto leading-relaxed">
-    Every call that goes unanswered is a booking you&rsquo;ll never see on your calendar.
-  </p>
-  <h2 class="font-display font-semibold text-4xl sm:text-5xl lg:text-6xl text-white mb-6 leading-[1.2] max-w-3xl mx-auto">
-    Stop losing clients to voicemail.
-  </h2>
-  <p class="text-zinc-500 text-sm mb-16">
-    No payment until you approve your demo. Cancel anytime.
-  </p>
-
-  <div class="flex flex-col sm:flex-row gap-6 justify-center mb-16 max-w-2xl mx-auto">
-    {plans.map((plan) => (
-      <a
-        href={plan.href}
-        class={`flex-1 p-8 rounded-3xl border transition-all duration-300 cursor-pointer group ${
-          plan.primary
-            ? "bg-amber-400/[0.06] border-amber-400/15 hover:bg-amber-400/[0.1] hover:border-amber-400/25"
-            : "bg-white/[0.015] border-white/[0.06] hover:bg-white/[0.03] hover:border-white/[0.1]"
-        }`}
-      >
-        <p class={`text-xs mb-2 uppercase tracking-[0.08em] font-medium ${plan.primary ? "text-amber-400/70" : "text-zinc-500"}`}>
-          {plan.name}
+<footer class="border-t border-zinc-800/60 mt-24 py-12 px-6 sm:px-8">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 mb-10">
+      <div class="col-span-2 sm:col-span-1">
+        <a href="/" class="flex items-center gap-2 mb-3 group" aria-label="NextReach Studio">
+          <img src="/logo.png" alt="" width="24" height="24" class="opacity-80 group-hover:opacity-100 transition-opacity" />
+          <span class="text-sm font-medium text-zinc-400 group-hover:text-white transition-colors">NextReach Studio</span>
+        </a>
+        <p class="text-xs text-zinc-600 leading-relaxed max-w-[180px]">
+          Tools, guides, and resources for AI builders and indie hackers.
         </p>
-        <p class={`text-3xl font-display font-bold mb-3 ${plan.primary ? "text-amber-300" : "text-white"}`}>
-          {plan.price}
-        </p>
-        <p class="text-sm text-zinc-400 leading-[1.6]">{plan.features}</p>
-        <p class={`text-sm mt-4 ${plan.primary ? "text-amber-400" : "text-zinc-500 group-hover:text-amber-400 transition-colors duration-300"}`}>
-          Get started &rarr;
-        </p>
-      </a>
-    ))}
-  </div>
+      </div>
 
-  <div class="mb-16 text-sm text-zinc-500">
-    <p>Trusted by salons in Denver, Phoenix, Austin, Seattle, Miami &amp; more.</p>
-  </div>
+      <div>
+        <h3 class="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">Content</h3>
+        <ul class="space-y-2">
+          <li><a href="/blog" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">Blog</a></li>
+          <li><a href="/guides" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">Guides</a></li>
+          <li><a href="/resources" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">Resources</a></li>
+        </ul>
+      </div>
 
-  <div class="gradient-divider max-w-6xl mx-auto mb-8" />
+      <div>
+        <h3 class="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">Tools</h3>
+        <ul class="space-y-2">
+          <li><a href="/tools/ai-token-calculator" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">Token Calculator</a></li>
+          <li><a href="/tools/context-window-calculator" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">Context Window</a></li>
+          <li><a href="/tools/llm-cost-calculator" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">Cost Calculator</a></li>
+          <li><a href="/tools/vram-estimator" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">VRAM Estimator</a></li>
+          <li><a href="/tools/prompt-formatter" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">Prompt Formatter</a></li>
+          <li><a href="/tools" class="text-xs text-amber-600 hover:text-amber-400 transition-colors">All tools →</a></li>
+        </ul>
+      </div>
 
-  <p class="text-xs text-zinc-600 mb-8">
-    Built by pet business operators who hated missing calls.
-  </p>
+      <div>
+        <h3 class="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">Site</h3>
+        <ul class="space-y-2">
+          <li><a href="/rss.xml" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">RSS Feed</a></li>
+          <li><a href="/sitemap-index.xml" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">Sitemap</a></li>
+        </ul>
+      </div>
+    </div>
 
-  <div class="flex flex-wrap justify-center items-center gap-4 sm:gap-6 mb-8 text-xs text-zinc-600">
-    <a href="mailto:hello@nextreachstudio.com" class="hover:text-zinc-400 transition-colors duration-300 cursor-pointer">
-      hello@nextreachstudio.com
-    </a>
-    <span class="text-zinc-800">|</span>
-    <a href="/privacy" class="hover:text-zinc-400 transition-colors duration-300">Privacy Policy</a>
-    <span class="text-zinc-800">|</span>
-    <a href="/terms" class="hover:text-zinc-400 transition-colors duration-300">Terms of Service</a>
-    <span class="text-zinc-800">|</span>
-    <a href="/blog" class="hover:text-zinc-400 transition-colors duration-300">Blog</a>
-  </div>
+    <div class="gradient-divider mb-6"></div>
 
-  <div class="flex flex-col md:flex-row justify-center items-center gap-2 sm:gap-0 text-xs text-zinc-600">
-    <p>&copy; 2026 NextReach Studio.</p>
-    <p class="md:ml-4">AI Receptionists for Pet Grooming &amp; Vet Clinics.</p>
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p class="text-xs text-zinc-700">&copy; {currentYear} NextReach Studio. All rights reserved.</p>
+      <p class="text-xs text-zinc-700">Built for AI builders, indie hackers &amp; developers.</p>
+    </div>
   </div>
 </footer>

@@ -1,0 +1,507 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Build Your First MCP Server in 30 Minutes: Claude Tool Integration | NextReach Studio</title><meta name="description" content="A hands-on tutorial for building a custom Model Context Protocol server. Works with Claude Desktop, Claude Code, and any MCP-compatible client."><link rel="canonical" href="https://nextreachstudio.com/blog/mcp-server-build-from-scratch/"><!-- Fonts --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"><link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&display=swap" rel="stylesheet" media="all"><!-- Icons --><link rel="icon" href="/logo.png"><link rel="apple-touch-icon" href="/logo.png"><!-- RSS --><link rel="alternate" type="application/rss+xml" title="NextReach Studio Blog" href="/rss.xml"><!-- Open Graph --><meta property="og:title" content="Build Your First MCP Server in 30 Minutes: Claude Tool Integration | NextReach Studio"><meta property="og:description" content="A hands-on tutorial for building a custom Model Context Protocol server. Works with Claude Desktop, Claude Code, and any MCP-compatible client."><meta property="og:type" content="article"><meta property="og:url" content="https://nextreachstudio.com/blog/mcp-server-build-from-scratch/"><meta property="og:site_name" content="NextReach Studio"><meta property="og:image" content="https://nextreachstudio.com/link-previews.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:locale" content="en_US"><!-- Twitter / X --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Build Your First MCP Server in 30 Minutes: Claude Tool Integration | NextReach Studio"><meta name="twitter:description" content="A hands-on tutorial for building a custom Model Context Protocol server. Works with Claude Desktop, Claude Code, and any MCP-compatible client."><meta name="twitter:image" content="https://nextreachstudio.com/link-previews.png"><!-- Article-specific meta --><meta property="article:published_time" content="2026-05-24T00:00:00.000Z"><meta property="article:author" content="NextReach Studio"><meta property="article:tag" content="mcp"><meta property="article:tag" content="claude"><meta property="article:tag" content="tutorial"><!-- Security Headers --><meta http-equiv="X-Content-Type-Options" content="nosniff"><meta http-equiv="X-Frame-Options" content="DENY"><meta http-equiv="X-XSS-Protection" content="1; mode=block"><meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin"><!-- Structured Data: Organization --><script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"NextReach Studio","url":"https://nextreachstudio.com","logo":"https://nextreachstudio.com/logo.png","description":"A hands-on tutorial for building a custom Model Context Protocol server. Works with Claude Desktop, Claude Code, and any MCP-compatible client."}</script><!-- Structured Data: Article (if article type) --><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Build Your First MCP Server in 30 Minutes: Claude Tool Integration","description":"A hands-on tutorial for building a custom Model Context Protocol server. Works with Claude Desktop, Claude Code, and any MCP-compatible client.","image":"https://nextreachstudio.com/link-previews.png","author":{"@type":"Organization","name":"NextReach Studio"},"publisher":{"@type":"Organization","name":"NextReach Studio","url":"https://nextreachstudio.com"},"datePublished":"2026-05-24T00:00:00.000Z","url":"https://nextreachstudio.com/blog/mcp-server-build-from-scratch/"}</script><link rel="stylesheet" href="/_astro/_slug_.DNrM4yVl.css"></head> <body class="font-body text-zinc-300 antialiased min-h-screen">  <nav class="fixed w-full top-0 z-50 glass-panel border-b border-t-0 border-x-0" aria-label="Main navigation"> <div class="max-w-7xl mx-auto px-6 sm:px-8 h-16 flex items-center justify-between"> <a href="/" class="flex items-center gap-3 group -ml-2" aria-label="NextReach Studio — Home"> <img src="/logo.png" alt="NextReach Studio" width="32" height="32" class="transition-transform duration-300 group-hover:scale-110"> <span class="text-white text-sm tracking-[0.08em] font-medium hidden sm:inline">NextReach Studio</span> </a> <div class="flex items-center gap-1" role="menubar"> <a href="/blog" role="menuitem" class="px-3 py-1.5 rounded-lg text-sm transition-colors duration-200 text-white bg-white/5"> Blog </a><a href="/guides" role="menuitem" class="px-3 py-1.5 rounded-lg text-sm transition-colors duration-200 text-zinc-500 hover:text-zinc-200 hover:bg-white/5"> Guides </a><a href="/tools" role="menuitem" class="px-3 py-1.5 rounded-lg text-sm transition-colors duration-200 text-zinc-500 hover:text-zinc-200 hover:bg-white/5"> Tools </a><a href="/resources" role="menuitem" class="px-3 py-1.5 rounded-lg text-sm transition-colors duration-200 text-zinc-500 hover:text-zinc-200 hover:bg-white/5"> Resources </a> </div> </div> </nav> <main class="pt-28 pb-20"> <article class="px-6 sm:px-8 max-w-3xl mx-auto"> <header class="mb-12"> <div class="flex flex-wrap items-center gap-3 mb-6"> <a href="/blog" class="text-xs text-zinc-600 hover:text-zinc-400 transition-colors">
+← All articles
+</a> </div> <h1 class="font-display font-semibold text-3xl sm:text-4xl lg:text-5xl text-white tracking-[-0.01em] leading-[1.2] mb-4"> Build Your First MCP Server in 30 Minutes: Claude Tool Integration </h1> <p class="text-lg text-zinc-400 leading-relaxed mb-6">A hands-on tutorial for building a custom Model Context Protocol server. Works with Claude Desktop, Claude Code, and any MCP-compatible client.</p> <div class="flex flex-wrap items-center gap-3 text-xs text-zinc-600"> <time datetime="2026-05-24T00:00:00.000Z"> May 24, 2026 </time>  <span>·</span> <span>NextReach Studio</span>  <span>·</span> <div class="flex gap-1.5 flex-wrap"> <span class="rounded-full bg-zinc-800 px-2 py-0.5 text-zinc-500">mcp</span><span class="rounded-full bg-zinc-800 px-2 py-0.5 text-zinc-500">claude</span><span class="rounded-full bg-zinc-800 px-2 py-0.5 text-zinc-500">tutorial</span> </div>  </div> </header> <div class="glass-panel rounded-2xl p-8 sm:p-10 mb-12"> <div class="prose prose-invert max-w-none
+          prose-headings:text-white prose-headings:font-display prose-headings:font-semibold
+          prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
+          prose-h3:text-lg prose-h3:mt-6 prose-h3:mb-3
+          prose-p:text-zinc-400 prose-p:leading-relaxed
+          prose-a:text-amber-400 prose-a:no-underline hover:prose-a:text-amber-300
+          prose-strong:text-white
+          prose-code:text-amber-400 prose-code:bg-zinc-800 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
+          prose-pre:bg-zinc-900 prose-pre:border prose-pre:border-zinc-800 prose-pre:rounded-xl
+          prose-blockquote:border-amber-400 prose-blockquote:text-zinc-400
+          prose-ul:text-zinc-400 prose-ol:text-zinc-400
+          prose-li:marker:text-zinc-600
+          prose-table:text-sm prose-th:text-zinc-300 prose-td:text-zinc-400 prose-th:bg-zinc-900 prose-tr:border-zinc-800
+        "> <p>The Model Context Protocol (MCP) lets you give Claude access to custom tools — databases, internal APIs, file systems, anything with a network interface. It’s not magic: it’s a JSON-RPC spec that describes how a client (Claude Desktop, Claude Code) discovers and calls tools on a server you control. This tutorial builds a real MCP server from scratch, explains what’s actually happening at each step, and gets you to a working tool integration in under 30 minutes.</p>
+<h2 id="what-mcp-actually-is">What MCP Actually Is</h2>
+<p>Before writing code, clear up the abstraction. An MCP server is a process that:</p>
+<ol>
+<li>Announces what tools it provides (name, description, input schema)</li>
+<li>Listens for tool call requests over stdio or HTTP</li>
+<li>Executes the tool and returns a result</li>
+</ol>
+<p>That’s the entire protocol surface you need to understand. The client (Claude) handles everything else — deciding when to call a tool, how to format the call, what to do with the result.</p>
+<p>The spec uses JSON-RPC 2.0 as the message format. You don’t need to implement JSON-RPC from scratch; the official <code>@modelcontextprotocol/sdk</code> handles that.</p>
+<h2 id="what-were-building">What We’re Building</h2>
+<p>A simple MCP server with three tools:</p>
+<ol>
+<li><strong><code>read_file</code></strong> — reads a file from a specified directory</li>
+<li><strong><code>list_files</code></strong> — lists files in a directory</li>
+<li><strong><code>run_command</code></strong> — runs a shell command from a whitelist</li>
+</ol>
+<p>This is a useful developer utility that gives Claude visibility into your local filesystem and lets it run specific commands. We’ll add safety constraints throughout.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">node</span><span style="color:#79B8FF"> --version</span><span style="color:#6A737D">  # Need Node 18+</span></span>
+<span class="line"><span style="color:#B392F0">npm</span><span style="color:#79B8FF"> --version</span><span style="color:#6A737D">   # Any recent version</span></span></code></pre>
+<p>Create the project:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">mkdir</span><span style="color:#9ECBFF"> my-mcp-server</span></span>
+<span class="line"><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> my-mcp-server</span></span>
+<span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> init</span><span style="color:#79B8FF"> -y</span></span>
+<span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> @modelcontextprotocol/sdk</span><span style="color:#9ECBFF"> zod</span></span>
+<span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> install</span><span style="color:#79B8FF"> -D</span><span style="color:#9ECBFF"> typescript</span><span style="color:#9ECBFF"> @types/node</span><span style="color:#9ECBFF"> tsx</span></span>
+<span class="line"><span style="color:#B392F0">npx</span><span style="color:#9ECBFF"> tsc</span><span style="color:#79B8FF"> --init</span></span></code></pre>
+<p>Update <code>tsconfig.json</code> for Node ESM:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  &quot;compilerOptions&quot;</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;target&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;ES2022&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;module&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;Node16&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;moduleResolution&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;Node16&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;outDir&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;./dist&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;rootDir&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;./src&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;strict&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;esModuleInterop&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;skipLibCheck&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#79B8FF">  &quot;include&quot;</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">&quot;src/**/*&quot;</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>Update <code>package.json</code>:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  &quot;name&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;my-mcp-server&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  &quot;version&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;1.0.0&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  &quot;type&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;module&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  &quot;main&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;dist/index.js&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  &quot;scripts&quot;</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;build&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;tsc&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;dev&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;tsx src/index.ts&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;start&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;node dist/index.js&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h2 id="building-the-server">Building the Server</h2>
+<p>Create <code>src/index.ts</code>:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="typescript"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { Server } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &quot;@modelcontextprotocol/sdk/server/index.js&quot;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { StdioServerTransport } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &quot;@modelcontextprotocol/sdk/server/stdio.js&quot;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  CallToolRequestSchema,</span></span>
+<span class="line"><span style="color:#E1E4E8">  ListToolsRequestSchema,</span></span>
+<span class="line"><span style="color:#E1E4E8">} </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &quot;@modelcontextprotocol/sdk/types.js&quot;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { z } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &quot;zod&quot;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { readFileSync, readdirSync, statSync } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &quot;fs&quot;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { execSync } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &quot;child_process&quot;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { join, resolve, relative } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &quot;path&quot;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Define the working directory — tools are sandboxed to this</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> WORKSPACE_DIR</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> process.env.</span><span style="color:#79B8FF">WORKSPACE_DIR</span><span style="color:#F97583"> ??</span><span style="color:#E1E4E8"> process.</span><span style="color:#B392F0">cwd</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Whitelist of allowed shell commands</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> ALLOWED_COMMANDS</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> [</span></span>
+<span class="line"><span style="color:#9ECBFF">  &quot;git status&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">  &quot;git log --oneline -20&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">  &quot;git diff&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">  &quot;npm run build&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">  &quot;npm run test&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">  &quot;npm run lint&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">  &quot;npx tsc --noEmit&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Input schemas using Zod</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> ReadFileSchema</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> z.</span><span style="color:#B392F0">object</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  path: z.</span><span style="color:#B392F0">string</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;Path to the file, relative to workspace&quot;</span><span style="color:#E1E4E8">),</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> ListFilesSchema</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> z.</span><span style="color:#B392F0">object</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  path: z</span></span>
+<span class="line"><span style="color:#E1E4E8">    .</span><span style="color:#B392F0">string</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">    .</span><span style="color:#B392F0">optional</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">    .</span><span style="color:#B392F0">default</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;.&quot;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">    .</span><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;Directory to list, relative to workspace&quot;</span><span style="color:#E1E4E8">),</span></span>
+<span class="line"><span style="color:#E1E4E8">  recursive: z</span></span>
+<span class="line"><span style="color:#E1E4E8">    .</span><span style="color:#B392F0">boolean</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">    .</span><span style="color:#B392F0">optional</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">    .</span><span style="color:#B392F0">default</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">    .</span><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;Whether to list recursively&quot;</span><span style="color:#E1E4E8">),</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> RunCommandSchema</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> z.</span><span style="color:#B392F0">object</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  command: z</span></span>
+<span class="line"><span style="color:#E1E4E8">    .</span><span style="color:#B392F0">string</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">    .</span><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;Command to run (must be in the allowed commands list)&quot;</span><span style="color:#E1E4E8">),</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Create the MCP server</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> server</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Server</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#E1E4E8">  {</span></span>
+<span class="line"><span style="color:#E1E4E8">    name: </span><span style="color:#9ECBFF">&quot;dev-tools-server&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    version: </span><span style="color:#9ECBFF">&quot;1.0.0&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">  {</span></span>
+<span class="line"><span style="color:#E1E4E8">    capabilities: {</span></span>
+<span class="line"><span style="color:#E1E4E8">      tools: {},</span></span>
+<span class="line"><span style="color:#E1E4E8">    },</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Handle tool list requests</span></span>
+<span class="line"><span style="color:#E1E4E8">server.</span><span style="color:#B392F0">setRequestHandler</span><span style="color:#E1E4E8">(ListToolsRequestSchema, </span><span style="color:#F97583">async</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    tools: [</span></span>
+<span class="line"><span style="color:#E1E4E8">      {</span></span>
+<span class="line"><span style="color:#E1E4E8">        name: </span><span style="color:#9ECBFF">&quot;read_file&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        description:</span></span>
+<span class="line"><span style="color:#9ECBFF">          &quot;Read the contents of a file in the workspace. Use this to inspect source code, configs, or any text file.&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        inputSchema: {</span></span>
+<span class="line"><span style="color:#E1E4E8">          type: </span><span style="color:#9ECBFF">&quot;object&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">          properties: {</span></span>
+<span class="line"><span style="color:#E1E4E8">            path: {</span></span>
+<span class="line"><span style="color:#E1E4E8">              type: </span><span style="color:#9ECBFF">&quot;string&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">              description: </span><span style="color:#9ECBFF">&quot;Path to the file, relative to workspace root&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">            },</span></span>
+<span class="line"><span style="color:#E1E4E8">          },</span></span>
+<span class="line"><span style="color:#E1E4E8">          required: [</span><span style="color:#9ECBFF">&quot;path&quot;</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#E1E4E8">        },</span></span>
+<span class="line"><span style="color:#E1E4E8">      },</span></span>
+<span class="line"><span style="color:#E1E4E8">      {</span></span>
+<span class="line"><span style="color:#E1E4E8">        name: </span><span style="color:#9ECBFF">&quot;list_files&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        description:</span></span>
+<span class="line"><span style="color:#9ECBFF">          &quot;List files in a directory. Useful for understanding project structure before reading specific files.&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        inputSchema: {</span></span>
+<span class="line"><span style="color:#E1E4E8">          type: </span><span style="color:#9ECBFF">&quot;object&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">          properties: {</span></span>
+<span class="line"><span style="color:#E1E4E8">            path: {</span></span>
+<span class="line"><span style="color:#E1E4E8">              type: </span><span style="color:#9ECBFF">&quot;string&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">              description:</span></span>
+<span class="line"><span style="color:#9ECBFF">                &quot;Directory path relative to workspace root. Defaults to root.&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">            },</span></span>
+<span class="line"><span style="color:#E1E4E8">            recursive: {</span></span>
+<span class="line"><span style="color:#E1E4E8">              type: </span><span style="color:#9ECBFF">&quot;boolean&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">              description: </span><span style="color:#9ECBFF">&quot;List files recursively. Defaults to false.&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">            },</span></span>
+<span class="line"><span style="color:#E1E4E8">          },</span></span>
+<span class="line"><span style="color:#E1E4E8">        },</span></span>
+<span class="line"><span style="color:#E1E4E8">      },</span></span>
+<span class="line"><span style="color:#E1E4E8">      {</span></span>
+<span class="line"><span style="color:#E1E4E8">        name: </span><span style="color:#9ECBFF">&quot;run_command&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        description: </span><span style="color:#9ECBFF">`Run a whitelisted shell command in the workspace. </span></span>
+<span class="line"><span style="color:#9ECBFF">Allowed commands: ${</span><span style="color:#79B8FF">ALLOWED_COMMANDS</span><span style="color:#9ECBFF">.</span><span style="color:#B392F0">join</span><span style="color:#9ECBFF">(</span><span style="color:#9ECBFF">&quot;, &quot;</span><span style="color:#9ECBFF">)</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        inputSchema: {</span></span>
+<span class="line"><span style="color:#E1E4E8">          type: </span><span style="color:#9ECBFF">&quot;object&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">          properties: {</span></span>
+<span class="line"><span style="color:#E1E4E8">            command: {</span></span>
+<span class="line"><span style="color:#E1E4E8">              type: </span><span style="color:#9ECBFF">&quot;string&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">              description: </span><span style="color:#9ECBFF">&quot;The exact command to run&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">            },</span></span>
+<span class="line"><span style="color:#E1E4E8">          },</span></span>
+<span class="line"><span style="color:#E1E4E8">          required: [</span><span style="color:#9ECBFF">&quot;command&quot;</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#E1E4E8">        },</span></span>
+<span class="line"><span style="color:#E1E4E8">      },</span></span>
+<span class="line"><span style="color:#E1E4E8">    ],</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Safety helper: ensure path stays inside workspace</span></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> safePath</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">inputPath</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">)</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> resolved</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> resolve</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">WORKSPACE_DIR</span><span style="color:#E1E4E8">, inputPath);</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> rel</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> relative</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">WORKSPACE_DIR</span><span style="color:#E1E4E8">, resolved);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (rel.</span><span style="color:#B392F0">startsWith</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;..&quot;</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">||</span><span style="color:#E1E4E8"> resolved </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> WORKSPACE_DIR</span><span style="color:#F97583"> +</span><span style="color:#9ECBFF"> &quot;..&quot;</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    throw</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Error</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`Path traversal detected: ${</span><span style="color:#E1E4E8">inputPath</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> resolved;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Handle tool call requests</span></span>
+<span class="line"><span style="color:#E1E4E8">server.</span><span style="color:#B392F0">setRequestHandler</span><span style="color:#E1E4E8">(CallToolRequestSchema, </span><span style="color:#F97583">async</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">request</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">name</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">arguments</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">args</span><span style="color:#E1E4E8"> } </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> request.params;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  try</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    switch</span><span style="color:#E1E4E8"> (name) {</span></span>
+<span class="line"><span style="color:#F97583">      case</span><span style="color:#9ECBFF"> &quot;read_file&quot;</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#F97583">        const</span><span style="color:#E1E4E8"> { </span><span style="color:#FFAB70">path</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">filePath</span><span style="color:#E1E4E8"> } </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> ReadFileSchema.</span><span style="color:#B392F0">parse</span><span style="color:#E1E4E8">(args);</span></span>
+<span class="line"><span style="color:#F97583">        const</span><span style="color:#79B8FF"> absolutePath</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> safePath</span><span style="color:#E1E4E8">(filePath);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">        const</span><span style="color:#79B8FF"> stat</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> statSync</span><span style="color:#E1E4E8">(absolutePath);</span></span>
+<span class="line"><span style="color:#F97583">        if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!</span><span style="color:#E1E4E8">stat.</span><span style="color:#B392F0">isFile</span><span style="color:#E1E4E8">()) {</span></span>
+<span class="line"><span style="color:#F97583">          return</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">            content: [</span></span>
+<span class="line"><span style="color:#E1E4E8">              { type: </span><span style="color:#9ECBFF">&quot;text&quot;</span><span style="color:#E1E4E8">, text: </span><span style="color:#9ECBFF">`Error: ${</span><span style="color:#E1E4E8">filePath</span><span style="color:#9ECBFF">} is not a file`</span><span style="color:#E1E4E8"> },</span></span>
+<span class="line"><span style="color:#E1E4E8">            ],</span></span>
+<span class="line"><span style="color:#E1E4E8">            isError: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">          };</span></span>
+<span class="line"><span style="color:#E1E4E8">        }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">        // Limit file size to 100KB to avoid overwhelming context</span></span>
+<span class="line"><span style="color:#F97583">        if</span><span style="color:#E1E4E8"> (stat.size </span><span style="color:#F97583">&gt;</span><span style="color:#79B8FF"> 100</span><span style="color:#F97583"> *</span><span style="color:#79B8FF"> 1024</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">          return</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">            content: [</span></span>
+<span class="line"><span style="color:#E1E4E8">              {</span></span>
+<span class="line"><span style="color:#E1E4E8">                type: </span><span style="color:#9ECBFF">&quot;text&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">                text: </span><span style="color:#9ECBFF">`Error: File too large (${</span><span style="color:#E1E4E8">Math</span><span style="color:#9ECBFF">.</span><span style="color:#B392F0">round</span><span style="color:#9ECBFF">(</span><span style="color:#E1E4E8">stat</span><span style="color:#9ECBFF">.</span><span style="color:#E1E4E8">size</span><span style="color:#F97583"> /</span><span style="color:#79B8FF"> 1024</span><span style="color:#9ECBFF">)</span><span style="color:#9ECBFF">}KB). Maximum is 100KB.`</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">              },</span></span>
+<span class="line"><span style="color:#E1E4E8">            ],</span></span>
+<span class="line"><span style="color:#E1E4E8">            isError: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">          };</span></span>
+<span class="line"><span style="color:#E1E4E8">        }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">        const</span><span style="color:#79B8FF"> content</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> readFileSync</span><span style="color:#E1E4E8">(absolutePath, </span><span style="color:#9ECBFF">&quot;utf-8&quot;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">          content: [</span></span>
+<span class="line"><span style="color:#E1E4E8">            {</span></span>
+<span class="line"><span style="color:#E1E4E8">              type: </span><span style="color:#9ECBFF">&quot;text&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">              text: </span><span style="color:#9ECBFF">`File: ${</span><span style="color:#E1E4E8">filePath</span><span style="color:#9ECBFF">}</span><span style="color:#79B8FF">\n\n</span><span style="color:#9ECBFF">${</span><span style="color:#E1E4E8">content</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">            },</span></span>
+<span class="line"><span style="color:#E1E4E8">          ],</span></span>
+<span class="line"><span style="color:#E1E4E8">        };</span></span>
+<span class="line"><span style="color:#E1E4E8">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">      case</span><span style="color:#9ECBFF"> &quot;list_files&quot;</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#F97583">        const</span><span style="color:#E1E4E8"> { </span><span style="color:#FFAB70">path</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">dirPath</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">recursive</span><span style="color:#E1E4E8"> } </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> ListFilesSchema.</span><span style="color:#B392F0">parse</span><span style="color:#E1E4E8">(args);</span></span>
+<span class="line"><span style="color:#F97583">        const</span><span style="color:#79B8FF"> absolutePath</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> safePath</span><span style="color:#E1E4E8">(dirPath);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">        const</span><span style="color:#79B8FF"> stat</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> statSync</span><span style="color:#E1E4E8">(absolutePath);</span></span>
+<span class="line"><span style="color:#F97583">        if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!</span><span style="color:#E1E4E8">stat.</span><span style="color:#B392F0">isDirectory</span><span style="color:#E1E4E8">()) {</span></span>
+<span class="line"><span style="color:#F97583">          return</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">            content: [</span></span>
+<span class="line"><span style="color:#E1E4E8">              { type: </span><span style="color:#9ECBFF">&quot;text&quot;</span><span style="color:#E1E4E8">, text: </span><span style="color:#9ECBFF">`Error: ${</span><span style="color:#E1E4E8">dirPath</span><span style="color:#9ECBFF">} is not a directory`</span><span style="color:#E1E4E8"> },</span></span>
+<span class="line"><span style="color:#E1E4E8">            ],</span></span>
+<span class="line"><span style="color:#E1E4E8">            isError: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">          };</span></span>
+<span class="line"><span style="color:#E1E4E8">        }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">        function</span><span style="color:#B392F0"> listDir</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">dir</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">depth</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">)</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">[] {</span></span>
+<span class="line"><span style="color:#F97583">          const</span><span style="color:#79B8FF"> entries</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> readdirSync</span><span style="color:#E1E4E8">(dir, { withFileTypes: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8"> });</span></span>
+<span class="line"><span style="color:#F97583">          const</span><span style="color:#79B8FF"> results</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">[] </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> [];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">          for</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> entry</span><span style="color:#F97583"> of</span><span style="color:#E1E4E8"> entries) {</span></span>
+<span class="line"><span style="color:#6A737D">            // Skip common noise directories</span></span>
+<span class="line"><span style="color:#F97583">            if</span><span style="color:#E1E4E8"> ([</span><span style="color:#9ECBFF">&quot;node_modules&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&quot;.git&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&quot;.next&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&quot;dist&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&quot;.cache&quot;</span><span style="color:#E1E4E8">].</span><span style="color:#B392F0">includes</span><span style="color:#E1E4E8">(entry.name)) {</span></span>
+<span class="line"><span style="color:#F97583">              continue</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">            }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">            const</span><span style="color:#79B8FF"> entryPath</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> join</span><span style="color:#E1E4E8">(dir, entry.name);</span></span>
+<span class="line"><span style="color:#F97583">            const</span><span style="color:#79B8FF"> relPath</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> relative</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">WORKSPACE_DIR</span><span style="color:#E1E4E8">, entryPath);</span></span>
+<span class="line"><span style="color:#F97583">            const</span><span style="color:#79B8FF"> prefix</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> &quot;  &quot;</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">repeat</span><span style="color:#E1E4E8">(depth);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">            if</span><span style="color:#E1E4E8"> (entry.</span><span style="color:#B392F0">isDirectory</span><span style="color:#E1E4E8">()) {</span></span>
+<span class="line"><span style="color:#E1E4E8">              results.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`${</span><span style="color:#E1E4E8">prefix</span><span style="color:#9ECBFF">}${</span><span style="color:#E1E4E8">entry</span><span style="color:#9ECBFF">.</span><span style="color:#E1E4E8">name</span><span style="color:#9ECBFF">}/`</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">              if</span><span style="color:#E1E4E8"> (recursive </span><span style="color:#F97583">&amp;&amp;</span><span style="color:#E1E4E8"> depth </span><span style="color:#F97583">&lt;</span><span style="color:#79B8FF"> 3</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#E1E4E8">                results.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">...</span><span style="color:#B392F0">listDir</span><span style="color:#E1E4E8">(entryPath, depth </span><span style="color:#F97583">+</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#E1E4E8">              }</span></span>
+<span class="line"><span style="color:#E1E4E8">            } </span><span style="color:#F97583">else</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">              const</span><span style="color:#79B8FF"> fileStat</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> statSync</span><span style="color:#E1E4E8">(entryPath);</span></span>
+<span class="line"><span style="color:#F97583">              const</span><span style="color:#79B8FF"> size</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> fileStat.size </span><span style="color:#F97583">&gt;</span><span style="color:#79B8FF"> 1024</span></span>
+<span class="line"><span style="color:#F97583">                ?</span><span style="color:#9ECBFF"> `${</span><span style="color:#E1E4E8">Math</span><span style="color:#9ECBFF">.</span><span style="color:#B392F0">round</span><span style="color:#9ECBFF">(</span><span style="color:#E1E4E8">fileStat</span><span style="color:#9ECBFF">.</span><span style="color:#E1E4E8">size</span><span style="color:#F97583"> /</span><span style="color:#79B8FF"> 1024</span><span style="color:#9ECBFF">)</span><span style="color:#9ECBFF">}KB`</span></span>
+<span class="line"><span style="color:#F97583">                :</span><span style="color:#9ECBFF"> `${</span><span style="color:#E1E4E8">fileStat</span><span style="color:#9ECBFF">.</span><span style="color:#E1E4E8">size</span><span style="color:#9ECBFF">}B`</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">              results.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`${</span><span style="color:#E1E4E8">prefix</span><span style="color:#9ECBFF">}${</span><span style="color:#E1E4E8">entry</span><span style="color:#9ECBFF">.</span><span style="color:#E1E4E8">name</span><span style="color:#9ECBFF">} (${</span><span style="color:#E1E4E8">size</span><span style="color:#9ECBFF">})`</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">            }</span></span>
+<span class="line"><span style="color:#E1E4E8">          }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">          return</span><span style="color:#E1E4E8"> results;</span></span>
+<span class="line"><span style="color:#E1E4E8">        }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">        const</span><span style="color:#79B8FF"> files</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> listDir</span><span style="color:#E1E4E8">(absolutePath);</span></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">          content: [</span></span>
+<span class="line"><span style="color:#E1E4E8">            {</span></span>
+<span class="line"><span style="color:#E1E4E8">              type: </span><span style="color:#9ECBFF">&quot;text&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">              text: </span><span style="color:#9ECBFF">`Directory: ${</span><span style="color:#E1E4E8">dirPath</span><span style="color:#9ECBFF">}</span><span style="color:#79B8FF">\n\n</span><span style="color:#9ECBFF">${</span><span style="color:#E1E4E8">files</span><span style="color:#9ECBFF">.</span><span style="color:#B392F0">join</span><span style="color:#9ECBFF">(</span><span style="color:#9ECBFF">&quot;</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">&quot;</span><span style="color:#9ECBFF">)</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">            },</span></span>
+<span class="line"><span style="color:#E1E4E8">          ],</span></span>
+<span class="line"><span style="color:#E1E4E8">        };</span></span>
+<span class="line"><span style="color:#E1E4E8">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">      case</span><span style="color:#9ECBFF"> &quot;run_command&quot;</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#F97583">        const</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">command</span><span style="color:#E1E4E8"> } </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> RunCommandSchema.</span><span style="color:#B392F0">parse</span><span style="color:#E1E4E8">(args);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">        // Strict whitelist check</span></span>
+<span class="line"><span style="color:#F97583">        const</span><span style="color:#79B8FF"> isAllowed</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> ALLOWED_COMMANDS</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">some</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#E1E4E8">          (</span><span style="color:#FFAB70">allowed</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> command </span><span style="color:#F97583">===</span><span style="color:#E1E4E8"> allowed </span><span style="color:#F97583">||</span><span style="color:#E1E4E8"> command.</span><span style="color:#B392F0">startsWith</span><span style="color:#E1E4E8">(allowed </span><span style="color:#F97583">+</span><span style="color:#9ECBFF"> &quot; &quot;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">        );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">        if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!</span><span style="color:#E1E4E8">isAllowed) {</span></span>
+<span class="line"><span style="color:#F97583">          return</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">            content: [</span></span>
+<span class="line"><span style="color:#E1E4E8">              {</span></span>
+<span class="line"><span style="color:#E1E4E8">                type: </span><span style="color:#9ECBFF">&quot;text&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">                text: </span><span style="color:#9ECBFF">`Command not allowed: &quot;${</span><span style="color:#E1E4E8">command</span><span style="color:#9ECBFF">}&quot;</span><span style="color:#79B8FF">\n\n</span><span style="color:#9ECBFF">Allowed commands:</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">${</span><span style="color:#79B8FF">ALLOWED_COMMANDS</span><span style="color:#9ECBFF">.</span><span style="color:#B392F0">map</span><span style="color:#9ECBFF">((</span><span style="color:#79B8FF">c</span><span style="color:#9ECBFF">) </span><span style="color:#F97583">=&gt;</span><span style="color:#9ECBFF"> `  - ${</span><span style="color:#E1E4E8">c</span><span style="color:#9ECBFF">}`</span><span style="color:#9ECBFF">).</span><span style="color:#B392F0">join</span><span style="color:#9ECBFF">(</span><span style="color:#9ECBFF">&quot;</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">&quot;</span><span style="color:#9ECBFF">)</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">              },</span></span>
+<span class="line"><span style="color:#E1E4E8">            ],</span></span>
+<span class="line"><span style="color:#E1E4E8">            isError: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">          };</span></span>
+<span class="line"><span style="color:#E1E4E8">        }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">        try</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">          const</span><span style="color:#79B8FF"> output</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> execSync</span><span style="color:#E1E4E8">(command, {</span></span>
+<span class="line"><span style="color:#E1E4E8">            cwd: </span><span style="color:#79B8FF">WORKSPACE_DIR</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">            timeout: </span><span style="color:#79B8FF">30000</span><span style="color:#E1E4E8">, </span><span style="color:#6A737D">// 30 second timeout</span></span>
+<span class="line"><span style="color:#E1E4E8">            encoding: </span><span style="color:#9ECBFF">&quot;utf-8&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">            maxBuffer: </span><span style="color:#79B8FF">1024</span><span style="color:#F97583"> *</span><span style="color:#79B8FF"> 1024</span><span style="color:#E1E4E8">, </span><span style="color:#6A737D">// 1MB output limit</span></span>
+<span class="line"><span style="color:#E1E4E8">          });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">          return</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">            content: [</span></span>
+<span class="line"><span style="color:#E1E4E8">              {</span></span>
+<span class="line"><span style="color:#E1E4E8">                type: </span><span style="color:#9ECBFF">&quot;text&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">                text: </span><span style="color:#9ECBFF">`$ ${</span><span style="color:#E1E4E8">command</span><span style="color:#9ECBFF">}</span><span style="color:#79B8FF">\n\n</span><span style="color:#9ECBFF">${</span><span style="color:#E1E4E8">output</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">              },</span></span>
+<span class="line"><span style="color:#E1E4E8">            ],</span></span>
+<span class="line"><span style="color:#E1E4E8">          };</span></span>
+<span class="line"><span style="color:#E1E4E8">        } </span><span style="color:#F97583">catch</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">execError</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> unknown</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">          const</span><span style="color:#79B8FF"> error</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> execError </span><span style="color:#F97583">as</span><span style="color:#E1E4E8"> { </span><span style="color:#FFAB70">stdout</span><span style="color:#F97583">?:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">; </span><span style="color:#FFAB70">stderr</span><span style="color:#F97583">?:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">; </span><span style="color:#FFAB70">message</span><span style="color:#F97583">?:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8"> };</span></span>
+<span class="line"><span style="color:#F97583">          return</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">            content: [</span></span>
+<span class="line"><span style="color:#E1E4E8">              {</span></span>
+<span class="line"><span style="color:#E1E4E8">                type: </span><span style="color:#9ECBFF">&quot;text&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">                text: </span><span style="color:#9ECBFF">`Command failed: ${</span><span style="color:#E1E4E8">command</span><span style="color:#9ECBFF">}</span><span style="color:#79B8FF">\n\n</span><span style="color:#9ECBFF">Stdout:</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">${</span><span style="color:#E1E4E8">error</span><span style="color:#9ECBFF">.</span><span style="color:#E1E4E8">stdout</span><span style="color:#F97583"> ??</span><span style="color:#9ECBFF"> &quot;&quot;}</span><span style="color:#79B8FF">\n\n</span><span style="color:#9ECBFF">Stderr:</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">${</span><span style="color:#E1E4E8">error</span><span style="color:#9ECBFF">.</span><span style="color:#E1E4E8">stderr</span><span style="color:#F97583"> ??</span><span style="color:#9ECBFF"> &quot;&quot;}</span><span style="color:#79B8FF">\n\n</span><span style="color:#9ECBFF">Error: ${</span><span style="color:#E1E4E8">error</span><span style="color:#9ECBFF">.</span><span style="color:#E1E4E8">message</span><span style="color:#F97583"> ??</span><span style="color:#9ECBFF"> &quot;Unknown error&quot;}`</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">              },</span></span>
+<span class="line"><span style="color:#E1E4E8">            ],</span></span>
+<span class="line"><span style="color:#E1E4E8">            isError: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">          };</span></span>
+<span class="line"><span style="color:#E1E4E8">        }</span></span>
+<span class="line"><span style="color:#E1E4E8">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">      default</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">          content: [{ type: </span><span style="color:#9ECBFF">&quot;text&quot;</span><span style="color:#E1E4E8">, text: </span><span style="color:#9ECBFF">`Unknown tool: ${</span><span style="color:#E1E4E8">name</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8"> }],</span></span>
+<span class="line"><span style="color:#E1E4E8">          isError: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        };</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  } </span><span style="color:#F97583">catch</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">error</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> unknown</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> message</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> error </span><span style="color:#F97583">instanceof</span><span style="color:#B392F0"> Error</span><span style="color:#F97583"> ?</span><span style="color:#E1E4E8"> error.message </span><span style="color:#F97583">:</span><span style="color:#B392F0"> String</span><span style="color:#E1E4E8">(error);</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">      content: [{ type: </span><span style="color:#9ECBFF">&quot;text&quot;</span><span style="color:#E1E4E8">, text: </span><span style="color:#9ECBFF">`Error: ${</span><span style="color:#E1E4E8">message</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8"> }],</span></span>
+<span class="line"><span style="color:#E1E4E8">      isError: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    };</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Start the server</span></span>
+<span class="line"><span style="color:#F97583">async</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> main</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> transport</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> StdioServerTransport</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">  await</span><span style="color:#E1E4E8"> server.</span><span style="color:#B392F0">connect</span><span style="color:#E1E4E8">(transport);</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">error</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;MCP dev-tools server running on stdio&quot;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">main</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">catch</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">error</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">error</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;Fatal error:&quot;</span><span style="color:#E1E4E8">, error);</span></span>
+<span class="line"><span style="color:#E1E4E8">  process.</span><span style="color:#B392F0">exit</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p>Build it:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> build</span></span></code></pre>
+<h2 id="connecting-to-claude-desktop">Connecting to Claude Desktop</h2>
+<p>Claude Desktop reads MCP server configurations from a JSON file.</p>
+<p><strong>macOS path</strong>: <code>~/Library/Application Support/Claude/claude_desktop_config.json</code></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  &quot;mcpServers&quot;</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;dev-tools&quot;</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">      &quot;command&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;node&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">      &quot;args&quot;</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">&quot;/absolute/path/to/my-mcp-server/dist/index.js&quot;</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#79B8FF">      &quot;env&quot;</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">        &quot;WORKSPACE_DIR&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;/absolute/path/to/your/project&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">      }</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>Use absolute paths. Claude Desktop doesn’t inherit your shell environment, so relative paths won’t work.</p>
+<p>Restart Claude Desktop after saving the config. You should see a hammer icon in the interface indicating tools are available.</p>
+<h2 id="connecting-to-claude-code">Connecting to Claude Code</h2>
+<p>Claude Code uses the same MCP protocol but a different config location. In your project’s <code>.claude/</code> directory:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="json"><code><span class="line"><span style="color:#6A737D">// .claude/mcp_settings.json</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  &quot;mcpServers&quot;</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;dev-tools&quot;</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">      &quot;command&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;node&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">      &quot;args&quot;</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">&quot;../../my-mcp-server/dist/index.js&quot;</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#79B8FF">      &quot;env&quot;</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">        &quot;WORKSPACE_DIR&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;.&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">      }</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>Or use the CLI:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">claude</span><span style="color:#9ECBFF"> mcp</span><span style="color:#9ECBFF"> add</span><span style="color:#9ECBFF"> dev-tools</span><span style="color:#9ECBFF"> node</span><span style="color:#9ECBFF"> /path/to/dist/index.js</span></span></code></pre>
+<h2 id="testing-the-tools">Testing the Tools</h2>
+<p>Once connected, you can ask Claude to use the tools directly:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>&quot;List the files in the src directory&quot;</span></span>
+<span class="line"><span>&quot;Read the contents of src/index.ts&quot;</span></span>
+<span class="line"><span>&quot;Run npm run lint and tell me what errors there are&quot;</span></span>
+<span class="line"><span>&quot;Run git status and show me what&#39;s changed&quot;</span></span></code></pre>
+<p>Claude will call your MCP tools automatically when the task calls for it.</p>
+<h2 id="adding-more-tools-a-database-query-tool">Adding More Tools: A Database Query Tool</h2>
+<p>Extending the server is straightforward. Here’s a read-only SQLite query tool:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="typescript"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> Database </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &quot;better-sqlite3&quot;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Add to the tools list</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#B392F0">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;query_database&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#B392F0">  description</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;Run a read-only SQL query against the local SQLite database.&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#B392F0">  inputSchema</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#B392F0">    type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;object&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#B392F0">    properties</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#B392F0">      query</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#B392F0">        type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;string&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#B392F0">        description</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;SQL SELECT query to run&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      },</span></span>
+<span class="line"><span style="color:#B392F0">      database</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#B392F0">        type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;string&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#B392F0">        description</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;Path to the SQLite database file&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      },</span></span>
+<span class="line"><span style="color:#E1E4E8">    },</span></span>
+<span class="line"><span style="color:#B392F0">    required</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">&quot;query&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&quot;database&quot;</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Add to the switch statement</span></span>
+<span class="line"><span style="color:#F97583">case</span><span style="color:#9ECBFF"> &quot;query_database&quot;</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#E1E4E8">  const { query, database } = args </span><span style="color:#F97583">as</span><span style="color:#E1E4E8"> { </span><span style="color:#FFAB70">query</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">; </span><span style="color:#FFAB70">database</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8"> };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">  // Only allow SELECT queries</span></span>
+<span class="line"><span style="color:#B392F0">  if</span><span style="color:#E1E4E8"> (!query.trim().</span><span style="color:#B392F0">toUpperCase</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">startsWith</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;SELECT&quot;</span><span style="color:#E1E4E8">)) {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">      content: [{ type: </span><span style="color:#9ECBFF">&quot;text&quot;</span><span style="color:#E1E4E8">, text: </span><span style="color:#9ECBFF">&quot;Only SELECT queries are allowed&quot;</span><span style="color:#E1E4E8"> }],</span></span>
+<span class="line"><span style="color:#E1E4E8">      isError: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    };</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">  const db </span><span style="color:#F97583">=</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Database</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">safePath</span><span style="color:#E1E4E8">(database), { readonly: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8"> });</span></span>
+<span class="line"><span style="color:#E1E4E8">  try {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> rows</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> db.</span><span style="color:#B392F0">prepare</span><span style="color:#E1E4E8">(query).</span><span style="color:#B392F0">all</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">      content: [</span></span>
+<span class="line"><span style="color:#E1E4E8">        {</span></span>
+<span class="line"><span style="color:#E1E4E8">          type: </span><span style="color:#9ECBFF">&quot;text&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">          text: </span><span style="color:#79B8FF">JSON</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">stringify</span><span style="color:#E1E4E8">(rows, </span><span style="color:#79B8FF">null</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">),</span></span>
+<span class="line"><span style="color:#E1E4E8">        },</span></span>
+<span class="line"><span style="color:#E1E4E8">      ],</span></span>
+<span class="line"><span style="color:#E1E4E8">    };</span></span>
+<span class="line"><span style="color:#E1E4E8">  } finally {</span></span>
+<span class="line"><span style="color:#E1E4E8">    db.</span><span style="color:#B392F0">close</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h2 id="common-mistakes">Common Mistakes</h2>
+<p><strong>Mistake: Using <code>console.log</code> instead of <code>console.error</code></strong></p>
+<p>The stdio transport uses stdout for protocol messages. Anything you <code>console.log</code> will corrupt the JSON-RPC stream and break the connection. Always use <code>console.error</code> for debug output.</p>
+<p><strong>Mistake: Not setting timeouts on external calls</strong></p>
+<p>Tool calls have implicit time limits in MCP clients. Long-running operations without timeouts will appear to hang and force a client disconnect.</p>
+<p><strong>Mistake: Returning raw errors to the client</strong></p>
+<p>Catch errors in each tool handler and return structured error messages. Unhandled exceptions crash the server process and disconnect all tools until the client restarts.</p>
+<p><strong>Mistake: Paths without the workspace sandbox</strong></p>
+<p>Always resolve paths relative to a defined workspace root and check for traversal attempts. Claude will call your tools with whatever path it thinks makes sense — don’t assume it’ll stay where you expect.</p>
+<h2 id="debugging">Debugging</h2>
+<p>MCP servers communicate over stdio, which makes debugging awkward. Add a debug log file:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="typescript"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { appendFileSync } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &quot;fs&quot;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> debugLog</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">message</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#B392F0">  appendFileSync</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;/tmp/mcp-debug.log&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">`${</span><span style="color:#F97583">new</span><span style="color:#B392F0"> Date</span><span style="color:#9ECBFF">().</span><span style="color:#B392F0">toISOString</span><span style="color:#9ECBFF">()</span><span style="color:#9ECBFF">} ${</span><span style="color:#E1E4E8">message</span><span style="color:#9ECBFF">}</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">`</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Then in your handlers:</span></span>
+<span class="line"><span style="color:#B392F0">debugLog</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`Tool called: ${</span><span style="color:#E1E4E8">name</span><span style="color:#9ECBFF">} with args: ${</span><span style="color:#79B8FF">JSON</span><span style="color:#9ECBFF">.</span><span style="color:#B392F0">stringify</span><span style="color:#9ECBFF">(</span><span style="color:#E1E4E8">args</span><span style="color:#9ECBFF">)</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<p>Watch the log file while Claude Desktop is running:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">tail</span><span style="color:#79B8FF"> -f</span><span style="color:#9ECBFF"> /tmp/mcp-debug.log</span></span></code></pre>
+<h2 id="where-to-go-from-here">Where to Go From Here</h2>
+<p>The pattern here — schema declaration, input validation, sandboxed execution — generalizes to any tool you can imagine. Common extensions:</p>
+<ul>
+<li><strong>HTTP API calls</strong> — wrap internal REST APIs as MCP tools</li>
+<li><strong>Browser automation</strong> — wrap Playwright for controlled web access</li>
+<li><strong>Document search</strong> — index project docs and expose semantic search</li>
+<li><strong>Ticket management</strong> — read/write to Linear or GitHub Issues</li>
+</ul>
+<p>The MCP spec is deliberately minimal. Anthropic publishes it openly, and there’s growing adoption across other AI clients beyond Claude. Servers you build now will work with any MCP-compatible client as the ecosystem matures.</p>
+<p>Keep your tools narrowly scoped and well-sandboxed. A tool that can do too many things is harder for the model to use correctly and harder for you to audit.</p> </div> </div> <div class="flex flex-col sm:flex-row gap-4 justify-between items-start border-t border-zinc-800 pt-8"> <a href="/blog" class="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 transition-colors text-sm font-medium"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+Back to all articles
+</a> <a href="/tools" class="inline-flex items-center gap-2 text-zinc-500 hover:text-zinc-300 transition-colors text-sm">
+Browse free tools →
+</a> </div> </article> </main> <footer class="border-t border-zinc-800/60 mt-24 py-12 px-6 sm:px-8"> <div class="max-w-7xl mx-auto"> <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 mb-10"> <div class="col-span-2 sm:col-span-1"> <a href="/" class="flex items-center gap-2 mb-3 group" aria-label="NextReach Studio"> <img src="/logo.png" alt="" width="24" height="24" class="opacity-80 group-hover:opacity-100 transition-opacity"> <span class="text-sm font-medium text-zinc-400 group-hover:text-white transition-colors">NextReach Studio</span> </a> <p class="text-xs text-zinc-600 leading-relaxed max-w-[180px]">
+Tools, guides, and resources for AI builders and indie hackers.
+</p> </div> <div> <h3 class="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">Content</h3> <ul class="space-y-2"> <li><a href="/blog" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">Blog</a></li> <li><a href="/guides" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">Guides</a></li> <li><a href="/resources" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">Resources</a></li> </ul> </div> <div> <h3 class="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">Tools</h3> <ul class="space-y-2"> <li><a href="/tools/ai-token-calculator" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">Token Calculator</a></li> <li><a href="/tools/context-window-calculator" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">Context Window</a></li> <li><a href="/tools/llm-cost-calculator" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">Cost Calculator</a></li> <li><a href="/tools/vram-estimator" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">VRAM Estimator</a></li> <li><a href="/tools/prompt-formatter" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">Prompt Formatter</a></li> <li><a href="/tools" class="text-xs text-amber-600 hover:text-amber-400 transition-colors">All tools →</a></li> </ul> </div> <div> <h3 class="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">Site</h3> <ul class="space-y-2"> <li><a href="/rss.xml" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">RSS Feed</a></li> <li><a href="/sitemap-index.xml" class="text-xs text-zinc-600 hover:text-zinc-300 transition-colors">Sitemap</a></li> </ul> </div> </div> <div class="gradient-divider mb-6"></div> <div class="flex flex-col sm:flex-row items-center justify-between gap-3"> <p class="text-xs text-zinc-700">&copy; 2026 NextReach Studio. All rights reserved.</p> <p class="text-xs text-zinc-700">Built for AI builders, indie hackers &amp; developers.</p> </div> </div> </footer>  </body></html>

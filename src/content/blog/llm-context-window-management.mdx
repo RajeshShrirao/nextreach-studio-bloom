@@ -1,0 +1,377 @@
+---
+title: "LLM Context Window Management: When Your AI Forgets Everything"
+description: "Practical strategies for managing context windows in long coding sessions. Covers token budgeting, context distillation, and tool call optimization."
+pubDate: 2026-05-28
+author: "NextReach Studio"
+tags: ["llm", "context-window", "developer-tools"]
+draft: false
+---
+
+Every developer who uses LLMs heavily hits the same wall eventually. The session starts well, the model has the full context, and answers are sharp. An hour later, after a long back-and-forth, the responses get vague. The model starts contradicting decisions made earlier in the conversation. You ask about code it just wrote and it acts like it's never seen it. The context window is full, and the model is silently degrading.
+
+This isn't a model quality problem — it's a resource management problem. Context windows are fixed-size buffers, and filling them with noise is the developer's fault, not the model's. This post covers what's actually happening and how to manage it systematically.
+
+## What the Context Window Actually Is
+
+Language models process text as tokens — roughly 3-4 characters each for English, varying by language and content type. Every model has a maximum context length: the total number of tokens it can process in a single request, including both the input and the output it generates.
+
+Common limits at time of writing:
+
+| Model | Context Window |
+|-------|---------------|
+| GPT-4o | 128K tokens |
+| Claude 3.5 Sonnet | 200K tokens |
+| Claude 3.7 Sonnet | 200K tokens |
+| Gemini 2.5 Pro | 1M tokens |
+| Gemini 2.5 Flash | 1M tokens |
+| Llama 3.1 70B | 128K tokens |
+
+A 200K token context holds roughly 150,000 words — around 500 pages of text. That sounds enormous until you start loading files. A medium-sized TypeScript project with 50 files of 200 lines each is around 500KB of source code, which is roughly 125K tokens before you've said a word.
+
+Use [our Context Window Calculator](/tools/context-window-calculator) to estimate token counts for your actual files before starting a session.
+
+## Why Large Context Doesn't Mean Free Context
+
+Three things degrade as context fills:
+
+**1. Attention dilution**
+
+Transformer attention is not uniform across the full context. Models pay more attention to the beginning and end of the context window, with a well-documented performance dip in the middle — the "lost in the middle" problem from the 2023 Stanford/Berkeley paper. Content buried 60K tokens into a 128K context window may as well be invisible.
+
+**2. Increased latency and cost**
+
+API cost is linear with tokens. A 100K token request costs 10x a 10K token request. Latency scales similarly — time-to-first-token increases with context length. This is why sessions that start fast get slow as they accumulate history. Estimate your costs upfront with [our LLM Cost Calculator](/tools/llm-cost-calculator).
+
+**3. Reasoning degradation in long chains**
+
+When the model needs to reason about code while also tracking a long conversation history, it's doing more work. On long contexts, logical consistency tends to decay — decisions made early in the conversation are implicitly contradicted by later responses.
+
+## Measuring Your Context Budget
+
+Before you can manage context, you need to know how much you're using.
+
+**Quick token estimation in Python:**
+
+```python
+import tiktoken  # Works for OpenAI-family models
+
+def count_tokens(text: str, model: str = "gpt-4o") -> int:
+    enc = tiktoken.encoding_for_model(model)
+    return len(enc.encode(text))
+
+def estimate_file_tokens(filepath: str) -> dict:
+    with open(filepath, 'r') as f:
+        content = f.read()
+    
+    tokens = count_tokens(content)
+    chars = len(content)
+    lines = content.count('\n')
+    
+    return {
+        "file": filepath,
+        "tokens": tokens,
+        "chars": chars,
+        "lines": lines,
+        "tokens_per_line": round(tokens / max(lines, 1), 1),
+    }
+
+# Scan a directory
+import os
+from pathlib import Path
+
+def scan_directory(directory: str, extensions: list[str] = [".ts", ".tsx", ".py"]) -> list[dict]:
+    results = []
+    for root, dirs, files in os.walk(directory):
+        # Skip noise directories
+        dirs[:] = [d for d in dirs if d not in ["node_modules", ".git", ".next", "dist"]]
+        
+        for file in files:
+            if any(file.endswith(ext) for ext in extensions):
+                filepath = os.path.join(root, file)
+                try:
+                    results.append(estimate_file_tokens(filepath))
+                except (UnicodeDecodeError, PermissionError):
+                    pass
+    
+    return sorted(results, key=lambda x: x["tokens"], reverse=True)
+
+# Run it
+results = scan_directory("./src")
+total = sum(r["tokens"] for r in results)
+
+print(f"Total tokens: {total:,}")
+print(f"\nTop 10 largest files:")
+for r in results[:10]:
+    print(f"  {r['tokens']:>6,} tokens — {r['file']}")
+```
+
+Run this before planning a session. If your target files total 80K tokens and you're on a 128K model, you have very little room for conversation history.
+
+## Strategy 1: Selective Context Loading
+
+The most impactful thing you can do is load less. Most developers reflexively add every related file to context "just in case." Don't.
+
+**Bad approach:**
+```
+Load all files in the billing/ directory and fix the webhook handler
+```
+
+**Better approach:**
+```
+The webhook handler is in src/webhooks/stripe.ts. 
+The relevant type definitions are in src/types/billing.ts.
+Here are just those two files: [paste only those files]
+
+Fix the issue where subscription_updated events aren't updating the local DB.
+```
+
+Ask yourself before adding any file: "Would the model's answer change if I removed this file?" If no, don't include it.
+
+**Prioritize by relevance:**
+
+1. The file you're actively editing
+2. Files it imports directly
+3. Type definitions it uses
+4. Tests that cover it
+5. Everything else — leave it out
+
+## Strategy 2: Context Distillation
+
+When you've had a productive conversation that's filling the context window, distill it before clearing:
+
+```
+Summarize what we've established in this session as structured notes:
+
+## Decisions made
+[list decisions and rationale]
+
+## Code changes implemented  
+[file: what changed and why]
+
+## Open questions
+[anything unresolved]
+
+## Next steps
+[where we were headed]
+
+Keep it dense — this summary will be used to seed the next session.
+```
+
+Save this summary. When you start a new session, paste it before your first question. You lose the full conversational history but preserve the decision record, which is usually what matters.
+
+## Strategy 3: Token Budget Allocation
+
+Think of your context window as a budget with specific allocations:
+
+```
+Total budget: 128,000 tokens
+
+System prompt / CLAUDE.md: ~2,000 tokens
+Active source files: ~30,000 tokens  
+Conversation history: ~20,000 tokens
+Model output (reserved): ~4,000 tokens
+Available for new content: ~72,000 tokens
+```
+
+When you know your allocations, you can make deliberate tradeoffs. Need to analyze a large file? Cut conversation history. Working on a small fix? You have room to include broader context.
+
+Track this explicitly for sessions that matter:
+
+```python
+class ContextBudget:
+    def __init__(self, total_tokens: int):
+        self.total = total_tokens
+        self.allocated = {}
+    
+    def allocate(self, category: str, tokens: int):
+        self.allocated[category] = tokens
+        return self
+    
+    def remaining(self) -> int:
+        return self.total - sum(self.allocated.values())
+    
+    def report(self):
+        print(f"Context Budget ({self.total:,} total)")
+        print("-" * 40)
+        for category, tokens in self.allocated.items():
+            pct = (tokens / self.total) * 100
+            print(f"  {category:<25} {tokens:>8,} ({pct:.1f}%)")
+        print("-" * 40)
+        remaining = self.remaining()
+        pct = (remaining / self.total) * 100
+        print(f"  {'Remaining':<25} {remaining:>8,} ({pct:.1f}%)")
+
+budget = ContextBudget(128_000)
+budget.allocate("System prompt", 2_000)
+budget.allocate("schema.ts", 4_500)
+budget.allocate("billing.ts", 8_200)
+budget.allocate("Conversation history", 15_000)
+budget.allocate("Model output (reserved)", 4_000)
+budget.report()
+```
+
+## Strategy 4: Tool Call Optimization for Agentic Workflows
+
+In agentic setups (Claude Code, Cursor, custom agents), every tool call — reading a file, searching code, running a test — consumes tokens. The tool call itself, the result, and the response all go into the context.
+
+Common waste patterns:
+
+**Redundant file reads:** The agent reads the same file three times across different tool calls because it didn't retain the earlier read. Solution: cache the results in the conversation context explicitly.
+
+```python
+# Bad: Agent reads file on every tool call that touches it
+# Good: Read once, reference by name
+
+# In your agent system prompt:
+"""
+When you read a file, state its contents at the top of your response labeled:
+"[LOADED: filename.ts]"
+
+Before reading a file, check if it was already loaded earlier in the conversation.
+If it was, use the loaded version rather than re-reading it.
+"""
+```
+
+**Verbose tool output:** If your tools return raw file content for 500-line files, every file read burns 2,000+ tokens. Truncate or summarize:
+
+```typescript
+// Tool that returns summarized file info, not raw content
+async function getFileOverview(filepath: string): Promise<string> {
+  const content = await fs.readFile(filepath, 'utf-8');
+  const lines = content.split('\n');
+  
+  // Extract: imports, exported symbols, function signatures
+  const exports = lines
+    .filter(line => line.startsWith('export'))
+    .map(line => line.slice(0, 100))
+    .join('\n');
+  
+  const imports = lines
+    .filter(line => line.startsWith('import'))
+    .join('\n');
+  
+  return `File: ${filepath} (${lines.length} lines)
+
+Imports:
+${imports}
+
+Exports:
+${exports}`;
+}
+
+// Only return full content when explicitly needed
+async function getFileContent(filepath: string, startLine?: number, endLine?: number): Promise<string> {
+  const content = await fs.readFile(filepath, 'utf-8');
+  
+  if (startLine !== undefined && endLine !== undefined) {
+    const lines = content.split('\n');
+    return lines.slice(startLine - 1, endLine).join('\n');
+  }
+  
+  return content;
+}
+```
+
+## Strategy 5: Progressive Context Loading
+
+Instead of loading all context upfront, load it progressively as the conversation reveals what's needed:
+
+```
+Step 1: Describe the problem without code
+Step 2: If the model's question reveals what files are relevant, load those
+Step 3: Add more files only if the initial ones are insufficient
+```
+
+This works because the model can often identify what it needs with just a problem description. If you describe a bug and it asks "can you show me the webhook handler?", you've learned exactly what file matters — rather than guessing and loading six files upfront.
+
+## Strategy 6: Context Window Rotation
+
+For long multi-hour sessions, plan explicit rotation points:
+
+```bash
+# Session rotation checklist
+# 1. Run the distillation prompt, save the output
+# 2. Clear the session (/clear in Claude Code)
+# 3. Start new session with distillation summary as first message
+# 4. Continue from the summary's "Next steps" section
+```
+
+A fresh context with a good summary is almost always better than a degraded full context. The distillation takes 2 minutes. The quality improvement on the next task is immediately noticeable.
+
+## Detecting Context Degradation
+
+Signs that you're hitting context quality limits:
+
+- The model contradicts a decision made earlier in the conversation
+- It asks for information you already provided
+- Responses get shorter and more generic
+- It starts suggesting the wrong framework or approach
+- Code suggestions ignore constraints established at session start
+
+When you notice these, don't fight it — rotate. The model isn't getting smarter by having more conversation added on top of a full context.
+
+```python
+# Simple heuristic for conversation length monitoring
+def should_rotate_context(conversation_history: list[dict]) -> bool:
+    """Rough heuristic: rotate when conversation history exceeds 15K tokens."""
+    total_chars = sum(
+        len(msg.get("content", ""))
+        for msg in conversation_history
+    )
+    # Rough estimate: 4 chars per token
+    estimated_tokens = total_chars / 4
+    
+    ROTATION_THRESHOLD = 15_000  # Adjust based on your model's window
+    
+    if estimated_tokens > ROTATION_THRESHOLD:
+        print(f"⚠️  Context growing large (~{estimated_tokens:,.0f} tokens). Consider rotating.")
+        return True
+    return False
+```
+
+## Practical Context Profiles
+
+Different tasks need different context configurations:
+
+**Bug fixing session:**
+```
+- CLAUDE.md / system context: ~2K tokens
+- File with the bug: full content
+- Test file for that module: full content  
+- Error output: full
+- Related type definitions: full
+- Everything else: excluded
+Target: stay under 20K tokens total
+```
+
+**Architecture discussion:**
+```
+- System context: ~2K tokens
+- README or architecture doc: ~5K tokens
+- Key interface definitions: ~3K tokens
+- No implementation files
+Target: stay under 15K tokens total
+```
+
+**Large refactor:**
+```
+- System context: ~2K tokens
+- Files to be refactored: all included
+- Files NOT being refactored: excluded (described in prose)
+- Existing tests: reference by filename only, not content
+Target: variable, calculated per session
+```
+
+## The Bottom Line
+
+Context window management is boring work that pays compound interest. Developers who do it well get consistently sharp responses throughout a session. Developers who don't end up fighting model confusion and re-explaining context they already provided.
+
+The key habits:
+
+1. **Estimate before you load** — use the token calculator before adding files
+2. **Load less than you think you need** — you can always add more
+3. **Distill before you clear** — save session knowledge as structured notes
+4. **Rotate proactively** — don't wait until the model is confused
+5. **Monitor tool call costs** in agentic workflows — they add up faster than expected
+
+None of this is complicated. It's just the habit of treating context as the finite resource it is, rather than an infinite scratchpad.

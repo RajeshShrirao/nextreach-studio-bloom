@@ -1,0 +1,68 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Nav from "@/components/Nav.astro";
+import Footer from "@/components/Footer.astro";
+import VRAMEstimator from "@/components/tools/VRAMEstimator";
+---
+
+<Layout
+  title="VRAM Estimator — GPU Memory Requirements for Local LLMs"
+  description="Estimate how much GPU VRAM you need to run any local LLM. Supports all quantization levels. See which GPUs can run your chosen model."
+>
+  <Nav />
+  <main class="pt-28 pb-20 px-6 sm:px-8 max-w-4xl mx-auto">
+    <header class="mb-10">
+      <p class="text-xs uppercase tracking-[0.12em] text-zinc-600 mb-3">Free Tool</p>
+      <h1 class="font-display font-semibold text-4xl sm:text-5xl text-white tracking-[-0.01em] mb-4">
+        VRAM Estimator
+      </h1>
+      <p class="text-zinc-400 text-lg leading-relaxed max-w-2xl">
+        Know before you download. Estimate GPU memory requirements for running local LLMs at different quantization levels.
+      </p>
+    </header>
+
+    <VRAMEstimator client:load />
+
+    <section class="mt-16 prose prose-invert max-w-none prose-headings:font-display prose-headings:font-semibold prose-headings:text-white prose-a:text-amber-400 prose-a:no-underline hover:prose-a:text-amber-300">
+      <h2>Understanding VRAM requirements</h2>
+      <p>
+        The total VRAM needed to run a local LLM comes from three components:
+      </p>
+      <ul>
+        <li><strong>Model weights:</strong> The bulk of memory usage. Calculated as <code>parameters × bytes_per_weight</code></li>
+        <li><strong>KV cache:</strong> Memory for storing key-value attention pairs for the context window. Scales with context length × batch size</li>
+        <li><strong>Overhead:</strong> CUDA runtime, activations, optimizer states (if training). Typically 10-15% extra</li>
+      </ul>
+
+      <h2>Quantization formats explained</h2>
+      <ul>
+        <li><strong>FP16/BF16:</strong> Full inference precision. Best quality, highest VRAM. Standard for API providers.</li>
+        <li><strong>Q8 (INT8):</strong> 8-bit quantization. Nearly no quality loss, 2x smaller than FP16.</li>
+        <li><strong>Q6_K:</strong> 6-bit with k-means quantization. Excellent quality-to-size ratio.</li>
+        <li><strong>Q5_K_M:</strong> 5-bit with mixed precision. Sweet spot for most use cases.</li>
+        <li><strong>Q4_K_M:</strong> Most popular. 4-bit with mixed precision. Noticeable but acceptable quality trade-off.</li>
+        <li><strong>Q2_K:</strong> Heavily quantized. Use only when VRAM is extremely constrained.</li>
+      </ul>
+
+      <h2>Apple Silicon note</h2>
+      <p>
+        Mac M1/M2/M3 chips use unified memory — the same pool serves both CPU and GPU. This means you can
+        effectively use all your system RAM as "VRAM" when running with Metal/MPS backends via Ollama or llama.cpp.
+        A MacBook Pro with 36GB RAM can run a 30B model at Q4 quantization without issue.
+      </p>
+
+      <h2>Related tools</h2>
+      <ul>
+        <li><a href="/tools/llm-cost-calculator">LLM Cost Calculator</a> — Compare API costs vs running locally</li>
+        <li><a href="/tools/ai-token-calculator">AI Token Calculator</a> — Count tokens for any model</li>
+      </ul>
+
+      <h2>Related reading</h2>
+      <ul>
+        <li><a href="/blog/local-llm-setup-ollama-macos">Running Local LLMs on macOS with Ollama</a></li>
+        <li><a href="/resources/llm-api-providers-directory">LLM API Providers Directory</a></li>
+      </ul>
+    </section>
+  </main>
+  <Footer />
+</Layout>
