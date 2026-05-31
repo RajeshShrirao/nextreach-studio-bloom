@@ -29,10 +29,10 @@ const MODELS = [
 ];
 
 export default function CostCalculator() {
-  const [selectedModels, setSelectedModels] = useState<string[]>(["claude-3-5-sonnet", "gpt-4o", "gemini-2-0-flash"]);
-  const [inputTokens, setInputTokens] = useState(1000);
-  const [outputTokens, setOutputTokens] = useState(500);
-  const [requests, setRequests] = useState(1000);
+  const [selectedModels, setSelectedModels] = useState<string[]>(["claude-3-5-sonnet", "gpt-4o", "gemini-2-0-flash", "deepseek-v3"]);
+  const [inputTokens, setInputTokens] = useState(5000);
+  const [outputTokens, setOutputTokens] = useState(2000);
+  const [requests, setRequests] = useState(5000);
 
   const toggleModel = (id: string) => {
     setSelectedModels((prev) =>
@@ -60,63 +60,93 @@ export default function CostCalculator() {
     return acc;
   }, {});
 
+  const getProviderColor = (provider: string) => {
+    switch (provider.toLowerCase()) {
+      case "anthropic": return "text-purple-400 bg-purple-500/10 border-purple-500/20";
+      case "openai": return "text-emerald-400 bg-emerald-500/10 border-emerald-500/20";
+      case "google": return "text-blue-400 bg-blue-500/10 border-blue-500/20";
+      case "deepseek": return "text-cyan-400 bg-cyan-500/10 border-cyan-500/20";
+      default: return "text-zinc-400 bg-zinc-500/10 border-zinc-500/20";
+    }
+  };
+
   return (
     <div className="space-y-6">
-      {/* Inputs */}
-      <div className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-5">
-        <h2 className="text-sm font-semibold text-zinc-200 mb-4">Configure your usage</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      {/* Configuration Grid */}
+      <div className="card-premium">
+        <h2 className="text-xs uppercase tracking-wider text-zinc-400 font-bold mb-4">Usage Configuration</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div>
-            <label htmlFor="input-tokens" className="block text-xs font-medium text-zinc-400 mb-2">
-              Input tokens per request
+            <label htmlFor="input-tokens" className="form-label-premium">
+              Input Tokens per API Request
             </label>
-            <input
-              id="input-tokens"
-              type="number"
-              min={1}
-              value={inputTokens}
-              onChange={(e) => setInputTokens(Math.max(1, parseInt(e.target.value) || 0))}
-              className="w-full rounded-lg bg-zinc-800 border border-zinc-700 text-zinc-200 px-3 py-2.5 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50"
-            />
-            <p className="mt-1 text-xs text-zinc-600">~{Math.round(inputTokens * 0.75)} words</p>
+            <div className="relative">
+              <input
+                id="input-tokens"
+                type="number"
+                min={1}
+                value={inputTokens}
+                onChange={(e) => setInputTokens(Math.max(1, parseInt(e.target.value) || 0))}
+                className="form-input-premium font-mono pr-12"
+              />
+              <span className="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs font-semibold text-zinc-600 font-mono">tokens</span>
+            </div>
+            <p className="mt-2 text-xs text-zinc-500 flex justify-between">
+              <span>Approx. Word Count:</span>
+              <span className="font-mono text-zinc-400">~{Math.round(inputTokens * 0.75).toLocaleString()} words</span>
+            </p>
           </div>
+
           <div>
-            <label htmlFor="output-tokens" className="block text-xs font-medium text-zinc-400 mb-2">
-              Output tokens per request
+            <label htmlFor="output-tokens" className="form-label-premium">
+              Completion Tokens per Request
             </label>
-            <input
-              id="output-tokens"
-              type="number"
-              min={1}
-              value={outputTokens}
-              onChange={(e) => setOutputTokens(Math.max(1, parseInt(e.target.value) || 0))}
-              className="w-full rounded-lg bg-zinc-800 border border-zinc-700 text-zinc-200 px-3 py-2.5 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50"
-            />
-            <p className="mt-1 text-xs text-zinc-600">~{Math.round(outputTokens * 0.75)} words</p>
+            <div className="relative">
+              <input
+                id="output-tokens"
+                type="number"
+                min={1}
+                value={outputTokens}
+                onChange={(e) => setOutputTokens(Math.max(1, parseInt(e.target.value) || 0))}
+                className="form-input-premium font-mono pr-12"
+              />
+              <span className="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs font-semibold text-zinc-600 font-mono">tokens</span>
+            </div>
+            <p className="mt-2 text-xs text-zinc-500 flex justify-between">
+              <span>Approx. Word Count:</span>
+              <span className="font-mono text-zinc-400">~{Math.round(outputTokens * 0.75).toLocaleString()} words</span>
+            </p>
           </div>
+
           <div>
-            <label htmlFor="request-count" className="block text-xs font-medium text-zinc-400 mb-2">
-              Requests per month
+            <label htmlFor="request-count" className="form-label-premium">
+              Volume / Month
             </label>
-            <input
-              id="request-count"
-              type="number"
-              min={1}
-              value={requests}
-              onChange={(e) => setRequests(Math.max(1, parseInt(e.target.value) || 0))}
-              className="w-full rounded-lg bg-zinc-800 border border-zinc-700 text-zinc-200 px-3 py-2.5 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50"
-            />
+            <div className="relative">
+              <input
+                id="request-count"
+                type="number"
+                min={1}
+                value={requests}
+                onChange={(e) => setRequests(Math.max(1, parseInt(e.target.value) || 0))}
+                className="form-input-premium font-mono pr-12"
+              />
+              <span className="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs font-semibold text-zinc-600 font-mono">calls</span>
+            </div>
+            <p className="mt-2 text-xs text-zinc-500">
+              Total volume: <span className="text-zinc-400 font-mono">{(requests * (inputTokens + outputTokens)).toLocaleString()} tokens</span>
+            </p>
           </div>
         </div>
       </div>
 
-      {/* Model Selection */}
-      <div className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-5">
-        <h2 className="text-sm font-semibold text-zinc-200 mb-4">Select models to compare</h2>
+      {/* Selector Grid */}
+      <div className="card-premium">
+        <h2 className="text-xs uppercase tracking-wider text-zinc-400 font-bold mb-3">Target Models for Comparison</h2>
         <div className="space-y-4">
           {Object.entries(byProvider).map(([provider, models]) => (
-            <div key={provider}>
-              <p className="text-xs font-medium text-zinc-600 uppercase tracking-wider mb-2">{provider}</p>
+            <div key={provider} className="border-b border-white/[0.03] last:border-b-0 pb-3 last:pb-0">
+              <p className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest mb-2.5">{provider}</p>
               <div className="flex flex-wrap gap-2">
                 {models.map((model) => {
                   const isSelected = selectedModels.includes(model.id);
@@ -124,10 +154,10 @@ export default function CostCalculator() {
                     <button
                       key={model.id}
                       onClick={() => toggleModel(model.id)}
-                      className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${
+                      className={`rounded-lg px-3.5 py-2 text-xs font-semibold border transition-all duration-200 cursor-pointer ${
                         isSelected
-                          ? "bg-amber-500/15 border border-amber-600/40 text-amber-300"
-                          : "bg-zinc-800 border border-zinc-700 text-zinc-500 hover:text-zinc-300 hover:border-zinc-600"
+                          ? "bg-amber-400/20 border-amber-400/40 text-amber-300 shadow-[0_0_16px_rgba(251,191,36,0.12)] font-medium"
+                          : "bg-white/5 border-white/5 text-zinc-500 hover:text-zinc-300 hover:bg-white/10"
                       }`}
                     >
                       {model.label}
@@ -140,49 +170,65 @@ export default function CostCalculator() {
         </div>
       </div>
 
-      {/* Results */}
+      {/* Cost Dashboard */}
       {results.length > 0 && (
-        <div className="rounded-xl border border-zinc-800 bg-zinc-900/60 overflow-hidden">
-          <div className="p-5 border-b border-zinc-800">
-            <h2 className="text-sm font-semibold text-zinc-200">Monthly cost comparison</h2>
+        <div className="card-premium !p-0 overflow-hidden">
+          <div className="p-5 border-b border-white/[0.06] bg-white/[0.01] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div>
+              <h2 className="text-sm font-semibold text-zinc-200">Monthly Billing Projections</h2>
+              <p className="text-xs text-zinc-500 mt-1">Relative comparison sorted by cheapest API provider</p>
+            </div>
             {savings > 0.01 && (
-              <p className="text-xs text-emerald-400 mt-1">
-                You could save ${savings.toFixed(2)}/mo by choosing {cheapest?.label} over {mostExpensive?.label}
-              </p>
+              <div className="rounded-xl px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold flex items-center gap-1.5 self-start sm:self-auto shadow-[0_0_12px_rgba(52,211,153,0.1)]">
+                <span>⚡ Save up to</span>
+                <span className="font-mono text-[13px] font-bold">${savings.toFixed(2)}/mo</span>
+              </div>
             )}
           </div>
-          <div className="divide-y divide-zinc-800">
+
+          <div className="divide-y divide-white/[0.06] bg-zinc-950/20">
             {results.map((model, i) => {
-              const pct = mostExpensive ? (model.totalCost / mostExpensive.totalCost) * 100 : 100;
+              const isCheapest = i === 0;
+              const pct = mostExpensive && mostExpensive.totalCost > 0 ? (model.totalCost / mostExpensive.totalCost) * 100 : 0;
+              const modelColor = getProviderColor(model.provider);
+
               return (
-                <div key={model.id} className="p-4 flex items-center gap-4">
-                  <div className="w-8 text-center">
-                    {i === 0 ? (
-                      <span className="text-emerald-400 text-lg">✓</span>
-                    ) : (
-                      <span className="text-xs text-zinc-600">#{i + 1}</span>
-                    )}
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center justify-between mb-1.5">
-                      <div>
-                        <span className="text-sm font-medium text-zinc-200">{model.label}</span>
-                        <span className="ml-2 text-xs text-zinc-600">{model.provider}</span>
-                      </div>
-                      <span className={`text-sm font-mono font-semibold ${i === 0 ? "text-emerald-400" : "text-zinc-300"}`}>
-                        ${model.totalCost < 0.01 ? model.totalCost.toFixed(4) : model.totalCost.toFixed(2)}
-                        <span className="text-xs text-zinc-600 font-normal">/mo</span>
+                <div key={model.id} className="p-5 flex flex-col md:flex-row md:items-center gap-4 hover:bg-white/[0.01] transition-colors">
+                  {/* Rank badge */}
+                  <div className="flex items-center gap-3 md:w-36 shrink-0">
+                    <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-mono font-bold ${
+                      isCheapest ? "bg-amber-400/20 border border-amber-400/40 text-amber-300 shadow-[0_0_8px_rgba(251,191,36,0.15)]" : "bg-zinc-900 border border-white/5 text-zinc-500"
+                    }`}>
+                      {i + 1}
+                    </span>
+                    <div className="min-w-0">
+                      <p className="text-sm font-semibold text-zinc-200 truncate leading-snug">{model.label}</p>
+                      <span className={`inline-block text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded border mt-1 ${modelColor}`}>
+                        {model.provider}
                       </span>
                     </div>
-                    <div className="h-1.5 rounded-full bg-zinc-800 overflow-hidden">
+                  </div>
+
+                  {/* Relative bar and pricing breakdown */}
+                  <div className="flex-1 min-w-0 space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] text-zinc-500 font-mono">
+                        ${model.inputCost.toFixed(2)}/M in · ${model.outputCost.toFixed(2)}/M out
+                      </span>
+                      <span className={`text-sm font-mono font-bold ${isCheapest ? "text-emerald-400" : "text-zinc-200"}`}>
+                        ${model.totalCost.toFixed(2)}
+                        <span className="text-xs text-zinc-500 font-normal">/mo</span>
+                      </span>
+                    </div>
+                    
+                    <div className="h-2.5 rounded-full bg-zinc-950 overflow-hidden border border-white/5 p-[1px]">
                       <div
-                        className={`h-full rounded-full ${i === 0 ? "bg-emerald-500" : "bg-zinc-600"}`}
-                        style={{ width: `${pct}%` }}
+                        className={`h-full rounded-full transition-all duration-500 ${
+                          isCheapest ? "bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.3)]" : "bg-amber-400/50"
+                        }`}
+                        style={{ width: `${Math.max(2, pct)}%` }}
                       />
                     </div>
-                    <p className="mt-1 text-xs text-zinc-600">
-                      ${model.inputCost}/M in · ${model.outputCost}/M out
-                    </p>
                   </div>
                 </div>
               );
@@ -191,8 +237,8 @@ export default function CostCalculator() {
         </div>
       )}
 
-      <p className="text-xs text-zinc-600 text-center">
-        Prices as of May 2026. Always verify with each provider's pricing page before making decisions.
+      <p className="text-xs text-zinc-600 text-center leading-relaxed">
+        Prices reflect public standard endpoints as of May 2026. Rate structures like Anthropic cache writes or prompt caching are not included in estimates.
       </p>
     </div>
   );

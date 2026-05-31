@@ -105,9 +105,9 @@ export default function ChatWidget() {
         <div
           role="dialog"
           aria-label="Chat"
-          className="fixed bottom-24 right-5 z-[60] w-[340px] sm:w-[360px] max-w-[calc(100vw-2rem)] h-[480px] max-h-[70vh] flex flex-col rounded-2xl overflow-hidden border border-white/[0.08] bg-[#0a0a0a] backdrop-blur-xl shadow-2xl animate-in"
+          className="fixed bottom-0 right-0 sm:bottom-24 sm:right-5 z-[60] w-full sm:w-[360px] h-[80dvh] sm:h-[480px] sm:max-h-[75vh] flex flex-col rounded-t-2xl sm:rounded-2xl overflow-hidden border-t border-x-0 border-b-0 sm:border border-white/[0.08] bg-[#0a0a0a] backdrop-blur-xl shadow-2xl animate-in"
         >
-          <div className="px-4 py-3.5 border-b border-white/[0.08] bg-amber-400/[0.06]">
+          <div className="px-4 py-3.5 border-b border-white/[0.08] bg-amber-400/[0.06] flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-9 h-9 rounded-lg bg-amber-400/20 flex items-center justify-center">
                 <MessageCircle className="w-5 h-5 text-amber-400" />
@@ -121,6 +121,13 @@ export default function ChatWidget() {
                 </p>
               </div>
             </div>
+            <button
+              onClick={() => setOpen(false)}
+              className="p-1.5 rounded-lg text-zinc-400 hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
+              aria-label="Close chat"
+            >
+              <X size={18} />
+            </button>
           </div>
 
           <div className="flex-1 overflow-y-auto p-4 space-y-3">

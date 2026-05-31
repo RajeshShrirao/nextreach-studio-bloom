@@ -14,7 +14,9 @@ guides.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
   description="Practical, in-depth guides for AI builders. Covers LLM cost optimization, model selection, local AI setup, MCP, and developer workflows."
 >
   <Nav />
-  <main class="container-page">
+  <main class="container-page relative">
+    <div class="absolute top-0 left-1/4 -translate-y-12 w-[400px] h-[250px] bg-amber-400/5 rounded-full blur-[90px] pointer-events-none -z-10 animate-pulse-glow" aria-hidden="true"></div>
+
     <header class="header-page animate-fade-in-up">
       <p class="header-page-pretitle">In-Depth Guides</p>
       <h1 class="header-page-title">Guides for AI builders</h1>
@@ -32,18 +34,12 @@ guides.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
         guides.map((guide) => (
           <a
             href={`/guides/${guide.id}`}
-            class="card-premium-interactive sm:p-6"
+            class="card-premium-interactive group sm:p-6"
           >
             <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
               <div class="flex-1 min-w-0">
                 <div class="flex flex-wrap items-center gap-2 mb-3">
-                  <span class={`rounded-full px-2 py-0.5 text-xs font-semibold capitalize border ${
-                    guide.data.difficulty === "beginner"
-                      ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/20"
-                      : guide.data.difficulty === "advanced"
-                      ? "bg-red-500/10 text-red-400 border-red-500/20"
-                      : "bg-blue-500/10 text-blue-400 border-blue-500/20"
-                  }`}>
+                  <span class={`badge-premium-${guide.data.difficulty}`}>
                     {guide.data.difficulty}
                   </span>
                   {guide.data.readingTime && (

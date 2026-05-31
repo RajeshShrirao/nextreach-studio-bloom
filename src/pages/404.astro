@@ -9,19 +9,21 @@ import Footer from "@/components/Footer.astro";
   description="The page you're looking for doesn't exist. Browse our tools, guides, and resources for AI developers."
 >
   <Nav />
-  <main class="pt-28 pb-20 px-6 sm:px-8 max-w-3xl mx-auto text-center">
-    <p class="text-7xl sm:text-8xl font-display font-bold text-amber-500/40 mb-4">404</p>
+  <main class="container-page relative text-center">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[280px] bg-amber-400/5 rounded-full blur-[100px] pointer-events-none -z-10 animate-pulse-glow" aria-hidden="true"></div>
+
+    <p class="text-7xl sm:text-8xl font-display font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-amber-400/40 to-transparent mb-4 leading-none select-none">404</p>
     <h1 class="font-display font-semibold text-3xl sm:text-4xl text-white mb-4">
       Page not found
     </h1>
-    <p class="text-zinc-400 text-lg leading-relaxed mb-8 max-w-md mx-auto">
+    <p class="text-zinc-450 text-base sm:text-lg leading-relaxed mb-8 max-w-md mx-auto">
       This URL doesn't exist — or something moved. Our tools and guides are still here.
     </p>
     <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
-      <a href="/" class="btn-primary-glow inline-flex items-center gap-2 rounded-xl bg-amber-400 text-black text-sm font-semibold hover:bg-amber-300 transition-all">
+      <a href="/" class="btn-premium-primary inline-flex items-center gap-2">
         Go home
       </a>
-      <a href="/tools" class="rounded-xl border border-zinc-800 px-6 py-3.5 text-sm text-zinc-400 hover:text-white hover:border-zinc-700 transition-all">
+      <a href="/tools" class="btn-premium-secondary inline-flex items-center gap-2">
         Browse tools
       </a>
     </div>

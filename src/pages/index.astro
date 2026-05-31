@@ -66,16 +66,19 @@ const featuredTools = [
 
   <main>
     <!-- Hero -->
-    <section class="container-hero">
-      <div class="text-center animate-fade-in-up">
-        <p class="text-xs uppercase tracking-[0.15em] text-zinc-500 mb-5 font-semibold">
+    <section class="container-hero relative overflow-hidden">
+      <!-- Ambient Spotlight Glow Overlay -->
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-12 w-[600px] h-[350px] bg-amber-400/10 rounded-full blur-[120px] pointer-events-none -z-10 animate-pulse-glow" aria-hidden="true"></div>
+
+      <div class="text-center animate-fade-in-up relative z-10">
+        <p class="text-xs uppercase tracking-[0.15em] text-amber-500/80 mb-5 font-semibold">
           For AI builders, developers &amp; indie hackers
         </p>
-        <h1 class="text-hero text-white mb-6">
+        <h1 class="text-hero text-white mb-6 font-display font-bold">
           Build smarter with&nbsp;<br />
-          <span class="text-amber-400">practical AI tools</span>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-400 to-yellow-500 glow-text">practical AI tools</span>
         </h1>
-        <p class="text-zinc-400 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mb-10">
+        <p class="text-zinc-400 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mb-10 font-body">
           Free calculators, honest guides, and no-fluff tutorials for developers
           working with Claude, Gemini, local LLMs, and MCP.
         </p>
@@ -86,7 +89,7 @@ const featuredTools = [
             class="btn-premium-primary"
           >
             Explore Tools
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5">
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>
           </a>
@@ -153,20 +156,20 @@ const featuredTools = [
         {allGuides.map((guide) => (
           <a
             href={`/guides/${guide.id}`}
-            class="card-premium-interactive"
+            class="card-premium-interactive group"
           >
             <div class="flex items-center gap-2 mb-3">
-              <span class="badge-premium-neutral capitalize">
+              <span class={`badge-premium-${guide.data.difficulty === 'beginner' ? 'beginner' : guide.data.difficulty === 'advanced' ? 'advanced' : 'intermediate'}`}>
                 {guide.data.difficulty}
               </span>
               {guide.data.readingTime && (
-                <span class="text-xs text-zinc-500">{guide.data.readingTime}</span>
+                <span class="text-xs text-zinc-500 font-medium">{guide.data.readingTime}</span>
               )}
             </div>
             <h3 class="font-semibold text-white group-hover:text-amber-300 transition-colors text-sm leading-snug mb-2 font-display">
               {guide.data.title}
             </h3>
-            <p class="text-xs text-zinc-500 leading-relaxed line-clamp-3">{guide.data.description}</p>
+            <p class="text-xs text-zinc-400 leading-relaxed line-clamp-3 transition-colors group-hover:text-zinc-350">{guide.data.description}</p>
           </a>
         ))}
       </div>
@@ -196,7 +199,7 @@ const featuredTools = [
           latestPosts.map((post) => (
             <a
               href={`/blog/${post.id}`}
-              class="card-premium-interactive flex flex-col sm:flex-row sm:items-start gap-4"
+              class="card-premium-interactive group flex flex-col sm:flex-row sm:items-start gap-4"
             >
               <div class="flex-1 min-w-0">
                 <div class="flex flex-wrap items-center gap-2 mb-2">
@@ -210,9 +213,9 @@ const featuredTools = [
                 <h3 class="font-semibold text-white group-hover:text-amber-300 transition-colors text-sm sm:text-base leading-snug mb-2 font-display">
                   {post.data.title}
                 </h3>
-                <p class="text-xs text-zinc-500 leading-relaxed line-clamp-2">{post.data.description}</p>
+                <p class="text-xs text-zinc-400 leading-relaxed line-clamp-2 transition-colors group-hover:text-zinc-300">{post.data.description}</p>
               </div>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4 shrink-0 text-zinc-700 group-hover:text-amber-500 transition-colors mt-1 hidden sm:block">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4 shrink-0 text-zinc-700 group-hover:text-amber-400 transition-all duration-300 group-hover:translate-x-1 mt-1 hidden sm:block">
                 <path d="M9 18l6-6-6-6"/>
               </svg>
             </a>

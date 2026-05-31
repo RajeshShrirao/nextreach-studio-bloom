@@ -55,7 +55,9 @@ const categories = [...new Set(tools.map((t) => t.category))];
   description="Free tools for AI builders: count tokens, calculate LLM costs, estimate VRAM, format prompts, and plan context windows. No signup required."
 >
   <Nav />
-  <main class="container-page-wide">
+  <main class="container-page-wide relative">
+    <div class="absolute top-0 left-1/4 -translate-y-12 w-[450px] h-[280px] bg-amber-400/5 rounded-full blur-[100px] pointer-events-none -z-10 animate-pulse-glow" aria-hidden="true"></div>
+
     <header class="header-page animate-fade-in-up">
       <p class="header-page-pretitle">Developer Tools</p>
       <h1 class="header-page-title">Free AI tools</h1>

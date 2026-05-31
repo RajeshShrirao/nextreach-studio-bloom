@@ -55,19 +55,19 @@ const currentPath = Astro.url.pathname;
   <!-- Mobile Dropdown Menu -->
   <div
     id="mobile-menu"
-    class="hidden md:hidden border-t border-zinc-800/80 bg-zinc-950/95 backdrop-blur-xl transition-all duration-300 ease-in-out"
+    class="md:hidden border-t border-zinc-800/80 bg-zinc-950/95 backdrop-blur-xl transition-all duration-300 ease-in-out max-h-0 opacity-0 overflow-hidden"
   >
-    <ul class="px-6 py-4 space-y-1">
+    <ul class="px-6 py-4 space-y-1.5">
       {navLinks.map(({ href, label }) => {
         const isActive = currentPath === href || (href !== "/" && currentPath.startsWith(href));
         return (
           <li>
             <a
               href={href}
-              class={`block px-4 py-2.5 rounded-lg text-sm transition-colors duration-200 ${
+              class={`block px-4 py-2.5 rounded-lg text-sm transition-all duration-200 ${
                 isActive
-                  ? "text-white bg-white/5"
-                  : "text-zinc-400 hover:text-zinc-200 hover:bg-white/5"
+                  ? "text-white bg-white/5 font-semibold border-l-2 border-amber-400 pl-3"
+                  : "text-zinc-400 hover:text-zinc-200 hover:bg-white/5 pl-4"
               }`}
             >
               {label}
@@ -88,12 +88,17 @@ const currentPath = Astro.url.pathname;
     toggleBtn.addEventListener("click", () => {
       const isExpanded = toggleBtn.getAttribute("aria-expanded") === "true";
       toggleBtn.setAttribute("aria-expanded", String(!isExpanded));
-      mobileMenu.classList.toggle("hidden");
 
       if (!isExpanded) {
+        // Open with transition
+        mobileMenu.classList.remove("max-h-0", "opacity-0");
+        mobileMenu.classList.add("max-h-[350px]", "opacity-100");
         // Change to "X" (close) icon
         menuIcon.setAttribute("d", "M6 18L18 6M6 6l12 12");
       } else {
+        // Close with transition
+        mobileMenu.classList.remove("max-h-[350px]", "opacity-100");
+        mobileMenu.classList.add("max-h-0", "opacity-0");
         // Change back to Hamburger icon
         menuIcon.setAttribute("d", "M4 6h16M4 12h16M4 18h16");
       }
