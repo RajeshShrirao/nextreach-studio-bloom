@@ -37,7 +37,7 @@ const categories = [...new Set(resources.map((r) => r.data.category))];
               <ResourceCard
                 title={resource.data.title}
                 description={resource.data.description}
-                href={`/resources/${resource.slug}`}
+                href={`/resources/${resource.id}`}
                 tags={resource.data.tags.slice(0, 3)}
               />
             ))}

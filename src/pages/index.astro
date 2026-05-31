@@ -152,7 +152,7 @@ const featuredTools = [
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {allGuides.map((guide) => (
           <a
-            href={`/guides/${guide.slug}`}
+            href={`/guides/${guide.id}`}
             class="card-premium-interactive"
           >
             <div class="flex items-center gap-2 mb-3">
@@ -195,7 +195,7 @@ const featuredTools = [
         ) : (
           latestPosts.map((post) => (
             <a
-              href={`/blog/${post.slug}`}
+              href={`/blog/${post.id}`}
               class="card-premium-interactive flex flex-col sm:flex-row sm:items-start gap-4"
             >
               <div class="flex-1 min-w-0">

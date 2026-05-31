@@ -3,18 +3,18 @@ import Layout from "@/layouts/Layout.astro";
 import Nav from "@/components/Nav.astro";
 import Footer from "@/components/Footer.astro";
 import Prose from "@/components/Prose.astro";
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 
 export async function getStaticPaths() {
   const guides = await getCollection("guides", ({ data }) => !data.draft);
   return guides.map((guide) => ({
-    params: { slug: guide.slug },
+    params: { slug: guide.id },
     props: { guide },
   }));
 }
 
 const { guide } = Astro.props;
-const { Content } = await guide.render();
+const { Content } = await render(guide);
 ---
 
 <Layout
