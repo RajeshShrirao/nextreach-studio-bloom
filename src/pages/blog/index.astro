@@ -10,29 +10,27 @@ posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 
 <Layout title="Blog" description="Practical tutorials and insights for AI builders, Claude Code users, indie hackers, and developers working with LLMs.">
   <Nav />
-  <main class="pt-28 pb-20 px-6 sm:px-8 max-w-4xl mx-auto">
-    <header class="mb-12">
-      <p class="text-xs uppercase tracking-[0.12em] text-zinc-600 mb-3">Blog</p>
-      <h1 class="font-display font-semibold text-4xl sm:text-5xl text-white tracking-[-0.01em] mb-4 leading-[1.15]">
-        Tutorials &amp; insights
-      </h1>
-      <p class="text-zinc-400 text-lg leading-relaxed max-w-2xl">
+  <main class="container-page">
+    <header class="header-page animate-fade-in-up">
+      <p class="header-page-pretitle">Blog</p>
+      <h1 class="header-page-title">Tutorials &amp; insights</h1>
+      <p class="header-page-subtitle">
         Practical articles for developers building with AI. No hype, no generic tips — just useful techniques for real workflows.
       </p>
     </header>
 
     <div class="space-y-4 mb-16">
       {posts.length === 0 && (
-        <div class="glass-panel rounded-2xl p-8 text-center">
+        <div class="card-premium-flat text-center">
           <p class="text-zinc-500">No posts yet. Check back soon.</p>
         </div>
       )}
 
       {posts.map((post) => (
-        <a href={`/blog/${post.slug}`} class="group block glass-panel glass-panel-hover rounded-2xl p-6 sm:p-8">
+        <a href={`/blog/${post.slug}`} class="card-premium-interactive p-6 sm:p-8">
           <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
             <div class="flex-1 min-w-0">
-              <div class="flex flex-wrap items-center gap-2 mb-3 text-xs text-zinc-600">
+              <div class="flex flex-wrap items-center gap-2 mb-3 text-xs text-zinc-500">
                 <time datetime={post.data.pubDate.toISOString()}>
                   {post.data.pubDate.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
                 </time>
@@ -41,7 +39,7 @@ posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
                     <span>·</span>
                     <div class="flex gap-1.5 flex-wrap">
                       {post.data.tags.map((tag) => (
-                        <span class="px-2 py-0.5 rounded-full bg-zinc-800 text-zinc-500">{tag}</span>
+                        <span class="badge-premium-neutral">{tag}</span>
                       ))}
                     </div>
                   </>

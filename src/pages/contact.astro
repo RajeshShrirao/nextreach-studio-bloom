@@ -10,49 +10,47 @@ import Prose from "@/components/Prose.astro";
   description="Contact NextReach Studio. Send feedback, report issues, suggest new tools, or ask questions about our AI developer tools and resources."
 >
   <Nav />
-  <main class="pt-28 pb-20 px-6 sm:px-8 max-w-3xl mx-auto">
-    <header class="mb-12">
-      <p class="text-xs uppercase tracking-[0.12em] text-zinc-600 mb-3">Contact</p>
-      <h1 class="font-display font-semibold text-4xl sm:text-5xl text-white tracking-[-0.01em] mb-4">
-        Get in touch
-      </h1>
-      <p class="text-zinc-400 text-lg leading-relaxed">
+  <main class="container-page">
+    <header class="header-page animate-fade-in-up">
+      <p class="header-page-pretitle">Contact</p>
+      <h1 class="header-page-title">Get in touch</h1>
+      <p class="header-page-subtitle">
         Questions, feedback, tool ideas, or something broken? We'd love to hear from you.
       </p>
     </header>
 
-    <div class="rounded-xl border border-zinc-800 bg-zinc-900/40 p-8 mb-8">
+    <div class="card-premium-flat mb-8">
       <form action="https://formspree.io/f/example" method="POST" class="space-y-5">
         <div>
-          <label for="name" class="block text-sm text-zinc-400 mb-1.5 font-medium">Name</label>
+          <label for="name" class="form-label-premium">Name</label>
           <input
             type="text"
             id="name"
             name="name"
             required
-            class="w-full rounded-lg border border-zinc-800 bg-zinc-900/60 px-4 py-2.5 text-sm text-white placeholder-zinc-600 outline-none transition-colors duration-200 focus:border-amber-700/50 focus:ring-1 focus:ring-amber-700/30"
+            class="form-input-premium"
             placeholder="Your name"
           />
         </div>
 
         <div>
-          <label for="email" class="block text-sm text-zinc-400 mb-1.5 font-medium">Email</label>
+          <label for="email" class="form-label-premium">Email</label>
           <input
             type="email"
             id="email"
             name="email"
             required
-            class="w-full rounded-lg border border-zinc-800 bg-zinc-900/60 px-4 py-2.5 text-sm text-white placeholder-zinc-600 outline-none transition-colors duration-200 focus:border-amber-700/50 focus:ring-1 focus:ring-amber-700/30"
+            class="form-input-premium"
             placeholder="you@example.com"
           />
         </div>
 
         <div>
-          <label for="subject" class="block text-sm text-zinc-400 mb-1.5 font-medium">Subject</label>
+          <label for="subject" class="form-label-premium">Subject</label>
           <select
             id="subject"
             name="subject"
-            class="w-full rounded-lg border border-zinc-800 bg-zinc-900/60 px-4 py-2.5 text-sm text-white outline-none transition-colors duration-200 focus:border-amber-700/50 focus:ring-1 focus:ring-amber-700/30"
+            class="form-select-premium"
           >
             <option value="" disabled selected>Select a topic</option>
             <option value="feedback">Feedback or suggestion</option>
@@ -64,20 +62,20 @@ import Prose from "@/components/Prose.astro";
         </div>
 
         <div>
-          <label for="message" class="block text-sm text-zinc-400 mb-1.5 font-medium">Message</label>
+          <label for="message" class="form-label-premium">Message</label>
           <textarea
             id="message"
             name="message"
             rows={5}
             required
-            class="w-full rounded-lg border border-zinc-800 bg-zinc-900/60 px-4 py-2.5 text-sm text-white placeholder-zinc-600 outline-none transition-colors duration-200 focus:border-amber-700/50 focus:ring-1 focus:ring-amber-700/30 resize-y min-h-[120px]"
+            class="form-textarea-premium"
             placeholder="What's on your mind?"
           ></textarea>
         </div>
 
         <button
           type="submit"
-          class="btn-primary-glow inline-flex items-center gap-2 rounded-xl bg-amber-400 text-black text-sm font-semibold hover:bg-amber-300 transition-all"
+          class="btn-premium-primary"
         >
           Send message
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="w-4 h-4">

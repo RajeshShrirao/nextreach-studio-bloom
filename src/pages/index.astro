@@ -2,6 +2,8 @@
 import Layout from "@/layouts/Layout.astro";
 import Nav from "@/components/Nav.astro";
 import Footer from "@/components/Footer.astro";
+import ToolCard from "@/components/ToolCard.astro";
+import ResourceCard from "@/components/ResourceCard.astro";
 import { getCollection } from "astro:content";
 
 const allPosts = await getCollection("blog", ({ data }) => !data.draft);
@@ -64,16 +66,16 @@ const featuredTools = [
 
   <main>
     <!-- Hero -->
-    <section class="pt-36 pb-20 px-6 sm:px-8 max-w-5xl mx-auto">
-      <div class="text-center">
-        <p class="text-xs uppercase tracking-[0.15em] text-zinc-600 mb-5 font-medium">
+    <section class="container-hero">
+      <div class="text-center animate-fade-in-up">
+        <p class="text-xs uppercase tracking-[0.15em] text-zinc-500 mb-5 font-semibold">
           For AI builders, developers &amp; indie hackers
         </p>
-        <h1 class="font-display font-semibold text-5xl sm:text-6xl lg:text-7xl text-white tracking-[-0.02em] leading-[1.1] mb-6">
+        <h1 class="text-hero text-white mb-6">
           Build smarter with&nbsp;<br />
           <span class="text-amber-400">practical AI tools</span>
         </h1>
-        <p class="text-zinc-400 text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto mb-10">
+        <p class="text-zinc-400 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mb-10">
           Free calculators, honest guides, and no-fluff tutorials for developers
           working with Claude, Gemini, local LLMs, and MCP.
         </p>
@@ -81,7 +83,7 @@ const featuredTools = [
           <a
             href="/tools"
             id="hero-tools-cta"
-            class="btn-primary-glow inline-flex items-center gap-2 rounded-xl bg-amber-500 px-6 py-3 text-sm font-semibold text-zinc-950 transition-all"
+            class="btn-premium-primary"
           >
             Explore Tools
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4">
@@ -91,7 +93,7 @@ const featuredTools = [
           <a
             href="/guides"
             id="hero-guides-cta"
-            class="inline-flex items-center gap-2 rounded-xl border border-zinc-700 px-6 py-3 text-sm font-medium text-zinc-300 hover:border-zinc-500 hover:text-white transition-all"
+            class="btn-premium-secondary"
           >
             Read Guides
           </a>
@@ -115,28 +117,13 @@ const featuredTools = [
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {featuredTools.map((tool) => (
-          <a
+          <ToolCard
+            name={tool.name}
+            description={tool.description}
             href={tool.href}
-            id={`tool-card-${tool.name.toLowerCase().replace(/\s+/g, "-")}`}
-            class="group rounded-xl border border-zinc-800 bg-zinc-900/40 p-5 transition-all duration-200 hover:border-amber-700/40 hover:bg-zinc-900/80 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/30"
-          >
-            <div class="flex items-start gap-4">
-              <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-zinc-800 text-xl">
-                {tool.icon}
-              </div>
-              <div class="min-w-0 flex-1">
-                <div class="flex items-center gap-2 mb-1.5">
-                  <h3 class="font-semibold text-white group-hover:text-amber-300 transition-colors text-sm leading-snug">
-                    {tool.name}
-                  </h3>
-                  <span class="shrink-0 rounded-full bg-emerald-500/10 px-2 py-0.5 text-xs font-medium text-emerald-400 border border-emerald-700/30">
-                    {tool.badge}
-                  </span>
-                </div>
-                <p class="text-xs text-zinc-500 leading-relaxed">{tool.description}</p>
-              </div>
-            </div>
-          </a>
+            icon={tool.icon}
+            badge={tool.badge}
+          />
         ))}
       </div>
 
@@ -162,27 +149,27 @@ const featuredTools = [
           </div>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {allGuides.map((guide) => (
-            <a
-              href={`/guides/${guide.slug}`}
-              class="group rounded-xl border border-zinc-800 bg-zinc-900/40 p-5 transition-all duration-200 hover:border-zinc-700 hover:bg-zinc-900/80 hover:-translate-y-0.5"
-            >
-              <div class="flex items-center gap-2 mb-3">
-                <span class="rounded-full bg-zinc-800 px-2 py-0.5 text-xs text-zinc-500 capitalize">
-                  {guide.data.difficulty}
-                </span>
-                {guide.data.readingTime && (
-                  <span class="text-xs text-zinc-600">{guide.data.readingTime}</span>
-                )}
-              </div>
-              <h3 class="font-semibold text-white group-hover:text-amber-300 transition-colors text-sm leading-snug mb-2">
-                {guide.data.title}
-              </h3>
-              <p class="text-xs text-zinc-500 leading-relaxed line-clamp-3">{guide.data.description}</p>
-            </a>
-          ))}
-        </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {allGuides.map((guide) => (
+          <a
+            href={`/guides/${guide.slug}`}
+            class="card-premium-interactive"
+          >
+            <div class="flex items-center gap-2 mb-3">
+              <span class="badge-premium-neutral capitalize">
+                {guide.data.difficulty}
+              </span>
+              {guide.data.readingTime && (
+                <span class="text-xs text-zinc-500">{guide.data.readingTime}</span>
+              )}
+            </div>
+            <h3 class="font-semibold text-white group-hover:text-amber-300 transition-colors text-sm leading-snug mb-2 font-display">
+              {guide.data.title}
+            </h3>
+            <p class="text-xs text-zinc-500 leading-relaxed line-clamp-3">{guide.data.description}</p>
+          </a>
+        ))}
+      </div>
       </section>
     )}
 
@@ -202,25 +189,25 @@ const featuredTools = [
 
       <div class="space-y-4">
         {latestPosts.length === 0 ? (
-          <div class="rounded-xl border border-zinc-800 bg-zinc-900/40 p-8 text-center">
+          <div class="card-premium-flat text-center">
             <p class="text-zinc-500 text-sm">Articles coming soon.</p>
           </div>
         ) : (
           latestPosts.map((post) => (
             <a
               href={`/blog/${post.slug}`}
-              class="group flex flex-col sm:flex-row sm:items-start gap-4 rounded-xl border border-zinc-800 bg-zinc-900/40 p-5 transition-all duration-200 hover:border-zinc-700 hover:bg-zinc-900/80 hover:-translate-y-0.5"
+              class="card-premium-interactive flex flex-col sm:flex-row sm:items-start gap-4"
             >
               <div class="flex-1 min-w-0">
                 <div class="flex flex-wrap items-center gap-2 mb-2">
-                  <time datetime={post.data.pubDate.toISOString()} class="text-xs text-zinc-600">
+                  <time datetime={post.data.pubDate.toISOString()} class="text-xs text-zinc-500">
                     {post.data.pubDate.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
                   </time>
                   {post.data.tags.slice(0, 2).map((tag) => (
-                    <span class="rounded-full bg-zinc-800 px-2 py-0.5 text-xs text-zinc-500">{tag}</span>
+                    <span class="badge-premium-neutral">{tag}</span>
                   ))}
                 </div>
-                <h3 class="font-semibold text-white group-hover:text-amber-300 transition-colors text-sm sm:text-base leading-snug mb-2">
+                <h3 class="font-semibold text-white group-hover:text-amber-300 transition-colors text-sm sm:text-base leading-snug mb-2 font-display">
                   {post.data.title}
                 </h3>
                 <p class="text-xs text-zinc-500 leading-relaxed line-clamp-2">{post.data.description}</p>
@@ -255,20 +242,18 @@ const featuredTools = [
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <a href="/resources/llm-api-providers-directory" class="group rounded-xl border border-zinc-800 bg-zinc-900/40 p-5 transition-all duration-200 hover:border-zinc-700 hover:bg-zinc-900/80 hover:-translate-y-0.5">
-          <p class="text-xs font-medium text-amber-500/80 uppercase tracking-wider mb-2">API Providers</p>
-          <h3 class="font-semibold text-white group-hover:text-amber-300 transition-colors text-sm leading-snug mb-2">
-            LLM API Providers Directory
-          </h3>
-          <p class="text-xs text-zinc-500 leading-relaxed">Every major LLM provider compared — pricing, rate limits, context windows, and ideal use cases.</p>
-        </a>
-        <a href="/resources/ai-developer-tools-stack" class="group rounded-xl border border-zinc-800 bg-zinc-900/40 p-5 transition-all duration-200 hover:border-zinc-700 hover:bg-zinc-900/80 hover:-translate-y-0.5">
-          <p class="text-xs font-medium text-amber-500/80 uppercase tracking-wider mb-2">Developer Tools</p>
-          <h3 class="font-semibold text-white group-hover:text-amber-300 transition-colors text-sm leading-snug mb-2">
-            The AI Developer Tools Stack
-          </h3>
-          <p class="text-xs text-zinc-500 leading-relaxed">What serious AI builders actually use — curated tools, libraries, and services organized by category.</p>
-        </a>
+        <ResourceCard
+          title="LLM API Providers Directory"
+          description="Every major LLM provider compared — pricing, rate limits, context windows, and ideal use cases."
+          href="/resources/llm-api-providers-directory"
+          category="API Providers"
+        />
+        <ResourceCard
+          title="The AI Developer Tools Stack"
+          description="What serious AI builders actually use — curated tools, libraries, and services organized by category."
+          href="/resources/ai-developer-tools-stack"
+          category="Developer Tools"
+        />
       </div>
     </section>
   </main>

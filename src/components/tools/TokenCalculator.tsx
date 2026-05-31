@@ -45,15 +45,15 @@ export default function TokenCalculator() {
   return (
     <div className="space-y-6">
       {/* Model Selector */}
-      <div className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-5">
-        <label htmlFor="model-select" className="block text-sm font-medium text-zinc-300 mb-3">
+      <div className="card-premium-flat">
+        <label htmlFor="model-select" className="form-label-premium">
           Select Model
         </label>
         <select
           id="model-select"
           value={selectedModel}
           onChange={(e) => setSelectedModel(e.target.value as ModelKey)}
-          className="w-full rounded-lg bg-zinc-800 border border-zinc-700 text-zinc-200 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50 cursor-pointer"
+          className="form-select-premium"
         >
           {Object.entries(
             Object.entries(MODEL_CONFIGS).reduce<Record<string, [string, (typeof MODEL_CONFIGS)[ModelKey]][]>>(
@@ -74,14 +74,14 @@ export default function TokenCalculator() {
             </optgroup>
           ))}
         </select>
-        <p className="mt-2 text-xs text-zinc-600">
+        <p className="mt-2 text-xs text-zinc-500">
           Context window: <span className="text-zinc-400 font-mono">{model.contextWindow.toLocaleString()} tokens</span>
         </p>
       </div>
 
       {/* Text Input */}
-      <div className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-5">
-        <label htmlFor="token-input" className="block text-sm font-medium text-zinc-300 mb-3">
+      <div className="card-premium-flat">
+        <label htmlFor="token-input" className="form-label-premium">
           Paste your prompt or text
         </label>
         <textarea
@@ -90,7 +90,7 @@ export default function TokenCalculator() {
           onChange={handleTextChange}
           placeholder="Paste your prompt, system message, or any text here to count tokens..."
           rows={12}
-          className="w-full rounded-lg bg-zinc-800 border border-zinc-700 text-zinc-200 px-4 py-3 text-sm font-mono resize-y focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50 placeholder:text-zinc-600"
+          className="form-textarea-premium font-mono"
         />
       </div>
 
@@ -104,10 +104,10 @@ export default function TokenCalculator() {
         ].map(({ label, value, highlight }) => (
           <div
             key={label}
-            className={`rounded-xl border p-4 text-center ${
+            className={`text-center p-4 ${
               highlight
-                ? "border-amber-700/40 bg-amber-500/5"
-                : "border-zinc-800 bg-zinc-900/40"
+                ? "card-premium-accent"
+                : "card-premium-flat"
             }`}
           >
             <p className={`text-2xl font-semibold font-mono mb-0.5 ${highlight ? "text-amber-400" : "text-white"}`}>
@@ -120,7 +120,7 @@ export default function TokenCalculator() {
 
       {/* Context Window Bar */}
       {text && (
-        <div className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-5">
+        <div className="card-premium-flat">
           <div className="flex items-center justify-between mb-3">
             <p className="text-sm font-medium text-zinc-300">Context Window Usage</p>
             <p className="text-sm font-mono text-zinc-400">
@@ -133,11 +133,11 @@ export default function TokenCalculator() {
               style={{ width: `${Math.min(100, contextUsed)}%` }}
             />
           </div>
-          <p className="mt-2 text-xs text-zinc-600">
+          <p className="mt-2 text-xs text-zinc-500">
             {contextUsed > 90 ? (
-              <span className="text-red-400">⚠ Approaching context limit — consider trimming your input</span>
+              <span className="text-red-400 font-medium">⚠ Approaching context limit — consider trimming your input</span>
             ) : contextUsed > 70 ? (
-              <span className="text-amber-400">Context usage is getting high</span>
+              <span className="text-amber-400 font-medium">Context usage is getting high</span>
             ) : (
               <span className="text-zinc-500">
                 {(model.contextWindow - tokenCount).toLocaleString()} tokens remaining in context window

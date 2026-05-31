@@ -2,6 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import Nav from "@/components/Nav.astro";
 import Footer from "@/components/Footer.astro";
+import ResourceCard from "@/components/ResourceCard.astro";
 import { getCollection } from "astro:content";
 
 const resources = await getCollection("resources", ({ data }) => !data.draft);
@@ -15,52 +16,37 @@ const categories = [...new Set(resources.map((r) => r.data.category))];
   description="Curated directories of LLM API providers, developer tools, frameworks, and resources for AI builders. Regularly updated with honest assessments."
 >
   <Nav />
-  <main class="pt-28 pb-20 px-6 sm:px-8 max-w-4xl mx-auto">
-    <header class="mb-12">
-      <p class="text-xs uppercase tracking-[0.12em] text-zinc-600 mb-3">Resource Directory</p>
-      <h1 class="font-display font-semibold text-4xl sm:text-5xl text-white tracking-[-0.01em] mb-4 leading-[1.15]">
-        Curated resources
-      </h1>
-      <p class="text-zinc-400 text-lg leading-relaxed max-w-2xl">
+  <main class="container-page">
+    <header class="header-page animate-fade-in-up">
+      <p class="header-page-pretitle">Resource Directory</p>
+      <h1 class="header-page-title">Curated resources</h1>
+      <p class="header-page-subtitle">
         Directories, comparisons, and reference lists for AI developers. Every entry is vetted — no affiliate links, no sponsored rankings.
       </p>
     </header>
 
     {categories.map((category) => (
       <section class="mb-12" aria-labelledby={`res-${category.toLowerCase().replace(/\s+/g, "-")}`}>
-        <h2 id={`res-${category.toLowerCase().replace(/\s+/g, "-")}`} class="text-xs uppercase tracking-[0.12em] text-zinc-600 mb-4 font-medium">
+        <h2 id={`res-${category.toLowerCase().replace(/\s+/g, "-")}`} class="text-xs uppercase tracking-[0.12em] text-zinc-500 mb-4 font-semibold">
           {category}
         </h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {resources
             .filter((r) => r.data.category === category)
             .map((resource) => (
-              <a
+              <ResourceCard
+                title={resource.data.title}
+                description={resource.data.description}
                 href={`/resources/${resource.slug}`}
-                class="group rounded-xl border border-zinc-800 bg-zinc-900/40 p-5 transition-all duration-200 hover:border-zinc-700 hover:bg-zinc-900/80 hover:-translate-y-0.5"
-              >
-                <h3 class="font-semibold text-white group-hover:text-amber-300 transition-colors text-sm leading-snug mb-2">
-                  {resource.data.title}
-                </h3>
-                <p class="text-xs text-zinc-500 leading-relaxed mb-3">{resource.data.description}</p>
-                <div class="flex items-center justify-between">
-                  <div class="flex flex-wrap gap-1.5">
-                    {resource.data.tags.slice(0, 3).map((tag) => (
-                      <span class="rounded-full bg-zinc-800 px-2 py-0.5 text-xs text-zinc-600">{tag}</span>
-                    ))}
-                  </div>
-                  <time class="text-xs text-zinc-700 shrink-0 ml-2" datetime={resource.data.pubDate.toISOString()}>
-                    {resource.data.pubDate.toLocaleDateString("en-US", { month: "short", year: "numeric" })}
-                  </time>
-                </div>
-              </a>
+                tags={resource.data.tags.slice(0, 3)}
+              />
             ))}
         </div>
       </section>
     ))}
 
     {resources.length === 0 && (
-      <div class="rounded-xl border border-zinc-800 bg-zinc-900/40 p-8 text-center">
+      <div class="card-premium-flat text-center">
         <p class="text-zinc-500 text-sm">Resources coming soon.</p>
       </div>
     )}

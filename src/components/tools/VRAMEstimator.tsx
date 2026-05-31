@@ -73,18 +73,18 @@ export default function VRAMEstimator() {
   return (
     <div className="space-y-6">
       {/* Config */}
-      <div className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-5">
+      <div className="card-premium-flat">
         <h2 className="text-sm font-semibold text-zinc-200 mb-4">Model Configuration</h2>
         <div className="space-y-4">
           <div>
-            <label htmlFor="vram-preset" className="block text-xs font-medium text-zinc-400 mb-2">
+            <label htmlFor="vram-preset" className="form-label-premium">
               Model
             </label>
             <select
               id="vram-preset"
               value={preset}
               onChange={(e) => setPreset(e.target.value)}
-              className="w-full rounded-lg bg-zinc-800 border border-zinc-700 text-zinc-200 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500/50 cursor-pointer"
+              className="form-select-premium"
             >
               {PRESETS.map((p) => (
                 <option key={p.id} value={p.id}>
@@ -96,7 +96,7 @@ export default function VRAMEstimator() {
 
           {preset === "custom" && (
             <div>
-              <label htmlFor="custom-params" className="block text-xs font-medium text-zinc-400 mb-2">
+              <label htmlFor="custom-params" className="form-label-premium">
                 Model size (billions of parameters)
               </label>
               <input
@@ -106,20 +106,20 @@ export default function VRAMEstimator() {
                 step={0.1}
                 value={customParams}
                 onChange={(e) => setCustomParams(parseFloat(e.target.value) || 7)}
-                className="w-full rounded-lg bg-zinc-800 border border-zinc-700 text-zinc-200 px-3 py-2.5 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-amber-500/50"
+                className="form-input-premium font-mono"
               />
             </div>
           )}
 
           <div>
-            <label htmlFor="vram-quant" className="block text-xs font-medium text-zinc-400 mb-2">
+            <label htmlFor="vram-quant" className="form-label-premium">
               Quantization
             </label>
             <select
               id="vram-quant"
               value={quant}
               onChange={(e) => setQuant(e.target.value)}
-              className="w-full rounded-lg bg-zinc-800 border border-zinc-700 text-zinc-200 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500/50 cursor-pointer"
+              className="form-select-premium"
             >
               {QUANTIZATIONS.map((q) => (
                 <option key={q.id} value={q.id}>
@@ -131,7 +131,7 @@ export default function VRAMEstimator() {
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label htmlFor="vram-ctx" className="block text-xs font-medium text-zinc-400 mb-2">
+              <label htmlFor="vram-ctx" className="form-label-premium">
                 Context length (tokens)
               </label>
               <input
@@ -141,11 +141,11 @@ export default function VRAMEstimator() {
                 step={512}
                 value={ctxLength}
                 onChange={(e) => setCtxLength(parseInt(e.target.value) || 4096)}
-                className="w-full rounded-lg bg-zinc-800 border border-zinc-700 text-zinc-200 px-3 py-2.5 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-amber-500/50"
+                className="form-input-premium font-mono"
               />
             </div>
             <div>
-              <label htmlFor="vram-batch" className="block text-xs font-medium text-zinc-400 mb-2">
+              <label htmlFor="vram-batch" className="form-label-premium">
                 Batch size
               </label>
               <input
@@ -154,7 +154,7 @@ export default function VRAMEstimator() {
                 min={1}
                 value={batchSize}
                 onChange={(e) => setBatchSize(parseInt(e.target.value) || 1)}
-                className="w-full rounded-lg bg-zinc-800 border border-zinc-700 text-zinc-200 px-3 py-2.5 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-amber-500/50"
+                className="form-input-premium font-mono"
               />
             </div>
           </div>
@@ -179,7 +179,7 @@ export default function VRAMEstimator() {
       </div>
 
       {/* GPU Compatibility */}
-      <div className="rounded-xl border border-zinc-800 bg-zinc-900/60 overflow-hidden">
+      <div className="card-premium-flat overflow-hidden !p-0">
         <div className="p-5 border-b border-zinc-800">
           <h2 className="text-sm font-semibold text-zinc-200">GPU Compatibility</h2>
           <p className="text-xs text-zinc-500 mt-1">
@@ -216,7 +216,7 @@ export default function VRAMEstimator() {
         </div>
       </div>
 
-      <p className="text-xs text-zinc-600 text-center">
+      <p className="text-xs text-zinc-500 text-center">
         VRAM estimates include model weights, KV cache, and ~10% overhead. Actual usage may vary by implementation.
       </p>
     </div>

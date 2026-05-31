@@ -14,55 +14,53 @@ guides.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
   description="Practical, in-depth guides for AI builders. Covers LLM cost optimization, model selection, local AI setup, MCP, and developer workflows."
 >
   <Nav />
-  <main class="pt-28 pb-20 px-6 sm:px-8 max-w-4xl mx-auto">
-    <header class="mb-12">
-      <p class="text-xs uppercase tracking-[0.12em] text-zinc-600 mb-3">In-Depth Guides</p>
-      <h1 class="font-display font-semibold text-4xl sm:text-5xl text-white tracking-[-0.01em] mb-4 leading-[1.15]">
-        Guides for AI builders
-      </h1>
-      <p class="text-zinc-400 text-lg leading-relaxed max-w-2xl">
+  <main class="container-page">
+    <header class="header-page animate-fade-in-up">
+      <p class="header-page-pretitle">In-Depth Guides</p>
+      <h1 class="header-page-title">Guides for AI builders</h1>
+      <p class="header-page-subtitle">
         Long-form, practical guides. No buzzwords, no padding — just concrete techniques you can apply today.
       </p>
     </header>
 
     <div class="space-y-4 mb-16">
       {guides.length === 0 ? (
-        <div class="rounded-xl border border-zinc-800 bg-zinc-900/40 p-8 text-center">
+        <div class="card-premium-flat text-center">
           <p class="text-zinc-500 text-sm">Guides coming soon.</p>
         </div>
       ) : (
         guides.map((guide) => (
           <a
             href={`/guides/${guide.slug}`}
-            class="group block rounded-xl border border-zinc-800 bg-zinc-900/40 p-5 sm:p-6 transition-all duration-200 hover:border-zinc-700 hover:bg-zinc-900/80 hover:-translate-y-0.5"
+            class="card-premium-interactive sm:p-6"
           >
             <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
               <div class="flex-1 min-w-0">
                 <div class="flex flex-wrap items-center gap-2 mb-3">
-                  <span class={`rounded-full px-2 py-0.5 text-xs font-medium capitalize ${
+                  <span class={`rounded-full px-2 py-0.5 text-xs font-semibold capitalize border ${
                     guide.data.difficulty === "beginner"
-                      ? "bg-emerald-500/10 text-emerald-400 border border-emerald-700/30"
+                      ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/20"
                       : guide.data.difficulty === "advanced"
-                      ? "bg-red-500/10 text-red-400 border border-red-700/30"
-                      : "bg-blue-500/10 text-blue-400 border border-blue-700/30"
+                      ? "bg-red-500/10 text-red-400 border-red-500/20"
+                      : "bg-blue-500/10 text-blue-400 border-blue-500/20"
                   }`}>
                     {guide.data.difficulty}
                   </span>
                   {guide.data.readingTime && (
-                    <span class="text-xs text-zinc-600">{guide.data.readingTime}</span>
+                    <span class="text-xs text-zinc-500">{guide.data.readingTime}</span>
                   )}
-                  <time datetime={guide.data.pubDate.toISOString()} class="text-xs text-zinc-600">
+                  <time datetime={guide.data.pubDate.toISOString()} class="text-xs text-zinc-500">
                     {guide.data.pubDate.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
                   </time>
                 </div>
                 <h2 class="font-display font-semibold text-white group-hover:text-amber-300 transition-colors text-xl sm:text-2xl leading-snug mb-2">
                   {guide.data.title}
                 </h2>
-                <p class="text-sm text-zinc-500 leading-relaxed">{guide.data.description}</p>
+                <p class="text-sm text-zinc-400 leading-relaxed mb-4">{guide.data.description}</p>
                 {(guide.data.tags ?? []).length > 0 && (
                   <div class="flex flex-wrap gap-1.5 mt-3">
                     {(guide.data.tags ?? []).slice(0, 4).map((tag) => (
-                      <span class="rounded-full bg-zinc-800 px-2 py-0.5 text-xs text-zinc-600">{tag}</span>
+                      <span class="badge-premium-neutral">{tag}</span>
                     ))}
                   </div>
                 )}
