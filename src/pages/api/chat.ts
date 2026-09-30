@@ -41,7 +41,13 @@ function checkRateLimit(ip: string): { allowed: boolean; remaining: number } {
 function checkOrigin(request: Request): boolean {
   const origin = request.headers.get("origin");
   const referer = request.headers.get("referer");
-  const allowed = ["https://www.nextreachstudio.com", "https://nextreachstudio.com"];
+  const allowed = [
+    "https://www.nextreachstudio.com",
+    "https://nextreachstudio.com",
+    "https://nextreachstudio.vercel.app",
+    "https://nextreach-studio.vercel.app",
+    "https://nextreach-studio-bloom.vercel.app",
+  ];
 
   if (!origin && !referer) return true;
   if (origin && allowed.some((a) => origin.startsWith(a))) return true;
