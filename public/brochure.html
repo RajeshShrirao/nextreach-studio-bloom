@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NextReach Studio — High-Converting Website Packages for Indian MSMEs & Freelancers</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cabinet+Grotesk:wght@700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap');
+
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    body {
+      background-color: #0b0d13;
+      color: #f1f5f9;
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Standard A4 Portrait Page: 210mm x 297mm */
+    .brochure-page {
+      width: 210mm;
+      height: 297mm;
+      position: relative;
+      overflow: hidden;
+      page-break-after: always;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 16mm 18mm;
+      background: #0b0d13;
+    }
+
+    /* Subtle luxury radial glow on pages */
+    .brochure-page::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 85% 10%, rgba(245, 158, 11, 0.08), transparent 45%),
+                  radial-gradient(circle at 10% 90%, rgba(59, 130, 246, 0.06), transparent 40%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .brochure-page > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Running Header */
+    .running-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 8.5px;
+      font-family: 'JetBrains Mono', monospace;
+      color: #94a3b8;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .running-header .logo-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    .logo-badge-icon {
+      width: 20px;
+      height: 20px;
+      background: #f59e0b;
+      color: #0b0d13;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 11px;
+      font-family: 'Cabinet Grotesk', sans-serif;
+    }
+
+    /* Running Footer */
+    .running-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 8.5px;
+      font-family: 'JetBrains Mono', monospace;
+      color: #64748b;
+    }
+
+    .running-footer a {
+      color: #f59e0b;
+      text-decoration: none;
+    }
+
+    /* Typography */
+    h1, h2, h3, h4 {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+    }
+
+    .highlight-amber {
+      color: #fbbf24;
+    }
+
+    .highlight-emerald {
+      color: #34d399;
+    }
+
+    .serif-quote {
+      font-size: 13px;
+      line-height: 1.6;
+      color: #cbd5e1;
+    }
+
+    /* ========================================================
+       PAGE 1: EDITORIAL COVER
+       ======================================================== */
+    .cover-top-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-top: 15mm;
+      margin-bottom: 12mm;
+    }
+
+    .cover-issue-tag {
+      display: inline-block;
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-size: 9px;
+      font-weight: 700;
+      color: #fbbf24;
+      font-family: 'JetBrains Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .cover-date {
+      font-size: 9.5px;
+      font-family: 'JetBrains Mono', monospace;
+      color: #94a3b8;
+      text-align: right;
+    }
+
+    .cover-headline-wrap {
+      margin-bottom: 10mm;
+    }
+
+    .cover-headline-wrap h1 {
+      font-size: 44px;
+      line-height: 1.05;
+      margin-bottom: 14px;
+    }
+
+    .cover-subheadline {
+      font-size: 14px;
+      color: #94a3b8;
+      line-height: 1.6;
+      max-width: 580px;
+    }
+
+    /* Editorial Photography Collage on Cover */
+    .cover-editorial-gallery {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 12px;
+      margin-bottom: 10mm;
+      height: 78mm;
+    }
+
+    .cover-photo-main {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+    }
+
+    .cover-photo-main img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .cover-photo-side {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .cover-photo-thumb {
+      flex: 1;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+    }
+
+    .cover-photo-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .photo-caption-tag {
+      position: absolute;
+      bottom: 8px;
+      left: 8px;
+      background: rgba(11, 13, 19, 0.88);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      color: #fbbf24;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    /* Cover Executive Summary Card */
+    .cover-exec-summary {
+      background: rgba(18, 22, 34, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 14px 18px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .cover-stat-box {
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+      padding-right: 12px;
+    }
+
+    .cover-stat-box:last-child {
+      border-right: none;
+    }
+
+    .cover-stat-val {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-size: 22px;
+      font-weight: 900;
+      color: #ffffff;
+    }
+
+    .cover-stat-label {
+      font-size: 8.5px;
+      color: #94a3b8;
+      text-transform: uppercase;
+      font-family: 'JetBrains Mono', monospace;
+      margin-top: 2px;
+    }
+
+    /* ========================================================
+       PAGE 2: PACKAGES & INVESTMENT DOSSIER
+       ======================================================== */
+    .page-title-block {
+      margin-top: 4mm;
+      margin-bottom: 6mm;
+    }
+
+    .section-category {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      color: #f59e0b;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 4px;
+    }
+
+    .page-title-block h2 {
+      font-size: 26px;
+      line-height: 1.15;
+    }
+
+    .page-title-block p {
+      font-size: 11px;
+      color: #94a3b8;
+      margin-top: 4px;
+    }
+
+    .packages-vertical-flow {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex-grow: 1;
+    }
+
+    .package-row-card {
+      background: rgba(18, 22, 34, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 14px 16px;
+      display: grid;
+      grid-template-columns: 140px 1fr 130px;
+      gap: 18px;
+      align-items: center;
+      position: relative;
+    }
+
+    .package-row-card.highlighted {
+      border-color: rgba(245, 158, 11, 0.5);
+      background: linear-gradient(90deg, rgba(245, 158, 11, 0.08) 0%, rgba(18, 22, 34, 0.95) 100%);
+    }
+
+    .pkg-badge-pill {
+      display: inline-block;
+      background: #f59e0b;
+      color: #0b0d13;
+      font-size: 7.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 4px;
+    }
+
+    .pkg-col-price h3 {
+      font-size: 17px;
+      margin-bottom: 2px;
+    }
+
+    .pkg-col-price .price-big {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-size: 26px;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1;
+    }
+
+    .pkg-col-price .delivery-tag {
+      font-size: 8.5px;
+      color: #34d399;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      margin-top: 4px;
+    }
+
+    .pkg-col-content h4 {
+      font-size: 12px;
+      color: #fbbf24;
+      margin-bottom: 6px;
+    }
+
+    .pkg-features-bullets {
+      list-style: none;
+      font-size: 9.5px;
+      color: #cbd5e1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px 14px;
+    }
+
+    .pkg-features-bullets li {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      line-height: 1.35;
+    }
+
+    .pkg-features-bullets li span {
+      color: #f59e0b;
+      font-weight: 700;
+    }
+
+    .pkg-col-qr {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 8px;
+      padding: 8px;
+      text-align: center;
+    }
+
+    .pkg-col-qr img {
+      width: 58px;
+      height: 58px;
+      background: #fff;
+      padding: 2px;
+      border-radius: 4px;
+      display: block;
+      margin: 0 auto 4px;
+    }
+
+    .pkg-col-qr .qr-label {
+      font-size: 7.5px;
+      font-family: 'JetBrains Mono', monospace;
+      color: #fbbf24;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    /* Comparison Table at bottom of Page 2 */
+    .comparison-table-wrap {
+      margin-top: 6mm;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 8.5px;
+      text-align: left;
+    }
+
+    .comparison-table th {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 6px 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      color: #94a3b8;
+      text-transform: uppercase;
+    }
+
+    .comparison-table td {
+      padding: 6px 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      color: #cbd5e1;
+    }
+
+    .comparison-table td.strong-td {
+      font-weight: 700;
+      color: #fff;
+    }
+
+    /* ========================================================
+       PAGE 3: LIVE DEMOS & TECHNICAL PROOF
+       ======================================================== */
+    .demos-triad-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 6mm;
+    }
+
+    .demo-editorial-card {
+      background: rgba(18, 22, 34, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .demo-card-img {
+      height: 48mm;
+      position: relative;
+    }
+
+    .demo-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .demo-card-body {
+      padding: 12px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .demo-card-body h3 {
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+
+    .demo-card-body p {
+      font-size: 9px;
+      color: #94a3b8;
+      line-height: 1.45;
+      margin-bottom: 10px;
+    }
+
+    .demo-card-specs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-bottom: 10px;
+    }
+
+    .spec-tag {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 7.5px;
+      font-family: 'JetBrains Mono', monospace;
+      color: #e2e8f0;
+    }
+
+    .demo-card-qr-box {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 6px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .demo-card-qr-box img {
+      width: 42px;
+      height: 42px;
+      background: #fff;
+      padding: 2px;
+      border-radius: 4px;
+    }
+
+    .demo-card-qr-text {
+      font-size: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      line-height: 1.3;
+    }
+
+    .demo-card-qr-text a {
+      color: #fbbf24;
+      text-decoration: underline;
+      font-weight: 700;
+      word-break: break-all;
+    }
+
+    /* Technical Pillars Grid on Page 3 */
+    .tech-pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      background: rgba(18, 22, 34, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+
+    .tech-pillar-box h4 {
+      font-size: 11px;
+      color: #34d399;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tech-pillar-box p {
+      font-size: 9px;
+      color: #94a3b8;
+      line-height: 1.4;
+    }
+
+    /* ========================================================
+       PAGE 4: 48-HOUR SPRINT & ORDER DESK
+       ======================================================== */
+    .sprint-timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-bottom: 8mm;
+    }
+
+    .sprint-box {
+      background: rgba(18, 22, 34, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 12px 10px;
+    }
+
+    .sprint-time-tag {
+      font-size: 8.5px;
+      color: #f59e0b;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 4px;
+    }
+
+    .sprint-box h4 {
+      font-size: 12px;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .sprint-box p {
+      font-size: 8.5px;
+      color: #94a3b8;
+      line-height: 1.4;
+    }
+
+    /* What you need to provide */
+    .checklist-box {
+      background: rgba(18, 22, 34, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin-bottom: 8mm;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .checklist-box h4 {
+      font-size: 12px;
+      color: #fbbf24;
+      margin-bottom: 8px;
+    }
+
+    .checklist-bullets {
+      list-style: none;
+      font-size: 9px;
+      color: #cbd5e1;
+    }
+
+    .checklist-bullets li {
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .checklist-bullets li span {
+      color: #10b981;
+      font-weight: 700;
+    }
+
+    /* Massive Order Dossier Card */
+    .order-dossier-card {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.14) 0%, rgba(18, 22, 34, 0.98) 100%);
+      border: 1.5px solid rgba(245, 158, 11, 0.45);
+      border-radius: 16px;
+      padding: 18px 24px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      align-items: center;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(245, 158, 11, 0.15);
+    }
+
+    .order-dossier-left h3 {
+      font-size: 20px;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .order-dossier-left p {
+      font-size: 10px;
+      color: #cbd5e1;
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+
+    .order-contact-direct {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: #ffffff;
+    }
+
+    .order-contact-direct span.phone {
+      color: #fbbf24;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .order-dossier-right {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 16px;
+    }
+
+    .order-qr-block {
+      text-align: center;
+    }
+
+    .order-qr-block img {
+      width: 78px;
+      height: 78px;
+      background: #fff;
+      padding: 3px;
+      border-radius: 8px;
+      display: block;
+      margin: 0 auto 4px;
+    }
+
+    .order-qr-block span {
+      font-size: 7.5px;
+      font-family: 'JetBrains Mono', monospace;
+      color: #fbbf24;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .btn-wa-order {
+      background: #25d366;
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================
+       PAGE 1: EDITORIAL COVER
+       ======================================================== -->
+  <section class="brochure-page">
+    <div class="running-header">
+      <div class="logo-badge">
+        <div class="logo-badge-icon">NR</div>
+        <span>NextReach Studio • Engineering & Web Systems</span>
+      </div>
+      <div>CONFIDENTIAL CLIENT DOSSIER • META ADS 2026</div>
+    </div>
+
+    <div class="cover-top-meta">
+      <span class="cover-issue-tag">✦ MSME & Freelancer Website Solutions</span>
+      <div class="cover-date">
+        OFFICIAL PRICING SCHEDULE<br>
+        DELIVERY: 24 TO 72 HOURS
+      </div>
+    </div>
+
+    <div class="cover-headline-wrap">
+      <h1>
+        High-Converting Digital Presence for <span class="highlight-amber">Indian Businesses</span>.
+      </h1>
+      <p class="cover-subheadline">
+        Stop losing qualified prospects to slow, generic templates. NextReach Studio builds modern, lightning-fast websites with native WhatsApp lead capture — engineered on Vercel's global edge infrastructure.
+      </p>
+    </div>
+
+    <!-- Curated Editorial Photography Collage -->
+    <div class="cover-editorial-gallery">
+      <div class="cover-photo-main">
+        <img src="file:///Users/rajeshshrirao/Desktop/nextreach-studio-bloom/public/assets/demo-villa.jpg" alt="Luxury Architecture Showcase">
+        <div class="photo-caption-tag">Tier 3: Luxury Architecture & Turnkey B2B</div>
+      </div>
+      <div class="cover-photo-side">
+        <div class="cover-photo-thumb">
+          <img src="file:///Users/rajeshshrirao/Desktop/nextreach-studio-bloom/public/assets/demo-profile.jpg" alt="Freelance Consultant">
+          <div class="photo-caption-tag">Tier 1: Solo & Freelance</div>
+        </div>
+        <div class="cover-photo-thumb">
+          <img src="file:///Users/rajeshshrirao/Desktop/nextreach-studio-bloom/public/assets/demo-clinic.jpg" alt="Dental Aesthetics Clinic">
+          <div class="photo-caption-tag">Tier 2: Clinic & MSME</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Executive Summary Strip -->
+    <div class="cover-exec-summary">
+      <div class="cover-stat-box">
+        <div class="cover-stat-val">₹5,000 – ₹10,000</div>
+        <div class="cover-stat-label">Transparent Fixed Pricing</div>
+      </div>
+      <div class="cover-stat-box">
+        <div class="cover-stat-val">&lt; 1 Second</div>
+        <div class="cover-stat-label">Edge CDN Load Speed</div>
+      </div>
+      <div class="cover-stat-box">
+        <div class="cover-stat-val">100% Native</div>
+        <div class="cover-stat-label">WhatsApp Lead Redirection</div>
+      </div>
+    </div>
+
+    <div class="running-footer">
+      <div>NEXTREACH STUDIO • PUNE & MUMBAI</div>
+      <div>WHATSAPP DESK: +91 98223 79976 • PAGE 01 / 04</div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       PAGE 2: PACKAGES & INVESTMENT DOSSIER
+       ======================================================== -->
+  <section class="brochure-page">
+    <div class="running-header">
+      <div class="logo-badge">
+        <div class="logo-badge-icon">NR</div>
+        <span>NextReach Studio • Fixed Package Catalog</span>
+      </div>
+      <div>PRICING GUARANTEE • ZERO HIDDEN CHARGES</div>
+    </div>
+
+    <div class="page-title-block">
+      <div class="section-category">SECTION 01 • INVESTMENT SCHEDULE</div>
+      <h2>Three Structured Packages Tailored to Your Growth</h2>
+      <p>Whether you are a solo consultant needing instant authority or a growing enterprise requiring deep multi-page polish, we have a fixed-scope sprint for you.</p>
+    </div>
+
+    <div class="packages-vertical-flow">
+      <!-- Tier 1 -->
+      <div class="package-row-card">
+        <div class="pkg-col-price">
+          <span class="pkg-badge-pill">Solo & Freelance</span>
+          <h3>Quick Launch</h3>
+          <div class="price-big">₹5,000</div>
+          <div class="delivery-tag">⚡ 1–2 Day Delivery</div>
+        </div>
+        <div class="pkg-col-content">
+          <h4>Best for Solo Consultants, Coaches & Creative Professionals</h4>
+          <ul class="pkg-features-bullets">
+            <li><span>✓</span> 1-Page High-Conversion Layout</li>
+            <li><span>✓</span> Direct WhatsApp Floating & Inline CTA</li>
+            <li><span>✓</span> Mobile-First Responsive Design</li>
+            <li><span>✓</span> Form Lead Capture & Validation</li>
+            <li><span>✓</span> Free SSL & Edge Hosting on Vercel</li>
+            <li><span>✓</span> 24 to 48 Hour Final Handover</li>
+          </ul>
+        </div>
+        <div class="pkg-col-qr">
+          <img src="file:///Users/rajeshshrirao/Desktop/nextreach-studio-bloom/public/qr-quick-launch.png" alt="QR Quick Launch">
+          <div class="qr-label">Scan Live Demo</div>
+        </div>
+      </div>
+
+      <!-- Tier 2 (Highlighted) -->
+      <div class="package-row-card highlighted">
+        <div class="pkg-col-price">
+          <span class="pkg-badge-pill" style="background: #fbbf24;">★ Most Popular</span>
+          <h3>Business Tier</h3>
+          <div class="price-big">₹7,500</div>
+          <div class="delivery-tag">⚡ 2–3 Day Delivery</div>
+        </div>
+        <div class="pkg-col-content">
+          <h4>Best for Clinics, Salons, Boutique Studios & Local MSMEs</h4>
+          <ul class="pkg-features-bullets">
+            <li><span>✓</span> 3 to 5 Full Sections / Distinct Pages</li>
+            <li><span>✓</span> Filterable Case & Treatment Gallery</li>
+            <li><span>✓</span> Online Appointment Booking Engine</li>
+            <li><span>✓</span> Local SEO Schema (Google Business)</li>
+            <li><span>✓</span> Transparent Treatment / Fee Tables</li>
+            <li><span>✓</span> Mobile Bottom Bar (Call + WhatsApp)</li>
+          </ul>
+        </div>
+        <div class="pkg-col-qr" style="border-color: rgba(245, 158, 11, 0.3);">
+          <img src="file:///Users/rajeshshrirao/Desktop/nextreach-studio-bloom/public/qr-business.png" alt="QR Business">
+          <div class="qr-label" style="color: #fbbf24;">Scan Live Demo</div>
+        </div>
+      </div>
+
+      <!-- Tier 3 -->
+      <div class="package-row-card">
+        <div class="pkg-col-price">
+          <span class="pkg-badge-pill">Enterprise Luxury</span>
+          <h3>Premium Tier</h3>
+          <div class="price-big">₹10,000</div>
+          <div class="delivery-tag">⚡ 3-Day Delivery</div>
+        </div>
+        <div class="pkg-col-content">
+          <h4>Best for Luxury Architecture, High-Ticket B2B & Turnkey Studios</h4>
+          <ul class="pkg-features-bullets">
+            <li><span>✓</span> 5 to 7 Deep Custom Pages & Case Studies</li>
+            <li><span>✓</span> World-Class Luxury UI & Micro-Animations</li>
+            <li><span>✓</span> Interactive Cost & Sq.Ft Estimator Tool</li>
+            <li><span>✓</span> Meta Pixel & GA4 Analytics Hooks Ready</li>
+            <li><span>✓</span> Advanced Schema (Organization / Service)</li>
+            <li><span>✓</span> VIP Concierge WhatsApp Integration</li>
+          </ul>
+        </div>
+        <div class="pkg-col-qr">
+          <img src="file:///Users/rajeshshrirao/Desktop/nextreach-studio-bloom/public/qr-premium.png" alt="QR Premium">
+          <div class="qr-label">Scan Live Demo</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Comparison Summary Table -->
+    <div class="comparison-table-wrap">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Deliverable / Feature</th>
+            <th>Quick Launch (₹5k)</th>
+            <th>Business (₹7.5k)</th>
+            <th>Premium (₹10k)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="strong-td">Page Architecture</td>
+            <td>1-Page Longform</td>
+            <td>3–5 Distinct Pages</td>
+            <td>5–7 Deep Custom Pages</td>
+          </tr>
+          <tr>
+            <td class="strong-td">Lead Capture</td>
+            <td>WhatsApp + Simple Form</td>
+            <td>Appointment Booking Engine</td>
+            <td>Interactive RFQ & Cost Estimator</td>
+          </tr>
+          <tr>
+            <td class="strong-td">SEO & Structured Data</td>
+            <td>Meta Tags & OpenGraph</td>
+            <td>LocalBusiness Schema</td>
+            <td>Full Organization & Service Schema</td>
+          </tr>
+          <tr>
+            <td class="strong-td">Turnaround Guarantee</td>
+            <td>24 to 48 Hours</td>
+            <td>48 to 72 Hours</td>
+            <td>72 Hours</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="running-footer">
+      <div>NEXTREACH STUDIO • FIXED PRICING CATALOG</div>
+      <div>WHATSAPP DESK: +91 98223 79976 • PAGE 02 / 04</div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       PAGE 3: LIVE PRODUCTION SHOWCASE
+       ======================================================== -->
+  <section class="brochure-page">
+    <div class="running-header">
+      <div class="logo-badge">
+        <div class="logo-badge-icon">NR</div>
+        <span>NextReach Studio • Live Portfolio Verification</span>
+      </div>
+      <div>INSPECT ON ANY MOBILE OR DESKTOP BROWSER</div>
+    </div>
+
+    <div class="page-title-block">
+      <div class="section-category">SECTION 02 • PRODUCTION PROOF</div>
+      <h2>Real Deployed Websites You Can Test in Seconds</h2>
+      <p>We do not pitch mockups. Below are live production websites hosted on Vercel Edge — scan the QR codes with your smartphone camera to experience real speed and touch ergonomics.</p>
+    </div>
+
+    <div class="demos-triad-grid">
+      <!-- Demo 1 -->
+      <div class="demo-editorial-card">
+        <div class="demo-card-img">
+          <img src="file:///Users/rajeshshrirao/Desktop/nextreach-studio-bloom/public/assets/demo-profile.jpg" alt="Arjun Mehta Demo">
+          <div class="photo-caption-tag">₹5,000 QUICK LAUNCH</div>
+        </div>
+        <div class="demo-card-body">
+          <div>
+            <h3>Arjun Mehta — Growth Consultant</h3>
+            <p>Built for solopreneurs. Includes an interactive WhatsApp message builder, client credibility metrics, transparent retainers, and single-click lead capture.</p>
+            <div class="demo-card-specs">
+              <span class="spec-tag">1-Page Layout</span>
+              <span class="spec-tag">WhatsApp Builder</span>
+              <span class="spec-tag">&lt; 0.8s Load</span>
+            </div>
+          </div>
+          <div class="demo-card-qr-box">
+            <img src="file:///Users/rajeshshrirao/Desktop/nextreach-studio-bloom/public/qr-quick-launch.png" alt="QR Demo 1">
+            <div class="demo-card-qr-text">
+              <strong style="color: #fff;">Scan to Test:</strong><br>
+              <a href="https://quick-launch-freelancer.vercel.app">quick-launch-freelancer.vercel.app</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Demo 2 -->
+      <div class="demo-editorial-card" style="border-color: rgba(245, 158, 11, 0.35);">
+        <div class="demo-card-img">
+          <img src="file:///Users/rajeshshrirao/Desktop/nextreach-studio-bloom/public/assets/demo-clinic.jpg" alt="Oak & Elm Demo">
+          <div class="photo-caption-tag" style="color: #34d399;">₹7,500 BUSINESS TIER</div>
+        </div>
+        <div class="demo-card-body">
+          <div>
+            <h3>Oak & Elm Dental Studio (Pune)</h3>
+            <p>Full 5-page clinic platform with transparent fee tables, filterable Before & After smile gallery, doctor accreditation profiles, and multi-branch booking.</p>
+            <div class="demo-card-specs">
+              <span class="spec-tag">5 Distinct Pages</span>
+              <span class="spec-tag">Filterable Gallery</span>
+              <span class="spec-tag">LocalBusiness Schema</span>
+            </div>
+          </div>
+          <div class="demo-card-qr-box">
+            <img src="file:///Users/rajeshshrirao/Desktop/nextreach-studio-bloom/public/qr-business.png" alt="QR Demo 2">
+            <div class="demo-card-qr-text">
+              <strong style="color: #fff;">Scan to Test:</strong><br>
+              <a href="https://business-oak-elm-clinic.vercel.app">business-oak-elm-clinic.vercel.app</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Demo 3 -->
+      <div class="demo-editorial-card">
+        <div class="demo-card-img">
+          <img src="file:///Users/rajeshshrirao/Desktop/nextreach-studio-bloom/public/assets/demo-villa.jpg" alt="Studio Vayu Demo">
+          <div class="photo-caption-tag" style="color: #fbbf24;">₹10,000 PREMIUM TIER</div>
+        </div>
+        <div class="demo-card-body">
+          <div>
+            <h3>Studio Vayu — Luxury Architecture</h3>
+            <p>7-page high-ticket architectural atelier portal. Features dynamic sq.ft cost calculator, deep-dive case studies, live Meta Pixel event logger, and bespoke UI.</p>
+            <div class="demo-card-specs">
+              <span class="spec-tag">7 Luxury Pages</span>
+              <span class="spec-tag">Cost Calculator</span>
+              <span class="spec-tag">Meta Pixel Ready</span>
+            </div>
+          </div>
+          <div class="demo-card-qr-box">
+            <img src="file:///Users/rajeshshrirao/Desktop/nextreach-studio-bloom/public/qr-premium.png" alt="QR Demo 3">
+            <div class="demo-card-qr-text">
+              <strong style="color: #fff;">Scan to Test:</strong><br>
+              <a href="https://premium-studio-vayu.vercel.app">premium-studio-vayu.vercel.app</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Technical Pillars -->
+    <div class="tech-pillars-grid">
+      <div class="tech-pillar-box">
+        <h4>⚡ Vercel Edge Performance</h4>
+        <p>Zero server downtime. Sub-second load speeds across Jio, Airtel, and 5G networks throughout India.</p>
+      </div>
+      <div class="tech-pillar-box">
+        <h4>💬 Frictionless WhatsApp Leads</h4>
+        <p>Indian consumers hate waiting for emails. We route all inquiries directly to your WhatsApp with pre-filled context.</p>
+      </div>
+      <div class="tech-pillar-box">
+        <h4>🔍 Complete Asset Handover</h4>
+        <p>100% code ownership. Connect your own custom domain with zero lock-in and zero surprise maintenance retainers.</p>
+      </div>
+    </div>
+
+    <div class="running-footer">
+      <div>NEXTREACH STUDIO • LIVE PRODUCTION SHOWCASE</div>
+      <div>WHATSAPP DESK: +91 98223 79976 • PAGE 03 / 04</div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       PAGE 4: 48-HOUR SPRINT & ORDER DESK
+       ======================================================== -->
+  <section class="brochure-page">
+    <div class="running-header">
+      <div class="logo-badge">
+        <div class="logo-badge-icon">NR</div>
+        <span>NextReach Studio • Delivery Protocol & Order Desk</span>
+      </div>
+      <div>DIRECT WHATSAPP CONCIERGE: +91 98223 79976</div>
+    </div>
+
+    <div class="page-title-block">
+      <div class="section-category">SECTION 03 • EXECUTION PROTOCOL</div>
+      <h2>How We Ship Production Software in 48 Hours</h2>
+      <p>We eliminate weeks of agency bureaucracy. Our structured four-step sprint takes you from initial WhatsApp briefing to live production deployment smoothly.</p>
+    </div>
+
+    <!-- 4-Step Timeline -->
+    <div class="sprint-timeline">
+      <div class="sprint-box">
+        <div class="sprint-time-tag">STEP 01 • HOUR 0</div>
+        <h4>Choose Your Tier</h4>
+        <p>Select Quick Launch (₹5k), Business (₹7.5k), or Premium (₹10k) based on your page scope.</p>
+      </div>
+      <div class="sprint-box">
+        <div class="sprint-time-tag">STEP 02 • HOUR 4</div>
+        <h4>WhatsApp Briefing</h4>
+        <p>Send your logo, phone number, service list, and photos. If you need copy, we draft it for you.</p>
+      </div>
+      <div class="sprint-box">
+        <div class="sprint-time-tag">STEP 03 • HOUR 24–48</div>
+        <h4>Private Staging Review</h4>
+        <p>We build your live site on Vercel and send a private review link for any revisions.</p>
+      </div>
+      <div class="sprint-box">
+        <div class="sprint-time-tag">STEP 04 • HOUR 72</div>
+        <h4>Domain Launch & Go Live</h4>
+        <p>We point your custom `.com` or `.in` domain, activate free SSL, and transfer ownership.</p>
+      </div>
+    </div>
+
+    <!-- Checklist & What's Included -->
+    <div class="checklist-box">
+      <div>
+        <h4>What to Have Ready on WhatsApp</h4>
+        <ul class="checklist-bullets">
+          <li><span>✓</span> Your Business Name & Logo (PNG or vector)</li>
+          <li><span>✓</span> Primary WhatsApp Number for Inquiries</li>
+          <li><span>✓</span> List of 3–6 Core Services or Products</li>
+          <li><span>✓</span> 3–5 Photos (or we provide premium stock imagery)</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Included in Every Single Website</h4>
+        <ul class="checklist-bullets">
+          <li><span>✓</span> Free Lifetime SSL Certificate (HTTPS)</li>
+          <li><span>✓</span> Vercel Global Edge CDN Hosting</li>
+          <li><span>✓</span> 100% Mobile & Tablet Ergonomics</li>
+          <li><span>✓</span> 30-Day Post-Launch Bug-Free Warranty</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Massive Order Dossier Card -->
+    <div class="order-dossier-card">
+      <div class="order-dossier-left">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 9.5px; color: #fbbf24; font-weight: 700; text-transform: uppercase; margin-bottom: 4px;">
+          ✦ Start Your Project Today
+        </div>
+        <h3>Ready to Launch Your High-Converting Website?</h3>
+        <p>
+          Send us a message on WhatsApp specifying which package you want to start. Our lead developer will confirm your timeline and onboard your project within 30 minutes.
+        </p>
+
+        <div class="order-contact-direct">
+          WhatsApp Desk: <span class="phone">+91 98223 79976</span><br>
+          <span style="font-size: 9.5px; color: #94a3b8;">Direct Email: hello@nextreachstudio.com • Pune & Mumbai, Maharashtra</span>
+        </div>
+      </div>
+
+      <div class="order-dossier-right">
+        <div class="order-qr-block">
+          <img src="file:///Users/rajeshshrirao/Desktop/nextreach-studio-bloom/public/qr-whatsapp.png" alt="Scan WhatsApp">
+          <span>Scan to Order</span>
+        </div>
+
+        <div>
+          <a href="https://wa.me/919822379976?text=Hi%20NextReach%20Studio,%20I%20am%20interested%20in%20ordering%20a%20website" class="btn-wa-order" target="_blank">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+            </svg>
+            Order on WhatsApp
+          </a>
+          <div style="font-size: 8px; color: #94a3b8; font-family: 'JetBrains Mono', monospace; margin-top: 6px; text-align: center;">
+            Typical Response: &lt; 15 mins
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="running-footer">
+      <div>NEXTREACH STUDIO • THE MODERN DIGITAL AGENCY FOR INDIAN MSMES</div>
+      <div>OFFICIAL PROPOSAL DOSSIER • PAGE 04 / 04</div>
+    </div>
+  </section>
+
+</body>
+</html>
