@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saffron & Smoke — Modern Indian Dining | Baner, Pune</title>
+  <meta name="description" content="Contemporary Indian cuisine rooted in tradition, served in the heart of Baner, Pune. Charcoal sigri gastronomy, slow-simmered heritage curries, and handcrafted dining.">
+  <meta property="og:title" content="Saffron & Smoke — Indian Flavours. Reimagined.">
+  <meta property="og:description" content="Contemporary Indian cuisine rooted in tradition, served in the heart of Baner, Pune. Reserve your table.">
+  <meta property="og:image" content="assets/hero-dish.jpg">
+  <meta property="og:type" content="restaurant">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Schema.org JSON-LD for Restaurant SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Saffron & Smoke",
+    "image": "assets/hero-dish.jpg",
+    "description": "Contemporary Indian cuisine rooted in tradition, served in the heart of Baner, Pune.",
+    "servesCuisine": ["Modern Indian", "North Indian", "Tandoori & Sigri"],
+    "telephone": "+91 98765 21430",
+    "email": "hello@saffronandsmoke.in",
+    "priceRange": "₹₹₹₹",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Level 4, The Pavilion Atelier, High Street, Baner",
+      "addressLocality": "Pune",
+      "addressRegion": "Maharashtra",
+      "postalCode": "411045",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 18.5590,
+      "longitude": 73.7868
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "12:30",
+        "closes": "15:30"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "19:00",
+        "closes": "23:45"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Top Package Demo Indicator Bar -->
+  <div class="demo-banner">
+    <div class="demo-banner-left">
+      <span class="demo-tag">Live Client Demo</span>
+      <span>NextReach Studio • <strong>Hospitality &amp; Luxury Dining Tier</strong> — Online Reservations, Realtime Menu &amp; Local SEO</span>
+    </div>
+    <div class="demo-banner-right">
+      <a href="https://wa.me/919876521430?text=Hi%20NextReach,%20I%20love%20the%20Saffron%20%26%20Smoke%20restaurant%20demo%20and%20want%20a%20similar%20website" target="_blank" class="demo-banner-link">Commission This Platform →</a>
+    </div>
+  </div>
+
+  <!-- Header / Nav -->
+  <header>
+    <div class="container nav-inner">
+      <a href="#hero" class="brand-group">
+        <div class="brand-symbol">S&amp;S</div>
+        <div>
+          <div class="brand-title">Saffron &amp; Smoke</div>
+          <div class="brand-tagline">Indian flavours. Reimagined.</div>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#philosophy">01 Philosophy</a></li>
+        <li><a href="#signature-plates">02 Signature Plates</a></li>
+        <li><a href="#space">03 The Space</a></li>
+        <li><a href="#reviews">04 Reviews</a></li>
+        <li><a href="#visit">05 Visit Us</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button type="button" class="btn-luxury btn-outline open-menu-trigger" aria-label="Open food menu">
+          Menu
+        </button>
+        <a href="#reservation" class="btn-luxury btn-copper">
+          Reserve Table
+        </a>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-location-badge">
+            <span class="location-dot"></span>
+            Baner, Pune • Est. 2024
+          </div>
+
+          <h1 class="hero-headline serif-headline">
+            INDIA,<br>
+            <span class="gradient-word">ON A DIFFERENT PLATE.</span>
+          </h1>
+
+          <p class="hero-subheading">
+            Contemporary Indian cuisine rooted in tradition, served in the heart of Baner. Where age-old sigri embers meet modernist culinary architecture.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#reservation" class="btn-luxury btn-copper">
+              Reserve a Table
+            </a>
+            <button type="button" class="btn-luxury btn-outline open-menu-trigger">
+              Explore Menu
+            </button>
+          </div>
+
+          <div class="hero-meta-strip">
+            <div class="hero-meta-item">
+              <span class="hero-meta-label">Cuisine</span>
+              <span class="hero-meta-value">Modern &amp; North Indian</span>
+            </div>
+            <div class="hero-meta-item">
+              <span class="hero-meta-label">Signature Hearth</span>
+              <span class="hero-meta-value">Smoked Sigri Charcoal</span>
+            </div>
+            <div class="hero-meta-item">
+              <span class="hero-meta-label">Accolade</span>
+              <span class="hero-meta-value">AD India Featured 2025</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Visual with Dramatic Side Lighting & Animated Steam -->
+        <div class="hero-visual">
+          <div class="hero-visual-frame">
+            <img 
+              src="assets/hero-dish.jpg" 
+              alt="Artisanal charred tandoori plate with velvety saffron reduction and micro-herbs" 
+              class="hero-dish-img"
+              width="1200"
+              height="750"
+            >
+            
+            <!-- Subtle Animated Steam Effect -->
+            <div class="steam-container" aria-hidden="true">
+              <div class="steam-wisp steam-1"></div>
+              <div class="steam-wisp steam-2"></div>
+              <div class="steam-wisp steam-3"></div>
+              <div class="steam-wisp steam-4"></div>
+            </div>
+
+            <!-- Floating Tag -->
+            <div class="hero-curation-tag">
+              <span class="tag-kicker">Chef's Signature</span>
+              <span class="tag-title">Charcoal Sigri &amp; Saffron Reduction</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 01 — OUR PHILOSOPHY ==================== -->
+    <section class="philosophy-section" id="philosophy">
+      <div class="container philosophy-grid">
+        <div class="philosophy-header">
+          <span class="eyebrow">01 — Our Philosophy</span>
+          <h2 class="serif-headline">Where Ancient Sigri Meets Precision Technique</h2>
+          <blockquote class="philosophy-quote">
+            “We do not tamper with nostalgic flavours; we build a stage worthy of their depth.”
+          </blockquote>
+          <p style="color: var(--copper-primary); font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;">
+            — Chef Kabir Roy, Culinary Director
+          </p>
+        </div>
+
+        <div class="philosophy-body">
+          <p>
+            At Saffron &amp; Smoke, Indian dining is emancipated from heavy gravies and artificial theatrics. Founded in 2024 in Baner, Pune, our culinary atelier honors the centuries-old North Indian hearth—infusing native woods, charcoal embers, and Kashmiri saffron into modern, sculptural compositions.
+          </p>
+          <p>
+            Every spice is hand-sourced at origin: Mongra saffron from the terraces of Pampore, organic black urad simmered for 36 hours over babool wood charcoal, and cold-pressed mustard oil churned in stone kolhus. We respect time as our primary ingredient.
+          </p>
+
+          <div class="philosophy-pillars">
+            <div class="pillar-card">
+              <div class="pillar-number">01 / HEAT</div>
+              <h4>Sigri &amp; Charcoal</h4>
+              <p>Natural fruitwood coals imparting subtle, non-overpowering smoky undertones.</p>
+            </div>
+            <div class="pillar-card">
+              <div class="pillar-number">02 / ORIGIN</div>
+              <h4>Pampore Saffron</h4>
+              <p>Grade-A Mongra strands steeped in chilled spring water for uncompromised aroma.</p>
+            </div>
+            <div class="pillar-card">
+              <div class="pillar-number">03 / TIME</div>
+              <h4>36-Hour Simmer</h4>
+              <p>Slow artisanal reductions without cornstarch, food coloring, or shortcuts.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 02 — SIGNATURE PLATES ==================== -->
+    <section class="signature-section" id="signature-plates">
+      <div class="container">
+        <div class="section-head-center">
+          <span class="eyebrow">02 — Signature Plates</span>
+          <h2 class="serif-headline">Curated Flavours from the Hearth</h2>
+          <p>Six defining plates that represent the craft, smoke, and soul of Saffron &amp; Smoke.</p>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="menu-filter-bar">
+          <button class="filter-btn active" data-filter="all">All Plates</button>
+          <button class="filter-btn" data-filter="veg">Vegetarian</button>
+          <button class="filter-btn" data-filter="non-veg">Meats &amp; Poultry</button>
+          <button class="filter-btn" data-filter="sigri">Sigri Charcoal</button>
+        </div>
+
+        <!-- 6 Plates Grid -->
+        <div class="dishes-grid">
+          <!-- Plate 1: Charred Malai Broccoli -->
+          <article class="dish-card" data-category="veg sigri">
+            <div class="dish-media">
+              <img src="assets/malai-broccoli.jpg" alt="Charred Malai Broccoli with toasted almonds" loading="lazy">
+              <span class="dish-badge">Vegetarian</span>
+            </div>
+            <div class="dish-info">
+              <div class="dish-topline">
+                <h3 class="dish-title">Charred Malai Broccoli</h3>
+                <span class="dish-price">₹780</span>
+              </div>
+              <p class="dish-description">
+                Cardamom cream cheese crust, toasted Californian almond crumble, micro-herbs, and an artisanal cold-pressed mustard oil emulsion.
+              </p>
+              <div class="dish-culinary-notes">
+                <span>Sigri Flame Kissed</span>
+                <span>Tasting Note: Creamy &amp; Nutty</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Plate 2: Saffron Butter Chicken -->
+          <article class="dish-card" data-category="non-veg">
+            <div class="dish-media">
+              <img src="assets/saffron-butter-chicken.jpg" alt="Saffron Butter Chicken with edible gold leaf" loading="lazy">
+              <span class="dish-badge">Chef's Icon</span>
+            </div>
+            <div class="dish-info">
+              <div class="dish-topline">
+                <h3 class="dish-title">Saffron Butter Chicken</h3>
+                <span class="dish-price">₹980</span>
+              </div>
+              <p class="dish-description">
+                24-hour sous-vide pulled free-range chicken, saffron-infused silk makhani velouté, sun-dried fenugreek dust, and delicate edible 24k gold leaf.
+              </p>
+              <div class="dish-culinary-notes">
+                <span>Slow Velouté</span>
+                <span>Tasting Note: Velvety &amp; Floral</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Plate 3: Smoked Dal Makhani -->
+          <article class="dish-card" data-category="veg sigri">
+            <div class="dish-media">
+              <img src="assets/smoked-dal-makhani.jpg" alt="Smoked Dal Makhani in dark stone bowl with smoking spices" loading="lazy">
+              <span class="dish-badge">Signature 36-Hr</span>
+            </div>
+            <div class="dish-info">
+              <div class="dish-topline">
+                <h3 class="dish-title">Smoked Dal Makhani</h3>
+                <span class="dish-price">₹680</span>
+              </div>
+              <p class="dish-description">
+                36-hour charcoal simmered black urad lentils, hand-churned organic white butter, applewood smoke infusion, and fresh ginger matchsticks.
+              </p>
+              <div class="dish-culinary-notes">
+                <span>Dhungar Method</span>
+                <span>Tasting Note: Deep Woodsmoke</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Plate 4: Tandoori Burrata -->
+          <article class="dish-card" data-category="veg">
+            <div class="dish-media">
+              <img src="assets/tandoori-burrata.jpg" alt="Charred Tandoori Burrata over heirloom tomato makhani" loading="lazy">
+              <span class="dish-badge">Modern Icon</span>
+            </div>
+            <div class="dish-info">
+              <div class="dish-topline">
+                <h3 class="dish-title">Tandoori Burrata</h3>
+                <span class="dish-price">₹890</span>
+              </div>
+              <p class="dish-description">
+                Flame-charred Italian Puglia burrata nestled on a reduction of roasted heirloom tomatoes, basil-coriander oil, pickled shallot petals, and toasted pine nuts.
+              </p>
+              <div class="dish-culinary-notes">
+                <span>Clay Tandoor</span>
+                <span>Tasting Note: Creamy &amp; Tangy</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Plate 5: Kashmiri Lamb Chops -->
+          <article class="dish-card" data-category="non-veg sigri">
+            <div class="dish-media">
+              <img src="assets/kashmiri-lamb-chops.jpg" alt="Succulent Kashmiri Lamb Chops with mint emulsion" loading="lazy">
+              <span class="dish-badge">Signature Meat</span>
+            </div>
+            <div class="dish-info">
+              <div class="dish-topline">
+                <h3 class="dish-title">Kashmiri Lamb Chops</h3>
+                <span class="dish-price">₹1,450</span>
+              </div>
+              <p class="dish-description">
+                Anardana and Pampore saffron glaze, slow-braised then sigri flame-kissed over babool coals, served with wild hill-mint emulsion and ruby pomegranate arils.
+              </p>
+              <div class="dish-culinary-notes">
+                <span>Sigri Braised</span>
+                <span>Tasting Note: Piquant &amp; Tender</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Plate 6: Burnt Garlic Naan -->
+          <article class="dish-card" data-category="veg">
+            <div class="dish-media">
+              <img src="assets/burnt-garlic-naan.jpg" alt="Burnt Garlic Naan with activated charcoal butter" loading="lazy">
+              <span class="dish-badge">Artisan Bread</span>
+            </div>
+            <div class="dish-info">
+              <div class="dish-topline">
+                <h3 class="dish-title">Burnt Garlic Naan</h3>
+                <span class="dish-price">₹320</span>
+              </div>
+              <p class="dish-description">
+                Stone-ground heirloom flour, clay tandoor blistered, brushed with activated charcoal butter, crispy golden garlic chips, and coarse Maldon sea salt.
+              </p>
+              <div class="dish-culinary-notes">
+                <span>Clay Hearth</span>
+                <span>Tasting Note: Crisp &amp; Aromatic</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div style="text-align: center; margin-top: 3.5rem;">
+          <button type="button" class="btn-luxury btn-outline open-menu-trigger">
+            View Complete Degustation &amp; A La Carte Menu →
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 03 — THE SPACE ==================== -->
+    <section class="space-section" id="space">
+      <div class="container">
+        <div class="space-hero-grid">
+          <div class="space-main-image">
+            <img src="assets/space-interior.jpg" alt="Architectural Digest India interior of Saffron & Smoke dining room" loading="lazy">
+          </div>
+          <div class="space-content-box">
+            <span class="eyebrow">03 — The Space</span>
+            <h2 class="serif-headline">An Architectural Sanctuary in Baner</h2>
+            <p>
+              Conceived in collaboration with leading spatial designers, the interiors of Saffron &amp; Smoke draw inspiration from the raw basalt stone of the Deccan plateau, paired with hand-hammered copper, dark fluted wood, and recessed amber illumination.
+            </p>
+            <p>
+              No blaring background music or intrusive service. The dining room offers whispering acoustic privacy, an open hearth where embers glow in full view, and bespoke seating designed for unhurried dinners that stretch long into the night.
+            </p>
+            <div style="display: flex; gap: 2rem; margin-top: 2rem; border-top: 1px solid var(--border-subtle); padding-top: 1.5rem;">
+              <div>
+                <strong style="color: #fff; font-size: 1.3rem; font-family: var(--font-serif); display: block;">72</strong>
+                <span style="font-size: 0.72rem; color: var(--ivory-faint); font-family: var(--font-mono); text-transform: uppercase;">Curated Covers</span>
+              </div>
+              <div>
+                <strong style="color: #fff; font-size: 1.3rem; font-family: var(--font-serif); display: block;">14 Seat</strong>
+                <span style="font-size: 0.72rem; color: var(--ivory-faint); font-family: var(--font-mono); text-transform: uppercase;">Private Alcove</span>
+              </div>
+              <div>
+                <strong style="color: #fff; font-size: 1.3rem; font-family: var(--font-serif); display: block;">Open Sigri</strong>
+                <span style="font-size: 0.72rem; color: var(--ivory-faint); font-family: var(--font-mono); text-transform: uppercase;">Chef's Counter</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-secondary-grid">
+          <div class="space-card">
+            <div class="space-card-img">
+              <img src="assets/space-bar.jpg" alt="Smoked Botanical Bar with copper counter and crystal glassware" loading="lazy">
+            </div>
+            <div class="space-card-caption">
+              <h4>The Smoked Botanical Bar</h4>
+              <p>House infusions featuring toasted coriander seed bitters, Kashmir saffron honey, smoked star anise, and rare single malts.</p>
+            </div>
+          </div>
+          <div class="space-card">
+            <div class="space-card-img">
+              <img src="assets/hero-dish.jpg" alt="The Hearth Counter at Saffron & Smoke" loading="lazy">
+            </div>
+            <div class="space-card-caption">
+              <h4>The Sigri Hearth Counter</h4>
+              <p>An interactive eight-seat experience where guests witness the intricate interplay of smoke, reduction, and artisanal plating.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 04 — GUEST REVIEWS ==================== -->
+    <section class="reviews-section" id="reviews">
+      <div class="container">
+        <div class="section-head-center">
+          <span class="eyebrow">04 — Critical Acclaim &amp; Guest Notes</span>
+          <h2 class="serif-headline">Words from Our Tables</h2>
+          <p>Reflections from discerning food critics, hospitality journals, and private patrons.</p>
+        </div>
+
+        <div class="reviews-grid">
+          <!-- Review 1 -->
+          <article class="review-card">
+            <div>
+              <div class="review-stars">★ ★ ★ ★ ★</div>
+              <p class="review-quote">
+                “A masterclass in modern Indian dining. The Smoked Dal Makhani and Tandoori Burrata alone redefine Pune’s culinary map. Sophisticated, warm, and utterly devoid of cliché.”
+              </p>
+            </div>
+            <div class="review-author">
+              <div class="review-author-name">Architectural Digest India</div>
+              <div class="review-author-title">Hospitality &amp; Design Review</div>
+            </div>
+          </article>
+
+          <!-- Review 2 -->
+          <article class="review-card">
+            <div>
+              <div class="review-stars">★ ★ ★ ★ ★</div>
+              <p class="review-quote">
+                “Saffron &amp; Smoke strips away the tired gold and velvet of Indian banquet halls, replacing them with raw architectural confidence and Michelin-standard flavour architecture.”
+              </p>
+            </div>
+            <div class="review-author">
+              <div class="review-author-name">Pune Times Dining Awards</div>
+              <div class="review-author-title">Best Modern Indian Restaurant 2025</div>
+            </div>
+          </article>
+
+          <!-- Review 3 -->
+          <article class="review-card">
+            <div>
+              <div class="review-stars">★ ★ ★ ★ ★</div>
+              <p class="review-quote">
+                “Sensational pacing, extraordinary wine pairings, and a charcoal butter chicken that respects old Delhi heritage while elevating it to sublime culinary art.”
+              </p>
+            </div>
+            <div class="review-author">
+              <div class="review-author-name">Vir Sanghvi’s Column Note</div>
+              <div class="review-author-title">Senior Food Critic</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 05 — VISIT US ==================== -->
+    <section class="visit-section" id="visit">
+      <div class="container visit-grid">
+        <div class="visit-info">
+          <span class="eyebrow">05 — Visit Us</span>
+          <h2 class="serif-headline">Join Us in Baner, Pune</h2>
+          <p style="color: var(--ivory-muted); font-size: 0.95rem; line-height: 1.8; margin-bottom: 2rem;">
+            Located on High Street in Baner, Saffron &amp; Smoke welcomes guests for lunch and dinner sittings. Advance reservations are strongly encouraged for evening services and private alcoves.
+          </p>
+
+          <div class="visit-details-list">
+            <div class="visit-item">
+              <div class="visit-icon">📍</div>
+              <div class="visit-text">
+                <h4>Address</h4>
+                <p>Level 4, The Pavilion Atelier, High Street, Baner, Pune, Maharashtra 411045</p>
+              </div>
+            </div>
+
+            <div class="visit-item">
+              <div class="visit-icon">🕒</div>
+              <div class="visit-text">
+                <h4>Hours of Hospitality</h4>
+                <p><strong>Lunch:</strong> Tuesday – Sunday, 12:30 PM – 3:30 PM<br>
+                <strong>Dinner:</strong> Tuesday – Sunday, 7:00 PM – 11:45 PM<br>
+                <em>Closed Mondays for culinary testing &amp; foraging</em></p>
+              </div>
+            </div>
+
+            <div class="visit-item">
+              <div class="visit-icon">📞</div>
+              <div class="visit-text">
+                <h4>Contact &amp; Concierge</h4>
+                <p>Telephone: <a href="tel:+919876521430">+91 98765 21430</a><br>
+                Email: <a href="mailto:hello@saffronandsmoke.in">hello@saffronandsmoke.in</a></p>
+              </div>
+            </div>
+
+            <div class="visit-item">
+              <div class="visit-icon">🚗</div>
+              <div class="visit-text">
+                <h4>Valet &amp; Dress Code</h4>
+                <p>Complimentary private valet at the Porte-Cochère.<br>
+                Dress Code: Smart Casual &amp; Contemporary Evening.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Google Maps Styled Location Box -->
+        <div class="map-container">
+          <div class="map-placeholder-graphic">
+            <div class="map-pin-pulse">
+              <div class="pin-icon-wrap">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </div>
+              <div class="pin-title">Saffron &amp; Smoke</div>
+              <div class="pin-sub">High Street, Baner • Pune</div>
+            </div>
+          </div>
+          <div class="map-action-bar">
+            <span class="map-coords">GEO: 18.5590° N, 73.7868° E</span>
+            <a 
+              href="https://maps.google.com/?q=Baner+High+Street+Pune" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="btn-luxury btn-outline" 
+              style="padding: 0.5rem 1rem; font-size: 0.72rem;"
+            >
+              Open in Google Maps ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 06 — RESERVATION CTA & BOOKING ENGINE ==================== -->
+    <section class="reservation-section" id="reservation">
+      <div class="container">
+        <div class="reservation-panel">
+          <div class="reservation-header">
+            <span class="eyebrow" style="justify-content: center;">06 — Reservation Concierge</span>
+            <h2 class="serif-headline">Reserve Your Table</h2>
+            <p>Every table is prepared with bespoke care. Please reserve your evening sitting in advance.</p>
+          </div>
+
+          <form class="booking-form" id="bookingForm">
+            <!-- Guests -->
+            <div class="form-group">
+              <label for="guestCount" class="form-label">Party Size</label>
+              <select id="guestCount" class="form-control" required>
+                <option value="2 Guests">2 Guests (Intimate Banquette)</option>
+                <option value="4 Guests">4 Guests (Dining Room)</option>
+                <option value="6 Guests">6 Guests (Spacious Booth)</option>
+                <option value="8 Guests">8 Guests (Chef's Hearth Table)</option>
+                <option value="10-14 Guests">10–14 Guests (Private Saffron Alcove)</option>
+              </select>
+            </div>
+
+            <!-- Date -->
+            <div class="form-group">
+              <label for="resDate" class="form-label">Dining Date</label>
+              <input type="date" id="resDate" class="form-control" required value="2026-10-03">
+            </div>
+
+            <!-- Time Slot -->
+            <div class="form-group">
+              <label for="resTime" class="form-label">Sitting Time</label>
+              <select id="resTime" class="form-control" required>
+                <optgroup label="Dinner Sittings (Evening)">
+                  <option value="7:00 PM">7:00 PM — First Evening Seating</option>
+                  <option value="8:15 PM" selected>8:15 PM — Prime Dinner Sitting</option>
+                  <option value="9:30 PM">9:30 PM — Late Dining</option>
+                  <option value="10:15 PM">10:15 PM — Nocturne Sitting</option>
+                </optgroup>
+                <optgroup label="Lunch Sittings (Afternoon)">
+                  <option value="12:30 PM">12:30 PM — Early Lunch</option>
+                  <option value="1:30 PM">1:30 PM — Prime Lunch</option>
+                  <option value="2:15 PM">2:15 PM — Late Lunch</option>
+                </optgroup>
+              </select>
+            </div>
+
+            <!-- Seating Preference -->
+            <div class="form-group full-width">
+              <label class="form-label">Seating Atmosphere</label>
+              <div class="seating-options">
+                <div class="seating-pill active" data-zone="Main Dining Room">
+                  <span class="seating-name">Main Dining Room</span>
+                  <span class="seating-desc">Warm amber banquette with candlelit acoustics</span>
+                </div>
+                <div class="seating-pill" data-zone="The Sigri Hearth Counter">
+                  <span class="seating-name">The Sigri Hearth</span>
+                  <span class="seating-desc">Front-row view of live charcoal embers &amp; plating</span>
+                </div>
+                <div class="seating-pill" data-zone="Private Saffron Alcove">
+                  <span class="seating-name">The Saffron Alcove</span>
+                  <span class="seating-desc">Private enclave for gatherings up to 14 guests</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Guest Name -->
+            <div class="form-group">
+              <label for="guestName" class="form-label">Full Name</label>
+              <input type="text" id="guestName" class="form-control" placeholder="e.g. Vikramaditya Singhania" required>
+            </div>
+
+            <!-- Guest Phone -->
+            <div class="form-group">
+              <label for="guestPhone" class="form-label">WhatsApp Contact Number</label>
+              <input type="tel" id="guestPhone" class="form-control" placeholder="+91 98765 00000" required>
+            </div>
+
+            <!-- Guest Email -->
+            <div class="form-group">
+              <label for="guestEmail" class="form-label">Email Address</label>
+              <input type="email" id="guestEmail" class="form-control" placeholder="guest@domain.com">
+            </div>
+
+            <!-- Dietary & Special Occasions -->
+            <div class="form-group full-width">
+              <label for="specialRequests" class="form-label">Special Occasion or Dietary Preferences</label>
+              <input type="text" id="specialRequests" class="form-control" placeholder="e.g. Anniversary dinner, Jain dietary preference, nut allergy, quiet table">
+            </div>
+
+            <!-- Submit Button -->
+            <div class="booking-submit-wrap">
+              <button type="submit" class="btn-luxury btn-copper" style="padding: 1.1rem 3rem; font-size: 0.85rem;">
+                Confirm Table Reservation
+              </button>
+              <p style="font-size: 0.72rem; color: var(--ivory-faint); margin-top: 1rem; font-family: var(--font-mono);">
+                No deposit required. Instant confirmation delivered via SMS &amp; WhatsApp.
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== RESERVATION CONFIRMATION MODAL ==================== -->
+  <div class="modal-overlay" id="confirmationModal">
+    <div class="modal-box">
+      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close dialog">&times;</button>
+      <div class="modal-icon-check">✓</div>
+      <h3 class="serif-headline">Reservation Confirmed</h3>
+      <div class="booking-code-pill" id="bookingCodeDisplay">SS-2024-8841</div>
+      <p id="bookingSummaryText">
+        Your table has been reserved. Our concierge has dispatched confirmation details to your phone.
+      </p>
+      <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+        <a href="#" target="_blank" class="btn-luxury btn-copper" id="waConfirmBtn">
+          Open in WhatsApp Concierge ↗
+        </a>
+        <button type="button" class="btn-luxury btn-outline" onclick="document.getElementById('confirmationModal').classList.remove('active')">
+          Return to Experience
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== INTERACTIVE MENU DRAWER ==================== -->
+  <div class="menu-drawer-overlay" id="menuDrawerOverlay">
+    <div class="menu-drawer">
+      <button class="menu-drawer-close" id="closeMenuBtn" aria-label="Close menu">&times;</button>
+      <span class="eyebrow">Culinary Atelier</span>
+      <h2 class="serif-headline" style="font-size: 2.2rem; margin-bottom: 0.5rem;">Saffron &amp; Smoke Menu</h2>
+      <p style="color: var(--ivory-muted); font-size: 0.85rem; margin-bottom: 2rem;">
+        Season Autumn / Winter • Crafted by Chef Kabir Roy
+      </p>
+
+      <!-- Section: Degustation -->
+      <div style="margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border-subtle);">
+        <h3 style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--copper-primary); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.25rem;">
+          01 / The Sigri Degustation (7 Courses) • ₹3,800
+        </h3>
+        <p style="font-size: 0.85rem; color: var(--ivory-muted); line-height: 1.7; font-style: italic;">
+          A multi-course sensory journey through smoke, saffron, and charcoal: Smoked Tomato Rasam Sphere → Charred Malai Broccoli with Almond Foam → Tandoori Burrata with Basil Coriander Oil → Kashmiri Lamb Chop with Anardana Glaze → Saffron Butter Chicken or Smoked Dal Makhani with Burnt Garlic Naan → Textures of Jalebi with Saffron Smoke Ice Cream.
+        </p>
+      </div>
+
+      <!-- Section: Small Plates -->
+      <div style="margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border-subtle);">
+        <h3 style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--copper-primary); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.25rem;">
+          02 / Small Plates &amp; Sigri Hearth
+        </h3>
+        <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+          <div>
+            <div style="display: flex; justify-content: space-between; font-weight: 500;">
+              <span>Charred Malai Broccoli</span>
+              <span style="color: var(--copper-primary); font-family: var(--font-mono);">₹780</span>
+            </div>
+            <p style="font-size: 0.8rem; color: var(--ivory-faint);">Toasted almonds, cardamom cream cheese, micro-herbs.</p>
+          </div>
+          <div>
+            <div style="display: flex; justify-content: space-between; font-weight: 500;">
+              <span>Tandoori Burrata</span>
+              <span style="color: var(--copper-primary); font-family: var(--font-mono);">₹890</span>
+            </div>
+            <p style="font-size: 0.8rem; color: var(--ivory-faint);">Heirloom tomato reduction, basil coriander oil, pine nuts.</p>
+          </div>
+          <div>
+            <div style="display: flex; justify-content: space-between; font-weight: 500;">
+              <span>Kashmiri Lamb Chops</span>
+              <span style="color: var(--copper-primary); font-family: var(--font-mono);">₹1,450</span>
+            </div>
+            <p style="font-size: 0.8rem; color: var(--ivory-faint);">Anardana pomegranate glaze, wild hill-mint emulsion.</p>
+          </div>
+          <div>
+            <div style="display: flex; justify-content: space-between; font-weight: 500;">
+              <span>Smoked Galouti Pâté</span>
+              <span style="color: var(--copper-primary); font-family: var(--font-mono);">₹920</span>
+            </div>
+            <p style="font-size: 0.8rem; color: var(--ivory-faint);">Melt-in-mouth lamb pâté on saffron sheermal crisps.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section: Curries & Mains -->
+      <div style="margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border-subtle);">
+        <h3 style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--copper-primary); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.25rem;">
+          03 / Slow Simmer &amp; Clay Pot Mains
+        </h3>
+        <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+          <div>
+            <div style="display: flex; justify-content: space-between; font-weight: 500;">
+              <span>Saffron Butter Chicken</span>
+              <span style="color: var(--copper-primary); font-family: var(--font-mono);">₹980</span>
+            </div>
+            <p style="font-size: 0.8rem; color: var(--ivory-faint);">24-hr sous-vide pulled chicken, saffron silk velouté, gold leaf.</p>
+          </div>
+          <div>
+            <div style="display: flex; justify-content: space-between; font-weight: 500;">
+              <span>Smoked Dal Makhani (36-Hr)</span>
+              <span style="color: var(--copper-primary); font-family: var(--font-mono);">₹680</span>
+            </div>
+            <p style="font-size: 0.8rem; color: var(--ivory-faint);">Simmered black urad, churned white butter, applewood smoke.</p>
+          </div>
+          <div>
+            <div style="display: flex; justify-content: space-between; font-weight: 500;">
+              <span>Nalli Nihari Rogan Josh</span>
+              <span style="color: var(--copper-primary); font-family: var(--font-mono);">₹1,380</span>
+            </div>
+            <p style="font-size: 0.8rem; color: var(--ivory-faint);">Shank of tender lamb, Kashmiri rattan jot spice oil, ginger strands.</p>
+          </div>
+          <div>
+            <div style="display: flex; justify-content: space-between; font-weight: 500;">
+              <span>Burnt Garlic Naan</span>
+              <span style="color: var(--copper-primary); font-family: var(--font-mono);">₹320</span>
+            </div>
+            <p style="font-size: 0.8rem; color: var(--ivory-faint);">Blistered tandoor bread, activated charcoal butter, garlic chips.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section: Botanical Elixirs -->
+      <div>
+        <h3 style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--copper-primary); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.25rem;">
+          04 / Smoked Botanical Elixirs
+        </h3>
+        <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+          <div>
+            <div style="display: flex; justify-content: space-between; font-weight: 500;">
+              <span>The Baner Smokehouse Old Fashioned</span>
+              <span style="color: var(--copper-primary); font-family: var(--font-mono);">₹850</span>
+            </div>
+            <p style="font-size: 0.8rem; color: var(--ivory-faint);">Bourbon rested with toasted cinnamon, jaggery syrup, smoked cloche.</p>
+          </div>
+          <div>
+            <div style="display: flex; justify-content: space-between; font-weight: 500;">
+              <span>Kashmir Saffron Sour</span>
+              <span style="color: var(--copper-primary); font-family: var(--font-mono);">₹820</span>
+            </div>
+            <p style="font-size: 0.8rem; color: var(--ivory-faint);">Artisanal gin, infused Pampore saffron cordial, citrus foam.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-group" style="margin-bottom: 1rem;">
+            <div class="brand-symbol" style="width: 36px; height: 36px; font-size: 1rem;">S&amp;S</div>
+            <div>
+              <div class="brand-title" style="font-size: 1.2rem;">Saffron &amp; Smoke</div>
+              <div class="brand-tagline">Indian flavours. Reimagined.</div>
+            </div>
+          </div>
+          <p>
+            An intimate dining atelier in Baner, Pune. Dedicated to elevating traditional Indian sigri flavours through contemporary culinary design.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#philosophy">Our Philosophy</a></li>
+            <li><a href="#signature-plates">Signature Plates</a></li>
+            <li><a href="#space">The Space</a></li>
+            <li><a href="#reviews">Guest Reviews</a></li>
+            <li><a href="#reservation">Table Reservations</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Reservations &amp; Enquiries</h4>
+          <ul>
+            <li><a href="tel:+919876521430">+91 98765 21430</a></li>
+            <li><a href="mailto:hello@saffronandsmoke.in">hello@saffronandsmoke.in</a></li>
+            <li>Level 4, The Pavilion Atelier, High Street, Baner, Pune</li>
+            <li>Tue – Sun • Lunch &amp; Dinner</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2024–2026 Saffron &amp; Smoke. All Rights Reserved. Crafted for Architectural Digest India standards.
+        </div>
+        <div>
+          Demo Produced by <a href="https://nextreach.studio" target="_blank" style="color: var(--copper-primary); text-decoration: underline;">NextReach Studio Pune</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
