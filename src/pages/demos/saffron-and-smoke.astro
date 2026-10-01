@@ -1,0 +1,178 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Nav from "@/components/Nav.astro";
+import Footer from "@/components/Footer.astro";
+
+const demoUrl = "https://saffron-and-smoke-sigma.vercel.app";
+---
+
+<Layout
+  title="Saffron & Smoke — Modern Indian Restaurant Demo | NextReach Studio"
+  description="Experience Saffron & Smoke, a cinematic luxury restaurant website demo for modern Indian cuisine in Baner, Pune. Interactive table reservations, digital menu drawer, and Architectural Digest aesthetics."
+  image="/assets/demos/saffron-and-smoke/hero-dish.jpg"
+>
+  <Nav />
+
+  <main class="min-h-screen bg-[#0a0a0c] text-[#f7f4ee] pt-28 pb-20">
+    <!-- Hero Showcase Header -->
+    <section class="max-w-7xl mx-auto px-6 sm:px-8 mb-12">
+      <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+        <div class="flex items-center gap-3">
+          <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono bg-amber-500/10 border border-amber-500/30 text-amber-400">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            Live Production Demo
+          </span>
+          <span class="text-xs font-mono text-zinc-500">Baner, Pune</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <a
+            href={demoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-xs font-semibold uppercase tracking-wider bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-600 text-white shadow-lg shadow-amber-900/30 transition-all hover:-translate-y-0.5"
+          >
+            Launch Standalone Website
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+        <div class="lg:col-span-8">
+          <p class="text-xs font-mono text-amber-500 uppercase tracking-widest mb-2">Hospitality &amp; Fine Dining Portfolio</p>
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-serif font-normal text-white tracking-tight leading-tight">
+            Saffron &amp; Smoke
+          </h1>
+          <p class="text-base sm:text-lg text-zinc-400 mt-4 max-w-2xl font-light leading-relaxed">
+            A cinematic, high-end digital flagship for a modern Indian dining atelier in Baner, Pune. Built for brands that demand an Architectural Digest standard rather than generic restaurant templates.
+          </p>
+        </div>
+
+        <div class="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 justify-end">
+          <div class="p-3.5 rounded-lg bg-zinc-900/60 border border-zinc-800/80">
+            <span class="text-[11px] font-mono text-zinc-500 block uppercase">Conversion Engine</span>
+            <span class="text-sm font-medium text-zinc-200">Table Reservation + WhatsApp Routing</span>
+          </div>
+          <div class="p-3.5 rounded-lg bg-zinc-900/60 border border-zinc-800/80">
+            <span class="text-[11px] font-mono text-zinc-500 block uppercase">Visual Benchmark</span>
+            <span class="text-sm font-medium text-amber-400">Side-lit Chiaroscuro &amp; Organic Steam</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Live Preview Frame -->
+    <section class="max-w-7xl mx-auto px-6 sm:px-8 mb-16">
+      <div class="rounded-2xl border border-zinc-800 bg-[#121216] shadow-2xl overflow-hidden">
+        <!-- Mock Browser Top Bar -->
+        <div class="bg-[#18181f] px-4 py-3 border-b border-zinc-800 flex items-center justify-between gap-4">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
+            <span class="w-3 h-3 rounded-full bg-yellow-500/80"></span>
+            <span class="w-3 h-3 rounded-full bg-green-500/80"></span>
+          </div>
+          <div class="flex-1 max-w-xl mx-auto">
+            <div class="bg-[#0e0e12] border border-zinc-700/60 rounded-md px-3 py-1.5 text-xs font-mono text-zinc-400 flex items-center justify-between">
+              <span class="flex items-center gap-2 truncate">
+                <svg class="w-3.5 h-3.5 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+                https://saffron-and-smoke-sigma.vercel.app
+              </span>
+              <span class="text-[10px] text-zinc-500 uppercase tracking-wider shrink-0">Edge Deployed</span>
+            </div>
+          </div>
+          <div>
+            <a
+              href={demoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-xs text-amber-400 hover:text-amber-300 font-mono flex items-center gap-1"
+            >
+              Open Fullscreen ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- Iframe preview -->
+        <div class="w-full h-[780px] bg-[#0a0a0c] relative">
+          <iframe
+            src={demoUrl}
+            title="Saffron & Smoke Live Demo"
+            class="w-full h-full border-0"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Case Study Highlights & Specs -->
+    <section class="max-w-7xl mx-auto px-6 sm:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div class="p-6 rounded-xl bg-zinc-900/40 border border-zinc-800">
+          <div class="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-4">
+            🔥
+          </div>
+          <h3 class="text-lg font-semibold text-white mb-2">Cinematic Atmosphere</h3>
+          <p class="text-sm text-zinc-400 leading-relaxed font-light">
+            Deep charcoal tones, brushed copper hairpins, and an animated steam overlay on dramatic side-lit Indian cuisine photography.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-xl bg-zinc-900/40 border border-zinc-800">
+          <div class="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-4">
+            📅
+          </div>
+          <h3 class="text-lg font-semibold text-white mb-2">Reservation Engine</h3>
+          <p class="text-sm text-zinc-400 leading-relaxed font-light">
+            Interactive multi-guest booking flow with seating zone selection, instant reference code generation, and direct WhatsApp concierge handoff.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-xl bg-zinc-900/40 border border-zinc-800">
+          <div class="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-4">
+            📍
+          </div>
+          <h3 class="text-lg font-semibold text-white mb-2">Local SEO Structured Data</h3>
+          <p class="text-sm text-zinc-400 leading-relaxed font-light">
+            Embedded Schema.org Restaurant JSON-LD with geo coordinates in Baner, hours, pricing, and cuisine taxonomy for instant Google Maps discovery.
+          </p>
+        </div>
+      </div>
+
+      <!-- CTA to commission restaurant site -->
+      <div class="rounded-2xl p-8 sm:p-12 bg-gradient-to-br from-zinc-900 via-zinc-900 to-[#1b1510] border border-amber-500/20 text-center">
+        <h2 class="text-2xl sm:text-4xl font-serif text-white mb-4">
+          Want a bespoke digital presence for your restaurant or lounge?
+        </h2>
+        <p class="text-zinc-400 text-sm sm:text-base max-w-2xl mx-auto mb-8 font-light">
+          NextReach Studio designs and deploys custom restaurant platforms with online table booking, digital menus, and local search dominance in 7–10 days.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a
+            href="/contact"
+            class="px-8 py-3.5 rounded-lg text-sm font-semibold uppercase tracking-wider bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-600 text-white shadow-lg transition-all"
+          >
+            Schedule a Demo Call
+          </a>
+          <a
+            href={demoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-8 py-3.5 rounded-lg text-sm font-semibold uppercase tracking-wider bg-transparent border border-zinc-700 hover:border-amber-500/50 text-zinc-200 transition-all"
+          >
+            Visit Live Demo Directly ↗
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

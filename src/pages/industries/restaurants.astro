@@ -19,6 +19,8 @@ import ServiceLayout from "@/components/ServiceLayout.astro";
   timeline="3–6 weeks"
   priceRange="$2,000–$5,000"
   relatedLinks={[
+    { href: "https://saffron-and-smoke-sigma.vercel.app", label: "Live Demo: Saffron & Smoke" },
+    { href: "/demos/saffron-and-smoke", label: "Case Dossier: Saffron & Smoke" },
     { href: "/services/flutter-app-development-pune", label: "Flutter App Development" },
     { href: "/services/android-app-development-pune", label: "Android App Development" },
     { href: "/services/business-automation-pune", label: "Business Automation Services" },
@@ -26,4 +28,56 @@ import ServiceLayout from "@/components/ServiceLayout.astro";
     { href: "/portfolio", label: "View Our Portfolio" },
   ]}
   portfolioTags={["restaurants", "mobile", "POS"]}
-/>
+>
+  <!-- Live Showcase Card for Restaurant Owners -->
+  <div class="max-w-4xl mx-auto px-4 mb-16">
+    <div class="card-cyber p-6 sm:p-8 border border-amber-500/30 bg-gradient-to-br from-zinc-950 via-zinc-900 to-[#16120d]">
+      <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[10px] font-mono bg-amber-500/10 border border-amber-500/30 text-amber-400">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          Live Production Proof
+        </span>
+        <span class="text-xs font-mono text-zinc-500">Baner, Pune</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+        <div class="md:col-span-7">
+          <h3 class="text-xl sm:text-2xl font-serif text-white mb-2">
+            Saffron &amp; Smoke — Modern Indian Dining
+          </h3>
+          <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed font-body mb-5 font-light">
+            Test a live, interactive restaurant flagship featuring multi-sitting table reservations with custom booking references, instant WhatsApp concierge routing, and Architectural Digest India editorial design.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-3">
+            <a
+              href="https://saffron-and-smoke-sigma.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-4 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-600 text-white shadow-md transition-all font-mono"
+            >
+              Test Live Restaurant Demo ↗
+            </a>
+            <a
+              href="/demos/saffron-and-smoke"
+              class="px-4 py-2 rounded-lg text-xs font-mono text-zinc-300 hover:text-white border border-zinc-700 hover:border-zinc-500 transition-colors"
+            >
+              Read Case Dossier →
+            </a>
+          </div>
+        </div>
+
+        <div class="md:col-span-5">
+          <div class="aspect-video rounded-lg overflow-hidden border border-zinc-800 shadow-xl">
+            <img
+              src="/assets/demos/saffron-and-smoke/hero-dish.jpg"
+              alt="Saffron & Smoke restaurant demo"
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ServiceLayout>

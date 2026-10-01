@@ -48,6 +48,7 @@ export default defineConfig({
         "https://nextreachstudio.vercel.app/industries/restaurants",
         "https://nextreachstudio.vercel.app/industries/construction",
         "https://nextreachstudio.vercel.app/industries/pet-grooming",
+        "https://nextreachstudio.vercel.app/demos/saffron-and-smoke",
       ],
     }),
   ],

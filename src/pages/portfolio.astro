@@ -5,6 +5,19 @@ import Footer from "@/components/Footer.astro";
 
 const projects = [
   {
+    category: "Luxury Hospitality & Booking Engine",
+    title: "Saffron & Smoke — Modern Indian Dining",
+    description: "A cinematic, high-end digital flagship and online table booking engine for an upscale modern Indian dining atelier in Baner, Pune.",
+    problem: "Fine-dining establishments often surrender guest data and brand identity to aggregator platforms that charge commissions and provide generic, slow mobile interfaces.",
+    built: "An Architectural Digest inspired web platform featuring chiaroscuro photography, custom steam animations, interactive multi-sitting table reservations, and WhatsApp concierge integration.",
+    tech: ["HTML5", "Vanilla CSS", "JavaScript", "Schema.org", "Vercel Edge"],
+    outcome: "Created a luxury digital brand presence, enabled direct zero-commission table reservations, and achieved sub-second FCP on mobile.",
+    image: "/assets/demos/saffron-and-smoke/hero-dish.jpg",
+    status: "Live Production Demo",
+    demoUrl: "https://saffron-and-smoke-sigma.vercel.app",
+    demoInternalUrl: "/demos/saffron-and-smoke"
+  },
+  {
     category: "Workflow Automation & Management",
     title: "Employee & Crew Scheduling System",
     description: "Built for a regional field service company experiencing communication bottlenecks with paper crew logs.",
@@ -192,11 +205,34 @@ const stats = [
                 </div>
 
                 <!-- Tech badges -->
-                <div class="flex flex-wrap gap-1.5 pt-4 border-t border-zinc-900/40">
-                  <span class="text-[9px] text-zinc-600 font-mono mr-1 self-center">Stack</span>
-                  {project.tech.map((t) => (
-                    <span class="badge-premium-neutral text-[9px] font-semibold tracking-wide font-mono">{t}</span>
-                  ))}
+                <div class="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-zinc-900/40">
+                  <div class="flex flex-wrap gap-1.5 items-center">
+                    <span class="text-[9px] text-zinc-600 font-mono mr-1 self-center">Stack</span>
+                    {project.tech.map((t) => (
+                      <span class="badge-premium-neutral text-[9px] font-semibold tracking-wide font-mono">{t}</span>
+                    ))}
+                  </div>
+
+                  {(project as any).demoUrl && (
+                    <div class="flex items-center gap-3">
+                      <a
+                        href={(project as any).demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-xs font-semibold text-amber-400 hover:text-amber-300 flex items-center gap-1 font-mono transition-colors"
+                      >
+                        Launch Demo ↗
+                      </a>
+                      {(project as any).demoInternalUrl && (
+                        <a
+                          href={(project as any).demoInternalUrl}
+                          class="text-xs text-zinc-400 hover:text-white flex items-center gap-1 font-mono transition-colors"
+                        >
+                          Dossier →
+                        </a>
+                      )}
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
