@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Architectural Portfolio & Selected Works | STUDIO VAYU</title>
+  <meta name="description" content="View our curated portfolio of completed luxury residential villas, sea-facing penthouses, and commercial headquarters across Mumbai, Pune, Alibaug and Goa.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="demo-badge-bar">
+    <div>
+      <span class="badge-tag">Demo Showcase</span>
+      <span>Tier 3: <strong>Premium Package (₹10,000)</strong> — Filterable Portfolio Showcase</span>
+    </div>
+    <div>
+      <a href="https://wa.me/919822379976?text=Hi%20NextReach,%20I%20want%20the%20Premium%20Website%20Package%20for%20₹10,000" target="_blank">Order This Package →</a>
+    </div>
+  </div>
+
+  <header>
+    <div class="container nav-container">
+      <a href="index.html" class="brand">
+        <div class="brand-symbol">V</div>
+        <div>
+          <div class="brand-title">Studio Vayu</div>
+          <span class="brand-sub">Architects & Interiors</span>
+        </div>
+      </a>
+      <ul class="nav-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Capabilities</a></li>
+        <li><a href="projects.html" class="active">Portfolio</a></li>
+        <li><a href="pricing.html">Cost Estimator</a></li>
+        <li><a href="contact.html">Private Inquiries</a></li>
+      </ul>
+      <div>
+        <a href="contact.html" class="btn btn-gold">Request Consultation</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-subtitle">Monographs & Works</div>
+          <h1 class="section-title">Selected Architectural Projects</h1>
+          <p class="section-desc">Filter by typology to view residential villas, sky residences, and commercial developments.</p>
+        </div>
+
+        <!-- Filter tabs -->
+        <div style="display: flex; justify-content: center; gap: 12px; margin-bottom: 40px; flex-wrap: wrap;">
+          <button class="project-filter-btn btn btn-gold" data-cat="all" style="padding: 8px 18px; font-size: 0.8rem;">All Works (4)</button>
+          <button class="project-filter-btn btn btn-outline-gold" data-cat="villa" style="padding: 8px 18px; font-size: 0.8rem;">Villas & Estates</button>
+          <button class="project-filter-btn btn btn-outline-gold" data-cat="penthouse" style="padding: 8px 18px; font-size: 0.8rem;">Penthouses</button>
+          <button class="project-filter-btn btn btn-outline-gold" data-cat="commercial" style="padding: 8px 18px; font-size: 0.8rem;">Commercial HQ</button>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Project 1 -->
+          <div class="project-card" data-category="villa">
+            <div class="project-img-wrap">
+              <img src="assets/villa.jpg" alt="The Glass House Alibaug">
+            </div>
+            <div class="project-info">
+              <div class="project-tag">Coastal Villa • Alibaug</div>
+              <h3>The Glass House & Ocean Pavilion</h3>
+              <p>8,500 sq.ft cantilevered oceanfront residence with board-formed concrete and negative-edge infinity pool.</p>
+              <a href="project-detail.html" class="btn btn-outline-gold" style="font-size: 0.78rem; padding: 8px 16px;">View Full Case Study →</a>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="project-card" data-category="penthouse">
+            <div class="project-img-wrap">
+              <img src="assets/penthouse.jpg" alt="Worli Sky Penthouse">
+            </div>
+            <div class="project-info">
+              <div class="project-tag">Duplex Sky Residence • Worli, Mumbai</div>
+              <h3>The Sky Sanctuary</h3>
+              <p>6,200 sq.ft double-height penthouse with Calacatta marble hearth, custom Italian velvet, and Arabian Sea views.</p>
+              <a href="project-detail.html" class="btn btn-outline-gold" style="font-size: 0.78rem; padding: 8px 16px;">View Case Study →</a>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="project-card" data-category="commercial">
+            <div class="project-img-wrap">
+              <img src="assets/commercial.jpg" alt="Apex BKC Headquarters">
+            </div>
+            <div class="project-info">
+              <div class="project-tag">Corporate Headquarters • BKC, Mumbai</div>
+              <h3>Apex Global Campus</h3>
+              <p>45,000 sq.ft LEED Platinum headquarters featuring a biophilic vertical green wall and monumental timber helix staircase.</p>
+              <a href="project-detail.html" class="btn btn-outline-gold" style="font-size: 0.78rem; padding: 8px 16px;">View Case Study →</a>
+            </div>
+          </div>
+
+          <!-- Project 4 -->
+          <div class="project-card" data-category="villa">
+            <div class="project-img-wrap">
+              <img src="assets/villa.jpg" alt="The Teak Pavilion Khandala">
+            </div>
+            <div class="project-info">
+              <div class="project-tag">Hillside Estate • Khandala</div>
+              <h3>The Teak & Stone Pavilion</h3>
+              <p>11,000 sq.ft retreat stepped into Western Ghat basalt cliff face, engineered for monsoon water harvesting.</p>
+              <a href="project-detail.html" class="btn btn-outline-gold" style="font-size: 0.78rem; padding: 8px 16px;">View Case Study →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-bottom" style="border: none; padding-bottom: 40px;">
+      <div>© 2026 STUDIO VAYU ARCHITECTS • Mumbai & Pune</div>
+      <div><a href="index.html" style="color: var(--gold-light);">Return to Home</a></div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

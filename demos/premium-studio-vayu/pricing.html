@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Architectural Fee Structure & Turnkey Investment | STUDIO VAYU</title>
+  <meta name="description" content="Transparent architectural consultation fees, turnkey construction cost benchmarks, and interactive sq.ft estimator for luxury residential and commercial projects.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="demo-badge-bar">
+    <div>
+      <span class="badge-tag">Demo Showcase</span>
+      <span>Tier 3: <strong>Premium Package (₹10,000)</strong> — Interactive Cost Estimator & Transparent Fee Model</span>
+    </div>
+    <div>
+      <a href="https://wa.me/919822379976?text=Hi%20NextReach,%20I%20want%20the%20Premium%20Website%20Package%20for%20₹10,000" target="_blank">Order This Package →</a>
+    </div>
+  </div>
+
+  <header>
+    <div class="container nav-container">
+      <a href="index.html" class="brand">
+        <div class="brand-symbol">V</div>
+        <div>
+          <div class="brand-title">Studio Vayu</div>
+          <span class="brand-sub">Architects & Interiors</span>
+        </div>
+      </a>
+      <ul class="nav-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Capabilities</a></li>
+        <li><a href="projects.html">Portfolio</a></li>
+        <li><a href="pricing.html" class="active">Cost Estimator</a></li>
+        <li><a href="contact.html">Private Inquiries</a></li>
+      </ul>
+      <div>
+        <a href="contact.html" class="btn btn-gold">Request Consultation</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-subtitle">Financial Clarity</div>
+          <h1 class="section-title">Transparent Architectural Engagement Tiers</h1>
+          <p class="section-desc">We operate on structured, milestones-linked contracts without hidden margins. Choose between full turnkey delivery or pure design consultancy.</p>
+        </div>
+
+        <div class="services-grid" style="margin-bottom: 60px;">
+          <div class="service-card">
+            <div class="service-num">I</div>
+            <h3>Pure Architectural Design</h3>
+            <div style="font-family: var(--font-serif); font-size: 1.8rem; color: var(--gold-light); margin-bottom: 8px;">8% – 10%</div>
+            <div style="font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase; margin-bottom: 18px;">Of Total Civil Cost</div>
+            <p>Complete architectural blueprints, structural MEP drawings, municipal sanction coordination, and site inspection visits.</p>
+            <a href="contact.html" class="btn btn-outline-gold" style="font-size: 0.78rem;">Choose Design Only</a>
+          </div>
+
+          <div class="service-card" style="border-color: var(--gold); background: rgba(212,175,55,0.06); box-shadow: var(--shadow-lux);">
+            <div class="gold-badge" style="margin-bottom: 12px;">Most Selected</div>
+            <div class="service-num">II</div>
+            <h3>Complete Turnkey Execution</h3>
+            <div style="font-family: var(--font-serif); font-size: 1.8rem; color: var(--gold-light); margin-bottom: 8px;">From ₹4,500 <span style="font-size: 0.9rem; color: var(--text-dim);">/ sq.ft</span></div>
+            <div style="font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase; margin-bottom: 18px;">End-to-End Civil + Interiors</div>
+            <p>Single-point accountability from foundation earthwork to final custom furniture placement and key handover.</p>
+            <a href="contact.html" class="btn btn-gold" style="font-size: 0.78rem;">Choose Turnkey Execution</a>
+          </div>
+
+          <div class="service-card">
+            <div class="service-num">III</div>
+            <h3>Interior Architecture & Styling</h3>
+            <div style="font-family: var(--font-serif); font-size: 1.8rem; color: var(--gold-light); margin-bottom: 8px;">From ₹3,200 <span style="font-size: 0.9rem; color: var(--text-dim);">/ sq.ft</span></div>
+            <div style="font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase; margin-bottom: 18px;">Luxury Fitouts & Joinery</div>
+            <p>Custom Italian marble work, veneer panelling, bespoke kitchen cabinetry, acoustic cinema rooms, and luxury loose furniture curation.</p>
+            <a href="contact.html" class="btn btn-outline-gold" style="font-size: 0.78rem;">Choose Interior Fitout</a>
+          </div>
+        </div>
+
+        <!-- Estimator Widget -->
+        <div class="calc-box">
+          <div class="calc-grid">
+            <div>
+              <div class="gold-badge">Live Interactive Calculator</div>
+              <h2 style="font-family: var(--font-serif); font-size: 1.8rem; color: #fff; margin-bottom: 12px;">Dynamic Sq.Ft Cost Estimator</h2>
+              <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 24px;">Adjust the parameters below to calculate estimated project budget and turnaround timelines.</p>
+
+              <div style="margin-bottom: 24px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                  <label style="font-size: 0.88rem; font-weight: 700; color: #fff;">Built-up Project Area</label>
+                  <span id="areaValue" style="color: var(--gold-light); font-weight: 700; font-family: monospace; font-size: 1.1rem;">6,500 sq.ft</span>
+                </div>
+                <input type="range" id="areaSlider" class="range-slider" min="1500" max="25000" step="500" value="6500">
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                <div>
+                  <label style="display: block; font-size: 0.82rem; font-weight: 700; color: #fff; margin-bottom: 6px;">Craftsmanship Specification</label>
+                  <select id="finishTier" style="width: 100%; background: #090a0f; border: 1px solid var(--border-gold); color: #fff; padding: 10px; border-radius: 6px; font-size: 0.88rem;">
+                    <option value="bespoke">Bespoke Luxury</option>
+                    <option value="ultra" selected>Ultra-Luxury Heritage</option>
+                    <option value="platinum">Platinum Signature</option>
+                  </select>
+                </div>
+                <div>
+                  <label style="display: block; font-size: 0.82rem; font-weight: 700; color: #fff; margin-bottom: 6px;">Project Scope</label>
+                  <select id="projectScope" style="width: 100%; background: #090a0f; border: 1px solid var(--border-gold); color: #fff; padding: 10px; border-radius: 6px; font-size: 0.88rem;">
+                    <option value="turnkey" selected>Turnkey (Civil + Interiors)</option>
+                    <option value="interior">Interiors Only</option>
+                    <option value="arch">Core Architecture</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="calc-result-panel">
+              <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--gold);">Calculated Budget Investment</div>
+              <div id="estimateDisplay" class="calc-estimate-value">₹4.71 Cr</div>
+              <div style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 20px;">
+                Estimated Execution Timeline: <strong id="timelineDisplay" style="color: #fff;">12 - 15 Months</strong>
+              </div>
+              <a id="rfqWaBtn" href="#" target="_blank" class="btn btn-gold" style="width: 100%;">
+                Discuss This Scope with Principal Architect →
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-bottom" style="border: none; padding-bottom: 40px;">
+      <div>© 2026 STUDIO VAYU ARCHITECTS • Mumbai & Pune</div>
+      <div><a href="index.html" style="color: var(--gold-light);">Return to Home</a></div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
