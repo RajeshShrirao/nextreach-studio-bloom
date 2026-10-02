@@ -1,0 +1,77 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Nav from "@/components/Nav.astro";
+import Footer from "@/components/Footer.astro";
+import AttributionGenerator from "@/components/attribution/AttributionGenerator";
+
+const pageTitle = "Website Attribution Assets & Components | NextReach Studio";
+const pageDescription = "Official attribution badges, React/Next.js components, Astro components, and SVG assets to attribute websites engineered by NextReach Studio.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Nav />
+  
+  <main class="min-h-screen pt-28 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    {/* Background ambient lighting */}
+    <div class="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-[#C76B50]/8 rounded-full blur-[140px] pointer-events-none -z-10" aria-hidden="true"></div>
+
+    {/* Header */}
+    <header class="text-center max-w-3xl mx-auto mb-12 animate-fade-in-up">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C76B50]/10 border border-[#C76B50]/20 text-[#C76B50] text-xs font-mono font-semibold mb-4">
+        <span>Attribution &amp; Brand Badges</span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-bold font-display text-[#1F1F23] tracking-tight mb-4">
+        Attribution Assets for Client Flagships
+      </h1>
+      <p class="text-sm sm:text-base text-[#6E6862] leading-relaxed font-body">
+        Drop-in badges and zero-dependency components for websites crafted by <strong>NextReach Studio</strong>. 
+        Points directly to our live flagship at <code class="text-[#C76B50] font-mono text-xs font-semibold bg-[#F0ECE4] px-2 py-0.5 rounded">https://nextreachstudio.vercel.app/</code> with automatic client referral tracking.
+      </p>
+    </header>
+
+    {/* Interactive Generator Island */}
+    <div class="mb-16">
+      <AttributionGenerator client:load />
+    </div>
+
+    {/* Developer Guidelines & Best Practices */}
+    <section class="max-w-4xl mx-auto mt-16 pt-12 border-t border-black/8 space-y-8 font-body">
+      <div class="text-center max-w-2xl mx-auto">
+        <h2 class="text-2xl font-bold font-display text-[#1F1F23]">
+          Attribution Integration Guidelines
+        </h2>
+        <p class="text-xs sm:text-sm text-[#6E6862] mt-1">
+          How and where to add NextReach Studio credits across client web projects.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-[#F0ECE4]/60 border border-[#1F1F23]/8 rounded-2xl p-5 space-y-2.5">
+          <div class="text-[#C76B50] font-mono text-xs font-bold uppercase tracking-wider">01. Bottom Footers</div>
+          <h3 class="text-sm font-bold text-[#1F1F23]">Client Site Footers</h3>
+          <p class="text-xs text-[#6E6862] leading-relaxed">
+            Place the <strong>Pill</strong> or <strong>Minimal</strong> variant alongside the copyright line in the client's global footer.
+          </p>
+        </div>
+
+        <div class="bg-[#F0ECE4]/60 border border-[#1F1F23]/8 rounded-2xl p-5 space-y-2.5">
+          <div class="text-[#C76B50] font-mono text-xs font-bold uppercase tracking-wider">02. Staging / Demos</div>
+          <h3 class="text-sm font-bold text-[#1F1F23]">Floating Review Dock</h3>
+          <p class="text-xs text-[#6E6862] leading-relaxed">
+            Use the <strong>Floating</strong> variant pinned to <code class="text-xs">bottom-right</code> on preview/staging deployments before launch.
+          </p>
+        </div>
+
+        <div class="bg-[#F0ECE4]/60 border border-[#1F1F23]/8 rounded-2xl p-5 space-y-2.5">
+          <div class="text-[#C76B50] font-mono text-xs font-bold uppercase tracking-wider">03. Automatic Analytics</div>
+          <h3 class="text-sm font-bold text-[#1F1F23]">Referral UTM Tracking</h3>
+          <p class="text-xs text-[#6E6862] leading-relaxed">
+            Always supply the <code class="text-xs text-[#C76B50]">clientName</code> prop so incoming leads are tracked in Google Analytics.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

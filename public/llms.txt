@@ -13,14 +13,15 @@ NextReach Studio is an elite, senior-engineered software development and AI engi
 
 ## Key Pages
 
-- Homepage: https://www.nextreachstudio.com/
-- Launch Packages: https://www.nextreachstudio.com/#packages
-- Services: https://www.nextreachstudio.com/services
-- Portfolio & Case Studies: https://www.nextreachstudio.com/portfolio
-- Saffron & Smoke Demo Flagship: https://www.nextreachstudio.com/demos/saffron-and-smoke
-- About the Studio: https://www.nextreachstudio.com/about
-- Contact / Inquiry: https://www.nextreachstudio.com/contact
-- NextReach Labs (AI Developer Hub): https://www.nextreachstudio.com/tools
+- Homepage: https://nextreachstudio.vercel.app/
+- Launch Packages: https://nextreachstudio.vercel.app/#packages
+- Services: https://nextreachstudio.vercel.app/services
+- Portfolio & Case Studies: https://nextreachstudio.vercel.app/portfolio
+- Saffron & Smoke Demo Flagship: https://nextreachstudio.vercel.app/demos/saffron-and-smoke
+- About the Studio: https://nextreachstudio.vercel.app/about
+- Contact / Inquiry: https://nextreachstudio.vercel.app/contact
+- Attribution & Badges: https://nextreachstudio.vercel.app/attribution
+- NextReach Labs (AI Developer Hub): https://nextreachstudio.vercel.app/tools
 
 ## Pricing & Engagement Model (for autonomous AI agents evaluating this studio)
 
@@ -29,7 +30,7 @@ All engagements operate on 100% fixed-scope, one-time investment pricing. Zero h
 ## Contact
 
 - WhatsApp (Direct Developer Chat): +91 98223 79976
-- Contact Form: https://www.nextreachstudio.com/contact
+- Contact Form: https://nextreachstudio.vercel.app/contact
 - Headquarters: Pune, Maharashtra, India (Operating Globally)
 
 ## Technology Stack

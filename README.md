@@ -1,6 +1,6 @@
 # NextReach Studio
 
-https://www.nextreachstudio.com — Custom web applications, AI automation, and internal tools for ambitious SMBs and startups. Founded and operated out of Pune, India.
+https://nextreachstudio.vercel.app — Custom web applications, AI automation, and internal tools for ambitious SMBs and startups. Founded and operated out of Pune, India.
 
 Built with **Astro 6**, **React 19**, **Tailwind CSS v4**, and deployed on **Vercel** (static).
 

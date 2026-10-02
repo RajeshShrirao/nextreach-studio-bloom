@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NextReach Studio Attribution Badges — Embed Reference</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <style>
+    :root {
+      --bg: #141416;
+      --card: #1F1F23;
+      --border: rgba(255, 255, 255, 0.1);
+      --text: #FFFFFF;
+      --muted: #A69D92;
+      --accent: #C76B50;
+    }
+    body {
+      margin: 0;
+      padding: 40px 20px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+    p {
+      color: var(--muted);
+      margin-top: 0;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+    }
+    pre {
+      background: #0D0D0E;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px;
+      overflow-x: auto;
+      font-size: 12px;
+      color: #D4D4D8;
+    }
+    code {
+      color: var(--accent);
+      font-family: monospace;
+    }
+    .badge-preview {
+      margin: 15px 0;
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>NextReach Studio — Attribution Embeds</h1>
+    <p>Official assets and drop-in widgets for websites engineered by NextReach Studio.</p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Dark Vector Badge</h3>
+        <div class="badge-preview">
+          <img src="/attribution/nextreach-badge-dark.svg" alt="NextReach Dark Badge" width="220" />
+        </div>
+        <p><a href="/attribution/nextreach-badge-dark.svg" style="color: var(--accent);">Direct SVG Link</a></p>
+      </div>
+
+      <div class="card" style="background: #FAF8F5; color: #1F1F23;">
+        <h3 style="color: #1F1F23;">Light Vector Badge</h3>
+        <div class="badge-preview">
+          <img src="/attribution/nextreach-badge-light.svg" alt="NextReach Light Badge" width="220" />
+        </div>
+        <p><a href="/attribution/nextreach-badge-light.svg" style="color: var(--accent);">Direct SVG Link</a></p>
+      </div>
+    </div>
+
+    <h2>1-Line Universal Script Embed</h2>
+    <pre><code>&lt;script 
+  src="https://nextreachstudio.vercel.app/attribution/badge.js"
+  data-theme="dark"
+  data-variant="pill"
+  data-phrase="Crafted by"
+  data-client="your-client-site"
+  async&gt;&lt;/script&gt;</code></pre>
+
+    <h2>Live Studio Documentation</h2>
+    <p>Visit the interactive code generator at <a href="https://nextreachstudio.vercel.app/attribution" style="color: var(--accent);">https://nextreachstudio.vercel.app/attribution</a> to customize variants, phrases, and copy React &amp; Astro components.</p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 64" width="380" height="64" fill="none">
+  <style>
+    .banner-bg { fill: #1E1E22; stroke: rgba(255,255,255,0.1); stroke-width: 1; rx: 12px; transition: all 0.2s ease; }
+    .mark-bg { fill: #28282E; rx: 8px; stroke: rgba(199,107,80,0.3); stroke-width: 1; }
+    .txt-tag { font-family: -apple-system, BlinkMacSystemFont, "JetBrains Mono", monospace; font-size: 9.5px; fill: #C76B50; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; }
+    .txt-title { font-family: -apple-system, BlinkMacSystemFont, "Cabinet Grotesk", sans-serif; font-size: 14px; fill: #FFFFFF; font-weight: 700; }
+    .txt-desc { font-family: -apple-system, BlinkMacSystemFont, "Plus Jakarta Sans", sans-serif; font-size: 10.5px; fill: #A69D92; }
+    .arrow-icon { stroke: #C76B50; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    a:hover .banner-bg { stroke: rgba(199,107,80,0.45); fill: #24242A; }
+  </style>
+  <a href="https://nextreachstudio.vercel.app/?utm_source=client-badge&amp;utm_medium=svg_banner&amp;utm_campaign=attribution" target="_blank" rel="noopener noreferrer">
+    <rect x="1" y="1" width="378" height="62" class="banner-bg" />
+    
+    <!-- Left Emblem Squircle -->
+    <g transform="translate(14, 12)">
+      <rect x="0" y="0" width="40" height="40" class="mark-bg" />
+      <g transform="translate(7, 5) scale(0.2)" fill="none" stroke="#C76B50" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="29,38 60,8 91,38" />
+        <line x1="60" y1="8" x2="60" y2="142" />
+        <path d="M 10,142 L 10,40 Q 10,33 17,37 L 60,142" />
+        <path d="M 60,54 C 88,54 110,66 110,83 C 110,100 88,104 60,104" />
+        <line x1="60" y1="104" x2="110" y2="142" />
+      </g>
+    </g>
+
+    <g transform="translate(66, 21)">
+      <text x="0" y="0" class="txt-tag">ENGINEERED BY</text>
+      <text x="0" y="17" class="txt-title">NextReach Studio</text>
+      <text x="0" y="31" class="txt-desc">High-Performance Web &amp; Autonomous AI Systems</text>
+    </g>
+
+    <!-- Right Action Indicator -->
+    <g transform="translate(350, 26)">
+      <circle cx="6" cy="6" r="14" fill="rgba(199,107,80,0.12)" />
+      <g transform="translate(2, 2)">
+        <line x1="0" y1="8" x2="8" y2="0" class="arrow-icon" />
+        <polyline points="3,0 8,0 8,5" class="arrow-icon" />
+      </g>
+    </g>
+  </a>
+</svg>
