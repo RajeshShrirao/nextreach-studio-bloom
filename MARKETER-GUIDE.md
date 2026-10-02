@@ -40,20 +40,22 @@ The website intentionally serves two different audiences. Understanding this spl
 ## Website Pages & Their Marketing Role
 
 ### Homepage (`/`)
-**Goal:** Convert visitors into discovery call inquiries.
+**Goal:** Convert visitors and paid ad traffic into immediate website bookings and discovery calls.
 **What's on it:**
-- Hero with floating glass dashboard mockup (screams "we can build this for you")
-- Eyebrow badge: "Senior-Engineered Software Studio"
-- H1: "Custom web apps, AI workflows, and internal tools — shipped in weeks, not quarters."
-- 3 trust pillars: Senior Developer Led, Fixed-Scope Clarity, Rapid Sprint Execution
-- Services bento grid (4 cards with interactive SVG micro-widgets — analytics chart, workflow nodes, growth bars, API flow)
-- 5-step process timeline (Discovery → Proposal → Development → QA → Handover)
-- Side-by-side comparison: Traditional Agency Bloat vs The NextReach Model
-- Latest blog/guides preview
-- **Primary CTA:** "Schedule a Technical Discovery Call"
-- **Secondary CTA:** "Explore Our Work & Stack"
-
-**Marketing note:** The hero dashboard mockup is our strongest visual asset. It immediately communicates "we build modern software" without a single word. The trust bar and comparison section handle objections before they arise.
+- Hero with interactive tech ring and instant WhatsApp booking CTA
+- Eyebrow badge: "Senior-Engineered Digital Flagships • 24–72hr Delivery"
+- H1: "Websites & AI Systems Built by Senior Engineers. Shipped in 24 to 72 Hours."
+- **⚡ Website Launch Packages (Immediate Cashflow Engine):**
+  - **Quick Launch (₹5,000):** 1-page mobile responsive site, WhatsApp hook, 1–2 day delivery.
+  - **Business (₹7,500):** 3–5 pages, services gallery, local SEO schema, lead capture, 2–3 day delivery.
+  - **Premium Flagship (₹10,000):** 5–7 bespoke pages, luxury editorial dark UI, custom animations, analytics, 3-day delivery.
+  - **Collateral & Brochure Bar:** Download link to `/brochure.html` and WhatsApp brochure request.
+- Interactive Saffron & Smoke Flagship Showcase (Live demo for the ₹10k tier)
+- 4-Card Bento Grid (Custom Web Platforms, AI Workflows, Database Architecture, Performance Engineering)
+- 5-step process timeline (Discovery → Architecture → Sprints → QA → Handover)
+- Side-by-side comparison: Traditional Agency Overhead vs The NextReach Engineering Model
+- Latest technical research and guides preview
+- **Primary CTA:** Direct WhatsApp booking (`+91 98223 79976`) + technical discovery form.
 
 ### Services (`/services`)
 **Goal:** Detail each service offering for serious consideration.
@@ -81,9 +83,9 @@ Each follows a Problem → Solution → Outcome format with tech stack badges an
 
 ### About (`/about`)
 **Goal:** Humanize the studio and build trust.
-- Founder-led, BCA graduate, full-stack engineer, based in Pune
-- Philosophy: One-time pricing, zero account managers, practical engineering, complete ownership
-- Proof of technical depth: references the free developer tools and guides
+- Principal Engineer-led software and AI engineering studio, based in Pune
+- Philosophy: Fixed-scope pricing, zero account managers, high-velocity sprints, complete code & IP ownership
+- Proof of technical depth: Live flagship demos (e.g. Saffron & Smoke), developer tools hub, and technical guides
 
 **Marketing note:** The "founder-led, no account managers" message is our strongest differentiator. Emphasize this in every channel. It directly attacks the biggest pain point of traditional agencies.
 

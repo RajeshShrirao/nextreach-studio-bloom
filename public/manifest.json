@@ -4,8 +4,8 @@
   "description": "AI developer tools, guides, and resources for building with LLMs.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#121316",
-  "theme_color": "#121316",
+  "background_color": "#2A2A2D",
+  "theme_color": "#2A2A2D",
   "orientation": "portrait-primary",
   "scope": "/",
   "icons": [

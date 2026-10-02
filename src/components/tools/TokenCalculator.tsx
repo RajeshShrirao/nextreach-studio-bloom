@@ -85,10 +85,10 @@ export default function TokenCalculator() {
       {/* Inputs (Left Panel - Span 2 Columns) */}
       <div className="lg:col-span-2 space-y-6">
         {/* Model Selector */}
-        <div className="card-premium-flat">
+        <div className="card-studio p-6">
           <label htmlFor="model-select" className="form-label-premium flex justify-between items-center">
-            <span>Select Target Model</span>
-            <span className="text-[10px] font-mono text-zinc-500 normal-case">Updates context limits below</span>
+            <span className="text-[#1F1F23] font-semibold text-xs uppercase tracking-wider">Select Target Model</span>
+            <span className="text-[11px] font-mono text-[#6E6862] normal-case">Updates context limits below</span>
           </label>
           <select
             id="model-select"
@@ -115,16 +115,16 @@ export default function TokenCalculator() {
               </optgroup>
             ))}
           </select>
-          <div className="mt-3 flex items-center justify-between text-xs text-zinc-500">
+          <div className="mt-3 flex items-center justify-between text-xs text-[#6E6862]">
             <span>Context Limit:</span>
-            <span className="text-zinc-300 font-mono font-medium">{model.contextWindow.toLocaleString()} tokens</span>
+            <span className="text-[#1F1F23] font-mono font-medium">{model.contextWindow.toLocaleString()} tokens</span>
           </div>
         </div>
 
         {/* Text Input */}
-        <div className="card-premium-flat">
-          <div className="flex items-center justify-between mb-2">
-            <label htmlFor="token-input" className="form-label-premium !mb-0">
+        <div className="card-studio p-6">
+          <div className="flex items-center justify-between mb-3">
+            <label htmlFor="token-input" className="form-label-premium !mb-0 text-[#1F1F23] font-semibold text-xs uppercase tracking-wider">
               Paste prompt or context
             </label>
             <div className="flex gap-2">
@@ -132,7 +132,7 @@ export default function TokenCalculator() {
                 <button
                   key={tmpl.label}
                   onClick={() => setText(tmpl.text)}
-                  className="px-2 py-1 rounded bg-zinc-900 border border-zinc-800 text-[10px] font-semibold text-zinc-400 hover:text-white hover:bg-zinc-850 hover:border-zinc-700 transition-colors cursor-pointer"
+                  className="px-2.5 py-1 rounded-lg bg-[#FAF8F5] border border-[#1F1F23]/10 text-[11px] font-medium text-[#4A4844] hover:text-[#1F1F23] hover:bg-[#FAF8F5]/80 hover:border-[#1F1F23]/20 transition-colors cursor-pointer"
                 >
                   {tmpl.label}
                 </button>
@@ -140,7 +140,7 @@ export default function TokenCalculator() {
               {text && (
                 <button
                   onClick={() => setText("")}
-                  className="px-2 py-1 rounded bg-red-950/20 border border-red-900/30 text-[10px] font-semibold text-red-400 hover:bg-red-900/20 transition-colors cursor-pointer"
+                  className="px-2.5 py-1 rounded-lg bg-red-50 border border-red-200 text-[11px] font-medium text-red-600 hover:bg-red-100 transition-colors cursor-pointer"
                 >
                   Clear
                 </button>
@@ -161,8 +161,8 @@ export default function TokenCalculator() {
       {/* Realtime Stats Dashboard (Right Panel - 1 Column) */}
       <div className="space-y-6">
         {/* Metric Grid Card */}
-        <div className="card-premium">
-          <h2 className="text-xs uppercase tracking-wider text-zinc-400 font-bold mb-4">Prompt Metrics</h2>
+        <div className="card-studio p-6">
+          <h2 className="text-xs uppercase tracking-wider text-[#6E6862] font-bold mb-4">Prompt Metrics</h2>
           <div className="grid grid-cols-2 gap-3.5">
             {[
               { label: "Est. Tokens", value: tokenCount.toLocaleString(), highlight: true },
@@ -174,12 +174,12 @@ export default function TokenCalculator() {
                 key={label}
                 className={`p-4 rounded-xl border flex flex-col justify-center min-h-[90px] ${
                   highlight
-                    ? "bg-amber-400/[0.03] border-amber-400/20 shadow-[inset_0_1px_0_0_rgba(251,191,36,0.06)]"
-                    : "bg-white/[0.015] border-white/[0.04] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.01)]"
+                    ? "bg-[#C76B50]/5 border-[#C76B50]/20"
+                    : "bg-[#FAF8F5] border-[#1F1F23]/8"
                 }`}
               >
-                <span className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider mb-1">{label}</span>
-                <span className={`text-xl font-semibold font-mono tracking-tight ${highlight ? "text-amber-400 glow-text" : "text-white"}`}>
+                <span className="text-[10px] text-[#6E6862] font-bold uppercase tracking-wider mb-1">{label}</span>
+                <span className={`text-xl font-semibold font-mono tracking-tight ${highlight ? "text-[#C76B50]" : "text-[#1F1F23]"}`}>
                   {value}
                 </span>
               </div>
@@ -188,44 +188,44 @@ export default function TokenCalculator() {
         </div>
 
         {/* Visual Bar representation */}
-        <div className="card-premium">
+        <div className="card-studio p-6">
           <div className="flex items-center justify-between mb-3">
-            <span className="text-xs font-semibold text-zinc-300">Context Allocation</span>
-            <span className="text-xs font-mono text-zinc-400">
+            <span className="text-xs font-semibold text-[#1F1F23]">Context Allocation</span>
+            <span className="text-xs font-mono text-[#6E6862]">
               {tokenCount.toLocaleString()} / {model.contextWindow.toLocaleString()}
             </span>
           </div>
 
-          <div className="h-3 rounded-full bg-zinc-950 overflow-hidden border border-white/5 p-[1px]">
+          <div className="h-3 rounded-full bg-[#FAF8F5] overflow-hidden border border-[#1F1F23]/10 p-[1px]">
             <div
               className={`h-full rounded-full transition-all duration-500 ${contextBarColor}`}
               style={{ width: `${Math.min(100, contextUsed)}%` }}
             />
           </div>
 
-          <div className="mt-4 p-3 rounded-lg bg-zinc-950/40 border border-white/[0.02]">
+          <div className="mt-4 p-3.5 rounded-xl bg-[#FAF8F5] border border-[#1F1F23]/8">
             {contextUsed > 90 ? (
-              <p className="text-xs text-red-400 font-medium leading-relaxed flex items-start gap-1.5">
+              <p className="text-xs text-red-600 font-medium leading-relaxed flex items-start gap-1.5">
                 <span>⚠</span>
                 <span>Critical prompt length. This may trigger rate limits or truncate responses. Consider trimming input context.</span>
               </p>
             ) : contextUsed > 70 ? (
-              <p className="text-xs text-amber-400 font-medium leading-relaxed flex items-start gap-1.5">
+              <p className="text-xs text-amber-700 font-medium leading-relaxed flex items-start gap-1.5">
                 <span>⚠</span>
                 <span>Context usage is getting high. Verify whether additional context history is required.</span>
               </p>
             ) : (
-              <p className="text-xs text-zinc-500 leading-relaxed">
-                You have <span className="font-mono text-zinc-400">{(model.contextWindow - tokenCount).toLocaleString()}</span> tokens remaining for system messages and model completions.
+              <p className="text-xs text-[#6E6862] leading-relaxed">
+                You have <span className="font-mono text-[#1F1F23] font-semibold">{(model.contextWindow - tokenCount).toLocaleString()}</span> tokens remaining for system messages and completions.
               </p>
             )}
           </div>
         </div>
 
         {/* Info Box */}
-        <div className="p-4 rounded-xl border border-zinc-900 bg-zinc-950/20 text-center">
-          <p className="text-[11px] text-zinc-600 leading-relaxed">
-            Estimates are computed using Byte Pair Encoding (BPE) algorithms resembling Anthropic & OpenAI rules. Raw counts may fluctuate.
+        <div className="p-4 rounded-xl border border-[#1F1F23]/8 bg-[#FAF8F5] text-center">
+          <p className="text-[11px] text-[#6E6862] leading-relaxed">
+            Estimates are computed using Byte Pair Encoding (BPE) algorithms resembling Anthropic & OpenAI rules. Raw counts may fluctuate slightly.
           </p>
         </div>
       </div>

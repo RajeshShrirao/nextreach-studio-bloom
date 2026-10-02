@@ -86,7 +86,7 @@ export default function ContextCalculator() {
   return (
     <div className="space-y-6">
       {/* Configuration Control Panel */}
-      <div className="card-premium">
+      <div className="card-studio p-6">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div className="flex-1">
             <label htmlFor="ctx-model" className="form-label-premium">
@@ -110,8 +110,8 @@ export default function ContextCalculator() {
               onClick={() => setManualMode(false)}
               className={`rounded-lg px-3.5 py-2 text-xs font-semibold border transition-all duration-200 cursor-pointer ${
                 !manualMode
-                  ? "bg-amber-400/20 border-amber-400/40 text-amber-300 shadow-[0_0_12px_rgba(251,191,36,0.1)]"
-                  : "bg-white/5 border-white/5 text-zinc-500 hover:text-zinc-300 hover:bg-white/10"
+                  ? "bg-[#C76B50]/10 border-[#C76B50]/40 text-[#C76B50] font-medium"
+                  : "bg-[#FAF8F5] border-[#1F1F23]/8 text-[#6E6862] hover:text-[#1F1F23] hover:bg-[#FAF8F5]/80"
               }`}
             >
               Paste Text
@@ -120,15 +120,15 @@ export default function ContextCalculator() {
               onClick={() => setManualMode(true)}
               className={`rounded-lg px-3.5 py-2 text-xs font-semibold border transition-all duration-200 cursor-pointer ${
                 manualMode
-                  ? "bg-amber-400/20 border-amber-400/40 text-amber-300 shadow-[0_0_12px_rgba(251,191,36,0.1)]"
-                  : "bg-white/5 border-white/5 text-zinc-500 hover:text-zinc-300 hover:bg-white/10"
+                  ? "bg-[#C76B50]/10 border-[#C76B50]/40 text-[#C76B50] font-medium"
+                  : "bg-[#FAF8F5] border-[#1F1F23]/8 text-[#6E6862] hover:text-[#1F1F23] hover:bg-[#FAF8F5]/80"
               }`}
             >
               Token Inputs
             </button>
             <button
               onClick={loadSamplePreset}
-              className="rounded-lg px-3.5 py-2 text-xs font-semibold border border-zinc-800 bg-zinc-900 text-zinc-400 hover:text-white hover:bg-zinc-850 hover:border-zinc-700 transition-all cursor-pointer"
+              className="rounded-lg px-3.5 py-2 text-xs font-semibold border border-[#1F1F23]/10 bg-[#FAF8F5] text-[#4A4844] hover:text-[#1F1F23] hover:bg-[#FAF8F5]/80 hover:border-[#1F1F23]/20 transition-all cursor-pointer"
             >
               Load Sample Preset
             </button>
@@ -142,15 +142,15 @@ export default function ContextCalculator() {
           {tokenCounts.map((t) => {
             const isReserved = t.id === "reserved";
             return (
-              <div key={t.id} className={`card-premium-flat border-l-4 !p-4.5 ${t.id === "system" ? "!border-l-purple-500" : t.id === "history" ? "!border-l-blue-500" : t.id === "documents" ? "!border-l-emerald-500" : t.id === "query" ? "!border-l-amber-500" : "!border-l-red-500"}`}>
+              <div key={t.id} className={`card-studio border-l-4 !p-5 ${t.id === "system" ? "!border-l-purple-500" : t.id === "history" ? "!border-l-blue-500" : t.id === "documents" ? "!border-l-emerald-500" : t.id === "query" ? "!border-l-amber-500" : "!border-l-red-500"}`}>
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-2">
                     <span className={`h-2.5 w-2.5 rounded-full ${t.color}`} />
-                    <label htmlFor={`ctx-${t.id}`} className="text-sm font-semibold text-zinc-200">
+                    <label htmlFor={`ctx-${t.id}`} className="text-sm font-semibold text-[#1F1F23]">
                       {t.label}
                     </label>
                   </div>
-                  <span className="font-mono text-xs font-semibold text-zinc-400 bg-zinc-900 border border-white/5 px-2 py-0.5 rounded-md">
+                  <span className="font-mono text-xs font-semibold text-[#4A4844] bg-[#FAF8F5] border border-[#1F1F23]/8 px-2.5 py-1 rounded-md">
                     {t.tokens.toLocaleString()} tokens
                   </span>
                 </div>
@@ -199,19 +199,19 @@ export default function ContextCalculator() {
         {/* Visual Summary (Span 2) */}
         <div className="lg:col-span-2 space-y-6">
           {/* Analysis Dashboard */}
-          <div className="card-premium">
-            <h2 className="text-xs uppercase tracking-wider text-zinc-400 font-bold mb-4 font-display">Context Utilization</h2>
+          <div className="card-studio p-6">
+            <h2 className="text-xs uppercase tracking-wider text-[#6E6862] font-bold mb-4 font-display">Context Utilization</h2>
             
             <div className="space-y-4">
-              <div className="flex justify-between items-end border-b border-white/[0.03] pb-3">
-                <span className="text-xs text-zinc-500">Total Consumption</span>
-                <span className="font-mono text-lg font-bold text-white">
-                  {totalUsed.toLocaleString()} <span className="text-xs text-zinc-500 font-normal">/ {model.contextWindow.toLocaleString()}</span>
+              <div className="flex justify-between items-end border-b border-[#1F1F23]/6 pb-3">
+                <span className="text-xs text-[#6E6862]">Total Consumption</span>
+                <span className="font-mono text-lg font-bold text-[#1F1F23]">
+                  {totalUsed.toLocaleString()} <span className="text-xs text-[#6E6862] font-normal">/ {model.contextWindow.toLocaleString()}</span>
                 </span>
               </div>
               <div className="flex justify-between items-end">
-                <span className="text-xs text-zinc-500">Remaining Cushion</span>
-                <span className={`font-mono text-lg font-bold ${remaining < 0 ? "text-red-400" : "text-emerald-400"}`}>
+                <span className="text-xs text-[#6E6862]">Remaining Cushion</span>
+                <span className={`font-mono text-lg font-bold ${remaining < 0 ? "text-red-600" : "text-emerald-600"}`}>
                   {remaining.toLocaleString()} <span className="text-xs font-normal">tokens</span>
                 </span>
               </div>
@@ -219,7 +219,7 @@ export default function ContextCalculator() {
 
             {/* Visual breakdown bar */}
             <div className="my-6">
-              <div className="h-4.5 rounded-full overflow-hidden bg-zinc-950 flex border border-white/5 p-[1px]">
+              <div className="h-4 rounded-full overflow-hidden bg-[#FAF8F5] flex border border-[#1F1F23]/8 p-[1px]">
                 {tokenCounts
                   .filter((t) => t.tokens > 0)
                   .map((t) => {
@@ -241,14 +241,14 @@ export default function ContextCalculator() {
               {tokenCounts.map((t) => {
                 const typePct = (t.tokens / model.contextWindow) * 100;
                 return (
-                  <div key={t.id} className="flex items-center justify-between text-xs p-1.5 hover:bg-white/[0.01] rounded-lg">
+                  <div key={t.id} className="flex items-center justify-between text-xs p-2 hover:bg-[#FAF8F5] rounded-lg transition-colors">
                     <div className="flex items-center gap-2">
                       <span className={`h-2.5 w-2.5 rounded-full shrink-0 ${t.color}`} />
-                      <span className="text-zinc-400 font-medium">{t.label}</span>
+                      <span className="text-[#4A4844] font-medium">{t.label}</span>
                     </div>
-                    <div className="flex items-center gap-3 font-mono text-zinc-500">
+                    <div className="flex items-center gap-3 font-mono text-[#6E6862]">
                       <span>{t.tokens.toLocaleString()}</span>
-                      <span className={`w-10 text-right ${t.tokens > 0 ? "text-zinc-300" : "text-zinc-600"}`}>{typePct.toFixed(1)}%</span>
+                      <span className={`w-10 text-right ${t.tokens > 0 ? "text-[#1F1F23] font-semibold" : "text-[#6E6862]"}`}>{typePct.toFixed(1)}%</span>
                     </div>
                   </div>
                 );
@@ -258,18 +258,18 @@ export default function ContextCalculator() {
 
           {/* Warning System Banner */}
           <div
-            className={`rounded-2xl p-4.5 border transition-all duration-300 ${
+            className={`rounded-2xl p-5 border transition-all duration-300 ${
               remaining < 0
-                ? "bg-red-950/20 border-red-800/30 text-red-400 shadow-[0_0_16px_rgba(239,68,68,0.06)]"
+                ? "bg-red-50 border-red-200 text-red-700"
                 : remaining < model.contextWindow * 0.15
-                ? "bg-amber-950/20 border-amber-800/30 text-amber-400 shadow-[0_0_16px_rgba(245,158,11,0.06)]"
-                : "bg-emerald-950/15 border-emerald-800/20 text-emerald-400"
+                ? "bg-amber-50 border-amber-200 text-amber-800"
+                : "bg-emerald-50 border-emerald-200 text-emerald-800"
             }`}
           >
             <p className="text-sm font-semibold flex items-center gap-1.5 mb-1.5">
               <span>{remaining < 0 ? "⚠️ Context Exceeded" : remaining < model.contextWindow * 0.15 ? "⚠️ Approaching Limit" : "✓ Safe Allocation"}</span>
             </p>
-            <p className="text-xs leading-relaxed opacity-80">
+            <p className="text-xs leading-relaxed opacity-90">
               {remaining < 0
                 ? `Prompt exceeds model limits by ${Math.abs(remaining).toLocaleString()} tokens. Text will be truncated or fail standard API processing.`
                 : remaining < model.contextWindow * 0.15

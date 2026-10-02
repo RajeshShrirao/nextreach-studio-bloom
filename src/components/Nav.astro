@@ -47,15 +47,27 @@ const isIndustriesActive = industryLinks.some(
 );
 ---
 
-<nav class="fixed w-full top-0 z-50 glass-panel !rounded-none !overflow-visible border-b border-t-0 border-x-0" aria-label="Main navigation">
+<nav class="fixed w-full top-0 z-50 bg-[#FAF8F5]/92 backdrop-blur-md border-b border-[#1F1F23]/8 !rounded-none !overflow-visible" aria-label="Main navigation">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-    <a href="/" class="flex items-center gap-3 group -ml-2" aria-label="NextReach Studio — Home">
-      <img src="/logo.png" alt="NextReach Studio" width="32" height="32" class="transition-transform duration-300 group-hover:scale-110" />
-      <span class="text-white text-sm tracking-[0.08em] font-medium font-display">NextReach Studio</span>
+    <a href="/" class="flex items-center gap-2.5 group -ml-2" aria-label="NextReach Studio — Home">
+      <img src="/logo.svg" alt="NextReach Studio" width="34" height="34" class="rounded-lg shadow-sm transition-transform duration-300 group-hover:scale-105" />
+      <span class="text-[#1F1F23] text-base tracking-[0.03em] font-bold font-display flex items-center gap-1.5">
+        NextReach <span class="text-[#C76B50] font-bold">Studio</span>
+      </span>
     </a>
 
     <!-- Desktop Navigation -->
-    <ul class="hidden md:flex items-center gap-1">
+    <ul class="hidden md:flex items-center gap-1.5">
+      <!-- High-Conversion Website Packages Link -->
+      <li>
+        <a
+          href="/#packages"
+          class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold font-mono text-[#C76B50] bg-[#C76B50]/10 border border-[#C76B50]/25 hover:bg-[#C76B50]/15 hover:border-[#C76B50]/40 transition-all duration-200"
+        >
+          <span class="w-1.5 h-1.5 rounded-full bg-[#C76B50]"></span>
+          <span>Packages (₹5k+)</span>
+        </a>
+      </li>
       <!-- Services Dropdown -->
       <li class="relative group" data-dd data-open="false">
         <button
@@ -63,14 +75,14 @@ const isIndustriesActive = industryLinks.some(
           data-dd-btn
           class={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm transition-all duration-200 font-medium cursor-pointer border ${
             isServicesActive
-              ? "text-amber-400 bg-amber-500/5 border-amber-500/10 shadow-[0_0_15px_rgba(251,191,36,0.05)]"
-              : "text-zinc-400 hover:text-zinc-200 hover:bg-white/5 border-transparent hover:border-white/5"
+              ? "text-[#C76B50] bg-[#C76B50]/8 border-[#C76B50]/20 shadow-[0_0_15px_rgba(199,107,80,0.08)] font-semibold"
+              : "text-[#4A4844] hover:text-[#1F1F23] hover:bg-[#1F1F23]/5 border-transparent hover:border-[#1F1F23]/5"
           }`}
           aria-expanded="false"
           aria-haspopup="true"
         >
           <span>Services</span>
-          <svg data-dd-chevron class="w-3.5 h-3.5 transition-transform duration-200 text-zinc-500 group-hover:text-zinc-300 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg data-dd-chevron class="w-3.5 h-3.5 transition-transform duration-200 text-[#6E6862] group-hover:text-[#1F1F23] group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
           </svg>
         </button>
@@ -78,7 +90,7 @@ const isIndustriesActive = industryLinks.some(
           data-dd-panel
           class="absolute left-0 top-full pt-2 w-56 opacity-0 pointer-events-none -translate-y-1 transition-all duration-200 ease-out z-50 group-hover:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:pointer-events-auto group-focus-within:translate-y-0"
         >
-          <div class="bg-zinc-950/95 border border-zinc-800/80 rounded-xl p-1.5 shadow-2xl backdrop-blur-xl max-h-[75vh] overflow-y-auto">
+          <div class="bg-white/98 border border-[#1F1F23]/10 rounded-xl p-1.5 shadow-2xl backdrop-blur-xl max-h-[75vh] overflow-y-auto">
             {serviceLinks.map(({ href, label }) => {
               const isSubActive = currentPath === href || (href !== "/" && currentPath.startsWith(href));
               return (
@@ -86,8 +98,8 @@ const isIndustriesActive = industryLinks.some(
                   href={href}
                   class={`block px-3 py-2 rounded-lg text-sm transition-colors duration-150 ${
                     isSubActive
-                      ? "text-amber-400 bg-amber-500/10 font-medium"
-                      : "text-zinc-400 hover:text-white hover:bg-white/5"
+                      ? "text-[#C76B50] bg-[#C76B50]/10 font-semibold"
+                      : "text-[#4A4844] hover:text-[#1F1F23] hover:bg-[#1F1F23]/5"
                   }`}
                 >
                   {label}
@@ -105,14 +117,14 @@ const isIndustriesActive = industryLinks.some(
           data-dd-btn
           class={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm transition-all duration-200 font-medium cursor-pointer border ${
             isIndustriesActive
-              ? "text-amber-400 bg-amber-500/5 border-amber-500/10 shadow-[0_0_15px_rgba(251,191,36,0.05)]"
-              : "text-zinc-400 hover:text-zinc-200 hover:bg-white/5 border-transparent hover:border-white/5"
+              ? "text-[#C76B50] bg-[#C76B50]/8 border-[#C76B50]/20 shadow-[0_0_15px_rgba(199,107,80,0.08)] font-semibold"
+              : "text-[#4A4844] hover:text-[#1F1F23] hover:bg-[#1F1F23]/5 border-transparent hover:border-[#1F1F23]/5"
           }`}
           aria-expanded="false"
           aria-haspopup="true"
         >
           <span>Industries</span>
-          <svg data-dd-chevron class="w-3.5 h-3.5 transition-transform duration-200 text-zinc-500 group-hover:text-zinc-300 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg data-dd-chevron class="w-3.5 h-3.5 transition-transform duration-200 text-[#6E6862] group-hover:text-[#1F1F23] group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
           </svg>
         </button>
@@ -120,7 +132,7 @@ const isIndustriesActive = industryLinks.some(
           data-dd-panel
           class="absolute left-0 top-full pt-2 w-52 opacity-0 pointer-events-none -translate-y-1 transition-all duration-200 ease-out z-50 group-hover:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:pointer-events-auto group-focus-within:translate-y-0"
         >
-          <div class="bg-zinc-950/95 border border-zinc-800/80 rounded-xl p-1.5 shadow-2xl backdrop-blur-xl max-h-[75vh] overflow-y-auto">
+          <div class="bg-white/98 border border-[#1F1F23]/10 rounded-xl p-1.5 shadow-2xl backdrop-blur-xl max-h-[75vh] overflow-y-auto">
             {industryLinks.map(({ href, label }) => {
               const isSubActive = currentPath === href || (href !== "/" && currentPath.startsWith(href));
               return (
@@ -128,8 +140,8 @@ const isIndustriesActive = industryLinks.some(
                   href={href}
                   class={`block px-3 py-2 rounded-lg text-sm transition-colors duration-150 ${
                     isSubActive
-                      ? "text-amber-400 bg-amber-500/10 font-medium"
-                      : "text-zinc-400 hover:text-white hover:bg-white/5"
+                      ? "text-[#C76B50] bg-[#C76B50]/10 font-semibold"
+                      : "text-[#4A4844] hover:text-[#1F1F23] hover:bg-[#1F1F23]/5"
                   }`}
                 >
                   {label}
@@ -148,8 +160,8 @@ const isIndustriesActive = industryLinks.some(
               href={href}
               class={`px-3 py-1.5 rounded-lg text-sm transition-all duration-200 font-medium border ${
                 isActive
-                  ? "text-amber-400 bg-amber-500/5 border-amber-500/10 shadow-[0_0_15px_rgba(251,191,36,0.05)]"
-                  : "text-zinc-400 hover:text-zinc-200 hover:bg-white/5 border-transparent hover:border-white/5"
+                  ? "text-[#C76B50] bg-[#C76B50]/8 border-[#C76B50]/20 shadow-[0_0_15px_rgba(199,107,80,0.08)] font-semibold"
+                  : "text-[#4A4844] hover:text-[#1F1F23] hover:bg-[#1F1F23]/5 border-transparent hover:border-[#1F1F23]/5"
               }`}
             >
               {label}
@@ -165,14 +177,14 @@ const isIndustriesActive = industryLinks.some(
           data-dd-btn
           class={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm transition-all duration-200 font-medium cursor-pointer border ${
             isResourcesActive
-              ? "text-amber-400 bg-amber-500/5 border-amber-500/10 shadow-[0_0_15px_rgba(251,191,36,0.05)]"
-              : "text-zinc-400 hover:text-zinc-200 hover:bg-white/5 border-transparent hover:border-white/5"
+              ? "text-[#C76B50] bg-[#C76B50]/8 border-[#C76B50]/20 shadow-[0_0_15px_rgba(199,107,80,0.08)] font-semibold"
+              : "text-[#4A4844] hover:text-[#1F1F23] hover:bg-[#1F1F23]/5 border-transparent hover:border-[#1F1F23]/5"
           }`}
           aria-expanded="false"
           aria-haspopup="true"
         >
           <span>Resources</span>
-          <svg data-dd-chevron class="w-3.5 h-3.5 transition-transform duration-200 text-zinc-500 group-hover:text-zinc-300 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg data-dd-chevron class="w-3.5 h-3.5 transition-transform duration-200 text-[#6E6862] group-hover:text-[#1F1F23] group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
           </svg>
         </button>
@@ -180,7 +192,7 @@ const isIndustriesActive = industryLinks.some(
           data-dd-panel
           class="absolute right-0 top-full pt-2 w-48 opacity-0 pointer-events-none -translate-y-1 transition-all duration-200 ease-out z-50 group-hover:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:pointer-events-auto group-focus-within:translate-y-0"
         >
-          <div class="bg-zinc-950/95 border border-zinc-800/80 rounded-xl p-1.5 shadow-2xl backdrop-blur-xl">
+          <div class="bg-white/98 border border-[#1F1F23]/10 rounded-xl p-1.5 shadow-2xl backdrop-blur-xl">
             {resourceLinks.map(({ href, label }) => {
               const isSubActive = currentPath === href || (href !== "/" && currentPath.startsWith(href));
               return (
@@ -188,8 +200,8 @@ const isIndustriesActive = industryLinks.some(
                   href={href}
                   class={`block px-3 py-2 rounded-lg text-sm transition-colors duration-150 ${
                     isSubActive
-                      ? "text-amber-400 bg-amber-500/10 font-medium"
-                      : "text-zinc-400 hover:text-white hover:bg-white/5"
+                      ? "text-[#C76B50] bg-[#C76B50]/10 font-semibold"
+                      : "text-[#4A4844] hover:text-[#1F1F23] hover:bg-[#1F1F23]/5"
                   }`}
                 >
                   {label}
@@ -205,11 +217,26 @@ const isIndustriesActive = industryLinks.some(
           href="/contact"
           class={`px-3 py-1.5 rounded-lg text-sm transition-all duration-200 font-medium border ${
             currentPath === "/contact"
-              ? "text-amber-400 bg-amber-500/5 border-amber-500/10 shadow-[0_0_15px_rgba(251,191,36,0.05)]"
-              : "text-zinc-400 hover:text-zinc-200 hover:bg-white/5 border-transparent hover:border-white/5"
+              ? "text-[#C76B50] bg-[#C76B50]/8 border-[#C76B50]/20 shadow-[0_0_15px_rgba(199,107,80,0.08)] font-semibold"
+              : "text-[#4A4844] hover:text-[#1F1F23] hover:bg-[#1F1F23]/5 border-transparent hover:border-[#1F1F23]/5"
           }`}
         >
           Contact
+        </a>
+      </li>
+
+      <li class="ml-2">
+        <a
+          href="https://wa.me/919822379976?text=Hi%20NextReach%20Studio%2C%20I'm%20interested%20in%20launching%20a%20website%20for%20my%20business."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-terracotta-primary !px-3.5 !py-1.5 !text-xs !rounded-lg shadow-sm"
+          aria-label="Chat on WhatsApp"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" class="w-3.5 h-3.5">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.99.54 1.787.876 2.796.877 3.177 0 5.764-2.587 5.765-5.766.001-3.181-2.585-5.764-5.765-5.764zm0-2c4.28 0 7.765 3.483 7.765 7.764 0 4.281-3.485 7.766-7.765 7.766-.001 0-.001 0 0 0-1.298 0-2.434-.336-3.466-.948l-4.565 1.196 1.218-4.453c-.696-1.107-1.077-2.313-1.077-3.561 0-4.281 3.484-7.764 7.765-7.764zm-2.031 6.586c-.167-.367-.344-.374-.504-.381-.131-.006-.281-.006-.431-.006s-.394.056-.6.281c-.206.225-.788.769-.788 1.875s.806 2.175.919 2.325c.112.15 1.556 2.493 3.844 3.403 1.902.756 2.288.606 2.7.568.413-.037 1.331-.544 1.519-1.069.188-.525.188-.975.131-1.069-.056-.094-.206-.15-.431-.263s-1.331-.656-1.538-.731-.356-.113-.506.113c-.15.225-.581.731-.712.881-.131.15-.262.169-.488.056-.225-.113-.949-.35-1.808-1.115-.668-.596-1.119-1.332-1.25-1.557s-.014-.347.098-.459c.101-.101.225-.262.338-.394s.15-.225.225-.375c.075-.15.038-.281-.019-.394s-.504-1.259-.701-1.69z"/>
+          </svg>
+          <span>WhatsApp</span>
         </a>
       </li>
     </ul>
@@ -218,7 +245,7 @@ const isIndustriesActive = industryLinks.some(
     <button
       id="mobile-menu-toggle"
       type="button"
-      class="md:hidden flex items-center justify-center p-2 rounded-lg text-zinc-400 hover:text-white hover:bg-white/5 transition-colors focus:outline-none cursor-pointer"
+      class="md:hidden flex items-center justify-center p-2 rounded-lg text-[#4A4844] hover:text-[#1F1F23] hover:bg-[#1F1F23]/5 transition-colors focus:outline-none cursor-pointer"
       aria-expanded="false"
       aria-label="Toggle navigation menu"
     >
@@ -231,26 +258,40 @@ const isIndustriesActive = industryLinks.some(
   <!-- Mobile Dropdown Menu -->
   <div
     id="mobile-menu"
-    class="hidden md:hidden border-t border-zinc-800/80 bg-zinc-950/95 backdrop-blur-xl max-h-[80vh] overflow-y-auto shadow-2xl"
+    class="hidden md:hidden border-t border-[#1F1F23]/8 bg-[#FAF8F5]/98 backdrop-blur-xl max-h-[80vh] overflow-y-auto shadow-2xl"
   >
     <ul class="px-4 py-4 space-y-2">
+      <!-- High-Conversion Mobile Packages Banner -->
+      <li class="mb-3">
+        <a
+          href="/#packages"
+          class="flex items-center justify-between p-3 rounded-xl bg-[#C76B50]/10 border border-[#C76B50]/25 text-[#1F1F23] font-display font-bold text-sm shadow-[0_2px_10px_rgba(199,107,80,0.08)]"
+        >
+          <span class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>Website Packages (₹5,000+)</span>
+          </span>
+          <span class="text-xs font-mono text-[#C76B50]">View &rarr;</span>
+        </a>
+      </li>
+
       <!-- Mobile Services Header -->
       <li class="space-y-1">
         <button
           type="button"
           data-mobile-toggle="services"
           class={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors cursor-pointer ${
-            isServicesActive ? "text-amber-400 bg-amber-500/10" : "text-zinc-300 hover:text-white hover:bg-white/5"
+            isServicesActive ? "text-[#C76B50] bg-[#C76B50]/10" : "text-[#4A4844] hover:text-[#1F1F23] hover:bg-[#1F1F23]/5"
           }`}
           aria-expanded={isServicesActive ? "true" : "false"}
         >
           <span class="flex items-center gap-2">
             <span>Services</span>
-            <span class="px-2 py-0.5 text-[10px] font-medium rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">9</span>
+            <span class="px-2 py-0.5 text-[10px] font-medium rounded-full bg-[#C76B50]/10 text-[#C76B50] border border-[#C76B50]/20">9</span>
           </span>
           <svg
             data-mobile-chevron="services"
-            class={`w-4 h-4 text-zinc-400 transition-transform duration-200 ${isServicesActive ? "rotate-180" : ""}`}
+            class={`w-4 h-4 text-[#6E6862] transition-transform duration-200 ${isServicesActive ? "rotate-180" : ""}`}
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -261,7 +302,7 @@ const isIndustriesActive = industryLinks.some(
 
         <div
           data-mobile-submenu="services"
-          class={`pl-3 space-y-1 border-l-2 border-amber-500/20 ml-3 my-1 ${isServicesActive ? "" : "hidden"}`}
+          class={`pl-3 space-y-1 border-l-2 border-[#C76B50]/20 ml-3 my-1 ${isServicesActive ? "" : "hidden"}`}
         >
           {serviceLinks.map(({ href, label }) => {
             const isActive = currentPath === href || (href !== "/" && currentPath.startsWith(href));
@@ -270,8 +311,8 @@ const isIndustriesActive = industryLinks.some(
                 href={href}
                 class={`block px-3 py-2 rounded-lg text-sm transition-all duration-150 ${
                   isActive
-                    ? "text-amber-400 bg-white/5 font-semibold border-l-2 border-amber-400 -ml-3.5 pl-3"
-                    : "text-zinc-400 hover:text-zinc-200 hover:bg-white/5"
+                    ? "text-[#C76B50] bg-[#C76B50]/10 font-semibold border-l-2 border-[#C76B50] -ml-3.5 pl-3"
+                    : "text-[#4A4844] hover:text-[#1F1F23] hover:bg-[#1F1F23]/5"
                 }`}
               >
                 {label}
@@ -287,17 +328,17 @@ const isIndustriesActive = industryLinks.some(
           type="button"
           data-mobile-toggle="industries"
           class={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors cursor-pointer ${
-            isIndustriesActive ? "text-amber-400 bg-amber-500/10" : "text-zinc-300 hover:text-white hover:bg-white/5"
+            isIndustriesActive ? "text-[#C76B50] bg-[#C76B50]/10" : "text-[#4A4844] hover:text-[#1F1F23] hover:bg-[#1F1F23]/5"
           }`}
           aria-expanded={isIndustriesActive ? "true" : "false"}
         >
           <span class="flex items-center gap-2">
             <span>Industries</span>
-            <span class="px-2 py-0.5 text-[10px] font-medium rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">9</span>
+            <span class="px-2 py-0.5 text-[10px] font-medium rounded-full bg-[#C76B50]/10 text-[#C76B50] border border-[#C76B50]/20">9</span>
           </span>
           <svg
             data-mobile-chevron="industries"
-            class={`w-4 h-4 text-zinc-400 transition-transform duration-200 ${isIndustriesActive ? "rotate-180" : ""}`}
+            class={`w-4 h-4 text-[#6E6862] transition-transform duration-200 ${isIndustriesActive ? "rotate-180" : ""}`}
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -308,7 +349,7 @@ const isIndustriesActive = industryLinks.some(
 
         <div
           data-mobile-submenu="industries"
-          class={`pl-3 space-y-1 border-l-2 border-amber-500/20 ml-3 my-1 ${isIndustriesActive ? "" : "hidden"}`}
+          class={`pl-3 space-y-1 border-l-2 border-[#C76B50]/20 ml-3 my-1 ${isIndustriesActive ? "" : "hidden"}`}
         >
           {industryLinks.map(({ href, label }) => {
             const isActive = currentPath === href || (href !== "/" && currentPath.startsWith(href));
@@ -317,8 +358,8 @@ const isIndustriesActive = industryLinks.some(
                 href={href}
                 class={`block px-3 py-2 rounded-lg text-sm transition-all duration-150 ${
                   isActive
-                    ? "text-amber-400 bg-white/5 font-semibold border-l-2 border-amber-400 -ml-3.5 pl-3"
-                    : "text-zinc-400 hover:text-zinc-200 hover:bg-white/5"
+                    ? "text-[#C76B50] bg-[#C76B50]/10 font-semibold border-l-2 border-[#C76B50] -ml-3.5 pl-3"
+                    : "text-[#4A4844] hover:text-[#1F1F23] hover:bg-[#1F1F23]/5"
                 }`}
               >
                 {label}
@@ -336,8 +377,8 @@ const isIndustriesActive = industryLinks.some(
               href={href}
               class={`block px-3 py-2.5 rounded-lg text-sm font-semibold transition-all duration-150 ${
                 isActive
-                  ? "text-amber-400 bg-amber-500/10"
-                  : "text-zinc-300 hover:text-white hover:bg-white/5"
+                  ? "text-[#C76B50] bg-[#C76B50]/10"
+                  : "text-[#4A4844] hover:text-[#1F1F23] hover:bg-[#1F1F23]/5"
               }`}
             >
               {label}
@@ -352,17 +393,17 @@ const isIndustriesActive = industryLinks.some(
           type="button"
           data-mobile-toggle="resources"
           class={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors cursor-pointer ${
-            isResourcesActive ? "text-amber-400 bg-amber-500/10" : "text-zinc-300 hover:text-white hover:bg-white/5"
+            isResourcesActive ? "text-[#C76B50] bg-[#C76B50]/10" : "text-[#4A4844] hover:text-[#1F1F23] hover:bg-[#1F1F23]/5"
           }`}
           aria-expanded={isResourcesActive ? "true" : "false"}
         >
           <span class="flex items-center gap-2">
             <span>Resources</span>
-            <span class="px-2 py-0.5 text-[10px] font-medium rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">4</span>
+            <span class="px-2 py-0.5 text-[10px] font-medium rounded-full bg-[#C76B50]/10 text-[#C76B50] border border-[#C76B50]/20">4</span>
           </span>
           <svg
             data-mobile-chevron="resources"
-            class={`w-4 h-4 text-zinc-400 transition-transform duration-200 ${isResourcesActive ? "rotate-180" : ""}`}
+            class={`w-4 h-4 text-[#6E6862] transition-transform duration-200 ${isResourcesActive ? "rotate-180" : ""}`}
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -373,7 +414,7 @@ const isIndustriesActive = industryLinks.some(
 
         <div
           data-mobile-submenu="resources"
-          class={`pl-3 space-y-1 border-l-2 border-amber-500/20 ml-3 my-1 ${isResourcesActive ? "" : "hidden"}`}
+          class={`pl-3 space-y-1 border-l-2 border-[#C76B50]/20 ml-3 my-1 ${isResourcesActive ? "" : "hidden"}`}
         >
           {resourceLinks.map(({ href, label }) => {
             const isActive = currentPath === href || (href !== "/" && currentPath.startsWith(href));
@@ -382,8 +423,8 @@ const isIndustriesActive = industryLinks.some(
                 href={href}
                 class={`block px-3 py-2 rounded-lg text-sm transition-all duration-150 ${
                   isActive
-                    ? "text-amber-400 bg-white/5 font-semibold border-l-2 border-amber-400 -ml-3.5 pl-3"
-                    : "text-zinc-400 hover:text-zinc-200 hover:bg-white/5"
+                    ? "text-[#C76B50] bg-[#C76B50]/10 font-semibold border-l-2 border-[#C76B50] -ml-3.5 pl-3"
+                    : "text-[#4A4844] hover:text-[#1F1F23] hover:bg-[#1F1F23]/5"
                 }`}
               >
                 {label}
@@ -394,13 +435,13 @@ const isIndustriesActive = industryLinks.some(
       </li>
 
       <!-- Mobile Contact Link -->
-      <li class="pt-2 mt-2 border-t border-zinc-800/60">
+      <li class="pt-2 mt-2 border-t border-[#1F1F23]/8">
         <a
           href="/contact"
           class={`block px-3 py-2.5 rounded-lg text-sm font-semibold transition-all duration-150 ${
             currentPath === "/contact"
-              ? "text-amber-400 bg-amber-500/10"
-              : "text-zinc-300 hover:text-white hover:bg-white/5"
+              ? "text-[#C76B50] bg-[#C76B50]/10"
+              : "text-[#4A4844] hover:text-[#1F1F23] hover:bg-[#1F1F23]/5"
           }`}
         >
           Contact

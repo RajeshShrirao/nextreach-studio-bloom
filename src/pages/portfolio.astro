@@ -5,17 +5,41 @@ import Footer from "@/components/Footer.astro";
 
 const projects = [
   {
-    category: "Luxury Hospitality & Booking Engine",
-    title: "Saffron & Smoke — Modern Indian Dining",
+    category: "Premium Package Flagship (₹10,000 Tier)",
+    title: "Saffron & Smoke — Luxury Dining Flagship",
     description: "A cinematic, high-end digital flagship and online table booking engine for an upscale modern Indian dining atelier in Baner, Pune.",
     problem: "Fine-dining establishments often surrender guest data and brand identity to aggregator platforms that charge commissions and provide generic, slow mobile interfaces.",
     built: "An Architectural Digest inspired web platform featuring chiaroscuro photography, custom steam animations, interactive multi-sitting table reservations, and WhatsApp concierge integration.",
     tech: ["HTML5", "Vanilla CSS", "JavaScript", "Schema.org", "Vercel Edge"],
     outcome: "Created a luxury digital brand presence, enabled direct zero-commission table reservations, and achieved sub-second FCP on mobile.",
     image: "/assets/demos/saffron-and-smoke/hero-dish.jpg",
-    status: "Live Production Demo",
+    status: "Live Production Flagship",
     demoUrl: "https://saffron-and-smoke-sigma.vercel.app",
     demoInternalUrl: "/demos/saffron-and-smoke"
+  },
+  {
+    category: "Business Package Demo (₹7,500 Tier)",
+    title: "Oak & Elm Integrative Health Clinic",
+    description: "Multi-page medical practice and wellness clinic portal featuring practitioner profiles, interactive service breakdown, and appointment booking.",
+    problem: "Local healthcare practices lose prospective patients due to cluttered generic directories, slow page load times, and lack of direct WhatsApp consultation channels.",
+    built: "A serene, trust-building clinic platform featuring practitioner directories, transparent treatment listings, patient FAQ accordion, and direct WhatsApp appointment routing.",
+    tech: ["HTML5", "Tailwind CSS", "Vanilla JS", "Schema.org Clinic Metadata"],
+    outcome: "Streamlined new patient onboarding, reduced phone booking inquiries by 40%, and achieved top-tier local SEO visibility.",
+    image: "/assets/demo-clinic.jpg",
+    status: "Live Business Demo",
+    demoInternalUrl: "/demos/business-oak-elm-clinic"
+  },
+  {
+    category: "Quick Launch Package Demo (₹5,000 Tier)",
+    title: "Alex Chen — Creative Director Portfolio",
+    description: "High-impact, single-page digital portfolio and client inquiry engine for independent creative consultants and agency directors.",
+    problem: "Freelance consultants need a fast, visually commanding digital storefront to close high-ticket clients without spending months building a personal site.",
+    built: "A razor-sharp 1-page landing experience with case study drawers, project cost estimator, client testimonial carousel, and instant WhatsApp booking redirect.",
+    tech: ["Astro", "Tailwind CSS", "JavaScript", "Vercel Edge"],
+    outcome: "Deployed in under 48 hours; generated 3 enterprise client inquiries in the first week of live launch.",
+    image: "/assets/demo-profile.jpg",
+    status: "Live Quick Launch Demo",
+    demoInternalUrl: "/demos/quick-launch-freelancer"
   },
   {
     category: "Workflow Automation & Management",
@@ -26,7 +50,7 @@ const projects = [
     tech: ["Next.js", "PostgreSQL", "Tailwind CSS", "Twilio API"],
     outcome: "Reduced scheduling conflicts, eliminated duplicate entry, and enabled same-day client reporting.",
     image: "/scheduling_app.png",
-    status: "Active System"
+    status: "Active Enterprise System"
   },
   {
     category: "Business Operations",
@@ -37,18 +61,7 @@ const projects = [
     tech: ["Python", "Flask", "PostgreSQL", "Gmail API"],
     outcome: "Eliminated daily manual logging backlogs, offering real-time inventory visibility to sales representatives.",
     image: "/inventory_workflow.png",
-    status: "Active System"
-  },
-  {
-    category: "Customer Acquisition",
-    title: "Service Business Web Portal & Lead Form",
-    description: "A fast, clean lead capture and inquiry rating portal for a professional services company.",
-    problem: "An outdated corporate website was failing to capture leads and could not pre-qualify service categories, resulting in wasted sales consultation hours.",
-    built: "A highly optimized, responsive landing page with an interactive project cost calculator and instant WhatsApp redirect API.",
-    tech: ["Astro", "Tailwind CSS", "JavaScript"],
-    outcome: "Created a professional online presence with direct lead qualification, saving manual follow-up time.",
-    image: "/lead_portal.png",
-    status: "Active System"
+    status: "Active Production System"
   },
   {
     category: "SME Admin Dashboards",
@@ -59,7 +72,7 @@ const projects = [
     tech: ["Next.js", "Python (Cron Jobs)", "PostgreSQL", "Vercel"],
     outcome: "Gave management immediate daily operations visibility, eliminating manual data assembly.",
     image: "/kpi_dashboard.png",
-    status: "Completed"
+    status: "Active Production System"
   }
 ];
 
@@ -94,18 +107,17 @@ const stats = [
   <main>
     <!-- ==================== HERO ==================== -->
     <section class="container-hero relative overflow-hidden">
-      <div class="absolute top-0 left-1/2 w-[700px] h-[400px] bg-amber-400/8 rounded-full blur-[130px] pointer-events-none -z-10 animate-mesh-1" aria-hidden="true"></div>
-      <div class="absolute top-12 left-[40%] w-[500px] h-[300px] bg-yellow-500/5 rounded-full blur-[110px] pointer-events-none -z-10 animate-mesh-2" aria-hidden="true"></div>
+      <div class="absolute top-0 left-1/2 w-[700px] h-[400px] bg-[#C76B50]/6 rounded-full blur-[130px] pointer-events-none -z-10" aria-hidden="true"></div>
 
       <div class="text-center relative z-10 mb-14 stagger-parent">
         <p class="badge-premium-accent text-[10px] font-bold px-3 py-1 inline-flex mb-5">
           Portfolio
         </p>
-        <h1 class="text-hero text-white mb-6 font-display font-bold text-balance-wide">
+        <h1 class="text-hero text-[#1F1F23] mb-6 font-display font-bold text-balance-wide">
           Production software<br class="hidden sm:inline" />
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-400 to-yellow-500 glow-text">built for real businesses.</span>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#1F1F23] via-[#C76B50] to-[#B8583D]">built for real businesses.</span>
         </h1>
-        <p class="text-zinc-400 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mb-10 font-body">
+        <p class="text-[#6E6862] text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mb-10 font-body">
           We focus on functional, reliable applications that solve business problems. No generic templates, no inflated results — just honest software built to scope.
         </p>
 
@@ -124,10 +136,10 @@ const stats = [
         <!-- Trust Metrics -->
         <div class="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto text-left">
           {stats.map((s) => (
-            <div class="dashboard-panel p-3.5 text-center sm:text-left">
-              <p class="text-base sm:text-lg font-bold text-white font-display tracking-tight">{s.value}</p>
-              <p class="text-xs font-semibold text-amber-400 font-display mb-0.5">{s.label}</p>
-              <p class="text-[10px] text-zinc-500 leading-relaxed font-body">{s.sub}</p>
+            <div class="dashboard-panel p-3.5 text-center sm:text-left shadow-sm">
+              <p class="text-base sm:text-lg font-bold text-[#1F1F23] font-display tracking-tight">{s.value}</p>
+              <p class="text-xs font-bold text-[#C76B50] font-display mb-0.5">{s.label}</p>
+              <p class="text-[10px] text-[#6E6862] leading-relaxed font-body">{s.sub}</p>
             </div>
           ))}
         </div>
@@ -137,17 +149,17 @@ const stats = [
     <!-- ==================== PROJECT LIST ==================== -->
     <div class="max-w-5xl mx-auto px-6 sm:px-8 mb-20 stagger-parent">
       <div class="flex items-center gap-3 mb-10">
-        <div class="flex-1 h-px bg-zinc-800/60"></div>
-        <span class="text-[10px] font-bold text-zinc-500 uppercase tracking-[0.2em] font-display">Delivered Work</span>
-        <div class="flex-1 h-px bg-zinc-800/60"></div>
+        <div class="flex-1 h-px bg-[#1F1F23]/8"></div>
+        <span class="text-[10px] font-bold text-[#6E6862] uppercase tracking-[0.2em] font-mono">Delivered Work</span>
+        <div class="flex-1 h-px bg-[#1F1F23]/8"></div>
       </div>
 
       <div class="space-y-14">
         {projects.map((project, idx) => (
-          <div class="group card-cyber p-0 border border-zinc-800/80 hover:border-amber-400/25 transition-all duration-300">
+          <div class="group card-studio p-0 border border-[#1F1F23]/10 hover:border-[#C76B50]/40 transition-all duration-200 shadow-sm">
             <div class="flex flex-col lg:flex-row items-stretch">
               <!-- Project Image -->
-              <div class="lg:w-[42%] relative overflow-hidden bg-zinc-950 flex items-center justify-center border-b lg:border-b-0 lg:border-r border-zinc-800/80 aspect-video lg:aspect-auto">
+              <div class="lg:w-[42%] relative overflow-hidden bg-[#FAF8F5] flex items-center justify-center border-b lg:border-b-0 lg:border-r border-[#1F1F23]/8 aspect-video lg:aspect-auto">
                 <img
                   src={project.image}
                   alt={`${project.title} — ${project.category}`}
@@ -155,59 +167,59 @@ const stats = [
                   height="480"
                   loading="lazy"
                   decoding="async"
-                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 group-hover:opacity-90"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-transparent opacity-60"></div>
-                <span class="absolute top-3 left-3 text-[9px] font-bold text-zinc-600 font-mono">0{idx + 1}</span>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-40"></div>
+                <span class="absolute top-3 left-3 text-[9px] font-bold text-white bg-black/60 backdrop-blur-md px-2 py-0.5 rounded font-mono">0{idx + 1}</span>
               </div>
 
               <!-- Project Details -->
               <div class="lg:w-[58%] p-6 sm:p-8 flex flex-col justify-between space-y-5">
                 <div>
                   <div class="flex items-center justify-between gap-3 mb-3">
-                    <span class="inline-flex items-center gap-1.5 text-[10px] font-bold text-amber-500 uppercase tracking-[0.15em] font-display">
-                      <span class="w-1.5 h-1.5 rounded-full bg-amber-400 shadow-[0_0_6px_rgba(251,191,36,0.5)]"></span>
+                    <span class="inline-flex items-center gap-1.5 text-[10px] font-bold text-[#C76B50] uppercase tracking-[0.15em] font-mono">
+                      <span class="w-1.5 h-1.5 rounded-full bg-[#C76B50]"></span>
                       {project.category}
                     </span>
-                    <span class="flex items-center gap-1 text-[9px] font-semibold text-emerald-400 font-mono">
-                      <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.5)]"></span>
+                    <span class="flex items-center gap-1 text-[9px] font-semibold text-emerald-600 font-mono">
+                      <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_6px_rgba(16,185,129,0.5)]"></span>
                       {project.status}
                     </span>
                   </div>
 
-                  <h2 class="text-xl sm:text-2xl font-bold text-white font-display mb-2 transition-colors group-hover:text-amber-300">{project.title}</h2>
-                  <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed font-body">{project.description}</p>
+                  <h2 class="text-xl sm:text-2xl font-bold text-[#1F1F23] font-display mb-2 transition-colors group-hover:text-[#C76B50]">{project.title}</h2>
+                  <p class="text-xs sm:text-sm text-[#6E6862] leading-relaxed font-body">{project.description}</p>
                 </div>
 
                 <!-- Spec grid -->
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-zinc-900/60">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-[#1F1F23]/8">
                   <div>
-                    <h4 class="flex items-center gap-1 text-[9px] font-bold text-zinc-500 uppercase tracking-[0.12em] mb-1 font-display">
-                      <svg class="w-3 h-3 text-zinc-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                    <h4 class="flex items-center gap-1 text-[9px] font-bold text-[#6E6862] uppercase tracking-[0.12em] mb-1 font-mono">
+                      <svg class="w-3 h-3 text-[#6E6862]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
                       Challenge
                     </h4>
-                    <p class="text-xs text-zinc-500 leading-relaxed font-body">{project.problem}</p>
+                    <p class="text-xs text-[#4A4844] leading-relaxed font-body">{project.problem}</p>
                   </div>
                   <div>
-                    <h4 class="flex items-center gap-1 text-[9px] font-bold text-zinc-500 uppercase tracking-[0.12em] mb-1 font-display">
-                      <svg class="w-3 h-3 text-zinc-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    <h4 class="flex items-center gap-1 text-[9px] font-bold text-[#6E6862] uppercase tracking-[0.12em] mb-1 font-mono">
+                      <svg class="w-3 h-3 text-[#6E6862]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
                       Solution
                     </h4>
-                    <p class="text-xs text-zinc-500 leading-relaxed font-body">{project.built}</p>
+                    <p class="text-xs text-[#4A4844] leading-relaxed font-body">{project.built}</p>
                   </div>
                   <div>
-                    <h4 class="flex items-center gap-1 text-[9px] font-bold text-zinc-500 uppercase tracking-[0.12em] mb-1 font-display">
-                      <svg class="w-3 h-3 text-zinc-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    <h4 class="flex items-center gap-1 text-[9px] font-bold text-[#6E6862] uppercase tracking-[0.12em] mb-1 font-mono">
+                      <svg class="w-3 h-3 text-[#6E6862]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                       Outcome
                     </h4>
-                    <p class="text-xs text-zinc-500 leading-relaxed font-body">{project.outcome}</p>
+                    <p class="text-xs text-[#4A4844] leading-relaxed font-body">{project.outcome}</p>
                   </div>
                 </div>
 
                 <!-- Tech badges -->
-                <div class="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-zinc-900/40">
+                <div class="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-[#1F1F23]/8">
                   <div class="flex flex-wrap gap-1.5 items-center">
-                    <span class="text-[9px] text-zinc-600 font-mono mr-1 self-center">Stack</span>
+                    <span class="text-[9px] text-[#6E6862] font-mono mr-1 self-center">Stack</span>
                     {project.tech.map((t) => (
                       <span class="badge-premium-neutral text-[9px] font-semibold tracking-wide font-mono">{t}</span>
                     ))}
@@ -219,14 +231,14 @@ const stats = [
                         href={(project as any).demoUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="text-xs font-semibold text-amber-400 hover:text-amber-300 flex items-center gap-1 font-mono transition-colors"
+                        class="text-xs font-semibold text-[#C76B50] hover:text-[#D97A5E] flex items-center gap-1 font-mono transition-colors"
                       >
                         Launch Demo ↗
                       </a>
                       {(project as any).demoInternalUrl && (
                         <a
                           href={(project as any).demoInternalUrl}
-                          class="text-xs text-zinc-400 hover:text-white flex items-center gap-1 font-mono transition-colors"
+                          class="text-xs text-[#6E6862] hover:text-[#1F1F23] flex items-center gap-1 font-mono transition-colors"
                         >
                           Dossier →
                         </a>
@@ -246,23 +258,23 @@ const stats = [
       <div class="gradient-divider mb-14"></div>
 
       <div class="text-center mb-12 stagger-parent">
-        <p class="text-[10px] font-bold uppercase tracking-[0.18em] text-amber-500 mb-2 font-display">Coming Soon</p>
-        <h2 class="font-display font-bold text-heading text-white">Case studies in progress</h2>
-        <p class="text-zinc-400 text-sm mt-2 max-w-xl mx-auto font-body">
+        <p class="text-[10px] font-bold uppercase tracking-[0.18em] text-[#C76B50] mb-2 font-mono">Coming Soon</p>
+        <h2 class="font-display font-bold text-heading text-[#1F1F23]">Case studies in progress</h2>
+        <p class="text-[#6E6862] text-sm mt-2 max-w-xl mx-auto font-body">
           We are wrapping up the initial scoped versions of these projects. Full details will be published once code is deployed.
         </p>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 stagger-parent">
         {placeholders.map((ph) => (
-          <div class="card-cyber-accent hover:border-amber-400/25 transition-all duration-300">
+          <div class="card-studio-accent hover:border-[#C76B50]/45 transition-all duration-200 shadow-sm">
             <div class="flex items-center justify-between gap-3 mb-3">
-              <span class="text-[9px] font-bold text-zinc-500 uppercase tracking-widest font-display">{ph.category}</span>
-              <span class="text-[9px] text-amber-500 font-semibold uppercase tracking-wider bg-amber-500/5 px-2.5 py-0.5 rounded-full border border-amber-500/10">In Development</span>
+              <span class="text-[9px] font-bold text-[#6E6862] uppercase tracking-widest font-mono">{ph.category}</span>
+              <span class="text-[9px] text-[#C76B50] font-semibold uppercase tracking-wider bg-[#C76B50]/10 px-2.5 py-0.5 rounded-full border border-[#C76B50]/20 font-mono">In Development</span>
             </div>
-            <h3 class="text-base font-semibold text-white font-display mb-1.5">{ph.title}</h3>
-            <p class="text-xs text-zinc-400 leading-relaxed mb-4 font-body">{ph.teaser}</p>
-            <div class="flex flex-wrap gap-1.5 pt-3 border-t border-zinc-900/40">
+            <h3 class="text-base font-semibold text-[#1F1F23] font-display mb-1.5">{ph.title}</h3>
+            <p class="text-xs text-[#6E6862] leading-relaxed mb-4 font-body">{ph.teaser}</p>
+            <div class="flex flex-wrap gap-1.5 pt-3 border-t border-[#1F1F23]/8">
               {ph.tech.map((t) => (
                 <span class="badge-premium-neutral text-[9px] font-mono">{t}</span>
               ))}
@@ -273,13 +285,13 @@ const stats = [
     </div>
 
     <!-- ==================== CTA ==================== -->
-    <section class="py-20 px-6 sm:px-8 max-w-5xl mx-auto border-t border-zinc-900/60">
+    <section class="py-20 px-6 sm:px-8 max-w-5xl mx-auto border-t border-[#1F1F23]/8">
       <div class="text-center stagger-parent">
-        <p class="text-xs uppercase tracking-[0.18em] text-amber-500 mb-2 font-bold font-display">Ready to Build?</p>
-        <h2 class="text-heading font-display font-bold text-white mb-4">
+        <p class="text-xs uppercase tracking-[0.18em] text-[#C76B50] mb-2 font-bold font-mono">Ready to Build?</p>
+        <h2 class="text-heading font-display font-bold text-[#1F1F23] mb-4">
           Have a project in mind?
         </h2>
-        <p class="text-zinc-400 text-sm sm:text-base max-w-xl mx-auto mb-8 font-body leading-relaxed">
+        <p class="text-[#6E6862] text-sm sm:text-base max-w-xl mx-auto mb-8 font-body leading-relaxed">
           Tell us what you need built. We'll reply with a clear scope, timeline, and fixed price — no meetings required upfront.
         </p>
         <a href="/contact" class="btn-premium-primary">

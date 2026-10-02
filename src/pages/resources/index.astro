@@ -17,19 +17,19 @@ const categories = [...new Set(resources.map((r) => r.data.category))];
 >
   <Nav />
   <main class="container-page relative">
-    <div class="absolute top-0 left-1/4 -translate-y-12 w-[400px] h-[250px] bg-amber-400/5 rounded-full blur-[90px] pointer-events-none -z-10 animate-pulse-glow" aria-hidden="true"></div>
+    <div class="absolute top-0 left-1/4 -translate-y-12 w-[400px] h-[250px] bg-[#c76b50]/8 rounded-full blur-[100px] pointer-events-none -z-10" aria-hidden="true"></div>
 
     <header class="header-page animate-fade-in-up">
-      <p class="header-page-pretitle">Resource Directory</p>
+      <p class="header-page-pretitle font-mono text-[#c76b50]">Resource Directory</p>
       <h1 class="header-page-title">Curated resources</h1>
-      <p class="header-page-subtitle">
+      <p class="header-page-subtitle text-[#a69d92]">
         Directories, comparisons, and reference lists for AI developers. Every entry is vetted — no affiliate links, no sponsored rankings.
       </p>
     </header>
 
     {categories.map((category) => (
       <section class="mb-12" aria-labelledby={`res-${category.toLowerCase().replace(/\s+/g, "-")}`}>
-        <h2 id={`res-${category.toLowerCase().replace(/\s+/g, "-")}`} class="text-xs uppercase tracking-[0.12em] text-zinc-500 mb-4 font-semibold">
+        <h2 id={`res-${category.toLowerCase().replace(/\s+/g, "-")}`} class="text-xs uppercase tracking-[0.12em] text-[#78716c] mb-4 font-mono font-semibold">
           {category}
         </h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -49,7 +49,7 @@ const categories = [...new Set(resources.map((r) => r.data.category))];
 
     {resources.length === 0 && (
       <div class="card-premium-flat text-center">
-        <p class="text-zinc-500 text-sm">Resources coming soon.</p>
+        <p class="text-[#78716c] text-sm font-mono">Resources coming soon.</p>
       </div>
     )}
   </main>

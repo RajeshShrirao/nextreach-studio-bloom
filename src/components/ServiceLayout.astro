@@ -59,19 +59,19 @@ const structuredOffering = offerings.map((o, i) => ({
   })} />
   <Nav />
   <main class="container-page-wide relative pt-28">
-    <div class="absolute top-0 left-1/4 -translate-y-12 w-[500px] h-[300px] bg-amber-400/5 rounded-full blur-[100px] pointer-events-none -z-10 animate-pulse-glow" aria-hidden="true"></div>
+    <div class="absolute top-0 left-1/4 -translate-y-12 w-[500px] h-[300px] bg-[#C76B50]/6 rounded-full blur-[110px] pointer-events-none -z-10" aria-hidden="true"></div>
 
     <header class="text-center max-w-3xl mx-auto px-4 mb-16 stagger-parent">
       <p class="badge-premium-accent text-[10px] font-bold px-3 py-1 inline-flex mb-5">{serviceTag}</p>
-      <h1 class="text-hero text-white mb-6 font-display font-bold text-balance-wide">{headline}</h1>
-      <p class="text-zinc-400 text-base sm:text-lg leading-relaxed font-body">{subheadline}</p>
+      <h1 class="text-hero text-[#1F1F23] mb-6 font-display font-bold text-balance-wide">{headline}</h1>
+      <p class="text-[#6E6862] text-base sm:text-lg leading-relaxed font-body">{subheadline}</p>
     </header>
 
     <div class="max-w-4xl mx-auto px-4 mb-16 space-y-6 stagger-parent">
       {offerings.map((o) => (
-        <div class="card-cyber p-6 sm:p-8">
-          <h2 class="text-lg sm:text-xl font-bold text-white font-display mb-3">{o.title}</h2>
-          <p class="text-sm text-zinc-400 leading-relaxed font-body">{o.description}</p>
+        <div class="card-studio p-6 sm:p-8 shadow-sm">
+          <h2 class="text-lg sm:text-xl font-bold text-[#1F1F23] font-display mb-3">{o.title}</h2>
+          <p class="text-sm text-[#6E6862] leading-relaxed font-body">{o.description}</p>
         </div>
       ))}
     </div>
@@ -80,27 +80,27 @@ const structuredOffering = offerings.map((o, i) => ({
 
     <div class="max-w-4xl mx-auto px-4 mb-16">
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div class="dashboard-panel p-4 text-center">
-          <p class="text-[10px] text-zinc-500 font-mono mb-1">Ideal Client</p>
-          <p class="text-sm text-zinc-200 font-medium">{idealClient}</p>
+        <div class="dashboard-panel p-4 text-center shadow-sm">
+          <p class="text-[10px] text-[#6E6862] font-mono mb-1">Ideal Client</p>
+          <p class="text-sm text-[#1F1F23] font-semibold">{idealClient}</p>
         </div>
-        <div class="dashboard-panel p-4 text-center">
-          <p class="text-[10px] text-zinc-500 font-mono mb-1">Timeline</p>
-          <p class="text-sm text-zinc-200 font-medium">{timeline}</p>
+        <div class="dashboard-panel p-4 text-center shadow-sm">
+          <p class="text-[10px] text-[#6E6862] font-mono mb-1">Timeline</p>
+          <p class="text-sm text-[#1F1F23] font-semibold">{timeline}</p>
         </div>
-        <div class="dashboard-panel p-4 text-center">
-          <p class="text-[10px] text-zinc-500 font-mono mb-1">Price Range</p>
-          <p class="text-sm text-zinc-200 font-medium">{priceRange}</p>
+        <div class="dashboard-panel p-4 text-center shadow-sm">
+          <p class="text-[10px] text-[#6E6862] font-mono mb-1">Price Range</p>
+          <p class="text-sm text-[#1F1F23] font-semibold">{priceRange}</p>
         </div>
       </div>
     </div>
 
     {relatedLinks && relatedLinks.length > 0 && (
       <div class="max-w-4xl mx-auto px-4 mb-16 stagger-parent">
-        <h2 class="text-lg font-bold text-white font-display mb-4 text-center">Explore More</h2>
+        <h2 class="text-lg font-bold text-[#1F1F23] font-display mb-4 text-center">Explore More</h2>
         <div class="flex flex-wrap justify-center gap-3">
           {relatedLinks.map(({ href, label }) => (
-            <a href={href} class="px-4 py-2 rounded-lg text-sm text-zinc-400 bg-white/5 border border-zinc-800/80 hover:text-amber-400 hover:border-amber-500/30 transition-all duration-200">
+            <a href={href} class="px-4 py-2 rounded-lg text-sm text-[#4A4844] bg-white border border-[#1F1F23]/8 hover:text-[#C76B50] hover:border-[#C76B50]/30 transition-all duration-200 shadow-sm">
               {label}
             </a>
           ))}
@@ -110,15 +110,15 @@ const structuredOffering = offerings.map((o, i) => ({
 
     {portfolioTags && portfolioTags.length > 0 && (
       <div class="max-w-4xl mx-auto px-4 mb-16 stagger-parent text-center">
-        <p class="text-zinc-500 text-sm">
+        <p class="text-[#6E6862] text-sm">
           See related work:{" "}
-          <a href="/portfolio" class="text-amber-400 hover:text-amber-300 underline underline-offset-2 transition-colors">View our portfolio</a>
+          <a href="/portfolio" class="text-[#C76B50] hover:text-[#D97A5E] underline underline-offset-2 transition-colors font-medium">View our portfolio</a>
         </p>
       </div>
     )}
 
     <div class="text-center max-w-4xl mx-auto px-4 mb-20 stagger-parent">
-      <p class="text-zinc-400 text-sm sm:text-base mb-6 font-body">Ready to get started?</p>
+      <p class="text-[#6E6862] text-sm sm:text-base mb-6 font-body">Ready to get started?</p>
       <a href={ctaHref} class="btn-premium-primary">
         {ctaText}
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4"><path d="M5 12h14M12 5l7 7-7 7"/></svg>

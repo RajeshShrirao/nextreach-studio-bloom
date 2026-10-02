@@ -62,19 +62,19 @@ export default function CostCalculator() {
 
   const getProviderColor = (provider: string) => {
     switch (provider.toLowerCase()) {
-      case "anthropic": return "text-purple-400 bg-purple-500/10 border-purple-500/20";
-      case "openai": return "text-emerald-400 bg-emerald-500/10 border-emerald-500/20";
-      case "google": return "text-blue-400 bg-blue-500/10 border-blue-500/20";
-      case "deepseek": return "text-cyan-400 bg-cyan-500/10 border-cyan-500/20";
-      default: return "text-zinc-400 bg-zinc-500/10 border-zinc-500/20";
+      case "anthropic": return "text-purple-700 bg-purple-50 border-purple-200";
+      case "openai": return "text-emerald-700 bg-emerald-50 border-emerald-200";
+      case "google": return "text-blue-700 bg-blue-50 border-blue-200";
+      case "deepseek": return "text-cyan-700 bg-cyan-50 border-cyan-200";
+      default: return "text-[#6E6862] bg-[#FAF8F5] border-[#1F1F23]/10";
     }
   };
 
   return (
     <div className="space-y-6">
       {/* Configuration Grid */}
-      <div className="card-premium">
-        <h2 className="text-xs uppercase tracking-wider text-zinc-400 font-bold mb-4">Usage Configuration</h2>
+      <div className="card-studio p-6">
+        <h2 className="text-xs uppercase tracking-wider text-[#6E6862] font-bold mb-4">Usage Configuration</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div>
             <label htmlFor="input-tokens" className="form-label-premium">
@@ -89,11 +89,11 @@ export default function CostCalculator() {
                 onChange={(e) => setInputTokens(Math.max(1, parseInt(e.target.value) || 0))}
                 className="form-input-premium font-mono pr-12"
               />
-              <span className="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs font-semibold text-zinc-600 font-mono">tokens</span>
+              <span className="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs font-semibold text-[#6E6862] font-mono">tokens</span>
             </div>
-            <p className="mt-2 text-xs text-zinc-500 flex justify-between">
+            <p className="mt-2 text-xs text-[#6E6862] flex justify-between">
               <span>Approx. Word Count:</span>
-              <span className="font-mono text-zinc-400">~{Math.round(inputTokens * 0.75).toLocaleString()} words</span>
+              <span className="font-mono text-[#1F1F23]">~{Math.round(inputTokens * 0.75).toLocaleString()} words</span>
             </p>
           </div>
 
@@ -110,11 +110,11 @@ export default function CostCalculator() {
                 onChange={(e) => setOutputTokens(Math.max(1, parseInt(e.target.value) || 0))}
                 className="form-input-premium font-mono pr-12"
               />
-              <span className="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs font-semibold text-zinc-600 font-mono">tokens</span>
+              <span className="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs font-semibold text-[#6E6862] font-mono">tokens</span>
             </div>
-            <p className="mt-2 text-xs text-zinc-500 flex justify-between">
+            <p className="mt-2 text-xs text-[#6E6862] flex justify-between">
               <span>Approx. Word Count:</span>
-              <span className="font-mono text-zinc-400">~{Math.round(outputTokens * 0.75).toLocaleString()} words</span>
+              <span className="font-mono text-[#1F1F23]">~{Math.round(outputTokens * 0.75).toLocaleString()} words</span>
             </p>
           </div>
 
@@ -131,22 +131,22 @@ export default function CostCalculator() {
                 onChange={(e) => setRequests(Math.max(1, parseInt(e.target.value) || 0))}
                 className="form-input-premium font-mono pr-12"
               />
-              <span className="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs font-semibold text-zinc-600 font-mono">calls</span>
+              <span className="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs font-semibold text-[#6E6862] font-mono">calls</span>
             </div>
-            <p className="mt-2 text-xs text-zinc-500">
-              Total volume: <span className="text-zinc-400 font-mono">{(requests * (inputTokens + outputTokens)).toLocaleString()} tokens</span>
+            <p className="mt-2 text-xs text-[#6E6862]">
+              Total volume: <span className="text-[#1F1F23] font-mono font-medium">{(requests * (inputTokens + outputTokens)).toLocaleString()} tokens</span>
             </p>
           </div>
         </div>
       </div>
 
       {/* Selector Grid */}
-      <div className="card-premium">
-        <h2 className="text-xs uppercase tracking-wider text-zinc-400 font-bold mb-3">Target Models for Comparison</h2>
+      <div className="card-studio p-6">
+        <h2 className="text-xs uppercase tracking-wider text-[#6E6862] font-bold mb-3">Target Models for Comparison</h2>
         <div className="space-y-4">
           {Object.entries(byProvider).map(([provider, models]) => (
-            <div key={provider} className="border-b border-white/[0.03] last:border-b-0 pb-3 last:pb-0">
-              <p className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest mb-2.5">{provider}</p>
+            <div key={provider} className="border-b border-[#1F1F23]/6 last:border-b-0 pb-3 last:pb-0">
+              <p className="text-[10px] font-bold text-[#6E6862] uppercase tracking-widest mb-2.5">{provider}</p>
               <div className="flex flex-wrap gap-2">
                 {models.map((model) => {
                   const isSelected = selectedModels.includes(model.id);
@@ -156,8 +156,8 @@ export default function CostCalculator() {
                       onClick={() => toggleModel(model.id)}
                       className={`rounded-lg px-3.5 py-2 text-xs font-semibold border transition-all duration-200 cursor-pointer ${
                         isSelected
-                          ? "bg-amber-400/20 border-amber-400/40 text-amber-300 shadow-[0_0_16px_rgba(251,191,36,0.12)] font-medium"
-                          : "bg-white/5 border-white/5 text-zinc-500 hover:text-zinc-300 hover:bg-white/10"
+                          ? "bg-[#C76B50]/10 border-[#C76B50]/40 text-[#C76B50] font-medium"
+                          : "bg-[#FAF8F5] border-[#1F1F23]/8 text-[#6E6862] hover:text-[#1F1F23] hover:bg-[#FAF8F5]/80"
                       }`}
                     >
                       {model.label}
@@ -172,37 +172,37 @@ export default function CostCalculator() {
 
       {/* Cost Dashboard */}
       {results.length > 0 && (
-        <div className="card-premium !p-0 overflow-hidden">
-          <div className="p-5 border-b border-white/[0.06] bg-white/[0.01] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div className="card-studio !p-0 overflow-hidden">
+          <div className="p-5 border-b border-[#1F1F23]/8 bg-[#FAF8F5]/60 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
-              <h2 className="text-sm font-semibold text-zinc-200">Monthly Billing Projections</h2>
-              <p className="text-xs text-zinc-500 mt-1">Relative comparison sorted by cheapest API provider</p>
+              <h2 className="text-sm font-semibold text-[#1F1F23]">Monthly Billing Projections</h2>
+              <p className="text-xs text-[#6E6862] mt-0.5">Relative comparison sorted by cheapest API provider</p>
             </div>
             {savings > 0.01 && (
-              <div className="rounded-xl px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold flex items-center gap-1.5 self-start sm:self-auto shadow-[0_0_12px_rgba(52,211,153,0.1)]">
+              <div className="rounded-xl px-4 py-2 bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-semibold flex items-center gap-1.5 self-start sm:self-auto">
                 <span>⚡ Save up to</span>
                 <span className="font-mono text-[13px] font-bold">${savings.toFixed(2)}/mo</span>
               </div>
             )}
           </div>
 
-          <div className="divide-y divide-white/[0.06] bg-zinc-950/20">
+          <div className="divide-y divide-[#1F1F23]/6 bg-white">
             {results.map((model, i) => {
               const isCheapest = i === 0;
               const pct = mostExpensive && mostExpensive.totalCost > 0 ? (model.totalCost / mostExpensive.totalCost) * 100 : 0;
               const modelColor = getProviderColor(model.provider);
 
               return (
-                <div key={model.id} className="p-5 flex flex-col md:flex-row md:items-center gap-4 hover:bg-white/[0.01] transition-colors">
+                <div key={model.id} className="p-5 flex flex-col md:flex-row md:items-center gap-4 hover:bg-[#FAF8F5]/40 transition-colors">
                   {/* Rank badge */}
                   <div className="flex items-center gap-3 md:w-36 shrink-0">
                     <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-mono font-bold ${
-                      isCheapest ? "bg-amber-400/20 border border-amber-400/40 text-amber-300 shadow-[0_0_8px_rgba(251,191,36,0.15)]" : "bg-zinc-900 border border-white/5 text-zinc-500"
+                      isCheapest ? "bg-[#C76B50]/15 border border-[#C76B50]/30 text-[#C76B50]" : "bg-[#FAF8F5] border border-[#1F1F23]/10 text-[#6E6862]"
                     }`}>
                       {i + 1}
                     </span>
                     <div className="min-w-0">
-                      <p className="text-sm font-semibold text-zinc-200 truncate leading-snug">{model.label}</p>
+                      <p className="text-sm font-semibold text-[#1F1F23] truncate leading-snug">{model.label}</p>
                       <span className={`inline-block text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded border mt-1 ${modelColor}`}>
                         {model.provider}
                       </span>
@@ -212,19 +212,19 @@ export default function CostCalculator() {
                   {/* Relative bar and pricing breakdown */}
                   <div className="flex-1 min-w-0 space-y-2">
                     <div className="flex items-center justify-between">
-                      <span className="text-[10px] text-zinc-500 font-mono">
+                      <span className="text-[11px] text-[#6E6862] font-mono">
                         ${model.inputCost.toFixed(2)}/M in · ${model.outputCost.toFixed(2)}/M out
                       </span>
-                      <span className={`text-sm font-mono font-bold ${isCheapest ? "text-emerald-400" : "text-zinc-200"}`}>
+                      <span className={`text-sm font-mono font-bold ${isCheapest ? "text-emerald-600" : "text-[#1F1F23]"}`}>
                         ${model.totalCost.toFixed(2)}
-                        <span className="text-xs text-zinc-500 font-normal">/mo</span>
+                        <span className="text-xs text-[#6E6862] font-normal">/mo</span>
                       </span>
                     </div>
                     
-                    <div className="h-2.5 rounded-full bg-zinc-950 overflow-hidden border border-white/5 p-[1px]">
+                    <div className="h-2.5 rounded-full bg-[#FAF8F5] overflow-hidden border border-[#1F1F23]/8 p-[1px]">
                       <div
                         className={`h-full rounded-full transition-all duration-500 ${
-                          isCheapest ? "bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.3)]" : "bg-amber-400/50"
+                          isCheapest ? "bg-emerald-500" : "bg-[#C76B50]/70"
                         }`}
                         style={{ width: `${Math.max(2, pct)}%` }}
                       />
@@ -237,7 +237,7 @@ export default function CostCalculator() {
         </div>
       )}
 
-      <p className="text-xs text-zinc-600 text-center leading-relaxed">
+      <p className="text-xs text-[#6E6862] text-center leading-relaxed">
         Prices reflect public standard endpoints as of May 2026. Rate structures like Anthropic cache writes or prompt caching are not included in estimates.
       </p>
     </div>

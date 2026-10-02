@@ -108,21 +108,21 @@ export default function PromptFormatter() {
   return (
     <div className="space-y-6">
       {/* Format Selector Grid */}
-      <div className="card-premium">
-        <h2 className="text-xs uppercase tracking-wider text-zinc-400 font-bold mb-4">Select Target Format</h2>
+      <div className="card-studio p-6">
+        <h2 className="text-xs uppercase tracking-wider text-[#6E6862] font-bold mb-4">Select Target Format</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5">
           {FORMATS.map((f) => (
             <button
               key={f.id}
               onClick={() => setTargetFormat(f.id)}
-              className={`rounded-xl p-3 text-left border transition-all duration-200 cursor-pointer ${
+              className={`rounded-xl p-3.5 text-left border transition-all duration-200 cursor-pointer ${
                 targetFormat === f.id
-                  ? "bg-amber-400/20 border-amber-400/40 text-amber-300 shadow-[0_0_12px_rgba(251,191,36,0.12)]"
-                  : "bg-white/5 border-white/5 text-zinc-500 hover:text-zinc-300 hover:bg-white/10"
+                  ? "bg-[#C76B50]/10 border-[#C76B50]/40 text-[#C76B50]"
+                  : "bg-[#FAF8F5] border-[#1F1F23]/8 text-[#6E6862] hover:text-[#1F1F23] hover:bg-[#FAF8F5]/80"
               }`}
             >
               <p className="text-xs font-semibold">{f.label}</p>
-              <p className="text-[10px] text-zinc-500 mt-1.5 leading-tight font-medium">{f.description}</p>
+              <p className="text-[11px] text-[#6E6862] mt-1 leading-tight">{f.description}</p>
             </button>
           ))}
         </div>
@@ -132,10 +132,10 @@ export default function PromptFormatter() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Left column inputs */}
         <div className="space-y-4">
-          <div className="card-premium-flat">
+          <div className="card-studio p-6">
             <label htmlFor="sys-prompt" className="form-label-premium flex justify-between items-center">
-              <span>System Prompt</span>
-              <span className="text-[10px] text-zinc-500 font-semibold normal-case">Optional</span>
+              <span className="text-[#1F1F23] font-semibold text-xs uppercase tracking-wider">System Prompt</span>
+              <span className="text-[11px] text-[#6E6862] font-semibold normal-case">Optional</span>
             </label>
             <textarea
               id="sys-prompt"
@@ -147,8 +147,8 @@ export default function PromptFormatter() {
             />
           </div>
 
-          <div className="card-premium-flat">
-            <label htmlFor="user-message" className="form-label-premium">
+          <div className="card-studio p-6">
+            <label htmlFor="user-message" className="form-label-premium text-[#1F1F23] font-semibold text-xs uppercase tracking-wider">
               User Message
             </label>
             <textarea
@@ -164,26 +164,26 @@ export default function PromptFormatter() {
 
         {/* Right column preview sandbox and outputs */}
         <div className="space-y-4">
-          <div className="card-premium !p-0 overflow-hidden flex flex-col h-full min-h-[440px]">
+          <div className="card-studio !p-0 overflow-hidden flex flex-col h-full min-h-[440px]">
             {/* Header Tabs */}
-            <div className="flex items-center justify-between px-4 py-3.5 border-b border-white/[0.06] bg-white/[0.01]">
+            <div className="flex items-center justify-between px-4 py-3.5 border-b border-[#1F1F23]/8 bg-[#FAF8F5]/60">
               <div className="flex gap-2">
                 <button
                   onClick={() => setActiveTab("preview")}
                   className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                     activeTab === "preview"
-                      ? "bg-zinc-800 text-white border border-white/5"
-                      : "text-zinc-500 hover:text-zinc-300"
+                      ? "bg-white text-[#1F1F23] shadow-xs border border-[#1F1F23]/10"
+                      : "text-[#6E6862] hover:text-[#1F1F23]"
                   }`}
                 >
-                  Message Sandbox Preview
+                  Sandbox Preview
                 </button>
                 <button
                   onClick={() => setActiveTab("raw")}
                   className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                     activeTab === "raw"
-                      ? "bg-zinc-800 text-white border border-white/5"
-                      : "text-zinc-500 hover:text-zinc-300"
+                      ? "bg-white text-[#1F1F23] shadow-xs border border-[#1F1F23]/10"
+                      : "text-[#6E6862] hover:text-[#1F1F23]"
                   }`}
                 >
                   Raw Target Code
@@ -195,20 +195,20 @@ export default function PromptFormatter() {
                 disabled={!formatted}
                 className={`flex items-center gap-1.5 rounded-lg px-3.5 py-1.5 text-xs font-semibold border transition-all duration-200 cursor-pointer ${
                   copied
-                    ? "bg-emerald-500/20 border-emerald-500/40 text-emerald-400 shadow-[0_0_12px_rgba(52,211,153,0.15)]"
-                    : "bg-white/5 border-white/5 text-zinc-400 hover:text-zinc-200 hover:bg-white/10 hover:border-white/10 disabled:opacity-40 disabled:cursor-not-allowed"
+                    ? "bg-emerald-50 border-emerald-300 text-emerald-700"
+                    : "bg-white border-[#1F1F23]/10 text-[#4A4844] hover:text-[#1F1F23] hover:bg-[#FAF8F5] disabled:opacity-40 disabled:cursor-not-allowed shadow-xs"
                 }`}
               >
                 {copied ? (
                   <>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" className="w-3.5 h-3.5">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-3.5 h-3.5">
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
                     Copied!
                   </>
                 ) : (
                   <>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" className="w-3.5 h-3.5">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-3.5 h-3.5">
                       <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
                       <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
                     </svg>
@@ -219,42 +219,42 @@ export default function PromptFormatter() {
             </div>
 
             {/* Content box based on active tabs */}
-            <div className="flex-1 bg-zinc-950/40 p-4.5 overflow-y-auto">
+            <div className="flex-1 bg-[#FAF8F5]/30 p-5 overflow-y-auto">
               {activeTab === "preview" ? (
                 /* Sandbox chat simulation UI */
                 <div className="space-y-4 text-xs font-sans">
-                  <div className="text-center text-[10px] text-zinc-650 font-mono tracking-wider pb-2 border-b border-white/[0.02]">
+                  <div className="text-center text-[10px] text-[#6E6862] font-mono tracking-wider pb-2 border-b border-[#1F1F23]/6">
                     MOCK API SESSION SANDBOX PREVIEW
                   </div>
                   
                   {systemPrompt && (
-                    <div className="p-3.5 rounded-xl border border-purple-500/10 bg-purple-500/[0.02] text-purple-300">
-                      <p className="text-[9px] uppercase font-bold tracking-wider text-purple-400 mb-1">⚙️ System Rules Configuration</p>
+                    <div className="p-3.5 rounded-xl border border-purple-200 bg-purple-50 text-purple-900">
+                      <p className="text-[9px] uppercase font-bold tracking-wider text-purple-700 mb-1">⚙️ System Rules Configuration</p>
                       <p className="whitespace-pre-wrap leading-relaxed font-mono text-[11px]">{systemPrompt}</p>
                     </div>
                   )}
 
                   {userMessage ? (
                     <div className="flex justify-end">
-                      <div className="max-w-[85%] p-3.5 rounded-2xl rounded-tr-sm border border-amber-400/10 bg-amber-400/[0.03] text-amber-200">
-                        <p className="text-[9px] uppercase font-bold tracking-wider text-amber-400 mb-1 text-right">🧑 User Input Message</p>
+                      <div className="max-w-[85%] p-3.5 rounded-2xl rounded-tr-sm border border-[#C76B50]/20 bg-[#C76B50]/10 text-[#1F1F23]">
+                        <p className="text-[9px] uppercase font-bold tracking-wider text-[#C76B50] mb-1 text-right">🧑 User Input Message</p>
                         <p className="whitespace-pre-wrap leading-relaxed font-mono text-[11px]">{userMessage}</p>
                       </div>
                     </div>
                   ) : (
-                    <div className="text-center py-8 text-zinc-600 font-mono text-[11px]">
+                    <div className="text-center py-8 text-[#6E6862] font-mono text-[11px]">
                       Enter a user message in the input panel to update chat bubble simulation.
                     </div>
                   )}
 
                   {userMessage && (
                     <div className="flex justify-start">
-                      <div className="max-w-[85%] p-3.5 rounded-2xl rounded-tl-sm border border-white/[0.04] bg-white/[0.02] text-zinc-400">
-                        <p className="text-[9px] uppercase font-bold tracking-wider text-zinc-500 mb-1">🤖 Expected Assistant Completion</p>
-                        <div className="flex items-center gap-1.5 py-1 text-zinc-500 font-mono">
-                          <span className="w-1.5 h-1.5 rounded-full bg-zinc-600 animate-bounce" style={{ animationDelay: "0ms" }} />
-                          <span className="w-1.5 h-1.5 rounded-full bg-zinc-600 animate-bounce" style={{ animationDelay: "150ms" }} />
-                          <span className="w-1.5 h-1.5 rounded-full bg-zinc-600 animate-bounce" style={{ animationDelay: "300ms" }} />
+                      <div className="max-w-[85%] p-3.5 rounded-2xl rounded-tl-sm border border-[#1F1F23]/8 bg-white text-[#4A4844] shadow-xs">
+                        <p className="text-[9px] uppercase font-bold tracking-wider text-[#6E6862] mb-1">🤖 Expected Assistant Completion</p>
+                        <div className="flex items-center gap-1.5 py-1 text-[#6E6862] font-mono">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#C76B50] animate-bounce" style={{ animationDelay: "0ms" }} />
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#C76B50] animate-bounce" style={{ animationDelay: "150ms" }} />
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#C76B50] animate-bounce" style={{ animationDelay: "300ms" }} />
                           <span className="text-[10px] ml-1">formatting rules mapped...</span>
                         </div>
                       </div>
@@ -263,9 +263,9 @@ export default function PromptFormatter() {
                 </div>
               ) : (
                 /* Raw formatting output pre/code block */
-                <pre className="font-mono text-xs text-zinc-300 whitespace-pre-wrap leading-relaxed">
+                <pre className="font-mono text-xs text-[#1F1F23] bg-white p-4 rounded-xl border border-[#1F1F23]/8 whitespace-pre-wrap leading-relaxed shadow-xs">
                   {formatted || (
-                    <span className="text-zinc-700 italic">
+                    <span className="text-[#6E6862] italic">
                       No prompt content to render.
                     </span>
                   )}
@@ -276,7 +276,7 @@ export default function PromptFormatter() {
         </div>
       </div>
 
-      <p className="text-xs text-zinc-600 text-center leading-relaxed">
+      <p className="text-xs text-[#6E6862] text-center leading-relaxed">
         Calculations utilize official schema profiles. Verification in dev contexts is recommended prior to scripting automated prompts.
       </p>
     </div>

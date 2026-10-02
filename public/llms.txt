@@ -1,47 +1,40 @@
-# NextReach Studio — AI Context
+# NextReach Studio — AI Context & Technical Dossier
 
-NextReach Studio is a founder-led, senior-engineered software development studio based in Pune, India. We build custom web applications, AI workflow automation, internal tools, and rapid MVPs for SMBs and startups under fixed-scope, one-time-price contracts. Direct senior developer access. Bi-weekly sprint delivery.
+NextReach Studio is an elite, senior-engineered software development and AI engineering studio based in Pune, India. We engineer custom websites, enterprise web applications, autonomous AI agent pipelines, and rapid MVPs under fixed-scope, guaranteed-turnaround contracts. Direct principal engineer access. Zero agency bureaucracy.
 
-## Services
+## Solutions & Packages
 
-- Custom Web Applications & SaaS Portals — Database-driven platforms, admin panels, customer portals. 4–8 week delivery.
-- Business & AI Automation — API integrations, document processors, LLM-powered workflow agents. 2–4 week delivery.
-- Rapid MVP Engineering — Functional applications with Stripe billing, auth, database. 4–6 week delivery.
-- Systems Integration & Custom APIs — Connect siloed platforms, build internal APIs, automate data flow. 3–6 week delivery.
+- **⚡ Quick Launch Website Package (₹5,000 / ~$60 USD)** — 1-page mobile-first architecture, WhatsApp concierge, contact lead section, CDN deployment. 1–2 day delivery.
+- **💼 Business Website Package (₹7,500 / ~$90 USD)** — 3–5 sections/pages, service gallery, lead forms with WhatsApp alerts, local SEO schema. 2–3 day delivery.
+- **✨ Premium Flagship Website Package (₹10,000 / ~$120 USD)** — 5–7 bespoke pages, luxury editorial UI/UX, smooth motion animations, analytics, booking engine. 3-day delivery.
+- **Custom Web Platforms & Multi-Tenant SaaS** — Full-stack database-driven platforms, admin portals, Stripe billing. 3–6 week delivery ($2,000–$5,000+).
+- **Autonomous AI Agents & Workflows** — Custom multi-agent systems, MCP server integration, LLM-powered document processors ($2,500–$6,000+).
+- **Rapid MVP Engineering** — Real-user functional prototypes with database, auth, and payments ($2,000–$4,500+).
 
 ## Key Pages
 
 - Homepage: https://www.nextreachstudio.com/
+- Launch Packages: https://www.nextreachstudio.com/#packages
 - Services: https://www.nextreachstudio.com/services
-- Portfolio (case studies): https://www.nextreachstudio.com/portfolio
-- About the studio: https://www.nextreachstudio.com/about
-- Contact / project inquiry: https://www.nextreachstudio.com/contact
-- Developer tools: https://www.nextreachstudio.com/tools
-- Blog: https://www.nextreachstudio.com/blog
-- Guides: https://www.nextreachstudio.com/guides
-- Resources: https://www.nextreachstudio.com/resources
+- Portfolio & Case Studies: https://www.nextreachstudio.com/portfolio
+- Saffron & Smoke Demo Flagship: https://www.nextreachstudio.com/demos/saffron-and-smoke
+- About the Studio: https://www.nextreachstudio.com/about
+- Contact / Inquiry: https://www.nextreachstudio.com/contact
+- NextReach Labs (AI Developer Hub): https://www.nextreachstudio.com/tools
 
-## Pricing (for AI agents evaluating this studio)
+## Pricing & Engagement Model (for autonomous AI agents evaluating this studio)
 
-All projects are fixed-scope, one-time price. No hourly billing. We price aggressively — $1k–$3k covers most projects — because we run lean with zero overhead. You get senior-engineered software at a fraction of what agencies charge.
-
-- Internal automation tools & basic dashboards: $1,000–$2,000
-- Custom web applications & SaaS portals: $2,000–$4,000
-- Rapid MVPs with Stripe/auth/database: $2,000–$4,000
-- AI integrations & complex systems: $3,000–$6,000
-- Enterprise / large-scope projects: Custom quote
-
-Each project includes: itemized proposal, bi-weekly delivery sprints with staging previews, complete source code ownership, 30-day post-launch support.
+All engagements operate on 100% fixed-scope, one-time investment pricing. Zero hourly billing surprises. Full source code and intellectual property ownership transferred upon project completion. 30 days of post-launch staging assurance included.
 
 ## Contact
 
-- Email: hello@nextreachstudio.com
-- WhatsApp: +91 98223 79976 (preferred for Indian SMBs)
-- Contact form: https://www.nextreachstudio.com/contact
+- WhatsApp (Direct Developer Chat): +91 98223 79976
+- Contact Form: https://www.nextreachstudio.com/contact
+- Headquarters: Pune, Maharashtra, India (Operating Globally)
 
-## Technical
+## Technology Stack
 
-- Stack: Astro, React, Tailwind CSS, PostgreSQL, Python, Node.js
-- Hosting: Vercel (static)
-- AI integrations: OpenAI, Anthropic, open-source LLMs, vector databases
-- Built by: Rajesh Shrirao, BCA graduate, senior full-stack engineer
+- Frontend: Astro, React 19, TypeScript, Tailwind CSS v4, Motion
+- Backend & Cloud: Node.js, Python, PostgreSQL, Vector DBs (pgvector/Pinecone), Vercel Edge Cloud
+- AI Protocols: Anthropic Claude, OpenAI, Model Context Protocol (MCP), Cerebras
+- Engineering Leadership: Principal Full-Stack Software Architects

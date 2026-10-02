@@ -46,7 +46,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 85% 10%, rgba(245, 158, 11, 0.08), transparent 45%),
+      background: radial-gradient(circle at 85% 10%, rgba(199, 107, 80, 0.08), transparent 45%),
                   radial-gradient(circle at 10% 90%, rgba(59, 130, 246, 0.06), transparent 40%);
       pointer-events: none;
       z-index: 0;
@@ -80,17 +80,11 @@
     }
 
     .logo-badge-icon {
-      width: 20px;
+      width: 16px;
       height: 20px;
-      background: #f59e0b;
-      color: #0b0d13;
-      border-radius: 4px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 900;
-      font-size: 11px;
-      font-family: 'Cabinet Grotesk', sans-serif;
+      display: inline-block;
+      vertical-align: middle;
+      flex-shrink: 0;
     }
 
     /* Running Footer */
@@ -106,7 +100,7 @@
     }
 
     .running-footer a {
-      color: #f59e0b;
+      color: #C76B50;
       text-decoration: none;
     }
 
@@ -119,7 +113,7 @@
     }
 
     .highlight-amber {
-      color: #fbbf24;
+      color: #C76B50;
     }
 
     .highlight-emerald {
@@ -145,13 +139,13 @@
 
     .cover-issue-tag {
       display: inline-block;
-      background: rgba(245, 158, 11, 0.12);
-      border: 1px solid rgba(245, 158, 11, 0.3);
+      background: rgba(199, 107, 80, 0.12);
+      border: 1px solid rgba(199, 107, 80, 0.3);
       padding: 4px 12px;
       border-radius: 4px;
       font-size: 9px;
       font-weight: 700;
-      color: #fbbf24;
+      color: #C76B50;
       font-family: 'JetBrains Mono', monospace;
       text-transform: uppercase;
       letter-spacing: 0.12em;
@@ -234,7 +228,7 @@
       border-radius: 4px;
       font-size: 8px;
       font-family: 'JetBrains Mono', monospace;
-      color: #fbbf24;
+      color: #C76B50;
       text-transform: uppercase;
       font-weight: 700;
     }
@@ -285,7 +279,7 @@
     .section-category {
       font-family: 'JetBrains Mono', monospace;
       font-size: 9px;
-      color: #f59e0b;
+      color: #C76B50;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.15em;
@@ -323,13 +317,13 @@
     }
 
     .package-row-card.highlighted {
-      border-color: rgba(245, 158, 11, 0.5);
-      background: linear-gradient(90deg, rgba(245, 158, 11, 0.08) 0%, rgba(18, 22, 34, 0.95) 100%);
+      border-color: rgba(199, 107, 80, 0.5);
+      background: linear-gradient(90deg, rgba(199, 107, 80, 0.08) 0%, rgba(18, 22, 34, 0.95) 100%);
     }
 
     .pkg-badge-pill {
       display: inline-block;
-      background: #f59e0b;
+      background: #C76B50;
       color: #0b0d13;
       font-size: 7.5px;
       font-weight: 800;
@@ -363,7 +357,7 @@
 
     .pkg-col-content h4 {
       font-size: 12px;
-      color: #fbbf24;
+      color: #C76B50;
       margin-bottom: 6px;
     }
 
@@ -384,7 +378,7 @@
     }
 
     .pkg-features-bullets li span {
-      color: #f59e0b;
+      color: #C76B50;
       font-weight: 700;
     }
 
@@ -409,7 +403,7 @@
     .pkg-col-qr .qr-label {
       font-size: 7.5px;
       font-family: 'JetBrains Mono', monospace;
-      color: #fbbf24;
+      color: #C76B50;
       text-transform: uppercase;
       font-weight: 700;
     }
@@ -541,7 +535,7 @@
     }
 
     .demo-card-qr-text a {
-      color: #fbbf24;
+      color: #C76B50;
       text-decoration: underline;
       font-weight: 700;
       word-break: break-all;
@@ -592,7 +586,7 @@
 
     .sprint-time-tag {
       font-size: 8.5px;
-      color: #f59e0b;
+      color: #C76B50;
       font-weight: 700;
       font-family: 'JetBrains Mono', monospace;
       margin-bottom: 4px;
@@ -624,7 +618,7 @@
 
     .checklist-box h4 {
       font-size: 12px;
-      color: #fbbf24;
+      color: #C76B50;
       margin-bottom: 8px;
     }
 
@@ -648,15 +642,15 @@
 
     /* Massive Order Dossier Card */
     .order-dossier-card {
-      background: linear-gradient(135deg, rgba(245, 158, 11, 0.14) 0%, rgba(18, 22, 34, 0.98) 100%);
-      border: 1.5px solid rgba(245, 158, 11, 0.45);
+      background: linear-gradient(135deg, rgba(199, 107, 80, 0.14) 0%, rgba(18, 22, 34, 0.98) 100%);
+      border: 1.5px solid rgba(199, 107, 80, 0.45);
       border-radius: 16px;
       padding: 18px 24px;
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
       gap: 24px;
       align-items: center;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(245, 158, 11, 0.15);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(199, 107, 80, 0.15);
     }
 
     .order-dossier-left h3 {
@@ -679,7 +673,7 @@
     }
 
     .order-contact-direct span.phone {
-      color: #fbbf24;
+      color: #C76B50;
       font-weight: 700;
       font-size: 14px;
     }
@@ -708,7 +702,7 @@
     .order-qr-block span {
       font-size: 7.5px;
       font-family: 'JetBrains Mono', monospace;
-      color: #fbbf24;
+      color: #C76B50;
       font-weight: 700;
       text-transform: uppercase;
     }
@@ -736,7 +730,7 @@
   <section class="brochure-page">
     <div class="running-header">
       <div class="logo-badge">
-        <div class="logo-badge-icon">NR</div>
+        <svg class="logo-badge-icon" viewBox="0 0 120 150" fill="none" stroke="#C76B50" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="29,38 60,8 91,38" /><line x1="60" y1="8" x2="60" y2="142" /><path d="M 10,142 L 10,40 Q 10,33 17,37 L 60,142" /><path d="M 60,54 C 88,54 110,66 110,83 C 110,100 88,104 60,104" /><line x1="60" y1="104" x2="110" y2="142" /></svg>
         <span>NextReach Studio • Engineering & Web Systems</span>
       </div>
       <div>CONFIDENTIAL CLIENT DOSSIER • META ADS 2026</div>
@@ -762,16 +756,16 @@
     <!-- Curated Editorial Photography Collage -->
     <div class="cover-editorial-gallery">
       <div class="cover-photo-main">
-        <img src="file:///Users/rajeshshrirao/Desktop/nextreach-studio-bloom/public/assets/demo-villa.jpg" alt="Luxury Architecture Showcase">
+        <img src="/assets/demo-villa.jpg" alt="Luxury Architecture Showcase">
         <div class="photo-caption-tag">Tier 3: Luxury Architecture & Turnkey B2B</div>
       </div>
       <div class="cover-photo-side">
         <div class="cover-photo-thumb">
-          <img src="file:///Users/rajeshshrirao/Desktop/nextreach-studio-bloom/public/assets/demo-profile.jpg" alt="Freelance Consultant">
+          <img src="/assets/demo-profile.jpg" alt="Freelance Consultant">
           <div class="photo-caption-tag">Tier 1: Solo & Freelance</div>
         </div>
         <div class="cover-photo-thumb">
-          <img src="file:///Users/rajeshshrirao/Desktop/nextreach-studio-bloom/public/assets/demo-clinic.jpg" alt="Dental Aesthetics Clinic">
+          <img src="/assets/demo-clinic.jpg" alt="Dental Aesthetics Clinic">
           <div class="photo-caption-tag">Tier 2: Clinic & MSME</div>
         </div>
       </div>
@@ -805,7 +799,7 @@
   <section class="brochure-page">
     <div class="running-header">
       <div class="logo-badge">
-        <div class="logo-badge-icon">NR</div>
+        <svg class="logo-badge-icon" viewBox="0 0 120 150" fill="none" stroke="#C76B50" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="29,38 60,8 91,38" /><line x1="60" y1="8" x2="60" y2="142" /><path d="M 10,142 L 10,40 Q 10,33 17,37 L 60,142" /><path d="M 60,54 C 88,54 110,66 110,83 C 110,100 88,104 60,104" /><line x1="60" y1="104" x2="110" y2="142" /></svg>
         <span>NextReach Studio • Fixed Package Catalog</span>
       </div>
       <div>PRICING GUARANTEE • ZERO HIDDEN CHARGES</div>
@@ -838,7 +832,7 @@
           </ul>
         </div>
         <div class="pkg-col-qr">
-          <img src="file:///Users/rajeshshrirao/Desktop/nextreach-studio-bloom/public/qr-quick-launch.png" alt="QR Quick Launch">
+          <img src="/qr-quick-launch.png" alt="QR Quick Launch">
           <div class="qr-label">Scan Live Demo</div>
         </div>
       </div>
@@ -846,7 +840,7 @@
       <!-- Tier 2 (Highlighted) -->
       <div class="package-row-card highlighted">
         <div class="pkg-col-price">
-          <span class="pkg-badge-pill" style="background: #fbbf24;">★ Most Popular</span>
+          <span class="pkg-badge-pill" style="background: #C76B50;">★ Most Popular</span>
           <h3>Business Tier</h3>
           <div class="price-big">₹7,500</div>
           <div class="delivery-tag">⚡ 2–3 Day Delivery</div>
@@ -862,9 +856,9 @@
             <li><span>✓</span> Mobile Bottom Bar (Call + WhatsApp)</li>
           </ul>
         </div>
-        <div class="pkg-col-qr" style="border-color: rgba(245, 158, 11, 0.3);">
-          <img src="file:///Users/rajeshshrirao/Desktop/nextreach-studio-bloom/public/qr-business.png" alt="QR Business">
-          <div class="qr-label" style="color: #fbbf24;">Scan Live Demo</div>
+        <div class="pkg-col-qr" style="border-color: rgba(199, 107, 80, 0.3);">
+          <img src="/qr-business.png" alt="QR Business">
+          <div class="qr-label" style="color: #C76B50;">Scan Live Demo</div>
         </div>
       </div>
 
@@ -888,7 +882,7 @@
           </ul>
         </div>
         <div class="pkg-col-qr">
-          <img src="file:///Users/rajeshshrirao/Desktop/nextreach-studio-bloom/public/qr-premium.png" alt="QR Premium">
+          <img src="/qr-premium.png" alt="QR Premium">
           <div class="qr-label">Scan Live Demo</div>
         </div>
       </div>
@@ -946,7 +940,7 @@
   <section class="brochure-page">
     <div class="running-header">
       <div class="logo-badge">
-        <div class="logo-badge-icon">NR</div>
+        <svg class="logo-badge-icon" viewBox="0 0 120 150" fill="none" stroke="#C76B50" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="29,38 60,8 91,38" /><line x1="60" y1="8" x2="60" y2="142" /><path d="M 10,142 L 10,40 Q 10,33 17,37 L 60,142" /><path d="M 60,54 C 88,54 110,66 110,83 C 110,100 88,104 60,104" /><line x1="60" y1="104" x2="110" y2="142" /></svg>
         <span>NextReach Studio • Live Portfolio Verification</span>
       </div>
       <div>INSPECT ON ANY MOBILE OR DESKTOP BROWSER</div>
@@ -962,7 +956,7 @@
       <!-- Demo 1 -->
       <div class="demo-editorial-card">
         <div class="demo-card-img">
-          <img src="file:///Users/rajeshshrirao/Desktop/nextreach-studio-bloom/public/assets/demo-profile.jpg" alt="Arjun Mehta Demo">
+          <img src="/assets/demo-profile.jpg" alt="Arjun Mehta Demo">
           <div class="photo-caption-tag">₹5,000 QUICK LAUNCH</div>
         </div>
         <div class="demo-card-body">
@@ -976,7 +970,7 @@
             </div>
           </div>
           <div class="demo-card-qr-box">
-            <img src="file:///Users/rajeshshrirao/Desktop/nextreach-studio-bloom/public/qr-quick-launch.png" alt="QR Demo 1">
+            <img src="/qr-quick-launch.png" alt="QR Demo 1">
             <div class="demo-card-qr-text">
               <strong style="color: #fff;">Scan to Test:</strong><br>
               <a href="https://quick-launch-freelancer.vercel.app">quick-launch-freelancer.vercel.app</a>
@@ -986,9 +980,9 @@
       </div>
 
       <!-- Demo 2 -->
-      <div class="demo-editorial-card" style="border-color: rgba(245, 158, 11, 0.35);">
+      <div class="demo-editorial-card" style="border-color: rgba(199, 107, 80, 0.35);">
         <div class="demo-card-img">
-          <img src="file:///Users/rajeshshrirao/Desktop/nextreach-studio-bloom/public/assets/demo-clinic.jpg" alt="Oak & Elm Demo">
+          <img src="/assets/demo-clinic.jpg" alt="Oak & Elm Demo">
           <div class="photo-caption-tag" style="color: #34d399;">₹7,500 BUSINESS TIER</div>
         </div>
         <div class="demo-card-body">
@@ -1002,7 +996,7 @@
             </div>
           </div>
           <div class="demo-card-qr-box">
-            <img src="file:///Users/rajeshshrirao/Desktop/nextreach-studio-bloom/public/qr-business.png" alt="QR Demo 2">
+            <img src="/qr-business.png" alt="QR Demo 2">
             <div class="demo-card-qr-text">
               <strong style="color: #fff;">Scan to Test:</strong><br>
               <a href="https://business-oak-elm-clinic.vercel.app">business-oak-elm-clinic.vercel.app</a>
@@ -1014,8 +1008,8 @@
       <!-- Demo 3 -->
       <div class="demo-editorial-card">
         <div class="demo-card-img">
-          <img src="file:///Users/rajeshshrirao/Desktop/nextreach-studio-bloom/public/assets/demo-villa.jpg" alt="Studio Vayu Demo">
-          <div class="photo-caption-tag" style="color: #fbbf24;">₹10,000 PREMIUM TIER</div>
+          <img src="/assets/demo-villa.jpg" alt="Studio Vayu Demo">
+          <div class="photo-caption-tag" style="color: #C76B50;">₹10,000 PREMIUM TIER</div>
         </div>
         <div class="demo-card-body">
           <div>
@@ -1028,7 +1022,7 @@
             </div>
           </div>
           <div class="demo-card-qr-box">
-            <img src="file:///Users/rajeshshrirao/Desktop/nextreach-studio-bloom/public/qr-premium.png" alt="QR Demo 3">
+            <img src="/qr-premium.png" alt="QR Demo 3">
             <div class="demo-card-qr-text">
               <strong style="color: #fff;">Scan to Test:</strong><br>
               <a href="https://premium-studio-vayu.vercel.app">premium-studio-vayu.vercel.app</a>
@@ -1066,7 +1060,7 @@
   <section class="brochure-page">
     <div class="running-header">
       <div class="logo-badge">
-        <div class="logo-badge-icon">NR</div>
+        <svg class="logo-badge-icon" viewBox="0 0 120 150" fill="none" stroke="#C76B50" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="29,38 60,8 91,38" /><line x1="60" y1="8" x2="60" y2="142" /><path d="M 10,142 L 10,40 Q 10,33 17,37 L 60,142" /><path d="M 60,54 C 88,54 110,66 110,83 C 110,100 88,104 60,104" /><line x1="60" y1="104" x2="110" y2="142" /></svg>
         <span>NextReach Studio • Delivery Protocol & Order Desk</span>
       </div>
       <div>DIRECT WHATSAPP CONCIERGE: +91 98223 79976</div>
@@ -1127,7 +1121,7 @@
     <!-- Massive Order Dossier Card -->
     <div class="order-dossier-card">
       <div class="order-dossier-left">
-        <div style="font-family: 'JetBrains Mono', monospace; font-size: 9.5px; color: #fbbf24; font-weight: 700; text-transform: uppercase; margin-bottom: 4px;">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 9.5px; color: #C76B50; font-weight: 700; text-transform: uppercase; margin-bottom: 4px;">
           ✦ Start Your Project Today
         </div>
         <h3>Ready to Launch Your High-Converting Website?</h3>
@@ -1143,7 +1137,7 @@
 
       <div class="order-dossier-right">
         <div class="order-qr-block">
-          <img src="file:///Users/rajeshshrirao/Desktop/nextreach-studio-bloom/public/qr-whatsapp.png" alt="Scan WhatsApp">
+          <img src="/qr-whatsapp.png" alt="Scan WhatsApp">
           <span>Scan to Order</span>
         </div>
 

@@ -56,19 +56,19 @@ const categories = [...new Set(tools.map((t) => t.category))];
 >
   <Nav />
   <main class="container-page-wide relative">
-    <div class="absolute top-0 left-1/4 -translate-y-12 w-[450px] h-[280px] bg-amber-400/5 rounded-full blur-[100px] pointer-events-none -z-10 animate-pulse-glow" aria-hidden="true"></div>
+    <div class="absolute top-0 left-1/4 -translate-y-12 w-[450px] h-[280px] bg-[#c76b50]/8 rounded-full blur-[100px] pointer-events-none -z-10" aria-hidden="true"></div>
 
     <header class="header-page animate-fade-in-up">
-      <p class="header-page-pretitle">Developer Tools</p>
+      <p class="header-page-pretitle font-mono text-[#c76b50]">Developer Tools</p>
       <h1 class="header-page-title">Free AI tools</h1>
-      <p class="header-page-subtitle">
+      <p class="header-page-subtitle text-[#6E6862]">
         Practical calculators and formatters for developers working with LLMs. All tools are free and run in your browser — no API keys, no signup.
       </p>
     </header>
 
     {categories.map((category) => (
       <section class="mb-12" aria-labelledby={`category-${category.toLowerCase().replace(/\s+/g, "-")}`}>
-        <h2 id={`category-${category.toLowerCase().replace(/\s+/g, "-")}`} class="text-xs uppercase tracking-[0.12em] text-zinc-500 mb-4 font-semibold">
+        <h2 id={`category-${category.toLowerCase().replace(/\s+/g, "-")}`} class="text-xs uppercase tracking-[0.12em] text-[#6E6862] mb-4 font-mono font-semibold">
           {category}
         </h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -88,11 +88,11 @@ const categories = [...new Set(tools.map((t) => t.category))];
       </section>
     ))}
 
-    <div class="mt-8 card-premium-flat text-center">
-      <p class="text-zinc-400 text-sm mb-2 font-medium">More tools coming soon</p>
-      <p class="text-zinc-500 text-xs">
+    <div class="mt-8 card-studio text-center p-8">
+      <p class="text-[#1F1F23] text-sm mb-2 font-semibold">More tools coming soon</p>
+      <p class="text-[#6E6862] text-xs font-body">
         Have a suggestion? Something missing from your workflow?
-        <a href="mailto:hello@nextreachstudio.com" class="text-amber-500 hover:text-amber-400 transition-colors ml-1 font-medium">Let us know →</a>
+        <a href="mailto:hello@nextreachstudio.com" class="text-[#c76b50] hover:text-[#d97a5e] transition-colors ml-1 font-medium font-mono">Let us know →</a>
       </p>
     </div>
   </main>

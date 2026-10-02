@@ -4,6 +4,7 @@ import Nav from "@/components/Nav.astro";
 import Footer from "@/components/Footer.astro";
 import HeroSection from "@/components/hero/HeroSection";
 import BentoGrid from "@/components/BentoGrid.astro";
+import PricingPackages from "@/components/PricingPackages.astro";
 import { getCollection } from "astro:content";
 
 const allPosts = await getCollection("blog", ({ data }) => !data.draft);
@@ -21,11 +22,11 @@ try {
 ---
 
 <Layout
-  title="AI Engineering Studio Pune | AI Agents, Automation & Custom Software"
-  description="NextReach Studio is an AI Engineering Studio in Pune — we build AI agents, business automations, web applications, and mobile apps for ambitious businesses. Fixed-scope contracts. Direct senior developer access."
+  title="Custom Websites, AI Workflows & Digital Flagships | NextReach Studio"
+  description="NextReach Studio engineers high-performance custom websites, web applications, and autonomous AI workflows in 24 to 72 hours. Fixed-scope sprint packages starting at ₹5,000. Direct senior developer access."
 >
   <!-- Structured Data: Services offered -->
-  <script type="application/ld+json" set:html={JSON.stringify({
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "ItemList",
     "itemListElement": [
@@ -34,13 +35,22 @@ try {
         "position": 1,
         "item": {
           "@type": "Service",
+          "name": "High-Velocity Custom Website Packages",
+          "description": "Bespoke custom-designed websites starting at ₹5,000 shipped in 24-72 hours under fixed-scope contracts."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "Service",
           "name": "AI Agent Development",
           "description": "Custom AI agents for customer support, sales, HR, and multi-agent systems with MCP integration."
         }
       },
       {
         "@type": "ListItem",
-        "position": 2,
+        "position": 3,
         "item": {
           "@type": "Service",
           "name": "AI Automation",
@@ -49,20 +59,11 @@ try {
       },
       {
         "@type": "ListItem",
-        "position": 3,
+        "position": 4,
         "item": {
           "@type": "Service",
           "name": "Custom Web Applications & SaaS",
           "description": "SaaS platforms, customer portals, admin panels, and dashboards built with modern full-stack frameworks."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 4,
-        "item": {
-          "@type": "Service",
-          "name": "Mobile App Development",
-          "description": "Native Android, iOS, and cross-platform Flutter apps for employees and customers."
         }
       },
       {
@@ -73,24 +74,6 @@ try {
           "name": "Rapid MVP Engineering",
           "description": "Functional products with auth, payments, and database — shipped in 4-6 week sprints."
         }
-      },
-      {
-        "@type": "ListItem",
-        "position": 6,
-        "item": {
-          "@type": "Service",
-          "name": "API & System Integration",
-          "description": "Payment gateways, WhatsApp, OpenAI, CRM, and custom REST/GraphQL API integration."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 7,
-        "item": {
-          "@type": "Service",
-          "name": "AI Consulting & Fractional CTO",
-          "description": "Technology strategy, AI adoption roadmap, architecture consulting, and startup technical advisory."
-        }
       }
     ]
   })} />
@@ -99,61 +82,64 @@ try {
   <main>
     <HeroSection client:load />
 
-    <BentoGrid />
+    <PricingPackages />
 
     <!-- ==================== FEATURED LIVE DEMO: SAFFRON & SMOKE ==================== -->
-    <section class="py-16 sm:py-24 px-6 sm:px-8 max-w-7xl mx-auto border-t border-zinc-900/60" id="live-demo" aria-labelledby="demo-heading">
+    <section class="py-16 sm:py-24 px-6 sm:px-8 max-w-7xl mx-auto border-t border-[#1F1F23]/8" id="live-demo" aria-labelledby="demo-heading">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         <div class="lg:col-span-5 stagger-parent">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono bg-amber-500/10 border border-amber-500/30 text-amber-400 mb-4">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-semibold bg-[#C76B50]/10 border border-[#C76B50]/25 text-[#C76B50] mb-4 shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
             Featured Production Demo
           </div>
-          <h2 id="demo-heading" class="text-heading font-display font-bold text-white mb-4">
+          <h2 id="demo-heading" class="text-heading font-display font-bold text-[#1F1F23] mb-4">
             Saffron &amp; Smoke<br />
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-400 to-yellow-500 glow-text">Luxury Modern Indian Dining</span>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#1F1F23] via-[#C76B50] to-[#B8583D]">Luxury Modern Indian Dining</span>
           </h2>
-          <p class="text-zinc-400 text-sm sm:text-base leading-relaxed font-body mb-6">
+          <p class="text-[#6E6862] text-sm sm:text-base leading-relaxed font-body mb-6">
             We don’t pitch static Figma files. Below is an active, live-deployed restaurant platform built for an upscale dining atelier in Baner, Pune. Features real-time table reservations, WhatsApp concierge integration, and Architectural Digest India editorial design.
           </p>
 
           <div class="space-y-3 mb-8">
-            <div class="flex items-center gap-3 text-xs text-zinc-300 font-body">
-              <span class="w-5 h-5 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 text-[10px]">✓</span>
+            <div class="flex items-center gap-3 text-xs text-[#4A4844] font-body">
+              <span class="w-5 h-5 rounded-full bg-[#C76B50]/15 border border-[#C76B50]/30 flex items-center justify-center text-[#C76B50] text-[10px] font-bold">✓</span>
               Interactive multi-sitting reservation engine with automated booking codes
             </div>
-            <div class="flex items-center gap-3 text-xs text-zinc-300 font-body">
-              <span class="w-5 h-5 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 text-[10px]">✓</span>
+            <div class="flex items-center gap-3 text-xs text-[#4A4844] font-body">
+              <span class="w-5 h-5 rounded-full bg-[#C76B50]/15 border border-[#C76B50]/30 flex items-center justify-center text-[#C76B50] text-[10px] font-bold">✓</span>
               Filterable 4-course &amp; 7-course tasting menu drawer with culinary tasting notes
             </div>
-            <div class="flex items-center gap-3 text-xs text-zinc-300 font-body">
-              <span class="w-5 h-5 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 text-[10px]">✓</span>
+            <div class="flex items-center gap-3 text-xs text-[#4A4844] font-body">
+              <span class="w-5 h-5 rounded-full bg-[#C76B50]/15 border border-[#C76B50]/30 flex items-center justify-center text-[#C76B50] text-[10px] font-bold">✓</span>
               Pure CSS/SVG animated steam effect with chiaroscuro side lighting
             </div>
           </div>
 
-          <div class="flex flex-wrap items-center gap-4">
+          <div class="flex flex-wrap items-center gap-3">
             <a
               href="https://saffron-and-smoke-sigma.vercel.app"
               target="_blank"
               rel="noopener noreferrer"
-              class="btn-premium-primary"
+              class="px-5 py-2.5 rounded-xl bg-[#C76B50] hover:bg-[#D97A5E] text-white font-display font-semibold text-xs shadow-[0_4px_16px_rgba(199,107,80,0.25)] transition-all duration-200"
             >
-              Launch Live Demo ↗
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4">
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                <polyline points="15 3 21 3 21 9"></polyline>
-                <line x1="10" y1="14" x2="21" y2="3"></line>
-              </svg>
+              <span>Launch Live Demo ↗</span>
             </a>
-            <a href="/demos/saffron-and-smoke" class="btn-premium-secondary">
-              View Case Dossier →
+            <a 
+              href="https://wa.me/919822379976?text=Hi%20NextReach%20Studio%2C%20I%20saw%20the%20Saffron%20%26%20Smoke%20demo%20and%20want%20a%20similar%20Premium%20Flagship%20website%20(%E2%82%B910%2C000)%20for%20my%20business."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-4 py-2.5 rounded-xl bg-white hover:bg-[#FAF8F5] text-[#1F1F23] border border-[#1F1F23]/12 text-xs font-mono transition-all duration-200 flex items-center gap-1.5 shadow-sm"
+            >
+              <span>Order on WhatsApp (₹10k)</span>
+            </a>
+            <a href="/demos/saffron-and-smoke" class="text-xs text-[#6E6862] hover:text-[#1F1F23] transition-colors font-mono">
+              View Case Dossier &rarr;
             </a>
           </div>
         </div>
 
         <div class="lg:col-span-7">
-          <div class="relative group rounded-2xl overflow-hidden border border-zinc-800/80 bg-zinc-950 p-2 shadow-2xl transition-all duration-500 hover:border-amber-500/40">
+          <div class="relative group rounded-2xl overflow-hidden border border-[#1F1F23]/10 bg-white p-2 shadow-2xl transition-all duration-300 hover:border-[#C76B50]/40">
             <div class="relative aspect-video rounded-xl overflow-hidden">
               <img
                 src="/assets/demos/saffron-and-smoke/hero-dish.jpg"
@@ -164,24 +150,24 @@ try {
               <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
               
               <div class="absolute top-4 left-4 flex items-center gap-2">
-                <span class="px-2.5 py-1 rounded-md text-[10px] font-mono font-semibold bg-black/70 backdrop-blur-md text-amber-400 border border-amber-500/30">
-                  Tier 3: Luxury Hospitality
+                <span class="px-2.5 py-1 rounded-md text-[10px] font-mono font-semibold bg-black/75 backdrop-blur-md text-[#C76B50] border border-[#C76B50]/30">
+                  Premium Flagship Demo • ₹10,000 Package
                 </span>
-                <span class="px-2.5 py-1 rounded-md text-[10px] font-mono text-zinc-300 bg-black/70 backdrop-blur-md border border-white/10">
+                <span class="px-2.5 py-1 rounded-md text-[10px] font-mono text-[#D1CBC1] bg-black/75 backdrop-blur-md border border-white/10">
                   Baner, Pune
                 </span>
               </div>
 
               <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between">
                 <div>
-                  <p class="text-xs font-mono text-amber-400 uppercase tracking-widest">Saffron &amp; Smoke</p>
+                  <p class="text-xs font-mono text-[#C76B50] uppercase tracking-widest">Saffron &amp; Smoke</p>
                   <p class="text-base sm:text-lg font-serif text-white font-medium">"India, on a different plate."</p>
                 </div>
                 <a
                   href="https://saffron-and-smoke-sigma.vercel.app"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="px-3.5 py-1.5 rounded-lg text-xs font-mono font-semibold bg-amber-500 text-black hover:bg-amber-400 transition-colors shadow-lg"
+                  class="px-3.5 py-1.5 rounded-lg text-xs font-mono font-semibold bg-[#C76B50] text-white hover:bg-[#D97A5E] transition-colors shadow-md"
                 >
                   Visit Demo ↗
                 </a>
@@ -192,87 +178,17 @@ try {
       </div>
     </section>
 
-    <!-- ==================== SERVICES BENTO GRID ==================== -->
-    <section class="py-20 px-6 sm:px-8 max-w-7xl mx-auto" id="services" aria-labelledby="services-heading">
-      <div class="text-center max-w-3xl mx-auto mb-16 stagger-parent">
-        <p class="text-xs uppercase tracking-[0.18em] text-amber-500 mb-2 font-bold font-display">Services</p>
-        <h2 id="services-heading" class="text-heading font-display font-bold text-white">
-          Enterprise engineering discipline.<br />Startup speed and pricing.
-        </h2>
-        <p class="text-zinc-400 text-sm sm:text-base mt-3 leading-relaxed font-body">
-          No jargon, no bloated scope. Clear, high-quality development mapped to your needs.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 stagger-parent">
-        <a href="/services/web-application-development-pune" class="card-cyber flex flex-col gap-3 h-full group">
-          <div class="icon-glow-wrapper">
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          </div>
-          <div>
-            <h3 class="font-semibold text-white text-base sm:text-lg leading-snug mb-1 font-display">Web Applications &amp; SaaS Portals</h3>
-            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed font-body">
-              Customer portals, SaaS dashboards, and admin panels — purpose-built for how your business actually runs.
-            </p>
-          </div>
-          <span class="text-[10px] text-amber-500 group-hover:text-amber-400 transition-colors font-medium mt-auto">View service &rarr;</span>
-        </a>
-
-        <a href="/services/business-automation-pune" class="card-cyber flex flex-col gap-3 h-full group">
-          <div class="icon-glow-wrapper">
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-          </div>
-          <div>
-            <h3 class="font-semibold text-white text-base sm:text-lg leading-snug mb-1 font-display">Business &amp; AI Automations</h3>
-            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed font-body">
-              Eliminate manual data entry. Custom API syncers, document processors, and LLM-powered workflow agents that talk to your existing tools.
-            </p>
-          </div>
-          <span class="text-[10px] text-amber-500 group-hover:text-amber-400 transition-colors font-medium mt-auto">View service &rarr;</span>
-        </a>
-
-        <a href="/services/mvp-development-pune" class="card-cyber flex flex-col gap-3 h-full group">
-          <div class="icon-glow-wrapper">
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 16.5c-1.5 1.26-2 3.38-2 3.38s2.12-.5 3.38-2c1.26-1.5 2.12-3.38 2.12-3.38s-2.12.5-3.38 2z"/><path d="M12 12L4.5 19.5"/><path d="M9 15l2 2"/><path d="M19 9c-1.5 1.5-4 1.5-5.5 0s-1.5-4 0-5.5C15 2 21 2 21 2s0 6-2 7z"/></svg>
-          </div>
-          <div>
-            <h3 class="font-semibold text-white text-base sm:text-lg leading-snug mb-1 font-display">Rapid MVP Engineering</h3>
-            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed font-body">
-              Validate your idea with a functional, real-user-ready application — not a click-through prototype. Stripe billing, auth, and database included.
-            </p>
-          </div>
-          <span class="text-[10px] text-amber-500 group-hover:text-amber-400 transition-colors font-medium mt-auto">View service &rarr;</span>
-        </a>
-
-        <a href="/services/api-integration-pune" class="card-cyber flex flex-col gap-3 h-full group">
-          <div class="icon-glow-wrapper">
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="15" x2="23" y2="15"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="15" x2="4" y2="15"/></svg>
-          </div>
-          <div>
-            <h3 class="font-semibold text-white text-base sm:text-lg leading-snug mb-1 font-display">Systems Integration &amp; Custom APIs</h3>
-            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed font-body">
-              Connect your stack. Sync siloed platforms, build internal APIs, automate data flow between legacy systems and modern interfaces.
-            </p>
-          </div>
-          <span class="text-[10px] text-amber-500 group-hover:text-amber-400 transition-colors font-medium mt-auto">View service &rarr;</span>
-        </a>
-      </div>
-
-      <div class="text-center mt-10">
-        <a href="/services" class="text-sm text-amber-500 hover:text-amber-400 transition-colors font-medium">
-          Read full service details &rarr;
-        </a>
-      </div>
-    </section>
+    <!-- ==================== BESPOKE SYSTEMS BENTO GRID ==================== -->
+    <BentoGrid />
 
     <!-- ==================== PROCESS TIMELINE ==================== -->
-    <section class="py-20 px-6 sm:px-8 max-w-7xl mx-auto border-t border-zinc-900/60" id="process" aria-labelledby="process-heading">
+    <section class="py-20 px-6 sm:px-8 max-w-7xl mx-auto border-t border-[#1F1F23]/8" id="process" aria-labelledby="process-heading">
       <div class="text-center max-w-3xl mx-auto mb-16 stagger-parent">
-        <p class="text-xs uppercase tracking-[0.18em] text-amber-500 mb-2 font-bold font-display">Workflow</p>
-        <h2 id="process-heading" class="text-heading font-display font-bold text-white">
+        <p class="text-xs uppercase tracking-[0.18em] text-[#C76B50] mb-2 font-bold font-mono">Workflow</p>
+        <h2 id="process-heading" class="text-heading font-display font-bold text-[#1F1F23]">
           From discovery to handover in 5 clear steps
         </h2>
-        <p class="text-zinc-400 text-sm sm:text-base mt-3 font-body leading-relaxed">
+        <p class="text-[#6E6862] text-sm sm:text-base mt-3 font-body leading-relaxed">
           Transparent milestones. Fixed pricing. No ambiguity.
         </p>
       </div>
@@ -281,46 +197,46 @@ try {
         <div class="flex items-start gap-3 md:flex-col md:items-center md:text-center">
           <div class="timeline-node shrink-0">01</div>
           <div class="md:mt-2">
-            <p class="text-[10px] font-bold text-amber-500 uppercase tracking-[0.12em] font-display mb-0.5">Discovery</p>
-            <p class="text-xs text-zinc-500 leading-relaxed font-body">Your business problem, constraints, and desired outcomes.</p>
+            <p class="text-[10px] font-bold text-[#C76B50] uppercase tracking-[0.12em] font-mono mb-0.5">Discovery</p>
+            <p class="text-xs text-[#6E6862] leading-relaxed font-body">Your business problem, constraints, and desired outcomes.</p>
           </div>
         </div>
         <div class="flex items-start gap-3 md:flex-col md:items-center md:text-center">
           <div class="timeline-node shrink-0">02</div>
           <div class="md:mt-2">
-            <p class="text-[10px] font-bold text-amber-500 uppercase tracking-[0.12em] font-display mb-0.5">Proposal</p>
-            <p class="text-xs text-zinc-500 leading-relaxed font-body">Feature breakdown, timeline, and one-time fixed price.</p>
+            <p class="text-[10px] font-bold text-[#C76B50] uppercase tracking-[0.12em] font-mono mb-0.5">Proposal</p>
+            <p class="text-xs text-[#6E6862] leading-relaxed font-body">Feature breakdown, timeline, and one-time fixed price.</p>
           </div>
         </div>
         <div class="flex items-start gap-3 md:flex-col md:items-center md:text-center">
           <div class="timeline-node timeline-node--active shrink-0">03</div>
           <div class="md:mt-2">
-            <p class="text-[10px] font-bold text-amber-500 uppercase tracking-[0.12em] font-display mb-0.5">Development</p>
-            <p class="text-xs text-zinc-500 leading-relaxed font-body">Bi-weekly sprints with staging links and walkthroughs.</p>
+            <p class="text-[10px] font-bold text-[#C76B50] uppercase tracking-[0.12em] font-mono mb-0.5">Development</p>
+            <p class="text-xs text-[#6E6862] leading-relaxed font-body">Bi-weekly sprints with staging links and walkthroughs.</p>
           </div>
         </div>
         <div class="flex items-start gap-3 md:flex-col md:items-center md:text-center">
           <div class="timeline-node shrink-0">04</div>
           <div class="md:mt-2">
-            <p class="text-[10px] font-bold text-amber-500 uppercase tracking-[0.12em] font-display mb-0.5">Testing &amp; QA</p>
-            <p class="text-xs text-zinc-500 leading-relaxed font-body">Functionality, responsiveness, and load time checks.</p>
+            <p class="text-[10px] font-bold text-[#C76B50] uppercase tracking-[0.12em] font-mono mb-0.5">Testing &amp; QA</p>
+            <p class="text-xs text-[#6E6862] leading-relaxed font-body">Functionality, responsiveness, and load time checks.</p>
           </div>
         </div>
         <div class="flex items-start gap-3 md:flex-col md:items-center md:text-center">
           <div class="timeline-node shrink-0">05</div>
           <div class="md:mt-2">
-            <p class="text-[10px] font-bold text-amber-500 uppercase tracking-[0.12em] font-display mb-0.5">Handover</p>
-            <p class="text-xs text-zinc-500 leading-relaxed font-body">Full code, database, docs, and support period.</p>
+            <p class="text-[10px] font-bold text-[#C76B50] uppercase tracking-[0.12em] font-mono mb-0.5">Handover</p>
+            <p class="text-xs text-[#6E6862] leading-relaxed font-body">Full code, database, docs, and support period.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ==================== WHY NEXTREACH ==================== -->
-    <section class="py-20 px-6 sm:px-8 max-w-7xl mx-auto border-t border-zinc-900/60" id="why-us" aria-labelledby="why-heading">
+    <section class="py-20 px-6 sm:px-8 max-w-7xl mx-auto border-t border-[#1F1F23]/8" id="why-us" aria-labelledby="why-heading">
       <div class="text-center max-w-3xl mx-auto mb-16 stagger-parent">
-        <p class="text-xs uppercase tracking-[0.18em] text-amber-500 mb-2 font-bold font-display">Why NextReach Studio</p>
-        <h2 id="why-heading" class="text-heading font-display font-bold text-white">
+        <p class="text-xs uppercase tracking-[0.18em] text-[#C76B50] mb-2 font-bold font-mono">Why NextReach Studio</p>
+        <h2 id="why-heading" class="text-heading font-display font-bold text-[#1F1F23]">
           Enterprise engineering discipline.<br />Startup speed and pricing.
         </h2>
       </div>
@@ -328,33 +244,33 @@ try {
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto stagger-parent">
         <div class="comparison-card comparison-card--negative">
           <div class="flex items-center gap-2 mb-4">
-            <svg class="w-4 h-4 text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-            <h3 class="text-sm font-semibold text-zinc-400 font-display">Traditional Agency Bloat</h3>
+            <svg class="w-4 h-4 text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            <h3 class="text-sm font-bold text-[#1F1F23] font-display">Traditional Agency Bloat</h3>
           </div>
           <ul class="space-y-3">
-            <li class="flex gap-2.5 text-xs text-zinc-500"><span class="text-red-400/60 shrink-0 mt-0.5">✕</span>Account managers who relay messages between you and developers</li>
-            <li class="flex gap-2.5 text-xs text-zinc-500"><span class="text-red-400/60 shrink-0 mt-0.5">✕</span>Weekly status meetings that substitute for actual progress</li>
-            <li class="flex gap-2.5 text-xs text-zinc-500"><span class="text-red-400/60 shrink-0 mt-0.5">✕</span>Inflated hourly retainers that incentivize slow work</li>
-            <li class="flex gap-2.5 text-xs text-zinc-500"><span class="text-red-400/60 shrink-0 mt-0.5">✕</span>"We'll scope it during the project" → surprise overruns</li>
+            <li class="flex gap-2.5 text-xs text-[#6E6862]"><span class="text-red-500 shrink-0 mt-0.5">✕</span>Account managers who relay messages between you and developers</li>
+            <li class="flex gap-2.5 text-xs text-[#6E6862]"><span class="text-red-500 shrink-0 mt-0.5">✕</span>Weekly status meetings that substitute for actual progress</li>
+            <li class="flex gap-2.5 text-xs text-[#6E6862]"><span class="text-red-500 shrink-0 mt-0.5">✕</span>Inflated hourly retainers that incentivize slow work</li>
+            <li class="flex gap-2.5 text-xs text-[#6E6862]"><span class="text-red-500 shrink-0 mt-0.5">✕</span>"We'll scope it during the project" → surprise overruns</li>
           </ul>
         </div>
 
-        <div class="comparison-card comparison-card--positive">
+        <div class="comparison-card comparison-card--positive border-[#C76B50]/30">
           <div class="flex items-center gap-2 mb-4">
-            <svg class="w-4 h-4 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-            <h3 class="text-sm font-semibold text-amber-400 font-display">The NextReach Model</h3>
+            <svg class="w-4 h-4 text-[#C76B50]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <h3 class="text-sm font-bold text-[#C76B50] font-display">The NextReach Model</h3>
           </div>
           <ul class="space-y-3">
-            <li class="flex gap-2.5 text-xs text-zinc-300"><span class="text-emerald-400 shrink-0 mt-0.5">✓</span>Direct access to the senior engineer building your system</li>
-            <li class="flex gap-2.5 text-xs text-zinc-300"><span class="text-emerald-400 shrink-0 mt-0.5">✓</span>Fixed, transparent milestones with a written scope</li>
-            <li class="flex gap-2.5 text-xs text-zinc-300"><span class="text-emerald-400 shrink-0 mt-0.5">✓</span>Bi-weekly production sprints — working software, not slide decks</li>
-            <li class="flex gap-2.5 text-xs text-zinc-300"><span class="text-emerald-400 shrink-0 mt-0.5">✓</span>One-time project pricing. You own the finished product.</li>
+            <li class="flex gap-2.5 text-xs text-[#4A4844]"><span class="text-emerald-600 shrink-0 mt-0.5 font-bold">✓</span>Direct access to the senior engineer building your system</li>
+            <li class="flex gap-2.5 text-xs text-[#4A4844]"><span class="text-emerald-600 shrink-0 mt-0.5 font-bold">✓</span>Fixed, transparent milestones with a written scope</li>
+            <li class="flex gap-2.5 text-xs text-[#4A4844]"><span class="text-emerald-600 shrink-0 mt-0.5 font-bold">✓</span>Bi-weekly production sprints — working software, not slide decks</li>
+            <li class="flex gap-2.5 text-xs text-[#4A4844]"><span class="text-emerald-600 shrink-0 mt-0.5 font-bold">✓</span>One-time project pricing. You own the finished product.</li>
           </ul>
         </div>
       </div>
 
       <div class="text-center mt-12 stagger-parent">
-        <p class="text-zinc-400 text-sm sm:text-base mb-6 font-body">
+        <p class="text-[#6E6862] text-sm sm:text-base mb-6 font-body">
           Ready to ship your project?
         </p>
         <a href="/contact" class="btn-premium-primary">
@@ -367,44 +283,44 @@ try {
     </section>
 
     <!-- ==================== BLOG / RESOURCES FOOTER ==================== -->
-    <section class="py-20 px-6 sm:px-8 max-w-7xl mx-auto border-t border-zinc-900/60" id="ai-dev-hub">
+    <section class="py-20 px-6 sm:px-8 max-w-7xl mx-auto border-t border-[#1F1F23]/8" id="ai-dev-hub">
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
         <div>
-          <p class="text-xs uppercase tracking-[0.18em] text-zinc-500 mb-2 font-semibold font-display">Open Source & Community</p>
-          <h2 class="text-heading font-display font-bold text-white mb-4">
+          <p class="text-xs uppercase tracking-[0.18em] text-[#6E6862] mb-2 font-bold font-mono">Open Source & Community</p>
+          <h2 class="text-heading font-display font-bold text-[#1F1F23] mb-4">
             Our Technical Depth
           </h2>
-          <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-6 font-body">
+          <p class="text-[#6E6862] text-xs sm:text-sm leading-relaxed mb-6 font-body">
             We don't just build client apps. We actively build browser calculators, open-source libraries, and publish guides for AI developers, Claude Code users, and MCP builders.
           </p>
-          <a href="/tools" class="text-sm text-amber-500 hover:text-amber-400 transition-colors font-medium">
+          <a href="/tools" class="text-sm text-[#C76B50] hover:text-[#D97A5E] transition-colors font-semibold">
             Explore our developer tools &rarr;
           </a>
         </div>
 
         <div class="lg:col-span-2 space-y-4">
-          <h3 class="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2 font-display">Latest from our Blog &amp; Guides</h3>
+          <h3 class="text-xs font-bold text-[#6E6862] uppercase tracking-wider mb-2 font-mono">Latest from our Blog &amp; Guides</h3>
 
           <div class="space-y-3">
             {latestPosts.map((post) => (
-              <a href={`/blog/${post.id}`} class="card-cyber hover:border-amber-400/25 flex justify-between items-center py-3.5 px-5 group">
+              <a href={`/blog/${post.id}`} class="card-studio hover:border-[#C76B50]/40 flex justify-between items-center py-3.5 px-5 group shadow-sm">
                 <div>
-                  <span class="text-[10px] text-zinc-500 mr-3 font-mono">{post.data.pubDate.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</span>
-                  <span class="text-xs font-medium text-zinc-200 group-hover:text-amber-300 transition-colors font-display">{post.data.title}</span>
+                  <span class="text-[10px] text-[#8C847B] mr-3 font-mono">{post.data.pubDate.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</span>
+                  <span class="text-xs font-semibold text-[#1F1F23] group-hover:text-[#C76B50] transition-colors font-display">{post.data.title}</span>
                 </div>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-3.5 h-3.5 text-zinc-700 group-hover:text-amber-400 transition-all duration-300 group-hover:translate-x-0.5">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-3.5 h-3.5 text-[#8C847B] group-hover:text-[#C76B50] transition-all duration-200 group-hover:translate-x-0.5">
                   <path d="M9 18l6-6-6-6"/>
                 </svg>
               </a>
             ))}
 
             {latestGuides.slice(0, 1).map((guide: any) => (
-              <a href={`/guides/${guide.id}`} class="card-cyber hover:border-amber-400/25 flex justify-between items-center py-3.5 px-5 group">
+              <a href={`/guides/${guide.id}`} class="card-studio hover:border-[#C76B50]/40 flex justify-between items-center py-3.5 px-5 group shadow-sm">
                 <div>
                   <span class="badge-premium-neutral text-[9px] mr-3 uppercase font-mono">{guide.data.difficulty}</span>
-                  <span class="text-xs font-medium text-zinc-200 group-hover:text-amber-300 transition-colors font-display">{guide.data.title}</span>
+                  <span class="text-xs font-semibold text-[#1F1F23] group-hover:text-[#C76B50] transition-colors font-display">{guide.data.title}</span>
                 </div>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-3.5 h-3.5 text-zinc-700 group-hover:text-amber-400 transition-all duration-300 group-hover:translate-x-0.5">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-3.5 h-3.5 text-[#8C847B] group-hover:text-[#C76B50] transition-all duration-200 group-hover:translate-x-0.5">
                   <path d="M9 18l6-6-6-6"/>
                 </svg>
               </a>

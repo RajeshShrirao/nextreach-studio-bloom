@@ -29,25 +29,25 @@ const { Content } = await render(resource);
 >
   <Nav />
   <main class="pt-28 pb-20 relative overflow-hidden">
-    <div class="absolute top-0 left-1/4 -translate-y-12 w-[400px] h-[250px] bg-amber-400/5 rounded-full blur-[90px] pointer-events-none -z-10 animate-pulse-glow" aria-hidden="true"></div>
+    <div class="absolute top-0 left-1/4 -translate-y-12 w-[400px] h-[250px] bg-[#c76b50]/8 rounded-full blur-[100px] pointer-events-none -z-10" aria-hidden="true"></div>
     <article class="px-6 sm:px-8 max-w-3xl mx-auto relative z-10">
       <header class="mb-12">
         <div class="flex flex-wrap items-center gap-3 mb-6">
-          <a href="/resources" class="text-xs text-zinc-600 hover:text-zinc-400 transition-colors">
+          <a href="/resources" class="text-xs text-[#6E6862] hover:text-[#1F1F23] transition-colors font-mono">
             ← All resources
           </a>
-          <span class="text-zinc-800">·</span>
-          <span class="badge-premium-accent">
+          <span class="text-[#6E6862]">·</span>
+          <span class="badge-premium-accent font-mono text-[9px]">
             {resource.data.category}
           </span>
         </div>
 
-        <h1 class="font-display font-semibold text-3xl sm:text-4xl lg:text-5xl text-white tracking-[-0.01em] leading-[1.2] mb-4">
+        <h1 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-[#1F1F23] tracking-[-0.01em] leading-[1.2] mb-4">
           {resource.data.title}
         </h1>
-        <p class="text-lg text-zinc-400 leading-relaxed mb-6">{resource.data.description}</p>
+        <p class="text-lg text-[#6E6862] leading-relaxed mb-6 font-body">{resource.data.description}</p>
 
-        <div class="flex flex-wrap items-center gap-3 text-xs text-zinc-600">
+        <div class="flex flex-wrap items-center gap-3 text-xs text-[#6E6862] font-mono">
           <time datetime={resource.data.pubDate.toISOString()}>
             Published {resource.data.pubDate.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
           </time>
@@ -60,18 +60,18 @@ const { Content } = await render(resource);
         </div>
       </header>
 
-      <div class="glass-panel rounded-2xl p-8 sm:p-10 mb-12">
+      <div class="card-studio rounded-2xl p-8 sm:p-10 mb-12">
         <Prose>
           <Content />
         </Prose>
       </div>
 
-      <div class="flex flex-col sm:flex-row gap-4 justify-between items-start border-t border-zinc-800 pt-8">
-        <a href="/resources" class="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 transition-colors text-sm font-medium">
+      <div class="flex flex-col sm:flex-row gap-4 justify-between items-start border-t border-[#1F1F23]/8 pt-8">
+        <a href="/resources" class="inline-flex items-center gap-2 text-[#c76b50] hover:text-[#d97a5e] transition-colors text-sm font-medium font-mono">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
           Back to resources
         </a>
-        <a href="/tools" class="inline-flex items-center gap-2 text-zinc-500 hover:text-zinc-300 transition-colors text-sm">
+        <a href="/tools" class="inline-flex items-center gap-2 text-[#6E6862] hover:text-[#1F1F23] transition-colors text-sm font-mono">
           Browse free tools →
         </a>
       </div>

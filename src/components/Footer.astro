@@ -2,52 +2,64 @@
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="border-t border-zinc-800/60 mt-24 py-12 px-6 sm:px-8">
+<footer class="border-t border-[#1F1F23]/8 mt-24 py-12 px-6 sm:px-8 bg-[#F0ECE4]/60">
   <div class="max-w-7xl mx-auto">
     <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 mb-10">
       <!-- Agency Profile column -->
       <div class="col-span-2 sm:col-span-1">
-        <a href="/" class="flex items-center gap-2 mb-3 group" aria-label="NextReach Studio">
-          <img src="/logo.png" alt="" width="24" height="24" class="opacity-80 group-hover:opacity-100 transition-opacity" />
-          <span class="text-sm font-semibold text-zinc-300 group-hover:text-white transition-colors font-display">NextReach Studio</span>
+        <a href="/" class="flex items-center gap-2.5 mb-3 group" aria-label="NextReach Studio">
+          <img src="/logo.svg" alt="NextReach Studio" width="28" height="28" class="rounded-md opacity-95 group-hover:opacity-100 transition-opacity" />
+          <span class="text-sm font-bold text-[#1F1F23] group-hover:text-[#C76B50] transition-colors font-display">
+            NextReach <span class="text-[#C76B50]">Studio</span>
+          </span>
         </a>
-        <p class="text-xs text-zinc-500 leading-relaxed max-w-[200px]">
-          Practical custom web apps, business automation, and MVPs for startups, local businesses, and SMEs. Founder-led and transparent.
+        <p class="text-xs text-[#6E6862] leading-relaxed max-w-[220px] font-body mb-3">
+          Senior-engineered custom websites, web applications, and autonomous AI workflows. Fixed-scope investment clarity. Shipped in days, not quarters.
         </p>
+        <a
+          href="https://wa.me/919822379976"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-[#C76B50] hover:text-[#D97A5E] transition-colors"
+        >
+          <span>💬 WhatsApp: +91 98223 79976</span>
+        </a>
       </div>
 
-      <!-- Services column -->
+      <!-- Services & Packages column -->
       <div>
-        <h3 class="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">Services</h3>
+        <h3 class="text-xs font-bold text-[#1F1F23] uppercase tracking-wider mb-3 font-mono">Solutions</h3>
         <ul class="space-y-2">
-          <li><a href="/services" class="text-xs text-zinc-500 hover:text-zinc-200 transition-colors">Web App Development</a></li>
-          <li><a href="/services" class="text-xs text-zinc-500 hover:text-zinc-200 transition-colors">Business Automation</a></li>
-          <li><a href="/services" class="text-xs text-zinc-500 hover:text-zinc-200 transition-colors">MVP Development</a></li>
-          <li><a href="/services" class="text-xs text-zinc-500 hover:text-zinc-200 transition-colors">AI Systems Integration</a></li>
+          <li><a href="/#packages" class="text-xs text-[#C76B50] hover:text-[#D97A5E] font-bold transition-colors">Website Packages (₹5k+)</a></li>
+          <li><a href="/services" class="text-xs text-[#6E6862] hover:text-[#1F1F23] transition-colors">Custom Web Platforms</a></li>
+          <li><a href="/services" class="text-xs text-[#6E6862] hover:text-[#1F1F23] transition-colors">Autonomous AI Agents</a></li>
+          <li><a href="/services" class="text-xs text-[#6E6862] hover:text-[#1F1F23] transition-colors">Business Automation</a></li>
+          <li><a href="/services" class="text-xs text-[#6E6862] hover:text-[#1F1F23] transition-colors">Rapid MVP Engineering</a></li>
         </ul>
       </div>
 
       <!-- Agency Pages column -->
       <div>
-        <h3 class="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">Studio</h3>
+        <h3 class="text-xs font-bold text-[#1F1F23] uppercase tracking-wider mb-3 font-mono">Studio</h3>
         <ul class="space-y-2">
-          <li><a href="/services" class="text-xs text-zinc-500 hover:text-zinc-200 transition-colors">Our Services</a></li>
-          <li><a href="/portfolio" class="text-xs text-zinc-500 hover:text-zinc-200 transition-colors">Portfolio</a></li>
-          <li><a href="/about" class="text-xs text-zinc-500 hover:text-zinc-200 transition-colors">About the Studio</a></li>
-          <li><a href="/contact" class="text-xs text-zinc-500 hover:text-zinc-200 transition-colors">Contact / Inquiry</a></li>
-          <li><a href="/privacy" class="text-xs text-zinc-500 hover:text-zinc-200 transition-colors">Privacy Policy</a></li>
-          <li><a href="/terms" class="text-xs text-zinc-500 hover:text-zinc-200 transition-colors">Terms</a></li>
+          <li><a href="/portfolio" class="text-xs text-[#6E6862] hover:text-[#1F1F23] transition-colors">Portfolio &amp; Case Studies</a></li>
+          <li><a href="/demos/saffron-and-smoke" class="text-xs text-[#6E6862] hover:text-[#1F1F23] transition-colors">Saffron &amp; Smoke Flagship</a></li>
+          <li><a href="/about" class="text-xs text-[#6E6862] hover:text-[#1F1F23] transition-colors">About the Studio</a></li>
+          <li><a href="/contact" class="text-xs text-[#6E6862] hover:text-[#1F1F23] transition-colors">Contact / Book Sprint</a></li>
+          <li><a href="/privacy" class="text-xs text-[#6E6862] hover:text-[#1F1F23] transition-colors">Privacy Policy</a></li>
+          <li><a href="/terms" class="text-xs text-[#6E6862] hover:text-[#1F1F23] transition-colors">Terms of Service</a></li>
         </ul>
       </div>
 
-      <!-- Subtle AI Resources column -->
+      <!-- NextReach Labs column -->
       <div>
-        <h3 class="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">AI Developer Hub</h3>
+        <h3 class="text-xs font-bold text-[#1F1F23] uppercase tracking-wider mb-3 font-mono">NextReach Labs (R&amp;D)</h3>
         <ul class="space-y-2">
-          <li><a href="/tools" class="text-xs text-zinc-500 hover:text-zinc-200 transition-colors">Developer Tools</a></li>
-          <li><a href="/blog" class="text-xs text-zinc-500 hover:text-zinc-200 transition-colors">Blog Articles</a></li>
-          <li><a href="/guides" class="text-xs text-zinc-500 hover:text-zinc-200 transition-colors">Guides &amp; Tutorials</a></li>
-          <li><a href="/resources" class="text-xs text-zinc-500 hover:text-zinc-200 transition-colors">Curated Resources</a></li>
+          <li><a href="/tools" class="text-xs text-[#6E6862] hover:text-[#1F1F23] transition-colors">AI Developer Tools Hub</a></li>
+          <li><a href="/tools/ai-token-calculator" class="text-xs text-[#6E6862] hover:text-[#1F1F23] transition-colors">Token Calculator</a></li>
+          <li><a href="/tools/vram-estimator" class="text-xs text-[#6E6862] hover:text-[#1F1F23] transition-colors">VRAM Estimator</a></li>
+          <li><a href="/blog" class="text-xs text-[#6E6862] hover:text-[#1F1F23] transition-colors">Research &amp; Blog</a></li>
+          <li><a href="/guides" class="text-xs text-[#6E6862] hover:text-[#1F1F23] transition-colors">Technical Guides</a></li>
         </ul>
       </div>
     </div>
@@ -55,12 +67,11 @@ const currentYear = new Date().getFullYear();
     <div class="gradient-divider mb-6"></div>
 
     <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
-      <p class="text-xs text-zinc-600">&copy; {currentYear} NextReach Studio. All rights reserved.</p>
+      <p class="text-xs text-[#8C847B]">&copy; {currentYear} NextReach Studio. All rights reserved.</p>
       <div class="flex gap-4">
-        <a href="/rss.xml" class="text-xs text-zinc-600 hover:text-zinc-400 transition-colors">RSS Feed</a>
-        <a href="/sitemap-index.xml" class="text-xs text-zinc-600 hover:text-zinc-400 transition-colors">Sitemap</a>
+        <a href="/rss.xml" class="text-xs text-[#8C847B] hover:text-[#1F1F23] transition-colors">RSS Feed</a>
+        <a href="/sitemap-index.xml" class="text-xs text-[#8C847B] hover:text-[#1F1F23] transition-colors">Sitemap</a>
       </div>
     </div>
   </div>
 </footer>
-

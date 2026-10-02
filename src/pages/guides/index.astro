@@ -6,7 +6,6 @@ import { getCollection } from "astro:content";
 
 const guides = await getCollection("guides", ({ data }) => !data.draft);
 guides.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
-
 ---
 
 <Layout
@@ -15,53 +14,53 @@ guides.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 >
   <Nav />
   <main class="container-page relative">
-    <div class="absolute top-0 left-1/4 -translate-y-12 w-[400px] h-[250px] bg-amber-400/5 rounded-full blur-[90px] pointer-events-none -z-10 animate-pulse-glow" aria-hidden="true"></div>
+    <div class="absolute top-0 left-1/4 -translate-y-12 w-[400px] h-[250px] bg-[#C76B50]/6 rounded-full blur-[100px] pointer-events-none -z-10" aria-hidden="true"></div>
 
     <header class="header-page animate-fade-in-up">
-      <p class="header-page-pretitle">In-Depth Guides</p>
-      <h1 class="header-page-title">Guides for AI builders</h1>
-      <p class="header-page-subtitle">
+      <p class="header-page-pretitle font-mono text-[#C76B50] font-bold">In-Depth Guides</p>
+      <h1 class="header-page-title text-[#1F1F23]">Guides for AI builders</h1>
+      <p class="header-page-subtitle text-[#6E6862]">
         Long-form, practical guides. No buzzwords, no padding — just concrete techniques you can apply today.
       </p>
     </header>
 
     <div class="space-y-4 mb-16">
       {guides.length === 0 ? (
-        <div class="card-premium-flat text-center">
-          <p class="text-zinc-500 text-sm">Guides coming soon.</p>
+        <div class="card-premium-flat text-center shadow-sm">
+          <p class="text-[#6E6862] text-sm font-mono">Guides coming soon.</p>
         </div>
       ) : (
         guides.map((guide) => (
           <a
             href={`/guides/${guide.id}`}
-            class="card-premium-interactive group sm:p-6"
+            class="card-premium-interactive group sm:p-6 hover:border-[#C76B50]/40 shadow-sm"
           >
             <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
               <div class="flex-1 min-w-0">
                 <div class="flex flex-wrap items-center gap-2 mb-3">
-                  <span class={`badge-premium-${guide.data.difficulty}`}>
+                  <span class={`badge-premium-${guide.data.difficulty} font-mono text-[9px]`}>
                     {guide.data.difficulty}
                   </span>
                   {guide.data.readingTime && (
-                    <span class="text-xs text-zinc-500">{guide.data.readingTime}</span>
+                    <span class="text-xs text-[#6E6862] font-mono">{guide.data.readingTime}</span>
                   )}
-                  <time datetime={guide.data.pubDate.toISOString()} class="text-xs text-zinc-500">
+                  <time datetime={guide.data.pubDate.toISOString()} class="text-xs text-[#6E6862] font-mono">
                     {guide.data.pubDate.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
                   </time>
                 </div>
-                <h2 class="font-display font-semibold text-white group-hover:text-amber-300 transition-colors text-xl sm:text-2xl leading-snug mb-2">
+                <h2 class="font-display font-bold text-[#1F1F23] group-hover:text-[#C76B50] transition-colors text-xl sm:text-2xl leading-snug mb-2">
                   {guide.data.title}
                 </h2>
-                <p class="text-sm text-zinc-400 leading-relaxed mb-4">{guide.data.description}</p>
+                <p class="text-sm text-[#6E6862] leading-relaxed mb-4 font-body">{guide.data.description}</p>
                 {(guide.data.tags ?? []).length > 0 && (
                   <div class="flex flex-wrap gap-1.5 mt-3">
                     {(guide.data.tags ?? []).slice(0, 4).map((tag) => (
-                      <span class="badge-premium-neutral">{tag}</span>
+                      <span class="badge-premium-neutral font-mono text-[9px]">{tag}</span>
                     ))}
                   </div>
                 )}
               </div>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-5 h-5 shrink-0 text-zinc-700 group-hover:text-amber-500 transition-colors mt-1 hidden sm:block">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-5 h-5 shrink-0 text-[#8C847B] group-hover:text-[#C76B50] transition-colors mt-1 hidden sm:block">
                 <path d="M9 18l6-6-6-6"/>
               </svg>
             </div>

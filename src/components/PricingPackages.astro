@@ -1,0 +1,267 @@
+---
+interface PackageItem {
+  id: string;
+  name: string;
+  price: string;
+  originalPrice?: string;
+  tagline: string;
+  deliveryTime: string;
+  badge?: string;
+  popular?: boolean;
+  idealFor: string;
+  features: string[];
+  demoUrl?: string;
+  demoLabel?: string;
+  whatsappMessage: string;
+}
+
+const packages: PackageItem[] = [
+  {
+    id: "quick-launch",
+    name: "Quick Launch",
+    price: "₹5,000",
+    originalPrice: "₹12,000",
+    tagline: "High-impact single-page architecture built for instant validation.",
+    deliveryTime: "1–2 Day Delivery",
+    badge: "Fast Cashflow",
+    idealFor: "Freelancers, solo consultants & single-service offers",
+    features: [
+      "1-Page High-Converting Architecture",
+      "100% Mobile & Tablet Responsive Design",
+      "Instant WhatsApp Concierge & Click-to-Call Buttons",
+      "Clean Contact & Direct Inquiry Lead Section",
+      "Blazing-Fast Global Edge Cloud CDN Setup",
+      "Full Source Code & Domain Ownership Handover",
+    ],
+    demoUrl: "/demos/quick-launch-freelancer",
+    demoLabel: "Preview Single Page Demo",
+    whatsappMessage: "Hi NextReach Studio, I want to book the Quick Launch Website Package (₹5,000). Let's discuss my project!",
+  },
+  {
+    id: "business",
+    name: "Business",
+    price: "₹7,500",
+    originalPrice: "₹18,000",
+    tagline: "Complete multi-section digital presence that converts visitors into paying clients.",
+    deliveryTime: "2–3 Day Delivery",
+    badge: "Most Popular",
+    popular: true,
+    idealFor: "Clinics, local businesses, contractors & trade firms",
+    features: [
+      "3–5 Curated Sections / Multi-Page Architecture",
+      "Interactive Photo Gallery & Services Showcase",
+      "Lead Capture Forms with Email & WhatsApp Alerts",
+      "Local Business SEO & Google Maps Schema Setup",
+      "Sub-Second Mobile Performance Optimization",
+      "Domain Connection & Professional Business Setup",
+      "100% Intellectual Property & Asset Handover",
+    ],
+    demoUrl: "/demos/business-oak-elm-clinic",
+    demoLabel: "Preview Clinic / Business Demo",
+    whatsappMessage: "Hi NextReach Studio, I want to book the Business Website Package (₹7,500). Let's discuss my project!",
+  },
+  {
+    id: "premium",
+    name: "Premium Flagship",
+    price: "₹10,000",
+    originalPrice: "₹25,000",
+    tagline: "Bespoke digital atelier experience with editorial UI/UX and rich micro-interactions.",
+    deliveryTime: "3-Day Delivery",
+    badge: "Studio Choice",
+    idealFor: "Fine dining, upscale brands, startups & boutique agencies",
+    features: [
+      "5–7 Bespoke Pages & Custom User Journeys",
+      "Luxury Editorial UI/UX & Studio Aesthetics",
+      "Custom Smooth Motion & Framer-Grade Animations",
+      "Full Technical SEO & Schema.org Rich Structured Data",
+      "Google Analytics 4 & Meta Ad Pixel Integration",
+      "Interactive Table / Appointment Booking & WhatsApp Concierge",
+      "Full Git Repository & Cloud Server Deployment Handover",
+    ],
+    demoUrl: "/demos/saffron-and-smoke",
+    demoLabel: "Preview Saffron & Smoke Flagship",
+    whatsappMessage: "Hi NextReach Studio, I want to book the Premium Flagship Website Package (₹10,000). Let's discuss my project!",
+  },
+];
+---
+
+<section class="relative py-20 sm:py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto" id="packages" aria-labelledby="packages-heading">
+  <!-- Subtle Ambient Terracotta Glow -->
+  <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[650px] h-[320px] bg-[#C76B50]/6 rounded-full blur-[140px] pointer-events-none -z-10" aria-hidden="true"></div>
+
+  <!-- Header Section -->
+  <div class="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono font-semibold bg-[#C76B50]/10 border border-[#C76B50]/25 text-[#C76B50] mb-5 shadow-sm">
+      <span class="w-1.5 h-1.5 rounded-full bg-[#C76B50]"></span>
+      Direct Senior Engineer Sprints • Q2 Fixed Pricing
+    </div>
+    
+    <h2 id="packages-heading" class="text-3xl sm:text-5xl font-display font-bold text-[#1F1F23] tracking-tight leading-tight mb-5">
+      High-Performance Websites.<br />
+      <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#1F1F23] via-[#C76B50] to-[#B8583D]">Shipped in 24 to 72 Hours.</span>
+    </h2>
+
+    <p class="text-[#6E6862] text-sm sm:text-base leading-relaxed font-body">
+      All websites are custom-engineered, mobile-optimized, and built to drive qualified inquiries for your business. No agency overhead. Direct engineer access. Pay once, own everything forever.
+    </p>
+  </div>
+
+  <!-- Pricing Cards Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch mb-16">
+    {packages.map((pkg) => {
+      const waUrl = `https://wa.me/919822379976?text=${encodeURIComponent(pkg.whatsappMessage)}`;
+      
+      return (
+        <article 
+          class={`relative rounded-2xl flex flex-col justify-between p-6 sm:p-8 transition-all duration-200 ${
+            pkg.popular 
+              ? "card-studio-accent md:-translate-y-1 shadow-[0_16px_36px_rgba(199,107,80,0.12)] border-[#C76B50]/40" 
+              : "card-studio"
+          }`}
+        >
+          <!-- Top Badge -->
+          {pkg.badge && (
+            <div class="flex justify-between items-center mb-6">
+              <span class={`px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold tracking-wide ${
+                pkg.popular 
+                  ? "bg-[#C76B50] text-white shadow-sm" 
+                  : "bg-[#FAF8F5] text-[#4A4844] border border-[#1F1F23]/10"
+              }`}>
+                {pkg.badge}
+              </span>
+
+              <span class="text-xs font-mono text-[#6E6862] flex items-center gap-1.5">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-3.5 h-3.5 text-[#C76B50]">
+                  <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                </svg>
+                {pkg.deliveryTime}
+              </span>
+            </div>
+          )}
+
+          <div>
+            <!-- Package Title & Tagline -->
+            <h3 class="text-xl sm:text-2xl font-display font-bold text-[#1F1F23] mb-2">{pkg.name}</h3>
+            <p class="text-xs text-[#6E6862] font-body mb-6 min-h-[36px]">{pkg.tagline}</p>
+
+            <!-- Price Block -->
+            <div class="flex items-baseline gap-2 mb-6 pb-6 border-b border-[#1F1F23]/8">
+              <span class="text-3xl sm:text-4xl font-display font-bold text-[#1F1F23] tracking-tight">
+                {pkg.price}
+              </span>
+              {pkg.originalPrice && (
+                <span class="text-xs text-[#A69D92] line-through font-mono">
+                  {pkg.originalPrice}
+                </span>
+              )}
+              <span class="text-xs text-[#6E6862] font-mono ml-auto">
+                One-Time • All Inclusive
+              </span>
+            </div>
+
+            <!-- Ideal For Pill -->
+            <div class="bg-[#FAF8F5] border border-[#1F1F23]/6 rounded-xl p-3 mb-6">
+              <p class="text-[11px] font-mono text-[#6E6862] uppercase tracking-wider mb-1">Target Client Profile</p>
+              <p class="text-xs text-[#1F1F23] font-semibold font-body">{pkg.idealFor}</p>
+            </div>
+
+            <!-- Inclusions List -->
+            <div class="space-y-3 mb-8">
+              <p class="text-[11px] font-mono text-[#C76B50] uppercase tracking-wider font-bold">Included Deliverables</p>
+              <ul class="space-y-2.5">
+                {pkg.features.map((feat) => (
+                  <li class="flex items-start gap-2.5 text-xs text-[#4A4844] font-body leading-relaxed">
+                    <span class="w-4 h-4 rounded-full bg-[#C76B50]/15 border border-[#C76B50]/30 flex items-center justify-center text-[#C76B50] text-[10px] mt-0.5 shrink-0 font-bold">
+                      ✓
+                    </span>
+                    <span>{feat}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <!-- Bottom Action Buttons -->
+          <div class="space-y-3 pt-4 border-t border-[#1F1F23]/8">
+            <!-- Primary WhatsApp CTA -->
+            <a
+              href={waUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-[#C76B50] hover:bg-[#D97A5E] text-white font-display font-semibold text-xs sm:text-sm shadow-[0_4px_16px_rgba(199,107,80,0.25)] transition-all duration-200"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.99.54 1.787.876 2.796.877 3.177 0 5.764-2.587 5.765-5.766.001-3.181-2.585-5.764-5.765-5.764zm0-2c4.28 0 7.765 3.483 7.765 7.764 0 4.281-3.485 7.766-7.765 7.766-.001 0-.001 0 0 0-1.298 0-2.434-.336-3.466-.948l-4.565 1.196 1.218-4.453c-.696-1.107-1.077-2.313-1.077-3.561 0-4.281 3.484-7.764 7.765-7.764zm-2.031 6.586c-.167-.367-.344-.374-.504-.381-.131-.006-.281-.006-.431-.006s-.394.056-.6.281c-.206.225-.788.769-.788 1.875s.806 2.175.919 2.325c.112.15 1.556 2.493 3.844 3.403 1.902.756 2.288.606 2.7.568.413-.037 1.331-.544 1.519-1.069.188-.525.188-.975.131-1.069-.056-.094-.206-.15-.431-.263s-1.331-.656-1.538-.731-.356-.113-.506.113c-.15.225-.581.731-.712.881-.131.15-.262.169-.488.056-.225-.113-.949-.35-1.808-1.115-.668-.596-1.119-1.332-1.25-1.557s-.014-.347.098-.459c.101-.101.225-.262.338-.394s.15-.225.225-.375c.075-.15.038-.281-.019-.394s-.504-1.259-.701-1.69z"/>
+              </svg>
+              <span>Book on WhatsApp ({pkg.price})</span>
+            </a>
+
+            <!-- Demo Preview Link -->
+            {pkg.demoUrl && (
+              <a
+                href={pkg.demoUrl}
+                class="w-full flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-[#FAF8F5] hover:bg-white text-[#1F1F23] border border-[#1F1F23]/10 text-xs font-mono transition-all duration-200 shadow-sm"
+              >
+                <span>{pkg.demoLabel || "View Live Demo"}</span>
+                <span class="text-[#C76B50]">&rarr;</span>
+              </a>
+            )}
+          </div>
+        </article>
+      );
+    })}
+  </div>
+
+  <!-- Trust Guarantee Banner -->
+  <div class="card-studio rounded-2xl p-6 sm:p-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center border-t border-[#C76B50]/30 mb-12 shadow-sm">
+    <div>
+      <div class="text-[#C76B50] font-display font-bold text-lg sm:text-xl mb-1">100% Fixed Scopes</div>
+      <p class="text-xs text-[#6E6862] font-body">Never pay a rupee over the agreed price. No surprise retainers.</p>
+    </div>
+    <div>
+      <div class="text-[#C76B50] font-display font-bold text-lg sm:text-xl mb-1">Direct Developer</div>
+      <p class="text-xs text-[#6E6862] font-body">Talk directly with the senior engineer building your system.</p>
+    </div>
+    <div>
+      <div class="text-[#C76B50] font-display font-bold text-lg sm:text-xl mb-1">24–72hr Delivery</div>
+      <p class="text-xs text-[#6E6862] font-body">Fast-sprint execution with staging preview before live launch.</p>
+    </div>
+    <div>
+      <div class="text-[#C76B50] font-display font-bold text-lg sm:text-xl mb-1">Complete IP Rights</div>
+      <p class="text-xs text-[#6E6862] font-body">You own all source code, design assets, and cloud setups.</p>
+    </div>
+  </div>
+
+  <!-- Brochure & Collateral Preview Bar -->
+  <div class="card-studio rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 border border-[#C76B50]/30 bg-gradient-to-r from-white via-white to-[#C76B50]/5 shadow-sm">
+    <div class="flex items-center gap-4">
+      <img src="/brochure-showcase.jpg" alt="NextReach Studio Official Brochure & Brand Collateral" class="w-20 h-14 sm:w-28 sm:h-20 object-cover rounded-lg border border-[#C76B50]/30 shadow-md" />
+      <div>
+        <div class="flex items-center gap-2 mb-1">
+          <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase bg-[#C76B50]/15 text-[#C76B50] border border-[#C76B50]/30">Studio Collateral</span>
+          <span class="text-xs font-mono text-[#6E6862]">PDF • A4 Print Ready</span>
+        </div>
+        <h4 class="text-sm sm:text-base font-display font-bold text-[#1F1F23]">Download Studio Packages Brochure</h4>
+        <p class="text-xs text-[#6E6862] font-body">Detailed deliverables breakdown, architecture stack, client case studies, and SLA guarantees.</p>
+      </div>
+    </div>
+    <div class="flex items-center gap-3 w-full md:w-auto shrink-0">
+      <a
+        href="/brochure.html"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="w-full md:w-auto text-center px-4 py-2.5 rounded-xl bg-[#FAF8F5] hover:bg-white text-[#1F1F23] border border-[#1F1F23]/12 text-xs font-mono transition-all duration-200 shadow-sm"
+      >
+        <span>View Digital Brochure &rarr;</span>
+      </a>
+      <a
+        href="https://wa.me/919822379976?text=Hi%20NextReach%20Studio,%20please%20send%20me%20the%20official%20PDF%20brochure%20and%20case%20studies."
+        target="_blank"
+        rel="noopener noreferrer"
+        class="w-full md:w-auto text-center px-4 py-2.5 rounded-xl bg-[#C76B50] hover:bg-[#D97A5E] text-white font-display font-semibold text-xs transition-all duration-200 shadow-sm"
+      >
+        <span>Request via WhatsApp</span>
+      </a>
+    </div>
+  </div>
+</section>

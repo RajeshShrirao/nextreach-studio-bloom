@@ -11,28 +11,28 @@ posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 <Layout title="Blog" description="Practical tutorials and insights for AI builders, Claude Code users, indie hackers, and developers working with LLMs.">
   <Nav />
   <main class="container-page relative">
-    <div class="absolute top-0 left-1/4 -translate-y-12 w-[400px] h-[250px] bg-amber-400/5 rounded-full blur-[90px] pointer-events-none -z-10 animate-pulse-glow" aria-hidden="true"></div>
+    <div class="absolute top-0 left-1/4 -translate-y-12 w-[400px] h-[250px] bg-[#C76B50]/6 rounded-full blur-[100px] pointer-events-none -z-10" aria-hidden="true"></div>
 
     <header class="header-page animate-fade-in-up">
-      <p class="header-page-pretitle">Blog</p>
-      <h1 class="header-page-title">Tutorials &amp; insights</h1>
-      <p class="header-page-subtitle">
+      <p class="header-page-pretitle font-mono text-[#C76B50] font-bold">Blog</p>
+      <h1 class="header-page-title text-[#1F1F23]">Tutorials &amp; insights</h1>
+      <p class="header-page-subtitle text-[#6E6862]">
         Practical articles for developers building with AI. No hype, no generic tips — just useful techniques for real workflows.
       </p>
     </header>
 
     <div class="space-y-4 mb-16">
       {posts.length === 0 && (
-        <div class="card-premium-flat text-center">
-          <p class="text-zinc-500">No posts yet. Check back soon.</p>
+        <div class="card-premium-flat text-center shadow-sm">
+          <p class="text-[#6E6862]">No posts yet. Check back soon.</p>
         </div>
       )}
 
       {posts.map((post) => (
-        <a href={`/blog/${post.id}`} class="card-premium-interactive group p-6 sm:p-8">
+        <a href={`/blog/${post.id}`} class="card-premium-interactive group p-6 sm:p-8 hover:border-[#C76B50]/40 shadow-sm">
           <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
             <div class="flex-1 min-w-0">
-              <div class="flex flex-wrap items-center gap-2 mb-3 text-xs text-zinc-500">
+              <div class="flex flex-wrap items-center gap-2 mb-3 text-xs text-[#6E6862] font-mono">
                 <time datetime={post.data.pubDate.toISOString()}>
                   {post.data.pubDate.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
                 </time>
@@ -41,20 +41,20 @@ posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
                     <span>·</span>
                     <div class="flex gap-1.5 flex-wrap">
                       {post.data.tags.map((tag) => (
-                        <span class="badge-premium-neutral">{tag}</span>
+                        <span class="badge-premium-neutral font-mono text-[9px]">{tag}</span>
                       ))}
                     </div>
                   </>
                 )}
               </div>
-              <h2 class="text-xl sm:text-2xl font-display font-semibold text-white mb-3 group-hover:text-amber-300 transition-colors duration-300">
+              <h2 class="text-xl sm:text-2xl font-display font-bold text-[#1F1F23] mb-3 group-hover:text-[#C76B50] transition-colors duration-200">
                 {post.data.title}
               </h2>
-              <p class="text-sm text-zinc-400 leading-relaxed">
+              <p class="text-sm text-[#6E6862] leading-relaxed font-body">
                 {post.data.description}
               </p>
             </div>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-5 h-5 shrink-0 text-zinc-700 group-hover:text-amber-500 transition-colors mt-1 hidden sm:block">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-5 h-5 shrink-0 text-[#8C847B] group-hover:text-[#C76B50] transition-colors mt-1 hidden sm:block">
               <path d="M9 18l6-6-6-6"/>
             </svg>
           </div>

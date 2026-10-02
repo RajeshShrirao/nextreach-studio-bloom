@@ -73,8 +73,8 @@ export default function VRAMEstimator() {
     <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
       {/* Model Parameters Card (Left - Span 2 Columns) */}
       <div className="lg:col-span-2 space-y-6">
-        <div className="card-premium">
-          <h2 className="text-xs uppercase tracking-wider text-zinc-400 font-bold mb-4">Model Specs</h2>
+        <div className="card-studio p-6">
+          <h2 className="text-xs uppercase tracking-wider text-[#6E6862] font-bold mb-4">Model Specs</h2>
           
           <div className="space-y-4.5">
             <div>
@@ -128,7 +128,7 @@ export default function VRAMEstimator() {
                   </option>
                 ))}
               </select>
-              <p className="mt-1 text-[10px] text-zinc-500 italic">{quantConfig.note}</p>
+              <p className="mt-1 text-[11px] text-[#6E6862] italic">{quantConfig.note}</p>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
@@ -169,12 +169,12 @@ export default function VRAMEstimator() {
         {/* Results Panel */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {[
-            { label: "Weights footprint", value: modelVRAM, color: "text-purple-400", border: "border-purple-500/20", bg: "bg-purple-500/[0.03] shadow-[inset_0_1px_0_0_rgba(168,85,247,0.1)]" },
-            { label: "KV Cache memory", value: kvCacheVRAM, color: "text-blue-400", border: "border-blue-500/20", bg: "bg-blue-500/[0.03] shadow-[inset_0_1px_0_0_rgba(59,130,246,0.1)]" },
-            { label: "Total VRAM Required", value: totalVRAM, color: "text-amber-400", border: "border-amber-400/30", bg: "bg-amber-400/[0.04] shadow-[0_0_24px_rgba(251,191,36,0.06),_inset_0_1px_0_0_rgba(251,191,36,0.1)]" },
+            { label: "Weights footprint", value: modelVRAM, color: "text-purple-700", border: "border-purple-200", bg: "bg-purple-50" },
+            { label: "KV Cache memory", value: kvCacheVRAM, color: "text-blue-700", border: "border-blue-200", bg: "bg-blue-50" },
+            { label: "Total VRAM Required", value: totalVRAM, color: "text-[#C76B50]", border: "border-[#C76B50]/20", bg: "bg-[#C76B50]/5" },
           ].map(({ label, value, color, border, bg }) => (
-            <div key={label} className={`rounded-xl border p-4.5 text-center backdrop-blur-xl ${border} ${bg}`}>
-              <p className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider mb-1">{label}</p>
+            <div key={label} className={`rounded-xl border p-4.5 text-center ${border} ${bg}`}>
+              <p className="text-[10px] text-[#6E6862] font-bold uppercase tracking-wider mb-1">{label}</p>
               <p className={`text-2xl font-bold font-mono ${color}`}>
                 {value.toFixed(2)}
                 <span className="text-xs font-normal ml-0.5 uppercase">GB</span>
@@ -184,15 +184,15 @@ export default function VRAMEstimator() {
         </div>
 
         {/* GPU Table */}
-        <div className="card-premium !p-0 overflow-hidden">
-          <div className="p-4.5 border-b border-white/[0.06] bg-white/[0.01]">
-            <h2 className="text-xs uppercase tracking-wider text-zinc-400 font-bold">GPU Profile Compatibility</h2>
-            <p className="text-[11px] text-zinc-500 mt-1">
-              Estimation for running <span className="text-zinc-300 font-semibold">{preset === "custom" ? "Custom" : selectedPreset.label}</span> with <span className="text-zinc-300 font-semibold">{quantConfig.label}</span>
+        <div className="card-studio !p-0 overflow-hidden">
+          <div className="p-4.5 border-b border-[#1F1F23]/8 bg-[#FAF8F5]/60">
+            <h2 className="text-xs uppercase tracking-wider text-[#6E6862] font-bold">GPU Profile Compatibility</h2>
+            <p className="text-[12px] text-[#6E6862] mt-0.5">
+              Estimation for running <span className="text-[#1F1F23] font-semibold">{preset === "custom" ? "Custom" : selectedPreset.label}</span> with <span className="text-[#1F1F23] font-semibold">{quantConfig.label}</span>
             </p>
           </div>
 
-          <div className="divide-y divide-white/[0.06] max-h-[380px] overflow-y-auto">
+          <div className="divide-y divide-[#1F1F23]/6 max-h-[380px] overflow-y-auto bg-white">
             {GPUS.map((gpu) => {
               const usagePct = (totalVRAM / gpu.vram) * 100;
               const canRun = gpu.vram >= totalVRAM;
@@ -200,34 +200,34 @@ export default function VRAMEstimator() {
 
               const barColor =
                 usagePct > 100
-                  ? "bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.3)]"
+                  ? "bg-red-500"
                   : usagePct > 80
-                  ? "bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.3)]"
-                  : "bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.3)]";
+                  ? "bg-amber-500"
+                  : "bg-emerald-500";
 
               return (
-                <div key={gpu.name} className="flex items-center gap-4 p-4 hover:bg-white/[0.01] transition-colors text-xs">
+                <div key={gpu.name} className="flex items-center gap-4 p-4 hover:bg-[#FAF8F5]/50 transition-colors text-xs">
                   <div className="shrink-0 flex items-center justify-center w-5 h-5 rounded-full border text-[10px] font-bold">
                     {canRun ? (
-                      <span className="text-emerald-400 bg-emerald-500/10 border-emerald-500/20 px-1 rounded-full">✓</span>
+                      <span className="text-emerald-700 bg-emerald-50 border-emerald-200 px-1 rounded-full">✓</span>
                     ) : (
-                      <span className="text-red-400 bg-red-500/10 border-red-500/20 px-1 rounded-full">✗</span>
+                      <span className="text-red-700 bg-red-50 border-red-200 px-1 rounded-full">✗</span>
                     )}
                   </div>
 
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between mb-1.5">
                       <div>
-                        <span className={`font-semibold ${canRun ? "text-zinc-200" : "text-zinc-500"}`}>{gpu.name}</span>
-                        <span className="ml-2 text-[9px] text-zinc-600 uppercase tracking-wide font-medium">{gpu.type}</span>
+                        <span className={`font-semibold ${canRun ? "text-[#1F1F23]" : "text-[#6E6862]"}`}>{gpu.name}</span>
+                        <span className="ml-2 text-[10px] text-[#6E6862] uppercase tracking-wide font-medium">{gpu.type}</span>
                       </div>
-                      <span className="font-mono text-zinc-400 font-medium">
+                      <span className="font-mono text-[#4A4844] font-medium">
                         {gpu.vram}GB
                       </span>
                     </div>
 
                     {/* Progress representation */}
-                    <div className="h-2 rounded-full bg-zinc-950 overflow-hidden border border-white/5 p-[1px]">
+                    <div className="h-2 rounded-full bg-[#FAF8F5] overflow-hidden border border-[#1F1F23]/8 p-[1px]">
                       <div
                         className={`h-full rounded-full transition-all duration-500 ${barColor}`}
                         style={{ width: `${barWidth}%` }}
@@ -236,7 +236,7 @@ export default function VRAMEstimator() {
                   </div>
 
                   <div className="text-right w-12 font-mono shrink-0">
-                    <span className={`font-semibold ${canRun ? "text-zinc-300" : "text-zinc-500"}`}>
+                    <span className={`font-semibold ${canRun ? "text-[#1F1F23]" : "text-[#6E6862]"}`}>
                       {usagePct.toFixed(0)}%
                     </span>
                   </div>
@@ -246,7 +246,7 @@ export default function VRAMEstimator() {
           </div>
         </div>
 
-        <p className="text-[11px] text-zinc-500 text-center leading-relaxed">
+        <p className="text-[11px] text-[#6E6862] text-center leading-relaxed">
           Estimates calculate baseline runtime allocations and static KV bounds. Actual GPU memory behaviors vary based on PyTorch frameworks, context scaling, and compilation parameters.
         </p>
       </div>

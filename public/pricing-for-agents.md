@@ -7,18 +7,37 @@
 - Location: Pune, Maharashtra, India
 - Website: https://www.nextreachstudio.com
 - Contact: hello@nextreachstudio.com / +91 98223 79976
-- Founded: Solo founder, senior full-stack engineer (BCA graduate)
-- Positioning: Enterprise engineering discipline. Startup speed and pricing.
+- Founded: Principal Engineer-led software and AI engineering studio
+- Positioning: Elite software and AI systems engineering. Shipped in days, not quarters.
 
 ## Engagement Model
 
 - Pricing model: Fixed-scope, one-time price (NOT hourly, NOT retainer)
-- Delivery cadence: Bi-weekly sprints with staging previews
-- Client communication: Direct access to the senior engineer building the system. No account managers.
-- Post-launch: Complete source code ownership transfer. 30-day bug-fix support included. Optional maintenance contracts available.
-- Proposal process: Discovery call → Itemized written proposal → Fixed-price contract → Development sprints → QA → Handover
+- Delivery cadence: Rapid 24–72hr website sprints; 2–4 week custom software sprints
+- Client communication: Direct access to senior principal engineers building the system. Zero agency bureaucracy.
+- Post-launch: 100% intellectual property & source code ownership transfer. Post-launch support included.
 
-## Services & Pricing
+## Website Launch Sprint Packages (Immediate Delivery)
+
+### ⚡ Quick Launch Website — ₹5,000 (~$60 USD)
+- Delivery: 1–2 Days
+- Architecture: 1-Page High-Converting Mobile-Responsive Website
+- Features: WhatsApp concierge integration, Click-to-call, lead capture section, Vercel Edge hosting setup, full source handover.
+- Ideal For: Freelancers, solo consultants, quick single-service validation.
+
+### 💼 Business Website — ₹7,500 (~$90 USD) [Most Popular]
+- Delivery: 2–3 Days
+- Architecture: 3–5 Sections / Multi-Page Architecture
+- Features: Interactive photo gallery & services showcase, lead forms with email/WhatsApp alerts, local SEO & Google Maps schema, sub-second mobile speed optimization.
+- Ideal For: Clinics, MSMEs, local businesses, contractors, regional enterprises.
+
+### ✨ Premium Flagship Website — ₹10,000 (~$120 USD) [Studio Choice]
+- Delivery: 3 Days
+- Architecture: 5–7 Bespoke Pages with Luxury Dark UI/UX
+- Features: Custom motion & micro-interactions, full technical SEO & Rich Schema, Google Analytics 4 & Meta Pixel setup, VIP WhatsApp concierge and appointment booking.
+- Ideal For: Upscale dining, luxury hospitality, boutique design agencies, funded tech startups.
+
+## Enterprise Software & AI Capabilities
 
 ### Pricing Philosophy
 

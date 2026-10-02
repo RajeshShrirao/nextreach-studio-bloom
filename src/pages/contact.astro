@@ -11,23 +11,23 @@ import Prose from "@/components/Prose.astro";
 >
   <Nav />
   <main class="container-page relative">
-    <div class="absolute top-0 left-1/4 -translate-y-12 w-[400px] h-[250px] bg-amber-400/5 rounded-full blur-[90px] pointer-events-none -z-10 animate-pulse-glow" aria-hidden="true"></div>
+    <div class="absolute top-0 left-1/4 -translate-y-12 w-[400px] h-[250px] bg-[#C76B50]/6 rounded-full blur-[100px] pointer-events-none -z-10" aria-hidden="true"></div>
 
     <header class="header-page animate-fade-in-up">
-      <p class="header-page-pretitle">Contact</p>
-      <h1 class="header-page-title">Tell us what you need built</h1>
-      <p class="header-page-subtitle">
+      <p class="header-page-pretitle font-mono text-[#C76B50] font-bold">Contact</p>
+      <h1 class="header-page-title text-[#1F1F23]">Tell us what you need built</h1>
+      <p class="header-page-subtitle text-[#6E6862]">
         Have a workflow to automate, a custom portal to build, or an MVP to launch? Let us know your goals, and we'll reply with clear next steps and pricing estimates.
       </p>
     </header>
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
       <!-- Contact Form -->
-      <div class="lg:col-span-2 card-premium-flat">
+      <div class="lg:col-span-2 card-premium-flat shadow-sm">
         <form action="https://formspree.io/f/xbldeqzw" method="POST" class="space-y-5">
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div>
-              <label for="name" class="form-label-premium">Name</label>
+              <label for="name" class="form-label-premium text-[#1F1F23]">Name</label>
               <input
                 type="text"
                 id="name"
@@ -38,7 +38,7 @@ import Prose from "@/components/Prose.astro";
               />
             </div>
             <div>
-              <label for="company" class="form-label-premium">Company Name / Website</label>
+              <label for="company" class="form-label-premium text-[#1F1F23]">Company Name / Website</label>
               <input
                 type="text"
                 id="company"
@@ -50,7 +50,7 @@ import Prose from "@/components/Prose.astro";
           </div>
 
           <div>
-            <label for="email" class="form-label-premium">Email Address</label>
+            <label for="email" class="form-label-premium text-[#1F1F23]">Email Address</label>
             <input
               type="email"
               id="email"
@@ -63,7 +63,7 @@ import Prose from "@/components/Prose.astro";
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div>
-              <label for="project-type" class="form-label-premium">Project Type</label>
+              <label for="project-type" class="form-label-premium text-[#1F1F23]">Project / Engagement Type</label>
               <select
                 id="project-type"
                 name="project_type"
@@ -71,33 +71,37 @@ import Prose from "@/components/Prose.astro";
                 class="form-select-premium"
               >
                 <option value="" disabled selected>Select a project type</option>
-                <option value="web-app">Custom Web Application</option>
-                <option value="automation">Business Automation / Internal Tool</option>
-                <option value="mvp">MVP / Prototype Development</option>
-                <option value="ai-integration">AI Systems Integration</option>
-                <option value="other">Other Software Development</option>
+                <option value="pkg-quick-launch">⚡ Quick Launch Website (₹5,000)</option>
+                <option value="pkg-business">💼 Business Website (₹7,500)</option>
+                <option value="pkg-premium">✨ Premium Flagship Website (₹10,000)</option>
+                <option value="web-app">Custom Web Application / SaaS</option>
+                <option value="ai-agent">Autonomous AI Agent &amp; Workflows</option>
+                <option value="automation">Business Process Automation / API Syncer</option>
+                <option value="mvp">Rapid MVP Engineering (4-6 Weeks)</option>
+                <option value="other">Bespoke Architectural Advisory</option>
               </select>
             </div>
 
             <div>
-              <label for="budget" class="form-label-premium">Estimated Budget (USD)</label>
+              <label for="budget" class="form-label-premium text-[#1F1F23]">Investment Range</label>
               <select
                 id="budget"
                 name="budget"
                 required
                 class="form-select-premium"
               >
-                <option value="" disabled selected>Select a budget range</option>
-                <option value="under-1k">Under $1,000</option>
-                <option value="1k-3k">$1,000 - $3,000</option>
-                <option value="3k-5k">$3,000 - $5,000</option>
-                <option value="over-5k">$5,000+</option>
+                <option value="" disabled selected>Select an investment tier</option>
+                <option value="inr-5k-10k">₹5,000 – ₹10,000 (Website Launch Packages)</option>
+                <option value="inr-10k-50k">₹10,000 – ₹50,000 (Multi-Page / Custom)</option>
+                <option value="inr-50k-plus">₹50,000+ (Full Platform / AI Agent)</option>
+                <option value="usd-1k-3k">$1,000 – $3,000 USD (Startup MVP)</option>
+                <option value="usd-3k-plus">$3,000+ USD (Enterprise Architecture)</option>
               </select>
             </div>
           </div>
 
           <div>
-            <label for="message" class="form-label-premium">Project Details / Requirements</label>
+            <label for="message" class="form-label-premium text-[#1F1F23]">Project Details / Requirements</label>
             <textarea
               id="message"
               name="message"
@@ -123,35 +127,35 @@ import Prose from "@/components/Prose.astro";
 
       <!-- Quick Contact Info -->
       <div class="space-y-6">
-        <div class="card-premium">
-          <h3 class="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3 font-display">Direct Chat</h3>
-          <p class="text-xs text-zinc-400 leading-relaxed mb-4">
+        <div class="card-premium shadow-sm">
+          <h3 class="text-xs font-bold text-[#1F1F23] uppercase tracking-wider mb-3 font-mono">Direct Chat</h3>
+          <p class="text-xs text-[#6E6862] leading-relaxed mb-4">
             Need a fast reply or want to share details on chat? Message us directly on WhatsApp.
           </p>
           <a
             href="https://wa.me/919822379976?text=Hi%2C%20I%20have%20a%20software%20project%20inquiry%20for%20NextReach%20Studio."
             target="_blank"
             rel="noopener noreferrer"
-            class="btn-premium-secondary flex items-center justify-center gap-2 w-full text-center"
+            class="btn-premium-secondary flex items-center justify-center gap-2 w-full text-center font-semibold"
           >
             <span>💬 Chat on WhatsApp</span>
           </a>
         </div>
 
-        <div class="card-premium">
-          <h3 class="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3 font-display">Studio Details</h3>
-          <ul class="space-y-3.5 text-xs text-zinc-400">
+        <div class="card-premium shadow-sm">
+          <h3 class="text-xs font-bold text-[#1F1F23] uppercase tracking-wider mb-3 font-mono">Studio Details</h3>
+          <ul class="space-y-3.5 text-xs text-[#6E6862]">
             <li class="flex gap-2">
-              <span class="text-amber-500">📍</span>
+              <span class="text-[#C76B50]">📍</span>
               <span>Based in Pune, Maharashtra, India</span>
             </li>
             <li class="flex gap-2">
-              <span class="text-amber-500">✉️</span>
-              <a href="mailto:hello@nextreachstudio.com" class="hover:text-amber-400 transition-colors">hello@nextreachstudio.com</a>
+              <span class="text-[#C76B50]">✉️</span>
+              <a href="mailto:hello@nextreachstudio.com" class="hover:text-[#C76B50] transition-colors">hello@nextreachstudio.com</a>
             </li>
             <li class="flex gap-2">
-              <span class="text-amber-500">📱</span>
-              <a href="tel:+919822379976" class="hover:text-amber-400 transition-colors">+91 98223 79976</a>
+              <span class="text-[#C76B50]">📱</span>
+              <a href="tel:+919822379976" class="hover:text-[#C76B50] transition-colors">+91 98223 79976</a>
             </li>
           </ul>
         </div>
