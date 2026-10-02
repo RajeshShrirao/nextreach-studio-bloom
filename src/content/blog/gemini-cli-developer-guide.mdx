@@ -43,10 +43,10 @@ If you get a response, you're good. If you're cost-conscious, use [our LLM Cost 
 Gemini CLI defaults to a model based on your subscription tier. Be explicit:
 
 ```bash
-# Flash — faster, cheaper, good for most tasks
+# Flash - faster, cheaper, good for most tasks
 gemini --model gemini-2.5-flash "summarize this"
 
-# Pro — stronger reasoning, slower, more expensive  
+# Pro - stronger reasoning, slower, more expensive  
 gemini --model gemini-2.5-pro "analyze this architecture"
 ```
 
@@ -237,7 +237,7 @@ Chain multiple Gemini calls for complex tasks:
 
 ```bash
 #!/bin/bash
-# analyze-pr.sh — Full PR analysis pipeline
+# analyze-pr.sh - Full PR analysis pipeline
 
 set -e
 
@@ -292,7 +292,7 @@ You are a code reviewer with expertise in TypeScript, Node.js, and PostgreSQL.
 Your review style:
 - Focus on correctness and security first
 - Point out specific file and line numbers
-- Be concise — no padding or filler
+- Be concise - no padding or filler
 - Distinguish between bugs (must fix) and style issues (optional)
 - Don't suggest rewrites unless the current approach is fundamentally broken
 EOF
@@ -380,7 +380,7 @@ watch-and-analyze src "List any TypeScript type issues or missing null checks in
 
 Gemini has a large context window, but dumping your entire codebase in is rarely the right approach. Use [our Context Window Calculator](/tools/context-window-calculator) to estimate token counts before running expensive queries.
 
-Better pattern — build a focused context snapshot:
+Better pattern - build a focused context snapshot:
 
 ```bash
 # Generate a focused context for a specific subsystem
@@ -456,4 +456,4 @@ explain() { echo "$*" | gemini "Explain this error and suggest the most likely f
 pr-summary() { gh pr diff "${1:-HEAD}" | gemini "Summarize what this PR changes in 3 bullet points."; }
 ```
 
-The goal isn't to replace your workflow — it's to remove the friction points where you'd otherwise switch to a browser, open a chat interface, and manually copy-paste context. When the model is one pipe away, you actually use it.
+The goal isn't to replace your workflow - it's to remove the friction points where you'd otherwise switch to a browser, open a chat interface, and manually copy-paste context. When the model is one pipe away, you actually use it.

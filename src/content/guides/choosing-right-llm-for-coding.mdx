@@ -10,11 +10,11 @@ difficulty: intermediate
 readingTime: "12 min read"
 ---
 
-Picking an LLM for your coding workflow isn't a "just use the best one" problem anymore. In 2026, the difference between Claude Sonnet and GPT-4o on a refactoring task is significant — and the difference in cost can be 10x. If you're burning $300/month on API calls that could cost $40 with the right model routing, that's a business problem, not a preference.
+Picking an LLM for your coding workflow isn't a "just use the best one" problem anymore. In 2026, the difference between Claude Sonnet and GPT-4o on a refactoring task is significant - and the difference in cost can be 10x. If you're burning $300/month on API calls that could cost $40 with the right model routing, that's a business problem, not a preference.
 
-This guide is built for developers who write code daily and call LLM APIs directly — not for people who click buttons in a chat interface. We'll cover which model wins at which task type, how to read the benchmarks honestly, and how to make cost-conscious decisions without degrading your output quality.
+This guide is built for developers who write code daily and call LLM APIs directly - not for people who click buttons in a chat interface. We'll cover which model wins at which task type, how to read the benchmarks honestly, and how to make cost-conscious decisions without degrading your output quality.
 
-> **May 2026 update:** This guide has been updated to include Claude 4 Sonnet, GPT-5, Llama 4, DeepSeek R1, and Gemma 3 — all of which have entered the developer tooling landscape since mid-2025. Claude 3.7 Sonnet and GPT-4o remain relevant and are included for comparison.
+> **May 2026 update:** This guide has been updated to include Claude 4 Sonnet, GPT-5, Llama 4, DeepSeek R1, and Gemma 3 - all of which have entered the developer tooling landscape since mid-2025. Claude 3.7 Sonnet and GPT-4o remain relevant and are included for comparison.
 
 ---
 
@@ -32,8 +32,8 @@ As of mid-2026, these are the models actively used in developer workflows:
 | GPT-4o mini | OpenAI | 128K | $0.15 | $0.60 |
 | Gemini 2.5 Pro | Google | 2M | $1.25 | $10.00 |
 | Gemini 2.0 Flash | Google | 1M | $0.075 | $0.30 |
-| Llama 4 17B | Meta (self-hosted) | 256K | ~$0.05–$0.30* | ~$0.05–$0.30* |
-| Llama 3.3 70B | Meta (self-hosted) | 128K | ~$0.05–$0.20* | ~$0.05–$0.20* |
+| Llama 4 17B | Meta (self-hosted) | 256K | ~$0.05-$0.30* | ~$0.05-$0.30* |
+| Llama 3.3 70B | Meta (self-hosted) | 128K | ~$0.05-$0.20* | ~$0.05-$0.20* |
 | Mistral Large 2 | Mistral | 128K | $2.00 | $6.00 |
 
 *Self-hosted cost depends heavily on GPU provisioning. See the [LLM Cost Calculator](/tools/llm-cost-calculator) for actual infrastructure breakdowns.
@@ -45,10 +45,10 @@ As of mid-2026, these are the models actively used in developer workflows:
 The popular benchmarks (HumanEval, MBPP, SWE-bench) are useful signals, but they have known limitations:
 
 - **HumanEval** tests function completion from docstrings. That's not representative of "debug this 400-line class with a weird race condition."
-- **SWE-bench Verified** is closer to real work — models are evaluated on actual GitHub issues. Claude 3.7 Sonnet holds a strong lead here as of May 2026.
+- **SWE-bench Verified** is closer to real work - models are evaluated on actual GitHub issues. Claude 3.7 Sonnet holds a strong lead here as of May 2026.
 - **MBPP** skews toward Python and simple algorithms. It doesn't tell you much about TypeScript, Rust, or systems-level code.
 
-The more honest approach: run your own eval on tasks from your actual codebase. Even 20–30 representative prompts will tell you more than any public leaderboard.
+The more honest approach: run your own eval on tasks from your actual codebase. Even 20-30 representative prompts will tell you more than any public leaderboard.
 
 ---
 
@@ -122,15 +122,15 @@ Code:
 
 **Best: Gemini 2.0 Flash**
 
-At $0.075/1M input tokens, Gemini Flash is almost free for documentation generation. It produces clean, readable explanations and handles the 1M token context window well, which is useful for documenting large codebases. Gemini 2.5 Flash offers marginally better quality at $0.15/1M — still extremely cheap.
+At $0.075/1M input tokens, Gemini Flash is almost free for documentation generation. It produces clean, readable explanations and handles the 1M token context window well, which is useful for documenting large codebases. Gemini 2.5 Flash offers marginally better quality at $0.15/1M - still extremely cheap.
 
-Compare: generating docs for a 50K-token codebase costs ~$0.004 with Flash vs. ~$0.15 with Claude Sonnet — a 37x cost difference for a task where Flash performs at 90% quality.
+Compare: generating docs for a 50K-token codebase costs ~$0.004 with Flash vs. ~$0.15 with Claude Sonnet - a 37x cost difference for a task where Flash performs at 90% quality.
 
 ### 5. Test Generation
 
 **Best: Claude 3.5 Haiku (cost-performance sweet spot)**
 
-Test generation is repetitive and pattern-driven. Haiku handles it well at a fraction of Sonnet's cost. GPT-4o mini is also a strong contender here at $0.15/1M input — even cheaper than Haiku while delivering comparable quality for structured test generation. The key is giving it explicit instructions about your test framework and style:
+Test generation is repetitive and pattern-driven. Haiku handles it well at a fraction of Sonnet's cost. GPT-4o mini is also a strong contender here at $0.15/1M input - even cheaper than Haiku while delivering comparable quality for structured test generation. The key is giving it explicit instructions about your test framework and style:
 
 ```typescript
 // Prompt template for test generation
@@ -162,17 +162,17 @@ For most projects under 100K tokens, Claude 4 Sonnet's 200K window is more than 
 
 Running Llama 3.3 70B locally (or on a cheap GPU cloud instance) makes sense in three specific scenarios:
 
-1. **Privacy requirements** — your code can't leave your infrastructure
-2. **High-volume repetitive tasks** — linting suggestions, simple completions, boilerplate generation at scale
-3. **Offline development** — no API dependency
+1. **Privacy requirements** - your code can't leave your infrastructure
+2. **High-volume repetitive tasks** - linting suggestions, simple completions, boilerplate generation at scale
+3. **Offline development** - no API dependency
 
 For most developers, self-hosting a 70B model requires at minimum 2x A10G GPUs (~$1.50/hr on Lambda Labs or RunPod). That's $1,080/month if running 24/7. Unless you're making >5M API calls/month, you're probably not saving money.
 
 **Practical local model stack (2026):**
-- **Ollama** — best local inference server for macOS
-- **LM Studio** — good GUI, useful for model exploration
-- **llama.cpp** — if you need maximum control and are comfortable with C++
-- **vLLM** — production inference server, best for team deployments
+- **Ollama** - best local inference server for macOS
+- **LM Studio** - good GUI, useful for model exploration
+- **llama.cpp** - if you need maximum control and are comfortable with C++
+- **vLLM** - production inference server, best for team deployments
 
 ```bash
 # Pull and run Llama 4 17B or Llama 3.3 70B via Ollama
@@ -191,7 +191,7 @@ ollama serve
 Context windows are marketed aggressively. Here's what actually matters:
 
 - A 200K context window doesn't mean you should use 200K tokens. Costs scale linearly.
-- Most coding tasks need 4K–20K tokens. You're paying for capability headroom, not constant usage.
+- Most coding tasks need 4K-20K tokens. You're paying for capability headroom, not constant usage.
 - Models with large context windows often degrade in retrieval accuracy at extreme lengths. Gemini 2.5 Pro at 1.5M tokens is not as sharp as Claude Sonnet at 50K tokens on the same task.
 
 Use the [Context Window Calculator](/tools/context-window-calculator) to model your actual token usage patterns before committing to a provider.
@@ -202,19 +202,19 @@ Use the [Context Window Calculator](/tools/context-window-calculator) to model y
 
 Instead of picking one model, structure your workflow around task tiers:
 
-**Tier 1 — Heavy reasoning tasks (complex bugs, architecture decisions):**
+**Tier 1 - Heavy reasoning tasks (complex bugs, architecture decisions):**
 → Claude 4 Sonnet, GPT-5, or Gemini 2.5 Pro  
-→ Budget: $3–15 per 1M output tokens
+→ Budget: $3-15 per 1M output tokens
 
-**Tier 2 — Standard coding tasks (feature implementation, code review):**
+**Tier 2 - Standard coding tasks (feature implementation, code review):**
 → Claude 3.5 Haiku, GPT-4o mini, or Claude 3.7 Sonnet  
-→ Budget: $0.60–4.00 per 1M output tokens
+→ Budget: $0.60-4.00 per 1M output tokens
 
-**Tier 3 — High-volume, low-stakes tasks (docs, tests, formatting):**
+**Tier 3 - High-volume, low-stakes tasks (docs, tests, formatting):**
 → Gemini 2.0 Flash, Gemini 2.5 Flash, or local Llama 4  
 → Budget: $0.30 or less per 1M output tokens
 
-This tiered approach typically cuts API costs by 40–60% without measurable quality loss on overall output. For detailed cost modeling, check the [LLM Cost Calculator](/tools/llm-cost-calculator).
+This tiered approach typically cuts API costs by 40-60% without measurable quality loss on overall output. For detailed cost modeling, check the [LLM Cost Calculator](/tools/llm-cost-calculator).
 
 ---
 
@@ -306,7 +306,7 @@ Routing is free to implement and saves real money. Don't use Claude Sonnet to ge
 Always set `temperature=0` or near-zero for deterministic code generation. Higher temperature is for creative tasks.
 
 **3. Ignoring output token costs**  
-Output tokens cost 4–10x more than input tokens across all providers. Verbose prompts that generate verbose output are expensive. Be explicit: "Answer in under 300 words."
+Output tokens cost 4-10x more than input tokens across all providers. Verbose prompts that generate verbose output are expensive. Be explicit: "Answer in under 300 words."
 
 **4. Treating context window size as a quality metric**  
 Bigger context ≠ better model. Gemini 2.0 Flash's 1M context is a cost trap if you don't need it.

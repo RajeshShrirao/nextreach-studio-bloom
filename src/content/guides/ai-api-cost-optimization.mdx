@@ -10,11 +10,11 @@ difficulty: intermediate
 readingTime: "14 min read"
 ---
 
-If you're calling LLM APIs at any meaningful scale, the bill lands fast. A team running Claude Sonnet for code review, documentation, and test generation across a 10-engineer org can easily hit $2,000–5,000/month without realizing it. Most of that cost is preventable.
+If you're calling LLM APIs at any meaningful scale, the bill lands fast. A team running Claude Sonnet for code review, documentation, and test generation across a 10-engineer org can easily hit $2,000-5,000/month without realizing it. Most of that cost is preventable.
 
-This is not a "use a cheaper model" guide. That advice is obvious and often wrong — swapping Claude Sonnet for GPT-4o mini on complex tasks causes quality degradation that creates downstream engineering debt. Instead, this guide covers architectural and prompt-level techniques that reduce costs without meaningful quality loss. Real numbers included.
+This is not a "use a cheaper model" guide. That advice is obvious and often wrong - swapping Claude Sonnet for GPT-4o mini on complex tasks causes quality degradation that creates downstream engineering debt. Instead, this guide covers architectural and prompt-level techniques that reduce costs without meaningful quality loss. Real numbers included.
 
-> **May 2026 update:** Prompt caching is now available across all major providers (Anthropic, OpenAI, Google, Mistral), making it the single highest-leverage optimization. The routing strategies have also been updated to account for Claude 4 Sonnet, GPT-5, and Gemini 2.5 Flash — all of which shift the cost-quality tradeoffs.
+> **May 2026 update:** Prompt caching is now available across all major providers (Anthropic, OpenAI, Google, Mistral), making it the single highest-leverage optimization. The routing strategies have also been updated to account for Claude 4 Sonnet, GPT-5, and Gemini 2.5 Flash - all of which shift the cost-quality tradeoffs.
 
 ---
 
@@ -113,7 +113,7 @@ print(f"Uncached input tokens: {response.usage.input_tokens}")
 
 Model routing means sending different task types to different models based on a complexity classifier. It's the most impactful architectural change for high-volume applications.
 
-**The principle:** Not every task needs Claude Sonnet. Test generation, docstring writing, and simple completions can run on Haiku or Gemini Flash at 10–20x lower cost.
+**The principle:** Not every task needs Claude Sonnet. Test generation, docstring writing, and simple completions can run on Haiku or Gemini Flash at 10-20x lower cost.
 
 ### Build a Simple Classifier
 
@@ -179,15 +179,15 @@ Complex (Sonnet): 2,000 calls × 2,800 tokens × $18.00/1M = $100.80/day
 Total: $148.96/day → $4,469/month
 ```
 
-That's a 17% reduction just from routing — and with better quality on complex tasks than you'd get running everything through a single mid-tier model. Refine the classifier over time and you can push this further.
+That's a 17% reduction just from routing - and with better quality on complex tasks than you'd get running everything through a single mid-tier model. Refine the classifier over time and you can push this further.
 
 ---
 
 ## Technique 3: Aggressive Context Trimming
 
-Output tokens cost 4–10x more than input tokens across every provider. But overstuffed input context is also expensive and often hurts quality.
+Output tokens cost 4-10x more than input tokens across every provider. But overstuffed input context is also expensive and often hurts quality.
 
-The most common waste: sending the entire conversation history on every turn when only the last 2–3 exchanges are relevant.
+The most common waste: sending the entire conversation history on every turn when only the last 2-3 exchanges are relevant.
 
 ### Sliding Window Context
 
@@ -369,19 +369,19 @@ completion = client.beta.chat.completions.parse(
 )
 
 review = completion.choices[0].message.parsed
-# No retry logic needed — output is guaranteed valid
+# No retry logic needed - output is guaranteed valid
 ```
 
 Structured output eliminates:
 - Prose wrapper tokens ("Here is the JSON you requested...")
-- Retry API calls when your parser fails (1–5% failure rate without structured output)
+- Retry API calls when your parser fails (1-5% failure rate without structured output)
 - Post-processing compute
 
 ---
 
 ## Technique 7: Semantic Caching at the Application Layer
 
-Provider-level caching handles identical prompts. Application-layer semantic caching handles *similar* prompts — which is often more relevant.
+Provider-level caching handles identical prompts. Application-layer semantic caching handles *similar* prompts - which is often more relevant.
 
 ```python
 from sentence_transformers import SentenceTransformer
@@ -417,9 +417,9 @@ def semantic_cache_set(prompt: str, response: str):
 
 **Effective for:** repetitive tasks like "explain this function," "write a test for this," or "add error handling to this code" where the code pattern varies slightly but the task is structurally identical.
 
-**Cache hit rates in practice:** 15–35% for developer tooling applications, 40–60% for customer-facing coding assistants with repeated user patterns.
+**Cache hit rates in practice:** 15-35% for developer tooling applications, 40-60% for customer-facing coding assistants with repeated user patterns.
 
-> **Note:** Semantic caching becomes even more valuable with higher-cost models like Claude 4 Sonnet and GPT-5. If you're using a frontier model for repetitive analysis tasks, a semantic cache can cut effective costs by 30–50% on top of provider-level prompt caching.
+> **Note:** Semantic caching becomes even more valuable with higher-cost models like Claude 4 Sonnet and GPT-5. If you're using a frontier model for repetitive analysis tasks, a semantic cache can cut effective costs by 30-50% on top of provider-level prompt caching.
 
 ---
 
@@ -427,15 +427,15 @@ def semantic_cache_set(prompt: str, response: str):
 
 | Technique | Typical Savings | Implementation Effort |
 |---|---|---|
-| Prompt caching | 30–60% on repeated prefixes | Low (1 day) |
-| Model routing | 15–40% overall | Medium (3–5 days) |
-| Context trimming | 10–25% on input costs | Low (1–2 days) |
-| Output constraints | 20–50% on output costs | Low (hours) |
+| Prompt caching | 30-60% on repeated prefixes | Low (1 day) |
+| Model routing | 15-40% overall | Medium (3-5 days) |
+| Context trimming | 10-25% on input costs | Low (1-2 days) |
+| Output constraints | 20-50% on output costs | Low (hours) |
 | Batch processing | 50% on async tasks | Low (1 day) |
-| Structured output | 5–15% (reduced retries) | Low (hours) |
-| Semantic caching | 15–35% hit rate | Medium (2–3 days) |
+| Structured output | 5-15% (reduced retries) | Low (hours) |
+| Semantic caching | 15-35% hit rate | Medium (2-3 days) |
 
-Combined and applied to a $3,000/month bill, these techniques realistically deliver a 55–65% reduction to $1,050–$1,350/month. The most impactful are prompt caching, model routing, and output constraints — start there.
+Combined and applied to a $3,000/month bill, these techniques realistically deliver a 55-65% reduction to $1,050-$1,350/month. The most impactful are prompt caching, model routing, and output constraints - start there.
 
 ---
 
@@ -446,7 +446,7 @@ Combined and applied to a $3,000/month bill, these techniques realistically deli
 - [ ] Add "Be concise. Answer in under X words." to every prompt
 - [ ] Route test generation and docs to Gemini Flash or Claude Haiku
 - [ ] Move all non-real-time batch tasks to Batch API
-- [ ] Trim conversation history to last 5–6 turns
+- [ ] Trim conversation history to last 5-6 turns
 - [ ] Use structured output (JSON mode / Pydantic) to eliminate parse retries
 - [ ] Log token usage per call to identify expensive outliers
 

@@ -8,7 +8,7 @@ draft: false
 updatedDate: 2026-05-31
 ---
 
-The Model Context Protocol (MCP) lets you give Claude access to custom tools — databases, internal APIs, file systems, anything with a network interface. It's not magic: it's a JSON-RPC spec that describes how a client (Claude Desktop, Claude Code) discovers and calls tools on a server you control. This tutorial builds a real MCP server from scratch, explains what's actually happening at each step, and gets you to a working tool integration in under 30 minutes.
+The Model Context Protocol (MCP) lets you give Claude access to custom tools - databases, internal APIs, file systems, anything with a network interface. It's not magic: it's a JSON-RPC spec that describes how a client (Claude Desktop, Claude Code) discovers and calls tools on a server you control. This tutorial builds a real MCP server from scratch, explains what's actually happening at each step, and gets you to a working tool integration in under 30 minutes.
 
 ## What MCP Actually Is
 
@@ -18,7 +18,7 @@ Before writing code, clear up the abstraction. An MCP server is a process that:
 2. Listens for tool call requests over stdio or HTTP
 3. Executes the tool and returns a result
 
-That's the entire protocol surface you need to understand. The client (Claude) handles everything else — deciding when to call a tool, how to format the call, what to do with the result.
+That's the entire protocol surface you need to understand. The client (Claude) handles everything else - deciding when to call a tool, how to format the call, what to do with the result.
 
 The spec uses JSON-RPC 2.0 as the message format. You don't need to implement JSON-RPC from scratch; the official `@modelcontextprotocol/sdk` handles that.
 
@@ -26,9 +26,9 @@ The spec uses JSON-RPC 2.0 as the message format. You don't need to implement JS
 
 A simple MCP server with three tools:
 
-1. **`read_file`** — reads a file from a specified directory
-2. **`list_files`** — lists files in a directory
-3. **`run_command`** — runs a shell command from a whitelist
+1. **`read_file`** - reads a file from a specified directory
+2. **`list_files`** - lists files in a directory
+3. **`run_command`** - runs a shell command from a whitelist
 
 This is a useful developer utility that gives Claude visibility into your local filesystem and lets it run specific commands. We'll add safety constraints throughout.
 
@@ -102,7 +102,7 @@ import { readFileSync, readdirSync, statSync } from "fs";
 import { execSync } from "child_process";
 import { join, resolve, relative } from "path";
 
-// Define the working directory — tools are sandboxed to this
+// Define the working directory - tools are sandboxed to this
 const WORKSPACE_DIR = process.env.WORKSPACE_DIR ?? process.cwd();
 
 // Whitelist of allowed shell commands
@@ -540,7 +540,7 @@ Catch errors in each tool handler and return structured error messages. Unhandle
 
 **Mistake: Paths without the workspace sandbox**
 
-Always resolve paths relative to a defined workspace root and check for traversal attempts. Claude will call your tools with whatever path it thinks makes sense — don't assume it'll stay where you expect.
+Always resolve paths relative to a defined workspace root and check for traversal attempts. Claude will call your tools with whatever path it thinks makes sense - don't assume it'll stay where you expect.
 
 ## Debugging
 
@@ -565,12 +565,12 @@ tail -f /tmp/mcp-debug.log
 
 ## Where to Go From Here
 
-The pattern here — schema declaration, input validation, sandboxed execution — generalizes to any tool you can imagine. Common extensions:
+The pattern here - schema declaration, input validation, sandboxed execution - generalizes to any tool you can imagine. Common extensions:
 
-- **HTTP API calls** — wrap internal REST APIs as MCP tools
-- **Browser automation** — wrap Playwright for controlled web access
-- **Document search** — index project docs and expose semantic search
-- **Ticket management** — read/write to Linear or GitHub Issues
+- **HTTP API calls** - wrap internal REST APIs as MCP tools
+- **Browser automation** - wrap Playwright for controlled web access
+- **Document search** - index project docs and expose semantic search
+- **Ticket management** - read/write to Linear or GitHub Issues
 
 The MCP spec is deliberately minimal. Anthropic publishes it openly, and there's growing adoption across other AI clients beyond Claude. Servers you build now will work with any MCP-compatible client as the ecosystem matures.
 

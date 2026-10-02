@@ -6,7 +6,7 @@ import Footer from "@/components/Footer.astro";
 const projects = [
   {
     category: "Premium Package Flagship (₹10,000 Tier)",
-    title: "Saffron & Smoke — Luxury Dining Flagship",
+    title: "Saffron & Smoke - Luxury Dining Flagship",
     description: "A cinematic, high-end digital flagship and online table booking engine for an upscale modern Indian dining atelier in Baner, Pune.",
     problem: "Fine-dining establishments often surrender guest data and brand identity to aggregator platforms that charge commissions and provide generic, slow mobile interfaces.",
     built: "An Architectural Digest inspired web platform featuring chiaroscuro photography, custom steam animations, interactive multi-sitting table reservations, and WhatsApp concierge integration.",
@@ -31,7 +31,7 @@ const projects = [
   },
   {
     category: "Quick Launch Package Demo (₹5,000 Tier)",
-    title: "Alex Chen — Creative Director Portfolio",
+    title: "Alex Chen - Creative Director Portfolio",
     description: "High-impact, single-page digital portfolio and client inquiry engine for independent creative consultants and agency directors.",
     problem: "Freelance consultants need a fast, visually commanding digital storefront to close high-ticket clients without spending months building a personal site.",
     built: "A razor-sharp 1-page landing experience with case study drawers, project cost estimator, client testimonial carousel, and instant WhatsApp booking redirect.",
@@ -100,8 +100,8 @@ const stats = [
 ---
 
 <Layout
-  title="Our Portfolio — Recent Custom Software Projects"
-  description="View our custom software portfolio — real-world business automation, web applications, and MVPs built for SMEs and startups under fixed-scope contracts."
+  title="Our Portfolio - Recent Custom Software Projects"
+  description="View our custom software portfolio - real-world business automation, web applications, and MVPs built for SMEs and startups under fixed-scope contracts."
 >
   <Nav />
   <main>
@@ -110,15 +110,15 @@ const stats = [
       <div class="absolute top-0 left-1/2 w-[700px] h-[400px] bg-[#C76B50]/6 rounded-full blur-[130px] pointer-events-none -z-10" aria-hidden="true"></div>
 
       <div class="text-center relative z-10 mb-14 stagger-parent">
-        <p class="badge-premium-accent text-[10px] font-bold px-3 py-1 inline-flex mb-5">
+        <p class="text-xs font-mono uppercase tracking-[0.2em] text-[#C76B50] font-semibold mb-4">
           Portfolio
         </p>
         <h1 class="text-hero text-[#1F1F23] mb-6 font-display font-bold text-balance-wide">
           Production software<br class="hidden sm:inline" />
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#1F1F23] via-[#C76B50] to-[#B8583D]">built for real businesses.</span>
+          <span class="text-[#C76B50]">built for real businesses.</span>
         </h1>
         <p class="text-[#6E6862] text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mb-10 font-body">
-          We focus on functional, reliable applications that solve business problems. No generic templates, no inflated results — just honest software built to scope.
+          We focus on functional, reliable applications that solve business problems. No generic templates, no inflated results - just honest software built to scope.
         </p>
 
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -162,7 +162,7 @@ const stats = [
               <div class="lg:w-[42%] relative overflow-hidden bg-[#FAF8F5] flex items-center justify-center border-b lg:border-b-0 lg:border-r border-[#1F1F23]/8 aspect-video lg:aspect-auto">
                 <img
                   src={project.image}
-                  alt={`${project.title} — ${project.category}`}
+                  alt={`${project.title} - ${project.category}`}
                   width="640"
                   height="480"
                   loading="lazy"
@@ -170,7 +170,7 @@ const stats = [
                   class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-40"></div>
-                <span class="absolute top-3 left-3 text-[9px] font-bold text-white bg-black/60 backdrop-blur-md px-2 py-0.5 rounded font-mono">0{idx + 1}</span>
+                <span class="absolute top-3 left-3 text-[9px] font-bold text-white bg-[#1F1F23] px-2 py-0.5 rounded-sm font-mono">0{idx + 1}</span>
               </div>
 
               <!-- Project Details -->
@@ -270,7 +270,7 @@ const stats = [
           <div class="card-studio-accent hover:border-[#C76B50]/45 transition-all duration-200 shadow-sm">
             <div class="flex items-center justify-between gap-3 mb-3">
               <span class="text-[9px] font-bold text-[#6E6862] uppercase tracking-widest font-mono">{ph.category}</span>
-              <span class="text-[9px] text-[#C76B50] font-semibold uppercase tracking-wider bg-[#C76B50]/10 px-2.5 py-0.5 rounded-full border border-[#C76B50]/20 font-mono">In Development</span>
+              <span class="text-[9px] text-[#C76B50] font-semibold uppercase tracking-wider bg-[#C76B50]/10 px-2.5 py-0.5 rounded-md border border-[#C76B50]/20 font-mono">In Development</span>
             </div>
             <h3 class="text-base font-semibold text-[#1F1F23] font-display mb-1.5">{ph.title}</h3>
             <p class="text-xs text-[#6E6862] leading-relaxed mb-4 font-body">{ph.teaser}</p>
@@ -292,7 +292,7 @@ const stats = [
           Have a project in mind?
         </h2>
         <p class="text-[#6E6862] text-sm sm:text-base max-w-xl mx-auto mb-8 font-body leading-relaxed">
-          Tell us what you need built. We'll reply with a clear scope, timeline, and fixed price — no meetings required upfront.
+          Tell us what you need built. We'll reply with a clear scope, timeline, and fixed price - no meetings required upfront.
         </p>
         <a href="/contact" class="btn-premium-primary">
           Start Your Project

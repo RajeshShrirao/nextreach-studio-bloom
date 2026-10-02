@@ -6,24 +6,28 @@
   </div>
   <div class="visual-bento__grid">
     <article class="visual-bento__card visual-bento__card--wide">
-      <div class="visual-bento__copy"><span class="visual-bento__kicker">01 / Web apps</span><h3>Live client dashboards</h3><p>Multi-tenant portals that make complex operations feel simple.</p></div>
+      <div class="visual-bento__copy"><span class="visual-bento__kicker">Web Applications</span><h3>Live client dashboards</h3><p>Multi-tenant portals that make complex operations feel simple.</p></div>
       <div class="visual-bento__image"><img src="/assets/bento-web-apps.webp" alt="Dark client portal dashboard with colorful metrics" width="1448" height="1086" loading="lazy" /></div>
-      <span class="visual-bento__badge"><span class="status-dot status-dot--live"></span> Live Client Dashboards</span>
+      <span class="visual-bento__badge">Live Client Dashboards</span>
     </article>
     <article class="visual-bento__card visual-bento__card--wide">
-      <div class="visual-bento__copy"><span class="visual-bento__kicker">02 / Automation</span><h3>Business &amp; AI workflows</h3><p>Connected systems that turn repetitive work into reliable flow.</p></div>
+      <div class="visual-bento__copy"><span class="visual-bento__kicker">Workflow Automation</span><h3>Business &amp; AI workflows</h3><p>Connected systems that turn repetitive work into reliable flow.</p></div>
       <div class="visual-bento__image visual-bento__image--workflow"><img src="/assets/bento-ai-workflow.webp" alt="Node-based automation workflow connected by warm terracotta lines" width="1448" height="1086" loading="lazy" /><span class="workflow-pulse workflow-pulse--one"></span><span class="workflow-pulse workflow-pulse--two"></span></div>
     </article>
     <article class="visual-bento__card">
-      <div class="visual-bento__copy"><span class="visual-bento__kicker">03 / Technical depth</span><h3>APIs that hold up</h3><p>Clear architecture from interface to infrastructure.</p></div>
+      <div class="visual-bento__copy"><span class="visual-bento__kicker">Technical Architecture</span><h3>APIs that hold up</h3><p>Clear architecture from interface to infrastructure.</p></div>
       <div class="visual-bento__image"><img src="/assets/bento-code-depth.webp" alt="Dark code editor with warm studio syntax highlighting" width="1448" height="1086" loading="lazy" /></div>
       <div class="stack-pills"><span>Next.js</span><span>Go</span><span>Python</span><span>PostgreSQL</span></div>
     </article>
     <article class="visual-bento__card visual-bento__card--metric">
-      <span class="visual-bento__kicker">04 / Rapid execution</span>
-      <strong>2–4 Week<br /><em>Launch Cycles</em></strong>
+      <span class="visual-bento__kicker">Sprint Execution</span>
+      <strong>2-4 Week<br /><em>Launch Cycles</em></strong>
       <p>Short feedback loops. Working software early.</p>
-      <div class="metric-progress"><span></span></div><div class="metric-labels"><span>Discovery</span><span>Launch ready</span></div>
+      <div class="flex items-center gap-2 mt-6 pt-4 border-t border-[#1F1F23]/8">
+        <span class="text-[11px] font-mono font-semibold text-[#C76B50]">Fixed Milestones</span>
+        <span class="text-xs text-[#8C847B]">•</span>
+        <span class="text-[11px] font-mono text-[#6E6862]">Written Scope Handover</span>
+      </div>
     </article>
   </div>
 </section>
@@ -43,7 +47,7 @@
   .visual-bento__copy p, .visual-bento__card--metric p { color: #6E6862; font: .78rem/1.6 var(--font-body); }
   .visual-bento__image { position: absolute; inset: 8.5rem 0 0; opacity: .88; mask-image: linear-gradient(to bottom, transparent 0%, black 16%, black 100%); }
   .visual-bento__image img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
-  .visual-bento__badge { position: absolute; right: 1rem; bottom: 1rem; display: inline-flex; align-items: center; gap: .45rem; padding: .55rem .7rem; border: 1px solid rgba(31,31,35,.1); border-radius: 999px; background: rgba(255,255,255,.92); backdrop-filter: blur(12px); color: #1F1F23; font: 600 .62rem var(--font-mono); box-shadow: 0 2px 8px rgba(31,31,35,.05); }
+  .visual-bento__badge { position: absolute; right: 1rem; bottom: 1rem; display: inline-flex; align-items: center; gap: .45rem; padding: .4rem .65rem; border: 1px solid rgba(31,31,35,.1); border-radius: 6px; background: #FAF8F5; color: #1F1F23; font: 600 .62rem var(--font-mono); box-shadow: 0 2px 8px rgba(31,31,35,.03); }
   .workflow-pulse { position: absolute; width: 12px; height: 12px; border-radius: 50%; background: #C76B50; box-shadow: 0 0 0 8px rgba(199,107,80,.2), 0 0 20px rgba(199,107,80,.8); animation: workflow-pulse 2.2s ease-in-out infinite; }
   .workflow-pulse--one { top: 43%; left: 48%; }.workflow-pulse--two { top: 62%; left: 70%; animation-delay: .8s; }
   @keyframes workflow-pulse { 50% { transform: scale(.72); opacity: .55; } }

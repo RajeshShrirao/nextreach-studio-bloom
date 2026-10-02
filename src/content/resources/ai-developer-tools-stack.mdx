@@ -29,7 +29,7 @@ Before you write a line of code, you need to understand your token costs and mod
 **URL:** [/tools/ai-token-calculator](/tools/ai-token-calculator)  
 **What it does:** Estimates token counts for your prompts across different tokenizers (tiktoken for OpenAI, Claude's tokenizer, etc.)  
 **Best for:** Prompt budgeting before API integration  
-**Weakness:** Tokenizer behavior varies by model — treat estimates as approximations
+**Weakness:** Tokenizer behavior varies by model - treat estimates as approximations
 
 ### Context Window Calculator
 **URL:** [/tools/context-window-calculator](/tools/context-window-calculator)  
@@ -48,7 +48,7 @@ These sit between your application and the LLM API. They handle chaining, memory
 **Language:** Python, JavaScript/TypeScript  
 **License:** MIT
 
-The most widely used orchestration framework. Mature ecosystem, extensive integrations with vector databases, APIs, and tools. The abstraction layer is thick — which is both its strength (batteries included) and its weakness (debugging is painful when things go wrong).
+The most widely used orchestration framework. Mature ecosystem, extensive integrations with vector databases, APIs, and tools. The abstraction layer is thick - which is both its strength (batteries included) and its weakness (debugging is painful when things go wrong).
 
 ```python
 from langchain_anthropic import ChatAnthropic
@@ -191,7 +191,7 @@ Required for RAG and semantic search applications. The choice depends on scale, 
 | Starter | $25/mo | 25GB | 25M |
 | Production | From $70/mo | 100GB+ | Unlimited |
 
-Strong performance on filtered vector search — queries that combine semantic similarity with metadata filters (e.g., "find similar code snippets written in TypeScript after 2024"). Written in Rust, so it's fast.
+Strong performance on filtered vector search - queries that combine semantic similarity with metadata filters (e.g., "find similar code snippets written in TypeScript after 2024"). Written in Rust, so it's fast.
 
 ```python
 from qdrant_client import QdrantClient
@@ -309,7 +309,7 @@ tests:
 **Website:** braintrustdata.com  
 **Managed cloud**
 
-More comprehensive than Promptfoo — includes dataset management, experiment tracking, and production monitoring. Closer to MLflow for LLMs.
+More comprehensive than Promptfoo - includes dataset management, experiment tracking, and production monitoring. Closer to MLflow for LLMs.
 
 ```python
 import braintrust
@@ -354,17 +354,17 @@ VS Code fork with deep LLM integration. The most popular AI-augmented editor in 
 **Website:** codeium.com/windsurf  
 **Platform:** macOS, Windows, Linux
 
-Windsurf is Codeium's AI-native IDE (not a fork — built from the ground up). It offers deep agentic AI integration with multi-file editing, automatic context gathering, and a "cascade" mode for complex multi-step tasks. Windsurf supports Claude, GPT-4o, and its own hosted models.
+Windsurf is Codeium's AI-native IDE (not a fork - built from the ground up). It offers deep agentic AI integration with multi-file editing, automatic context gathering, and a "cascade" mode for complex multi-step tasks. Windsurf supports Claude, GPT-4o, and its own hosted models.
 
 **What makes it different from Cursor:**
 - "Cascade" mode for autonomous multi-step workflows (read files, edit, run tests, fix failures)
-- Automatic context detection — the IDE proactively gathers relevant files without being asked
+- Automatic context detection - the IDE proactively gathers relevant files without being asked
 - Built-in terminal integration where the AI can run commands and interpret output
 - Generous free tier (500 requests/month) vs Cursor's 200
 
 **Cost:** Free tier (500 requests/month), Pro $15/mo
 
-**Honest assessment:** Windsurf's Cascade mode genuinely handles multi-step workflows better than Cursor's Composer for complex tasks like "add a new API endpoint — write the handler, the test, and update the docs." The automatic context detection is impressive but sometimes pulls in irrelevant files. For simple chat and completion, Cursor and Windsurf are comparable.
+**Honest assessment:** Windsurf's Cascade mode genuinely handles multi-step workflows better than Cursor's Composer for complex tasks like "add a new API endpoint - write the handler, the test, and update the docs." The automatic context detection is impressive but sometimes pulls in irrelevant files. For simple chat and completion, Cursor and Windsurf are comparable.
 
 ---
 
@@ -428,7 +428,7 @@ curl http://localhost:11434/v1/chat/completions \
   }'
 ```
 
-**Honest assessment:** Best local inference tool for Mac users. On Apple Silicon, 7B–14B models run comfortably. Llama 4 17B runs well on 32GB+ Macs thanks to architectural improvements. 70B models are usable but slow on most MacBook Pros. For heavy local inference, you need dedicated GPU hardware.
+**Honest assessment:** Best local inference tool for Mac users. On Apple Silicon, 7B-14B models run comfortably. Llama 4 17B runs well on 32GB+ Macs thanks to architectural improvements. 70B models are usable but slow on most MacBook Pros. For heavy local inference, you need dedicated GPU hardware.
 
 **Cost:** Free
 
@@ -479,12 +479,12 @@ def my_llm_function(prompt: str) -> str:
 **Website:** helicone.ai  
 **Proxy-based monitoring**
 
-Drop-in observability by routing your API calls through Helicone's proxy. Zero code changes required — just change your base URL.
+Drop-in observability by routing your API calls through Helicone's proxy. Zero code changes required - just change your base URL.
 
 ```python
 from openai import OpenAI
 
-# Just change the base_url — all calls are logged automatically
+# Just change the base_url - all calls are logged automatically
 client = OpenAI(
     api_key="your-openai-key",
     base_url="https://oai.helicone.ai/v1",
@@ -514,16 +514,16 @@ Supports OpenAI, Anthropic, Google, and any OpenAI-compatible API.
 
 ---
 
-### Small Team (2–10 engineers)
+### Small Team (2-10 engineers)
 
 | Category | Tool | Cost |
 |---|---|---|
 | LLM APIs | Anthropic + OpenAI + Gemini | Pay per token |
 | Orchestration | LangChain or LlamaIndex | Free |
-| Vector DB | Qdrant Cloud or Pinecone | $25–70/mo |
+| Vector DB | Qdrant Cloud or Pinecone | $25-70/mo |
 | Prompt testing | Promptfoo | Free |
-| Monitoring | LangSmith or Helicone | $20–39/mo |
-| Editor | Cursor Pro ($20/seat/mo) or Windsurf Pro ($15/seat/mo) | $15–20/seat/mo |
+| Monitoring | LangSmith or Helicone | $20-39/mo |
+| Editor | Cursor Pro ($20/seat/mo) or Windsurf Pro ($15/seat/mo) | $15-20/seat/mo |
 
 ---
 

@@ -68,7 +68,8 @@ public/
 - `.agents/homepage-revamp-plan.md` — Landing page redesign blueprint
 - `.agents/seo-plan-pune-3-month.md` — 3-month Pune SEO plan with 7 service pillars, 12 landing pages, 9 industry pages, keyword research, content calendar
 - `MARKETER-GUIDE.md` — Audience, positioning, competitive landscape
-- `skills-lock.json` — Registered agent skills (Tailwind 4 docs, web design guidelines)
+- `skills-lock.json` — Registered agent skills (Tailwind 4 docs, web design guidelines, taste-skill / design-taste-frontend anti-slop system)
+- `.agents/skills/design-taste-frontend/SKILL.md` — Taste Skill v2 anti-slop rules, design locks, brief inference & hero discipline
 - `public/llms.txt` — AI context primer for LLM crawlers (services, pricing, key pages)
 - `public/pricing-for-agents.md` — Full machine-readable service/pricing dossier for autonomous agents
 

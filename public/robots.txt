@@ -15,7 +15,7 @@ Allow: /
 User-agent: DuckDuckBot
 Allow: /
 
-# AI crawlers — explicitly allowed for maximum AI search visibility
+# AI crawlers - explicitly allowed for maximum AI search visibility
 # Training bots (model knowledge) + search/index bots (citations in AI answers)
 User-agent: GPTBot
 Allow: /

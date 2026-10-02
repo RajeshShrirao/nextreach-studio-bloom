@@ -24,7 +24,7 @@ const {
 } = Astro.props;
 
 const siteURL = "https://nextreachstudio.vercel.app";
-const siteTitle = title ? `${title} | NextReach Studio` : "NextReach Studio — Tools & Resources for AI Builders";
+const siteTitle = title ? `${title} | NextReach Studio` : "NextReach Studio - Tools & Resources for AI Builders";
 const siteDescription = description || "Practical tools, guides, and resources for AI builders, Claude Code users, indie hackers, and full-stack developers building with LLMs.";
 const ogImage = image ? (image.startsWith("http") ? image : `${siteURL}${image}`) : `${siteURL}/link-previews.jpg`;
 const canonical = canonicalURL || Astro.url.href;

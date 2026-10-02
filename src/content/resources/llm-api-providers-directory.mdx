@@ -9,7 +9,7 @@ updatedDate: 2026-05-31
 category: "API Providers"
 ---
 
-Choosing an LLM API provider in 2026 is not just picking the smartest model — it's a systems decision that affects your latency, reliability, compliance posture, and monthly burn rate. This directory covers every provider worth considering, with honest assessments of where each one excels and where it falls short.
+Choosing an LLM API provider in 2026 is not just picking the smartest model - it's a systems decision that affects your latency, reliability, compliance posture, and monthly burn rate. This directory covers every provider worth considering, with honest assessments of where each one excels and where it falls short.
 
 Pricing is as of May 2026 and reflects standard public API rates. Many providers have enterprise pricing that differs significantly. Use the [LLM Cost Calculator](/tools/llm-cost-calculator) to model costs for your specific volume.
 
@@ -20,13 +20,13 @@ Pricing is as of May 2026 and reflects standard public API rates. Many providers
 ## How to Use This Directory
 
 Each provider listing includes:
-- **Models available** — current flagship and budget options
-- **Pricing** — per 1M input/output tokens
-- **Context window** — maximum tokens per request
-- **Rate limits** — default tier limits
-- **Strengths** — where this provider genuinely wins
-- **Weaknesses** — honest limitations
-- **Best for** — specific use cases where this provider is the right call
+- **Models available** - current flagship and budget options
+- **Pricing** - per 1M input/output tokens
+- **Context window** - maximum tokens per request
+- **Rate limits** - default tier limits
+- **Strengths** - where this provider genuinely wins
+- **Weaknesses** - honest limitations
+- **Best for** - specific use cases where this provider is the right call
 
 ---
 
@@ -59,7 +59,7 @@ Each provider listing includes:
 - **Batch API:** 50% discount for async batch processing, results within 24 hours
 
 ### Strengths
-- Best-in-class performance on SWE-bench (real software engineering tasks) — Claude 4 Sonnet leads at 74.1%
+- Best-in-class performance on SWE-bench (real software engineering tasks) - Claude 4 Sonnet leads at 74.1%
 - Most reliable instruction-following among all providers
 - Extended thinking mode for complex reasoning tasks
 - Best JSON/structured output reliability
@@ -110,7 +110,7 @@ message = client.messages.create(
 | o3-mini | 200K | $1.10 | $4.40 |
 | GPT-4.1 | 1M | $2.00 | $8.00 |
 
-**GPT-5** (released in 2026) is OpenAI's latest flagship, offering a 256K context window and improved reasoning over GPT-4o. It strikes a balance between GPT-4o's affordability and o3's reasoning depth — performing well on both code generation (92.1% HumanEval+) and complex reasoning (81.5% GPQA Diamond).
+**GPT-5** (released in 2026) is OpenAI's latest flagship, offering a 256K context window and improved reasoning over GPT-4o. It strikes a balance between GPT-4o's affordability and o3's reasoning depth - performing well on both code generation (92.1% HumanEval+) and complex reasoning (81.5% GPQA Diamond).
 
 ### Rate Limits (Tier 2)
 
@@ -125,10 +125,10 @@ message = client.messages.create(
 - **Batch API:** 50% discount, 24-hour turnaround
 
 ### Strengths
-- Largest model family — from ultra-cheap mini to reasoning-specialized o3 and the new GPT-5 flagship
+- Largest model family - from ultra-cheap mini to reasoning-specialized o3 and the new GPT-5 flagship
 - GPT-5 offers improved reasoning (81.5% GPQA Diamond) while being significantly cheaper than o3
 - Broadest ecosystem support (every framework, tool, and library integrates with OpenAI first)
-- Best fine-tuning pipeline — most mature, documentation, and cost transparency
+- Best fine-tuning pipeline - most mature, documentation, and cost transparency
 - Strong multimodal capability (vision, audio with GPT-4o and GPT-5)
 - Assistants API for stateful, multi-turn applications
 
@@ -141,7 +141,7 @@ message = client.messages.create(
 ### Best For
 - Teams wanting one API for everything (text, vision, audio, embeddings, fine-tuning)
 - Applications needing the broadest third-party integration support
-- When you need fine-tuned models — OpenAI's pipeline is the most mature
+- When you need fine-tuned models - OpenAI's pipeline is the most mature
 - Reasoning-heavy tasks where o3 quality justifies cost
 
 ### Integration
@@ -177,7 +177,7 @@ response = client.chat.completions.create(
 | Gemini 2.0 Flash | 1M | $0.075 | $0.30 |
 | Gemini 2.0 Flash-Lite | 1M | $0.018 | $0.075 |
 
-**Gemini 3 Pro** is Google's latest reasoning model (May 2026), with further improvements in instruction-following, code generation, and multilingual performance. It retains the 2M token context window and adds better structured output handling. **Gemini 2.5 Flash** fills the gap between 2.0 Flash and 2.5 Pro, offering better quality than Flash at $0.15/1M input — a price/performance sweet spot for high-volume tasks.
+**Gemini 3 Pro** is Google's latest reasoning model (May 2026), with further improvements in instruction-following, code generation, and multilingual performance. It retains the 2M token context window and adds better structured output handling. **Gemini 2.5 Flash** fills the gap between 2.0 Flash and 2.5 Pro, offering better quality than Flash at $0.15/1M input - a price/performance sweet spot for high-volume tasks.
 
 ### Rate Limits (Pay-as-you-go)
 
@@ -187,7 +187,7 @@ response = client.chat.completions.create(
 | Gemini 2.0 Flash | 2,000 | 4,000,000 |
 
 ### Strengths
-- Lowest cost per token at every quality tier — Flash is exceptionally cheap
+- Lowest cost per token at every quality tier - Flash is exceptionally cheap
 - Largest context window available (2M tokens on 2.5 Pro and 3 Pro)
 - Best performance on reasoning benchmarks (GPQA Diamond, MATH)
 - Native Google Search grounding for RAG-free real-time knowledge
@@ -227,25 +227,25 @@ response = model.generate_content(
 
 ## Meta (via Inference Providers)
 
-**Direct access:** Not available — Meta releases weights, not an API  
+**Direct access:** Not available - Meta releases weights, not an API  
 **Via:** Groq, Together AI, Fireworks AI, Replicate, AWS Bedrock
 
 ### Models (Llama Family)
 
 | Model | Parameters | Context | Typical Cost ($/1M) |
 |---|---|---|---|
-| Llama 4 17B | 17B | 256K | $0.10–$0.40 |
-| Llama 3.3 70B | 70B | 128K | $0.20–$0.90 |
-| Llama 3.1 405B | 405B | 128K | $1.50–$5.00 |
-| Llama 3.2 11B Vision | 11B | 128K | $0.08–$0.20 |
-| CodeLlama 70B | 70B | 100K | $0.20–$0.60 |
+| Llama 4 17B | 17B | 256K | $0.10-$0.40 |
+| Llama 3.3 70B | 70B | 128K | $0.20-$0.90 |
+| Llama 3.1 405B | 405B | 128K | $1.50-$5.00 |
+| Llama 3.2 11B Vision | 11B | 128K | $0.08-$0.20 |
+| CodeLlama 70B | 70B | 100K | $0.20-$0.60 |
 
 **Llama 4 17B** is Meta's latest open-weight model, offering a 256K context window and improved multimodal capabilities. Despite its smaller parameter count (17B vs 70B for Llama 3.3), it delivers competitive reasoning quality thanks to architectural improvements, including interleaved MoE layers and improved training data curation. Ideal for self-hosting on modest hardware.
 
 *Cost varies by inference provider. See provider-specific pricing below.*
 
 ### Strengths
-- Open weights — you can fine-tune and run on your own infrastructure
+- Open weights - you can fine-tune and run on your own infrastructure
 - No data leaves your infrastructure when self-hosted
 - Competitive quality for the cost, especially Llama 3.3 70B
 - No rate limits when self-hosted
@@ -280,12 +280,12 @@ response = model.generate_content(
 | Gemma 2 9B | $0.20 | $0.20 | ~1,200 tokens/sec |
 
 ### Strengths
-- **Fastest inference available** — LPU (Language Processing Unit) hardware delivers 5–10x faster throughput than GPU-based providers
+- **Fastest inference available** - LPU (Language Processing Unit) hardware delivers 5-10x faster throughput than GPU-based providers
 - No rate limit pain for throughput-heavy workloads
 - Simple pricing, no egress fees
 
 ### Weaknesses
-- Limited model selection — only runs open-weight models
+- Limited model selection - only runs open-weight models
 - Not suitable for tasks requiring frontier model quality
 - Context windows capped at 128K even for Llama 3.1 405B
 
@@ -339,7 +339,7 @@ response = model.generate_content(
 | DeepSeek V3 | 128K | $0.27 | $1.10 |
 
 ### Strengths
-- **DeepSeek R1** offers strong reasoning at a fraction of the cost of o3 — comparable GPQA Diamond scores (78.6%) at ~5% of the price
+- **DeepSeek R1** offers strong reasoning at a fraction of the cost of o3 - comparable GPQA Diamond scores (78.6%) at ~5% of the price
 - V3 is an excellent budget choice for coding tasks, competitive with GPT-4o mini at similar pricing
 - Both models support OpenAI-compatible API format for easy integration
 - Available via deep infrastructure providers (Together AI, Fireworks) as well as direct API
@@ -348,7 +348,7 @@ response = model.generate_content(
 - Smaller context window (128K) compared to Gemini or Claude
 - R1 can be verbose in its reasoning traces, increasing token costs for the thinking budget
 - Less ecosystem support and fewer third-party integrations than OpenAI/Anthropic
-- Data residency limited to US/Asia — not ideal for EU compliance
+- Data residency limited to US/Asia - not ideal for EU compliance
 
 ### Best For
 - Cost-sensitive reasoning tasks where o3 pricing is prohibitive
@@ -410,7 +410,7 @@ response = client.fim.complete(
 
 ### Models Available
 
-Claude (all Anthropic models), Llama (all Meta models), Mistral, Titan, Cohere, AI21 Jurassic — essentially a managed multi-provider API.
+Claude (all Anthropic models), Llama (all Meta models), Mistral, Titan, Cohere, AI21 Jurassic - essentially a managed multi-provider API.
 
 ### Strengths
 - Single billing relationship for multiple providers
@@ -442,7 +442,7 @@ Don't forget: you need embeddings for RAG pipelines. These are separate from gen
 | Cohere | embed-v5.0 | 1024 | $0.10 |
 | Voyage AI | voyage-3-large | 1024 | $0.06 |
 | Google | text-embedding-004 | 768 | Free (Gemini API) |
-| Anthropic | (uses third-party — no native embedding API) | — | — |
+| Anthropic | (uses third-party - no native embedding API) | - | - |
 
 For most applications, `text-embedding-3-small` at $0.02/1M is the right default. Use `voyage-3-large` if you need best-in-class retrieval quality.
 

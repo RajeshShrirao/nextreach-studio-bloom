@@ -109,7 +109,7 @@ export default function TokenCalculator() {
               <optgroup key={provider} label={provider}>
                 {models.map(([key, config]) => (
                   <option key={key} value={key}>
-                    {config.label} — {(config.contextWindow / 1000).toFixed(0)}K context limit
+                    {config.label} - {(config.contextWindow / 1000).toFixed(0)}K context limit
                   </option>
                 ))}
               </optgroup>

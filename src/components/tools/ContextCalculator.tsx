@@ -100,7 +100,7 @@ export default function ContextCalculator() {
             >
               {MODELS.map((m) => (
                 <option key={m.id} value={m.id}>
-                  {m.label} ({m.provider}) — {(m.contextWindow / 1000).toFixed(0)}K limits
+                  {m.label} ({m.provider}) - {(m.contextWindow / 1000).toFixed(0)}K limits
                 </option>
               ))}
             </select>

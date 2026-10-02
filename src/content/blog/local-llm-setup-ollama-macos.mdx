@@ -8,16 +8,16 @@ draft: false
 updatedDate: 2026-05-31
 ---
 
-Running language models locally used to mean a Linux tower with an Nvidia GPU and a weekend of configuration. On Apple Silicon Macs, it's now a legitimate option for daily development work — with real throughput, offline operation, and zero per-token cost. This guide covers the actual setup, the tradeoffs, and how to integrate local models into development workflows without friction.
+Running language models locally used to mean a Linux tower with an Nvidia GPU and a weekend of configuration. On Apple Silicon Macs, it's now a legitimate option for daily development work - with real throughput, offline operation, and zero per-token cost. This guide covers the actual setup, the tradeoffs, and how to integrate local models into development workflows without friction.
 
 ## Why Local? The Honest Case
 
 Local LLMs make sense in specific situations:
 
-- **Offline development** — planes, trains, unreliable hotel WiFi
-- **Sensitive codebases** — you don't want proprietary code in someone else's logs
-- **High-volume tasks** — batch processing where cloud API costs add up fast
-- **Experimentation** — testing prompt behavior without a billing anxiety loop
+- **Offline development** - planes, trains, unreliable hotel WiFi
+- **Sensitive codebases** - you don't want proprietary code in someone else's logs
+- **High-volume tasks** - batch processing where cloud API costs add up fast
+- **Experimentation** - testing prompt behavior without a billing anxiety loop
 
 They don't make sense as a primary tool if you need state-of-the-art reasoning on hard problems. Llama 3.1 8B is genuinely good for many tasks. It's not Claude Opus or GPT-4o. Know what you're trading before you commit to a workflow.
 
@@ -65,38 +65,38 @@ You should get a JSON response with an empty `models` array if you haven't pulle
 Models are pulled by name. Ollama's library handles versioning and quantization:
 
 ```bash
-# Llama 3.1 8B — good all-around choice for 16GB systems
+# Llama 3.1 8B - good all-around choice for 16GB systems
 ollama pull llama3.1
 
-# Llama 4 8B — latest generation, improved reasoning and context handling
+# Llama 4 8B - latest generation, improved reasoning and context handling
 ollama pull llama4
 
-# Phi-3 Mini — excellent for 8GB systems, surprisingly capable
+# Phi-3 Mini - excellent for 8GB systems, surprisingly capable
 ollama pull phi3
 
-# Phi-4 14B — Microsoft's latest, strong reasoning at a compact size
+# Phi-4 14B - Microsoft's latest, strong reasoning at a compact size
 ollama pull phi-4
 
-# Mistral 7B — strong at code and structured output
+# Mistral 7B - strong at code and structured output
 ollama pull mistral
 
-# Gemma 2 9B — Google's model, good instruction following
+# Gemma 2 9B - Google's model, good instruction following
 ollama pull gemma2
 
-# Gemma 3 12B — Google's latest, improved multilingual and long-context performance
+# Gemma 3 12B - Google's latest, improved multilingual and long-context performance
 ollama pull gemma3
 
-# Code Llama — specifically tuned for code generation (note: superseded by CodeGemma and DeepSeek Coder)
+# Code Llama - specifically tuned for code generation (note: superseded by CodeGemma and DeepSeek Coder)
 ollama pull codellama
 ```
 
 Quantization levels matter. By default, Ollama pulls a Q4 quantized version (4-bit), which balances quality and memory usage. You can pull specific quantizations:
 
 ```bash
-# Q8 quantization — better quality, needs more RAM
+# Q8 quantization - better quality, needs more RAM
 ollama pull llama3.1:8b-instruct-q8_0
 
-# Q4_K_M — the K-means variant, slightly better than standard Q4
+# Q4_K_M - the K-means variant, slightly better than standard Q4
 ollama pull llama3.1:8b-instruct-q4_K_M
 ```
 
@@ -274,7 +274,7 @@ scores = [cosine_similarity(query_embedding, doc_emb) for doc_emb in doc_embeddi
 ranked = sorted(zip(documents, scores), key=lambda x: x[1], reverse=True)
 
 for doc, score in ranked:
-    print(f"{score:.3f} — {doc}")
+    print(f"{score:.3f} - {doc}")
 ```
 
 ## Performance Tuning
@@ -325,9 +325,9 @@ Approximate tokens-per-second on different chips (Q4 quantized, 2048 context):
 | Llama 3.1 8B | ~18 t/s | ~35 t/s | ~45 t/s | ~60 t/s |
 | Llama 4 8B | ~15 t/s | ~30 t/s | ~40 t/s | ~55 t/s |
 | Mistral 7B | ~20 t/s | ~38 t/s | ~48 t/s | ~62 t/s |
-| Llama 3.1 70B | — | ~8 t/s | ~15 t/s | ~22 t/s |
+| Llama 3.1 70B | - | ~8 t/s | ~15 t/s | ~22 t/s |
 
-These are estimates — actual performance varies with context length and concurrent load. 15–20 t/s for an 8B model is fast enough for interactive use. Below ~8 t/s starts to feel slow for chat but is fine for batch processing.
+These are estimates - actual performance varies with context length and concurrent load. 15-20 t/s for an 8B model is fast enough for interactive use. Below ~8 t/s starts to feel slow for chat but is fine for batch processing.
 
 ## Integrating with Your Dev Environment
 
@@ -407,7 +407,7 @@ Be clear-eyed about the limits. Local 8B models consistently underperform fronti
 
 The right mental model: use local LLMs the way you'd use a capable junior developer. They can handle clearly scoped tasks well. They need more guidance on ambiguous problems, and you should review their output carefully.
 
-For the tasks where that's fine — and there are many — running local cuts API costs to zero and keeps sensitive code off external servers entirely.
+For the tasks where that's fine - and there are many - running local cuts API costs to zero and keeps sensitive code off external servers entirely.
 
 ## May 2026 Update: New Model Landscape
 

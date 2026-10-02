@@ -10,11 +10,11 @@ updatedDate: 2026-05-31
 
 Every developer who uses LLMs heavily hits the same wall eventually. The session starts well, the model has the full context, and answers are sharp. An hour later, after a long back-and-forth, the responses get vague. The model starts contradicting decisions made earlier in the conversation. You ask about code it just wrote and it acts like it's never seen it. The context window is full, and the model is silently degrading.
 
-This isn't a model quality problem — it's a resource management problem. Context windows are fixed-size buffers, and filling them with noise is the developer's fault, not the model's. This post covers what's actually happening and how to manage it systematically.
+This isn't a model quality problem - it's a resource management problem. Context windows are fixed-size buffers, and filling them with noise is the developer's fault, not the model's. This post covers what's actually happening and how to manage it systematically.
 
 ## What the Context Window Actually Is
 
-Language models process text as tokens — roughly 3-4 characters each for English, varying by language and content type. Every model has a maximum context length: the total number of tokens it can process in a single request, including both the input and the output it generates.
+Language models process text as tokens - roughly 3-4 characters each for English, varying by language and content type. Every model has a maximum context length: the total number of tokens it can process in a single request, including both the input and the output it generates.
 
 Common limits at time of writing:
 
@@ -32,7 +32,7 @@ Common limits at time of writing:
 | DeepSeek V3 | 128K tokens |
 | DeepSeek R1 | 128K tokens |
 
-A 200K token context holds roughly 150,000 words — around 500 pages of text. That sounds enormous until you start loading files. A medium-sized TypeScript project with 50 files of 200 lines each is around 500KB of source code, which is roughly 125K tokens before you've said a word.
+A 200K token context holds roughly 150,000 words - around 500 pages of text. That sounds enormous until you start loading files. A medium-sized TypeScript project with 50 files of 200 lines each is around 500KB of source code, which is roughly 125K tokens before you've said a word.
 
 Use [our Context Window Calculator](/tools/context-window-calculator) to estimate token counts for your actual files before starting a session.
 
@@ -42,15 +42,15 @@ Three things degrade as context fills:
 
 **1. Attention dilution**
 
-Transformer attention is not uniform across the full context. Models pay more attention to the beginning and end of the context window, with a well-documented performance dip in the middle — the "lost in the middle" problem from the 2023 Stanford/Berkeley paper. Content buried 60K tokens into a 128K context window may as well be invisible.
+Transformer attention is not uniform across the full context. Models pay more attention to the beginning and end of the context window, with a well-documented performance dip in the middle - the "lost in the middle" problem from the 2023 Stanford/Berkeley paper. Content buried 60K tokens into a 128K context window may as well be invisible.
 
 **2. Increased latency and cost**
 
-API cost is linear with tokens. A 100K token request costs 10x a 10K token request. Latency scales similarly — time-to-first-token increases with context length. This is why sessions that start fast get slow as they accumulate history. Estimate your costs upfront with [our LLM Cost Calculator](/tools/llm-cost-calculator).
+API cost is linear with tokens. A 100K token request costs 10x a 10K token request. Latency scales similarly - time-to-first-token increases with context length. This is why sessions that start fast get slow as they accumulate history. Estimate your costs upfront with [our LLM Cost Calculator](/tools/llm-cost-calculator).
 
 **3. Reasoning degradation in long chains**
 
-When the model needs to reason about code while also tracking a long conversation history, it's doing more work. On long contexts, logical consistency tends to decay — decisions made early in the conversation are implicitly contradicted by later responses.
+When the model needs to reason about code while also tracking a long conversation history, it's doing more work. On long contexts, logical consistency tends to decay - decisions made early in the conversation are implicitly contradicted by later responses.
 
 ## Measuring Your Context Budget
 
@@ -108,7 +108,7 @@ total = sum(r["tokens"] for r in results)
 print(f"Total tokens: {total:,}")
 print(f"\nTop 10 largest files:")
 for r in results[:10]:
-    print(f"  {r['tokens']:>6,} tokens — {r['file']}")
+    print(f"  {r['tokens']:>6,} tokens - {r['file']}")
 ```
 
 Run this before planning a session. If your target files total 80K tokens and you're on a 128K model, you have very little room for conversation history.
@@ -139,7 +139,7 @@ Ask yourself before adding any file: "Would the model's answer change if I remov
 2. Files it imports directly
 3. Type definitions it uses
 4. Tests that cover it
-5. Everything else — leave it out
+5. Everything else - leave it out
 
 ## Strategy 2: Context Distillation
 
@@ -160,7 +160,7 @@ Summarize what we've established in this session as structured notes:
 ## Next steps
 [where we were headed]
 
-Keep it dense — this summary will be used to seed the next session.
+Keep it dense - this summary will be used to seed the next session.
 ```
 
 Save this summary. When you start a new session, paste it before your first question. You lose the full conversational history but preserve the decision record, which is usually what matters.
@@ -218,7 +218,7 @@ budget.report()
 
 ## Strategy 4: Tool Call Optimization for Agentic Workflows
 
-In agentic setups (Claude Code, Cursor, custom agents), every tool call — reading a file, searching code, running a test — consumes tokens. The tool call itself, the result, and the response all go into the context.
+In agentic setups (Claude Code, Cursor, custom agents), every tool call - reading a file, searching code, running a test - consumes tokens. The tool call itself, the result, and the response all go into the context.
 
 Common waste patterns:
 
@@ -288,7 +288,7 @@ Step 2: If the model's question reveals what files are relevant, load those
 Step 3: Add more files only if the initial ones are insufficient
 ```
 
-This works because the model can often identify what it needs with just a problem description. If you describe a bug and it asks "can you show me the webhook handler?", you've learned exactly what file matters — rather than guessing and loading six files upfront.
+This works because the model can often identify what it needs with just a problem description. If you describe a bug and it asks "can you show me the webhook handler?", you've learned exactly what file matters - rather than guessing and loading six files upfront.
 
 ## Strategy 6: Context Window Rotation
 
@@ -314,7 +314,7 @@ Signs that you're hitting context quality limits:
 - It starts suggesting the wrong framework or approach
 - Code suggestions ignore constraints established at session start
 
-When you notice these, don't fight it — rotate. The model isn't getting smarter by having more conversation added on top of a full context.
+When you notice these, don't fight it - rotate. The model isn't getting smarter by having more conversation added on top of a full context.
 
 ```python
 # Simple heuristic for conversation length monitoring
@@ -374,10 +374,10 @@ Context window management is boring work that pays compound interest. Developers
 
 The key habits:
 
-1. **Estimate before you load** — use the token calculator before adding files
-2. **Load less than you think you need** — you can always add more
-3. **Distill before you clear** — save session knowledge as structured notes
-4. **Rotate proactively** — don't wait until the model is confused
-5. **Monitor tool call costs** in agentic workflows — they add up faster than expected
+1. **Estimate before you load** - use the token calculator before adding files
+2. **Load less than you think you need** - you can always add more
+3. **Distill before you clear** - save session knowledge as structured notes
+4. **Rotate proactively** - don't wait until the model is confused
+5. **Monitor tool call costs** in agentic workflows - they add up faster than expected
 
 None of this is complicated. It's just the habit of treating context as the finite resource it is, rather than an infinite scratchpad.

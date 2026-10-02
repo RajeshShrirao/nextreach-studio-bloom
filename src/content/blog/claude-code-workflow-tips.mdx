@@ -8,7 +8,7 @@ draft: false
 updatedDate: 2026-05-31
 ---
 
-After months of daily use, Claude Code stops feeling like a novelty and starts revealing its real texture. Some patterns genuinely cut hours off common workflows. Others sound useful in demos but collapse under real project complexity. This post skips the obvious stuff — you already know how to run `/init` and ask for refactors — and goes straight to the patterns that actually matter when you're shipping.
+After months of daily use, Claude Code stops feeling like a novelty and starts revealing its real texture. Some patterns genuinely cut hours off common workflows. Others sound useful in demos but collapse under real project complexity. This post skips the obvious stuff - you already know how to run `/init` and ask for refactors - and goes straight to the patterns that actually matter when you're shipping.
 
 ## 1. AGENTS.md (Formerly CLAUDE.md) Is Your Persistent Memory
 
@@ -27,7 +27,7 @@ The difference between a weak `AGENTS.md` and a strong one is specificity. A wea
 
 ## File conventions
 - All server actions live in src/server/actions/
-- DB schemas in src/db/schema/ — one file per domain
+- DB schemas in src/db/schema/ - one file per domain
 - Environment vars: always typed through src/env.ts (T3 env)
 
 ## Current sprint focus
@@ -40,7 +40,7 @@ Don't touch auth files unless explicitly asked.
 ```
 
 Key things to put in AGENTS.md:
-- Decisions that are final — saves re-litigating architecture every session
+- Decisions that are final - saves re-litigating architecture every session
 - What's off-limits in the current sprint
 - Naming conventions and file layout rules
 - Known debt that Claude shouldn't "fix" spontaneously
@@ -100,13 +100,13 @@ This catches architectural misunderstandings and forces Claude to plan rather th
 
 Beyond `/init` and `/clear`, these deserve a place in your workflow:
 
-**`/compact`** — Summarizes the conversation and continues in a condensed form. Use this instead of `/clear` when you're mid-task and need to preserve the goal context but trim the noise.
+**`/compact`** - Summarizes the conversation and continues in a condensed form. Use this instead of `/clear` when you're mid-task and need to preserve the goal context but trim the noise.
 
-**`/cost`** — Shows token usage for the current session. Run this periodically to build intuition. Surprises here usually mean you've added large files to context unnecessarily.
+**`/cost`** - Shows token usage for the current session. Run this periodically to build intuition. Surprises here usually mean you've added large files to context unnecessarily.
 
-**`/doctor`** — Diagnoses environment issues. Useful when Claude Code starts behaving strangely — wrong Node version, missing API key, etc.
+**`/doctor`** - Diagnoses environment issues. Useful when Claude Code starts behaving strangely - wrong Node version, missing API key, etc.
 
-**`/memory`** — Manages what's in the persistent memory. Useful for adding one-off decisions mid-session that you want to survive a `/clear`.
+**`/memory`** - Manages what's in the persistent memory. Useful for adding one-off decisions mid-session that you want to survive a `/clear`.
 
 ## 6. Multi-File Edits: Give Claude the Map First
 
@@ -129,7 +129,7 @@ Doing it this way avoids the failure mode where Claude updates three files and m
 
 ## 7. Use Git as a Checkpoint System
 
-Claude Code works best when you commit frequently — not because of any technical reason, but because it changes how you interact with the model.
+Claude Code works best when you commit frequently - not because of any technical reason, but because it changes how you interact with the model.
 
 When you have a clean commit to fall back to, you can give Claude more latitude. "Try this refactor, and if it doesn't work we'll revert" becomes a real option instead of a gamble.
 
@@ -177,14 +177,14 @@ Do NOT rewrite or refactor. Give me a numbered list of concerns
 with file and line numbers. I'll tell you which ones to fix.
 ```
 
-Without this constraint, Claude will often start rewriting. Sometimes that's fine. But when you want a code review — not a rewrite — this framing keeps it focused.
+Without this constraint, Claude will often start rewriting. Sometimes that's fine. But when you want a code review - not a rewrite - this framing keeps it focused.
 
 ## 10. Scope Isolation for Long Sessions
 
 For sessions spanning multiple hours or features, create a scope file:
 
 ```markdown
-# Session Scope — May 20
+# Session Scope - May 20
 
 ## In scope today
 - Billing module: Stripe webhook handling
@@ -196,7 +196,7 @@ For sessions spanning multiple hours or features, create a scope file:
 - Database migrations (need DBA review)
 ```
 
-Paste this at the start of the session. When Claude starts drifting — "while I'm in this file, I noticed the auth check could be simplified..." — you can reference the scope file: "That's out of scope for today. Stick to the billing module."
+Paste this at the start of the session. When Claude starts drifting - "while I'm in this file, I noticed the auth check could be simplified..." - you can reference the scope file: "That's out of scope for today. Stick to the billing module."
 
 ## 11. TypeScript Type Generation: Claude's Best Trick
 
@@ -223,7 +223,7 @@ Specifically test:
 1. What happens when the user's subscription is expired
 2. What happens when the Stripe API call times out (mock it)
 3. The happy path with a valid active subscription
-4. Input validation — what if userId is an empty string?
+4. Input validation - what if userId is an empty string?
 
 Use vi.mock() for the Stripe SDK. Don't test implementation details, 
 test behavior.
@@ -259,7 +259,7 @@ When I say "add endpoint for X", follow this pattern:
 2. Add input validation with Zod
 3. Add the procedure to the router index
 4. Generate the client-side hook with useQuery/useMutation
-5. Don't create a new router file — fit it in the existing domain router
+5. Don't create a new router file - fit it in the existing domain router
 
 ### Database migrations
 When I say "add column X to table Y":
@@ -288,10 +288,10 @@ Save this output. At the start of your next session, paste it as the first messa
 
 ## Putting It Together
 
-These patterns aren't about squeezing performance out of the model — they're about managing the collaboration systematically. Claude Code is most useful when you treat it as a capable collaborator who needs clear briefings, defined scope, and explicit checkpoints, not a magic box you describe problems to and expect perfect output from.
+These patterns aren't about squeezing performance out of the model - they're about managing the collaboration systematically. Claude Code is most useful when you treat it as a capable collaborator who needs clear briefings, defined scope, and explicit checkpoints, not a magic box you describe problems to and expect perfect output from.
 
 The developers who get the most out of Claude Code aren't the ones who write the cleverest prompts. They're the ones who've built structured workflows around the tool's actual strengths and failure modes.
 
-Track your session costs and token usage regularly using [our LLM Cost Calculator](/tools/llm-cost-calculator) — it'll help you understand where you're spending context budget and where you can trim.
+Track your session costs and token usage regularly using [our LLM Cost Calculator](/tools/llm-cost-calculator) - it'll help you understand where you're spending context budget and where you can trim.
 
 Start with patterns 1, 2, and 7. Get those into muscle memory before adding the rest. The compounding effect is real.

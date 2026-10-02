@@ -89,7 +89,7 @@ export default function VRAMEstimator() {
               >
                 {PRESETS.map((p) => (
                   <option key={p.id} value={p.id}>
-                    {p.label} {p.note ? `— (${p.note})` : ""}
+                    {p.label} {p.note ? ` -  (${p.note})` : ""}
                   </option>
                 ))}
               </select>
