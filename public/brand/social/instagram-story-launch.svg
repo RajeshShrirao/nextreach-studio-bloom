@@ -69,7 +69,7 @@
     <!-- Link Sticker Placeholder -->
     <g transform="translate(50, 1000)">
       <rect width="820" height="120" rx="20" fill="#FAF8F5" />
-      <text x="60" y="70" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="24px" fill="#1F1F23">🔗 TAP TO VIEW LIVE DEMO &rarr;</text>
+      <text x="60" y="70" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="24px" fill="#1F1F23">🔗 TAP TO VIEW LIVE DEMO &#8594;</text>
       <text x="680" y="70" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="16px" fill="#C76B50">DEMO</text>
     </g>
   </g>

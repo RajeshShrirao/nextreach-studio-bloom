@@ -65,6 +65,6 @@
   <!-- Bottom CTA -->
   <g transform="translate(80, 1500)">
     <rect width="920" height="120" rx="24" fill="#C76B50" />
-    <text x="460" y="70" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="24px" fill="#FFFFFF" text-anchor="middle">Book Your 14-Day Sprint &rarr;</text>
+    <text x="460" y="70" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="24px" fill="#FFFFFF" text-anchor="middle">Book Your 14-Day Sprint &#8594;</text>
   </g>
 </svg>

@@ -56,6 +56,6 @@
 
   <!-- Swipe Prompt -->
   <g transform="translate(80, 1180)">
-    <text x="0" y="30" font-family="'JetBrains Mono', monospace" font-size="16px" font-weight="700" fill="#10B981">SWIPE TO SEE LIVE CLIENT ROI &rarr;</text>
+    <text x="0" y="30" font-family="'JetBrains Mono', monospace" font-size="16px" font-weight="700" fill="#10B981">SWIPE TO SEE LIVE CLIENT ROI &#8594;</text>
   </g>
 </svg>

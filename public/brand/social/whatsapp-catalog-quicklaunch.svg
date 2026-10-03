@@ -83,6 +83,6 @@
   <!-- Bottom CTA Bar -->
   <g transform="translate(60, 890)">
     <rect width="960" height="120" rx="24" fill="#C76B50" />
-    <text x="50" y="72" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="26px" fill="#FFFFFF">Reply to this product to book your 3-day sprint &rarr;</text>
+    <text x="50" y="72" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="26px" fill="#FFFFFF">Reply to this product to book your 3-day sprint &#8594;</text>
   </g>
 </svg>

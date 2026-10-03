@@ -53,7 +53,7 @@
   <!-- Bottom Action Card -->
   <g transform="translate(80, 1140)">
     <rect width="920" height="110" rx="20" fill="#1F1F23" />
-    <text x="50" y="65" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="22px" fill="#FAF8F5">Read More Engineering Breakdowns &rarr;</text>
+    <text x="50" y="65" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="22px" fill="#FAF8F5">Read More Engineering Breakdowns &#8594;</text>
     <text x="730" y="65" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="16px" fill="#C76B50">nextreachstudio.com</text>
   </g>
 </svg>

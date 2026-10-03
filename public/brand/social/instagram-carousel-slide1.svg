@@ -48,8 +48,8 @@
   <!-- Swipe Indicator Card -->
   <g transform="translate(80, 1120)">
     <rect width="920" height="130" rx="24" fill="#1F1F23" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1.5" />
-    <text x="50" y="75" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="24px" fill="#FAF8F5">Swipe to see the breakdown &rarr;</text>
+    <text x="50" y="75" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="24px" fill="#FAF8F5">Swipe to see the breakdown &#8594;</text>
     <circle cx="840" cy="65" r="32" fill="#C76B50" />
-    <text x="840" y="73" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="26px" fill="#FFFFFF" text-anchor="middle">&rarr;</text>
+    <text x="840" y="73" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="26px" fill="#FFFFFF" text-anchor="middle">&#8594;</text>
   </g>
 </svg>

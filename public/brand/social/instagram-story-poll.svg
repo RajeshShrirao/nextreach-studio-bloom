@@ -57,6 +57,6 @@
     <text x="50" y="70" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="26px" fill="#FAF8F5">We Fix All 3 in a 14-Day Fixed Sprint.</text>
     <text x="50" y="115" font-family="'Plus Jakarta Sans', sans-serif" font-size="18px" fill="#A69D92">Transparent pricing starting at ₹5,000.</text>
     <rect x="680" y="50" width="190" height="80" rx="18" fill="#C76B50" />
-    <text x="775" y="98" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="20px" fill="#FFFFFF" text-anchor="middle">DM Us &rarr;</text>
+    <text x="775" y="98" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="20px" fill="#FFFFFF" text-anchor="middle">DM Us &#8594;</text>
   </g>
 </svg>

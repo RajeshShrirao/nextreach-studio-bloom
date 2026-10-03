@@ -48,7 +48,7 @@
     <g transform="translate(60, 720)">
       <rect x="0" y="0" width="800" height="6" rx="3" fill="rgba(255, 255, 255, 0.1)" />
       <rect x="0" y="0" width="340" height="6" rx="3" fill="#C76B50" />
-      <text x="0" y="45" font-family="'JetBrains Mono', monospace" font-size="14px" font-weight="700" fill="#8C847B">WATCH FULL SPRINT WALKTHROUGH &rarr;</text>
+      <text x="0" y="45" font-family="'JetBrains Mono', monospace" font-size="14px" font-weight="700" fill="#8C847B">WATCH FULL SPRINT WALKTHROUGH &#8594;</text>
     </g>
   </g>
 

@@ -65,7 +65,7 @@
   <!-- Big WhatsApp Direct Action Button -->
   <g transform="translate(80, 990)">
     <rect width="920" height="120" rx="24" fill="#C76B50" />
-    <text x="60" y="70" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="26px" fill="#FFFFFF">💬 Chat on WhatsApp: +91 98223 79976 &rarr;</text>
+    <text x="60" y="70" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="26px" fill="#FFFFFF">💬 Chat on WhatsApp: +91 98223 79976 &#8594;</text>
   </g>
 
   <!-- Bottom Save / Share Hook -->
