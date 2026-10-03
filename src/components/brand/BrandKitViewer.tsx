@@ -1187,6 +1187,99 @@ export default function BrandKitViewer() {
     }
   };
 
+  const handleDownloadPng = async (src: string, name: string) => {
+    try {
+      const pngStaticUrl = src.replace(/\.svg$/, ".png");
+
+      // Attempt static pre-rendered PNG download first
+      try {
+        const checkRes = await fetch(pngStaticUrl, { method: "HEAD" });
+        if (checkRes.ok) {
+          const a = document.createElement("a");
+          a.href = pngStaticUrl;
+          a.download = pngStaticUrl.split("/").pop() || `${name}.png`;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          setCopiedId(`png-${name}`);
+          setTimeout(() => setCopiedId(null), 2500);
+          return;
+        }
+      } catch {
+        // Fallback to in-browser canvas rasterizer
+      }
+
+      // In-browser HTML5 canvas dynamic rasterization fallback
+      const res = await fetch(src);
+      const svgText = await res.text();
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(svgText, "image/svg+xml");
+      const svgEl = doc.querySelector("svg");
+      if (!svgEl) return;
+
+      let width = parseFloat(svgEl.getAttribute("width") || "0");
+      let height = parseFloat(svgEl.getAttribute("height") || "0");
+      if (!width || !height) {
+        const viewBox = svgEl.getAttribute("viewBox");
+        if (viewBox) {
+          const parts = viewBox.trim().split(/[\s,]+/).map(Number);
+          if (parts.length === 4) {
+            width = parts[2];
+            height = parts[3];
+          }
+        }
+      }
+      if (!width || !height) {
+        width = 800;
+        height = 600;
+      }
+
+      let scale = 2;
+      if (width <= 400) scale = 3;
+      else if (width >= 1080) scale = 1;
+
+      const targetWidth = Math.min(Math.round(width * scale), 4096);
+      const targetHeight = Math.min(Math.round(height * scale), 4096);
+
+      svgEl.setAttribute("width", targetWidth.toString());
+      svgEl.setAttribute("height", targetHeight.toString());
+      const serialized = new XMLSerializer().serializeToString(svgEl);
+      const blob = new Blob([serialized], { type: "image/svg+xml;charset=utf-8" });
+      const blobUrl = URL.createObjectURL(blob);
+
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        canvas.width = targetWidth;
+        canvas.height = targetHeight;
+        const ctx = canvas.getContext("2d");
+        if (ctx) {
+          ctx.imageSmoothingEnabled = true;
+          ctx.imageSmoothingQuality = "high";
+          ctx.drawImage(img, 0, 0, targetWidth, targetHeight);
+          URL.revokeObjectURL(blobUrl);
+          canvas.toBlob((pngBlob) => {
+            if (!pngBlob) return;
+            const pngUrl = URL.createObjectURL(pngBlob);
+            const a = document.createElement("a");
+            const cleanSlug = name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+            a.download = `${cleanSlug}.png`;
+            a.href = pngUrl;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(pngUrl);
+            setCopiedId(`png-${name}`);
+            setTimeout(() => setCopiedId(null), 2500);
+          }, "image/png");
+        }
+      };
+      img.src = blobUrl;
+    } catch (err) {
+      console.error("PNG download error:", err);
+    }
+  };
+
   const getPreviewBgClass = () => {
     switch (previewBg) {
       case "charcoal":
@@ -1209,7 +1302,19 @@ export default function BrandKitViewer() {
           <svg className="w-4 h-4 text-[#C76B50]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
           </svg>
-          <span>Copied to clipboard!</span>
+          <span>
+            {copiedId.startsWith("png-")
+              ? "Downloaded High-Resolution PNG!"
+              : copiedId.startsWith("hex-")
+              ? "HEX Color Code Copied!"
+              : copiedId.startsWith("code-")
+              ? "SVG XML Source Code Copied!"
+              : copiedId.startsWith("text-")
+              ? "Text Copied to Clipboard!"
+              : copiedId.startsWith("link-")
+              ? "Direct URL Copied!"
+              : "Copied to clipboard!"}
+          </span>
         </div>
       )}
 
@@ -1330,12 +1435,13 @@ export default function BrandKitViewer() {
                 </div>
 
                 {/* Button Toolbar */}
-                <div className="flex items-center gap-2 pt-2 border-t border-[#1F1F23]/6">
-                  {/* Download Direct */}
+                <div className="flex items-center gap-1.5 pt-2 border-t border-[#1F1F23]/6">
+                  {/* Download Vector SVG */}
                   <a
                     href={asset.src}
                     download
-                    className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold font-mono bg-[#FAF8F5] text-[#1F1F23] border border-[#1F1F23]/10 hover:bg-[#C76B50] hover:text-white hover:border-[#C76B50] transition-all"
+                    className="flex-1 inline-flex items-center justify-center gap-1 px-2.5 py-2 rounded-xl text-xs font-bold font-mono bg-[#FAF8F5] text-[#1F1F23] border border-[#1F1F23]/10 hover:bg-[#1F1F23] hover:text-white transition-all shadow-2xs"
+                    title="Download Vector SVG"
                   >
                     <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path
@@ -1345,8 +1451,28 @@ export default function BrandKitViewer() {
                         d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
                       />
                     </svg>
-                    <span>Download</span>
+                    <span>SVG</span>
                   </a>
+
+                  {/* Download Raster PNG */}
+                  {asset.isVector && (
+                    <button
+                      type="button"
+                      onClick={() => handleDownloadPng(asset.src, asset.name)}
+                      className="flex-1 inline-flex items-center justify-center gap-1 px-2.5 py-2 rounded-xl text-xs font-bold font-mono bg-[#C76B50]/10 text-[#C76B50] border border-[#C76B50]/25 hover:bg-[#C76B50] hover:text-white transition-all cursor-pointer shadow-2xs"
+                      title="Download High-Resolution PNG (300 DPI)"
+                    >
+                      <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                        />
+                      </svg>
+                      <span>PNG</span>
+                    </button>
+                  )}
 
                   {/* Copy Vector Code */}
                   {asset.isVector && (
