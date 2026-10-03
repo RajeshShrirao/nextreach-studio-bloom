@@ -4,6 +4,7 @@ import Nav from "@/components/Nav.astro";
 import Footer from "@/components/Footer.astro";
 import HeroSection from "@/components/hero/HeroSection";
 import LogoMarquee from "@/components/brand/LogoMarquee.astro";
+import TestimonialWall from "@/components/brand/TestimonialWall.astro";
 import BentoGrid from "@/components/BentoGrid.astro";
 import PricingPackages from "@/components/PricingPackages.astro";
 import { getCollection } from "astro:content";
@@ -286,6 +287,9 @@ try {
         </a>
       </div>
     </section>
+
+    <!-- ==================== WALL OF LOVE (TESTIMONIALS) ==================== -->
+    <TestimonialWall />
 
     <!-- ==================== BLOG / RESOURCES FOOTER ==================== -->
     <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-[#1F1F23]/8" id="ai-dev-hub">

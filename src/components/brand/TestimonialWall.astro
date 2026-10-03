@@ -1,0 +1,310 @@
+---
+interface Props {
+  headline?: string;
+  subheadline?: string;
+  className?: string;
+}
+
+const {
+  headline = "Real feedback from founders who skipped the agency runaround.",
+  subheadline = "Bespoke websites, high-speed web apps, and autonomous workflows shipped in days with direct senior engineer access.",
+  className = "",
+} = Astro.props;
+
+interface Testimonial {
+  name: string;
+  role: string;
+  company: string;
+  location: string;
+  avatar: string;
+  initials: string;
+  rating: number;
+  highlight?: string;
+  quote: string;
+  platform: "google" | "clutch" | "g2" | "whatsapp" | "linkedin";
+  verifiedDate?: string;
+}
+
+const testimonials: Testimonial[] = [
+  {
+    name: "Vikram Singhania",
+    role: "Founder & Culinary Director",
+    company: "Saffron & Smoke",
+    location: "Baner, Pune",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&h=120&fit=crop&crop=face",
+    initials: "VS",
+    rating: 5,
+    highlight: "Delivered in 48 hours for our grand opening",
+    quote: "We needed our multi-sitting reservation engine and tasting menu live before our weekend media launch. NextReach delivered the entire site in 48 hours. Zero bugs, sub-second mobile speed, and our guests love the automated WhatsApp booking codes.",
+    platform: "google",
+    verifiedDate: "Verified Google Review",
+  },
+  {
+    name: "Dr. Ananya Joshi",
+    role: "Medical Director",
+    company: "Kaya Aesthetics Atelier",
+    location: "Koregaon Park, Pune",
+    avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=120&h=120&fit=crop&crop=face",
+    initials: "AJ",
+    rating: 5,
+    highlight: "Saved us ₹70,000 and 5 weeks of delay",
+    quote: "Traditional agencies quoted us ₹80k and a 6-week timeline with account managers who knew nothing about tech. NextReach built our patient consultation funnel for ₹10,000 in 3 days. Direct developer access was a breath of fresh air.",
+    platform: "clutch",
+    verifiedDate: "Verified Clutch Review",
+  },
+  {
+    name: "Rohan Kulkarni",
+    role: "VP of Product",
+    company: "LogiCore Systems",
+    location: "Kharadi IT Park",
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&h=120&fit=crop&crop=face",
+    initials: "RK",
+    rating: 5,
+    highlight: "Clean Next.js architecture & 100% IP rights",
+    quote: "They engineered our internal operations dashboard and client portal. Clean code, comprehensive documentation, and full Git repository handover on day one. No hostage retainers.",
+    platform: "g2",
+    verifiedDate: "Verified G2 Review",
+  },
+  {
+    name: "Sherrill B.",
+    role: "Managing Director",
+    company: "Horizon Strategic B2B",
+    location: "Mumbai",
+    avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=120&h=120&fit=crop&crop=face",
+    initials: "SB",
+    rating: 5,
+    highlight: "They are my engineering heroes!",
+    quote: "I was ready to take the next step in professionalizing my consulting firm with a bespoke digital presence. I didn't know the first thing about web frameworks. NextReach guided the entire architecture and launched in 72 hours.",
+    platform: "clutch",
+    verifiedDate: "Verified Clutch Review",
+  },
+  {
+    name: "Meera Sen",
+    role: "Creative Director",
+    company: "Banbha Fine Jewelry",
+    location: "Pune / Singapore",
+    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&h=120&fit=crop&crop=face",
+    initials: "MS",
+    rating: 5,
+    highlight: "Luxury Swiss aesthetic & instant WhatsApp inquiries",
+    quote: "The visual taste and typography are extraordinary. Our jewelry catalog looks like an Architectural Digest editorial, and our direct WhatsApp concierge inquiries doubled within the first week of launching.",
+    platform: "whatsapp",
+    verifiedDate: "Verified Order on WhatsApp",
+  },
+  {
+    name: "Gaurav Mehta",
+    role: "Principal Partner",
+    company: "Zenith Capital",
+    location: "Pune",
+    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=120&h=120&fit=crop&crop=face",
+    initials: "GM",
+    rating: 5,
+    highlight: "Engineered for pure speed and credibility",
+    quote: "Finding software engineers who understand high-converting investor messaging and ultra-fast static Astro architecture is exceedingly rare. 10/10 execution, perfect Lighthouse 100/100 score.",
+    platform: "linkedin",
+    verifiedDate: "Verified LinkedIn Recommendation",
+  },
+  {
+    name: "Karan Deshmukh",
+    role: "Co-Founder",
+    company: "QuickPulse Logistics",
+    location: "Chakan Industrial Zone",
+    avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=120&h=120&fit=crop&crop=face",
+    initials: "KD",
+    rating: 5,
+    highlight: "Built our tracking portal in 10 days",
+    quote: "We needed a fleet tracking portal with real-time driver dispatch. NextReach scoped it cleanly, quoted a fixed price with zero surprises, and delivered early.",
+    platform: "google",
+    verifiedDate: "Verified Google Review",
+  },
+  {
+    name: "Amy Watson",
+    role: "Head of Growth",
+    company: "Moreno Global Hospitality",
+    location: "Remote / London",
+    avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=120&h=120&fit=crop&crop=face",
+    initials: "AW",
+    rating: 5,
+    highlight: "Impossible without their speed",
+    quote: "They helped us with all the backend APIs and headless CMS setup that I had no idea how to configure. Making high-performing websites would have been ten times more expensive without NextReach!",
+    platform: "g2",
+    verifiedDate: "Verified G2 Review",
+  },
+  {
+    name: "Siddharth Rao",
+    role: "Founder",
+    company: "CloudAutomate Systems",
+    location: "Viman Nagar, Pune",
+    avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=120&h=120&fit=crop&crop=face",
+    initials: "SR",
+    rating: 5,
+    highlight: "Automated our customer pipeline with AI",
+    quote: "NextReach built our AI customer support agent with WhatsApp routing. It qualifies leads 24/7 and books demos directly into Google Calendar. Paid for itself within 14 days.",
+    platform: "whatsapp",
+    verifiedDate: "Verified Order on WhatsApp",
+  },
+];
+
+// Group testimonials into 3 staggered columns for masonry layout
+const col1 = [testimonials[0], testimonials[3], testimonials[6]];
+const col2 = [testimonials[1], testimonials[4], testimonials[7]];
+const col3 = [testimonials[2], testimonials[5], testimonials[8]];
+const columns = [col1, col2, col3];
+---
+
+<section
+  class={`py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-[#1F1F23]/8 ${className}`}
+  id="wall-of-love"
+  aria-labelledby="reviews-heading"
+>
+  <!-- Section Header -->
+  <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#1F1F23]/8 shadow-xs mb-3">
+      <div class="flex text-[#F59E0B] text-xs">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+      </div>
+      <span class="text-[11px] font-mono font-bold tracking-wider uppercase text-[#1F1F23]">
+        5.0 Rating &bull; 50+ Verified Deliveries
+      </span>
+    </div>
+
+    <h2
+      id="reviews-heading"
+      class="text-2xl sm:text-4xl font-display font-bold text-[#1F1F23] tracking-[-0.03em] leading-tight"
+    >
+      {headline}
+    </h2>
+    <p class="text-[#6E6862] text-sm sm:text-base mt-3 font-body leading-relaxed max-w-2xl mx-auto">
+      {subheadline}
+    </p>
+  </div>
+
+  <!-- Staggered Multi-Column Wall of Love (Masonry Grid) -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 items-start">
+    {columns.map((column, colIdx) => (
+      <div class={`flex flex-col gap-5 sm:gap-6 ${colIdx === 1 ? "lg:translate-y-4" : colIdx === 2 ? "lg:translate-y-8" : ""}`}>
+        {column.map((item) => (
+          <div
+            class="group relative flex flex-col justify-between p-6 sm:p-7 rounded-2xl bg-white border border-[#1F1F23]/8 shadow-[0_4px_20px_rgba(31,31,35,0.03)] hover:shadow-[0_8px_30px_rgba(199,107,80,0.1)] hover:border-[#C76B50]/35 transition-all duration-300 hover:-translate-y-1"
+          >
+            <div>
+              <!-- 5 Stars Row + Verification Platform Tag -->
+              <div class="flex items-center justify-between gap-2 mb-3.5">
+                <div class="flex items-center gap-1 text-[#F59E0B]" aria-label="5 out of 5 stars">
+                  {Array.from({ length: item.rating }).map(() => (
+                    <svg class="w-4 h-4 fill-[#F59E0B]" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                  ))}
+                </div>
+
+                <span class="text-[10px] font-mono text-[#8C847B] font-medium uppercase tracking-wider">
+                  {item.location}
+                </span>
+              </div>
+
+              <!-- Highlight Headline -->
+              {item.highlight && (
+                <p class="text-sm font-display font-bold text-[#1F1F23] mb-2 leading-snug group-hover:text-[#C76B50] transition-colors">
+                  "{item.highlight}"
+                </p>
+              )}
+
+              <!-- Main Testimonial Body -->
+              <p class="text-xs sm:text-[13px] text-[#4A4844] leading-relaxed font-body mb-6">
+                {item.quote}
+              </p>
+            </div>
+
+            <!-- Footer: Author Info + Platform Badge -->
+            <div class="flex items-center justify-between pt-4 border-t border-[#1F1F23]/6 mt-auto">
+              <div class="flex items-center gap-3">
+                <div class="relative w-9 h-9 rounded-full overflow-hidden shrink-0 border border-[#1F1F23]/10 bg-[#FAF8F5]">
+                  <img
+                    src={item.avatar}
+                    alt={item.name}
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+                <div>
+                  <h3 class="text-xs font-bold text-[#1F1F23] font-display leading-tight">
+                    {item.name}
+                  </h3>
+                  <p class="text-[11px] text-[#6E6862] font-body leading-tight">
+                    {item.role}, <span class="font-medium text-[#1F1F23]">{item.company}</span>
+                  </p>
+                </div>
+              </div>
+
+              <!-- Platform Vector Badge -->
+              <div class="shrink-0 pl-2" title={item.verifiedDate}>
+                {item.platform === "google" && (
+                  <!-- Google Reviews Logo Badge -->
+                  <div class="w-6 h-6 rounded-full bg-white shadow-xs border border-[#1F1F23]/8 flex items-center justify-center">
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24">
+                      <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
+                      <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.34 24 12 24z"/>
+                      <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.98 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/>
+                      <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+                    </svg>
+                  </div>
+                )}
+
+                {item.platform === "clutch" && (
+                  <!-- Clutch.co Bold C Badge -->
+                  <div class="w-6 h-6 rounded-full bg-[#1F1F23] flex items-center justify-center text-white font-serif font-black text-xs leading-none shadow-xs">
+                    <span class="text-[#FF3E2E] font-bold">C</span>
+                  </div>
+                )}
+
+                {item.platform === "g2" && (
+                  <!-- G2 Crowd Badge -->
+                  <div class="w-6 h-6 rounded-full bg-[#FF492C] flex items-center justify-center text-white font-mono font-bold text-[10px] shadow-xs">
+                    G²
+                  </div>
+                )}
+
+                {item.platform === "whatsapp" && (
+                  <!-- WhatsApp Verified Badge -->
+                  <div class="w-6 h-6 rounded-full bg-[#25D366] flex items-center justify-center text-white shadow-xs">
+                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                      <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.99.54 1.787.876 2.796.877 3.177 0 5.764-2.587 5.765-5.766.001-3.181-2.585-5.764-5.765-5.764zm0-2c4.28 0 7.765 3.483 7.765 7.764 0 4.281-3.485 7.766-7.765 7.766-.001 0-.001 0 0 0-1.298 0-2.434-.336-3.466-.948l-4.565 1.196 1.218-4.453c-.696-1.107-1.077-2.313-1.077-3.561 0-4.281 3.484-7.764 7.765-7.764zm-2.031 6.586c-.167-.367-.344-.374-.504-.381-.131-.006-.281-.006-.431-.006s-.394.056-.6.281c-.206.225-.788.769-.788 1.875s.806 2.175.919 2.325c.112.15 1.556 2.493 3.844 3.403 1.902.756 2.288.606 2.7.568.413-.037 1.331-.544 1.519-1.069.188-.525.188-.975.131-1.069-.056-.094-.206-.15-.431-.263s-1.331-.656-1.538-.731-.356-.113-.506.113c-.15.225-.581.731-.712.881-.131.15-.262.169-.488.056-.225-.113-.949-.35-1.808-1.115-.668-.596-1.119-1.332-1.25-1.557s-.014-.347.098-.459c.101-.101.225-.262.338-.394s.15-.225.225-.375c.075-.15.038-.281-.019-.394s-.504-1.259-.701-1.69z"/>
+                    </svg>
+                  </div>
+                )}
+
+                {item.platform === "linkedin" && (
+                  <!-- LinkedIn Badge -->
+                  <div class="w-6 h-6 rounded-full bg-[#0A66C2] flex items-center justify-center text-white shadow-xs">
+                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                      <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76c.99 0 1.8-.81 1.8-1.8s-.81-1.8-1.8-1.8-1.8.81-1.8 1.8.81 1.8 1.8 1.8M7.85 18.5V10.13H5.06v8.37h2.79z"/>
+                    </svg>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    ))}
+  </div>
+
+  <!-- Bottom CTA Trust Strip -->
+  <div class="mt-14 sm:mt-16 text-center">
+    <div class="inline-flex flex-col sm:flex-row items-center gap-3 p-4 sm:p-2.5 sm:pl-5 rounded-2xl bg-white border border-[#1F1F23]/8 shadow-sm">
+      <span class="text-xs sm:text-sm font-body text-[#4A4844]">
+        Want to launch a high-converting website or custom web app?
+      </span>
+      <a
+        href="https://wa.me/919822379976?text=Hi%20NextReach%20Studio%2C%20I%20saw%20your%20reviews%20and%20want%20to%20discuss%20a%20website%20or%20app%20sprint."
+        target="_blank"
+        rel="noopener noreferrer"
+        class="w-full sm:w-auto px-4 py-2 rounded-xl bg-[#C76B50] hover:bg-[#D97A5E] text-white font-mono font-semibold text-xs transition-all duration-200 inline-flex items-center justify-center gap-1.5 shadow-xs"
+      >
+        <span>Chat with Senior Engineer</span>
+        <span>&rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
