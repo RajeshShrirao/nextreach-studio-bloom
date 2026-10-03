@@ -1,0 +1,180 @@
+---
+interface Props {
+  headline?: string;
+  subheadline?: string;
+  className?: string;
+}
+
+const {
+  headline = "30+ BESPOKE WEBSITES & DIGITAL FLAGSHIPS BUILT",
+  subheadline = "Trusted by ambitious founders, modern ateliers & high-growth businesses",
+  className = "",
+} = Astro.props;
+
+// Vector brand logos designed with NextReach Studio's signature Architectural Terracotta (#C76B50) & Charcoal (#1F1F23) palette
+const brands = [
+  {
+    name: "TARANDIP",
+    industry: "Luxury Studio",
+    svg: `
+      <svg class="h-7 w-auto transition-transform duration-300 group-hover:scale-105" viewBox="0 0 160 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Corner Frame Brackets in Terracotta -->
+        <path d="M4 14V4H28" stroke="#C76B50" stroke-width="2.2" stroke-linecap="square"/>
+        <path d="M156 14V4H132" stroke="#C76B50" stroke-width="2.2" stroke-linecap="square"/>
+        <path d="M4 22V32H28" stroke="#C76B50" stroke-width="2.2" stroke-linecap="square"/>
+        <path d="M156 22V32H132" stroke="#C76B50" stroke-width="2.2" stroke-linecap="square"/>
+        <!-- Clean Wordmark in Deep Charcoal -->
+        <text x="80" y="22" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" letter-spacing="0.32em" fill="#1F1F23" class="transition-colors group-hover:fill-[#C76B50]">TARANDIP</text>
+      </svg>
+    `,
+  },
+  {
+    name: "iMPACT B2B",
+    industry: "Enterprise SaaS",
+    svg: `
+      <svg class="h-8 w-auto transition-transform duration-300 group-hover:scale-105" viewBox="0 0 140 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Terracotta Plus Cross Accent -->
+        <path d="M14 6V14M10 10H18" stroke="#C76B50" stroke-width="3" stroke-linecap="round"/>
+        <!-- Typographic Mark -->
+        <text x="24" y="20" font-family="'Cabinet Grotesk', sans-serif" font-size="18" font-weight="900" letter-spacing="-0.02em" fill="#1F1F23">iMPACT</text>
+        <text x="24" y="32" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="800" letter-spacing="0.18em" fill="#C76B50">B2B</text>
+      </svg>
+    `,
+  },
+  {
+    name: "banbha",
+    industry: "Fine Atelier",
+    svg: `
+      <svg class="h-9 w-auto transition-transform duration-300 group-hover:scale-105" viewBox="0 0 130 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Signature Flourish 'b' in Terracotta -->
+        <path d="M14 36C14 24 16 8 22 4C24 2.5 26 4 24 10C21 18 12 28 8 34" stroke="#C76B50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M17 19C21 16 28 17 29 23C30 29 23 32 17 31" stroke="#C76B50" stroke-width="1.8" stroke-linecap="round"/>
+        <!-- Serif Lettering in Deep Charcoal -->
+        <text x="32" y="27" font-family="Georgia, serif" font-size="19" font-weight="500" letter-spacing="0.04em" fill="#1F1F23" class="transition-colors group-hover:fill-[#C76B50]">anbha</text>
+        <!-- Subtle Underline Wave in Terracotta -->
+        <path d="M30 33C45 31 75 35 92 31" stroke="#C76B50" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
+      </svg>
+    `,
+  },
+  {
+    name: "Waveform Atelier",
+    industry: "Audio & Design Tech",
+    svg: `
+      <svg class="h-8 w-auto transition-transform duration-300 group-hover:scale-105" viewBox="0 0 135 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Circular Terracotta Seal with Wave Monogram -->
+        <circle cx="19" cy="19" r="16" fill="#FAF8F5" stroke="#C76B50" stroke-width="1.8"/>
+        <path d="M11 23L15 13L19 22L23 13L27 23" stroke="#1F1F23" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M13 25L17 17L19 23L21 17L25 25" stroke="#C76B50" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- Accompanying Label -->
+        <text x="44" y="24" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" letter-spacing="0.14em" fill="#1F1F23">WAVEFORM</text>
+      </svg>
+    `,
+  },
+  {
+    name: "Brain5 AI",
+    industry: "Cognitive Systems",
+    svg: `
+      <svg class="h-8 w-auto transition-transform duration-300 group-hover:scale-105" viewBox="0 0 120 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Neural Lobes in Terracotta -->
+        <g stroke="#C76B50" stroke-width="1.6" stroke-linecap="round" fill="none">
+          <path d="M16 11C14 8 8 9 8 15C8 17 6 18 6 21C6 26 12 28 16 26"/>
+          <path d="M16 11C17 7 21 7 23 10C25 12 25 15 22 17"/>
+          <path d="M16 16C12 17 11 22 14 24"/>
+          <circle cx="16" cy="19" r="1.5" fill="#C76B50"/>
+          <circle cx="10" cy="18" r="1.5" fill="#C76B50"/>
+        </g>
+        <!-- Bold 5 in Charcoal -->
+        <text x="32" y="27" font-family="'Cabinet Grotesk', sans-serif" font-size="24" font-weight="900" fill="#1F1F23" class="transition-colors group-hover:fill-[#C76B50]">5</text>
+        <text x="49" y="24" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" letter-spacing="0.18em" fill="#6E6862">COGNIX</text>
+      </svg>
+    `,
+  },
+  {
+    name: "EXPLORE MORENO",
+    industry: "Global Hospitality",
+    svg: `
+      <svg class="h-8 w-auto transition-transform duration-300 group-hover:scale-105" viewBox="0 0 160 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Globe Wireframe with Terracotta Latitudes -->
+        <circle cx="16" cy="19" r="13" stroke="#1F1F23" stroke-width="1.8"/>
+        <ellipse cx="16" cy="19" rx="7" ry="13" stroke="#C76B50" stroke-width="1.4"/>
+        <line x1="3" y1="19" x2="29" y2="19" stroke="#C76B50" stroke-width="1.4"/>
+        <!-- Two-tier Modern Grotesque -->
+        <text x="36" y="16" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" letter-spacing="0.22em" fill="#1F1F23">EXPLORE</text>
+        <text x="36" y="28" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" letter-spacing="0.22em" fill="#C76B50">MORENO</text>
+      </svg>
+    `,
+  },
+  {
+    name: "Saffron & Smoke",
+    industry: "Luxury Dining",
+    svg: `
+      <svg class="h-8 w-auto transition-transform duration-300 group-hover:scale-105" viewBox="0 0 155 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Saffron Spice Flame in Terracotta -->
+        <path d="M12 26C10 21 11 15 15 11C16 14 18 16 18 19C20 15 22 12 25 9C26 15 24 23 18 27C16 28 13 28 12 26Z" fill="#C76B50"/>
+        <text x="32" y="24" font-family="Georgia, serif" font-size="12.5" font-weight="700" letter-spacing="0.06em" fill="#1F1F23">SAFFRON &amp; SMOKE</text>
+      </svg>
+    `,
+  },
+  {
+    name: "Zenith Capital",
+    industry: "FinTech & Growth",
+    svg: `
+      <svg class="h-8 w-auto transition-transform duration-300 group-hover:scale-105" viewBox="0 0 145 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Ascending Prism Apex in Terracotta -->
+        <path d="M8 25L18 8L28 25H8Z" stroke="#C76B50" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M18 14V25" stroke="#1F1F23" stroke-width="1.8"/>
+        <text x="36" y="23" font-family="'Cabinet Grotesk', sans-serif" font-size="13.5" font-weight="800" letter-spacing="0.14em" fill="#1F1F23">ZENITH</text>
+      </svg>
+    `,
+  },
+];
+---
+
+<section
+  class={`relative w-full py-10 sm:py-14 border-y border-[#1F1F23]/8 bg-[#FAF8F5]/60 overflow-hidden select-none marquee-pause ${className}`}
+  aria-label="Trusted client brands and websites built"
+>
+  <!-- Subtle Architectural Ambient Glow -->
+  <div class="pointer-events-none absolute inset-0 bg-radial-[circle_at_50%_50%] from-[#C76B50]/[0.03] to-transparent"></div>
+
+  <!-- Header / Social Proof Title -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-8 sm:mb-10 relative z-10">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#1F1F23]/8 shadow-xs mb-2.5">
+      <span class="w-1.5 h-1.5 rounded-full bg-[#C76B50] animate-pulse"></span>
+      <span class="text-[11px] font-mono font-bold tracking-[0.22em] uppercase text-[#1F1F23]">
+        {headline}
+      </span>
+    </div>
+    {subheadline && (
+      <p class="text-xs sm:text-sm text-[#6E6862] font-body max-w-xl mx-auto">
+        {subheadline}
+      </p>
+    )}
+  </div>
+
+  <!-- Infinite Smooth Hardware-Accelerated Marquee with Edge Gradient Fade Masks -->
+  <div class="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+    <div class="animate-marquee flex items-center gap-10 sm:gap-14 lg:gap-18 py-2">
+      <!-- First Set of Brand Logos -->
+      {brands.map((brand) => (
+        <div
+          class="group flex items-center justify-center shrink-0 px-4 py-2 rounded-xl bg-white/70 hover:bg-white border border-transparent hover:border-[#C76B50]/25 shadow-none hover:shadow-[0_4px_16px_rgba(199,107,80,0.1)] transition-all duration-300 cursor-pointer opacity-75 hover:opacity-100"
+          title={`${brand.name} • ${brand.industry}`}
+        >
+          <div set:html={brand.svg} />
+        </div>
+      ))}
+
+      <!-- Second Duplicate Set for Seamless Infinite Loop -->
+      {brands.map((brand) => (
+        <div
+          aria-hidden="true"
+          class="group flex items-center justify-center shrink-0 px-4 py-2 rounded-xl bg-white/70 hover:bg-white border border-transparent hover:border-[#C76B50]/25 shadow-none hover:shadow-[0_4px_16px_rgba(199,107,80,0.1)] transition-all duration-300 cursor-pointer opacity-75 hover:opacity-100"
+          title={`${brand.name} • ${brand.industry}`}
+        >
+          <div set:html={brand.svg} />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

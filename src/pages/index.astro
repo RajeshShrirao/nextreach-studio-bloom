@@ -3,6 +3,7 @@ import Layout from "@/layouts/Layout.astro";
 import Nav from "@/components/Nav.astro";
 import Footer from "@/components/Footer.astro";
 import HeroSection from "@/components/hero/HeroSection";
+import LogoMarquee from "@/components/brand/LogoMarquee.astro";
 import BentoGrid from "@/components/BentoGrid.astro";
 import PricingPackages from "@/components/PricingPackages.astro";
 import { getCollection } from "astro:content";
@@ -81,6 +82,8 @@ try {
 
   <main>
     <HeroSection client:load />
+
+    <LogoMarquee />
 
     <PricingPackages />
 
