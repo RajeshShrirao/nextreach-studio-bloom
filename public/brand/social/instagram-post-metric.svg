@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@800;900&amp;family=JetBrains+Mono:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700&amp;display=swap');
+      .metric-stat { font-family: 'Cabinet Grotesk', 'Plus Jakarta Sans', sans-serif; font-weight: 900; font-size: 130px; fill: #C76B50; letter-spacing: -0.04em; }
+      .metric-label { font-family: 'Cabinet Grotesk', 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 38px; fill: #FAF8F5; letter-spacing: -0.02em; }
+      .metric-desc { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 24px; fill: #A69D92; font-weight: 500; line-height: 1.5; }
+      .metric-mono { font-family: 'JetBrains Mono', monospace; font-size: 16px; font-weight: 700; fill: #10B981; letter-spacing: 0.1em; }
+      .metric-badge { font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 700; fill: #C76B50; letter-spacing: 0.12em; text-transform: uppercase; }
+    </style>
+    <radialGradient id="metricGlow" cx="50%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#C76B50" stop-opacity="0.25" />
+      <stop offset="60%" stop-color="#C76B50" stop-opacity="0.04" />
+      <stop offset="100%" stop-color="#141416" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1350" fill="#141416" />
+  <circle cx="540" cy="650" r="500" fill="url(#metricGlow)" />
+  <rect x="1" y="1" width="1078" height="1348" fill="none" stroke="rgba(255, 255, 255, 0.08)" stroke-width="2" />
+
+  <!-- Header -->
+  <g transform="translate(80, 80)">
+    <g transform="translate(0, 0) scale(0.38)" fill="none" stroke="#C76B50" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="29,38 60,8 91,38" /><line x1="60" y1="8" x2="60" y2="142" /><path d="M 10,142 L 10,40 Q 10,33 17,37 L 60,142" /><path d="M 60,54 C 88,54 110,66 110,83 C 110,100 88,104 60,104" /><line x1="60" y1="104" x2="110" y2="142" />
+    </g>
+    <text x="60" y="38" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="28px" fill="#FAF8F5">NextReach <tspan fill="#C76B50">Studio</tspan></text>
+    <text x="730" y="38" class="metric-badge">PROVEN IMPACT</text>
+  </g>
+
+  <!-- Verified Pill -->
+  <g transform="translate(80, 190)">
+    <rect width="260" height="42" rx="21" fill="rgba(16, 185, 129, 0.12)" stroke="rgba(16, 185, 129, 0.35)" stroke-width="1.5" />
+    <circle cx="28" cy="21" r="6" fill="#10B981" />
+    <text x="44" y="27" class="metric-mono">VERIFIED CLIENT ROI</text>
+  </g>
+
+  <!-- Big Hero Stat 1 -->
+  <g transform="translate(80, 310)">
+    <text x="0" y="90" class="metric-stat">14-Day</text>
+    <text x="0" y="150" class="metric-label">Full MVP &amp; Platform Launch</text>
+    <text x="0" y="200" class="metric-desc">From initial wireframe to live production deployment in 2 weeks.</text>
+    <text x="0" y="235" class="metric-desc">Zero agency bureaucracy. Transparent fixed pricing.</text>
+  </g>
+
+  <!-- 2 Column Stat Cards -->
+  <g transform="translate(80, 620)">
+    <!-- Card Left -->
+    <rect width="440" height="240" rx="20" fill="#1F1F23" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1.5" />
+    <text x="36" y="80" class="metric-stat" font-size="72px">10×</text>
+    <text x="36" y="130" class="metric-label" font-size="24px">Lead Velocity</text>
+    <text x="36" y="170" class="metric-desc" font-size="18px">WhatsApp &amp; instant CRM</text>
+    <text x="36" y="196" class="metric-desc" font-size="18px">response automation.</text>
+
+    <!-- Card Right -->
+    <g transform="translate(480, 0)">
+      <rect width="440" height="240" rx="20" fill="#1F1F23" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1.5" />
+      <text x="36" y="80" class="metric-stat" font-size="72px">99.8%</text>
+      <text x="36" y="130" class="metric-label" font-size="24px">Lighthouse Score</text>
+      <text x="36" y="170" class="metric-desc" font-size="18px">Sub-second load times,</text>
+      <text x="36" y="196" class="metric-desc" font-size="18px">SEO optimized from day one.</text>
+    </g>
+  </g>
+
+  <!-- Client Proof Bar -->
+  <g transform="translate(80, 920)">
+    <rect width="920" height="150" rx="20" fill="#FAF8F5" />
+    <text x="40" y="55" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="22px" fill="#1F1F23">"NextReach transformed our clinic inquiries completely."</text>
+    <text x="40" y="95" font-family="'Plus Jakarta Sans', sans-serif" font-weight="500" font-size="18px" fill="#6E6862">— Dr. S. Kulkarni, Pune Healthcare Flagship</text>
+    <g transform="translate(730, 45)">
+      <text x="0" y="30" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="24px" fill="#C76B50">★★★★★</text>
+      <text x="0" y="60" class="metric-badge" fill="#6E6862">5-STAR RATED</text>
+    </g>
+  </g>
+
+  <!-- Bottom Bar -->
+  <g transform="translate(80, 1140)">
+    <rect width="920" height="100" rx="20" fill="#C76B50" />
+    <text x="50" y="60" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="24px" fill="#FFFFFF">Launch Your Flagship Website (₹5k+) &rarr;</text>
+    <text x="760" y="60" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="18px" fill="#FAF8F5">Pune, MH</text>
+  </g>
+</svg>

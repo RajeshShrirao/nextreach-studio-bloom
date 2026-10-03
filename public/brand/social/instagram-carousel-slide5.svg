@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@800;900&amp;family=JetBrains+Mono:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700&amp;display=swap');
+      .c5-title { font-family: 'Cabinet Grotesk', 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 64px; fill: #FAF8F5; letter-spacing: -0.03em; line-height: 1.15; }
+      .c5-acc { fill: #C76B50; }
+      .c5-sub { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 24px; fill: #A69D92; line-height: 1.5; font-weight: 500; }
+      .c5-price { font-family: 'Cabinet Grotesk', sans-serif; font-weight: 900; font-size: 34px; fill: #1F1F23; }
+    </style>
+    <radialGradient id="c5Glow" cx="50%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#C76B50" stop-opacity="0.35" />
+      <stop offset="60%" stop-color="#C76B50" stop-opacity="0.05" />
+      <stop offset="100%" stop-color="#141416" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1350" fill="#141416" />
+  <circle cx="540" cy="500" r="500" fill="url(#c5Glow)" />
+  <rect x="1" y="1" width="1078" height="1348" fill="none" stroke="rgba(255, 255, 255, 0.08)" stroke-width="2" />
+
+  <!-- Top Bar -->
+  <g transform="translate(80, 80)">
+    <text x="0" y="38" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="28px" fill="#FAF8F5">NextReach <tspan fill="#C76B50">Studio</tspan></text>
+    <rect x="800" y="8" width="120" height="38" rx="19" fill="rgba(199, 107, 80, 0.15)" stroke="rgba(199, 107, 80, 0.3)" />
+    <text x="860" y="32" font-family="'JetBrains Mono', monospace" font-size="16px" font-weight="700" fill="#C76B50" text-anchor="middle">SLIDE 5/5</text>
+  </g>
+
+  <!-- Main Headline -->
+  <g transform="translate(80, 220)">
+    <text x="0" y="0" class="c5-title">Ready To Upgrade Your</text>
+    <text x="0" y="75" class="c5-title"><tspan class="c5-acc">Digital Flagship</tspan>?</text>
+    <text x="0" y="160" class="c5-sub">Choose a transparent, fixed-scope engineering sprint.</text>
+    <text x="0" y="200" class="c5-sub">Live in 3 to 14 days with zero monthly retainer traps.</text>
+  </g>
+
+  <!-- 3 Package Pill Cards -->
+  <g transform="translate(80, 480)">
+    <!-- Pkg 1 -->
+    <rect width="920" height="130" rx="20" fill="#1F1F23" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1.5" />
+    <text x="40" y="55" font-family="'Cabinet Grotesk', sans-serif" font-weight="800" font-size="26px" fill="#FAF8F5">Quick Launch Landing Page</text>
+    <text x="40" y="90" font-family="'Plus Jakarta Sans', sans-serif" font-size="18px" fill="#8C847B">High-converting 1-page site • 3-day turnaround</text>
+    <rect x="710" y="40" width="170" height="50" rx="12" fill="#FAF8F5" />
+    <text x="795" y="75" class="c5-price" text-anchor="middle">₹5,000</text>
+
+    <!-- Pkg 2 (Accent) -->
+    <g transform="translate(0, 150)">
+      <rect width="920" height="130" rx="20" fill="#242428" stroke="#C76B50" stroke-width="2" />
+      <text x="40" y="55" font-family="'Cabinet Grotesk', sans-serif" font-weight="800" font-size="26px" fill="#FAF8F5">Business Growth Website (Multi-Page)</text>
+      <text x="40" y="90" font-family="'Plus Jakarta Sans', sans-serif" font-size="18px" fill="#E88C72">SEO engine + WhatsApp CRM pipeline • 7 days</text>
+      <rect x="710" y="40" width="170" height="50" rx="12" fill="#C76B50" />
+      <text x="795" y="75" class="c5-price" fill="#FFFFFF" text-anchor="middle">₹15,000</text>
+    </g>
+
+    <!-- Pkg 3 -->
+    <g transform="translate(0, 300)">
+      <rect width="920" height="130" rx="20" fill="#1F1F23" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1.5" />
+      <text x="40" y="55" font-family="'Cabinet Grotesk', sans-serif" font-weight="800" font-size="26px" fill="#FAF8F5">Autonomous AI Agent + Custom Web App</text>
+      <text x="40" y="90" font-family="'Plus Jakarta Sans', sans-serif" font-size="18px" fill="#8C847B">Full-stack React platform &amp; 24/7 LLM agent • 14 days</text>
+      <rect x="710" y="40" width="170" height="50" rx="12" fill="#FAF8F5" />
+      <text x="795" y="75" class="c5-price" text-anchor="middle">₹25k–₹50k</text>
+    </g>
+  </g>
+
+  <!-- Big WhatsApp Direct Action Button -->
+  <g transform="translate(80, 990)">
+    <rect width="920" height="120" rx="24" fill="#C76B50" />
+    <text x="60" y="70" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="26px" fill="#FFFFFF">💬 Chat on WhatsApp: +91 98223 79976 &rarr;</text>
+  </g>
+
+  <!-- Bottom Save / Share Hook -->
+  <g transform="translate(80, 1180)">
+    <text x="0" y="30" font-family="'JetBrains Mono', monospace" font-size="16px" font-weight="700" fill="#8C847B">🔖 SAVE THIS POST FOR YOUR NEXT PRODUCT SPRINT</text>
+  </g>
+</svg>

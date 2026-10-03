@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="640" viewBox="0 0 640 640">
+  <defs>
+    <radialGradient id="waGlow" cx="50%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#C76B50" stop-opacity="0.32" />
+      <stop offset="60%" stop-color="#C76B50" stop-opacity="0.06" />
+      <stop offset="100%" stop-color="#141416" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="waRimGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C76B50" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#FAF8F5" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#C76B50" stop-opacity="0.5" />
+    </linearGradient>
+  </defs>
+
+  <!-- Dark Base -->
+  <rect width="640" height="640" fill="#141416" />
+
+  <!-- Ambient Core Glow -->
+  <circle cx="320" cy="320" r="260" fill="url(#waGlow)" />
+
+  <!-- Perimeter Ring for WhatsApp circular avatar mask -->
+  <circle cx="320" cy="320" r="300" fill="none" stroke="url(#waRimGrad)" stroke-width="6" />
+
+  <!-- Authentic NextReach Vertical Emblem Mark (Centered within Circle Safe Area) -->
+  <g transform="translate(180, 135) scale(2.333)" fill="none" stroke="#C76B50" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="29,38 60,8 91,38" />
+    <line x1="60" y1="8" x2="60" y2="142" />
+    <path d="M 10,142 L 10,40 Q 10,33 17,37 L 60,142" />
+    <path d="M 60,54 C 88,54 110,66 110,83 C 110,100 88,104 60,104" />
+    <line x1="60" y1="104" x2="110" y2="142" />
+  </g>
+</svg>

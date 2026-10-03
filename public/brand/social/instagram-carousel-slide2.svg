@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@800;900&amp;family=JetBrains+Mono:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700&amp;display=swap');
+      .c2-title { font-family: 'Cabinet Grotesk', 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 56px; fill: #FAF8F5; letter-spacing: -0.025em; }
+      .c2-num { font-family: 'Cabinet Grotesk', sans-serif; font-weight: 900; font-size: 38px; fill: #EF4444; }
+      .c2-head { font-family: 'Cabinet Grotesk', 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 26px; fill: #FAF8F5; }
+      .c2-desc { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 19px; fill: #A69D92; line-height: 1.5; font-weight: 500; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1350" fill="#141416" />
+  <rect x="1" y="1" width="1078" height="1348" fill="none" stroke="rgba(255, 255, 255, 0.08)" stroke-width="2" />
+
+  <!-- Top Bar -->
+  <g transform="translate(80, 80)">
+    <text x="0" y="38" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="28px" fill="#FAF8F5">NextReach <tspan fill="#C76B50">Studio</tspan></text>
+    <rect x="800" y="8" width="120" height="38" rx="19" fill="rgba(199, 107, 80, 0.15)" stroke="rgba(199, 107, 80, 0.3)" />
+    <text x="860" y="32" font-family="'JetBrains Mono', monospace" font-size="16px" font-weight="700" fill="#C76B50" text-anchor="middle">SLIDE 2/5</text>
+  </g>
+
+  <!-- Section Title -->
+  <g transform="translate(80, 200)">
+    <text x="0" y="0" class="c2-title">The 3 Fatal Bottlenecks</text>
+    <text x="0" y="55" font-family="'Plus Jakarta Sans', sans-serif" font-size="22px" fill="#6E6862">Why standard WordPress &amp; bloated templates kill conversions.</text>
+  </g>
+
+  <!-- 3 Problem Cards -->
+  <g transform="translate(80, 340)">
+    <!-- Problem 1 -->
+    <rect width="920" height="210" rx="20" fill="#1F1F23" stroke="rgba(239, 68, 68, 0.25)" stroke-width="1.5" />
+    <text x="40" y="55" class="c2-num">01</text>
+    <text x="110" y="52" class="c2-head">4+ Second Slow Page Load Speeds</text>
+    <text x="110" y="95" class="c2-desc">53% of mobile visitors abandon sites that take longer than</text>
+    <text x="110" y="125" class="c2-desc">3 seconds to load. Generic themes destroy your paid ad budget.</text>
+
+    <!-- Problem 2 -->
+    <g transform="translate(0, 240)">
+      <rect width="920" height="210" rx="20" fill="#1F1F23" stroke="rgba(239, 68, 68, 0.25)" stroke-width="1.5" />
+      <text x="40" y="55" class="c2-num">02</text>
+      <text x="110" y="52" class="c2-head">No Direct WhatsApp / Instant Booking CTA</text>
+      <text x="110" y="95" class="c2-desc">Indian &amp; Pune consumers prefer 1-tap WhatsApp booking over</text>
+      <text x="110" y="125" class="c2-desc">lengthy contact forms that sit in unanswered inboxes for days.</text>
+    </g>
+
+    <!-- Problem 3 -->
+    <g transform="translate(0, 480)">
+      <rect width="920" height="210" rx="20" fill="#1F1F23" stroke="rgba(239, 68, 68, 0.25)" stroke-width="1.5" />
+      <text x="40" y="55" class="c2-num">03</text>
+      <text x="110" y="52" class="c2-head">Zero Automated Lead Qualification</text>
+      <text x="110" y="95" class="c2-desc">Valuable high-intent leads go cold overnight while your team</text>
+      <text x="110" y="125" class="c2-desc">is offline without an intelligent 24/7 autonomous triage agent.</text>
+    </g>
+  </g>
+
+  <!-- Swipe Prompt -->
+  <g transform="translate(80, 1180)">
+    <text x="0" y="30" font-family="'JetBrains Mono', monospace" font-size="16px" font-weight="700" fill="#C76B50">SWIPE TO SEE THE ARCHITECTURAL FIX &rarr;</text>
+  </g>
+</svg>

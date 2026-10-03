@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@800;900&amp;family=JetBrains+Mono:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700&amp;display=swap');
+      .c1-title { font-family: 'Cabinet Grotesk', 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 72px; fill: #FAF8F5; letter-spacing: -0.03em; line-height: 1.12; }
+      .c1-acc { fill: #C76B50; }
+      .c1-sub { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 26px; fill: #A69D92; line-height: 1.5; font-weight: 500; }
+      .c1-mono { font-family: 'JetBrains Mono', monospace; font-size: 16px; font-weight: 700; fill: #C76B50; letter-spacing: 0.1em; }
+    </style>
+    <radialGradient id="c1Glow" cx="80%" cy="20%" r="60%">
+      <stop offset="0%" stop-color="#C76B50" stop-opacity="0.3" />
+      <stop offset="60%" stop-color="#C76B50" stop-opacity="0.05" />
+      <stop offset="100%" stop-color="#141416" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1350" fill="#141416" />
+  <circle cx="800" cy="300" r="500" fill="url(#c1Glow)" />
+  <rect x="1" y="1" width="1078" height="1348" fill="none" stroke="rgba(255, 255, 255, 0.08)" stroke-width="2" />
+
+  <!-- Top Bar -->
+  <g transform="translate(80, 80)">
+    <g transform="translate(0, 0) scale(0.38)" fill="none" stroke="#C76B50" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="29,38 60,8 91,38" /><line x1="60" y1="8" x2="60" y2="142" /><path d="M 10,142 L 10,40 Q 10,33 17,37 L 60,142" /><path d="M 60,54 C 88,54 110,66 110,83 C 110,100 88,104 60,104" /><line x1="60" y1="104" x2="110" y2="142" />
+    </g>
+    <text x="60" y="38" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="28px" fill="#FAF8F5">NextReach <tspan fill="#C76B50">Studio</tspan></text>
+    <rect x="800" y="8" width="120" height="38" rx="19" fill="rgba(199, 107, 80, 0.15)" stroke="rgba(199, 107, 80, 0.3)" />
+    <text x="860" y="32" class="c1-mono" text-anchor="middle">SLIDE 1/5</text>
+  </g>
+
+  <!-- Hook Badge -->
+  <g transform="translate(80, 240)">
+    <rect width="260" height="42" rx="21" fill="rgba(239, 68, 68, 0.15)" stroke="rgba(239, 68, 68, 0.35)" />
+    <text x="130" y="27" font-family="'JetBrains Mono', monospace" font-size="14px" font-weight="700" fill="#EF4444" text-anchor="middle">CASE BREAKDOWN</text>
+  </g>
+
+  <!-- Main Hook Title -->
+  <g transform="translate(80, 370)">
+    <text x="0" y="0" class="c1-title">Why 90% Of</text>
+    <text x="0" y="85" class="c1-title"><tspan class="c1-acc">Business Websites</tspan></text>
+    <text x="0" y="170" class="c1-title">Fail To Generate</text>
+    <text x="0" y="255" class="c1-title">High-Ticket Leads.</text>
+    <text x="0" y="360" class="c1-sub">(And the exact 3 engineering upgrades that fix it</text>
+    <text x="0" y="405" class="c1-sub">in less than 14 days.)</text>
+  </g>
+
+  <!-- Swipe Indicator Card -->
+  <g transform="translate(80, 1120)">
+    <rect width="920" height="130" rx="24" fill="#1F1F23" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1.5" />
+    <text x="50" y="75" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="24px" fill="#FAF8F5">Swipe to see the breakdown &rarr;</text>
+    <circle cx="840" cy="65" r="32" fill="#C76B50" />
+    <text x="840" y="73" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="26px" fill="#FFFFFF" text-anchor="middle">&rarr;</text>
+  </g>
+</svg>

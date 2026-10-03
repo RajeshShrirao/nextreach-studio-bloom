@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1584" height="396" viewBox="0 0 1584 396">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@800;900&amp;family=JetBrains+Mono:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap');
+      .li-title { font-family: 'Cabinet Grotesk', 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 42px; fill: #FAF8F5; letter-spacing: -0.03em; }
+      .li-acc { fill: #C76B50; }
+      .li-sub { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; fill: #A69D92; font-weight: 500; }
+      .li-badge { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700; fill: #C76B50; letter-spacing: 0.1em; text-transform: uppercase; }
+      .li-mono-light { font-family: 'JetBrains Mono', monospace; font-size: 12px; fill: #FAF8F5; }
+    </style>
+    <radialGradient id="liBannerGlow" cx="85%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#C76B50" stop-opacity="0.3" />
+      <stop offset="60%" stop-color="#C76B50" stop-opacity="0.04" />
+      <stop offset="100%" stop-color="#141416" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="liTermGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#242428" />
+      <stop offset="100%" stop-color="#18181B" />
+    </linearGradient>
+  </defs>
+
+  <!-- Dark Base -->
+  <rect width="1584" height="396" fill="#141416" />
+  <circle cx="1300" cy="180" r="400" fill="url(#liBannerGlow)" />
+  <rect x="1" y="1" width="1582" height="394" fill="none" stroke="rgba(255, 255, 255, 0.08)" stroke-width="2" />
+
+  <!-- Subtle Blueprint Grid Lines -->
+  <line x1="0" y1="394" x2="1584" y2="394" stroke="#C76B50" stroke-width="3" />
+
+  <!-- Left Profile Picture Clearance Zone (Avatar falls around X: 50 to 250 on desktop/mobile) -->
+  <!-- Main Content Starts at X: 360 -->
+  <g transform="translate(360, 65)">
+    <!-- Top Pill -->
+    <g transform="translate(0, 0)">
+      <rect width="260" height="30" rx="15" fill="rgba(199, 107, 80, 0.15)" stroke="rgba(199, 107, 80, 0.35)" />
+      <text x="130" y="20" class="li-badge" text-anchor="middle">SENIOR ENGINEERING STUDIO</text>
+    </g>
+
+    <!-- Main Title -->
+    <g transform="translate(0, 65)">
+      <text x="0" y="0" class="li-title">High-Velocity <tspan class="li-acc">AI &amp; Web</tspan> Engineering</text>
+      <text x="0" y="32" class="li-sub">Senior-engineered websites, web platforms, and autonomous AI workflows.</text>
+      <text x="0" y="58" class="li-sub">Shipped in 3 to 14 days with fixed-milestone pricing clarity.</text>
+    </g>
+
+    <!-- Tech Stack / Authority Pills -->
+    <g transform="translate(0, 185)">
+      <rect width="120" height="34" rx="8" fill="#1F1F23" stroke="rgba(255, 255, 255, 0.1)" />
+      <text x="60" y="22" font-family="'JetBrains Mono', monospace" font-size="12px" font-weight="700" fill="#FAF8F5" text-anchor="middle">Astro 6</text>
+
+      <g transform="translate(130, 0)">
+        <rect width="120" height="34" rx="8" fill="#1F1F23" stroke="rgba(255, 255, 255, 0.1)" />
+        <text x="60" y="22" font-family="'JetBrains Mono', monospace" font-size="12px" font-weight="700" fill="#FAF8F5" text-anchor="middle">React 19</text>
+      </g>
+
+      <g transform="translate(260, 0)">
+        <rect width="120" height="34" rx="8" fill="#1F1F23" stroke="rgba(255, 255, 255, 0.1)" />
+        <text x="60" y="22" font-family="'JetBrains Mono', monospace" font-size="12px" font-weight="700" fill="#FAF8F5" text-anchor="middle">AI Agents</text>
+      </g>
+
+      <g transform="translate(390, 0)">
+        <rect width="150" height="34" rx="8" fill="rgba(16, 185, 129, 0.12)" stroke="rgba(16, 185, 129, 0.3)" />
+        <text x="75" y="22" font-family="'JetBrains Mono', monospace" font-size="12px" font-weight="700" fill="#10B981" text-anchor="middle">📍 Pune &amp; Global</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Right Visual Terminal Card -->
+  <g transform="translate(1080, 50)">
+    <rect width="440" height="290" rx="16" fill="url(#liTermGrad)" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1.5" />
+    
+    <!-- Window Bar -->
+    <rect width="440" height="36" rx="16" fill="#1C1C20" />
+    <circle cx="20" cy="18" r="4" fill="#EF4444" />
+    <circle cx="34" cy="18" r="4" fill="#F59E0B" />
+    <circle cx="48" cy="18" r="4" fill="#10B981" />
+    <text x="70" y="22" class="li-mono-light" fill="#8C847B" font-size="11px">nextreach-deploy.sh</text>
+
+    <!-- Code Body -->
+    <g transform="translate(24, 60)">
+      <text x="0" y="20" class="li-mono-light"><tspan fill="#C76B50">const</tspan> sprint = {</text>
+      <text x="20" y="48" class="li-mono-light">speed: <tspan fill="#10B981">"14 Days"</tspan>,</text>
+      <text x="20" y="76" class="li-mono-light">pricing: <tspan fill="#E88C72">"₹5,000 – ₹50,000"</tspan>,</text>
+      <text x="20" y="104" class="li-mono-light">engine: <tspan fill="#FAF8F5">"Astro + LLM Core"</tspan>,</text>
+      <text x="20" y="132" class="li-mono-light">leads: <tspan fill="#10B981">"WhatsApp 1-Tap Ready"</tspan></text>
+      <text x="0" y="160" class="li-mono-light">};</text>
+      <text x="0" y="195" class="li-mono-light" fill="#8C847B">// Book: wa.me/919822379976</text>
+    </g>
+  </g>
+</svg>

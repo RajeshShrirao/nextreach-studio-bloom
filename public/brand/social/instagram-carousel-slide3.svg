@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@800;900&amp;family=JetBrains+Mono:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700&amp;display=swap');
+      .c3-title { font-family: 'Cabinet Grotesk', 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 56px; fill: #FAF8F5; letter-spacing: -0.025em; }
+      .c3-num { font-family: 'Cabinet Grotesk', sans-serif; font-weight: 900; font-size: 38px; fill: #10B981; }
+      .c3-head { font-family: 'Cabinet Grotesk', 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 26px; fill: #FAF8F5; }
+      .c3-desc { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 19px; fill: #A69D92; line-height: 1.5; font-weight: 500; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1350" fill="#141416" />
+  <rect x="1" y="1" width="1078" height="1348" fill="none" stroke="rgba(255, 255, 255, 0.08)" stroke-width="2" />
+
+  <!-- Top Bar -->
+  <g transform="translate(80, 80)">
+    <text x="0" y="38" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="28px" fill="#FAF8F5">NextReach <tspan fill="#C76B50">Studio</tspan></text>
+    <rect x="800" y="8" width="120" height="38" rx="19" fill="rgba(199, 107, 80, 0.15)" stroke="rgba(199, 107, 80, 0.3)" />
+    <text x="860" y="32" font-family="'JetBrains Mono', monospace" font-size="16px" font-weight="700" fill="#C76B50" text-anchor="middle">SLIDE 3/5</text>
+  </g>
+
+  <!-- Section Title -->
+  <g transform="translate(80, 200)">
+    <text x="0" y="0" class="c3-title">The NextReach Solution</text>
+    <text x="0" y="55" font-family="'Plus Jakarta Sans', sans-serif" font-size="22px" fill="#6E6862">How our senior engineering architecture solves all three.</text>
+  </g>
+
+  <!-- 3 Solution Cards -->
+  <g transform="translate(80, 340)">
+    <!-- Sol 1 -->
+    <rect width="920" height="210" rx="20" fill="#1F1F23" stroke="rgba(16, 185, 129, 0.25)" stroke-width="1.5" />
+    <text x="40" y="55" class="c3-num">01</text>
+    <text x="110" y="52" class="c3-head">Astro + React Hybrid SSR Engine</text>
+    <text x="110" y="95" class="c3-desc">Sub-second page loads, zero client-side hydration bloat,</text>
+    <text x="110" y="125" class="c3-desc">and perfect 100/100 Core Web Vitals for maximum SEO rank.</text>
+
+    <!-- Sol 2 -->
+    <g transform="translate(0, 240)">
+      <rect width="920" height="210" rx="20" fill="#1F1F23" stroke="rgba(16, 185, 129, 0.25)" stroke-width="1.5" />
+      <text x="40" y="55" class="c3-num">02</text>
+      <text x="110" y="52" class="c3-head">1-Tap WhatsApp Lead Pipelines</text>
+      <text x="110" y="95" class="c3-desc">Direct pre-filled WhatsApp action triggers that connect buyer</text>
+      <text x="110" y="125" class="c3-desc">intent directly to your sales team with automated UTM tagging.</text>
+    </g>
+
+    <!-- Sol 3 -->
+    <g transform="translate(0, 480)">
+      <rect width="920" height="210" rx="20" fill="#1F1F23" stroke="rgba(16, 185, 129, 0.25)" stroke-width="1.5" />
+      <text x="40" y="55" class="c3-num">03</text>
+      <text x="110" y="52" class="c3-head">24/7 Autonomous AI Agent Triage</text>
+      <text x="110" y="95" class="c3-desc">Custom LLM agents that qualify prospects, answer technical FAQs,</text>
+      <text x="110" y="125" class="c3-desc">and automatically schedule calls straight into your calendar.</text>
+    </g>
+  </g>
+
+  <!-- Swipe Prompt -->
+  <g transform="translate(80, 1180)">
+    <text x="0" y="30" font-family="'JetBrains Mono', monospace" font-size="16px" font-weight="700" fill="#10B981">SWIPE TO SEE LIVE CLIENT ROI &rarr;</text>
+  </g>
+</svg>

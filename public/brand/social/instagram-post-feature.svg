@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@800;900&amp;family=JetBrains+Mono:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700&amp;display=swap');
+      .ig-title { font-family: 'Cabinet Grotesk', 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 68px; fill: #FAF8F5; letter-spacing: -0.03em; line-height: 1.1; }
+      .ig-accent { fill: #C76B50; }
+      .ig-desc { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 26px; fill: #A69D92; font-weight: 500; line-height: 1.5; }
+      .ig-mono { font-family: 'JetBrains Mono', monospace; font-size: 18px; fill: #FAF8F5; font-weight: 600; }
+      .ig-badge-text { font-family: 'JetBrains Mono', monospace; font-size: 16px; font-weight: 700; fill: #C76B50; letter-spacing: 0.1em; text-transform: uppercase; }
+      .ig-btn-text { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 22px; font-weight: 700; fill: #FFFFFF; }
+    </style>
+    <radialGradient id="postGlow" cx="70%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#C76B50" stop-opacity="0.22" />
+      <stop offset="60%" stop-color="#C76B50" stop-opacity="0.04" />
+      <stop offset="100%" stop-color="#141416" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#242428" />
+      <stop offset="100%" stop-color="#18181B" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1350" fill="#141416" />
+  <circle cx="750" cy="400" r="500" fill="url(#postGlow)" />
+  <rect x="1" y="1" width="1078" height="1348" fill="none" stroke="rgba(255, 255, 255, 0.08)" stroke-width="2" />
+
+  <!-- Top Header Bar with NextReach Logo -->
+  <g transform="translate(80, 80)">
+    <g transform="translate(0, 0) scale(0.38)" fill="none" stroke="#C76B50" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="29,38 60,8 91,38" />
+      <line x1="60" y1="8" x2="60" y2="142" />
+      <path d="M 10,142 L 10,40 Q 10,33 17,37 L 60,142" />
+      <path d="M 60,54 C 88,54 110,66 110,83 C 110,100 88,104 60,104" />
+      <line x1="60" y1="104" x2="110" y2="142" />
+    </g>
+    <text x="60" y="38" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="28px" fill="#FAF8F5">NextReach <tspan fill="#C76B50">Studio</tspan></text>
+    <text x="760" y="38" class="ig-badge-text">ENGINEERING SPRINT</text>
+  </g>
+
+  <!-- Category Tag -->
+  <g transform="translate(80, 200)">
+    <rect width="280" height="44" rx="22" fill="rgba(199, 107, 80, 0.15)" stroke="rgba(199, 107, 80, 0.35)" stroke-width="1.5" />
+    <text x="140" y="28" class="ig-badge-text" text-anchor="middle">NEW SERVICE RELEASE</text>
+  </g>
+
+  <!-- Main Headline -->
+  <g transform="translate(80, 320)">
+    <text x="0" y="0" class="ig-title">Autonomous <tspan class="ig-accent">AI Agents</tspan></text>
+    <text x="0" y="80" class="ig-title">Built For Pune</text>
+    <text x="0" y="160" class="ig-title">Business Growth.</text>
+    <text x="0" y="240" class="ig-desc">Replace manual workflows with 24/7 intelligent CRM triage,</text>
+    <text x="0" y="285" class="ig-desc">instant WhatsApp lead booking, and automated invoicing.</text>
+  </g>
+
+  <!-- Interactive Visual Card -->
+  <g transform="translate(80, 680)">
+    <rect width="920" height="380" rx="24" fill="url(#cardGrad)" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1.5" />
+    
+    <!-- Code / Terminal Header -->
+    <rect width="920" height="60" rx="24" fill="#1C1C20" />
+    <circle cx="36" cy="30" r="7" fill="#EF4444" />
+    <circle cx="58" cy="30" r="7" fill="#F59E0B" />
+    <circle cx="80" cy="30" r="7" fill="#10B981" />
+    <text x="120" y="36" class="ig-mono" fill="#8C847B">agent-workflow.ts — NextReach Core</text>
+
+    <!-- Terminal Content Lines -->
+    <g transform="translate(40, 100)">
+      <text x="0" y="30" class="ig-mono"><tspan fill="#C76B50">const</tspan> agent = <tspan fill="#E88C72">createAutonomousAgent</tspan>({</text>
+      <text x="30" y="70" class="ig-mono">integration: <tspan fill="#10B981">"WhatsApp + CRM + ERP"</tspan>,</text>
+      <text x="30" y="110" class="ig-mono">responseTime: <tspan fill="#F59E0B">"&lt; 3.2 seconds"</tspan>,</text>
+      <text x="30" y="150" class="ig-mono">accuracyRate: <tspan fill="#10B981">"99.4%"</tspan>,</text>
+      <text x="30" y="190" class="ig-mono">turnaround: <tspan fill="#C76B50">"7-Day Fixed Sprint"</tspan></text>
+      <text x="0" y="230" class="ig-mono">});</text>
+    </g>
+  </g>
+
+  <!-- Bottom CTA Footer -->
+  <g transform="translate(80, 1140)">
+    <rect width="920" height="110" rx="20" fill="#C76B50" />
+    <text x="60" y="65" class="ig-btn-text">Book a 15-Minute Strategy Sprint &rarr;</text>
+    <rect x="680" y="30" width="190" height="50" rx="12" fill="#FAF8F5" />
+    <text x="775" y="62" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="18px" fill="#1F1F23" text-anchor="middle">₹25,000+</text>
+  </g>
+</svg>

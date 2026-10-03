@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@800;900&amp;family=JetBrains+Mono:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700&amp;display=swap');
+      .c4-title { font-family: 'Cabinet Grotesk', 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 56px; fill: #FAF8F5; letter-spacing: -0.025em; }
+      .c4-stat { font-family: 'Cabinet Grotesk', sans-serif; font-weight: 900; font-size: 80px; fill: #C76B50; }
+      .c4-head { font-family: 'Cabinet Grotesk', 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 26px; fill: #FAF8F5; }
+      .c4-desc { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 20px; fill: #A69D92; line-height: 1.5; font-weight: 500; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1350" fill="#141416" />
+  <rect x="1" y="1" width="1078" height="1348" fill="none" stroke="rgba(255, 255, 255, 0.08)" stroke-width="2" />
+
+  <!-- Top Bar -->
+  <g transform="translate(80, 80)">
+    <text x="0" y="38" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="28px" fill="#FAF8F5">NextReach <tspan fill="#C76B50">Studio</tspan></text>
+    <rect x="800" y="8" width="120" height="38" rx="19" fill="rgba(199, 107, 80, 0.15)" stroke="rgba(199, 107, 80, 0.3)" />
+    <text x="860" y="32" font-family="'JetBrains Mono', monospace" font-size="16px" font-weight="700" fill="#C76B50" text-anchor="middle">SLIDE 4/5</text>
+  </g>
+
+  <!-- Section Title -->
+  <g transform="translate(80, 200)">
+    <text x="0" y="0" class="c4-title">Live Pune Case Study</text>
+    <text x="0" y="55" font-family="'Plus Jakarta Sans', sans-serif" font-size="22px" fill="#6E6862">Saffron &amp; Smoke Luxury Culinary Flagship Deployment.</text>
+  </g>
+
+  <!-- 2 Metric Comparison Blocks -->
+  <g transform="translate(80, 340)">
+    <!-- Before Block -->
+    <rect width="440" height="420" rx="20" fill="#1C1C20" stroke="rgba(239, 68, 68, 0.2)" stroke-width="1.5" />
+    <rect x="36" y="36" width="120" height="32" rx="16" fill="rgba(239, 68, 68, 0.15)" />
+    <text x="96" y="58" font-family="'JetBrains Mono', monospace" font-size="12px" font-weight="700" fill="#EF4444" text-anchor="middle">BEFORE</text>
+    <text x="36" y="140" class="c4-stat" fill="#EF4444">4.2s</text>
+    <text x="36" y="180" class="c4-head">Load Time</text>
+    <text x="36" y="240" class="c4-desc">• Bloated WordPress theme</text>
+    <text x="36" y="280" class="c4-desc">• Low mobile conversions</text>
+    <text x="36" y="320" class="c4-desc">• Manual table reservations</text>
+
+    <!-- After Block -->
+    <g transform="translate(480, 0)">
+      <rect width="440" height="420" rx="20" fill="#1F1F23" stroke="rgba(16, 185, 129, 0.3)" stroke-width="1.5" />
+      <rect x="36" y="36" width="120" height="32" rx="16" fill="rgba(16, 185, 129, 0.15)" />
+      <text x="96" y="58" font-family="'JetBrains Mono', monospace" font-size="12px" font-weight="700" fill="#10B981" text-anchor="middle">AFTER</text>
+      <text x="36" y="140" class="c4-stat" fill="#10B981">0.4s</text>
+      <text x="36" y="180" class="c4-head">Load Time</text>
+      <text x="36" y="240" class="c4-desc">• Sub-second Astro flagship</text>
+      <text x="36" y="280" class="c4-desc">• 1-tap WhatsApp booking</text>
+      <text x="36" y="320" class="c4-desc">• 10× monthly table requests</text>
+    </g>
+  </g>
+
+  <!-- Quote Card -->
+  <g transform="translate(80, 820)">
+    <rect width="920" height="240" rx="20" fill="#FAF8F5" />
+    <text x="40" y="60" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="24px" fill="#1F1F23">"Shipped in 7 days flat. Our customer engagement tripled."</text>
+    <text x="40" y="110" font-family="'Plus Jakarta Sans', sans-serif" font-weight="500" font-size="18px" fill="#6E6862">NextReach Senior Engineering Sprint Client</text>
+    <text x="40" y="180" font-family="'JetBrains Mono', monospace" font-size="14px" font-weight="700" fill="#C76B50">DEMO: nextreachstudio.vercel.app/demos/saffron-and-smoke</text>
+  </g>
+
+  <!-- Swipe Prompt -->
+  <g transform="translate(80, 1180)">
+    <text x="0" y="30" font-family="'JetBrains Mono', monospace" font-size="16px" font-weight="700" fill="#C76B50">SWIPE TO START YOUR SPRINT &rarr;</text>
+  </g>
+</svg>

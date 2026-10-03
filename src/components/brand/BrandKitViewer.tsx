@@ -3,17 +3,18 @@ import React, { useState } from "react";
 interface BrandAsset {
   id: string;
   name: string;
-  category: "logo" | "mark" | "monochrome" | "app" | "guidelines";
+  category: "logo" | "mark" | "monochrome" | "app" | "social" | "guidelines";
   description: string;
   src: string;
   dimensions: string;
   recommendedBackground: "light" | "dark" | "any";
   svgCode?: string;
-  format: "SVG Vector" | "JPG Master Board";
+  format: "SVG Vector" | "JPG Master Board" | "Markdown Copy";
   isVector: boolean;
 }
 
 const BRAND_ASSETS: BrandAsset[] = [
+  // --- CORE LOGOS & LOCKUPS ---
   {
     id: "primary-horizontal-light",
     name: "Primary Horizontal Logo (Light Canvas)",
@@ -58,6 +59,8 @@ const BRAND_ASSETS: BrandAsset[] = [
     format: "SVG Vector",
     isVector: true,
   },
+
+  // --- STANDALONE MARKS ---
   {
     id: "standalone-mark-terracotta",
     name: "Standalone Emblem Mark (Terracotta)",
@@ -91,6 +94,8 @@ const BRAND_ASSETS: BrandAsset[] = [
     format: "SVG Vector",
     isVector: true,
   },
+
+  // --- APP & PROFILE ICONS ---
   {
     id: "app-icon-squircle-dark",
     name: "Master App & Profile Icon (512x512 Dark)",
@@ -113,6 +118,296 @@ const BRAND_ASSETS: BrandAsset[] = [
     format: "SVG Vector",
     isVector: true,
   },
+
+  // --- SOCIAL MEDIA KIT ---
+  {
+    id: "social-ig-profile",
+    name: "Instagram Profile Picture (1:1 Circle Safe)",
+    category: "social",
+    description: "High-contrast dark profile avatar with ambient terracotta glow and circular mask safe padding.",
+    src: "/brand/social/instagram-profile.svg",
+    dimensions: "1080 × 1080 px (1:1)",
+    recommendedBackground: "dark",
+    format: "SVG Vector",
+    isVector: true,
+  },
+  {
+    id: "social-li-profile",
+    name: "LinkedIn Company Logo (1:1)",
+    category: "social",
+    description: "B2B company avatar optimized for both desktop square tiles and mobile circular search results.",
+    src: "/brand/social/linkedin-profile.svg",
+    dimensions: "400 × 400 px (1:1)",
+    recommendedBackground: "dark",
+    format: "SVG Vector",
+    isVector: true,
+  },
+  {
+    id: "social-li-banner",
+    name: "LinkedIn Company Banner Header",
+    category: "social",
+    description: "Wide desktop & mobile safe banner with tagline, engineering stack chips, and terminal graphic.",
+    src: "/brand/social/linkedin-banner.svg",
+    dimensions: "1584 × 396 px (Banner)",
+    recommendedBackground: "dark",
+    format: "SVG Vector",
+    isVector: true,
+  },
+  {
+    id: "social-wa-profile",
+    name: "WhatsApp Business Profile Avatar",
+    category: "social",
+    description: "High-contrast mobile avatar with terracotta rim border for instant recognition in WhatsApp chat lists.",
+    src: "/brand/social/whatsapp-profile.svg",
+    dimensions: "640 × 640 px (1:1)",
+    recommendedBackground: "dark",
+    format: "SVG Vector",
+    isVector: true,
+  },
+  {
+    id: "social-post-feature",
+    name: "Instagram Feed Post — Feature Sprint (4:5)",
+    category: "social",
+    description: "Portrait feed template for new service releases, code frameworks, and pricing announcements.",
+    src: "/brand/social/instagram-post-feature.svg",
+    dimensions: "1080 × 1350 px (4:5)",
+    recommendedBackground: "dark",
+    format: "SVG Vector",
+    isVector: true,
+  },
+  {
+    id: "social-post-metric",
+    name: "Instagram Feed Post — Client Metric & Case Study (4:5)",
+    category: "social",
+    description: "High-impact stat callout card: 14-Day Delivery, 10x Lead Volume, and 5-star client proof.",
+    src: "/brand/social/instagram-post-metric.svg",
+    dimensions: "1080 × 1350 px (4:5)",
+    recommendedBackground: "dark",
+    format: "SVG Vector",
+    isVector: true,
+  },
+  {
+    id: "social-post-quote",
+    name: "Instagram Feed Post — Editorial Tech Quote (4:5)",
+    category: "social",
+    description: "Warm cream editorial layout for engineering principles, founder insights, and thought leadership.",
+    src: "/brand/social/instagram-post-quote.svg",
+    dimensions: "1080 × 1350 px (4:5)",
+    recommendedBackground: "light",
+    format: "SVG Vector",
+    isVector: true,
+  },
+  {
+    id: "social-reel-cover",
+    name: "Instagram Reel Cover (9:16 with 1:1 Safe Zone)",
+    category: "social",
+    description: "Full-screen vertical cover with centered safe-zone framing for clean profile grid display.",
+    src: "/brand/social/instagram-reel-cover.svg",
+    dimensions: "1080 × 1920 px (9:16)",
+    recommendedBackground: "dark",
+    format: "SVG Vector",
+    isVector: true,
+  },
+  {
+    id: "social-story-launch",
+    name: "Instagram Story — Sprint Launch (9:16)",
+    category: "social",
+    description: "Story announcement card with link sticker placeholder and Core Web Vitals metric callout.",
+    src: "/brand/social/instagram-story-launch.svg",
+    dimensions: "1080 × 1920 px (9:16)",
+    recommendedBackground: "dark",
+    format: "SVG Vector",
+    isVector: true,
+  },
+  {
+    id: "social-story-poll",
+    name: "Instagram Story — Interactive Poll / Q&A (9:16)",
+    category: "social",
+    description: "Framed engagement template ready for native Instagram poll stickers and question boxes.",
+    src: "/brand/social/instagram-story-poll.svg",
+    dimensions: "1080 × 1920 px (9:16)",
+    recommendedBackground: "dark",
+    format: "SVG Vector",
+    isVector: true,
+  },
+  {
+    id: "social-story-review",
+    name: "Instagram Story — 5-Star Client Review (9:16)",
+    category: "social",
+    description: "5-star testimonial card showcasing verified client ROI and direct sprint booking CTA.",
+    src: "/brand/social/instagram-story-review.svg",
+    dimensions: "1080 × 1920 px (9:16)",
+    recommendedBackground: "dark",
+    format: "SVG Vector",
+    isVector: true,
+  },
+  {
+    id: "social-carousel-s1",
+    name: "Instagram Carousel — Slide 1 (Hook Cover)",
+    category: "social",
+    description: "Hook slide: 'Why 90% of Business Websites Fail to Generate Leads in Pune' with swipe cue.",
+    src: "/brand/social/instagram-carousel-slide1.svg",
+    dimensions: "1080 × 1350 px (4:5)",
+    recommendedBackground: "dark",
+    format: "SVG Vector",
+    isVector: true,
+  },
+  {
+    id: "social-carousel-s2",
+    name: "Instagram Carousel — Slide 2 (The Bottlenecks)",
+    category: "social",
+    description: "3 fatal failure points of slow templates, missing WhatsApp CTAs, and cold lead pipelines.",
+    src: "/brand/social/instagram-carousel-slide2.svg",
+    dimensions: "1080 × 1350 px (4:5)",
+    recommendedBackground: "dark",
+    format: "SVG Vector",
+    isVector: true,
+  },
+  {
+    id: "social-carousel-s3",
+    name: "Instagram Carousel — Slide 3 (The Solution)",
+    category: "social",
+    description: "The 3 engineering upgrades: Sub-second Astro engine, WhatsApp pipelines, and 24/7 AI agents.",
+    src: "/brand/social/instagram-carousel-slide3.svg",
+    dimensions: "1080 × 1350 px (4:5)",
+    recommendedBackground: "dark",
+    format: "SVG Vector",
+    isVector: true,
+  },
+  {
+    id: "social-carousel-s4",
+    name: "Instagram Carousel — Slide 4 (Live Case Study)",
+    category: "social",
+    description: "Before vs. After metric comparison on the Saffron & Smoke culinary flagship.",
+    src: "/brand/social/instagram-carousel-slide4.svg",
+    dimensions: "1080 × 1350 px (4:5)",
+    recommendedBackground: "dark",
+    format: "SVG Vector",
+    isVector: true,
+  },
+  {
+    id: "social-carousel-s5",
+    name: "Instagram Carousel — Slide 5 (Pricing & CTA)",
+    category: "social",
+    description: "Direct action slide featuring ₹5k–₹50k packages and WhatsApp chat button.",
+    src: "/brand/social/instagram-carousel-slide5.svg",
+    dimensions: "1080 × 1350 px (4:5)",
+    recommendedBackground: "dark",
+    format: "SVG Vector",
+    isVector: true,
+  },
+  {
+    id: "social-hl-services",
+    name: "Story Highlight Cover — Services",
+    category: "social",
+    description: "Minimalist glowing vector highlight cover for core engineering services.",
+    src: "/brand/social/highlight-services.svg",
+    dimensions: "1080 × 1920 px (Icon)",
+    recommendedBackground: "dark",
+    format: "SVG Vector",
+    isVector: true,
+  },
+  {
+    id: "social-hl-ai",
+    name: "Story Highlight Cover — AI Agents",
+    category: "social",
+    description: "Minimalist glowing vector highlight cover for autonomous AI agent workflows.",
+    src: "/brand/social/highlight-ai-agents.svg",
+    dimensions: "1080 × 1920 px (Icon)",
+    recommendedBackground: "dark",
+    format: "SVG Vector",
+    isVector: true,
+  },
+  {
+    id: "social-hl-web",
+    name: "Story Highlight Cover — Websites",
+    category: "social",
+    description: "Minimalist glowing vector highlight cover for custom web applications.",
+    src: "/brand/social/highlight-websites.svg",
+    dimensions: "1080 × 1920 px (Icon)",
+    recommendedBackground: "dark",
+    format: "SVG Vector",
+    isVector: true,
+  },
+  {
+    id: "social-hl-cases",
+    name: "Story Highlight Cover — Case Studies",
+    category: "social",
+    description: "Minimalist glowing vector highlight cover for client ROI metrics & case studies.",
+    src: "/brand/social/highlight-case-studies.svg",
+    dimensions: "1080 × 1920 px (Icon)",
+    recommendedBackground: "dark",
+    format: "SVG Vector",
+    isVector: true,
+  },
+  {
+    id: "social-hl-pricing",
+    name: "Story Highlight Cover — Pricing",
+    category: "social",
+    description: "Minimalist glowing vector highlight cover for website sprint packages.",
+    src: "/brand/social/highlight-pricing.svg",
+    dimensions: "1080 × 1920 px (Icon)",
+    recommendedBackground: "dark",
+    format: "SVG Vector",
+    isVector: true,
+  },
+  {
+    id: "social-hl-about",
+    name: "Story Highlight Cover — About Us",
+    category: "social",
+    description: "Featuring the authentic vertical NextReach emblem mark.",
+    src: "/brand/social/highlight-about.svg",
+    dimensions: "1080 × 1920 px (Icon)",
+    recommendedBackground: "dark",
+    format: "SVG Vector",
+    isVector: true,
+  },
+  {
+    id: "social-wa-cat-quick",
+    name: "WhatsApp Catalog Card — Quick Launch Website (₹5,000)",
+    category: "social",
+    description: "1080x1080 product card with feature breakdown, ₹5k price tag, and 3-day turnaround SLA.",
+    src: "/brand/social/whatsapp-catalog-quicklaunch.svg",
+    dimensions: "1080 × 1080 px (1:1)",
+    recommendedBackground: "dark",
+    format: "SVG Vector",
+    isVector: true,
+  },
+  {
+    id: "social-wa-cat-growth",
+    name: "WhatsApp Catalog Card — Business Growth Website (₹15,000)",
+    category: "social",
+    description: "1080x1080 product card for multi-page SEO platforms with WhatsApp CRM routing.",
+    src: "/brand/social/whatsapp-catalog-growth.svg",
+    dimensions: "1080 × 1080 px (1:1)",
+    recommendedBackground: "dark",
+    format: "SVG Vector",
+    isVector: true,
+  },
+  {
+    id: "social-wa-cat-ai",
+    name: "WhatsApp Catalog Card — Autonomous AI Agent (₹25,000+)",
+    category: "social",
+    description: "1080x1080 product card for 24/7 LLM customer qualification & WhatsApp CRM triage.",
+    src: "/brand/social/whatsapp-catalog-ai-agent.svg",
+    dimensions: "1080 × 1080 px (1:1)",
+    recommendedBackground: "dark",
+    format: "SVG Vector",
+    isVector: true,
+  },
+  {
+    id: "social-wa-cat-custom",
+    name: "WhatsApp Catalog Card — Custom Web App & MVP (₹50,000+)",
+    category: "social",
+    description: "1080x1080 product card for full-stack React platforms with auth, database, and 14-day SLA.",
+    src: "/brand/social/whatsapp-catalog-custom-app.svg",
+    dimensions: "1080 × 1080 px (1:1)",
+    recommendedBackground: "dark",
+    format: "SVG Vector",
+    isVector: true,
+  },
+
+  // --- MONOCHROME SUITE ---
   {
     id: "mono-horizontal-black",
     name: "Monochrome Black Horizontal Logo",
@@ -168,6 +463,8 @@ const BRAND_ASSETS: BrandAsset[] = [
     format: "SVG Vector",
     isVector: true,
   },
+
+  // --- GUIDELINES & BLUEPRINTS ---
   {
     id: "guidelines-clearspace",
     name: "Logo Clear-Space Exclusion Rules (1X Grid)",
@@ -316,6 +613,43 @@ const COLOR_TOKENS = [
   },
 ];
 
+const IG_BIOS = [
+  {
+    title: "01. Direct Response & High Conversion",
+    badge: "RECOMMENDED FOR PUNE SMES",
+    text: `NextReach Studio | Web & AI 🚀
+Senior-engineered websites & AI agents.
+⚡ Shipped in 3–14 days | ₹5k+
+📍 Pune & Global
+👇 Book a Sprint / Chat on WhatsApp
+wa.me/919822379976`,
+    chars: 142,
+  },
+  {
+    title: "02. High-Tech & Autonomous AI",
+    badge: "FOUNDERS & CTOS",
+    text: `NextReach Studio
+High-velocity AI & custom web engineering.
+Autonomous agents • React/Astro • Fast MVPs
+Zero fluff. Fixed-scope delivery.
+👇 Explore Live Portfolios
+nextreachstudio.vercel.app`,
+    chars: 148,
+  },
+  {
+    title: "03. Minimalist Authority",
+    badge: "LUXURY & ARCHITECTURAL",
+    text: `NextReach Studio
+Architecture of intelligent software.
+Websites • AI Systems • Enterprise MVPs
+Senior engineers. 14-day execution.
+📍 Pune, MH
+👇 Start Your Project
+nextreachstudio.vercel.app/contact`,
+    chars: 146,
+  },
+];
+
 export default function BrandKitViewer() {
   const [activeTab, setActiveTab] = useState<string>("all");
   const [previewBg, setPreviewBg] = useState<"cream" | "charcoal" | "white" | "grid">("cream");
@@ -341,6 +675,16 @@ export default function BrandKitViewer() {
     try {
       await navigator.clipboard.writeText(hex);
       setCopiedId(`hex-${name}`);
+      setTimeout(() => setCopiedId(null), 2500);
+    } catch {
+      // Fallback
+    }
+  };
+
+  const handleCopyText = async (text: string, id: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopiedId(`text-${id}`);
       setTimeout(() => setCopiedId(null), 2500);
     } catch {
       // Fallback
@@ -390,11 +734,12 @@ export default function BrandKitViewer() {
         {/* Category Tabs */}
         <div className="flex flex-wrap items-center gap-1">
           {[
-            { id: "all", label: "All Assets (19)" },
+            { id: "all", label: `All Assets (${BRAND_ASSETS.length})` },
             { id: "logo", label: "Logos & Lockups" },
             { id: "mark", label: "Standalone Marks" },
-            { id: "monochrome", label: "Monochrome" },
+            { id: "social", label: "Social Media Kit (21)" },
             { id: "app", label: "App & Profile Icons" },
+            { id: "monochrome", label: "Monochrome" },
             { id: "guidelines", label: "Rules & Blueprints" },
           ].map((tab) => (
             <button
@@ -486,7 +831,7 @@ export default function BrandKitViewer() {
                 <img
                   src={asset.src}
                   alt={asset.name}
-                  className="max-h-[160px] max-w-full w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                  className="max-h-[170px] max-w-full w-auto object-contain transition-transform duration-300 group-hover:scale-105"
                   loading="lazy"
                 />
               </div>
@@ -560,6 +905,64 @@ export default function BrandKitViewer() {
           );
         })}
       </div>
+
+      {/* Copyable Instagram Bio Suite */}
+      <section className="bg-white rounded-3xl border border-[#1F1F23]/8 p-6 sm:p-10 space-y-6 shadow-sm">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C76B50]/10 border border-[#C76B50]/20 text-[#C76B50] text-xs font-mono font-bold mb-2">
+              <span>Copy-Ready Bio Architecture</span>
+            </div>
+            <h2 className="text-xl sm:text-2xl font-bold font-display text-[#1F1F23]">
+              Official Instagram &amp; Social Bios (&le; 150 Chars)
+            </h2>
+            <p className="text-xs sm:text-sm text-[#6E6862] mt-1">
+              Pre-formatted, line-break optimized copy with WhatsApp shortlink triggers. Click any card to copy directly into your clipboard.
+            </p>
+          </div>
+
+          <a
+            href="/brand/social/instagram-bios.md"
+            download
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#FAF8F5] border border-[#1F1F23]/10 text-[#1F1F23] hover:text-[#C76B50] text-xs font-mono font-bold transition-all self-start sm:self-auto"
+          >
+            <span>View Raw Markdown (.MD) &rarr;</span>
+          </a>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {IG_BIOS.map((bio, index) => (
+            <div
+              key={bio.title}
+              className="bg-[#FAF8F5] rounded-2xl border border-[#1F1F23]/8 p-5 flex flex-col justify-between space-y-4 hover:border-[#C76B50]/40 transition-colors"
+            >
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-[#C76B50]/10 text-[#C76B50]">
+                    {bio.badge}
+                  </span>
+                  <span className="text-[11px] font-mono text-[#8C847B]">{bio.chars} / 150 chars</span>
+                </div>
+                <h4 className="text-sm font-bold font-display text-[#1F1F23]">{bio.title}</h4>
+                <pre className="p-3.5 rounded-xl bg-[#1F1F23] text-[#FAF8F5] font-mono text-xs whitespace-pre-wrap leading-relaxed">
+                  {bio.text}
+                </pre>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => handleCopyText(bio.text, `bio-${index}`)}
+                className="w-full inline-flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-mono font-bold bg-[#C76B50] hover:bg-[#D97A5E] text-white transition-colors cursor-pointer"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                </svg>
+                <span>Copy Bio Text</span>
+              </button>
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* Master 3x3 Presentation Board Showcase */}
       <div className="bg-[#141416] rounded-3xl p-6 sm:p-10 border border-white/10 shadow-2xl space-y-6">

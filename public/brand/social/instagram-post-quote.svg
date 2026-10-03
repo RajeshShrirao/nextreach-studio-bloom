@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@700;800;900&amp;family=JetBrains+Mono:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700&amp;display=swap');
+      .quote-symbol { font-family: 'Cabinet Grotesk', sans-serif; font-size: 200px; fill: #C76B50; line-height: 0.8; }
+      .quote-text { font-family: 'Cabinet Grotesk', 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 52px; fill: #1F1F23; letter-spacing: -0.025em; line-height: 1.25; }
+      .quote-author { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 24px; fill: #1F1F23; }
+      .quote-role { font-family: 'JetBrains Mono', monospace; font-size: 16px; fill: #6E6862; }
+    </style>
+  </defs>
+
+  <!-- Warm Cream Canvas -->
+  <rect width="1080" height="1350" fill="#FAF8F5" />
+  <rect x="24" y="24" width="1032" height="1302" fill="none" stroke="rgba(31, 31, 35, 0.08)" stroke-width="2" rx="24" />
+
+  <!-- Top Logo Minimal Bar -->
+  <g transform="translate(80, 80)">
+    <g transform="translate(0, 0) scale(0.38)" fill="none" stroke="#C76B50" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="29,38 60,8 91,38" /><line x1="60" y1="8" x2="60" y2="142" /><path d="M 10,142 L 10,40 Q 10,33 17,37 L 60,142" /><path d="M 60,54 C 88,54 110,66 110,83 C 110,100 88,104 60,104" /><line x1="60" y1="104" x2="110" y2="142" />
+    </g>
+    <text x="60" y="38" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="28px" fill="#1F1F23">NextReach <tspan fill="#C76B50">Studio</tspan></text>
+    <text x="730" y="38" font-family="'JetBrains Mono', monospace" font-size="14px" font-weight="700" fill="#6E6862">ENGINEERING PRINCIPLES</text>
+  </g>
+
+  <!-- Big Quotation Mark -->
+  <text x="80" y="360" class="quote-symbol">“</text>
+
+  <!-- Quote Body -->
+  <g transform="translate(80, 430)">
+    <text x="0" y="0" class="quote-text">Your website is not an online</text>
+    <text x="0" y="70" class="quote-text">brochure. It is your primary</text>
+    <text x="0" y="140" class="quote-text">24/7 sales agent, customer</text>
+    <text x="0" y="210" class="quote-text">triage portal, and trust asset.</text>
+    <text x="0" y="300" class="quote-text" fill="#C76B50">Engineered software always</text>
+    <text x="0" y="370" class="quote-text" fill="#C76B50">outperforms generic templates.</text>
+  </g>
+
+  <!-- Divider Line -->
+  <line x1="80" y1="920" x2="1000" y2="920" stroke="rgba(31, 31, 35, 0.1)" stroke-width="1.5" />
+
+  <!-- Author Signature Block -->
+  <g transform="translate(80, 980)">
+    <!-- Author Avatar Card -->
+    <rect width="80" height="80" rx="20" fill="#1F1F23" />
+    <g transform="translate(23, 15) scale(0.35)" fill="none" stroke="#C76B50" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="29,38 60,8 91,38" /><line x1="60" y1="8" x2="60" y2="142" /><path d="M 10,142 L 10,40 Q 10,33 17,37 L 60,142" /><path d="M 60,54 C 88,54 110,66 110,83 C 110,100 88,104 60,104" /><line x1="60" y1="104" x2="110" y2="142" />
+    </g>
+
+    <text x="110" y="35" class="quote-author">Rajesh Shrirao</text>
+    <text x="110" y="65" class="quote-role">Founder &amp; Principal Engineer • NextReach Studio</text>
+  </g>
+
+  <!-- Bottom Action Card -->
+  <g transform="translate(80, 1140)">
+    <rect width="920" height="110" rx="20" fill="#1F1F23" />
+    <text x="50" y="65" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="22px" fill="#FAF8F5">Read More Engineering Breakdowns &rarr;</text>
+    <text x="730" y="65" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="16px" fill="#C76B50">nextreachstudio.com</text>
+  </g>
+</svg>

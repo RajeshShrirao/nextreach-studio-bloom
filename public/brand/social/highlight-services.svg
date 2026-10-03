@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+  <defs>
+    <radialGradient id="hlGlow" cx="50%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#C76B50" stop-opacity="0.3" />
+      <stop offset="60%" stop-color="#C76B50" stop-opacity="0.05" />
+      <stop offset="100%" stop-color="#141416" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Dark Canvas 1080x1920 -->
+  <rect width="1080" height="1920" fill="#141416" />
+
+  <!-- Center Highlight Circle Container (520x520 at X: 280, Y: 700) -->
+  <circle cx="540" cy="960" r="320" fill="url(#hlGlow)" />
+  <circle cx="540" cy="960" r="260" fill="#1F1F23" stroke="#C76B50" stroke-width="5" stroke-opacity="0.4" />
+
+  <!-- Highlight Icon: Services (Layers / Scaffold) -->
+  <g transform="translate(420, 840) scale(2.0)" fill="none" stroke="#C76B50" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <polygon points="60 10 110 35 60 60 10 35 60 10" />
+    <polyline points="10 60 60 85 110 60" />
+    <polyline points="10 85 60 110 110 85" />
+  </g>
+
+  <!-- Title Label Below Circle -->
+  <text x="540" y="1320" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="36px" fill="#FAF8F5" letter-spacing="0.1em" text-anchor="middle">SERVICES</text>
+  <text x="540" y="1370" font-family="'JetBrains Mono', monospace" font-size="18px" font-weight="700" fill="#6E6862" letter-spacing="0.15em" text-anchor="middle">NEXTREACH STUDIO</text>
+</svg>

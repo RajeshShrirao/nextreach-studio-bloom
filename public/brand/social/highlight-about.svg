@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+  <defs>
+    <radialGradient id="hlGlowAbout" cx="50%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#C76B50" stop-opacity="0.35" />
+      <stop offset="60%" stop-color="#C76B50" stop-opacity="0.05" />
+      <stop offset="100%" stop-color="#141416" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Dark Canvas -->
+  <rect width="1080" height="1920" fill="#141416" />
+
+  <!-- Center Highlight Circle Container -->
+  <circle cx="540" cy="960" r="320" fill="url(#hlGlowAbout)" />
+  <circle cx="540" cy="960" r="260" fill="#1F1F23" stroke="#C76B50" stroke-width="5" stroke-opacity="0.4" />
+
+  <!-- Highlight Icon: About Us (Authentic NextReach Emblem) -->
+  <g transform="translate(430, 810) scale(1.8)" fill="none" stroke="#C76B50" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="29,38 60,8 91,38" />
+    <line x1="60" y1="8" x2="60" y2="142" />
+    <path d="M 10,142 L 10,40 Q 10,33 17,37 L 60,142" />
+    <path d="M 60,54 C 88,54 110,66 110,83 C 110,100 88,104 60,104" />
+    <line x1="60" y1="104" x2="110" y2="142" />
+  </g>
+
+  <!-- Title Label -->
+  <text x="540" y="1320" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="36px" fill="#FAF8F5" letter-spacing="0.1em" text-anchor="middle">ABOUT US</text>
+  <text x="540" y="1370" font-family="'JetBrains Mono', monospace" font-size="18px" font-weight="700" fill="#6E6862" letter-spacing="0.15em" text-anchor="middle">STUDIO &amp; PHILOSOPHY</text>
+</svg>

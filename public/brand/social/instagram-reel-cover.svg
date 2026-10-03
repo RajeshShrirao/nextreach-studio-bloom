@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@800;900&amp;family=JetBrains+Mono:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap');
+      .reel-title { font-family: 'Cabinet Grotesk', 'Plus Jakarta Sans', sans-serif; font-weight: 900; font-size: 80px; fill: #FAF8F5; letter-spacing: -0.035em; line-height: 1.1; }
+      .reel-acc { fill: #C76B50; }
+      .reel-badge { font-family: 'JetBrains Mono', monospace; font-size: 16px; font-weight: 700; fill: #C76B50; letter-spacing: 0.15em; text-transform: uppercase; }
+      .reel-sub { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 26px; fill: #A69D92; font-weight: 600; }
+    </style>
+    <radialGradient id="reelGlow" cx="50%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#C76B50" stop-opacity="0.32" />
+      <stop offset="60%" stop-color="#C76B50" stop-opacity="0.05" />
+      <stop offset="100%" stop-color="#141416" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Dark Canvas 1080x1920 -->
+  <rect width="1080" height="1920" fill="#141416" />
+  
+  <!-- Subtle Architectural Grid Texture -->
+  <circle cx="540" cy="960" r="600" fill="url(#reelGlow)" />
+
+  <!-- 1:1 Profile Grid Safe-Zone Box (Centered at Y: 420 to Y: 1500) -->
+  <g transform="translate(80, 520)">
+    <!-- Safe Area Visual Frame -->
+    <rect width="920" height="880" rx="28" fill="#1F1F23" fill-opacity="0.85" stroke="rgba(199, 107, 80, 0.35)" stroke-width="2" />
+    
+    <!-- Top Emblem Mark -->
+    <g transform="translate(420, 60) scale(0.65)" fill="none" stroke="#C76B50" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="29,38 60,8 91,38" /><line x1="60" y1="8" x2="60" y2="142" /><path d="M 10,142 L 10,40 Q 10,33 17,37 L 60,142" /><path d="M 60,54 C 88,54 110,66 110,83 C 110,100 88,104 60,104" /><line x1="60" y1="104" x2="110" y2="142" />
+    </g>
+
+    <!-- Category Pill -->
+    <g transform="translate(320, 200)">
+      <rect width="280" height="42" rx="21" fill="rgba(199, 107, 80, 0.15)" stroke="rgba(199, 107, 80, 0.35)" />
+      <text x="140" y="27" class="reel-badge" text-anchor="middle">ENGINEERING REEL</text>
+    </g>
+
+    <!-- Main Title Lines -->
+    <g transform="translate(60, 320)">
+      <text x="0" y="0" class="reel-title">Building High-Converting</text>
+      <text x="0" y="85" class="reel-title"><tspan class="reel-acc">Web Apps &amp; AI</tspan></text>
+      <text x="0" y="170" class="reel-title">In 14 Days Flat.</text>
+      <text x="0" y="260" class="reel-sub">Full Stack Architecture • NextReach Studio</text>
+    </g>
+
+    <!-- Audio / Progress Bars -->
+    <g transform="translate(60, 720)">
+      <rect x="0" y="0" width="800" height="6" rx="3" fill="rgba(255, 255, 255, 0.1)" />
+      <rect x="0" y="0" width="340" height="6" rx="3" fill="#C76B50" />
+      <text x="0" y="45" font-family="'JetBrains Mono', monospace" font-size="14px" font-weight="700" fill="#8C847B">WATCH FULL SPRINT WALKTHROUGH &rarr;</text>
+    </g>
+  </g>
+
+  <!-- Top / Bottom Story Bounds Indicators -->
+  <g transform="translate(80, 120)">
+    <text x="0" y="0" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="28px" fill="#FAF8F5">NextReach <tspan fill="#C76B50">Studio</tspan></text>
+  </g>
+
+  <g transform="translate(80, 1800)">
+    <text x="460" y="0" font-family="'JetBrains Mono', monospace" font-size="16px" font-weight="700" fill="#6E6862" text-anchor="middle">PUNE • MUMBAI • GLOBAL</text>
+  </g>
+</svg>
