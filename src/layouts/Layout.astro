@@ -1,5 +1,6 @@
 ---
 import "../styles/globals.css";
+import SmoothScrollProvider from "@/components/smoothui/SmoothScrollProvider.astro";
 
 export interface Props {
   title?: string;
@@ -186,6 +187,7 @@ const breadcrumbItems = (() => {
     )}
   </head>
   <body class="font-body text-zinc-300 antialiased min-h-screen">
+    <SmoothScrollProvider />
     <slot />
   </body>
 </html>

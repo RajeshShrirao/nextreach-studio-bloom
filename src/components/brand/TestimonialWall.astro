@@ -221,10 +221,13 @@ const columns = [col1, col2, col3];
               <div class="flex items-center gap-3">
                 <div class="relative w-9 h-9 rounded-full overflow-hidden shrink-0 border border-[#1F1F23]/10 bg-[#FAF8F5]">
                   <img
-                    src={item.avatar}
+                    src={`${item.avatar}&auto=format&q=80`}
                     alt={item.name}
+                    width="36"
+                    height="36"
                     class="w-full h-full object-cover"
                     loading="lazy"
+                    decoding="async"
                   />
                 </div>
                 <div>

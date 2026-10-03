@@ -2,6 +2,18 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import {
+  CaretDown,
+  WhatsappLogo,
+  ArrowRight,
+  Check,
+  Lightning,
+  ShieldCheck,
+  Gauge,
+  Clock,
+  Sparkle,
+  Cpu,
+} from "@phosphor-icons/react";
 
 interface SprintTier {
   id: string;
@@ -137,9 +149,7 @@ export default function HeroSection() {
             className="w-full sm:w-auto min-h-[46px] px-6 py-3 rounded-xl bg-[#C76B50] hover:bg-[#D97A5E] text-white font-display font-semibold text-sm shadow-[0_4px_18px_rgba(199,107,80,0.24)] transition-all duration-200 inline-flex items-center justify-center gap-2 hover:-translate-y-0.5 active:translate-y-0"
           >
             <span>Explore All Packages (₹5k+)</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-4 h-4">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-            </svg>
+            <CaretDown weight="bold" className="w-4 h-4" />
           </a>
           <a
             href="https://wa.me/919822379976?text=Hi%20NextReach%20Studio%2C%20I'm%20interested%20in%20launching%20a%20website%20or%20web%20app%20project."
@@ -147,9 +157,7 @@ export default function HeroSection() {
             rel="noopener noreferrer"
             className="w-full sm:w-auto min-h-[46px] px-5 py-3 rounded-xl bg-white hover:bg-[#FAF8F5] text-[#1F1F23] hover:text-[#C76B50] border border-[#1F1F23]/12 shadow-xs transition-all duration-200 inline-flex items-center justify-center gap-2 text-xs sm:text-sm font-mono font-semibold hover:-translate-y-0.5 active:translate-y-0"
           >
-            <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 text-emerald-600">
-              <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.99.54 1.787.876 2.796.877 3.177 0 5.764-2.587 5.765-5.766.001-3.181-2.585-5.764-5.765-5.764zm0-2c4.28 0 7.765 3.483 7.765 7.764 0 4.281-3.485 7.766-7.765 7.766-.001 0-.001 0 0 0-1.298 0-2.434-.336-3.466-.948l-4.565 1.196 1.218-4.453c-.696-1.107-1.077-2.313-1.077-3.561 0-4.281 3.484-7.764 7.765-7.764zm-2.031 6.586c-.167-.367-.344-.374-.504-.381-.131-.006-.281-.006-.431-.006s-.394.056-.6.281c-.206.225-.788.769-.788 1.875s.806 2.175.919 2.325c.112.15 1.556 2.493 3.844 3.403 1.902.756 2.288.606 2.7.568.413-.037 1.331-.544 1.519-1.069.188-.525.188-.975.131-1.069-.056-.094-.206-.15-.431-.263s-1.331-.656-1.538-.731-.356-.113-.506.113c-.15.225-.581.731-.712.881-.131.15-.262.169-.488.056-.225-.113-.949-.35-1.808-1.115-.668-.596-1.119-1.332-1.25-1.557s-.014-.347.098-.459c.101-.101.225-.262.338-.394s.15-.225.225-.375c.075-.15.038-.281-.019-.394s-.504-1.259-.701-1.69z"/>
-            </svg>
+            <WhatsappLogo weight="fill" className="w-4 h-4 text-emerald-600" />
             <span>WhatsApp Senior Dev (Sub-2m Reply)</span>
           </a>
         </motion.div>
@@ -167,10 +175,12 @@ export default function HeroSection() {
           <div>
             {/* Top Selector Tabs */}
             <div className="flex flex-wrap items-center justify-between gap-2 pb-4 mb-4 border-b border-[#1F1F23]/8">
-              <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#6E6862]">
+              <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#6E6862] flex items-center gap-1.5">
+                <Cpu weight="bold" className="w-3.5 h-3.5 text-[#C76B50]" />
                 Interactive Sprint Configurator
               </span>
-              <span className="text-xs font-mono font-bold text-[#C76B50]">
+              <span className="text-xs font-mono font-bold text-[#C76B50] flex items-center gap-1">
+                <Clock weight="bold" className="w-3.5 h-3.5" />
                 {currentTier.turnaround}
               </span>
             </div>
@@ -222,7 +232,7 @@ export default function HeroSection() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-4">
                   {currentTier.deliverables.map((item) => (
                     <div key={item} className="flex items-center gap-2 text-xs text-[#4A4844] font-body">
-                      <span className="text-[#C76B50] font-bold text-xs shrink-0">✓</span>
+                      <Check weight="bold" className="w-3.5 h-3.5 text-[#C76B50] shrink-0" />
                       <span>{item}</span>
                     </div>
                   ))}
@@ -240,7 +250,7 @@ export default function HeroSection() {
               className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#C76B50] hover:text-[#D97A5E] transition-colors"
             >
               <span>{currentTier.ctaText}</span>
-              <span>&rarr;</span>
+              <ArrowRight weight="bold" className="w-3.5 h-3.5" />
             </a>
             <span className="text-[11px] font-mono text-[#8C847B]">
               100% IP &bull; Fixed Scope
@@ -252,10 +262,12 @@ export default function HeroSection() {
         <div className="lg:col-span-5 rounded-2xl border border-[#1F1F23]/10 bg-white p-5 sm:p-7 shadow-[0_4px_24px_rgba(42,42,45,0.04)] flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#1F1F23]/8">
-              <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#6E6862]">
+              <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#6E6862] flex items-center gap-1.5">
+                <Gauge weight="bold" className="w-3.5 h-3.5 text-[#C76B50]" />
                 Quality &amp; Speed Telemetry
               </span>
               <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 font-mono text-[10px] font-bold border border-emerald-200">
+                <Lightning weight="fill" className="w-3 h-3 text-emerald-600" />
                 Lighthouse 100/100
               </span>
             </div>
@@ -296,8 +308,9 @@ export default function HeroSection() {
               rel="noopener noreferrer"
               className="w-full py-2.5 px-3 rounded-xl bg-[#FAF8F5] hover:bg-[#F0ECE4] text-[#1F1F23] hover:text-[#C76B50] border border-[#1F1F23]/10 font-mono text-xs font-semibold flex items-center justify-center gap-2 transition-all"
             >
+              <WhatsappLogo weight="fill" className="w-4 h-4 text-emerald-600" />
               <span>Instant Developer WhatsApp Hotline</span>
-              <span>&rarr;</span>
+              <ArrowRight weight="bold" className="w-3.5 h-3.5" />
             </a>
           </div>
         </div>
