@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 560" width="100%" height="100%">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap');
+      .mu-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 18px; font-weight: 800; fill: #FAF8F5; }
+      .mu-subtitle { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13px; fill: #8E8A84; }
+      .mu-card { fill: #1F1F23; stroke: rgba(239, 68, 68, 0.2); stroke-width: 1; }
+      .mu-card-title { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; fill: #EF4444; letter-spacing: 0.05em; }
+      .mu-card-desc { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 11px; fill: #A69D92; }
+      .mu-badge { fill: #EF4444; }
+      .mu-badge-text { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700; fill: #FFFFFF; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="840" height="560" rx="16" fill="#141416" />
+  <rect x="1" y="1" width="838" height="558" rx="15" fill="none" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" />
+
+  <!-- Header -->
+  <text x="36" y="44" class="mu-title">LOGO MISUSE &amp; UNACCEPTABLE MODIFICATIONS</text>
+  <text x="36" y="68" class="mu-subtitle">To maintain brand integrity and visual authority, never apply the modifications shown below.</text>
+
+  <!-- Row 1 -->
+  <!-- 1. Do Not Stretch -->
+  <g transform="translate(36, 92)">
+    <rect width="240" height="200" rx="12" class="mu-card" />
+    <circle cx="218" cy="24" r="12" class="mu-badge" />
+    <text x="218" y="28.5" class="mu-badge-text">✕</text>
+    <text x="16" y="28" class="mu-card-title">01. DO NOT DISTORT</text>
+    
+    <!-- Bad Preview: Stretched -->
+    <rect x="16" y="46" width="208" height="90" rx="8" fill="#18181B" stroke="rgba(255, 255, 255, 0.04)" />
+    <g transform="translate(30, 68) scale(0.65, 0.32)">
+      <g transform="translate(0, 0) scale(0.33)" fill="none" stroke="#C76B50" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="29,38 60,8 91,38" /><line x1="60" y1="8" x2="60" y2="142" /><path d="M 10,142 L 10,40 Q 10,33 17,37 L 60,142" /><path d="M 60,54 C 88,54 110,66 110,83 C 110,100 88,104 60,104" /><line x1="60" y1="104" x2="110" y2="142" />
+      </g>
+      <text x="60" y="38" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="28px" fill="#FAF8F5">NextReach</text>
+    </g>
+
+    <text x="16" y="158" class="mu-card-desc">Never stretch, compress, or scale the</text>
+    <text x="16" y="174" class="mu-card-desc">logo disproportionately.</text>
+  </g>
+
+  <!-- 2. Do Not Alter Colors -->
+  <g transform="translate(300, 92)">
+    <rect width="240" height="200" rx="12" class="mu-card" />
+    <circle cx="218" cy="24" r="12" class="mu-badge" />
+    <text x="218" y="28.5" class="mu-badge-text">✕</text>
+    <text x="16" y="28" class="mu-card-title">02. UNAPPROVED PALETTE</text>
+    
+    <!-- Bad Preview: Neon Green / Purple gradient -->
+    <rect x="16" y="46" width="208" height="90" rx="8" fill="#18181B" stroke="rgba(255, 255, 255, 0.04)" />
+    <g transform="translate(24, 68) scale(0.42)">
+      <g transform="translate(0, 0) scale(0.33)" fill="none" stroke="#22C55E" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="29,38 60,8 91,38" /><line x1="60" y1="8" x2="60" y2="142" /><path d="M 10,142 L 10,40 Q 10,33 17,37 L 60,142" /><path d="M 60,54 C 88,54 110,66 110,83 C 110,100 88,104 60,104" /><line x1="60" y1="104" x2="110" y2="142" />
+      </g>
+      <text x="60" y="38" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="28px" fill="#A855F7">NextReach</text>
+      <text x="220" y="38" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="28px" fill="#06B6D4">Studio</text>
+    </g>
+
+    <text x="16" y="158" class="mu-card-desc">Never apply unauthorized hues,</text>
+    <text x="16" y="174" class="mu-card-desc">neon colors, or gradient styles.</text>
+  </g>
+
+  <!-- 3. Do Not Rotate / Skew -->
+  <g transform="translate(564, 92)">
+    <rect width="240" height="200" rx="12" class="mu-card" />
+    <circle cx="218" cy="24" r="12" class="mu-badge" />
+    <text x="218" y="28.5" class="mu-badge-text">✕</text>
+    <text x="16" y="28" class="mu-card-title">03. DO NOT ROTATE</text>
+    
+    <!-- Bad Preview: Rotated / Skewed -->
+    <rect x="16" y="46" width="208" height="90" rx="8" fill="#18181B" stroke="rgba(255, 255, 255, 0.04)" />
+    <g transform="translate(40, 95) rotate(-14) scale(0.38)">
+      <g transform="translate(0, 0) scale(0.33)" fill="none" stroke="#C76B50" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="29,38 60,8 91,38" /><line x1="60" y1="8" x2="60" y2="142" /><path d="M 10,142 L 10,40 Q 10,33 17,37 L 60,142" /><path d="M 60,54 C 88,54 110,66 110,83 C 110,100 88,104 60,104" /><line x1="60" y1="104" x2="110" y2="142" />
+      </g>
+      <text x="60" y="38" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="28px" fill="#FAF8F5">NextReach</text>
+      <text x="220" y="38" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="28px" fill="#C76B50">Studio</text>
+    </g>
+
+    <text x="16" y="158" class="mu-card-desc">Never rotate, tilt, or slant the logo</text>
+    <text x="16" y="174" class="mu-card-desc">away from horizontal baseline.</text>
+  </g>
+
+  <!-- Row 2 -->
+  <!-- 4. Do Not Violate Clear Space -->
+  <g transform="translate(36, 314)">
+    <rect width="240" height="200" rx="12" class="mu-card" />
+    <circle cx="218" cy="24" r="12" class="mu-badge" />
+    <text x="218" y="28.5" class="mu-badge-text">✕</text>
+    <text x="16" y="28" class="mu-card-title">04. CROWD CLEAR-SPACE</text>
+    
+    <!-- Bad Preview: Overlapping text -->
+    <rect x="16" y="46" width="208" height="90" rx="8" fill="#18181B" stroke="rgba(255, 255, 255, 0.04)" />
+    <g transform="translate(24, 70) scale(0.4)">
+      <g transform="translate(0, 0) scale(0.33)" fill="none" stroke="#C76B50" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="29,38 60,8 91,38" /><line x1="60" y1="8" x2="60" y2="142" /><path d="M 10,142 L 10,40 Q 10,33 17,37 L 60,142" /><path d="M 60,54 C 88,54 110,66 110,83 C 110,100 88,104 60,104" /><line x1="60" y1="104" x2="110" y2="142" />
+      </g>
+      <text x="60" y="38" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="28px" fill="#FAF8F5">NextReach</text>
+      <text x="220" y="38" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="28px" fill="#C76B50">Studio</text>
+    </g>
+    <!-- Intruder text -->
+    <text x="40" y="78" font-family="'Plus Jakarta Sans', sans-serif" font-size="12px" font-weight="700" fill="#EF4444">OVERLAPPING HEADLINE TEXT</text>
+
+    <text x="16" y="158" class="mu-card-desc">Never place text, icons, or borders</text>
+    <text x="16" y="174" class="mu-card-desc">inside the 1X exclusion perimeter.</text>
+  </g>
+
+  <!-- 5. Do Not Add Drop Shadows / Glows -->
+  <g transform="translate(300, 314)">
+    <rect width="240" height="200" rx="12" class="mu-card" />
+    <circle cx="218" cy="24" r="12" class="mu-badge" />
+    <text x="218" y="28.5" class="mu-badge-text">✕</text>
+    <text x="16" y="28" class="mu-card-title">05. EFFECTS &amp; SHADOWS</text>
+    
+    <!-- Bad Preview: Heavy blurred drop shadow and emboss -->
+    <rect x="16" y="46" width="208" height="90" rx="8" fill="#18181B" stroke="rgba(255, 255, 255, 0.04)" />
+    <g transform="translate(24, 70) scale(0.4)" filter="drop-shadow(6px 6px 4px #FF0000)">
+      <g transform="translate(0, 0) scale(0.33)" fill="none" stroke="#C76B50" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="29,38 60,8 91,38" /><line x1="60" y1="8" x2="60" y2="142" /><path d="M 10,142 L 10,40 Q 10,33 17,37 L 60,142" /><path d="M 60,54 C 88,54 110,66 110,83 C 110,100 88,104 60,104" /><line x1="60" y1="104" x2="110" y2="142" />
+      </g>
+      <text x="60" y="38" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="28px" fill="#FAF8F5">NextReach</text>
+      <text x="220" y="38" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="28px" fill="#C76B50">Studio</text>
+    </g>
+
+    <text x="16" y="158" class="mu-card-desc">Never apply drop shadows, emboss,</text>
+    <text x="16" y="174" class="mu-card-desc">outlines, or blur filters.</text>
+  </g>
+
+  <!-- 6. Do Not Rearrange Hierarchy -->
+  <g transform="translate(564, 314)">
+    <rect width="240" height="200" rx="12" class="mu-card" />
+    <circle cx="218" cy="24" r="12" class="mu-badge" />
+    <text x="218" y="28.5" class="mu-badge-text">✕</text>
+    <text x="16" y="28" class="mu-card-title">06. REARRANGE LAYOUT</text>
+    
+    <!-- Bad Preview: Mark awkwardly placed on the right or behind -->
+    <rect x="16" y="46" width="208" height="90" rx="8" fill="#18181B" stroke="rgba(255, 255, 255, 0.04)" />
+    <g transform="translate(24, 70) scale(0.38)">
+      <text x="10" y="38" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="28px" fill="#FAF8F5">Studio</text>
+      <text x="110" y="38" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="28px" fill="#C76B50">NextReach</text>
+      <g transform="translate(280, 0) scale(0.33)" fill="none" stroke="#C76B50" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="29,38 60,8 91,38" /><line x1="60" y1="8" x2="60" y2="142" /><path d="M 10,142 L 10,40 Q 10,33 17,37 L 60,142" /><path d="M 60,54 C 88,54 110,66 110,83 C 110,100 88,104 60,104" /><line x1="60" y1="104" x2="110" y2="142" />
+      </g>
+    </g>
+
+    <text x="16" y="158" class="mu-card-desc">Never rearrange locked proportions,</text>
+    <text x="16" y="174" class="mu-card-desc">word order, or lockup positions.</text>
+  </g>
+</svg>

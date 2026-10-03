@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" width="100%" height="100%">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&amp;family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap');
+      .spec-bg { fill: #1F1F23; }
+      .spec-grid { stroke: rgba(255, 255, 255, 0.05); stroke-width: 1; }
+      .spec-bound { stroke: #C76B50; stroke-width: 1.5; stroke-dasharray: 4 4; fill: rgba(199, 107, 80, 0.05); }
+      .spec-dim { stroke: #E88C72; stroke-width: 1; marker-end: url(#arrow); marker-start: url(#arrow-rev); }
+      .spec-text-mono { font-family: 'JetBrains Mono', monospace; font-size: 11px; fill: #A69D92; }
+      .spec-text-accent { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; fill: #C76B50; }
+      .spec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; font-weight: 700; fill: #FAF8F5; }
+      .spec-desc { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 12px; fill: #6E6862; }
+      .spec-logo-bold { font-family: 'Cabinet Grotesk', 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 28px; letter-spacing: -0.02em; fill: #FAF8F5; }
+      .spec-logo-sub { font-family: 'Cabinet Grotesk', 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 28px; letter-spacing: -0.01em; fill: #C76B50; }
+    </style>
+    <pattern id="specGridPat" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255, 255, 255, 0.04)" stroke-width="1" />
+    </pattern>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="720" height="320" rx="16" fill="#1A1A1D" />
+  <rect width="720" height="320" rx="16" fill="url(#specGridPat)" />
+  <rect x="1" y="1" width="718" height="318" rx="15" fill="none" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" />
+
+  <!-- Title & Specification Label -->
+  <text x="36" y="42" class="spec-title">PRIMARY LOGO CLEAR-SPACE SPECIFICATION</text>
+  <text x="36" y="62" class="spec-desc">Exclusion Zone: Minimum distance (1X) required between the logo and any perimeter element.</text>
+
+  <!-- Clear Space Box Boundary -->
+  <!-- Inner Logo fits at X: 160, Y: 120, W: 380, H: 80. Boundary margin = 40px (1X) -->
+  <rect x="120" y="95" width="460" height="130" rx="8" class="spec-bound" />
+
+  <!-- 1X Markers (Top, Bottom, Left, Right) -->
+  <!-- Top 1X -->
+  <line x1="350" y1="95" x2="350" y2="135" stroke="#C76B50" stroke-width="1.5" />
+  <line x1="344" y1="95" x2="356" y2="95" stroke="#C76B50" stroke-width="1.5" />
+  <line x1="344" y1="135" x2="356" y2="135" stroke="#C76B50" stroke-width="1.5" />
+  <text x="362" y="118" class="spec-text-accent">1X</text>
+
+  <!-- Left 1X -->
+  <line x1="120" y1="160" x2="160" y2="160" stroke="#C76B50" stroke-width="1.5" />
+  <line x1="120" y1="154" x2="120" y2="166" stroke="#C76B50" stroke-width="1.5" />
+  <line x1="160" y1="154" x2="160" y2="166" stroke="#C76B50" stroke-width="1.5" />
+  <text x="135" y="152" class="spec-text-accent" text-anchor="middle">1X</text>
+
+  <!-- Right 1X -->
+  <line x1="540" y1="160" x2="580" y2="160" stroke="#C76B50" stroke-width="1.5" />
+  <line x1="540" y1="154" x2="540" y2="166" stroke="#C76B50" stroke-width="1.5" />
+  <line x1="580" y1="154" x2="580" y2="166" stroke="#C76B50" stroke-width="1.5" />
+  <text x="560" y="152" class="spec-text-accent" text-anchor="middle">1X</text>
+
+  <!-- Bottom 1X -->
+  <line x1="350" y1="185" x2="350" y2="225" stroke="#C76B50" stroke-width="1.5" />
+  <line x1="344" y1="185" x2="356" y2="185" stroke="#C76B50" stroke-width="1.5" />
+  <line x1="344" y1="225" x2="356" y2="225" stroke="#C76B50" stroke-width="1.5" />
+  <text x="362" y="208" class="spec-text-accent">1X</text>
+
+  <!-- Inner Active Logo Area -->
+  <g transform="translate(165, 135)">
+    <!-- Logo Mark -->
+    <g transform="translate(0, 0) scale(0.3333)" fill="none" stroke="#C76B50" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="29,38 60,8 91,38" />
+      <line x1="60" y1="8" x2="60" y2="142" />
+      <path d="M 10,142 L 10,40 Q 10,33 17,37 L 60,142" />
+      <path d="M 60,54 C 88,54 110,66 110,83 C 110,100 88,104 60,104" />
+      <line x1="60" y1="104" x2="110" y2="142" />
+    </g>
+
+    <!-- Wordmark -->
+    <text x="62" y="34" class="spec-logo-bold">NextReach</text>
+    <text x="218" y="34" class="spec-logo-sub">Studio</text>
+  </g>
+
+  <!-- Bottom Unit Definition Legend -->
+  <rect x="36" y="260" width="648" height="36" rx="8" fill="rgba(255, 255, 255, 0.03)" stroke="rgba(255, 255, 255, 0.06)" />
+  <text x="50" y="283" class="spec-text-mono"><tspan fill="#C76B50" font-weight="700">1X UNIT DEFINITION</tspan> = Height of the NextReach emblem arrowhead (approx 30px digital / 8mm print).</text>
+</svg>

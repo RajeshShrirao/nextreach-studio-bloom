@@ -50,6 +50,7 @@ export default defineConfig({
         "https://nextreachstudio.vercel.app/industries/pet-grooming",
         "https://nextreachstudio.vercel.app/demos/saffron-and-smoke",
         "https://nextreachstudio.vercel.app/attribution",
+        "https://nextreachstudio.vercel.app/brand",
       ],
     }),
   ],

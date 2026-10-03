@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 380" width="100%" height="100%">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap');
+      .ms-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; font-weight: 700; fill: #FAF8F5; }
+      .ms-subtitle { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 12px; fill: #8E8A84; }
+      .ms-card-bg { fill: #242428; stroke: rgba(255, 255, 255, 0.08); stroke-width: 1; }
+      .ms-card-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13px; font-weight: 700; fill: #FAF8F5; }
+      .ms-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; fill: #C76B50; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
+      .ms-val { font-family: 'JetBrains Mono', monospace; font-size: 12px; fill: #FAF8F5; font-weight: 600; }
+      .ms-dim { font-family: 'JetBrains Mono', monospace; font-size: 10px; fill: #8E8A84; }
+    </style>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="760" height="380" rx="16" fill="#141416" />
+  <rect x="1" y="1" width="758" height="378" rx="15" fill="none" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" />
+
+  <!-- Header -->
+  <text x="36" y="44" class="ms-title">MINIMUM LOGO SIZE &amp; RESOLUTION THRESHOLDS</text>
+  <text x="36" y="66" class="ms-subtitle">To maintain stroke definition, geometric clarity, and legibility across all physical and screen media.</text>
+
+  <!-- 3 Spec Columns -->
+  <!-- Column 1: Standalone Mark -->
+  <g transform="translate(36, 92)">
+    <rect width="210" height="250" rx="12" class="ms-card-bg" />
+    <text x="20" y="32" class="ms-card-title">1. Standalone Emblem</text>
+    <text x="20" y="48" class="ms-dim">Icon / Mark Only</text>
+
+    <!-- Visual Preview Container -->
+    <rect x="20" y="62" width="170" height="85" rx="8" fill="#1A1A1D" stroke="rgba(255, 255, 255, 0.05)" />
+    
+    <!-- Rendered at Min Digital Size (16x20) and Scaled (32x40) -->
+    <g transform="translate(75, 82) scale(0.266)" fill="none" stroke="#C76B50" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="29,38 60,8 91,38" />
+      <line x1="60" y1="8" x2="60" y2="142" />
+      <path d="M 10,142 L 10,40 Q 10,33 17,37 L 60,142" />
+      <path d="M 60,54 C 88,54 110,66 110,83 C 110,100 88,104 60,104" />
+      <line x1="60" y1="104" x2="110" y2="142" />
+    </g>
+    <text x="120" y="110" class="ms-dim">32px preview</text>
+
+    <!-- Digital Spec -->
+    <text x="20" y="174" class="ms-label">Digital Minimum</text>
+    <text x="20" y="192" class="ms-val">16px × 20px (1× DPR)</text>
+
+    <!-- Print Spec -->
+    <text x="20" y="218" class="ms-label">Print Minimum</text>
+    <text x="20" y="234" class="ms-val">5.0 mm × 6.25 mm</text>
+  </g>
+
+  <!-- Column 2: Horizontal Lockup -->
+  <g transform="translate(266, 92)">
+    <rect width="230" height="250" rx="12" class="ms-card-bg" />
+    <text x="20" y="32" class="ms-card-title">2. Horizontal Logo</text>
+    <text x="20" y="48" class="ms-dim">Primary Wordmark Lockup</text>
+
+    <!-- Visual Preview Container -->
+    <rect x="20" y="62" width="190" height="85" rx="8" fill="#1A1A1D" stroke="rgba(255, 255, 255, 0.05)" />
+    
+    <!-- Rendered Horizontal preview -->
+    <g transform="translate(32, 92) scale(0.42)">
+      <g transform="translate(0, 0) scale(0.24)" fill="none" stroke="#C76B50" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="29,38 60,8 91,38" />
+        <line x1="60" y1="8" x2="60" y2="142" />
+        <path d="M 10,142 L 10,40 Q 10,33 17,37 L 60,142" />
+        <path d="M 60,54 C 88,54 110,66 110,83 C 110,100 88,104 60,104" />
+        <line x1="60" y1="104" x2="110" y2="142" />
+      </g>
+      <text x="46" y="27" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="22px" fill="#FAF8F5">NextReach</text>
+      <text x="168" y="27" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="22px" fill="#C76B50">Studio</text>
+    </g>
+
+    <!-- Digital Spec -->
+    <text x="20" y="174" class="ms-label">Digital Minimum</text>
+    <text x="20" y="192" class="ms-val">120px width × 24px height</text>
+
+    <!-- Print Spec -->
+    <text x="20" y="218" class="ms-label">Print Minimum</text>
+    <text x="20" y="234" class="ms-val">28.0 mm × 5.5 mm</text>
+  </g>
+
+  <!-- Column 3: Stacked Lockup -->
+  <g transform="translate(516, 92)">
+    <rect width="210" height="250" rx="12" class="ms-card-bg" />
+    <text x="20" y="32" class="ms-card-title">3. Stacked Logo</text>
+    <text x="20" y="48" class="ms-dim">Vertical Emblem Lockup</text>
+
+    <!-- Visual Preview Container -->
+    <rect x="20" y="62" width="170" height="85" rx="8" fill="#1A1A1D" stroke="rgba(255, 255, 255, 0.05)" />
+    
+    <!-- Rendered Stacked preview -->
+    <g transform="translate(85, 72) scale(0.4)">
+      <g transform="translate(18, 0) scale(0.35)" fill="none" stroke="#C76B50" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="29,38 60,8 91,38" />
+        <line x1="60" y1="8" x2="60" y2="142" />
+        <path d="M 10,142 L 10,40 Q 10,33 17,37 L 60,142" />
+        <path d="M 60,54 C 88,54 110,66 110,83 C 110,100 88,104 60,104" />
+        <line x1="60" y1="104" x2="110" y2="142" />
+      </g>
+      <text x="38" y="72" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="18px" fill="#FAF8F5" text-anchor="middle">NextReach</text>
+      <text x="38" y="92" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10px" fill="#C76B50" letter-spacing="0.25em" text-anchor="middle">STUDIO</text>
+    </g>
+
+    <!-- Digital Spec -->
+    <text x="20" y="174" class="ms-label">Digital Minimum</text>
+    <text x="20" y="192" class="ms-val">80px width × 66px height</text>
+
+    <!-- Print Spec -->
+    <text x="20" y="218" class="ms-label">Print Minimum</text>
+    <text x="20" y="234" class="ms-val">18.0 mm × 15.0 mm</text>
+  </g>
+</svg>
