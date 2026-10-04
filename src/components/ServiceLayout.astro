@@ -16,6 +16,7 @@ export interface Props {
   ctaText?: string;
   ctaHref?: string;
   relatedLinks?: { href: string; label: string }[];
+  researchLinks?: { href: string; label: string; note: string }[];
   portfolioTags?: string[];
 }
 
@@ -32,6 +33,7 @@ const {
   ctaText = "Schedule a Technical Discovery Call",
   ctaHref = "/contact",
   relatedLinks,
+  researchLinks,
   portfolioTags,
 } = Astro.props;
 
@@ -94,6 +96,29 @@ const structuredOffering = offerings.map((o, i) => ({
         </div>
       </div>
     </div>
+
+    {researchLinks && researchLinks.length > 0 && (
+      <div class="max-w-4xl mx-auto px-4 mb-16 stagger-parent">
+        <div class="text-center mb-6">
+          <p class="text-[10px] font-mono uppercase tracking-[0.2em] text-[#6E6862] font-semibold mb-2">Research</p>
+          <h2 class="text-lg font-bold text-[#1F1F23] font-display">Read Before You Decide</h2>
+        </div>
+        <div class:list={[
+          "grid gap-4",
+          researchLinks.length === 4
+            ? "grid-cols-1 sm:grid-cols-2"
+            : "grid-cols-1 sm:grid-cols-3",
+        ]}>
+          {researchLinks.map(({ href, label, note }) => (
+            <a href={href} class="card-studio group flex flex-col">
+              <h3 class="text-sm font-bold text-[#1F1F23] font-display mb-2 leading-snug group-hover:text-[#C76B50] transition-colors">{label}</h3>
+              <p class="text-xs text-[#6E6862] leading-relaxed font-body">{note}</p>
+              <span class="text-[10px] font-mono text-[#C76B50] mt-auto pt-3">Read →</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
 
     {relatedLinks && relatedLinks.length > 0 && (
       <div class="max-w-4xl mx-auto px-4 mb-16 stagger-parent">

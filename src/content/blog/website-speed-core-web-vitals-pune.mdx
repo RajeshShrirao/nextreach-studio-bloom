@@ -1,0 +1,122 @@
+---
+title: "Website Speed Wins: Core Web Vitals for Pune Businesses (2026 Data)"
+description: "52% of page-one Google results fail Core Web Vitals. The 2026 data on LCP, INP and CLS - and what a Pune business should actually fix first."
+pubDate: 2026-10-01
+author: "NextReach Studio"
+tags: ["core-web-vitals", "page-speed", "seo", "performance", "pune"]
+draft: false
+---
+
+A 2026 study of 37,036 websites found that 52% of page-one Google results fail Core Web Vitals. Even at position number one, only 49.2% of results pass.
+
+That is the most actionable SEO finding of the year. It means more than half of the sites currently outranking you have left their page speed untouched. It is one of the few ranking inputs where the field is genuinely wide open.
+
+## The Core Web Vitals in Brief
+
+| Metric | What it measures | Good threshold | Share of ranking pages passing (mobile) |
+|---|---|---|---|
+| LCP - Largest Contentful Paint | Loading. When the largest visible element finishes rendering | Under 2.5s | 63% |
+| INP - Interaction to Next Paint | Interactivity. Tap to visual update | Under 200ms | 63% |
+| CLS - Cumulative Layout Shift | Visual stability. Unexpected layout movement | Under 0.1 | 77% |
+
+A URL passes only when all three are in the good range at the 75th percentile across real user visits.
+
+INP replaced First Input Delay in March 2024 and has proven much stricter. Many sites that comfortably passed FID are failing INP in 2026 - particularly WordPress sites with heavy plugins and e-commerce builds with cart and account flows.
+
+## What the Data Shows
+
+**Page one is faster than page two.** Page-one results pass at 47.6%, page-two at 44.2%, and the top three positions at 50.8%. Among the most competitive sites specifically, the gap widens to 46.7% versus 39.1%.
+
+**Loading is where sites break.** Among ranking pages that fail Core Web Vitals, 67% fail on LCP and 60% fail on INP, versus 42% on CLS. Layout stability is largely solved. Loading is not.
+
+**The median top-20 ranking page is fast.** LCP 2.1s, INP 152ms, TTFB 813ms, CLS 0.02. These are not cutting-edge numbers. They are what a well-built site produces.
+
+**Speed is a weak signal on its own.** Correlation between position and each metric: LCP at +0.090, TTFB at +0.080, CLS at +0.033, INP at +0.023. An r near 0.09 means speed explains under 1% of ranking variation on the open web. It is a faint but consistent signal, not a dominant one.
+
+**The real value is indirect.** Page speed compounds through click-through rate, crawl budget, and conversion rate. Multiple case studies report 5 to 15% CTR lift from passing page experience signals. Widely cited research puts mobile abandonment at 53% when loading exceeds three seconds, and conversion loss around 7% per additional second.
+
+**Passing is not a wall.** Failing Core Web Vitals does not prevent page one. It creates a disadvantage that becomes decisive when content quality is otherwise equal.
+
+## The Framework Problem
+
+Framework choice predicts field performance better than most developers expect. Mobile Core Web Vitals pass rates by runtime weight:
+
+| Framework / CMS | Mobile CWV pass rate |
+|---|---|
+| Astro | 48% |
+| Alpine.js | 56% |
+| React | 37% |
+| Vue | 34% |
+| Angular | 34% |
+| Tailwind CSS | 37% |
+| WordPress | 38% |
+
+Two things stand out.
+
+**Astro passes on 48% of sites; Next.js manages 29.3%.** Astro ships zero JavaScript by default and hydrates components selectively as islands. Next.js ships the React runtime and hydration work. That gap is the single largest technical argument for static-first architecture on a brochure or marketing site.
+
+**WordPress passes least often of any major CMS, at 38.4%.** With 3.7M websites analysed, this is structural. Plugin stacks mean multiple third-party scripts competing for the main thread. This is not an attack on WordPress - it is excellent with a disciplined plugin budget. It is a warning if you inherited a site nobody has audited since 2019.
+
+The other framing worth knowing: a properly built static site ships dramatically less third-party code than a plugin-stacked CMS. That is why many of the lowest-risk web architectures are also the fastest.
+
+## Fixing LCP First
+
+Since 67% of failures are LCP-driven, this is where to start. LCP problems almost always trace to four causes.
+
+**1. Slow server response.** A 3-second Time to First Byte guarantees a failed LCP no matter what else you optimise. Shared hosting in India frequently lands in the 800ms-3s range under load. This is where a ₹99/month shared host ends up costing you more than a managed host would - not through the hosting bill, but through the enquiries you lose.
+
+**2. Render-blocking resources.** Stylesheets and scripts that must download and parse before the first paint. Inlining critical CSS and deferring non-essential scripts fixes most of this.
+
+**3. Slow resource load.** This is an image problem more than anything else. Unsized, uncompressed hero images are the single most common LCP failure in WordPress sites.
+
+**4. Client-side rendering delays.** If your content is assembled by JavaScript after load, the browser cannot paint it until the script runs. This is the framework argument again - shipping HTML means the paint happens immediately.
+
+**Practical order:** server response, then hero image weight and format, then render-blocking resources, then anything else. Do not start with a minification plugin.
+
+## The LCP Element Is Usually Not What You Think
+
+In most cases it is not a photograph. On a typical business site the largest element is frequently:
+- The hero image, if it spans the viewport
+- A logo lockup in a wide header
+- A large heading block with heavy weight font
+- A hero video or animated background
+
+One practical implication: if you are chasing LCP and your hero is a full-bleed video, you are fighting yourself. Serve a static image as the poster frame with the video loading after first paint. You keep the design intent and hand the metric back to you.
+
+## What to Actually Do for a Pune Business
+
+**Test on a real mid-range Android phone, not a lab.** Field data from CrUX and Search Console is what Google uses. Lighthouse lab scores are diagnostic tools, not ranking inputs. Roughly 84% of the top 500 most-visited sites load slower on mobile than desktop, and Pune's traffic skews mobile heavily.
+
+**Measure your three key templates, not every page.** Home, one service page, one contact page. Fix those and the rest follows.
+
+**Prioritise your mobile homepage.** That is the page most likely to be shared on WhatsApp, and WhatsApp is the primary channel for Indian SME customers.
+
+**Budget hosting as SEO infrastructure.** Cheap shared hosting is the most common avoidable cause of LCP failure. Managed hosting on a global CDN typically costs less per year than the value of a handful of recovered enquiries.
+
+**Do not chase a perfect score.** Passing all three metrics at the 75th percentile is the target. Chasing 100 on Lighthouse lab scores is wasted money.
+
+## Frequently Asked Questions
+
+**Do Core Web Vitals affect SEO ranking?**
+Yes, as part of Google's page experience system, alongside HTTPS and mobile usability. The effect is modest per page but compounds across a site. Passing is not required to rank, and failing is not a penalty - but 52% of page-one results currently fail, so passing is a differentiator.
+
+**How do I check my Core Web Vitals?**
+Three places. Search Console's Core Web Vitals report groups your URLs by status and metric. PageSpeed Insights shows CrUX field data for a specific URL alongside lab results. Both are free.
+
+**Why did my site get slower after a redesign?**
+Most often an unoptimised hero image, an added chat widget or tracking script, or a switch to a heavier CMS. Check the LCP element in PageSpeed Insights - it names the specific element responsible.
+
+**Does host location matter for Indian businesses?**
+Less than you would think, as long as you use a CDN. What matters more is Time to First Byte. A global CDN edge cache in Mumbai or Singapore typically beats an uncached origin server anywhere. Do not pay a premium for an "India-optimised" host without checking the actual TTFB.
+
+**Is Astro worth choosing over WordPress just for speed?**
+Only if you are starting fresh and do not need WordPress-specific features. If you already have a WordPress site that performs adequately, optimising it is usually far cheaper than rebuilding. If you are starting a new marketing site, the 48% versus 38% pass rate difference is real and worth considering.
+
+**How long does a Core Web Vitals fix take?**
+A template-level fix - image optimisation, render blocking, one hero element - is typically a day. A full rebuild is two to six weeks. The audit to know which one you need takes an hour.
+
+---
+
+There is a reason this is the cheapest SEO win available to you. Competitors are not defending this. They built their sites years ago on whatever stack was convenient, added a booking widget and three tracking scripts in 2023, and moved on.
+
+If your site is genuinely slow, [we build custom web applications in Pune](/services/web-application-development-pune) on Astro and Next.js specifically for this reason - both are frameworks where the performance budget is a design constraint rather than an afterthought. We will measure your current site first and tell you honestly whether it needs a rebuild or a week of fixes.

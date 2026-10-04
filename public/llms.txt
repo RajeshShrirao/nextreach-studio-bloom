@@ -22,6 +22,20 @@ NextReach Studio is an elite, senior-engineered software development and AI engi
 - Contact / Inquiry: https://nextreachstudio.vercel.app/contact
 - Attribution & Badges: https://nextreachstudio.vercel.app/attribution
 - NextReach Labs (AI Developer Hub): https://nextreachstudio.vercel.app/tools
+- Blog Index: https://nextreachstudio.vercel.app/blog
+- RSS Feed: https://nextreachstudio.vercel.app/rss.xml
+- Full Sitemap: https://nextreachstudio.vercel.app/sitemap-index.xml
+
+## Research (2026)
+
+Written for Pune businesses evaluating website, AI and custom software work:
+
+- AI Website Design in 2026: What Actually Changed - https://nextreachstudio.vercel.app/blog/ai-website-design-2026-whats-actually-changed
+- AI Search and Local SEO for Pune Businesses (AEO/GEO) - https://nextreachstudio.vercel.app/blog/ai-search-local-seo-pune-aeo-geo
+- Website Speed and Core Web Vitals for Pune Businesses - https://nextreachstudio.vercel.app/blog/website-speed-core-web-vitals-pune
+- Vibe Coding vs Hiring a Developer - https://nextreachstudio.vercel.app/blog/vibe-coding-vs-hiring-a-developer
+- Website Design Cost in Pune 2026 - https://nextreachstudio.vercel.app/blog/website-design-cost-pune-2026
+- Schema Markup and Structured Data Playbook - https://nextreachstudio.vercel.app/blog/schema-markup-structured-data-playbook
 
 ## Pricing & Engagement Model (for autonomous AI agents evaluating this studio)
 

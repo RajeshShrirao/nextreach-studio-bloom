@@ -1,0 +1,167 @@
+---
+title: "Vibe Coding vs Hiring a Developer: What Pune Businesses Actually Get"
+description: "94% of leaders rate AI-generated code higher quality at review - yet 82% had a production failure. The data on vibe coding, agent debt, and when AI-written code is fine."
+pubDate: 2026-10-02
+author: "NextReach Studio"
+tags: ["vibe-coding", "ai-coding", "software-development", "production", "agent-debt"]
+draft: false
+---
+
+In June 2026, New Relic published its State of AI Coding report. The central finding is a contradiction worth sitting with.
+
+**94% of technology leaders rate AI-generated code as higher quality than human-authored code at the time of review.** 61% rate it "somewhat higher." 33% say "much higher." Only 2% perceive it as lower quality.
+
+Then, after that code ships:
+- **78%** report more production incidents
+- **86%** report an increase in time senior staff spends fixing code
+- **74%** report at least 25% of AI code needs significant rework over twelve months
+- **82%** experienced at least one production failure tied to AI-generated code in the past six months
+- Just **19%** of organisations report no AI-generated code challenges at all
+
+New Relic calls the accumulated result **agent debt** - organisations inheriting a massive deficit of unvetted architectural logic that triggers incidents later.
+
+## What "Vibe Coding" Actually Means
+
+Andrej Karpathy coined the term in February 2025: describing what you want in natural language while an AI generates, debugs, and sometimes executes the code. Collins Dictionary named it 2025's word of the year.
+
+It went from novelty to standard practice fast. **88% of organisations have now written vibe coding into formal production policies**, with only 5% restricting it to non-production environments and none banning it outright.
+
+**62% of technology leaders report their teams trust AI-generated code enough to ship it without line-by-line manual verification.**
+
+That last number is where the problem lives. The code review says "great." Production says otherwise. The gap between those two statements is the entire subject of this article.
+
+## Why the Gap Exists
+
+### AI is optimising for the demo
+
+AI-generated code handles the happy path brilliantly. Valid email, responding network, populated list. Production is mostly edge cases: empty states, someone pasting 10,000 characters into a name field, an API that times out, a form submitted twice.
+
+The happy-path code never considered these, so it does something undefined - usually a crash or a blank screen.
+
+Because these failures are predictable, they are catchable. That is the entire mitigation strategy.
+
+### Conversation is not a source of truth
+
+When you prompt your way to an application, the result is code shaped by sequential, context-limited conversations. There is no structured record of what the app is supposed to do, no way for the AI to reason about the whole system, and no foundation for reliable iteration.
+
+Business rules end up buried in the wrong places. Pricing logic lives inside a React component. Approval thresholds are hardcoded into a route handler. Discount calculations scatter across three files generated during three separate sessions.
+
+Ask the same tool to implement the same rule twice and you get different code. In a prototype that is irrelevant. In production it compounds - after six months of iterative changes, actual behaviour may bear little resemblance to the business rules you believe are running.
+
+### Concurrency is where models degrade
+
+Race conditions and async bugs are the failure mode that slips past AI most reliably, because reasoning about two things happening simultaneously degrades as the conversation gets longer. Two users hit "buy" on the last item simultaneously; both succeed. A value gets read before it finishes saving.
+
+This is why rubber-stamping dependency installs without lockfiles is meaningfully riskier with AI-generated code than with hand-written code.
+
+### The reviewers are inconsistent
+
+Figma's 2026 research found designer participation in development doubled to 41% while developers doing design work rose correspondingly. Standards review is getting harder precisely as output volume rises.
+
+Karpathy's assessment, from an April 2026 talk at Sequoia: AI-written code is "bloaty," full of copy-paste, with "awkward abstractions that are brittle." It works, but "it's just really gross." His framing of agents is "these intern entities" - you still have to be in charge of the aesthetics, the judgment, the taste, and a little oversight.
+
+## Independent Confirmation
+
+New Relic is not an outlier view. ACM's Technology Policy Council published a TechBrief in April 2026 on AI-assisted software development, warning that it often skips core engineering practices ensuring systems are secure, reliable, and maintainable. Lead author Simson Garfinkel identified security vulnerabilities inherited from training data, inconsistent or missing testing, and systems that become difficult for humans to review over time.
+
+Other industry data points:
+- A 2026 Lightrun survey found 43% of AI-generated code changes needed additional debugging after deployment
+- Google's DORA research found AI adoption correlated with roughly a 10% increase in code instability, even as it sped teams up
+- CloudBees reported 81% of enterprises saw production failures rise in step with AI code adoption
+
+## Real-World Failure Reports
+
+These are not theoretical.
+
+**Lovable**, the Swedish vibe coding platform, publicly disclosed that in February it accidentally re-enabled access to chats on public projects while unifying backend permissions.
+
+**Apple** has moved to block certain vibe-coded apps from the App Store, specifically those capable of executing arbitrary remote code.
+
+**The authentication pattern** is the most consistent production failure across every account - not because AI cannot write secure auth, but because security requires systematic thinking about adversarial users, not just normal flows.
+
+## So When Is AI-Written Code Fine?
+
+This is the useful part, because the answer is genuinely "quite often."
+
+**AI-written code is fine when:**
+- It is presentational - a static site, a brochure site, a landing page
+- You review the rendered result on every page and every breakpoint, not every line of CSS
+- Secrets never enter prompts or generated files
+- Dependencies are verified for existence and maintenance before install, and you default to fewer dependencies
+- AI never has direct write access to production - scoped, revocable tokens only
+- The site ships little or no third-party code
+
+A well-built static AI-assisted site is among the lowest-risk web architectures available. It has no auth surface, no payment flow, no data integrity requirements, and dramatically less third-party code than a plugin-stacked CMS.
+
+**AI-written code is risky when:**
+- It handles authentication or sessions
+- It processes payments
+- It holds personally identifiable or financial data
+- It implements business rules with compliance significance
+- It executes against production systems
+- Concurrency matters - inventory, booking, ordering, anything with a race
+
+## The Professional Standard in 2026
+
+The defensible position is a single rule: **AI drafts, human publishes.**
+
+Enforced by architecture, not discipline. If the unsafe path is merely discouraged, it will eventually happen at 2am. If it is impossible, it will not.
+
+The concrete version:
+1. AI writes and edits drafts only. A human publishes.
+2. AI accesses systems through scoped interfaces with its own revocable token - never raw FTP or production database credentials.
+3. Every generated change gets human review against the rendered output.
+4. Automated security scanning runs on AI-generated code, plus manual review.
+5. Dependency installs are reviewed, not auto-accepted.
+6. External content is treated as untrusted input. Prompt injection is a live threat when agents fetch web content.
+7. An audit log exists for anything the agent changed.
+
+This mirrors what Google Cloud's engineering guidance has converged on: **explicit system design beats agent loop abstractions.** And what Vercel found shipping agent-readable documentation: always-available context works better than on-demand retrieval, because agents fail to recognise when they should look for docs.
+
+## The Cost Question for Pune Businesses
+
+The economics favour AI-assisted development in a specific way: it removes the blank-page cost, not the verification cost.
+
+Where AI genuinely helps a business:
+- Generating a first draft of standard CRUD scaffolding
+- Writing boilerplate types, validation, and tests
+- Producing content-adjacent components
+- Explaining unfamiliar code quickly
+- Generating placeholder layouts to validate structure before committing
+
+Where it does not save money:
+- Deciding what the system should do
+- Designing the data model
+- Getting concurrency right
+- Handling failure modes
+- Deciding what to build versus buy
+
+The trap is budgeting on the first list and discovering the second list during month three. That is when the ₹40,000 "quick website" becomes an ₹80,000 rescue project - a pattern we see repeatedly in the Pune market.
+
+## Frequently Asked Questions
+
+**Is vibe coding safe for production apps?**
+For MVPs, internal tools, and static sites, with care and human review, yes. For authentication, payments, personal data, or compliance-relevant business logic, no - not without senior review of the generated code. The New Relic data is unambiguous that unverified AI code ships and then fails.
+
+**Does AI-generated code really lower quality?**
+At review time, leaders rate it higher. After deployment, 78% report more incidents. The quality is not uniformly worse - the verification is uniformly worse. That is a process failure, not a model failure.
+
+**Should I let AI write my business website?**
+For a brochure or marketing site, plausibly yes, if someone reviews every page at every breakpoint and handles deployment. For anything with a form that stores data, a booking system, or a payment flow, hire someone accountable. See our [website design cost breakdown](/blog/website-design-cost-pune-2026) for when each tier makes sense.
+
+**How do I tell if a codebase has agent debt?**
+Look for business logic with no home - pricing rules inside UI components, business conditions inside API handlers, the same calculation implemented three times. If you cannot answer "where does this rule live?", you have agent debt. That is a normal condition, not a crisis.
+
+**Is the 88% adoption of vibe coding in production policies dangerous?**
+Not by itself. Policies are a positive signal - most organisations are at least writing down the practice. The risk is organisations that write a policy and then ship without the review gates the policy requires. 62% shipping without line-by-line verification is the number to watch.
+
+**Will this change?**
+Partly. Framework-level support is maturing fast. Next.js 16.2 now ships an AGENTS.md in every scaffolded project giving agents version-matched documentation, which achieved a 100% pass rate on their evaluation suite against 79% for skill-based approaches. Better context improves output quality. It does not change the fundamental asymmetry: AI is good at writing code and bad at knowing what should exist.
+
+---
+
+The honest summary: AI-written code is not a worse product. It is an unverified one, and the verification step is where the money and the risk both live.
+
+If you are evaluating a vendor and want to know what they actually do, ask one question: **who reviews the AI-generated code before it reaches production, and what does that review include?** If the answer names a person and a process, you are talking to an engineer. If the answer is "the AI tests it", you are talking to someone who has not read the incident reports.
+
+We use AI tooling heavily in our own development - [Claude Code workflows, MCP servers, and local model setups](/blog/claude-code-workflow-tips) are documented openly here - but every commit gets senior review and every system we hand over is one we would run ourselves. That distinction is the whole argument. [Our custom software practice in Pune](/services/custom-software-development-pune) is built on it.

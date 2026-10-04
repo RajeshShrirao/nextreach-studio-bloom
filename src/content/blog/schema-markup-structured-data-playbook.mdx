@@ -1,0 +1,268 @@
+---
+title: "Schema Markup and Structured Data: The 2026 Playbook for Pune Businesses"
+description: "Which schema types matter in 2026, how to build an entity graph with @id, real JSON-LD examples for a Pune business, and what changed for FAQ rich results."
+pubDate: 2026-10-05
+author: "NextReach Studio"
+tags: ["schema-markup", "structured-data", "technical-seo", "llms-txt", "local-business", "pune"]
+draft: false
+---
+
+Structured data is the cheapest technical SEO work available, and the most commonly implemented badly. This guide covers what schema actually does in 2026, which types matter for a Pune business, and the entity-graph approach that separates good implementations from checkbox ones.
+
+## What Changed in 2026 (Read This First)
+
+Two things, both important, both frequently reported backwards.
+
+**1. Google says there is no special schema for AI search.** In its May 2026 AI Search guide, Google states plainly that structured data is not required for generative AI search and that no schema.org type is privileged for it. The recommendation is to keep using structured data as part of an overall SEO strategy for rich results eligibility.
+
+So the modern claim "add schema to rank in AI Overviews" is unsupported. What schema does is reduce the cost of a machine understanding your entity. That is worth doing on its own merits, without the AI framing.
+
+**2. FAQ rich results stopped in Google Search.** As of 7 May 2026, Google no longer shows FAQ rich results in Search.
+
+This one gets badly misreported. The FAQ *markup* is still worth deploying. Answer engines ingest question-and-answer pairs cleanly, and the FAQ text itself is what gets quoted in AI answers. What you have lost is the visual expandable-accordion rich result. Deploy FAQPage markup for machine comprehension, not for the rich result.
+
+**3. `llms.txt` is worth deploying anyway.** Adoption reached roughly 844,000 websites by early 2026 - still a tiny slice of the web. Google says it is unnecessary. ChatGPT, Perplexity, Claude, and Gemini make their own citation choices. Cheap optionality.
+
+## Format: JSON-LD Only
+
+Use JSON-LD in a `application/ld+json` script block. Not microdata, not RDFa.
+
+Three reasons:
+- It is Google's recommended format
+- It stays decoupled from your visual markup, so a CSS refactor cannot break it
+- It is far easier to maintain and to nest as your entity graph grows
+
+```html
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://yourdomain.com/#organization",
+  "name": "Your Company Name",
+  "url": "https://yourdomain.com",
+  "logo": "https://yourdomain.com/logo.png",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Your Street Address",
+    "addressLocality": "Pune",
+    "addressRegion": "Maharashtra",
+    "postalCode": "4110XX",
+    "addressCountry": "IN"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+91-XXXXX-XXXXX",
+    "contactType": "sales",
+    "areaServed": "IN",
+    "availableLanguage": ["en", "mr", "hi"]
+  }
+}
+</script>
+```
+
+## The Entity Graph: Use @id Properly
+
+This is the technique most implementations miss, and it is the difference between structured data that reads as isolated facts and structured data that reads as a connected entity.
+
+The pattern: give each entity a canonical `@id`, then *reference* those ids elsewhere instead of repeating the block.
+
+```html
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://yourdomain.com/#organization",
+      "name": "Your Company Name",
+      "url": "https://yourdomain.com",
+      "logo": "https://yourdomain.com/logo.png"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://yourdomain.com/#website",
+      "url": "https://yourdomain.com",
+      "name": "Your Company Name",
+      "publisher": { "@id": "https://yourdomain.com/#organization" },
+      "inLanguage": "en-IN"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://yourdomain.com/services/#webpage",
+      "url": "https://yourdomain.com/services/",
+      "name": "Our Services",
+      "isPartOf": { "@id": "https://yourdomain.com/#website" },
+      "about": { "@id": "https://yourdomain.com/#organization" },
+      "breadcrumb": { "@id": "https://yourdomain.com/services/#breadcrumb" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://yourdomain.com/services/#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://yourdomain.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://yourdomain.com/services/" }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://yourdomain.com/services/#service",
+      "name": "Custom Web Application Development",
+      "serviceType": "Web application development",
+      "provider": { "@id": "https://yourdomain.com/#organization" },
+      "areaServed": { "@type": "City", "name": "Pune" },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Web development services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "MVP Development",
+              "description": "Fixed-scope MVP delivered in 4-6 weeks"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+</script>
+```
+
+Why this matters: an engine can now traverse from the Service to the Organization to the WebSite and back, as one connected graph. Three facts sitting side by side with no stated relationship are far harder to resolve. Google's own structured data documentation leans on exactly this kind of referencing.
+
+## The Local Business Stack
+
+For a Pune business targeting local search, this is the baseline set.
+
+**`LocalBusiness`** - the most important one. Use the most specific subtype available (`Clinic`, `Dentist`, `Restaurant`, `AutoRepair`, `Lawyer`, `RealEstateAgent`).
+
+```html
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://yourdomain.com/#localbusiness",
+  "name": "Your Company Name",
+  "image": "https://yourdomain.com/og-image.jpg",
+  "url": "https://yourdomain.com",
+  "telephone": "+91-XXXXX-XXXXX",
+  "priceRange": "₹₹",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Your Street Address",
+    "addressLocality": "Pune",
+    "addressRegion": "Maharashtra",
+    "postalCode": "4110XX",
+    "addressCountry": "IN"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 18.52,
+    "longitude": 73.85
+  },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+    "opens": "10:00",
+    "closes": "19:00"
+  }],
+  "areaServed": [
+    { "@type": "City", "name": "Pune" },
+    { "@type": "AdministrativeArea", "name": "Maharashtra" }
+  ],
+  "parentOrganization": { "@id": "https://yourdomain.com/#organization" }
+}
+</script>
+```
+
+**Accuracy beats completeness here.** Wrong hours in markup actively make things worse - AI Overviews draw on this data and will confidently surface an incorrect "open now" answer.
+
+**`Service`** - one per service page. Not one mega-block. Each service page declares the service it offers, its area served, and links to the organization via `@id`.
+
+**`FAQPage`** - where you genuinely answer questions.
+
+**`Article`** - on every blog post, with `author`, `datePublished`, `dateModified`, `publisher`, and `image`.
+
+**`BreadcrumbList`** - on every page except the homepage.
+
+**`Review` / `AggregateRating`** - with an important warning.
+
+> Do not mark up your own reviews on your own site's `Organization` or `LocalBusiness` block. Google's guidelines treat self-serving review markup as a violation. `aggregateRating` is only appropriate where the ratings genuinely come from a third-party source. Marking up your own testimonials in a `Review` set that you authored is the single most common structured data mistake we see.
+
+## Validation Is Not Optional
+
+Malformed markup can be ignored wholesale rather than partially read. There is no partial credit.
+
+**Two tools, both free:**
+
+1. **Google's Rich Results Test** - confirms eligibility for enhanced search features
+2. **Schema Markup Validator** - catches syntax and vocabulary errors
+
+Run both. Then re-check after deploying. Structured data is a means, not the goal - the goal is being read and cited, so measure the outcome after launch.
+
+**One expectation to set correctly:** ChatGPT and Perplexity primarily parse rendered content rather than depending on your structured data. Do not expect schema alone to win a citation there. It helps by keeping facts on the page unambiguous and by strengthening the entity these engines draw from knowledge graphs.
+
+## Deploy It Where It Is Read
+
+A structural detail that quietly undoes everything above: if your critical content is only in images, PDFs, or behind a JavaScript interaction, a machine may never see it.
+
+- Service descriptions in HTML, not in a hero image
+- FAQs as real text, not as an accordion that loads content dynamically
+- Case study outcomes as text, not as an embedded video thumbnail
+- Phone number and address in crawlable text on every page
+
+Semantic HTML helps Google index content more effectively. Alt text makes images searchable. This is the unglamorous part that decides whether any of the above matters.
+
+## Where This Connects to AI Visibility
+
+The relationship is real but narrower than the marketing suggests.
+
+Structured data does not make you rank in AI Overviews. Google says so explicitly. What it does is make your entity unambiguous, which is a precondition for being cited accurately. Analysis of AI-cited pages found structural patterns consistent with machine-readable content: short paragraphs averaging about three sentences, heavy list use, and explicit question-and-answer formats.
+
+So the playbook is: schema makes the facts unambiguous, structure makes them extractable, and specificity makes them worth quoting. You need all three. Schema alone is roughly 20% of the work.
+
+---
+
+## The Implementation Checklist
+
+1. Define one canonical `@id` for the organization and reference it everywhere - never repeat the block
+2. Add `LocalBusiness` with accurate NAP, geo coordinates, and real opening hours
+3. Add `Service` markup to each service page, referencing the organization by `@id`
+4. Add `BreadcrumbList` to every page except the homepage
+5. Add `Article` with author and dates to every blog post
+6. Add `FAQPage` where you genuinely answer questions
+7. Remove any self-serving review markup
+8. Confirm your NAP matches your Google Business Profile and every directory listing, character for character
+9. Validate with both Google tools
+10. Re-check visibility after deploy, and re-validate after any site restructure
+
+## Frequently Asked Questions
+
+**Does schema markup improve SEO ranking?**
+Not directly. It supports rich results eligibility and makes your entity unambiguous, which improves the chance of accurate citation in AI answers. Treat it as infrastructure, not a ranking lever.
+
+**Is microdata or JSON-LD better?**
+JSON-LD. Google's recommended format, decoupled from visual markup, and much easier to maintain and nest into an entity graph.
+
+**Does FAQPage schema still help after May 2026?**
+Yes, for machine comprehension. FAQ rich results no longer display in Google Search, but answer engines ingest question-and-answer pairs cleanly and the text itself gets quoted. Keep deploying it.
+
+**Do I need schema if I am a small local shop?**
+Yes, and it is the cheapest win available. A `LocalBusiness` block with accurate hours, address, geo coordinates, and service area takes twenty minutes and materially improves how local search engines describe you.
+
+**Should I put schema on every page?**
+Different types on different pages. `LocalBusiness` sitewide, `Service` on service pages, `Article` on posts, `BreadcrumbList` everywhere except the homepage. Do not paste identical blocks everywhere - that pattern is a spam signal.
+
+**Can AI-generated content carry schema markup?**
+Yes, but only if it answers real questions. Markup on generic filler content amplifies nothing.
+
+**How often should I re-validate?**
+After every site restructure, template change, or migration. Schema breaks silently during redesigns, and broken markup usually produces no error visible in analytics.
+
+---
+
+The businesses winning in AI-assisted local search are the ones whose facts are consistent and machine-readable. Most of that is unglamorous: accurate hours, identical details everywhere, and content that exists as text.
+
+If you want schema done properly as part of a build rather than bolted on afterwards, [our web application work in Pune](/services/web-application-development-pune) includes structured data from the first template. And if you want to know where you currently stand, our [AI consulting practice](/services/ai-consulting-pune) will audit it and tell you exactly which of these ten steps apply to you.
