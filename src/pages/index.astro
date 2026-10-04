@@ -1,348 +1,182 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import Nav from "@/components/Nav.astro";
-import Footer from "@/components/Footer.astro";
-import HeroSection from "@/components/hero/HeroSection";
+import StudioNav from "@/components/home/StudioNav";
+import StudioArtwork from "@/components/home/StudioArtwork";
 import LogoMarquee from "@/components/brand/LogoMarquee.astro";
-import TestimonialWall from "@/components/brand/TestimonialWall.astro";
-import BentoGrid from "@/components/BentoGrid.astro";
-import PricingPackages from "@/components/PricingPackages.astro";
+import StudioSpecBar from "@/components/home/StudioSpecBar.astro";
+import StudioComparison from "@/components/home/StudioComparison.astro";
+import StudioIndustryGrid from "@/components/home/StudioIndustryGrid.astro";
+import StudioBaseline from "@/components/home/StudioBaseline.astro";
+import StudioReviews from "@/components/home/StudioReviews";
+import { ArrowUpRightIcon as ArrowUpRight, ArrowRightIcon as ArrowRight, PlusIcon as Plus, CheckIcon as Check, CodeIcon as Code, SparkleIcon as Sparkle, GlobeIcon as Globe } from "@phosphor-icons/react";
+import { getImage } from "astro:assets";
+import diningPhoto from "../../public/assets/demos/saffron-and-smoke/hero-dish.jpg";
+import clinicPhoto from "../../public/assets/demos/business-clinic.jpg";
 import { getCollection } from "astro:content";
 
-const allPosts = await getCollection("blog", ({ data }) => !data.draft);
-const latestPosts = allPosts
-  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
-  .slice(0, 3);
+const [diningImage, clinicImage] = await Promise.all([
+  getImage({ src: diningPhoto, width: 1200, format: "webp" }),
+  getImage({ src: clinicPhoto, width: 1000, format: "webp" }),
+]);
 
-let latestGuides: any[] = [];
-try {
-  const guides = await getCollection("guides", ({ data }) => !data.draft);
-  latestGuides = guides
-    .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
-    .slice(0, 3);
-} catch {}
+const posts = (await getCollection("blog", ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()).slice(0, 3);
+const packages = [
+  { name: "Quick Launch", price: "5,000", time: "1 to 2 days", description: "One great page. One clear purpose. Your idea, out in the world.", features: ["Custom single-page design", "Mobile-ready & SEO foundations", "WhatsApp & inquiry integration"], demo: "/demos/quick-launch-freelancer" },
+  { name: "Business", price: "7,500", time: "2 to 3 days", description: "A complete digital home for a business ready for its next chapter.", features: ["3 to 5 sections or multi-page site", "Gallery, services & lead capture", "Local SEO & domain setup"], demo: "/demos/business-oak-elm-clinic" },
+  { name: "Premium Flagship", price: "10,000", time: "3 days", description: "A signature experience. Thoughtful details. A brand worth remembering.", features: ["5 to 7 bespoke pages", "Custom motion & booking flows", "Technical SEO & analytics"], demo: "/demos/saffron-and-smoke" },
+];
+const services = [
+  { name: "Websites with presence.", description: "Distinctive digital experiences that turn first impressions into real inquiries.", tags: "Strategy / Design / Development", icon: Globe, href: "/services" },
+  { name: "Products with purpose.", description: "From your first MVP to the platform your business runs on. Built for real people.", tags: "Web apps / SaaS / MVPs", icon: Code, href: "/services/web-application-development-pune" },
+  { name: "Less busywork. More possibility.", description: "AI agents and connected workflows that give your team its time back.", tags: "AI agents / Automation / APIs", icon: Sparkle, href: "/services/ai-automation-pune" },
+];
+const faqs = [
+  { question: "Can a custom website really launch in three days?", answer: "Yes, for our fixed-scope website packages. Delivery starts once your content, assets, and scope are approved. Custom applications and AI systems have their own agreed project timeline." },
+  { question: "What if I need a web app or an AI workflow?", answer: "We build those too. Tell us what you want to achieve and we will map out the technical scope, milestones, delivery schedule, and a fixed project quote." },
+  { question: "Do I own the finished website?", answer: "Yes. You receive the source code, design assets, and deployment handover. Your domain and project belong to you." },
+  { question: "Who will I actually work with?", answer: "You work directly with the senior engineer building your project. You get clear updates and staging previews throughout the build." },
+];
 ---
 
-<Layout
-  title="Custom Websites, Web Apps & AI Workflows | NextReach Studio"
-  description="NextReach Studio engineers high-performance custom websites, web applications, and autonomous AI workflows in 24 to 72 hours. Fixed-scope sprint packages starting at ₹5,000. Direct senior developer access."
->
-  <!-- Structured Data: Services offered -->
-  <script type="application/ld+json" is:inline set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "item": {
-          "@type": "Service",
-          "name": "High-Velocity Custom Website Packages",
-          "description": "Bespoke custom-designed websites starting at ₹5,000 shipped in 24-72 hours under fixed-scope contracts."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "item": {
-          "@type": "Service",
-          "name": "Custom Web Applications & SaaS",
-          "description": "Multi-tenant platforms, client portals, admin panels, and operational dashboards built with modern full-stack frameworks."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "item": {
-          "@type": "Service",
-          "name": "Autonomous AI Agent Development",
-          "description": "Custom AI agents for customer support, sales pipelines, and multi-agent systems with MCP integration."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 4,
-        "item": {
-          "@type": "Service",
-          "name": "Business Process Automation",
-          "description": "Invoicing, inventory, CRM, WhatsApp, and document processing automation using Python and AI workflows."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 5,
-        "item": {
-          "@type": "Service",
-          "name": "Rapid MVP Engineering",
-          "description": "Functional products with auth, payments, and database shipped in 4-6 week sprint cycles."
-        }
-      }
-    ]
-  })} />
-  <Nav />
-
-  <main>
-    <HeroSection client:load />
-
-    <LogoMarquee />
-
-    <PricingPackages />
-
-    <!-- ==================== FEATURED LIVE DEMO: SAFFRON & SMOKE ==================== -->
-    <section class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-[#1F1F23]/8" id="live-demo" aria-labelledby="demo-heading">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-        <div class="lg:col-span-5">
-          <p class="text-xs font-mono font-bold uppercase tracking-[0.24em] text-[#C76B50] mb-3">
-            Featured Production Demo
-          </p>
-          <h2 id="demo-heading" class="text-2xl sm:text-4xl font-display font-bold text-[#1F1F23] tracking-[-0.03em] leading-tight mb-4">
-            Saffron &amp; Smoke<br />
-            <span class="text-[#C76B50]">Luxury Modern Indian Dining</span>
-          </h2>
-          <p class="text-[#6E6862] text-sm sm:text-base leading-relaxed font-body mb-6">
-            We don't pitch static Figma files. Below is an active production restaurant platform engineered for an upscale dining atelier in Baner, Pune. Features real-time multi-sitting reservations, automated booking codes, WhatsApp concierge routing, and Architectural Digest India editorial aesthetics.
-          </p>
-
-          <div class="space-y-3 mb-8">
-            <div class="flex items-center gap-3 text-xs sm:text-sm text-[#4A4844] font-body">
-              <span class="text-[#C76B50] font-bold text-sm shrink-0">✓</span>
-              Multi-sitting reservation engine with automated guest confirmation codes
-            </div>
-            <div class="flex items-center gap-3 text-xs sm:text-sm text-[#4A4844] font-body">
-              <span class="text-[#C76B50] font-bold text-sm shrink-0">✓</span>
-              Filterable 4-course and 7-course tasting menu drawer with culinary pairing notes
-            </div>
-            <div class="flex items-center gap-3 text-xs sm:text-sm text-[#4A4844] font-body">
-              <span class="text-[#C76B50] font-bold text-sm shrink-0">✓</span>
-              Sub-second mobile rendering with chiaroscuro side lighting aesthetics
-            </div>
+<Layout localFonts title="Distinctive Websites, Web Apps & AI Workflows" description="Thoughtful design. Serious engineering. NextReach Studio builds distinctive custom websites, web apps, and AI workflows. Fixed-scope websites from ₹5,000.">
+  <div class="studio-home" data-studio-home>
+    <a class="studio-skip" href="#main-content">Skip to content</a>
+    <StudioNav client:load />
+    <main id="main-content">
+      <section class="studio-hero studio-container" aria-labelledby="hero-title">
+        <div class="studio-hero-copy">
+          <p class="studio-eyebrow studio-hero-enter">Independent minds. Exceptional builds.</p>
+          <h1 id="hero-title"><span class="studio-title-line"><span class="studio-title-word">Beyond</span></span><span class="studio-title-line studio-title-accent"><span class="studio-title-word">ordinary.</span></span><span class="studio-title-period" aria-hidden="true">*</span></h1>
+          <p class="studio-hero-description studio-hero-enter">We build distinctive websites, powerful web apps, and AI workflows for businesses ready to move forward.</p>
+          <div class="studio-hero-actions studio-hero-enter">
+            <a href="/contact" class="studio-button">Start a project <ArrowUpRight size={19} weight="bold" /></a>
+            <a href="#live-demo" class="studio-text-link">Explore our work <ArrowRight size={19} /></a>
           </div>
+        </div>
+        <StudioArtwork client:load />
+      </section>
 
-          <div class="flex flex-col sm:flex-row flex-wrap items-center gap-3">
-            <a
-              href="https://saffron-and-smoke-sigma.vercel.app"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="w-full sm:w-auto text-center px-5 py-3 rounded-xl bg-[#C76B50] hover:bg-[#D97A5E] text-white font-display font-semibold text-xs sm:text-sm shadow-[0_4px_16px_rgba(199,107,80,0.22)] transition-all duration-200 hover:-translate-y-0.5"
-            >
-              <span>Launch Live Demo ↗</span>
+      <LogoMarquee variant="studio" />
+
+      <StudioSpecBar />
+
+      <section class="studio-work studio-container studio-section" id="live-demo" aria-labelledby="work-title">
+        <div class="studio-section-title" data-reveal>
+          <h2 id="work-title">Good ideas.<br /><span class="studio-muted">Great execution.</span></h2>
+          <a href="/portfolio" class="studio-text-link">Explore our work <ArrowUpRight size={20} /></a>
+        </div>
+        <div class="studio-projects">
+          <article class="studio-project studio-project-featured" data-reveal>
+            <a class="studio-project-image studio-dining-image" href="/demos/saffron-and-smoke" aria-label="Explore Saffron and Smoke restaurant website demo">
+              <img src={diningImage.src} alt="The signature dish from the Saffron and Smoke fine-dining website demo" width="1200" height="670" loading="lazy" decoding="async" />
+              <div class="studio-project-wordmark" aria-hidden="true">Saffron<br /><span>&amp; Smoke</span></div>
+              <span class="studio-project-open" aria-hidden="true"><ArrowUpRight size={26} /></span>
             </a>
-            <a 
-              href="https://wa.me/919822379976?text=Hi%20NextReach%20Studio%2C%20I%20saw%20the%20Saffron%20%26%20Smoke%20demo%20and%20want%20a%20similar%20Premium%20Flagship%20website%20(%E2%82%B910%2C000)%20for%20my%20business."
-              target="_blank"
-              rel="noopener noreferrer"
-              class="w-full sm:w-auto text-center px-4 py-3 rounded-xl bg-white hover:bg-[#FAF8F5] text-[#1F1F23] border border-[#1F1F23]/12 text-xs font-mono transition-all duration-200 flex items-center justify-center gap-1.5 shadow-sm hover:-translate-y-0.5"
-            >
-              <span>Order on WhatsApp (₹10k)</span>
+            <div class="studio-project-info"><div><h3>Saffron &amp; Smoke</h3><p>A dining experience, reimagined online.</p></div><span>Hospitality · Flagship demo</span></div>
+          </article>
+          <article class="studio-project studio-project-secondary" data-reveal>
+            <a class="studio-project-image studio-clinic-image" href="/demos/business-oak-elm-clinic" aria-label="Explore Oak and Elm clinic website demo">
+              <img src={clinicImage.src} alt="Warm, light-filled Oak and Elm clinic interior featured in our business website demo" width="1000" height="558" loading="lazy" decoding="async" />
+              <span class="studio-project-open" aria-hidden="true"><ArrowUpRight size={26} /></span>
             </a>
-            <a href="/demos/saffron-and-smoke" class="text-xs text-[#6E6862] hover:text-[#1F1F23] transition-colors font-mono py-2">
-              View Case Dossier &rarr;
-            </a>
-          </div>
+            <div class="studio-project-info"><div><h3>Oak &amp; Elm</h3><p>Care starts with a better first impression.</p></div><span>Healthcare · Business demo</span></div>
+          </article>
         </div>
+      </section>
 
-        <div class="lg:col-span-7">
-          <div class="rounded-2xl border border-[#1F1F23]/10 bg-white p-3 sm:p-4 shadow-xl transition-all duration-300 hover:border-[#C76B50]/40">
-            <div class="flex items-center justify-between px-2 pb-3 mb-1 border-b border-[#1F1F23]/8">
-              <span class="text-[11px] font-mono font-semibold text-[#C76B50]">
-                Premium Flagship Demo • ₹10,000 Package
-              </span>
-              <span class="text-[11px] font-mono text-[#6E6862]">
-                Baner, Pune
-              </span>
-            </div>
+      <StudioComparison />
 
-            <div class="relative aspect-video rounded-xl overflow-hidden group">
-              <img
-                src="/assets/demos/saffron-and-smoke/hero-dish.jpg"
-                alt="Saffron & Smoke - Modern Indian Restaurant in Baner, Pune"
-                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                width="1280"
-                height="720"
-                loading="lazy"
-                decoding="async"
-              />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
-
-              <div class="absolute bottom-3 left-4 right-4 flex items-end justify-between">
-                <div>
-                  <p class="text-xs font-mono text-[#C76B50] uppercase tracking-widest">Saffron &amp; Smoke</p>
-                  <p class="text-sm sm:text-base font-serif text-white font-medium">"India, on a different plate."</p>
-                </div>
-                <a
-                  href="https://saffron-and-smoke-sigma.vercel.app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="px-3 py-1.5 rounded-lg text-xs font-mono font-semibold bg-[#C76B50] text-white hover:bg-[#D97A5E] transition-colors shadow-md"
-                >
-                  Visit Demo ↗
-                </a>
-              </div>
-            </div>
-          </div>
+      <section class="studio-manifesto studio-container studio-section" id="why-us" aria-labelledby="manifesto-title">
+        <div class="studio-manifesto-mark" aria-hidden="true"><img src="/brand/logo-mark.png" alt="" width="500" height="625" loading="lazy" /></div>
+        <div data-reveal>
+          <p class="studio-eyebrow">A small studio. A bigger perspective.</p>
+          <h2 id="manifesto-title">The sweet spot between<br /><span class="studio-accent">creative instinct</span><br />and engineering rigor.</h2>
+          <p>Beautiful is the beginning. We care just as much about the speed, the experience, and what happens after someone clicks.</p>
+          <a href="/about" class="studio-text-link">Meet the studio <ArrowUpRight size={20} /></a>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- ==================== BESPOKE SYSTEMS BENTO GRID ==================== -->
-    <BentoGrid />
-
-    <!-- ==================== PROCESS TIMELINE ==================== -->
-    <section class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-[#1F1F23]/8" id="process" aria-labelledby="process-heading">
-      <div class="text-center max-w-3xl mx-auto mb-14 sm:mb-16">
-        <p class="text-xs uppercase tracking-[0.24em] text-[#C76B50] mb-2 font-bold font-mono">Workflow</p>
-        <h2 id="process-heading" class="text-2xl sm:text-4xl font-display font-bold text-[#1F1F23] tracking-[-0.03em] leading-tight">
-          From discovery to handover in 5 clear stages
-        </h2>
-        <p class="text-[#6E6862] text-sm sm:text-base mt-3 font-body leading-relaxed">
-          Transparent milestones. Fixed pricing. Guaranteed code and asset ownership.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-5 gap-3 md:gap-4">
-        <div class="flex items-start gap-3 md:flex-col md:items-center md:text-center p-4 rounded-xl bg-white border border-[#1F1F23]/8 shadow-sm transition-all hover:border-[#C76B50]/30 hover:shadow-md">
-          <div class="timeline-node shrink-0">01</div>
-          <div class="md:mt-2">
-            <p class="text-xs font-bold text-[#C76B50] uppercase tracking-wider font-mono mb-1">Discovery</p>
-            <p class="text-xs text-[#6E6862] leading-relaxed font-body">Your business problem, technical constraints, and target conversion metrics.</p>
-          </div>
+      <section class="studio-services studio-container studio-section" id="services" aria-labelledby="services-title">
+        <h2 id="services-title" data-reveal>Whatever comes next,<br /><span class="studio-muted">let’s build it well.</span></h2>
+        <div class="studio-service-list">
+          {services.map((service, i) => <a href={service.href} class="studio-service" data-reveal>
+            <span class="studio-service-index">0{i + 1}</span>
+            <span class="studio-service-icon"><service.icon size={32} weight="light" /></span>
+            <div><h3>{service.name}</h3><p>{service.description}</p><span class="studio-service-tags">{service.tags}</span></div>
+            <span class="studio-service-arrow"><ArrowUpRight size={32} weight="light" /></span>
+          </a>)}
         </div>
-        <div class="flex items-start gap-3 md:flex-col md:items-center md:text-center p-4 rounded-xl bg-white border border-[#1F1F23]/8 shadow-sm transition-all hover:border-[#C76B50]/30 hover:shadow-md">
-          <div class="timeline-node shrink-0">02</div>
-          <div class="md:mt-2">
-            <p class="text-xs font-bold text-[#C76B50] uppercase tracking-wider font-mono mb-1">Proposal</p>
-            <p class="text-xs text-[#6E6862] leading-relaxed font-body">Written deliverables breakdown, exact delivery date, and one-time fixed price.</p>
-          </div>
+      </section>
+
+      <StudioIndustryGrid />
+
+      <section class="studio-process studio-container studio-section" id="process" aria-labelledby="process-title">
+        <div class="studio-process-heading" data-reveal><h2 id="process-title">Big on craft.<br />Light on complications.</h2><p>A clear scope. A direct line to your engineer. Working previews, all the way to launch.</p></div>
+        <div class="studio-process-steps">
+          {[{ name: "Find the focus", text: "We talk about your goals, your audience, and what a great result looks like." }, { name: "Make it real", text: "We agree the scope and price, then design and build with live previews." }, { name: "Launch & hand over", text: "We check the details, go live, and put the code and assets in your hands." }].map((step, i) => <div class="studio-process-step" data-reveal><span class="studio-step-number">0{i + 1}</span><h3>{step.name}</h3><p>{step.text}</p></div>)}
         </div>
-        <div class="flex items-start gap-3 md:flex-col md:items-center md:text-center p-4 rounded-xl bg-white border border-[#C76B50]/40 shadow-md">
-          <div class="timeline-node timeline-node--active shrink-0">03</div>
-          <div class="md:mt-2">
-            <p class="text-xs font-bold text-[#C76B50] uppercase tracking-wider font-mono mb-1">Sprint Build</p>
-            <p class="text-xs text-[#6E6862] leading-relaxed font-body">Fast-paced development with live staging URLs and senior developer access.</p>
-          </div>
+      </section>
+
+      <StudioBaseline />
+
+      <section class="studio-pricing studio-container studio-section" id="packages" aria-labelledby="packages-title">
+        <div class="studio-section-title" data-reveal><h2 id="packages-title">Serious craft.<br /><span class="studio-muted">Sensible starting points.</span></h2><span class="studio-pricing-note">Fixed-scope websites.<br />One-time pricing. Full ownership.</span></div>
+        <div class="studio-package-grid">
+          {packages.map((pkg, i) => <article class={`studio-package ${i === 2 ? "studio-package-featured" : ""}`} data-reveal>
+            <div class="studio-package-top"><span>{i === 2 ? "The signature experience" : "Made for your next step"}</span><ArrowUpRight size={22} /></div>
+            <h3>{pkg.name}</h3><p class="studio-package-description">{pkg.description}</p>
+            <p class="studio-package-price"><span>₹</span>{pkg.price}</p><p class="studio-package-time">Ready in {pkg.time} · After scope approval</p>
+            <ul>{pkg.features.map(feature => <li><Check size={16} weight="bold" /><span>{feature}</span></li>)}</ul>
+            <a class="studio-button" href={`https://wa.me/919822379976?text=${encodeURIComponent(`Hi NextReach Studio, I would like to start a project with the ${pkg.name} website package (₹${pkg.price}).`)}`} target="_blank" rel="noopener noreferrer">Start a project <ArrowUpRight size={18} /></a>
+            <a href={pkg.demo} class="studio-package-demo">View demo <ArrowRight size={16} /></a>
+          </article>)}
         </div>
-        <div class="flex items-start gap-3 md:flex-col md:items-center md:text-center p-4 rounded-xl bg-white border border-[#1F1F23]/8 shadow-sm transition-all hover:border-[#C76B50]/30 hover:shadow-md">
-          <div class="timeline-node shrink-0">04</div>
-          <div class="md:mt-2">
-            <p class="text-xs font-bold text-[#C76B50] uppercase tracking-wider font-mono mb-1">QA &amp; Speed</p>
-            <p class="text-xs text-[#6E6862] leading-relaxed font-body">Cross-device responsiveness, Core Web Vitals checks, and security review.</p>
-          </div>
-        </div>
-        <div class="flex items-start gap-3 md:flex-col md:items-center md:text-center p-4 rounded-xl bg-white border border-[#1F1F23]/8 shadow-sm transition-all hover:border-[#C76B50]/30 hover:shadow-md">
-          <div class="timeline-node shrink-0">05</div>
-          <div class="md:mt-2">
-            <p class="text-xs font-bold text-[#C76B50] uppercase tracking-wider font-mono mb-1">Handover</p>
-            <p class="text-xs text-[#6E6862] leading-relaxed font-body">Full Git repository, database credentials, documentation, and support.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+        <p class="studio-custom-note">Something more ambitious? <a href="/contact">Let’s scope your web app or AI system <ArrowUpRight size={17} /></a></p>
+      </section>
 
-    <!-- ==================== WHY NEXTREACH ==================== -->
-    <section class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-[#1F1F23]/8" id="why-us" aria-labelledby="why-heading">
-      <div class="text-center max-w-3xl mx-auto mb-14 sm:mb-16">
-        <p class="text-xs uppercase tracking-[0.24em] text-[#C76B50] mb-2 font-bold font-mono">Why NextReach Studio</p>
-        <h2 id="why-heading" class="text-2xl sm:text-4xl font-display font-bold text-[#1F1F23] tracking-[-0.03em] leading-tight">
-          Senior engineering discipline.<br />Startup speed and fixed pricing.
-        </h2>
-        <p class="text-[#6E6862] text-sm sm:text-base mt-3 font-body">
-          Why ambitious businesses and founders partner directly with our senior developers.
-        </p>
-      </div>
+      <StudioReviews client:visible />
 
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
-        <div class="comparison-card comparison-card--negative">
-          <div class="flex items-center gap-2 mb-4">
-            <svg class="w-4 h-4 text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-            <h3 class="text-sm font-bold text-[#1F1F23] font-display">Traditional Agency Model</h3>
-          </div>
-          <ul class="space-y-3">
-            <li class="flex gap-2.5 text-xs text-[#6E6862]"><span class="text-red-500 shrink-0 mt-0.5">✕</span>Account managers who relay messages between you and developers</li>
-            <li class="flex gap-2.5 text-xs text-[#6E6862]"><span class="text-red-500 shrink-0 mt-0.5">✕</span>Weekly status meetings that substitute for actual code progress</li>
-            <li class="flex gap-2.5 text-xs text-[#6E6862]"><span class="text-red-500 shrink-0 mt-0.5">✕</span>Inflated hourly retainers that incentivize slow delivery</li>
-            <li class="flex gap-2.5 text-xs text-[#6E6862]"><span class="text-red-500 shrink-0 mt-0.5">✕</span>"We will scope it during the project" leading to surprise overruns</li>
-          </ul>
-        </div>
+      <section class="studio-faq studio-container studio-section" aria-labelledby="faq-title">
+        <h2 id="faq-title" data-reveal>A few good questions.</h2>
+        <div class="studio-faq-list" data-reveal>{faqs.map(faq => <details><summary>{faq.question}<Plus size={22} /></summary><p>{faq.answer}</p></details>)}</div>
+      </section>
 
-        <div class="comparison-card comparison-card--positive border-[#C76B50]/30 shadow-md">
-          <div class="flex items-center gap-2 mb-4">
-            <svg class="w-4 h-4 text-[#C76B50]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-            <h3 class="text-sm font-bold text-[#C76B50] font-display">The NextReach Model</h3>
-          </div>
-          <ul class="space-y-3">
-            <li class="flex gap-2.5 text-xs text-[#4A4844]"><span class="text-emerald-600 shrink-0 mt-0.5 font-bold">✓</span>Direct access to the senior engineer building your system</li>
-            <li class="flex gap-2.5 text-xs text-[#4A4844]"><span class="text-emerald-600 shrink-0 mt-0.5 font-bold">✓</span>Fixed, transparent milestones with a written technical scope</li>
-            <li class="flex gap-2.5 text-xs text-[#4A4844]"><span class="text-emerald-600 shrink-0 mt-0.5 font-bold">✓</span>Fast production sprints with live staging links and walkthroughs</li>
-            <li class="flex gap-2.5 text-xs text-[#4A4844]"><span class="text-emerald-600 shrink-0 mt-0.5 font-bold">✓</span>One-time project pricing. You own 100% of the finished product.</li>
-          </ul>
-        </div>
-      </div>
+      {posts.length > 0 && <section class="studio-journal studio-container studio-section" id="ai-dev-hub" aria-labelledby="journal-title">
+        <div class="studio-section-title" data-reveal><h2 id="journal-title">Always building.<br /><span class="studio-muted">Always exploring.</span></h2><a href="/tools" class="studio-text-link">Explore our tools <ArrowUpRight size={20} /></a></div>
+        <div class="studio-journal-grid">{posts.map((post, i) => <a class="studio-journal-entry" href={`/blog/${post.id}`} data-reveal><span class="studio-journal-number">0{i + 1}</span><span class="studio-journal-type">From the studio journal</span><h3>{post.data.title}</h3><span class="studio-journal-read">Read story <ArrowUpRight size={19} /></span></a>)}</div>
+      </section>}
 
-      <div class="text-center mt-12">
-        <p class="text-[#6E6862] text-sm sm:text-base mb-6 font-body">
-          Ready to launch your project?
-        </p>
-        <a href="/contact" class="btn-premium-primary">
-          Schedule a Technical Discovery Call
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
-          </svg>
-        </a>
-      </div>
-    </section>
+      <section class="studio-contact studio-container studio-section" aria-labelledby="contact-title">
+        <p class="studio-eyebrow" data-reveal>Your next chapter starts here.</p>
+        <div class="studio-contact-main" data-reveal><h2 id="contact-title">Let’s make<br />a <span>mark.</span></h2><a href="/contact" class="studio-contact-button" aria-label="Start a project"><ArrowUpRight size={64} weight="light" /></a></div>
+        <div class="studio-contact-bottom"><p>Bring the idea.<br />We’ll bring the craft.</p><a href="/contact" class="studio-text-link">Start a project <ArrowUpRight size={20} /></a></div>
+      </section>
+    </main>
 
-    <!-- ==================== WALL OF LOVE (TESTIMONIALS) ==================== -->
-    <TestimonialWall />
-
-    <!-- ==================== BLOG / RESOURCES FOOTER ==================== -->
-    <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-[#1F1F23]/8" id="ai-dev-hub">
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
-        <div>
-          <p class="text-xs uppercase tracking-[0.18em] text-[#6E6862] mb-2 font-bold font-mono">Open Source &amp; Research</p>
-          <h2 class="text-2xl sm:text-3xl font-display font-bold text-[#1F1F23] mb-4">
-            Our Technical Depth
-          </h2>
-          <p class="text-[#6E6862] text-xs sm:text-sm leading-relaxed mb-6 font-body">
-            We don't just build client applications. We engineer open-source MCP servers, token calculators, and publish technical guides for AI developers and founders.
-          </p>
-          <a href="/tools" class="inline-flex items-center gap-1.5 text-sm text-[#C76B50] hover:text-[#D97A5E] transition-colors font-semibold">
-            <span>Explore our developer tools</span>
-            <span>&rarr;</span>
-          </a>
-        </div>
-
-        <div class="lg:col-span-2 space-y-4">
-          <h3 class="text-xs font-bold text-[#6E6862] uppercase tracking-wider mb-2 font-mono">Latest from our Blog &amp; Guides</h3>
-
-          <div class="space-y-3">
-            {latestPosts.map((post) => (
-              <a href={`/blog/${post.id}`} class="card-studio hover:border-[#C76B50]/40 flex justify-between items-center py-3.5 px-5 group shadow-sm">
-                <div>
-                  <span class="text-[10px] text-[#8C847B] mr-3 font-mono">{post.data.pubDate.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</span>
-                  <span class="text-xs sm:text-sm font-semibold text-[#1F1F23] group-hover:text-[#C76B50] transition-colors font-display">{post.data.title}</span>
-                </div>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-3.5 h-3.5 text-[#8C847B] group-hover:text-[#C76B50] transition-all duration-200 group-hover:translate-x-0.5 shrink-0 ml-2">
-                  <path d="M9 18l6-6-6-6"/>
-                </svg>
-              </a>
-            ))}
-
-            {latestGuides.slice(0, 1).map((guide: any) => (
-              <a href={`/guides/${guide.id}`} class="card-studio hover:border-[#C76B50]/40 flex justify-between items-center py-3.5 px-5 group shadow-sm">
-                <div>
-                  <span class="badge-premium-neutral text-[9px] mr-3 uppercase font-mono">{guide.data.difficulty}</span>
-                  <span class="text-xs sm:text-sm font-semibold text-[#1F1F23] group-hover:text-[#C76B50] transition-colors font-display">{guide.data.title}</span>
-                </div>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-3.5 h-3.5 text-[#8C847B] group-hover:text-[#C76B50] transition-all duration-200 group-hover:translate-x-0.5 shrink-0 ml-2">
-                  <path d="M9 18l6-6-6-6"/>
-                </svg>
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <Footer />
+    <footer class="studio-footer studio-container">
+      <a href="/" class="studio-footer-brand"><img src="/brand/logo-mark.png" width="28" height="35" alt="" />NextReach <span>Studio</span></a>
+      <div class="studio-footer-links"><a href="/services">Services</a><a href="/industries/restaurants">Industries</a><a href="/blog">Blog</a><a href="/guides">Guides</a><a href="/resources">Resources</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a></div>
+      <div class="studio-footer-bottom"><span>© {new Date().getFullYear()} NextReach Studio</span><span>Thoughtfully designed. Carefully engineered.</span></div>
+    </footer>
+  </div>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({ "@context": "https://schema.org", "@type": "ItemList", itemListElement: services.map((service, i) => ({ "@type": "ListItem", position: i + 1, item: { "@type": "Service", name: service.name.replace(/\.$/, ""), description: service.description } })) })} />
+  <script>
+    const root = document.querySelector<HTMLElement>("[data-studio-home]");
+    if (root && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      root.querySelectorAll<HTMLElement>("[data-reveal]").forEach(element => {
+        element.classList.add("studio-reveal-ready");
+        observer.observe(element);
+      });
+      document.addEventListener("astro:before-swap", () => observer.disconnect(), { once: true });
+    }
+  </script>
 </Layout>

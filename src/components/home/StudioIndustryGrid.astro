@@ -1,0 +1,74 @@
+---
+import { FirstAidKitIcon, ForkKnifeIcon, RocketLaunchIcon, BuildingsIcon, ArrowUpRightIcon } from "@phosphor-icons/react";
+
+const verticals = [
+  {
+    index: "01",
+    sector: "Healthcare & Clinics",
+    outcome: "Patient trust and friction-free bookings",
+    description: "Doctor profiles, appointment scheduling flows, and HIPAA-aware intake forms built for clinics and practitioners.",
+    href: "/industries/healthcare",
+    icon: FirstAidKitIcon,
+    tag: "Medical & Aesthetics",
+  },
+  {
+    index: "02",
+    sector: "Fine Dining & Hospitality",
+    outcome: "Sensory visual menus and instant tables",
+    description: "Immersive culinary storytelling, blazing mobile menu speed, and automated WhatsApp reservation systems.",
+    href: "/industries/restaurants",
+    icon: ForkKnifeIcon,
+    tag: "Hospitality & Cafes",
+  },
+  {
+    index: "03",
+    sector: "Tech Startups & SaaS",
+    outcome: "Investor-grade landing pages and MVPs",
+    description: "Sub-second LCP for paid ad traffic, interactive product walkthroughs, and scalable full-stack web applications.",
+    href: "/industries/saas-tech-startups-pune",
+    icon: RocketLaunchIcon,
+    tag: "Software & AI",
+  },
+  {
+    index: "04",
+    sector: "Real Estate & Architecture",
+    outcome: "High-ticket portfolio showcases",
+    description: "Ultra-crisp visual property tours, lead qualification funnels, and automated broker WhatsApp routing.",
+    href: "/industries/real-estate",
+    icon: BuildingsIcon,
+    tag: "Estates & Studios",
+  },
+];
+---
+
+<section class="studio-industries studio-container studio-section" id="industries" aria-labelledby="industries-title">
+  <div class="studio-section-title" data-reveal>
+    <div>
+      <h2 id="industries-title">Built for your industry.<br /><span class="studio-muted">Engineered for your goals.</span></h2>
+    </div>
+    <a href="/industries" class="studio-text-link">Explore all 9 sectors <ArrowUpRightIcon size={20} /></a>
+  </div>
+
+  <div class="studio-industry-grid" data-reveal>
+    {verticals.map((item) => (
+      <a href={item.href} class="studio-industry-card">
+        <div class="studio-industry-top">
+          <span class="studio-industry-index">{item.index}</span>
+          <span class="studio-industry-tag">{item.tag}</span>
+          <item.icon size={26} weight="light" className="studio-industry-icon" />
+        </div>
+        <div class="studio-industry-content">
+          <h3>{item.sector}</h3>
+          <p class="studio-industry-outcome">{item.outcome}</p>
+          <p class="studio-industry-desc">{item.description}</p>
+        </div>
+        <div class="studio-industry-footer">
+          <span>View industry playbook</span>
+          <span class="studio-industry-arrow" aria-hidden="true">
+            <ArrowUpRightIcon size={18} />
+          </span>
+        </div>
+      </a>
+    ))}
+  </div>
+</section>

@@ -11,6 +11,7 @@ export interface Props {
   pubDate?: Date;
   author?: string;
   tags?: string[];
+  localFonts?: boolean;
 }
 
 const {
@@ -22,6 +23,7 @@ const {
   pubDate,
   author = "NextReach Studio",
   tags = [],
+  localFonts = false,
 } = Astro.props;
 
 const siteURL = "https://nextreachstudio.vercel.app";
@@ -53,6 +55,13 @@ const breadcrumbItems = (() => {
     <meta name="description" content={siteDescription} />
     <link rel="canonical" href={canonical} />
 
+    {localFonts ? (
+      <>
+        <link rel="preload" href="/fonts/cabinet-grotesk-variable.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="preload" href="/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+      </>
+    ) : (
+    <>
     <!-- Fonts: non-render-blocking via preload + swap -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -65,6 +74,8 @@ const breadcrumbItems = (() => {
       <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
       <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&display=swap" rel="stylesheet" />
     </noscript>
+    </>
+    )}
 
     <!-- Icons & PWA -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

@@ -3,12 +3,14 @@ interface Props {
   headline?: string;
   subheadline?: string;
   className?: string;
+  variant?: "default" | "studio";
 }
 
 const {
   headline = "30+ BESPOKE WEBSITES & DIGITAL FLAGSHIPS BUILT",
   subheadline = "Trusted by ambitious founders, modern ateliers & high-growth businesses",
   className = "",
+  variant = "default",
 } = Astro.props;
 
 // Vector brand logos designed with NextReach Studio's signature Architectural Terracotta (#C76B50) & Charcoal (#1F1F23) palette
@@ -130,7 +132,16 @@ const brands = [
 ];
 ---
 
-<section
+{variant === "studio" ? (
+  <section class="studio-logo-section" aria-label="Brand showcase" data-studio-marquee>
+    <div class="studio-logo-heading studio-container"><p>In good company.</p><button type="button" aria-label="Pause brand marquee" aria-pressed="false" data-marquee-toggle>Pause motion <span aria-hidden="true">Ⅱ</span></button></div>
+    <div class="studio-logo-window">
+      <div class="studio-logo-track">
+        {[0, 1].map(copy => <div class="studio-logo-set" aria-hidden={copy === 1 ? "true" : undefined}>{brands.map(brand => <div class="studio-client-logo" role={copy === 0 ? "img" : undefined} aria-label={copy === 0 ? brand.name : undefined}><div set:html={brand.svg} /></div>)}</div>)}
+      </div>
+    </div>
+  </section>
+) : (<section
   class={`relative w-full py-10 sm:py-14 border-y border-[#1F1F23]/8 bg-[#FAF8F5]/60 overflow-hidden select-none marquee-pause ${className}`}
   aria-label="Trusted client brands and websites built"
 >
@@ -177,4 +188,16 @@ const brands = [
       ))}
     </div>
   </div>
-</section>
+</section>)}
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-studio-marquee]").forEach(section => {
+    const button = section.querySelector<HTMLButtonElement>("[data-marquee-toggle]");
+    button?.addEventListener("click", () => {
+      const paused = section.classList.toggle("is-paused");
+      button.setAttribute("aria-pressed", String(paused));
+      button.setAttribute("aria-label", paused ? "Play brand marquee" : "Pause brand marquee");
+      button.innerHTML = `${paused ? "Play motion" : "Pause motion"} <span aria-hidden="true">${paused ? "▷" : "Ⅱ"}</span>`;
+    });
+  });
+</script>

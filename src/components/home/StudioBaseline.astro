@@ -1,0 +1,74 @@
+---
+import {
+  KeyIcon,
+  LightningIcon,
+  MagnifyingGlassIcon,
+  DeviceMobileIcon,
+  ChatCircleDotsIcon,
+  ShieldCheckIcon,
+  ArrowUpRightIcon,
+} from "@phosphor-icons/react";
+
+const inclusions = [
+  {
+    index: "01",
+    title: "100% Code & Asset Handover",
+    description: "Complete Git repository access, design files, and DNS keys. You own every line of code on day one with zero vendor lock-in.",
+    icon: KeyIcon,
+  },
+  {
+    index: "02",
+    title: "Sub-Second Speed Calibration",
+    description: "Engineered on modern static architecture to score 100/100 on Google Core Web Vitals with instant mobile rendering.",
+    icon: LightningIcon,
+  },
+  {
+    index: "03",
+    title: "Technical Schema & Rich SEO",
+    description: "JSON-LD structured metadata, OpenGraph social cards, XML sitemaps, and robots configuration configured for search engines.",
+    icon: MagnifyingGlassIcon,
+  },
+  {
+    index: "04",
+    title: "Cross-Device Viewport Tuning",
+    description: "Pixel-perfect responsiveness audited across mobile devices, tablets, laptops, and ultra-wide desktop viewports.",
+    icon: DeviceMobileIcon,
+  },
+  {
+    index: "05",
+    title: "WhatsApp & Lead Capture Routing",
+    description: "Custom click-to-chat inquiry flows, contact forms, and lead qualification endpoints wired directly to your team.",
+    icon: ChatCircleDotsIcon,
+  },
+  {
+    index: "06",
+    title: "30-Day Zero-Downtime Guarantee",
+    description: "Post-launch warranty covering any technical bugs, hosting configurations, and deployment assurances.",
+    icon: ShieldCheckIcon,
+  },
+];
+---
+
+<section class="studio-baseline studio-container studio-section" id="guarantees" aria-labelledby="baseline-title">
+  <div class="studio-section-title" data-reveal>
+    <div>
+      <h2 id="baseline-title">The studio baseline.<br /><span class="studio-muted">Standard on every build.</span></h2>
+    </div>
+    <a href="/about" class="studio-text-link">Our engineering standards <ArrowUpRightIcon size={20} /></a>
+  </div>
+
+  <div class="studio-baseline-grid" data-reveal>
+    {inclusions.map((item) => (
+      <div class="studio-baseline-card">
+        <div class="studio-baseline-card-top">
+          <span class="studio-baseline-index">{item.index}</span>
+          <item.icon size={24} weight="light" className="studio-baseline-icon" />
+        </div>
+        <div class="studio-baseline-card-body">
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
