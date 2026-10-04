@@ -1923,3 +1923,109 @@ html.lenis, html.lenis body {
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
 }
+
+/* Emblem ignition: the temporary graphite surface borrows from our luxury
+   logo treatment. Layer 1000 sits above navigation (20/50) and chat (60).
+   All choreography uses transforms and opacity, including the SVG polish. */
+html:has([data-site-loader]) { scrollbar-gutter: stable; }
+html[data-site-loading] { overflow: hidden; overscroll-behavior: none; background: #20211f; }
+html[data-site-loading] body { overflow: hidden; }
+html[data-site-loading] :is(.studio-hero-enter, .studio-title-word, .studio-sculpture, .studio-logo-track) { animation-play-state: paused; }
+
+.site-loader {
+  display: none;
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  z-index: 1000;
+  min-height: 100dvh;
+  place-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  color: #f4f2eb;
+  background: radial-gradient(ellipse at 50% 15%, #30312e 0%, #20211f 60%);
+  touch-action: none;
+  transition: opacity 520ms cubic-bezier(.4, 0, .2, 1);
+}
+html[data-site-loading] .site-loader { display: grid; }
+.site-loader[hidden] { display: none !important; }
+.site-loader[data-phase="exiting"] { opacity: 0; }
+.site-loader-stage { position: relative; display: grid; justify-items: center; gap: 36px; padding: 32px; transform: translateY(-18px); }
+.site-loader-horizon {
+  position: absolute;
+  top: 120px;
+  left: 50%;
+  width: min(500px, 85vw);
+  height: 1px;
+  transform: translateX(-50%) scaleX(.35);
+  background: linear-gradient(90deg, transparent, rgba(199, 107, 80, .22), transparent);
+  opacity: 0;
+}
+.site-loader-emblem { position: relative; width: clamp(112px, 12vw, 144px); aspect-ratio: 4 / 5; perspective: 700px; }
+.site-loader-logo { display: block; width: 100%; height: 100%; overflow: visible; }
+.site-loader-stroke { opacity: .08; }
+.site-loader-edge { opacity: 0; }
+.site-loader-polish { opacity: 0; }
+.site-loader-wordmark {
+  margin: 0;
+  color: #f4f2eb;
+  font-family: "Studio Cabinet", "Cabinet Grotesk", system-ui, sans-serif;
+  font-size: clamp(25px, 3vw, 30px);
+  font-weight: 650;
+  line-height: 1.2;
+  letter-spacing: -.025em;
+  white-space: nowrap;
+}
+.site-loader-wordmark span { color: #e19a82; font-weight: 500; }
+.site-loader-caption {
+  position: absolute;
+  inset-inline: 24px;
+  bottom: max(44px, calc(env(safe-area-inset-bottom) + 28px));
+  display: grid;
+  justify-items: center;
+  gap: 18px;
+}
+.site-loader-track { width: 160px; height: 1px; background: rgba(244, 242, 235, .12); overflow: hidden; }
+.site-loader-track span { display: block; width: 45%; height: 100%; background: linear-gradient(90deg, transparent, #c76b50, #edb49c, transparent); }
+.site-loader-status { margin: 0; color: #b9b9b0; font-family: "Studio Jakarta", "Plus Jakarta Sans", system-ui, sans-serif; font-size: 11px; font-weight: 400; letter-spacing: .09em; line-height: 1.6; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .site-loader[data-phase="pending"] :is(.site-loader-wordmark, .site-loader-caption) { opacity: 0; }
+  .site-loader[data-phase="running"] .site-loader-horizon { animation: site-loader-horizon 1.2s .1s cubic-bezier(.16, 1, .3, 1) both; }
+  .site-loader[data-phase="running"] .site-loader-logo { animation: site-loader-settle 1.65s cubic-bezier(.16, 1, .3, 1) both; }
+  .site-loader[data-phase="running"] .site-loader-stroke { animation: site-loader-assemble 850ms var(--stroke-delay) cubic-bezier(.16, 1, .3, 1) both; }
+  .site-loader[data-phase="running"] .site-loader-edge { animation: site-loader-edge 700ms 1.05s ease both; }
+  .site-loader[data-phase="running"] .site-loader-polish { animation: site-loader-polish 2.8s 1.05s cubic-bezier(.45, 0, .2, 1) infinite; }
+  .site-loader[data-phase="running"] .site-loader-wordmark { animation: site-loader-wordmark 800ms .7s cubic-bezier(.16, 1, .3, 1) both; }
+  .site-loader[data-phase="running"] .site-loader-caption { animation: site-loader-wordmark 700ms .9s ease both; }
+  .site-loader[data-phase="running"] .site-loader-track span { animation: site-loader-track 2s cubic-bezier(.65, 0, .35, 1) infinite; }
+  .site-loader[data-phase="exiting"] .site-loader-stage { transition: transform 520ms cubic-bezier(.4, 0, .2, 1); transform: translateY(-30px) scale(1.035); }
+  .site-loader[data-phase="exiting"] .site-loader-horizon { opacity: 1; transform: translateX(-50%) scaleX(1); }
+  .site-loader[data-phase="exiting"] .site-loader-stroke { opacity: 1; }
+  .site-loader[data-phase="exiting"] .site-loader-edge { opacity: .16; }
+  @keyframes site-loader-horizon { from { opacity: 0; transform: translateX(-50%) scaleX(.35); } to { opacity: 1; transform: translateX(-50%) scaleX(1); } }
+  @keyframes site-loader-settle { from { transform: translateY(8px) rotateY(-18deg) scale(.92); } to { transform: translateY(0) rotateY(0) scale(1); } }
+  @keyframes site-loader-assemble { from { opacity: 0; transform: translate(var(--stroke-offset)); } to { opacity: 1; transform: translate(0, 0); } }
+  @keyframes site-loader-edge { from { opacity: 0; } to { opacity: .16; } }
+  @keyframes site-loader-polish {
+    0% { opacity: 0; transform: translateX(0) skewX(-16deg); }
+    8% { opacity: 1; }
+    38% { opacity: 1; transform: translateX(235px) skewX(-16deg); }
+    44%, 100% { opacity: 0; transform: translateX(235px) skewX(-16deg); }
+  }
+  @keyframes site-loader-wordmark { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes site-loader-track { from { transform: translateX(-110%); } to { transform: translateX(325%); } }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-loader { transition: none; }
+  .site-loader-stroke { opacity: 1; }
+  .site-loader-edge { opacity: .16; }
+  .site-loader-track span { width: 100%; background: #c76b50; }
+}
+
+@media (max-height: 480px) {
+  .site-loader-stage { gap: 18px; transform: translateY(-24px); }
+  .site-loader-emblem { width: 80px; }
+  .site-loader-caption { bottom: max(16px, env(safe-area-inset-bottom)); gap: 10px; }
+}

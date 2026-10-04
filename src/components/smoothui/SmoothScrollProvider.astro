@@ -20,12 +20,18 @@
       infinite: false,
     });
 
+    // The loading overlay owns scroll until the document is revealed.
+    if (document.documentElement.hasAttribute("data-site-loading")) lenis.stop();
+    const resumeScrolling = () => lenis.start();
+    document.addEventListener("nextreach:page-revealed", resumeScrolling, { once: true });
+
+    let frame: number;
     function raf(time: number) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      frame = requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(raf);
+    frame = requestAnimationFrame(raf);
 
     // Support anchor smooth jumps
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
@@ -43,7 +49,9 @@
 
     // Clean up on Astro page transitions if applicable
     document.addEventListener("astro:before-swap", () => {
+      cancelAnimationFrame(frame);
+      document.removeEventListener("nextreach:page-revealed", resumeScrolling);
       lenis.destroy();
-    });
+    }, { once: true });
   }
 </script>

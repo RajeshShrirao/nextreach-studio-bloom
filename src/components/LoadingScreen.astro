@@ -1,0 +1,158 @@
+---
+import logoMark from "../../public/brand/logo-mark.svg?raw";
+
+// Reuse the production mark's geometry so the animated emblem stays on-brand.
+const geometry = logoMark.replace(/^[\s\S]*?<svg\b[^>]*>/, "").replace(/<\/svg>\s*$/, "");
+const offsets = ["0px, -12px", "0px, 16px", "-14px, 6px", "14px, -4px", "10px, 10px"];
+let strokeIndex = 0;
+const animatedGeometry = geometry.replace(/<(polyline|line|path)\b([^>]*?)\/>/g, (_, tag, attributes) => {
+  const index = strokeIndex++;
+  return `<g class="site-loader-stroke" style="--stroke-delay: ${180 + index * 110}ms; --stroke-offset: ${offsets[index]}"><${tag}${attributes}/></g>`;
+});
+---
+
+<div class="site-loader" data-site-loader data-phase="pending" data-lenis-prevent role="status" aria-live="polite" aria-atomic="true">
+  <div class="site-loader-stage" aria-hidden="true">
+    <div class="site-loader-horizon"></div>
+    <div class="site-loader-emblem">
+      <svg class="site-loader-logo" viewBox="0 0 120 150" width="144" height="180" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="loader-metal" x1="0" y1="0" x2="120" y2="150" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#E9A18A" />
+            <stop offset=".32" stop-color="#C76B50" />
+            <stop offset=".65" stop-color="#AD573F" />
+            <stop offset="1" stop-color="#DB8A70" />
+          </linearGradient>
+          <linearGradient id="loader-polish">
+            <stop stop-color="#F4F2EB" stop-opacity="0" />
+            <stop offset=".48" stop-color="#F4F2EB" stop-opacity=".95" />
+            <stop offset=".56" stop-color="#FFF8F2" />
+            <stop offset="1" stop-color="#F4F2EB" stop-opacity="0" />
+          </linearGradient>
+          <mask id="loader-emblem-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="120" height="150">
+            <g stroke="white" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round" set:html={geometry} />
+          </mask>
+        </defs>
+        <g stroke="url(#loader-metal)" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round" set:html={animatedGeometry} />
+        <g class="site-loader-edge" stroke="#F4F2EB" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="translate(.6 -.6)" set:html={geometry} />
+        <g mask="url(#loader-emblem-mask)">
+          <rect class="site-loader-polish" x="-60" y="-40" width="42" height="230" fill="url(#loader-polish)" />
+        </g>
+      </svg>
+    </div>
+    <p class="site-loader-wordmark">NextReach <span>Studio</span></p>
+  </div>
+  <div class="site-loader-caption">
+    <div class="site-loader-track" aria-hidden="true"><span></span></div>
+    <p class="site-loader-status"><span aria-hidden="true">Loading your experience</span><span class="sr-only">Loading NextReach Studio.</span></p>
+  </div>
+</div>
+
+<!-- Inline intentionally: the loader must work before hydration and even if an
+     optional island's JavaScript fails to download. With JS disabled, it stays hidden. -->
+<script is:inline>
+  (() => {
+    const root = document.documentElement;
+    const loader = document.querySelector("[data-site-loader]");
+    if (!loader) return;
+
+    const minimumDuration = 2000;
+    const exitDuration = 520;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let minimumElapsed = false;
+    let resourcesReady = false;
+    let criticalRecovery = false;
+    let exiting = false;
+    let finished = false;
+    let content = null;
+    let previousInert = false;
+    let previousBusy = null;
+    let minimumTimer;
+    let exitTimer;
+    let recoveryTimer;
+    let paintFrame;
+
+    root.setAttribute("data-site-loading", "loading");
+
+    function lockContent() {
+      if (finished || content) return;
+      content = document.querySelector("[data-site-content]");
+      if (!content) return;
+      previousInert = content.inert;
+      previousBusy = content.getAttribute("aria-busy");
+      content.inert = true;
+      content.setAttribute("aria-busy", "true");
+    }
+
+    function finish() {
+      if (finished) return;
+      finished = true;
+      clearTimeout(minimumTimer);
+      clearTimeout(exitTimer);
+      clearTimeout(recoveryTimer);
+      cancelAnimationFrame(paintFrame);
+      window.removeEventListener("load", onLoad);
+      document.removeEventListener("DOMContentLoaded", lockContent);
+      document.removeEventListener("nextreach:critical-ready", maybeReveal);
+      loader.hidden = true;
+      root.removeAttribute("data-site-loading");
+      if (content) {
+        content.inert = previousInert;
+        if (previousBusy === null) content.removeAttribute("aria-busy");
+        else content.setAttribute("aria-busy", previousBusy);
+      }
+      document.dispatchEvent(new Event("nextreach:page-revealed"));
+    }
+
+    function maybeReveal() {
+      if (finished || exiting || !minimumElapsed || !resourcesReady) return;
+      const criticalElements = document.querySelectorAll("[data-site-critical]");
+      if (!criticalRecovery && Array.from(criticalElements).some(element => element.getAttribute("data-site-ready") !== "true")) return;
+      exiting = true;
+      loader.setAttribute("data-phase", "exiting");
+      root.setAttribute("data-site-loading", "exiting");
+      exitTimer = setTimeout(finish, reducedMotion.matches ? 0 : exitDuration);
+    }
+
+    async function onLoad() {
+      // Load includes non-lazy page resources. Fonts are settled separately so
+      // the page doesn't change typefaces during the reveal.
+      try {
+        if (document.fonts) await document.fonts.ready;
+      } catch { /* The site's system-font fallback is ready to use. */ }
+      if (finished) return;
+      resourcesReady = true;
+      // A failed navigation island must not trap visitors. This recovery only
+      // starts after page resources settle; slow loads still wait in full.
+      recoveryTimer = setTimeout(() => {
+        criticalRecovery = true;
+        maybeReveal();
+      }, 8000);
+      maybeReveal();
+    }
+
+    document.addEventListener("nextreach:critical-ready", maybeReveal);
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", lockContent, { once: true });
+    else lockContent();
+    if (document.readyState === "complete") onLoad();
+    else window.addEventListener("load", onLoad, { once: true });
+
+    // Start the two-second clock after the overlay has had a chance to paint,
+    // rather than counting time spent downloading the document or stylesheet.
+    paintFrame = requestAnimationFrame(() => {
+      paintFrame = requestAnimationFrame(() => {
+        if (finished) return;
+        loader.setAttribute("data-phase", "running");
+        minimumTimer = setTimeout(() => {
+          minimumElapsed = true;
+          maybeReveal();
+        }, minimumDuration);
+      });
+    });
+
+    // Restored documents should immediately recover their scrolling and focus.
+    window.addEventListener("pageshow", event => {
+      if (event.persisted) finish();
+    });
+  })();
+</script>

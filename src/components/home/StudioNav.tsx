@@ -44,6 +44,8 @@ export default function StudioNav() {
       document.querySelector("[data-studio-home]")?.setAttribute("data-theme", isDark ? "dark" : "light");
     };
     apply(saved ? saved === "dark" : media.matches);
+    navRef.current?.closest("[data-site-critical]")?.setAttribute("data-site-ready", "true");
+    document.dispatchEvent(new Event("nextreach:critical-ready"));
     const onChange = (event: MediaQueryListEvent) => {
       try { if (localStorage.getItem("nextreach-studio-theme")) return; } catch { /* Follow the system theme. */ }
       apply(event.matches);
@@ -96,7 +98,7 @@ export default function StudioNav() {
     try { localStorage.setItem("nextreach-studio-theme", next ? "dark" : "light"); } catch { /* Theme changes still work without storage. */ }
   }
 
-  return <header className="studio-header">
+  return <header className="studio-header" data-site-critical="navigation">
     <nav ref={navRef} className="studio-nav studio-container" aria-label="Main navigation">
       <a href="/" className="studio-brand" aria-label="NextReach Studio home"><img src="/brand/logo-mark.png" alt="" width="30" height="38" /><span>NextReach <span>Studio</span></span></a>
       <div className="studio-desktop-links">{links.map(link => groups[link.label] ? <div className="studio-nav-group" key={link.label} onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) setDropdown(null); }}>
