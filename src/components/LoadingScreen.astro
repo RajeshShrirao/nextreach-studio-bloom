@@ -57,12 +57,15 @@ const animatedGeometry = geometry.replace(/<(polyline|line|path)\b([^>]*?)\/>/g,
     const loader = document.querySelector("[data-site-loader]");
     if (!loader) return;
 
-    // 1. Instant Bot, Crawler, and Headless Browser Bypass (Zero LCP / SEO impact)
+    // 1. Exhaustive Bot, AI Agent, Crawler, and Headless Browser Detection (Zero LCP / SEO impact)
+    const botPattern =
+      /bot|crawler|spider|crawling|crawl|headless|lighthouse|preview|scraper|archiver|transcoder|prerender|google|bing|yahoo|baidu|yandex|duckduck|slurp|twitter|facebook|linkedin|whatsapp|telegram|discord|slack|pinterest|applebot|amazonbot|semrush|ahrefs|rogerbot|gpt|openai|chatgpt|claude|anthropic|perplexity|cohere|deepseek|mistral|bytespider|ccbot|meta-external/i;
+
     const isBotOrAudit =
-      navigator.webdriver ||
-      /bot|crawler|spider|crawling|google|bing|baidu|yandex|duckduckgo|slurp|twitterbot|facebookexternalhit|linkedinbot|embedly|quora|pinterest|applebot|semrush|ahrefs|rogerbot|lighthouse|chrome-lighthouse|gptbot|claudebot|perplexitybot|bytespider|ccbot/i.test(
-        navigator.userAgent
-      );
+      Boolean(navigator.webdriver) ||
+      botPattern.test(navigator.userAgent || "") ||
+      Boolean(window.__PRERENDER_INJECTED) ||
+      Boolean(window.callPhantom || window._phantom);
 
     // 2. Frequency Capping: Only play the full branded intro once per browsing session
     const hasSeenIntro = (() => {
@@ -97,6 +100,7 @@ const animatedGeometry = geometry.replace(/<(polyline|line|path)\b([^>]*?)\/>/g,
     let minimumTimer;
     let exitTimer;
     let recoveryTimer;
+    let hardCapTimer;
     let paintFrame;
 
     root.setAttribute("data-site-loading", "loading");
@@ -107,6 +111,7 @@ const animatedGeometry = geometry.replace(/<(polyline|line|path)\b([^>]*?)\/>/g,
       clearTimeout(minimumTimer);
       clearTimeout(exitTimer);
       clearTimeout(recoveryTimer);
+      clearTimeout(hardCapTimer);
       cancelAnimationFrame(paintFrame);
       window.removeEventListener("load", onLoad);
       document.removeEventListener("nextreach:critical-ready", maybeReveal);
@@ -141,10 +146,13 @@ const animatedGeometry = geometry.replace(/<(polyline|line|path)\b([^>]*?)\/>/g,
       recoveryTimer = setTimeout(() => {
         criticalRecovery = true;
         maybeReveal();
-      }, 1500);
+      }, 1200);
 
       maybeReveal();
     }
+
+    // Absolute hard safety ceiling: unblock unconditionally after 2000ms under all edge cases
+    hardCapTimer = setTimeout(finish, 2000);
 
     document.addEventListener("nextreach:critical-ready", maybeReveal);
     if (document.readyState === "complete") onLoad();
