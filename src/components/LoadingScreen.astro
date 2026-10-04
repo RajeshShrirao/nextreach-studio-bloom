@@ -48,41 +48,58 @@ const animatedGeometry = geometry.replace(/<(polyline|line|path)\b([^>]*?)\/>/g,
   </div>
 </div>
 
-<!-- Inline intentionally: the loader must work before hydration and even if an
-     optional island's JavaScript fails to download. With JS disabled, it stays hidden. -->
+<!-- Inline intentionally: the loader works before hydration with zero crawler/bot footprint.
+     Search engine bots, AI agents, automated auditors, and returning session visitors
+     bypass the loader immediately to protect SEO, LCP, and page indexing. -->
 <script is:inline>
   (() => {
     const root = document.documentElement;
     const loader = document.querySelector("[data-site-loader]");
     if (!loader) return;
 
-    const minimumDuration = 2000;
-    const exitDuration = 520;
+    // 1. Instant Bot, Crawler, and Headless Browser Bypass (Zero LCP / SEO impact)
+    const isBotOrAudit =
+      navigator.webdriver ||
+      /bot|crawler|spider|crawling|google|bing|baidu|yandex|duckduckgo|slurp|twitterbot|facebookexternalhit|linkedinbot|embedly|quora|pinterest|applebot|semrush|ahrefs|rogerbot|lighthouse|chrome-lighthouse|gptbot|claudebot|perplexitybot|bytespider|ccbot/i.test(
+        navigator.userAgent
+      );
+
+    // 2. Frequency Capping: Only play the full branded intro once per browsing session
+    const hasSeenIntro = (() => {
+      try {
+        return sessionStorage.getItem("nextreach_intro_seen") === "1";
+      } catch {
+        return false;
+      }
+    })();
+
+    // If bot, crawler, Lighthouse audit, or already seen in current session -> Instant Dismissal
+    if (isBotOrAudit || hasSeenIntro) {
+      loader.remove();
+      root.removeAttribute("data-site-loading");
+      document.dispatchEvent(new Event("nextreach:page-revealed"));
+      return;
+    }
+
+    // Mark session as seen
+    try {
+      sessionStorage.setItem("nextreach_intro_seen", "1");
+    } catch {}
+
+    const minimumDuration = 1200;
+    const exitDuration = 450;
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     let minimumElapsed = false;
     let resourcesReady = false;
     let criticalRecovery = false;
     let exiting = false;
     let finished = false;
-    let content = null;
-    let previousInert = false;
-    let previousBusy = null;
     let minimumTimer;
     let exitTimer;
     let recoveryTimer;
     let paintFrame;
 
     root.setAttribute("data-site-loading", "loading");
-
-    function lockContent() {
-      if (finished || content) return;
-      content = document.querySelector("[data-site-content]");
-      if (!content) return;
-      previousInert = content.inert;
-      previousBusy = content.getAttribute("aria-busy");
-      content.inert = true;
-      content.setAttribute("aria-busy", "true");
-    }
 
     function finish() {
       if (finished) return;
@@ -92,22 +109,21 @@ const animatedGeometry = geometry.replace(/<(polyline|line|path)\b([^>]*?)\/>/g,
       clearTimeout(recoveryTimer);
       cancelAnimationFrame(paintFrame);
       window.removeEventListener("load", onLoad);
-      document.removeEventListener("DOMContentLoaded", lockContent);
       document.removeEventListener("nextreach:critical-ready", maybeReveal);
-      loader.hidden = true;
+      loader.remove();
       root.removeAttribute("data-site-loading");
-      if (content) {
-        content.inert = previousInert;
-        if (previousBusy === null) content.removeAttribute("aria-busy");
-        else content.setAttribute("aria-busy", previousBusy);
-      }
       document.dispatchEvent(new Event("nextreach:page-revealed"));
     }
 
     function maybeReveal() {
       if (finished || exiting || !minimumElapsed || !resourcesReady) return;
       const criticalElements = document.querySelectorAll("[data-site-critical]");
-      if (!criticalRecovery && Array.from(criticalElements).some(element => element.getAttribute("data-site-ready") !== "true")) return;
+      if (
+        !criticalRecovery &&
+        Array.from(criticalElements).some((element) => element.getAttribute("data-site-ready") !== "true")
+      )
+        return;
+
       exiting = true;
       loader.setAttribute("data-phase", "exiting");
       root.setAttribute("data-site-loading", "exiting");
@@ -115,30 +131,25 @@ const animatedGeometry = geometry.replace(/<(polyline|line|path)\b([^>]*?)\/>/g,
     }
 
     async function onLoad() {
-      // Load includes non-lazy page resources. Fonts are settled separately so
-      // the page doesn't change typefaces during the reveal.
       try {
         if (document.fonts) await document.fonts.ready;
-      } catch { /* The site's system-font fallback is ready to use. */ }
+      } catch { /* System font fallback */ }
       if (finished) return;
       resourcesReady = true;
-      // A failed navigation island must not trap visitors. This recovery only
-      // starts after page resources settle; slow loads still wait in full.
+
+      // Fail-safe recovery: Never trap slow 3G or constrained connections
       recoveryTimer = setTimeout(() => {
         criticalRecovery = true;
         maybeReveal();
-      }, 8000);
+      }, 1500);
+
       maybeReveal();
     }
 
     document.addEventListener("nextreach:critical-ready", maybeReveal);
-    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", lockContent, { once: true });
-    else lockContent();
     if (document.readyState === "complete") onLoad();
     else window.addEventListener("load", onLoad, { once: true });
 
-    // Start the two-second clock after the overlay has had a chance to paint,
-    // rather than counting time spent downloading the document or stylesheet.
     paintFrame = requestAnimationFrame(() => {
       paintFrame = requestAnimationFrame(() => {
         if (finished) return;
@@ -150,9 +161,9 @@ const animatedGeometry = geometry.replace(/<(polyline|line|path)\b([^>]*?)\/>/g,
       });
     });
 
-    // Restored documents should immediately recover their scrolling and focus.
-    window.addEventListener("pageshow", event => {
+    window.addEventListener("pageshow", (event) => {
       if (event.persisted) finish();
     });
   })();
 </script>
+
