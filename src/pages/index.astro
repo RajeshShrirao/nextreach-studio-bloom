@@ -3,11 +3,12 @@ import Layout from "@/layouts/Layout.astro";
 import StudioNav from "@/components/home/StudioNav";
 import StudioArtwork from "@/components/home/StudioArtwork";
 import LogoMarquee from "@/components/brand/LogoMarquee.astro";
-import StudioSpecBar from "@/components/home/StudioSpecBar.astro";
-import StudioComparison from "@/components/home/StudioComparison.astro";
-import StudioIndustryGrid from "@/components/home/StudioIndustryGrid.astro";
-import StudioBaseline from "@/components/home/StudioBaseline.astro";
+import StudioSpecInteractive from "@/components/home/StudioSpecInteractive";
+import StudioComparisonInteractive from "@/components/home/StudioComparisonInteractive";
+import StudioIndustryInteractive from "@/components/home/StudioIndustryInteractive";
+import StudioBaselineInteractive from "@/components/home/StudioBaselineInteractive";
 import StudioReviews from "@/components/home/StudioReviews";
+import SmoothScrollProvider from "@/components/smoothui/SmoothScrollProvider.astro";
 import { ArrowUpRightIcon as ArrowUpRight, ArrowRightIcon as ArrowRight, PlusIcon as Plus, CheckIcon as Check, CodeIcon as Code, SparkleIcon as Sparkle, GlobeIcon as Globe } from "@phosphor-icons/react";
 import { getImage } from "astro:assets";
 import diningPhoto from "../../public/assets/demos/saffron-and-smoke/hero-dish.jpg";
@@ -40,6 +41,7 @@ const faqs = [
 ---
 
 <Layout localFonts title="Distinctive Websites, Web Apps & AI Workflows" description="Thoughtful design. Serious engineering. NextReach Studio builds distinctive custom websites, web apps, and AI workflows. Fixed-scope websites from ₹5,000.">
+  <SmoothScrollProvider />
   <div class="studio-home" data-studio-home>
     <a class="studio-skip" href="#main-content">Skip to content</a>
     <StudioNav client:load />
@@ -59,7 +61,7 @@ const faqs = [
 
       <LogoMarquee variant="studio" />
 
-      <StudioSpecBar />
+      <StudioSpecInteractive client:load />
 
       <section class="studio-work studio-container studio-section" id="live-demo" aria-labelledby="work-title">
         <div class="studio-section-title" data-reveal>
@@ -85,7 +87,7 @@ const faqs = [
         </div>
       </section>
 
-      <StudioComparison />
+      <StudioComparisonInteractive client:visible />
 
       <section class="studio-manifesto studio-container studio-section" id="why-us" aria-labelledby="manifesto-title">
         <div class="studio-manifesto-mark" aria-hidden="true"><img src="/brand/logo-mark.png" alt="" width="500" height="625" loading="lazy" /></div>
@@ -109,7 +111,7 @@ const faqs = [
         </div>
       </section>
 
-      <StudioIndustryGrid />
+      <StudioIndustryInteractive client:visible />
 
       <section class="studio-process studio-container studio-section" id="process" aria-labelledby="process-title">
         <div class="studio-process-heading" data-reveal><h2 id="process-title">Big on craft.<br />Light on complications.</h2><p>A clear scope. A direct line to your engineer. Working previews, all the way to launch.</p></div>
@@ -118,7 +120,7 @@ const faqs = [
         </div>
       </section>
 
-      <StudioBaseline />
+      <StudioBaselineInteractive client:visible />
 
       <section class="studio-pricing studio-container studio-section" id="packages" aria-labelledby="packages-title">
         <div class="studio-section-title" data-reveal><h2 id="packages-title">Serious craft.<br /><span class="studio-muted">Sensible starting points.</span></h2><span class="studio-pricing-note">Fixed-scope websites.<br />One-time pricing. Full ownership.</span></div>
