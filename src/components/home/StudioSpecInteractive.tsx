@@ -13,7 +13,7 @@ import {
   PlayIcon,
 } from "@phosphor-icons/react";
 
-const AUTO_SWITCH_INTERVAL = 4800; // 4.8s per tab
+const AUTO_SWITCH_INTERVAL = 2600; // 2.6s per tab snappy auto-cycle
 
 const tabs = [
   {
@@ -197,10 +197,10 @@ export default function StudioSpecInteractive() {
         <AnimatePresence mode="wait">
           <motion.div
             key={current.id}
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
             className="studio-spec-content-grid"
           >
             {/* Left Column: Big Visual Metric & Description */}
@@ -217,9 +217,9 @@ export default function StudioSpecInteractive() {
                 <div className="studio-spec-huge-number">
                   <motion.span
                     key={current.metric}
-                    initial={{ scale: 0.9, opacity: 0 }}
+                    initial={{ scale: 0.94, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
-                    transition={{ type: "spring", stiffness: 350, damping: 25 }}
+                    transition={{ type: "spring", stiffness: 500, damping: 25 }}
                   >
                     {current.metric}
                   </motion.span>
@@ -246,7 +246,7 @@ export default function StudioSpecInteractive() {
                         className="studio-track-fill studio-fill-accent"
                         initial={{ width: 0 }}
                         animate={{ width: `${current.comparison.nextreach.percent}%` }}
-                        transition={{ duration: 0.6, ease: "easeOut" }}
+                        transition={{ duration: 0.35, ease: "easeOut" }}
                       />
                     </div>
                     <span className="studio-track-val studio-accent">{current.comparison.nextreach.value}</span>
@@ -258,7 +258,7 @@ export default function StudioSpecInteractive() {
                         className="studio-track-fill studio-fill-muted"
                         initial={{ width: 0 }}
                         animate={{ width: `${current.comparison.legacy.percent}%` }}
-                        transition={{ duration: 0.6, ease: "easeOut" }}
+                        transition={{ duration: 0.35, ease: "easeOut" }}
                       />
                     </div>
                     <span className="studio-track-val studio-muted">{current.comparison.legacy.value}</span>
@@ -274,9 +274,9 @@ export default function StudioSpecInteractive() {
                 {current.stats.map((stat, i) => (
                   <motion.div
                     key={stat.name}
-                    initial={{ opacity: 0, x: 15 }}
+                    initial={{ opacity: 0, x: 10 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.05 + 0.1, duration: 0.25 }}
+                    transition={{ delay: i * 0.03 + 0.05, duration: 0.18 }}
                     className="studio-stat-row"
                   >
                     <div className="studio-stat-info">

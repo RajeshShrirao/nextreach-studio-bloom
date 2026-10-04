@@ -15,7 +15,7 @@ import {
   PlayIcon,
 } from "@phosphor-icons/react";
 
-const AUTO_SWITCH_INTERVAL = 4800; // 4.8s per factor
+const AUTO_SWITCH_INTERVAL = 2600; // 2.6s per factor snappy auto-cycle
 
 const factors = [
   {
@@ -172,7 +172,7 @@ export default function StudioComparisonInteractive() {
                   <motion.div
                     layoutId="studio-factor-active"
                     className="studio-factor-indicator"
-                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                    transition={{ type: "spring", stiffness: 480, damping: 28 }}
                   >
                     {!isPaused && !shouldReduceMotion && (
                       <motion.div
@@ -196,10 +196,10 @@ export default function StudioComparisonInteractive() {
           <AnimatePresence mode="wait">
             <motion.div
               key={`studio-${current.id}`}
-              initial={{ opacity: 0, scale: 0.98, y: 10 }}
+              initial={{ opacity: 0, scale: 0.98, y: 8 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.98, y: -10 }}
-              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+              exit={{ opacity: 0, scale: 0.98, y: -8 }}
+              transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
               className="studio-side-card studio-card-nextreach"
             >
               <div className="studio-card-top-bar">
@@ -227,10 +227,10 @@ export default function StudioComparisonInteractive() {
           <AnimatePresence mode="wait">
             <motion.div
               key={`agency-${current.id}`}
-              initial={{ opacity: 0, scale: 0.98, y: 10 }}
+              initial={{ opacity: 0, scale: 0.98, y: 8 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.98, y: -10 }}
-              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+              exit={{ opacity: 0, scale: 0.98, y: -8 }}
+              transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
               className="studio-side-card studio-card-agency"
             >
               <div className="studio-card-top-bar">
