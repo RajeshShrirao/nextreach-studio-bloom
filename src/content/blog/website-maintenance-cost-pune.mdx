@@ -1,0 +1,152 @@
+---
+title: "Website Maintenance Cost in Pune 2026: What You Actually Need to Budget"
+description: "The ongoing cost of a business website in India - domain, hosting, maintenance, security - and how to tell what your ₹3,000/month plan is actually buying."
+pubDate: 2026-10-13
+author: "NextReach Studio"
+tags: ["website-maintenance", "web-hosting", "domain", "pune", "web-design", "security"]
+draft: false
+---
+
+A small business website in Pune costs roughly ₹15,000-₹40,000 per year to run after the initial build. That is ₹1,250-₹3,300 per month.
+
+Almost nobody budgets this, because the build invoice feels like "the website." Then month eight arrives, something breaks, and the choices are an emergency call-out at premium rates or a site that quietly stops working.
+
+This guide covers every recurring cost, what maintenance plans genuinely include, and how to spot a plan that is not worth paying for.
+
+## The Full Recurring Cost Breakdown
+
+| Item | Annual cost (India) | Notes |
+|---|---|---|
+| **Domain (.com or .in)** | ₹600 - ₹1,500 | Check the *renewal* price, not the first-year offer |
+| **Shared hosting** | ₹2,000 - ₹5,000 | Only for small static sites |
+| **Managed hosting** | ₹8,000 - ₹15,000 | Required for WordPress with real traffic |
+| **CDN** | ₹0 - ₹6,000 | Often free on Vercel, Netlify, Cloudflare |
+| **SSL certificate** | ₹0 | Free via Let's Encrypt. Never pay for this |
+| **Backups** | ₹0 - ₹3,000 | Non-negotiable. Often included in managed hosting |
+| **Maintenance retainer** | ₹18,000 - ₹60,000 | ₹1,500-₹5,000/month |
+| **Content updates** | Varies | Bundled or billed per request |
+| **Security monitoring** | ₹0 - ₹12,000 | Included in most managed plans |
+
+**Realistic total:** ₹15,000-₹40,000/year for a small business site. Premium care plans run higher.
+
+The most common discovery in this conversation is that most Pune businesses do not know SSL is free. Some are being charged ₹5,000/year for a Let's Encrypt certificate.
+
+## Hosting: The Decision That Costs the Most
+
+Hosting is the single largest controllable factor in your Core Web Vitals, and the cheapest option is usually the most expensive one.
+
+**Shared hosting at ₹99/month.** Cheapest, and the most common avoidable cause of ranking damage. Time to First Byte regularly lands in the 800ms-3s range under load. You cannot pass Largest Contentful Paint reliably on a 3-second TTFB, and LCP is the top failure mode - 67% of Core Web Vitals failures are LCP-driven.
+
+**Managed WordPress hosting** - SiteGround, WP Engine, Cloudways. Roughly ₹8,000-₹15,000/year. WordPress passes Core Web Vitals on only 38.4% of sites, and managed hosting is the most effective way to change that, because the stack is tuned and patching is handled.
+
+**VPS** - ₹12,000-₹40,000/year. Appropriate for a custom application with real traffic or specific requirements.
+
+**Platform hosting** - Vercel, Netlify, Cloudflare. Free to low-cost at small scale, excellent CDN and Core Web Vitals characteristics. Appropriate for static sites and modern framework applications. Requires someone comfortable deploying.
+
+**Do not pay a premium for "India-optimised" hosting without checking TTFB.** A global CDN edge cache in Mumbai or Singapore typically beats an uncached origin server anywhere in the world. Measure, do not assume.
+
+## What Maintenance Should Include
+
+A legitimate plan covers these nine things. If a plan does not, it is cheaper than maintenance and more expensive than doing nothing.
+
+| Item | Why it matters |
+|---|---|
+| **1. Security updates** | WordPress plugins and core are targeted constantly. Unpatched is how sites get compromised. |
+| **2. Uptime monitoring** | You find out before your customers do. |
+| **3. Automated backups** | Tested restores, not just backups that exist. |
+| **4. Core Web Vitals monitoring** | Catching a regression before it costs traffic. |
+| **5. Plugin and dependency review** | Removing what you no longer need is as important as updating. |
+| **6. SSL certificate renewal** | Should be automatic and free. |
+| **7. Content updates** | Text and image changes. Confirm the limit. |
+| **8. Content updates** | Text and image changes. Confirm the limit. |
+| **9. Emergency contact** | Who to call, and what it costs. |
+
+## Three Questions That Reveal Everything About a Care Plan
+
+**1. Is hosting inside the price or billed separately?**
+A "₹1,999/month care plan" excluding ₹8,000/year hosting is a ₹34,000/year commitment. Compare it to a ₹5,000/month plan that includes everything.
+
+**2. Are content edits unlimited or capped?**
+"Up to 2 hours per month" is materially different from unlimited. Unlimited plans are usually cheaper per hour because they assume low usage.
+
+**3. Who is responsible at 2am when the site is down, and what does the contract say?**
+If the answer is vague, the answer is nobody. This should be a named person and a stated response time.
+
+Published care plan pricing in 2026 runs from roughly $50/month at the low end to $500+/month at the premium end, with most quality small-business plans between $199 and $599. In Pune, expect ₹1,500-₹5,000/month for a competent retainer.
+
+**The honest reassessment:** the build is rarely the expensive part. Across three years, hosting, maintenance, and the work of getting found usually cost more than the site did to make. A ₹1,299 build with a $300/month arrangement costs $13,300 over three years - the build was 19% of it.
+
+## Security: The Part Everyone Skips
+
+Most website compromises are entirely preventable and entirely boring.
+
+**For WordPress specifically:**
+
+- Core and plugin updates applied within 7 days of release
+- Two-factor authentication on the admin account
+- A login attempt limiter
+- File and directory permissions reviewed
+- Automated off-site backups - a backup on the same server as the compromised site is not a backup
+
+**For any site:**
+
+- HTTPS everywhere, including redirects from HTTP
+- Password manager, not reused passwords
+- Least privilege on any third-party access
+- An audit log of who changed what
+
+**A specific warning for the AI era.** If you use AI coding tools or agents against your site, the relevant control is: AI drafts, human publishes, enforced by architecture rather than discipline. Grant an AI agent scoped, revocable tokens through defined interfaces. Never raw FTP or production database credentials. The professional 2026 standard is that the unsafe path is impossible, not merely discouraged.
+
+**Annual penetration testing** is worth it for any site handling payments or personal data. Skipping it on a payment site is a risk you are choosing.
+
+## The Cost You Cannot Avoid
+
+Two recurring costs are frequently omitted from Pune quotes:
+
+**Content.** If nobody can publish without a developer, every blog post becomes a bill. Over three years this can exceed the build cost. Our [API integration and CMS work](/services/api-integration-pune) exists partly to solve this.
+
+**Nobody owns the site.** If the person who commissioned the site leaves the business and their email address dies, domain renewal and hosting renewals silently lapse. A lapsed domain is a total loss of the asset you paid for.
+
+- Store domain credentials in a company account, not a personal one
+- Set an auto-renew with a payment method the company controls
+- Set calendar reminders for renewal dates
+- Document who owns the site in an internal handover note
+
+## Is a Maintenance Retainer Worth It?
+
+**Worth it when:** you run WordPress, your site handles payments or personal data, you do not have a developer, or your business depends on the site staying up.
+
+**Not worth it when:** your site is a static Astro build with no forms, no CMS, and no database. It will keep working for years. Annual hosting and a domain renewal are sufficient.
+
+**Middle ground:** pay per incident rather than monthly. Several Pune businesses do this well - a small retainer covering monitoring and updates, plus an hourly rate for changes. Ask for the hourly rate in advance so there is no surprise.
+
+## Frequently Asked Questions
+
+**How much does website maintenance cost in Pune?**
+₹1,500-₹5,000 per month, or ₹18,000-₹60,000 per year. Plus hosting of ₹2,000-₹15,000/year depending on platform. Total realistic running cost for a small business site is ₹15,000-₹40,000 per year.
+
+**Is website maintenance really necessary?**
+For a static site with no forms or CMS, barely - annual hosting and a domain renewal may be enough. For WordPress, essential. Unpatched WordPress is among the most commonly compromised platforms on the web.
+
+**What does a maintenance plan include?**
+Security updates, uptime monitoring, tested backups, Core Web Vitals monitoring, dependency review, SSL renewal, and a defined number of content updates. Nine things. If a plan does not cover them, it is not maintenance.
+
+**Should I pay for a maintenance plan for a small business website?**
+Yes if it is WordPress or handles payments. Consider the static-site exception above if it is a simple Astro build with no dynamic elements.
+
+**How often should a website be updated?**
+Content monthly. Security patches within a week of release. Platform and plugin updates quarterly at minimum, and immediately when a critical vulnerability is announced.
+
+**Can I do maintenance myself?**
+If you built it and it is static, yes. If it is WordPress and you did not build it, no - the risk is silent breakage rather than visible failure. That is what the retainer is for.
+
+**How do I avoid a lapse on my domain?**
+Company email account, auto-renew enabled with a company payment method, and calendar reminders 30 days before renewal. A lapsed domain loses the entire site.
+
+---
+
+Ongoing costs run ₹15,000-₹40,000 per year for a small business site. That is not a failure of planning - it is how websites work, and it should be in your budget from day one.
+
+If you want the running cost to be lower rather than the build price, that is an architecture decision made at build time. [Our web application builds in Pune](/services/web-application-development-pune) are built to cost less to run - static-first architecture, fewer third-party dependencies, and a maintenance plan quoted honestly up front.
+
+If you want to know what your specific site currently costs to run and whether it is worth optimising, [book a technical discovery call](/contact). We will tell you whether the retainer you are paying is buying anything real.

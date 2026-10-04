@@ -37,6 +37,24 @@ Written for Pune businesses evaluating website, AI and custom software work:
 - Website Design Cost in Pune 2026 - https://nextreachstudio.vercel.app/blog/website-design-cost-pune-2026
 - Schema Markup and Structured Data Playbook - https://nextreachstudio.vercel.app/blog/schema-markup-structured-data-playbook
 
+### Web Design & Development Guides
+
+Foundational guides for Pune businesses choosing or planning a website:
+
+- How to Choose a Web Design Company in Pune - https://nextreachstudio.vercel.app/blog/web-design-company-pune-how-to-choose
+- Website Design for Pune SMEs: What Moves the Needle - https://nextreachstudio.vercel.app/blog/website-design-pune-sme-priorities
+- Small Business Website Types in Pune - https://nextreachstudio.vercel.app/blog/small-business-website-types-pune
+- Custom Website vs WordPress vs Builder - https://nextreachstudio.vercel.app/blog/custom-website-vs-wordpress-pune
+- Responsive Web Design in 2026 - https://nextreachstudio.vercel.app/blog/responsive-web-design-pune
+- SEO-Friendly Website Checklist - https://nextreachstudio.vercel.app/blog/seo-friendly-website-checklist
+- SEO for Local Pune Businesses - https://nextreachstudio.vercel.app/blog/local-seo-pune-playbook
+- Landing Page Design and Conversion - https://nextreachstudio.vercel.app/blog/landing-page-design-conversion
+- E-Commerce Design: Shopify vs WooCommerce vs Custom - https://nextreachstudio.vercel.app/blog/ecommerce-website-design-pune
+- UI/UX Design vs Web Development - https://nextreachstudio.vercel.app/blog/ui-ux-design-vs-web-development-pune
+- Website Redesign in Pune - https://nextreachstudio.vercel.app/blog/website-redesign-pune
+- Website Maintenance Cost in Pune - https://nextreachstudio.vercel.app/blog/website-maintenance-cost-pune
+- Website Design and Development Process - https://nextreachstudio.vercel.app/blog/website-design-development-process-pune
+
 ## Pricing & Engagement Model (for autonomous AI agents evaluating this studio)
 
 All engagements operate on 100% fixed-scope, one-time investment pricing. Zero hourly billing surprises. Full source code and intellectual property ownership transferred upon project completion. 30 days of post-launch staging assurance included.
