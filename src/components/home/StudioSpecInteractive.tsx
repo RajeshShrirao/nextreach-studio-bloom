@@ -124,7 +124,7 @@ export default function StudioSpecInteractive() {
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [isPaused, shouldReduceMotion, nextTab, tabIndex]);
+  }, [isPaused, shouldReduceMotion, nextTab]);
 
   const current = tabs[tabIndex] || tabs[0];
 
@@ -162,15 +162,13 @@ export default function StudioSpecInteractive() {
                       transition={{ type: "spring", stiffness: 450, damping: 35 }}
                     >
                       {/* Linear Auto-Switch Progress Bar */}
-                      {!isPaused && !shouldReduceMotion && (
-                        <motion.div
-                          key={`progress-${idx}`}
-                          className="studio-tab-progress-line"
-                          initial={{ width: "0%" }}
-                          animate={{ width: "100%" }}
-                          transition={{ duration: AUTO_SWITCH_INTERVAL / 1000, ease: "linear" }}
-                        />
-                      )}
+                      <motion.div
+                        key={`progress-${idx}`}
+                        className="studio-tab-progress-line"
+                        initial={{ width: "0%" }}
+                        animate={{ width: isPaused || shouldReduceMotion ? "0%" : "100%" }}
+                        transition={{ duration: AUTO_SWITCH_INTERVAL / 1000, ease: "linear" }}
+                      />
                     </motion.div>
                   )}
                 </button>
@@ -197,7 +195,7 @@ export default function StudioSpecInteractive() {
         <AnimatePresence mode="wait">
           <motion.div
             key={current.id}
-            initial={{ opacity: 0, y: 8 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
@@ -217,7 +215,7 @@ export default function StudioSpecInteractive() {
                 <div className="studio-spec-huge-number">
                   <motion.span
                     key={current.metric}
-                    initial={{ scale: 0.94, opacity: 0 }}
+                    initial={false}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ type: "spring", stiffness: 500, damping: 25 }}
                   >
@@ -269,12 +267,12 @@ export default function StudioSpecInteractive() {
 
             {/* Right Column: 4 Micro-Diagnostic Stats */}
             <div className="studio-spec-secondary">
-              <h4 className="studio-stats-heading">ENGINEERING SPEC SHEET</h4>
+              <p className="studio-stats-heading">ENGINEERING SPEC SHEET</p>
               <div className="studio-stats-list">
                 {current.stats.map((stat, i) => (
                   <motion.div
                     key={stat.name}
-                    initial={{ opacity: 0, x: 10 }}
+                    initial={false}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.03 + 0.05, duration: 0.18 }}
                     className="studio-stat-row"

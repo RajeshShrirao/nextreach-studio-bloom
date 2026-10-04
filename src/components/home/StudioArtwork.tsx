@@ -8,10 +8,17 @@ export default function StudioArtwork() {
   const pausedRef = useRef(false);
   const [paused, setPaused] = useState(false);
   const [ready, setReady] = useState(false);
+  const [hasWebgl, setHasWebgl] = useState(false);
 
   useEffect(() => {
     const host = hostRef.current;
     if (!host) return;
+    // Keep the small-screen hero light and readable. The CSS artwork fallback
+    // remains visible on phones while desktop gets the full WebGL treatment.
+    if (window.matchMedia("(max-width: 767px)").matches) {
+      setReady(true);
+      return;
+    }
     let cancelled = false;
     let dispose = () => {};
 
@@ -35,6 +42,7 @@ export default function StudioArtwork() {
       renderer.toneMappingExposure = 1.35;
       renderer.domElement.setAttribute("aria-hidden", "true");
       host.appendChild(renderer.domElement);
+      setHasWebgl(true);
 
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
@@ -324,7 +332,7 @@ export default function StudioArtwork() {
   }, []);
 
   return (
-    <div className={`studio-sculpture ${ready ? "is-ready" : ""}`}>
+    <div className={`studio-sculpture ${ready ? "is-ready" : ""} ${hasWebgl ? "has-webgl" : ""}`}>
       <div className="studio-sculpture-orbit" aria-hidden="true" />
       <div className="studio-sculpture-fallback" aria-hidden="true">
         <span />

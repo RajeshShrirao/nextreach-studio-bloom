@@ -113,7 +113,7 @@ export default function StudioComparisonInteractive() {
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [isPaused, shouldReduceMotion, nextFactor, factorIndex]);
+  }, [isPaused, shouldReduceMotion, nextFactor]);
 
   const current = factors[factorIndex] || factors[0];
 
@@ -174,15 +174,13 @@ export default function StudioComparisonInteractive() {
                     className="studio-factor-indicator"
                     transition={{ type: "spring", stiffness: 480, damping: 28 }}
                   >
-                    {!isPaused && !shouldReduceMotion && (
-                      <motion.div
-                        key={`comp-progress-${idx}`}
-                        className="studio-tab-progress-line"
-                        initial={{ width: "0%" }}
-                        animate={{ width: "100%" }}
-                        transition={{ duration: AUTO_SWITCH_INTERVAL / 1000, ease: "linear" }}
-                      />
-                    )}
+                    <motion.div
+                      key={`comp-progress-${idx}`}
+                      className="studio-tab-progress-line"
+                      initial={{ width: "0%" }}
+                      animate={{ width: isPaused || shouldReduceMotion ? "0%" : "100%" }}
+                      transition={{ duration: AUTO_SWITCH_INTERVAL / 1000, ease: "linear" }}
+                    />
                   </motion.div>
                 )}
               </button>
@@ -196,7 +194,7 @@ export default function StudioComparisonInteractive() {
           <AnimatePresence mode="wait">
             <motion.div
               key={`studio-${current.id}`}
-              initial={{ opacity: 0, scale: 0.98, y: 8 }}
+              initial={false}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.98, y: -8 }}
               transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
@@ -227,7 +225,7 @@ export default function StudioComparisonInteractive() {
           <AnimatePresence mode="wait">
             <motion.div
               key={`agency-${current.id}`}
-              initial={{ opacity: 0, scale: 0.98, y: 8 }}
+              initial={false}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.98, y: -8 }}
               transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}

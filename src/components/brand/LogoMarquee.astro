@@ -135,7 +135,7 @@ const brands = [
 {variant === "studio" ? (
   <section class="studio-logo-section" aria-label="Brand showcase" data-studio-marquee>
     <div class="studio-logo-heading studio-container"><p>In good company.</p><button type="button" aria-label="Pause brand marquee" aria-pressed="false" data-marquee-toggle>Pause motion <span aria-hidden="true">Ⅱ</span></button></div>
-    <div class="studio-logo-window">
+    <div class="studio-logo-window" tabindex="0" role="region" aria-label="Client brands">
       <div class="studio-logo-track">
         {[0, 1].map(copy => <div class="studio-logo-set" aria-hidden={copy === 1 ? "true" : undefined}>{brands.map(brand => <div class="studio-client-logo" role={copy === 0 ? "img" : undefined} aria-label={copy === 0 ? brand.name : undefined}><div set:html={brand.svg} /></div>)}</div>)}
       </div>
