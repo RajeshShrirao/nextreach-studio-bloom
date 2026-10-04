@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { useState, useEffect, useRef, useCallback } from "react";
+import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import {
   CheckIcon,
   XIcon,
@@ -11,7 +11,11 @@ import {
   LightningIcon,
   ReceiptIcon,
   ArrowUpRightIcon,
+  PauseIcon,
+  PlayIcon,
 } from "@phosphor-icons/react";
+
+const AUTO_SWITCH_INTERVAL = 4800; // 4.8s per factor
 
 const factors = [
   {
@@ -92,11 +96,37 @@ const factors = [
 ];
 
 export default function StudioComparisonInteractive() {
-  const [activeFactor, setActiveFactor] = useState(factors[0].id);
-  const current = factors.find((f) => f.id === activeFactor) || factors[0];
+  const [factorIndex, setFactorIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+  const nextFactor = useCallback(() => {
+    setFactorIndex((prev) => (prev + 1) % factors.length);
+  }, []);
+
+  // Auto-switching effect
+  useEffect(() => {
+    if (isPaused || shouldReduceMotion) return;
+
+    timerRef.current = setInterval(nextFactor, AUTO_SWITCH_INTERVAL);
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [isPaused, shouldReduceMotion, nextFactor, factorIndex]);
+
+  const current = factors[factorIndex] || factors[0];
 
   return (
-    <section className="studio-comparison studio-container studio-section" id="studio-standard" aria-labelledby="comparison-title">
+    <section
+      className="studio-comparison studio-container studio-section"
+      id="studio-standard"
+      aria-labelledby="comparison-title"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onFocusCapture={() => setIsPaused(true)}
+      onBlurCapture={() => setIsPaused(false)}
+    >
       <div className="studio-section-title">
         <div>
           <h2 id="comparison-title">
@@ -104,16 +134,28 @@ export default function StudioComparisonInteractive() {
             <span className="studio-muted">No agency games.</span>
           </h2>
         </div>
-        <a href="/contact" className="studio-text-link">
-          Start a clean project <ArrowUpRightIcon size={20} />
-        </a>
+        <div className="studio-comparison-header-actions">
+          <button
+            type="button"
+            className="studio-marquee-pause-btn"
+            onClick={() => setIsPaused((prev) => !prev)}
+            title={isPaused ? "Resume auto-switching" : "Pause auto-switching"}
+            aria-label={isPaused ? "Resume auto-switching" : "Pause auto-switching"}
+          >
+            {isPaused ? <PlayIcon size={13} weight="bold" /> : <PauseIcon size={13} weight="bold" />}
+            <span>{isPaused ? "Resume Cycle" : "Pause Cycle"}</span>
+          </button>
+          <a href="/contact" className="studio-text-link">
+            Start a clean project <ArrowUpRightIcon size={20} />
+          </a>
+        </div>
       </div>
 
       <div className="studio-comparison-interactive-wrap">
-        {/* Factor Selector Navigation */}
+        {/* Factor Selector Navigation with Auto-Progress */}
         <div className="studio-factor-nav" role="tablist">
-          {factors.map((factor) => {
-            const isActive = activeFactor === factor.id;
+          {factors.map((factor, idx) => {
+            const isActive = factorIndex === idx;
             const Icon = factor.icon;
             return (
               <button
@@ -121,7 +163,7 @@ export default function StudioComparisonInteractive() {
                 type="button"
                 role="tab"
                 aria-selected={isActive}
-                onClick={() => setActiveFactor(factor.id)}
+                onClick={() => setFactorIndex(idx)}
                 className={`studio-factor-tab ${isActive ? "is-active" : ""}`}
               >
                 <Icon size={18} weight={isActive ? "bold" : "light"} />
@@ -131,7 +173,17 @@ export default function StudioComparisonInteractive() {
                     layoutId="studio-factor-active"
                     className="studio-factor-indicator"
                     transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                  />
+                  >
+                    {!isPaused && !shouldReduceMotion && (
+                      <motion.div
+                        key={`comp-progress-${idx}`}
+                        className="studio-tab-progress-line"
+                        initial={{ width: "0%" }}
+                        animate={{ width: "100%" }}
+                        transition={{ duration: AUTO_SWITCH_INTERVAL / 1000, ease: "linear" }}
+                      />
+                    )}
+                  </motion.div>
                 )}
               </button>
             );

@@ -271,9 +271,13 @@
 .studio-spec-tabs-list { display: flex; gap: 6px; flex-wrap: wrap; }
 .studio-spec-tab-btn { position: relative; display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; font-size: 11px; font-weight: 600; cursor: pointer; border: 0; background: transparent; color: var(--studio-muted); z-index: 1; transition: color .2s; }
 .studio-spec-tab-btn.is-active { color: var(--studio-ink); }
-.studio-spec-tab-indicator { position: absolute; inset: 0; background: var(--studio-surface); border: 1px solid var(--studio-line); z-index: -1; box-shadow: 0 2px 8px rgba(0,0,0,.04); }
-.studio-spec-live-badge { display: flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 10px; color: var(--studio-muted); letter-spacing: .08em; }
+.studio-spec-tab-indicator { position: absolute; inset: 0; background: var(--studio-surface); border: 1px solid var(--studio-line); z-index: -1; box-shadow: 0 2px 8px rgba(0,0,0,.04); overflow: hidden; }
+.studio-tab-progress-line { position: absolute; bottom: 0; left: 0; height: 2px; background: var(--studio-accent); }
+.studio-spec-live-badge { display: flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 10px; color: var(--studio-muted); letter-spacing: .08em; }
+.studio-marquee-pause-btn { display: inline-flex; align-items: center; gap: 6px; padding: 4px 8px; border: 1px solid var(--studio-line); background: var(--studio-surface); color: var(--studio-muted); font-size: 10px; font-family: var(--font-mono); cursor: pointer; transition: color .2s, border-color .2s; }
+.studio-marquee-pause-btn:hover { color: var(--studio-ink); border-color: var(--studio-ink); }
 .studio-live-dot { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 8px #22c55e; display: inline-block; }
+.studio-live-dot.is-paused-dot { background: var(--studio-muted); box-shadow: none; }
 .studio-spec-content-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: 40px; padding: 36px 40px; align-items: center; }
 .studio-spec-badge-row { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
 .studio-spec-pill { display: inline-block; font-family: var(--font-mono); font-size: 10px; letter-spacing: .08em; color: var(--studio-accent); background: rgba(180,84,60,.08); padding: 4px 10px; font-weight: 600; }
@@ -304,11 +308,12 @@
 .studio-stat-badge { display: inline-flex; align-items: center; gap: 5px; font-family: var(--font-mono); font-size: 10px; color: var(--studio-accent); font-weight: 600; }
 
 .studio-comparison { border-top: 1px solid var(--studio-line); }
+.studio-comparison-header-actions { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
 .studio-comparison-interactive-wrap { margin-top: 36px; }
 .studio-factor-nav { display: flex; flex-wrap: wrap; gap: 8px; border-bottom: 1px solid var(--studio-line); padding-bottom: 16px; margin-bottom: 28px; }
 .studio-factor-tab { position: relative; display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; font-size: 12px; font-weight: 600; cursor: pointer; border: 0; background: transparent; color: var(--studio-muted); z-index: 1; transition: color .2s; }
 .studio-factor-tab.is-active { color: var(--studio-ink); }
-.studio-factor-indicator { position: absolute; inset: 0; background: var(--studio-surface); border: 1px solid var(--studio-line); z-index: -1; }
+.studio-factor-indicator { position: absolute; inset: 0; background: var(--studio-surface); border: 1px solid var(--studio-line); z-index: -1; overflow: hidden; }
 .studio-comparison-cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 .studio-side-card { border: 1px solid var(--studio-line); padding: 36px; display: flex; flex-direction: column; justify-content: space-between; min-height: 260px; background: var(--studio-surface); }
 .studio-card-nextreach { border-color: var(--studio-accent); background: rgba(180,84,60,.03); }

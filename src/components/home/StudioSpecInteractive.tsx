@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { useState, useEffect, useRef, useCallback } from "react";
+import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import {
   LightningIcon,
   CpuIcon,
@@ -9,7 +9,11 @@ import {
   ShieldCheckIcon,
   GaugeIcon,
   CheckCircleIcon,
+  PauseIcon,
+  PlayIcon,
 } from "@phosphor-icons/react";
+
+const AUTO_SWITCH_INTERVAL = 4800; // 4.8s per tab
 
 const tabs = [
   {
@@ -103,17 +107,42 @@ const tabs = [
 ];
 
 export default function StudioSpecInteractive() {
-  const [activeTab, setActiveTab] = useState("speed");
-  const current = tabs.find((t) => t.id === activeTab) || tabs[0];
+  const [tabIndex, setTabIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+  const nextTab = useCallback(() => {
+    setTabIndex((prev) => (prev + 1) % tabs.length);
+  }, []);
+
+  // Auto-switching effect
+  useEffect(() => {
+    if (isPaused || shouldReduceMotion) return;
+
+    timerRef.current = setInterval(nextTab, AUTO_SWITCH_INTERVAL);
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [isPaused, shouldReduceMotion, nextTab, tabIndex]);
+
+  const current = tabs[tabIndex] || tabs[0];
 
   return (
-    <section className="studio-spec-section studio-container" aria-label="Interactive Studio Benchmarks">
+    <section
+      className="studio-spec-section studio-container"
+      aria-label="Interactive Studio Benchmarks"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onFocusCapture={() => setIsPaused(true)}
+      onBlurCapture={() => setIsPaused(false)}
+    >
       <div className="studio-spec-interactive-card">
-        {/* Header Navigation Tabs */}
+        {/* Header Navigation Tabs with Auto-Progress */}
         <div className="studio-spec-tabs-header">
           <div className="studio-spec-tabs-list" role="tablist">
-            {tabs.map((tab) => {
-              const isActive = activeTab === tab.id;
+            {tabs.map((tab, idx) => {
+              const isActive = tabIndex === idx;
               const Icon = tab.icon;
               return (
                 <button
@@ -121,7 +150,7 @@ export default function StudioSpecInteractive() {
                   type="button"
                   role="tab"
                   aria-selected={isActive}
-                  onClick={() => setActiveTab(tab.id)}
+                  onClick={() => setTabIndex(idx)}
                   className={`studio-spec-tab-btn ${isActive ? "is-active" : ""}`}
                 >
                   <Icon size={18} weight={isActive ? "bold" : "light"} />
@@ -131,15 +160,36 @@ export default function StudioSpecInteractive() {
                       layoutId="studio-spec-tab-pill"
                       className="studio-spec-tab-indicator"
                       transition={{ type: "spring", stiffness: 450, damping: 35 }}
-                    />
+                    >
+                      {/* Linear Auto-Switch Progress Bar */}
+                      {!isPaused && !shouldReduceMotion && (
+                        <motion.div
+                          key={`progress-${idx}`}
+                          className="studio-tab-progress-line"
+                          initial={{ width: "0%" }}
+                          animate={{ width: "100%" }}
+                          transition={{ duration: AUTO_SWITCH_INTERVAL / 1000, ease: "linear" }}
+                        />
+                      )}
+                    </motion.div>
                   )}
                 </button>
               );
             })}
           </div>
+
           <div className="studio-spec-live-badge">
-            <span className="studio-live-dot" aria-hidden="true" />
-            <span>LIVE AUDIT BENCHMARK</span>
+            <button
+              type="button"
+              className="studio-marquee-pause-btn"
+              onClick={() => setIsPaused((prev) => !prev)}
+              title={isPaused ? "Resume auto-switching" : "Pause auto-switching"}
+              aria-label={isPaused ? "Resume auto-switching" : "Pause auto-switching"}
+            >
+              {isPaused ? <PlayIcon size={13} weight="bold" /> : <PauseIcon size={13} weight="bold" />}
+            </button>
+            <span className={`studio-live-dot ${isPaused ? "is-paused-dot" : ""}`} aria-hidden="true" />
+            <span>{isPaused ? "AUTO-CYCLE PAUSED" : "LIVE AUDIT BENCHMARK"}</span>
           </div>
         </div>
 
