@@ -45,6 +45,59 @@ const breadcrumbItems = (() => {
   }
   return items;
 })();
+
+// Canonical entity IDs — referenced across every schema block so the graph connects
+// rather than repeating disconnected facts on each page.
+const ORG_ID = `${siteURL}/#organization`;
+const PERSON_ID = `${siteURL}/about/#person`;
+const WEBSITE_ID = `${siteURL}/#website`;
+
+// Standardised contact facts. These MUST match the Google Business Profile exactly —
+// inconsistent NAP across surfaces is the single most common local-SEO failure, and it
+// actively feeds AI hallucination about the business.
+//
+// GBP is configured as a SERVICE-AREA business (no published address), so no
+// PostalAddress is declared here. Phone is E.164 everywhere; the GBP listing currently
+// shows a local-format number that needs updating to match.
+export const CONTACT = {
+  phone: "+919822379976",
+  phoneDisplay: "+91 98223 79976",
+  email: "hello@nextreachstudio.com",
+  hours: [
+    "Mo", "Tu", "We", "Th", "Fr", "Sa", "Su",
+  ],
+  opens: "09:00",
+  closes: "19:00",
+  areaServed: ["Pune", "Pimpri-Chinchwad", "Maharashtra"],
+};
+
+// Founder entity. Backs the studio's core positioning (direct senior engineer
+// access) with a named, verifiable person rather than a generic brand string.
+const founder = {
+  "@type": "Person",
+  "@id": PERSON_ID,
+  "name": "Rajesh Shrirao",
+  "jobTitle": "Founder & Principal Engineer",
+  "description":
+    "Founder and principal engineer at NextReach Studio. Builds custom web applications, AI systems, and automation for businesses from Pune, India. Works directly with every client rather than through account managers.",
+  "url": `${siteURL}/about/`,
+  "worksFor": { "@id": ORG_ID },
+  "knowsAbout": [
+    "Web application development",
+    "AI agent development",
+    "Business process automation",
+    "API integration",
+    "Astro",
+    "Next.js",
+    "PostgreSQL",
+    "LLM integration",
+    "MCP",
+  ],
+  "sameAs": [
+    "https://www.linkedin.com/in/rajesh-shrirao-1ab80b395/",
+    "https://www.instagram.com/rajesh.shrirao/",
+  ],
+};
 ---
 
 <!doctype html>
@@ -149,52 +202,89 @@ const breadcrumbItems = (() => {
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
 
-    <!-- Structured Data: WebSite -->
+    <!-- Structured Data: WebSite — references the Organization by @id -->
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebSite",
+      "@id": WEBSITE_ID,
       "name": "NextReach Studio",
       "url": siteURL,
       "description": siteDescription,
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": {
-          "@type": "EntryPoint",
-          "urlTemplate": `${siteURL}/?q={search_term_string}`
-        },
-        "query-input": "required name=search_term_string"
-      }
+      "publisher": { "@id": ORG_ID },
+      "inLanguage": "en-IN",
     })} />
 
-    <!-- Structured Data: Organization -->
+    <!-- Structured Data: Organization + founder (Person entity).
+         addressLocality is Chakan: the studio is home-based, so the honest locality
+         is the residential one. Google requires the site address to match whatever
+         is set on the Business Profile — keep the two identical. -->
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Organization",
+      "@id": ORG_ID,
       "name": "NextReach Studio",
+      "alternateName": "NextReach",
       "url": siteURL,
       "logo": `${siteURL}/logo.png`,
+      "image": `${siteURL}/link-previews.jpg`,
       "description": siteDescription,
+      "email": CONTACT.email,
+      "telephone": CONTACT.phone,
+      "founder": { "@id": PERSON_ID },
+      // Service-area business: the Google Business Profile hides the street address, so
+      // none is declared here either. Declare areaServed instead. Do NOT add a
+      // PostalAddress unless the GBP switches to showing one — the two must agree.
+      "areaServed": [
+        { "@type": "City", "name": "Pune", "@id": "https://www.wikidata.org/wiki/Q129563" },
+        { "@type": "AdministrativeArea", "name": "Pimpri-Chinchwad" },
+        { "@type": "AdministrativeArea", "name": "Maharashtra" },
+        { "@type": "Country", "name": "India" },
+      ],
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": CONTACT.hours,
+          "opens": CONTACT.opens,
+          "closes": CONTACT.closes,
+        },
+      ],
+      "knowsAbout": [
+        "Web application development",
+        "AI agent development",
+        "Business process automation",
+        "API integration",
+        "MVP development",
+        "Website design",
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/in/rajesh-shrirao-1ab80b395/",
+        "https://www.instagram.com/rajesh.shrirao/",
+        "https://www.instagram.com/nextreach.studio/",
+      ],
     })} />
+
+    <!-- Structured Data: Person — founder entity, declared once site-wide so every
+         Article below references it by @id instead of repeating a name string. -->
+    <script type="application/ld+json" set:html={JSON.stringify(founder)} />
 
     <!-- Structured Data: Article (if article type) -->
     {type === "article" && pubDate && (
       <script type="application/ld+json" set:html={JSON.stringify({
         "@context": "https://schema.org",
         "@type": "Article",
+        "@id": `${canonical}#article`,
+        "mainEntityOfPage": { "@type": "WebPage", "@id": canonical },
         "headline": title,
         "description": siteDescription,
         "image": ogImage,
-        "author": {
-          "@type": "Organization",
-          "name": author,
-        },
-        "publisher": {
-          "@type": "Organization",
-          "name": "NextReach Studio",
-          "url": siteURL,
-        },
+        "inLanguage": "en-IN",
+        // Written and owned by the principal engineer, so the author is the Person
+        // entity rather than the brand string.
+        "author": { "@id": PERSON_ID },
+        "publisher": { "@id": ORG_ID },
         "datePublished": pubDate.toISOString(),
         "url": canonical,
+        ...(tags.length > 0 ? { keywords: tags.join(", ") } : {}),
       })} />
     )}
   </head>

@@ -104,7 +104,7 @@ export default function StudioIndustryInteractive() {
           </h2>
         </div>
         <a href="/industries" className="studio-text-link">
-          Explore all 9 sectors <ArrowUpRightIcon size={20} />
+          Explore all 10 sectors <ArrowUpRightIcon size={20} />
         </a>
       </div>
 

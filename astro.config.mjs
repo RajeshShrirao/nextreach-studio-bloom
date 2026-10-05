@@ -39,6 +39,7 @@ export default defineConfig({
         "https://nextreachstudio.vercel.app/services/business-automation-pune",
         "https://nextreachstudio.vercel.app/services/ai-consulting-pune",
         "https://nextreachstudio.vercel.app/services/custom-saas-development-pune",
+        "https://nextreachstudio.vercel.app/industries/saas-tech-startups-pune",
         "https://nextreachstudio.vercel.app/industries/manufacturing",
         "https://nextreachstudio.vercel.app/industries/logistics",
         "https://nextreachstudio.vercel.app/industries/education",

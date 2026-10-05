@@ -37,6 +37,10 @@ const {
   portfolioTags,
 } = Astro.props;
 
+// Must match the @id values declared in Layout.astro so the entity graph connects.
+const siteURL = "https://nextreachstudio.vercel.app";
+const ORG_ID = `${siteURL}/#organization`;
+
 const structuredOffering = offerings.map((o, i) => ({
   "@type": "ListItem",
   position: i + 1,
@@ -45,18 +49,27 @@ const structuredOffering = offerings.map((o, i) => ({
 ---
 
 <Layout title={title} description={description}>
+  <!-- Provider referenced by @id so this connects to the Organization entity declared
+       in Layout.astro rather than repeating the brand as a separate node. -->
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Service",
+    "@id": `${siteURL}${Astro.url.pathname}#service`,
     name: serviceTag,
+    serviceType: serviceTag,
     description: subheadline,
-    provider: { "@type": "Organization", name: "NextReach Studio", url: "https://nextreachstudio.vercel.app" },
+    provider: { "@id": ORG_ID },
     offers: { "@type": "Offer", price: priceRange, priceCurrency: "USD" },
-    areaServed: { "@type": "City", name: "Pune" },
+    areaServed: [
+      { "@type": "City", name: "Pune" },
+      { "@type": "AdministrativeArea", name: "Maharashtra" },
+    ],
   })} />
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "ItemList",
+    "@id": `${siteURL}${Astro.url.pathname}#offerings`,
+    name: `${serviceTag} capabilities`,
     itemListElement: structuredOffering,
   })} />
   <Nav />
