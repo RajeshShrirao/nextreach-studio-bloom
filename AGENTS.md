@@ -72,7 +72,7 @@ A `<slot />` sits between the offerings and the spec strip for page-specific con
 - **Component types**: `.astro` for static/presentational, `.tsx` for interactive (React 19). Tools use React state/hooks.
 - **Styling**: Tailwind utility classes + custom design tokens in `globals.css`. No CSS modules or scoped styles.
 - **Sitemap**: Custom pages listed explicitly in `astro.config.mjs` (tools, privacy, terms, about, contact, all 12 service pages, all 10 industry pages).
-- **SEO**: Structured data (BreadcrumbList, WebSite, Organization, Article, ItemList, LocalBusiness) injected inline via `<script type="application/ld+json">` in pages, not in Layout. `ServiceLayout` emits `Service` + `ItemList` automatically.
+- **SEO**: Structured data (BreadcrumbList, WebSite, Organization, Person, Article, ItemList, FAQPage) injected inline via `<script type="application/ld+json">` in pages, not in Layout. `ServiceLayout` emits `Service` + `ItemList` automatically; `src/pages/blog/[...slug].astro` emits `FAQPage` automatically for any article carrying a `## Frequently Asked Questions` section (see `src/utils/faq.ts`).
 - **Internal linking rule**: every blog article must have at least one inbound link from a service page, industry page, or tool page. An article with zero inbound is orphaned and will not rank. When you add an article, wire it into `researchLinks` in the same change — verify with the orphan check under "Verification".
 - **Content structure**: articles open with a direct answer (answer-first, for AI citation), include at least one comparison table, and end with a 4-6 question FAQ block. This is deliberate — it is what generative engines quote.
 - **Fonts**: Plus Jakarta Sans (body), Cabinet Grotesk (headings), JetBrains Mono (code) — loaded with `media="print" onload="this.media='all'"` (non‑render‑blocking).
@@ -139,7 +139,7 @@ Run before considering any content or link change done:
 npm run typecheck && npm run build
 ```
 
-Then check the two things `astro check` cannot catch:
+Then check the things `astro check` cannot catch:
 
 - **Broken links**: every `/blog/`, `/guides/`, `/resources/` href must resolve to a real
   `.mdx` file. Note that `guides/` and `resources/` have different slugs from `blog/` —
@@ -147,6 +147,19 @@ Then check the two things `astro check` cannot catch:
   is correct.
 - **Orphaned articles**: every blog article should appear in at least one `researchLinks`
   block or tool page. Zero inbound means the article will not rank.
+- **FAQPage schema drift** (after touching an article's FAQ section, or adding one):
+
+  ```sh
+  npm run verify:faq
+  ```
+
+  `src/utils/faq.ts` parses the raw MDX to emit FAQPage markup, but the page is rendered
+  through Astro's markdown pipeline, which runs smartypants and turns straight quotes into
+  curly ones. The script asserts the emitted JSON-LD is byte-identical to what the browser
+  paints — currently 19 articles / 124 question-answer pairs. If you add `## Frequently
+  Asked Questions` to an article, no wiring is needed: the schema is derived from the
+  heading. Format expected: `**Question?**` on its own line, answer on the following line,
+  section closed by a `---` rule.
 
 ## Known Outstanding Issues
 

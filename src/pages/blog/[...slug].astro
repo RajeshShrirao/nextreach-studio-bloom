@@ -4,6 +4,7 @@ import Nav from "@/components/Nav.astro";
 import Footer from "@/components/Footer.astro";
 import Prose from "@/components/Prose.astro";
 import { getCollection, render } from "astro:content";
+import { buildFaqPageSchema } from "@/utils/faq";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog", ({ data }) => !data.draft);
@@ -15,6 +16,14 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+
+// Mirrors the canonical Layout resolves, so the FAQPage @id points at the same URL the
+// Article @id does. Null when this article has no "## Frequently Asked Questions" section.
+const faqSchema = buildFaqPageSchema(post.body, post.data.canonicalURL || Astro.url.href);
+
+// Escape "<" so authored content can never terminate the script element early. The FAQ
+// answers are long-form prose on a site whose articles discuss HTML — cheap insurance.
+const faqJson = faqSchema ? JSON.stringify(faqSchema).replace(/</g, "\\u003c") : null;
 ---
 
 <Layout
@@ -27,6 +36,7 @@ const { Content } = await render(post);
   tags={post.data.tags}
   canonicalURL={post.data.canonicalURL}
 >
+  {faqJson && <script type="application/ld+json" set:html={faqJson} />}
   <Nav />
   <main class="pt-28 pb-20 relative overflow-hidden">
     <div class="absolute top-0 left-1/4 -translate-y-12 w-[400px] h-[250px] bg-[#c76b50]/8 rounded-full blur-[100px] pointer-events-none -z-10" aria-hidden="true"></div>

@@ -8,7 +8,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "lint": "astro lint",
-    "typecheck": "astro check"
+    "typecheck": "astro check",
+    "verify:faq": "node scripts/verify-faq-schema.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^5.0.0",
@@ -28,6 +29,8 @@
     "motion": "^12.42.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "retext": "^9.0.0",
+    "retext-smartypants": "^6.2.0",
     "tailwind-merge": "^3.6.0",
     "tailwindcss": "^4.3.0",
     "three": "^0.186.1"
