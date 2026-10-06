@@ -77,7 +77,7 @@ import NextReachBadge from "@/components/attribution/NextReachBadge.astro";
 
     return `<!-- NextReach Studio Attribution Badge -->
 <a 
-  href="https://nextreachstudio.vercel.app/?utm_source=${encodeURIComponent(clientName || "client-site")}&utm_medium=html_badge&utm_campaign=attribution"
+  href="https://nextreachstudio.in/?utm_source=${encodeURIComponent(clientName || "client-site")}&utm_medium=html_badge&utm_campaign=attribution"
   target="_blank"
   rel="noopener noreferrer"
   style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 6px 14px 6px 8px; background: ${bg}; border: 1px solid ${border}; border-radius: 9999px; box-shadow: 0 4px 16px rgba(0,0,0,0.15); transition: all 0.2s ease;"
@@ -102,7 +102,7 @@ import NextReachBadge from "@/components/attribution/NextReachBadge.astro";
   const getScriptCode = () => {
     return `<!-- NextReach Studio Universal Embed (Webflow / Shopify / WordPress / Squarespace) -->
 <script 
-  src="https://nextreachstudio.vercel.app/attribution/badge.js"
+  src="https://nextreachstudio.in/attribution/badge.js"
   data-theme="${theme}"
   data-variant="${variant}"
   data-phrase="${phrase}"
@@ -260,7 +260,7 @@ import NextReachBadge from "@/components/attribution/NextReachBadge.astro";
               </span>
               <span className="text-[11px] font-mono text-[#C76B50] flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
-                Target: nextreachstudio.vercel.app
+                Target: nextreachstudio.in
               </span>
             </div>
 
@@ -299,7 +299,7 @@ import NextReachBadge from "@/components/attribution/NextReachBadge.astro";
                 Clicking the badge opens studio with referral parameters.
               </span>
               <a
-                href={`https://nextreachstudio.vercel.app/?utm_source=${clientName || "test"}&utm_medium=preview&utm_campaign=attribution`}
+                href={`https://nextreachstudio.in/?utm_source=${clientName || "test"}&utm_medium=preview&utm_campaign=attribution`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#C76B50] hover:underline font-medium inline-flex items-center gap-1"

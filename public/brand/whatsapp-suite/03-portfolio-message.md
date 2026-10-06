@@ -8,19 +8,19 @@ Send this message when leads ask to see past work, live links, or want proof of 
 Here are a few live websites and flagships we've engineered recently: 🌟
 
 🍽️ Luxury Dining & Hospitality Demo:
-👉 https://nextreachstudio.vercel.app/demos/saffron-and-smoke
+👉 https://nextreachstudio.in/demos/saffron-and-smoke
 (Load time: 0.38s • 100/100 Core Web Vitals • Instant WhatsApp reservation flow)
 
 🏥 Healthcare & Clinic Flagship:
-👉 https://nextreachstudio.vercel.app/industries/healthcare
+👉 https://nextreachstudio.in/industries/healthcare
 (Engineered for patient appointment booking & medical specialty trust)
 
 🏢 High-Growth Business & SaaS Architecture:
-👉 https://nextreachstudio.vercel.app/portfolio
+👉 https://nextreachstudio.in/portfolio
 (Case studies, tech benchmarks, and lead conversion data)
 
 🛠️ Live AI Developer Tools Hub (Engineered by us):
-👉 https://nextreachstudio.vercel.app/tools/ai-token-calculator
+👉 https://nextreachstudio.in/tools/ai-token-calculator
 (Interactive React calculators used by developers daily)
 
 ---

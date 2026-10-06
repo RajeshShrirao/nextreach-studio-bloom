@@ -5,7 +5,7 @@
 - Name: NextReach Studio
 - Type: Founder-led software development studio
 - Location: Pune, Maharashtra, India
-- Website: https://nextreachstudio.vercel.app
+- Website: https://nextreachstudio.in
 - Contact: hello@nextreachstudio.com / +91 98223 79976
 - Founded: Principal Engineer-led software and AI engineering studio
 - Positioning: Elite software and AI systems engineering. Shipped in days, not quarters.
@@ -102,14 +102,14 @@ We price aggressively because we run lean: no account managers, no office overhe
 ## Developer Tools (Free, Browser-Based)
 
 The studio builds and maintains free AI developer tools as community resources:
-- AI Token Calculator: https://nextreachstudio.vercel.app/tools/ai-token-calculator
-- LLM Cost Calculator: https://nextreachstudio.vercel.app/tools/llm-cost-calculator
-- Context Window Calculator: https://nextreachstudio.vercel.app/tools/context-window-calculator
-- VRAM Estimator: https://nextreachstudio.vercel.app/tools/vram-estimator
-- Prompt Formatter: https://nextreachstudio.vercel.app/tools/prompt-formatter
+- AI Token Calculator: https://nextreachstudio.in/tools/ai-token-calculator
+- LLM Cost Calculator: https://nextreachstudio.in/tools/llm-cost-calculator
+- Context Window Calculator: https://nextreachstudio.in/tools/context-window-calculator
+- VRAM Estimator: https://nextreachstudio.in/tools/vram-estimator
+- Prompt Formatter: https://nextreachstudio.in/tools/prompt-formatter
 
 ## Content
 
-- Blog (5 posts): https://nextreachstudio.vercel.app/blog - LLM tooling, Claude Code, MCP servers, Ollama
-- Guides (2 guides): https://nextreachstudio.vercel.app/guides - AI cost optimization, LLM selection
-- Resources (2 directories): https://nextreachstudio.vercel.app/resources - Developer tools, LLM API providers
+- Blog (5 posts): https://nextreachstudio.in/blog - LLM tooling, Claude Code, MCP servers, Ollama
+- Guides (2 guides): https://nextreachstudio.in/guides - AI cost optimization, LLM selection
+- Resources (2 directories): https://nextreachstudio.in/resources - Developer tools, LLM API providers

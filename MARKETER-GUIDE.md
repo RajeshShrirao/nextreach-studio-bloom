@@ -1,6 +1,6 @@
 # NextReach Studio — Marketer's Guide to the Website
 
-**Website:** https://nextreachstudio.vercel.app
+**Website:** https://nextreachstudio.in
 **Positioning:** Enterprise engineering discipline. Startup speed and pricing.
 **Target Clients:** Ambitious SMBs, local Indian enterprises, international tech founders.
 
@@ -330,15 +330,15 @@ A: You own the complete source code, database, and cloud assets. We include a 30
 
 ## Quick Reference Links
 
-- **Website:** https://nextreachstudio.vercel.app
-- **Contact form:** https://nextreachstudio.vercel.app/contact
+- **Website:** https://nextreachstudio.in
+- **Contact form:** https://nextreachstudio.in/contact
 - **Email:** hello@nextreachstudio.com
 - **Phone/WhatsApp:** +91 98223 79976
-- **Portfolio:** https://nextreachstudio.vercel.app/portfolio
-- **Developer tools:** https://nextreachstudio.vercel.app/tools
-- **Attribution & Badges:** https://nextreachstudio.vercel.app/attribution
-- **Blog:** https://nextreachstudio.vercel.app/blog
-- **RSS feed:** https://nextreachstudio.vercel.app/rss.xml
+- **Portfolio:** https://nextreachstudio.in/portfolio
+- **Developer tools:** https://nextreachstudio.in/tools
+- **Attribution & Badges:** https://nextreachstudio.in/attribution
+- **Blog:** https://nextreachstudio.in/blog
+- **RSS feed:** https://nextreachstudio.in/rss.xml
 - **Repository:** N/A (private)
 
 ---

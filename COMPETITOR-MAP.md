@@ -10,7 +10,7 @@ fetch of competitor pages, Wayback Machine CDX for domain age.
 ## 1. The one finding that outranks everything else
 
 ```
-nextreachstudio.vercel.app   ← your live canonical, per astro.config.mjs:9
+nextreachstudio.in   ← your live canonical, per astro.config.mjs:9
 dimakhconsultants.com        ← first Wayback capture: 02 Mar 2001
 ikf.co.in                    ← first Wayback capture: 05 Feb 2002
 brainminetech.com            ← first Wayback capture: 23 Dec 2010
@@ -212,11 +212,11 @@ page that cannot rank. The blockers, in priority order:
 
 | # | Blocker | Severity | Fix |
 |---|---|---|---|
-| 1 | **No root domain** | 🔴 Fatal | Recover `nextreachstudio.com` from redemption, or buy `nextreachstudio.in`. Then 301 the vercel.app URL. ~1 day. |
+| 1 | ~~No root domain~~ | ✅ Done | `nextreachstudio.in` purchased. All 151 code references repointed; canonicals, sitemap and `robots.txt` now emit `.in`. 301 from `vercel.app` + GSC re-verify still pending (dashboard). |
 | 2 | **Zero referring domains** | 🔴 Fatal | Nothing ranks without inbound links. This is the real 12-month work. |
 | 3 | **Not submitted to GSC** | 🟠 High | Manual, 10 minutes. New pages don't get indexed until crawled. |
 | 4 | 76 titles >65 chars | 🟡 Medium | Truncation costs clicks on every ranking you do win. |
-| 5 | 0 `FAQPage` schema | 🟡 Medium | Brainmine proves this works. 21 articles ready. |
+| 5 | ~~0 `FAQPage` schema~~ | ✅ Done | Shipped and verified: 19 articles / 124 Q-A pairs byte-identical (`npm run verify:faq`). |
 | 6 | `llms-full.txt` missing | 🟢 Low | AI-citation surface, not ranking. |
 
 ### Realistic timeline

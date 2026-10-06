@@ -11,7 +11,7 @@
     a:hover .badge-glow { opacity: 0.6; }
     a:hover .arrow-icon { transform: translate(1.5px, -1.5px); }
   </style>
-  <a href="https://nextreachstudio.vercel.app/?utm_source=client-badge&amp;utm_medium=svg_badge_dark&amp;utm_campaign=attribution" target="_blank" rel="noopener noreferrer">
+  <a href="https://nextreachstudio.in/?utm_source=client-badge&amp;utm_medium=svg_badge_dark&amp;utm_campaign=attribution" target="_blank" rel="noopener noreferrer">
     <rect x="1" y="1" width="238" height="44" class="badge-bg" />
     <rect x="1" y="1" width="238" height="44" class="badge-glow" />
     

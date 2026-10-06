@@ -51,7 +51,7 @@ Hi there! Thanks for reaching out to NextReach Studio. 🌙
 Our engineering team is currently offline, but we have received your message! We'll review your requirements and get back to you by 9:30 AM tomorrow with custom demo links and package options.
 
 In the meantime, feel free to explore our live flagship demo here:
-👉 nextreachstudio.vercel.app/demos/saffron-and-smoke
+👉 nextreachstudio.in/demos/saffron-and-smoke
 
 Talk soon! 🚀
 ```

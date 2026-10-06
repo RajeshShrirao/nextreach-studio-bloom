@@ -34,7 +34,7 @@ High-velocity AI & custom web engineering.
 Autonomous agents • React/Astro • Fast MVPs
 Zero fluff. Fixed-scope delivery.
 👇 Explore Live Portfolios
-nextreachstudio.vercel.app
+nextreachstudio.in
 ```
 
 - **Character Count:** 148 / 150
@@ -56,7 +56,7 @@ Websites • AI Systems • Enterprise MVPs
 Senior engineers. 14-day execution.
 📍 Pune, MH
 👇 Start Your Project
-nextreachstudio.vercel.app/contact
+nextreachstudio.in/contact
 ```
 
 - **Character Count:** 146 / 150
@@ -66,6 +66,6 @@ nextreachstudio.vercel.app/contact
 ## 🔗 Recommended Link-in-Bio Setup
 When configuring your Instagram link button or Linktree/Bento link:
 1. **Button 1 (Primary):** `💬 Chat on WhatsApp (+91 98223 79976)` → `https://wa.me/919822379976?text=Hi%20NextReach%20Studio%2C%20I'm%20interested%20in%20launching%20a%20website%20for%20my%20business.`
-2. **Button 2:** `💼 Live Flagship Showcase (Saffron & Smoke)` → `https://nextreachstudio.vercel.app/demos/saffron-and-smoke`
-3. **Button 3:** `📦 Website Packages (Starting at ₹5,000)` → `https://nextreachstudio.vercel.app/#packages`
-4. **Button 4:** `🛠️ Free AI Developer Tools` → `https://nextreachstudio.vercel.app/tools`
+2. **Button 2:** `💼 Live Flagship Showcase (Saffron & Smoke)` → `https://nextreachstudio.in/demos/saffron-and-smoke`
+3. **Button 3:** `📦 Website Packages (Starting at ₹5,000)` → `https://nextreachstudio.in/#packages`
+4. **Button 4:** `🛠️ Free AI Developer Tools` → `https://nextreachstudio.in/tools`

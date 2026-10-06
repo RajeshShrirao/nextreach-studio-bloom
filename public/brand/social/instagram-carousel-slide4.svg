@@ -56,7 +56,7 @@
     <rect width="920" height="240" rx="20" fill="#FAF8F5" />
     <text x="40" y="60" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="24px" fill="#1F1F23">"Shipped in 7 days flat. Our customer engagement tripled."</text>
     <text x="40" y="110" font-family="'Plus Jakarta Sans', sans-serif" font-weight="500" font-size="18px" fill="#6E6862">NextReach Senior Engineering Sprint Client</text>
-    <text x="40" y="180" font-family="'JetBrains Mono', monospace" font-size="14px" font-weight="700" fill="#C76B50">DEMO: nextreachstudio.vercel.app/demos/saffron-and-smoke</text>
+    <text x="40" y="180" font-family="'JetBrains Mono', monospace" font-size="14px" font-weight="700" fill="#C76B50">DEMO: nextreachstudio.in/demos/saffron-and-smoke</text>
   </g>
 
   <!-- Swipe Prompt -->
