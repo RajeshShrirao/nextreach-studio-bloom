@@ -244,7 +244,7 @@ The net effect: when an AI agent or LLM searches for "custom software developmen
 - **Contact form** (Formspree) — primary lead capture
 - **WhatsApp** (+91 98223 79976) — preferred by Indian SMBs
 - **Chat widget** (Cerebras AI) — on-site assistant, embedded on every page
-- **Email** (hello@nextreachstudio.com)
+- **Email** (hello@nextreachstudio.in)
 
 ### Untapped Opportunities (You Can Build These)
 
@@ -332,7 +332,7 @@ A: You own the complete source code, database, and cloud assets. We include a 30
 
 - **Website:** https://www.nextreachstudio.in
 - **Contact form:** https://www.nextreachstudio.in/contact
-- **Email:** hello@nextreachstudio.com
+- **Email:** hello@nextreachstudio.in
 - **Phone/WhatsApp:** +91 98223 79976
 - **Portfolio:** https://www.nextreachstudio.in/portfolio
 - **Developer tools:** https://www.nextreachstudio.in/tools

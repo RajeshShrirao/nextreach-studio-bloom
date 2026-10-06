@@ -6,7 +6,7 @@
 - Type: Founder-led software development studio
 - Location: Pune, Maharashtra, India
 - Website: https://www.nextreachstudio.in
-- Contact: hello@nextreachstudio.com / +91 98223 79976
+- Contact: hello@nextreachstudio.in / +91 98223 79976
 - Founded: Principal Engineer-led software and AI engineering studio
 - Positioning: Elite software and AI systems engineering. Shipped in days, not quarters.
 
