@@ -8,6 +8,7 @@ import {
   PlayIcon,
   ArrowUpRightIcon,
 } from "@phosphor-icons/react";
+import { useCurtains, iris } from "@/utils/curtains";
 
 interface ProjectItem {
   id: string;
@@ -116,6 +117,7 @@ const N = studioProjects.length;
 const ANGLE_STEP = 360 / N; // 36 degrees per slot
 
 export default function StudioArtwork() {
+  const curtains = useCurtains();
   const stageRef = useRef<HTMLDivElement>(null);
   const cylinderRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -195,15 +197,39 @@ export default function StudioArtwork() {
     velocityRef.current = 0;
   }, []);
 
-  const handlePrev = useCallback(() => {
+  const handlePrev = useCallback((e?: React.MouseEvent) => {
     const nextIdx = (lastActiveIndexRef.current - 1 + N) % N;
-    rotateToIndex(nextIdx);
-  }, [rotateToIndex]);
+    if (e) {
+      curtains(() => {
+        rotateToIndex(nextIdx);
+      }, {
+        effect: iris({
+          origin: { x: e.clientX, y: e.clientY },
+          duration: 0.38,
+          label: "PREVIOUS PROJECT",
+        }),
+      });
+    } else {
+      rotateToIndex(nextIdx);
+    }
+  }, [rotateToIndex, curtains]);
 
-  const handleNext = useCallback(() => {
+  const handleNext = useCallback((e?: React.MouseEvent) => {
     const nextIdx = (lastActiveIndexRef.current + 1) % N;
-    rotateToIndex(nextIdx);
-  }, [rotateToIndex]);
+    if (e) {
+      curtains(() => {
+        rotateToIndex(nextIdx);
+      }, {
+        effect: iris({
+          origin: { x: e.clientX, y: e.clientY },
+          duration: 0.38,
+          label: "NEXT PROJECT",
+        }),
+      });
+    } else {
+      rotateToIndex(nextIdx);
+    }
+  }, [rotateToIndex, curtains]);
 
   const togglePause = useCallback(() => {
     setIsPaused((prev) => {
@@ -213,19 +239,39 @@ export default function StudioArtwork() {
     });
   }, []);
 
-  // Card click handler: center if angled, or follow link if already in center focus
-  const handleCardClick = (index: number) => {
+  // Card click handler: Curtains Iris from click transition
+  const handleCardClick = (index: number, e: React.MouseEvent) => {
     if (dragRef.current.hasMoved) return;
 
     let relAngle = ((index * ANGLE_STEP + rotationRef.current) % 360);
     if (relAngle > 180) relAngle -= 360;
     if (relAngle < -180) relAngle += 360;
 
+    const proj = studioProjects[index];
+    if (!proj) return;
+
     if (Math.abs(relAngle) < 14) {
-      const proj = studioProjects[index];
-      if (proj) window.location.href = proj.href;
+      // Direct Iris Page Transition from click origin into project demo
+      curtains(undefined, {
+        href: proj.href,
+        label: proj.title,
+        effect: iris({
+          origin: { x: e.clientX, y: e.clientY },
+          duration: 0.50,
+          label: proj.category,
+        }),
+      });
     } else {
-      rotateToIndex(index);
+      // Focus clicked card with tactical Iris ripple
+      curtains(() => {
+        rotateToIndex(index);
+      }, {
+        effect: iris({
+          origin: { x: e.clientX, y: e.clientY },
+          duration: 0.38,
+          label: proj.title,
+        }),
+      });
     }
   };
 
@@ -480,7 +526,7 @@ export default function StudioArtwork() {
                 style={{
                   transform: `rotateY(${slotAngle}deg) translateZ(${radius}px)`,
                 }}
-                onClick={() => handleCardClick(idx)}
+                onClick={(e) => handleCardClick(idx, e)}
                 role="group"
                 aria-roledescription="slide"
                 aria-label={`${project.title} - ${project.category}`}
@@ -504,7 +550,19 @@ export default function StudioArtwork() {
                   <a
                     href={project.href}
                     className="studio-carousel-card-cta"
-                    onClick={(e) => e.stopPropagation()}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      e.preventDefault();
+                      curtains(undefined, {
+                        href: project.href,
+                        label: project.title,
+                        effect: iris({
+                          origin: { x: e.clientX, y: e.clientY },
+                          duration: 0.50,
+                          label: project.category,
+                        }),
+                      });
+                    }}
                   >
                     <span>Explore project</span>
                     <ArrowUpRightIcon size={13} weight="bold" aria-hidden="true" />
@@ -520,7 +578,7 @@ export default function StudioArtwork() {
       <div className="studio-carousel-hint" aria-hidden="true">
         <span>drag to rotate</span>
         <span>·</span>
-        <span>click card to explore</span>
+        <span>click to iris transition</span>
       </div>
 
       {/* Floating Controls Bar */}
@@ -529,7 +587,7 @@ export default function StudioArtwork() {
           type="button"
           className="studio-carousel-btn"
           aria-label="Previous project"
-          onClick={handlePrev}
+          onClick={(e) => handlePrev(e)}
         >
           <CaretLeftIcon size={18} weight="bold" aria-hidden="true" />
         </button>
@@ -544,7 +602,7 @@ export default function StudioArtwork() {
           type="button"
           className="studio-carousel-btn"
           aria-label="Next project"
-          onClick={handleNext}
+          onClick={(e) => handleNext(e)}
         >
           <CaretRightIcon size={18} weight="bold" aria-hidden="true" />
         </button>

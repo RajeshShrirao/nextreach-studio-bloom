@@ -2,6 +2,7 @@
 import "../styles/globals.css";
 import LoadingScreen from "@/components/LoadingScreen.astro";
 import SmoothScrollProvider from "@/components/smoothui/SmoothScrollProvider.astro";
+import CurtainsProvider from "@/components/CurtainsProvider.astro";
 
 export interface Props {
   title?: string;
@@ -325,6 +326,7 @@ const founder = {
   <body class="font-body text-zinc-300 antialiased min-h-screen">
     {!skipLoader && <LoadingScreen />}
     <SmoothScrollProvider />
+    <CurtainsProvider />
     <div data-site-content>
       <slot />
     </div>

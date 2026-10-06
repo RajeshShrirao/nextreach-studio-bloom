@@ -1,0 +1,17 @@
+---
+// CurtainsProvider.astro — Global Iris Transition Provider on Clicks
+// Connects the Iris aperture curtain engine to page navigation and link clicks
+---
+
+<script>
+  import { initCurtainsPageTransitions } from "@/utils/curtains";
+
+  // Initialize once DOM is ready
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => {
+      initCurtainsPageTransitions();
+    });
+  } else {
+    initCurtainsPageTransitions();
+  }
+</script>

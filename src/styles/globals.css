@@ -2280,3 +2280,133 @@ html[data-site-loading] .site-loader { display: grid; }
   .site-loader-emblem { width: 80px; }
   .site-loader-caption { bottom: max(16px, env(safe-area-inset-bottom)); gap: 10px; }
 }
+
+/* =========================================================================
+   Curtains: Iris from Click — Page & Element Transition System
+   ========================================================================= */
+.iris-portal {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 999999;
+}
+
+.iris-portal::backdrop {
+  background: transparent;
+}
+
+.iris-portal.is-active {
+  pointer-events: auto;
+}
+
+.iris-curtain-backdrop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 50%, #151311 0%, #080909 100%);
+  will-change: clip-path, opacity, transform;
+  clip-path: circle(0px at 50% 50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iris-curtain-backdrop::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.05;
+  background-image: radial-gradient(rgba(247, 241, 233, 0.4) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+}
+
+.iris-curtain-ring {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  border: 2px solid rgba(242, 179, 151, 0.95);
+  box-shadow: 0 0 50px rgba(223, 137, 107, 0.95), inset 0 0 25px rgba(223, 137, 107, 0.6);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  will-change: width, height, opacity, transform;
+}
+
+.iris-curtain-hud {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+  pointer-events: none;
+  padding-inline: 20px;
+}
+
+.iris-hud-badge {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--hero-signal-soft);
+  background: rgba(223, 137, 107, 0.12);
+  border: 1px solid rgba(223, 137, 107, 0.35);
+  padding: 5px 14px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.iris-hud-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #48bb78;
+  box-shadow: 0 0 8px #48bb78;
+}
+
+.iris-hud-title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(24px, 4vw, 42px);
+  font-weight: 700;
+  color: #f7f1e9;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+.iris-hud-track {
+  width: 140px;
+  height: 2px;
+  background: rgba(247, 241, 233, 0.12);
+  overflow: hidden;
+  border-radius: 999px;
+  margin-top: 4px;
+}
+
+.iris-hud-bar {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #df896b, #f2b397, transparent);
+  animation: irisShimmer 1.2s infinite ease-in-out;
+}
+
+@keyframes irisShimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .iris-curtain-ring { display: none; }
+  .iris-curtain-backdrop { clip-path: none !important; }
+}
