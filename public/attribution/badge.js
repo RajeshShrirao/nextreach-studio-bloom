@@ -1,7 +1,7 @@
 /**
  * NextReach Studio — Universal Attribution Badge & Embed Script
  * Embed anywhere with:
- * <script src="https://nextreachstudio.in/attribution/badge.js" data-theme="dark" data-variant="pill" data-client="your-site"></script>
+ * <script src="https://www.nextreachstudio.in/attribution/badge.js" data-theme="dark" data-variant="pill" data-client="your-site"></script>
  */
 (function () {
   "use strict";
@@ -13,7 +13,7 @@
   var client = (script && script.getAttribute("data-client")) || "client-site";
   var position = (script && script.getAttribute("data-position")) || "bottom-right";
 
-  var STUDIO_URL = "https://nextreachstudio.in/?utm_source=" + encodeURIComponent(client) + "&utm_medium=embed_badge&utm_campaign=attribution";
+  var STUDIO_URL = "https://www.nextreachstudio.in/?utm_source=" + encodeURIComponent(client) + "&utm_medium=embed_badge&utm_campaign=attribution";
 
   var SVG_MARK = '<svg viewBox="0 0 120 150" width="100%" height="100%" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">' +
     '<polyline points="29,38 60,8 91,38" />' +

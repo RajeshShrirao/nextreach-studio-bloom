@@ -29,7 +29,7 @@ export const NextReachBadge: React.FC<NextReachBadgeProps> = ({
   showWhatsApp = false,
   className = "",
 }) => {
-  const baseUrl = "https://nextreachstudio.in/";
+  const baseUrl = "https://www.nextreachstudio.in/";
   const queryParams = new URLSearchParams({
     utm_source: clientName,
     utm_medium: `badge_${variant}`,

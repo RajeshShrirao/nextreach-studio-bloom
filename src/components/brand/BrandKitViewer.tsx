@@ -633,7 +633,7 @@ High-velocity AI & custom web engineering.
 Autonomous agents • React/Astro • Fast MVPs
 Zero fluff. Fixed-scope delivery.
 👇 Explore Live Portfolios
-nextreachstudio.in`,
+www.nextreachstudio.in`,
     chars: 148,
   },
   {
@@ -645,7 +645,7 @@ Websites • AI Systems • Enterprise MVPs
 Senior engineers. 14-day execution.
 📍 Pune, MH
 👇 Start Your Project
-nextreachstudio.in/contact`,
+www.nextreachstudio.in/contact`,
     chars: 146,
   },
 ];
@@ -728,19 +728,19 @@ Which package aligns best with your goals? Reply 1, 2, or 3! 👇`,
     text: `Here are a few live websites and flagships we've engineered recently: 🌟
 
 🍽️ Luxury Dining & Hospitality Demo:
-👉 https://nextreachstudio.in/demos/saffron-and-smoke
+👉 https://www.nextreachstudio.in/demos/saffron-and-smoke
 (Load time: 0.38s • 100/100 Core Web Vitals • Instant WhatsApp reservation flow)
 
 🏥 Healthcare & Clinic Flagship:
-👉 https://nextreachstudio.in/industries/healthcare
+👉 https://www.nextreachstudio.in/industries/healthcare
 (Engineered for patient appointment booking & medical specialty trust)
 
 🏢 High-Growth Business & SaaS Architecture:
-👉 https://nextreachstudio.in/portfolio
+👉 https://www.nextreachstudio.in/portfolio
 (Case studies, tech benchmarks, and lead conversion data)
 
 🛠️ Live AI Developer Tools Hub (Engineered by us):
-👉 https://nextreachstudio.in/tools/ai-token-calculator
+👉 https://www.nextreachstudio.in/tools/ai-token-calculator
 (Interactive React calculators used by developers daily)
 
 ---
@@ -793,19 +793,19 @@ Ready to lock in a sprint slot this week? 🚀`,
     description: "Targeted demo links for Clinics, Food Brands, Real Estate, and Manufacturing.",
     text: `Here are our industry-specific website examples tailored for Pune businesses: 🌟
 
-🍽️ Food & Restaurants: https://nextreachstudio.in/demos/saffron-and-smoke
+🍽️ Food & Restaurants: https://www.nextreachstudio.in/demos/saffron-and-smoke
 (1-Tap WhatsApp table reservation, 0.3s load speed, digital menu)
 
-🏥 Healthcare & Clinics: https://nextreachstudio.in/industries/healthcare
+🏥 Healthcare & Clinics: https://www.nextreachstudio.in/industries/healthcare
 (Doctor credentials, specialty list, direct WhatsApp appointment booking)
 
-🏢 Real Estate & Builders: https://nextreachstudio.in/industries/real-estate
+🏢 Real Estate & Builders: https://www.nextreachstudio.in/industries/real-estate
 (Brochure downloads, floor plan slider, site visit scheduling)
 
-⚙️ Manufacturing & B2B: https://nextreachstudio.in/industries/manufacturing
+⚙️ Manufacturing & B2B: https://www.nextreachstudio.in/industries/manufacturing
 (Product specs table, WhatsApp RFQ triggers, ISO compliance proofs)
 
-💼 Consulting & Legal: https://nextreachstudio.in/services/ai-consulting-pune
+💼 Consulting & Legal: https://www.nextreachstudio.in/services/ai-consulting-pune
 (Case study breakdowns, client trust badges, direct discovery chat)
 
 Which industry demo matches closest with your vision? 👇`,
@@ -984,7 +984,7 @@ Hi {{Name}}! 👋 Just following up to make sure you received our package detail
 [STAGE 2 — 48H VALUE & PROOF DROP]
 Hey {{Name}}! Sharing a quick reference: 🌟
 We just delivered a flagship platform for a Pune client that achieved a 0.3-second load speed and generated 10+ WhatsApp inquiries in its first week:
-👉 https://nextreachstudio.in/demos/saffron-and-smoke
+👉 https://www.nextreachstudio.in/demos/saffron-and-smoke
 We have 2 engineering sprint slots open for this week. Would you like to lock in one for {{BusinessName}}? ⚡
 
 ---

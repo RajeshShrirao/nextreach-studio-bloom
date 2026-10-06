@@ -5,9 +5,9 @@
  *   <script>
  *     (function() {
  *       var s = document.createElement('script');
- *       s.src = 'https://nextreachstudio.in/widget.js';
+ *       s.src = 'https://www.nextreachstudio.in/widget.js';
  *       s.setAttribute('data-client-id', 'bark-and-bark');
- *       s.setAttribute('data-api-base', 'https://nextreachstudio.in');
+ *       s.setAttribute('data-api-base', 'https://www.nextreachstudio.in');
  *       document.head.appendChild(s);
  *     })();
  *   </script>

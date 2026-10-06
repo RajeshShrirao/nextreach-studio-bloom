@@ -10,7 +10,7 @@ fetch of competitor pages, Wayback Machine CDX for domain age.
 ## 1. The one finding that outranks everything else
 
 ```
-nextreachstudio.in   ← your live canonical, per astro.config.mjs:9
+www.nextreachstudio.in   ← your live canonical, per astro.config.mjs:9
 dimakhconsultants.com        ← first Wayback capture: 02 Mar 2001
 ikf.co.in                    ← first Wayback capture: 05 Feb 2002
 brainminetech.com            ← first Wayback capture: 23 Dec 2010
@@ -23,7 +23,7 @@ designforu.in                ← first Wayback capture: 27 May 2014
 |---|---|
 | **`nextreachstudio.com`** | 🔴 **IN REDEMPTION PERIOD — expired 20 Aug 2026** |
 | `nextreach.studio` | Registered 25 Jun 2015 (not yours) |
-| `nextreachstudio.in` | **AVAILABLE** (~₹800/yr) |
+| `www.nextreachstudio.in` | **AVAILABLE** (~₹800/yr) |
 
 ### `nextreachstudio.com` — you bought this and let it lapse
 
@@ -52,7 +52,7 @@ Three options, in order of preference:
 1. **Log into your registrar immediately and check redemption status.** If it is still
    recoverable, pay the redemption fee. This is your original intent and the `.com` carries
    the most trust signals.
-2. **Buy `nextreachstudio.in` now** — available today, ~₹800/yr, and arguably a better fit
+2. **Buy `www.nextreachstudio.in` now** — available today, ~₹800/yr, and arguably a better fit
    for a Pune-focused local SEO play anyway. `.in` carries geographic relevance the `.com`
    does not.
 3. If both fail, `nextreachstudio.co` / `nextreach.agency` — note `nextreach.agency` is
@@ -212,7 +212,7 @@ page that cannot rank. The blockers, in priority order:
 
 | # | Blocker | Severity | Fix |
 |---|---|---|---|
-| 1 | ~~No root domain~~ | ✅ Done | `nextreachstudio.in` purchased. All 151 code references repointed; canonicals, sitemap and `robots.txt` now emit `.in`. 301 from `vercel.app` + GSC re-verify still pending (dashboard). |
+| 1 | ~~No root domain~~ | ✅ Done | `www.nextreachstudio.in` purchased. All 151 code references repointed; canonicals, sitemap and `robots.txt` now emit `.in`. 301 from `vercel.app` + GSC re-verify still pending (dashboard). |
 | 2 | **Zero referring domains** | 🔴 Fatal | Nothing ranks without inbound links. This is the real 12-month work. |
 | 3 | **Not submitted to GSC** | 🟠 High | Manual, 10 minutes. New pages don't get indexed until crawled. |
 | 4 | 76 titles >65 chars | 🟡 Medium | Truncation costs clicks on every ranking you do win. |
@@ -363,7 +363,7 @@ firm that ranks on inertia.
 
 **Now (this week)**
 1. **Check `nextreachstudio.com` at your registrar — it is in redemption and the window is
-   closing.** Recover it, or buy `nextreachstudio.in` (available today) as fallback
+   closing.** Recover it, or buy `www.nextreachstudio.in` (available today) as fallback
 2. Submit sitemap to Google Search Console
 
 **Next 30 days**

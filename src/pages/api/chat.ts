@@ -42,8 +42,8 @@ function checkOrigin(request: Request): boolean {
   const origin = request.headers.get("origin");
   const referer = request.headers.get("referer");
   const allowed = [
-    "https://nextreachstudio.in",
     "https://www.nextreachstudio.in",
+    "https://nextreachstudio.in",
     // Legacy origins — safe to drop once the vercel.app -> .in redirect is confirmed live.
     "https://nextreachstudio.vercel.app",
     "https://nextreach-studio.vercel.app",

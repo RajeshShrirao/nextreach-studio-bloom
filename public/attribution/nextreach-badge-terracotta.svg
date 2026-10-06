@@ -8,7 +8,7 @@
     a:hover .badge-bg { fill: #D97A5E; }
     a:hover .arrow-icon { transform: translate(1.5px, -1.5px); }
   </style>
-  <a href="https://nextreachstudio.in/?utm_source=client-badge&amp;utm_medium=svg_badge_terracotta&amp;utm_campaign=attribution" target="_blank" rel="noopener noreferrer">
+  <a href="https://www.nextreachstudio.in/?utm_source=client-badge&amp;utm_medium=svg_badge_terracotta&amp;utm_campaign=attribution" target="_blank" rel="noopener noreferrer">
     <rect x="1" y="1" width="238" height="44" class="badge-bg" />
     
     <!-- Emblem Squircle -->

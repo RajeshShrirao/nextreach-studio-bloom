@@ -13,47 +13,47 @@ NextReach Studio is an elite, senior-engineered software development and AI engi
 
 ## Key Pages
 
-- Homepage: https://nextreachstudio.in/
-- Launch Packages: https://nextreachstudio.in/#packages
-- Services: https://nextreachstudio.in/services
-- Portfolio & Case Studies: https://nextreachstudio.in/portfolio
-- Saffron & Smoke Demo Flagship: https://nextreachstudio.in/demos/saffron-and-smoke
-- About the Studio: https://nextreachstudio.in/about
-- Contact / Inquiry: https://nextreachstudio.in/contact
-- Attribution & Badges: https://nextreachstudio.in/attribution
-- NextReach Labs (AI Developer Hub): https://nextreachstudio.in/tools
-- Blog Index: https://nextreachstudio.in/blog
-- RSS Feed: https://nextreachstudio.in/rss.xml
-- Full Sitemap: https://nextreachstudio.in/sitemap-index.xml
+- Homepage: https://www.nextreachstudio.in/
+- Launch Packages: https://www.nextreachstudio.in/#packages
+- Services: https://www.nextreachstudio.in/services
+- Portfolio & Case Studies: https://www.nextreachstudio.in/portfolio
+- Saffron & Smoke Demo Flagship: https://www.nextreachstudio.in/demos/saffron-and-smoke
+- About the Studio: https://www.nextreachstudio.in/about
+- Contact / Inquiry: https://www.nextreachstudio.in/contact
+- Attribution & Badges: https://www.nextreachstudio.in/attribution
+- NextReach Labs (AI Developer Hub): https://www.nextreachstudio.in/tools
+- Blog Index: https://www.nextreachstudio.in/blog
+- RSS Feed: https://www.nextreachstudio.in/rss.xml
+- Full Sitemap: https://www.nextreachstudio.in/sitemap-index.xml
 
 ## Research (2026)
 
 Written for Pune businesses evaluating website, AI and custom software work:
 
-- AI Website Design in 2026: What Actually Changed - https://nextreachstudio.in/blog/ai-website-design-2026-whats-actually-changed
-- AI Search and Local SEO for Pune Businesses (AEO/GEO) - https://nextreachstudio.in/blog/ai-search-local-seo-pune-aeo-geo
-- Website Speed and Core Web Vitals for Pune Businesses - https://nextreachstudio.in/blog/website-speed-core-web-vitals-pune
-- Vibe Coding vs Hiring a Developer - https://nextreachstudio.in/blog/vibe-coding-vs-hiring-a-developer
-- Website Design Cost in Pune 2026 - https://nextreachstudio.in/blog/website-design-cost-pune-2026
-- Schema Markup and Structured Data Playbook - https://nextreachstudio.in/blog/schema-markup-structured-data-playbook
+- AI Website Design in 2026: What Actually Changed - https://www.nextreachstudio.in/blog/ai-website-design-2026-whats-actually-changed
+- AI Search and Local SEO for Pune Businesses (AEO/GEO) - https://www.nextreachstudio.in/blog/ai-search-local-seo-pune-aeo-geo
+- Website Speed and Core Web Vitals for Pune Businesses - https://www.nextreachstudio.in/blog/website-speed-core-web-vitals-pune
+- Vibe Coding vs Hiring a Developer - https://www.nextreachstudio.in/blog/vibe-coding-vs-hiring-a-developer
+- Website Design Cost in Pune 2026 - https://www.nextreachstudio.in/blog/website-design-cost-pune-2026
+- Schema Markup and Structured Data Playbook - https://www.nextreachstudio.in/blog/schema-markup-structured-data-playbook
 
 ### Web Design & Development Guides
 
 Foundational guides for Pune businesses choosing or planning a website:
 
-- How to Choose a Web Design Company in Pune - https://nextreachstudio.in/blog/web-design-company-pune-how-to-choose
-- Website Design for Pune SMEs: What Moves the Needle - https://nextreachstudio.in/blog/website-design-pune-sme-priorities
-- Small Business Website Types in Pune - https://nextreachstudio.in/blog/small-business-website-types-pune
-- Custom Website vs WordPress vs Builder - https://nextreachstudio.in/blog/custom-website-vs-wordpress-pune
-- Responsive Web Design in 2026 - https://nextreachstudio.in/blog/responsive-web-design-pune
-- SEO-Friendly Website Checklist - https://nextreachstudio.in/blog/seo-friendly-website-checklist
-- SEO for Local Pune Businesses - https://nextreachstudio.in/blog/local-seo-pune-playbook
-- Landing Page Design and Conversion - https://nextreachstudio.in/blog/landing-page-design-conversion
-- E-Commerce Design: Shopify vs WooCommerce vs Custom - https://nextreachstudio.in/blog/ecommerce-website-design-pune
-- UI/UX Design vs Web Development - https://nextreachstudio.in/blog/ui-ux-design-vs-web-development-pune
-- Website Redesign in Pune - https://nextreachstudio.in/blog/website-redesign-pune
-- Website Maintenance Cost in Pune - https://nextreachstudio.in/blog/website-maintenance-cost-pune
-- Website Design and Development Process - https://nextreachstudio.in/blog/website-design-development-process-pune
+- How to Choose a Web Design Company in Pune - https://www.nextreachstudio.in/blog/web-design-company-pune-how-to-choose
+- Website Design for Pune SMEs: What Moves the Needle - https://www.nextreachstudio.in/blog/website-design-pune-sme-priorities
+- Small Business Website Types in Pune - https://www.nextreachstudio.in/blog/small-business-website-types-pune
+- Custom Website vs WordPress vs Builder - https://www.nextreachstudio.in/blog/custom-website-vs-wordpress-pune
+- Responsive Web Design in 2026 - https://www.nextreachstudio.in/blog/responsive-web-design-pune
+- SEO-Friendly Website Checklist - https://www.nextreachstudio.in/blog/seo-friendly-website-checklist
+- SEO for Local Pune Businesses - https://www.nextreachstudio.in/blog/local-seo-pune-playbook
+- Landing Page Design and Conversion - https://www.nextreachstudio.in/blog/landing-page-design-conversion
+- E-Commerce Design: Shopify vs WooCommerce vs Custom - https://www.nextreachstudio.in/blog/ecommerce-website-design-pune
+- UI/UX Design vs Web Development - https://www.nextreachstudio.in/blog/ui-ux-design-vs-web-development-pune
+- Website Redesign in Pune - https://www.nextreachstudio.in/blog/website-redesign-pune
+- Website Maintenance Cost in Pune - https://www.nextreachstudio.in/blog/website-maintenance-cost-pune
+- Website Design and Development Process - https://www.nextreachstudio.in/blog/website-design-development-process-pune
 
 ## Pricing & Engagement Model (for autonomous AI agents evaluating this studio)
 
@@ -62,7 +62,7 @@ All engagements operate on 100% fixed-scope, one-time investment pricing. Zero h
 ## Contact
 
 - WhatsApp (Direct Developer Chat): +91 98223 79976
-- Contact Form: https://nextreachstudio.in/contact
+- Contact Form: https://www.nextreachstudio.in/contact
 - Headquarters: Pune, Maharashtra, India (Operating Globally)
 
 ## Technology Stack

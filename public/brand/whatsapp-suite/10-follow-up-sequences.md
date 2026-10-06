@@ -24,7 +24,7 @@ Happy to jump on a quick 5-minute call or answer right here on WhatsApp! 🚀
 Hey {{Name}}! Sharing a quick reference: 🌟
 
 We just delivered a flagship platform for a Pune client in your industry that achieved a 0.3-second load speed and generated 10+ WhatsApp inquiries in its first week:
-👉 https://nextreachstudio.in/demos/saffron-and-smoke
+👉 https://www.nextreachstudio.in/demos/saffron-and-smoke
 
 We have 2 engineering sprint slots open for this week. Would you like to lock in one for {{BusinessName}}? ⚡
 ```

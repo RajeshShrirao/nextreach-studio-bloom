@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://nextreachstudio.in/sitemap-index.xml
+Sitemap: https://www.nextreachstudio.in/sitemap-index.xml
 
 User-agent: Googlebot
 Allow: /
@@ -71,4 +71,4 @@ Disallow: /
 User-agent: SemrushBot
 Disallow: /
 
-Host: https://nextreachstudio.in
+Host: https://www.nextreachstudio.in
