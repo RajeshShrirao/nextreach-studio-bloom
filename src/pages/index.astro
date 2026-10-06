@@ -6,7 +6,7 @@ import LogoMarquee from "@/components/brand/LogoMarquee.astro";
 import StudioSpecInteractive from "@/components/home/StudioSpecInteractive";
 import StudioIndustryInteractive from "@/components/home/StudioIndustryInteractive";
 import StudioReviews from "@/components/home/StudioReviews";
-import { ArrowUpRightIcon as ArrowUpRight, ArrowRightIcon as ArrowRight, PlusIcon as Plus, CheckIcon as Check, CodeIcon as Code, SparkleIcon as Sparkle, GlobeIcon as Globe } from "@phosphor-icons/react";
+import { ArrowUpRightIcon as ArrowUpRight, ArrowRightIcon as ArrowRight, ArrowDownIcon as ArrowDown, PlusIcon as Plus, CheckIcon as Check, CodeIcon as Code, SparkleIcon as Sparkle, GlobeIcon as Globe } from "@phosphor-icons/react";
 import { getImage } from "astro:assets";
 import diningPhoto from "../../public/assets/demos/saffron-and-smoke/hero-dish.jpg";
 import clinicPhoto from "../../public/assets/demos/business-clinic.jpg";
@@ -83,17 +83,30 @@ const faqs = [
     <a class="studio-skip" href="#main-content">Skip to content</a>
     <StudioNav client:load />
     <main id="main-content">
-      <section class="studio-hero studio-container" aria-labelledby="hero-title">
-        <div class="studio-hero-copy">
-          <p class="studio-eyebrow studio-hero-enter">Pune-built. India-wide. Worldwide-ready.</p>
-          <h1 id="hero-title"><span class="studio-title-line"><span class="studio-title-word">A website</span></span><span class="studio-title-line"><span class="studio-title-word">that pays</span></span><span class="studio-title-line studio-title-accent"><span class="studio-title-word">its way.</span></span><span class="studio-title-period" aria-hidden="true">*</span></h1>
-          <p class="studio-hero-description studio-hero-enter">Found by the right people. Trusted at a glance. Built by the same senior engineer you talk to — no account managers, no handovers.</p>
-          <div class="studio-hero-actions studio-hero-enter">
-            <a href="/fast-websites" class="studio-button" data-track="home_hero_fast_websites">Get my website plan <ArrowUpRight size={19} weight="bold" /></a>
-            <a href="#live-demo" class="studio-text-link" data-track="home_hero_see_work">See the work <ArrowRight size={19} /></a>
+      <section class="studio-hero" aria-labelledby="hero-title">
+        <div class="studio-hero-scrim" aria-hidden="true"></div>
+        <StudioArtwork client:load />
+        <div class="studio-hero-inner">
+          <div class="studio-hero-copy">
+            <p class="studio-eyebrow studio-hero-enter"><span class="studio-eyebrow-dot" aria-hidden="true"></span>NextReach Studio</p>
+            <h1 id="hero-title" class="studio-hero-enter"><span>Reach</span><span class="studio-hero-next">what’s next.</span></h1>
+            <p class="studio-hero-description studio-hero-enter">Websites, AI &amp; digital products built to move your business forward.</p>
+            <div class="studio-hero-actions studio-hero-enter">
+              <a href="/contact" class="studio-button" data-magnetic data-track="home_hero_start_project">Start a project <ArrowUpRight size={19} weight="bold" aria-hidden="true" /></a>
+              <a href="#live-demo" class="studio-text-link" data-magnetic data-track="home_hero_see_work">See our work <ArrowDown size={18} aria-hidden="true" /></a>
+            </div>
+            <ul class="studio-hero-index studio-hero-enter" aria-label="What we build">
+              <li>Websites</li>
+              <li>AI agents</li>
+              <li>Apps</li>
+              <li>Automations</li>
+            </ul>
+          </div>
+          <div class="studio-hero-foot studio-hero-enter" aria-hidden="true">
+            <span>Pune — working worldwide</span>
+            <span class="studio-hero-scroll">Scroll ↓</span>
           </div>
         </div>
-        <StudioArtwork client:load />
       </section>
 
       <div class="studio-proof studio-container">
@@ -271,5 +284,28 @@ const faqs = [
     if (document.documentElement.hasAttribute("data-site-loading")) {
       document.addEventListener("nextreach:page-revealed", revealContent, { once: true });
     } else revealContent();
+  </script>
+  <script>
+    // Magnetic CTA pull — desktop fine-pointer only, transform-safe via `translate`
+    // so the :hover lift and :active press scale keep composing underneath.
+    (function magneticCtas() {
+      if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      const ctas = Array.from(document.querySelectorAll<HTMLElement>("[data-magnetic]"));
+      if (!ctas.length) return;
+      const strength = 6;
+      ctas.forEach((cta) => {
+        cta.addEventListener("pointermove", (event: PointerEvent) => {
+          const rect = cta.getBoundingClientRect();
+          const dx = event.clientX - (rect.left + rect.width / 2);
+          const dy = event.clientY - (rect.top + rect.height / 2);
+          const x = Math.max(-strength, Math.min(strength, dx * 0.18));
+          const y = Math.max(-strength, Math.min(strength, dy * 0.22));
+          cta.style.setProperty("translate", `${x.toFixed(1)}px ${y.toFixed(1)}px`);
+        });
+        cta.addEventListener("pointerleave", () => { cta.style.removeProperty("translate"); });
+        cta.addEventListener("pointerdown", () => { cta.style.removeProperty("translate"); });
+      });
+    })();
   </script>
 </Layout>
