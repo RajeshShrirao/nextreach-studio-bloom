@@ -76,8 +76,10 @@ const animatedGeometry = geometry.replace(/<(polyline|line|path)\b([^>]*?)\/>/g,
       }
     })();
 
-    // If bot, crawler, Lighthouse audit, or already seen in current session -> Instant Dismissal
-    if (isBotOrAudit || hasSeenIntro) {
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+    // If bot, crawler, Lighthouse audit, mobile device, or already seen in current session -> Instant Dismissal
+    if (isBotOrAudit || hasSeenIntro || isMobile) {
       loader.remove();
       root.removeAttribute("data-site-loading");
       document.dispatchEvent(new Event("nextreach:page-revealed"));
@@ -89,8 +91,8 @@ const animatedGeometry = geometry.replace(/<(polyline|line|path)\b([^>]*?)\/>/g,
       sessionStorage.setItem("nextreach_intro_seen", "1");
     } catch {}
 
-    const minimumDuration = 1200;
-    const exitDuration = 450;
+    const minimumDuration = 350;
+    const exitDuration = 300;
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     let minimumElapsed = false;
     let resourcesReady = false;

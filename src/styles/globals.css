@@ -619,7 +619,7 @@
 .studio-footer-links { display: flex; flex-wrap: wrap; gap: 20px; font-size: 10px; }
 .studio-footer-bottom { display: flex; justify-content: space-between; gap: 20px; width: 100%; padding-top: 22px; font-size: 9px; color: var(--studio-muted); }
 @media (prefers-reduced-motion: no-preference) {
-  .studio-logo-track { animation: studio-logo-loop 34s linear infinite; }
+  .studio-logo-track { animation: studio-logo-loop 34s linear infinite; will-change: transform; }
   .studio-logo-section:is(:hover, :focus-within, .is-paused) .studio-logo-track { animation-play-state: paused; }
   @keyframes studio-logo-loop { to { transform: translateX(-50%); } }
   .studio-hero-enter { animation: studio-enter .85s cubic-bezier(.16, 1, .3, 1) both; }
@@ -628,7 +628,7 @@
   .studio-hero-actions { animation-delay: .23s; }
   .studio-hero-index { animation: studio-enter .85s .3s cubic-bezier(.16, 1, .3, 1) both; }
   .studio-hero-foot { animation: studio-enter .85s .38s cubic-bezier(.16, 1, .3, 1) both; }
-  .studio-eyebrow-dot { animation: studio-pulse 2.4s ease-in-out infinite; }
+  .studio-eyebrow-dot { animation: studio-pulse 2.4s ease-in-out infinite; will-change: transform, opacity; }
   @keyframes studio-pulse { 50% { opacity: .45; transform: scale(.8); } }
   .studio-reveal-ready { opacity: 0; transform: translateY(30px); transition: opacity .75s cubic-bezier(.16, 1, .3, 1), transform .75s cubic-bezier(.16, 1, .3, 1); }
   .studio-reveal-ready.is-visible { opacity: 1; transform: translateY(0); }

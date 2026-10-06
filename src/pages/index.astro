@@ -78,7 +78,8 @@ const faqs = [
 ];
 ---
 
-<Layout localFonts title="Websites That Pay Off, Built in Pune" description="Fixed-scope websites from ₹5,000, plus web apps and AI systems. Built in Pune by the senior engineer you actually talk to. See the work and the real prices.">
+<Layout localFonts skipLoader title="Websites That Pay Off, Built in Pune" description="Fixed-scope websites from ₹5,000, plus web apps and AI systems. Built in Pune by the senior engineer you actually talk to. See the work and the real prices.">
+  <link slot="head" rel="preload" as="image" href="/assets/carousel/hero-dish.webp" type="image/webp" fetchpriority="high" />
   <div class="studio-home" data-studio-home>
     <a class="studio-skip" href="#main-content">Skip to content</a>
     <StudioNav client:load />
@@ -152,7 +153,7 @@ const faqs = [
         </div>
       </section>
 
-      <StudioSpecInteractive client:load />
+      <StudioSpecInteractive client:visible />
 
       <section class="studio-work studio-container studio-section" id="live-demo" aria-labelledby="work-title">
         <div class="studio-section-title" data-reveal>

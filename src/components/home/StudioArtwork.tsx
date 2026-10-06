@@ -26,7 +26,7 @@ const studioProjects: ProjectItem[] = [
     title: "Saffron & Smoke",
     category: "Luxury Dining Flagship",
     badge: "₹10,000 Tier",
-    image: "/assets/demos/saffron-and-smoke/hero-dish.jpg",
+    image: "/assets/carousel/hero-dish.webp",
     href: "/demos/saffron-and-smoke",
     description: "Cinematic reservation platform & direct WhatsApp concierge for upscale dining.",
   },
@@ -35,7 +35,7 @@ const studioProjects: ProjectItem[] = [
     title: "NextReach KPI Command",
     category: "SME Admin & Operations",
     badge: "Custom Web App",
-    image: "/kpi_dashboard.png",
+    image: "/assets/carousel/kpi-dashboard.webp",
     href: "/portfolio",
     description: "Real-time KPI dashboard syncing operations data nightly from disparate APIs.",
   },
@@ -44,7 +44,7 @@ const studioProjects: ProjectItem[] = [
     title: "Oak & Elm Integrative Clinic",
     category: "Healthcare & Wellness",
     badge: "₹7,500 Tier",
-    image: "/assets/demos/business-clinic.jpg",
+    image: "/assets/carousel/business-clinic.webp",
     href: "/industries/healthcare",
     description: "Medical practice portal with practitioner directories and direct WhatsApp booking.",
   },
@@ -53,7 +53,7 @@ const studioProjects: ProjectItem[] = [
     title: "Autonomous Agent Suite",
     category: "AI Agents & Automation",
     badge: "Production AI",
-    image: "/assets/bento-ai-workflow.webp",
+    image: "/assets/carousel/bento-ai-workflow.webp",
     href: "/services/ai-agent-development-pune",
     description: "Autonomous multi-agent customer routing & back-office automation system.",
   },
@@ -62,7 +62,7 @@ const studioProjects: ProjectItem[] = [
     title: "Vayu Architectural Living",
     category: "Luxury Real Estate",
     badge: "₹10,000 Tier",
-    image: "/assets/demos/premium-vayu.jpg",
+    image: "/assets/carousel/premium-vayu.webp",
     href: "/industries/real-estate",
     description: "High-conversion architectural portfolio with 3-day turnaround and zero bloat.",
   },
@@ -71,7 +71,7 @@ const studioProjects: ProjectItem[] = [
     title: "Client Acquisition Engine",
     category: "Enterprise Lead Portal",
     badge: "Growth System",
-    image: "/lead_portal.png",
+    image: "/assets/carousel/lead-portal.webp",
     href: "/portfolio",
     description: "Multi-step quotation engine and qualification funnel converting cold visitors.",
   },
@@ -80,7 +80,7 @@ const studioProjects: ProjectItem[] = [
     title: "Alex Chen Creative Studio",
     category: "Creator Economy Flagship",
     badge: "₹5,000 Tier",
-    image: "/assets/demos/quick-launch.jpg",
+    image: "/assets/carousel/quick-launch.webp",
     href: "/fast-websites",
     description: "High-impact single-page storefront with case study drawers & WhatsApp booking.",
   },
@@ -89,7 +89,7 @@ const studioProjects: ProjectItem[] = [
     title: "Field Crew & Dispatch",
     category: "Mobile Logistics System",
     badge: "Production App",
-    image: "/scheduling_app.png",
+    image: "/assets/carousel/scheduling-app.webp",
     href: "/portfolio",
     description: "Shift scheduling calendar and dispatch logs for mobile field teams.",
   },
@@ -98,7 +98,7 @@ const studioProjects: ProjectItem[] = [
     title: "NextReach Application Core",
     category: "Modern Full-Stack Systems",
     badge: "Custom SaaS",
-    image: "/assets/bento-web-apps.webp",
+    image: "/assets/carousel/bento-web-apps.webp",
     href: "/services/web-application-development-pune",
     description: "Production web applications with edge deployment and 100% source code ownership.",
   },
@@ -107,7 +107,7 @@ const studioProjects: ProjectItem[] = [
     title: "Order & Inventory Pipeline",
     category: "Wholesale Trade Automation",
     badge: "Operations Engine",
-    image: "/inventory_workflow.png",
+    image: "/assets/carousel/inventory-workflow.webp",
     href: "/portfolio",
     description: "Automated lead-to-order workflow extracting orders and updating inventory live.",
   },
@@ -288,6 +288,12 @@ export default function StudioArtwork() {
     const stageEl = stageRef.current;
     if (!stageEl) return;
 
+    let isVisible = true;
+    const io = new IntersectionObserver(([entry]) => {
+      isVisible = entry?.isIntersecting ?? true;
+    }, { threshold: 0.05 });
+    io.observe(stageEl);
+
     const ro = new ResizeObserver(() => updateDimensions());
     ro.observe(stageEl);
 
@@ -387,6 +393,12 @@ export default function StudioArtwork() {
       const delta = Math.min((now - lastTick) / 1000, 0.05);
       lastTick = now;
 
+      // Skip frame calculations if carousel is scrolled off-screen
+      if (!isVisible) {
+        animId = requestAnimationFrame(tick);
+        return;
+      }
+
       // Smooth pointer parallax lerp
       pointerRef.current.x += (pointerRef.current.targetX - pointerRef.current.x) * 0.06;
       pointerRef.current.y += (pointerRef.current.targetY - pointerRef.current.y) * 0.06;
@@ -476,6 +488,7 @@ export default function StudioArtwork() {
 
     return () => {
       cancelAnimationFrame(animId);
+      io.disconnect();
       ro.disconnect();
       stageEl.removeEventListener("pointerdown", onPointerDown);
       window.removeEventListener("pointermove", onPointerMove);
@@ -536,7 +549,11 @@ export default function StudioArtwork() {
                   src={project.image}
                   alt={project.title}
                   className="studio-carousel-card-img"
-                  loading="eager"
+                  loading={idx === 0 ? "eager" : "lazy"}
+                  fetchPriority={idx === 0 ? "high" : "low"}
+                  decoding={idx === 0 ? "sync" : "async"}
+                  width={320}
+                  height={420}
                   draggable={false}
                 />
 

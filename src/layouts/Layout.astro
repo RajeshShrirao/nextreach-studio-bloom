@@ -322,6 +322,7 @@ const founder = {
         ...(tags.length > 0 ? { keywords: tags.join(", ") } : {}),
       })} />
     )}
+    <slot name="head" />
   </head>
   <body class="font-body text-zinc-300 antialiased min-h-screen">
     {!skipLoader && <LoadingScreen />}
