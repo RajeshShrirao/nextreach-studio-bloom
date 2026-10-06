@@ -59,6 +59,8 @@
   - Blazing-Fast Vercel Edge Cloud Hosting Setup
 - **WhatsApp Hook:** `https://wa.me/919822379976?text=Hi%20NextReach%20Studio,%20I%20want%20to%20book%20the%20Quick%20Launch%20Package%20(₹5,000)...`
 
+**Campaign entry point:** Direct WhatsApp ads should open a pre-filled WhatsApp chat. `/fast-websites` is the package reference page for organic traffic, Instagram/profile links, warm prospects, and anyone who wants to compare packages before messaging.
+
 ### 💼 Business — ₹7,500 (Most Popular)
 - **Target Audience:** Medical clinics, regional trade businesses, local enterprises, consulting practices.
 - **Turnaround:** 2–3 Day Delivery.

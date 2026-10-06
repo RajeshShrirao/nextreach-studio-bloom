@@ -1,0 +1,32 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { buildWhatsAppUrl } from "@/data/websitePackages";
+
+const whatsappUrl = buildWhatsAppUrl("Hi NextReach Studio, I just submitted the fast website recommendation form. My business is:");
+---
+
+<Layout
+  localFonts
+  noIndex
+  title="Enquiry received"
+  description="Your fast website enquiry has been received by NextReach Studio."
+  canonicalURL="https://www.nextreachstudio.in/fast-websites/thanks"
+  skipLoader
+>
+  <main class="thanks-page">
+    <div class="thanks-mark" aria-hidden="true">✓</div>
+    <p class="thanks-kicker">Message received</p>
+    <h1>We have the basics.<br /><em>Now let’s make it useful.</em></h1>
+    <p>We’ll review your details and reply with a package recommendation. For the fastest response, open WhatsApp and add your business name to the message.</p>
+    <div class="thanks-actions">
+      <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" data-track="thanks_whatsapp">Continue on WhatsApp <span aria-hidden="true">↗</span></a>
+      <a href="/fast-websites" data-track="thanks_back">Back to packages <span aria-hidden="true">↗</span></a>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .thanks-page { min-height: 100svh; display: grid; place-content: center; width: min(720px, calc(100% - 40px)); margin-inline: auto; padding-block: 70px; color: #242522; font-family: "Studio Jakarta", system-ui, sans-serif; }
+  .thanks-page h1 { margin: 22px 0; font-family: "Studio Cabinet", system-ui, sans-serif; font-size: clamp(50px, 8vw, 88px); line-height: .95; letter-spacing: -.06em; }
+  .thanks-page em { color: #97402e; font-style: normal; }.thanks-kicker { color: #97402e; font: 700 10px/1.5 "Studio Mono", ui-monospace, monospace; letter-spacing: .16em; text-transform: uppercase; }.thanks-page > p:not(.thanks-kicker) { max-width: 520px; color: #5e5f58; font-size: 14px; line-height: 1.8; }.thanks-mark { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; background: #97402e; color: #fffaf5; font-size: 25px; }.thanks-actions { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 34px; }.thanks-actions a { display: inline-flex; align-items: center; gap: 12px; min-height: 45px; padding: 12px 17px; border-bottom: 1px solid #242522; color: #242522; font-size: 11px; font-weight: 700; }.thanks-actions a:first-child { border: 0; background: #97402e; color: #fffaf5; }.thanks-actions a span { transition: transform .2s; }.thanks-actions a:hover span { transform: translate(3px, -3px); }
+</style>

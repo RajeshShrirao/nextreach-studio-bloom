@@ -15,7 +15,21 @@ const groups: Record<string, { label: string; href: string }[]> = {
     { label: "API Integration", href: "/services/api-integration-pune" },
     { label: "AI Consulting", href: "/services/ai-consulting-pune" },
   ],
-  Industries: ["Manufacturing", "Logistics", "Education", "Real Estate", "Healthcare", "Retail", "Restaurants", "Construction", "Pet Grooming"].map(label => ({ label, href: `/industries/${label.toLowerCase().replaceAll(" ", "-")}` })),
+  // Listed explicitly rather than slugified from the label: one of these pages has a
+  // slug ("saas-tech-startups-pune") that no label-to-slug rule would produce, which is
+  // how it went missing from this menu before.
+  Industries: [
+    { label: "Manufacturing", href: "/industries/manufacturing" },
+    { label: "Logistics", href: "/industries/logistics" },
+    { label: "Education", href: "/industries/education" },
+    { label: "Real Estate", href: "/industries/real-estate" },
+    { label: "Healthcare", href: "/industries/healthcare" },
+    { label: "Retail", href: "/industries/retail" },
+    { label: "Restaurants", href: "/industries/restaurants" },
+    { label: "Construction", href: "/industries/construction" },
+    { label: "SaaS & Tech Startups", href: "/industries/saas-tech-startups-pune" },
+    { label: "Pet Grooming", href: "/industries/pet-grooming" },
+  ],
   Resources: ["Blog", "Guides", "Tools", "Resources"].map(label => ({ label, href: `/${label.toLowerCase()}` })),
 };
 
@@ -104,11 +118,11 @@ export default function StudioNav() {
       <div className="studio-desktop-links">{links.map(link => groups[link.label] ? <div className="studio-nav-group" key={link.label} onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) setDropdown(null); }}>
         <button type="button" data-dropdown={link.label} aria-expanded={dropdown === link.label} aria-controls={`studio-dropdown-${link.label}`} onClick={() => setDropdown(dropdown === link.label ? null : link.label)}>{link.label}<CaretDownIcon size={11} /></button>
         <div id={`studio-dropdown-${link.label}`} className="studio-nav-dropdown" hidden={dropdown !== link.label}>{groups[link.label].map(child => <a key={child.href} href={child.href}>{child.label}<ArrowUpRight size={14} /></a>)}</div>
-      </div> : <a key={link.label} href={link.href}>{link.label}</a>)}<a href="#packages">Packages</a></div>
+      </div> : <a key={link.label} href={link.href}>{link.label}</a>)}<a href="/fast-websites">Fast websites</a></div>
       <div className="studio-nav-actions"><button className="studio-theme-toggle" type="button" onClick={toggleTheme} aria-label={dark ? "Switch to light theme" : "Switch to dark theme"}>{dark ? <Sun size={20} /> : <Moon size={20} />}</button><a href="/contact" className="studio-nav-cta">Start a project <ArrowUpRight size={18} /></a><button ref={toggleRef} className="studio-menu-toggle" type="button" onClick={() => setOpen(!open)} aria-expanded={open} aria-controls="studio-mobile-menu" aria-label={open ? "Close navigation" : "Open navigation"}>{open ? <X size={26} /> : <List size={26} />}</button></div>
     </nav>
     <div ref={menuRef} id="studio-mobile-menu" className="studio-mobile-menu" hidden={!open}>
-      {[...links, { label: "Packages", href: "#packages" }, { label: "Start a project", href: "/contact" }].map(link => groups[link.label] ? <details className="studio-mobile-group" key={link.label}><summary>{link.label}<CaretDownIcon size={20} /></summary><div>{groups[link.label].map(child => <a key={child.href} href={child.href} onClick={() => setOpen(false)}>{child.label}<ArrowUpRight size={17} /></a>)}</div></details> : <a key={link.label} href={link.href} onClick={() => setOpen(false)}>{link.label}<ArrowUpRight size={24} /></a>)}
+       {[...links, { label: "Fast websites", href: "/fast-websites" }, { label: "Start a project", href: "/contact" }].map(link => groups[link.label] ? <details className="studio-mobile-group" key={link.label}><summary>{link.label}<CaretDownIcon size={20} /></summary><div>{groups[link.label].map(child => <a key={child.href} href={child.href} onClick={() => setOpen(false)}>{child.label}<ArrowUpRight size={17} /></a>)}</div></details> : <a key={link.label} href={link.href} onClick={() => setOpen(false)}>{link.label}<ArrowUpRight size={24} /></a>)}
     </div>
   </header>;
 }

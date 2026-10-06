@@ -1,0 +1,307 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { buildWhatsAppUrl, FORM_ENDPOINT, websitePackages } from "@/data/websitePackages";
+
+const primaryWhatsAppMessage = "Hi NextReach Studio, I came from your WhatsApp ad and want a fast website for my business. Please help me choose a package.";
+const primaryWhatsAppUrl = buildWhatsAppUrl(primaryWhatsAppMessage);
+const formNextUrl = "https://www.nextreachstudio.in/fast-websites/thanks";
+const faqs = [
+  {
+    question: "Can you really launch in 1 to 3 days?",
+    answer: "Yes. These are fixed-scope sprints. Your delivery clock starts once the package, content and first payment are confirmed. We share a staging preview before the live launch.",
+  },
+  {
+    question: "What do I need to provide?",
+    answer: "Send your logo, business details, services, contact numbers, photos and domain access if you have them. If something is missing, we will tell you exactly what to send next.",
+  },
+  {
+    question: "Do I own the website after launch?",
+    answer: "Yes. You receive the source code, design assets and deployment handover. Your domain and website belong to your business.",
+  },
+  {
+    question: "How does payment work?",
+    answer: "A 50% booking payment locks the sprint. The remaining 50% is due after the approved website is ready to launch. We send the exact scope before you pay.",
+  },
+  {
+    question: "Can the website send enquiries to WhatsApp?",
+    answer: "Yes. Every package can include click-to-WhatsApp and click-to-call actions. The Business and Premium packages can also include enquiry sections and booking flows.",
+  },
+];
+---
+
+<Layout
+  localFonts
+  title="Fast Website Packages from ₹5,000"
+  description="Launch a professional, mobile-first business website in 1 to 3 days. Fixed-scope packages from ₹5,000 with WhatsApp enquiry routing and full ownership."
+  canonicalURL="https://www.nextreachstudio.in/fast-websites"
+  skipLoader
+>
+  <div class="cashflow-page" data-cashflow-page>
+    <header class="cashflow-header">
+      <a href="/" class="cashflow-brand" aria-label="NextReach Studio home">
+        <img src="/brand/logo-mark.png" alt="" width="28" height="35" />
+        <span>NextReach <b>Studio</b></span>
+      </a>
+      <div class="cashflow-header-meta">
+        <span>Fast website sprints</span>
+        <a href={primaryWhatsAppUrl} target="_blank" rel="noopener noreferrer" data-track="header_whatsapp" data-whatsapp-cta>WhatsApp us <span aria-hidden="true">↗</span></a>
+      </div>
+    </header>
+
+    <main>
+      <section class="cashflow-hero cashflow-container">
+        <div class="cashflow-hero-copy">
+          <p class="cashflow-kicker">For local businesses ready to look credible online</p>
+          <h1>Your business website, live in <em>1–3 days.</em></h1>
+          <p class="cashflow-hero-lede">Choose a fixed package, send your details on WhatsApp, and get a sharp, mobile-first website that gives customers one clear way to contact you.</p>
+          <div class="cashflow-actions">
+            <a href={primaryWhatsAppUrl} target="_blank" rel="noopener noreferrer" class="cashflow-button cashflow-button-primary" data-track="hero_whatsapp" data-whatsapp-cta>Get my package recommendation <span aria-hidden="true">↗</span></a>
+            <a href="#packages" class="cashflow-button cashflow-button-quiet" data-track="hero_packages">See packages <span aria-hidden="true">↓</span></a>
+          </div>
+          <div class="cashflow-proof-row" aria-label="Offer highlights">
+            <span><b>₹5,000+</b> fixed price</span>
+            <span><b>1–3 days</b> delivery</span>
+            <span><b>50%</b> to book</span>
+            <span><b>100%</b> ownership</span>
+          </div>
+        </div>
+
+        <div class="cashflow-hero-visual" aria-label="A sample website sprint brief">
+          <div class="cashflow-brief-window">
+            <div class="cashflow-window-bar"><span></span><span></span><span></span><small>nextreach / sprint brief</small></div>
+            <div class="cashflow-brief-body">
+              <div class="cashflow-brief-label">YOUR NEW WEBSITE</div>
+              <div class="cashflow-brief-title">Make it easy<br /><strong>to choose you.</strong></div>
+              <div class="cashflow-brief-lines"><span></span><span></span><span></span></div>
+              <div class="cashflow-brief-cta"><span>Chat on WhatsApp</span><b>↗</b></div>
+            </div>
+            <div class="cashflow-brief-footer"><span>scope locked</span><span>preview → launch</span></div>
+          </div>
+          <div class="cashflow-sticker cashflow-sticker-one">Built for<br /><strong>enquiries</strong></div>
+          <div class="cashflow-sticker cashflow-sticker-two">01–03<br /><strong>days</strong></div>
+        </div>
+      </section>
+
+      <section class="cashflow-reassurance">
+        <div class="cashflow-container cashflow-reassurance-grid">
+          <div><span class="cashflow-reassurance-number">01</span><div><strong>Clear scope before payment</strong><p>No mystery quote. You know what is included and when it will be ready.</p></div></div>
+          <div><span class="cashflow-reassurance-number">02</span><div><strong>Direct WhatsApp communication</strong><p>One direct line to the engineer building your website.</p></div></div>
+          <div><span class="cashflow-reassurance-number">03</span><div><strong>A useful website, not a brochure</strong><p>Every page points visitors toward a call, message, booking or enquiry.</p></div></div>
+        </div>
+      </section>
+
+      <section class="cashflow-section cashflow-container" id="packages" aria-labelledby="packages-heading">
+        <div class="cashflow-section-heading">
+          <div><p class="cashflow-kicker">Pick the sprint that fits</p><h2 id="packages-heading">Small starting point.<br /><em>Real business value.</em></h2></div>
+          <p>All packages are built from scratch, optimized for phones, and handed over to you after launch.</p>
+        </div>
+        <div class="cashflow-package-grid">
+          {websitePackages.map((pkg, index) => (
+            <article class={`cashflow-package ${index === 1 ? "cashflow-package-featured" : ""}`}>
+              <div class="cashflow-package-top"><span>{pkg.badge}</span><small>{pkg.deliveryTime}</small></div>
+              <h3>{pkg.name}</h3>
+              <p class="cashflow-package-tagline">{pkg.tagline}</p>
+              <div class="cashflow-price"><strong>{pkg.priceLabel}</strong><span>one time</span></div>
+              <p class="cashflow-package-ideal"><b>Good for</b>{pkg.idealFor}</p>
+              <ul>{pkg.features.map((feature) => <li><span aria-hidden="true">✓</span>{feature}</li>)}</ul>
+              <div class="cashflow-package-actions">
+                <a href={buildWhatsAppUrl(pkg.whatsappMessage)} target="_blank" rel="noopener noreferrer" class="cashflow-button cashflow-button-primary" data-track={`package_${pkg.id}`} data-package={pkg.id} data-whatsapp-cta>Ask about {pkg.name} <span aria-hidden="true">↗</span></a>
+                <a href={pkg.demoUrl} class="cashflow-package-link" data-track={`demo_${pkg.id}`}>{pkg.demoLabel} <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
+          ))}
+        </div>
+        <p class="cashflow-under-packages">Need a custom booking system, web app or automation? <a href="/contact">Tell us what comes next <span aria-hidden="true">↗</span></a></p>
+      </section>
+
+      <section class="cashflow-proof-section">
+        <div class="cashflow-container">
+          <div class="cashflow-section-heading cashflow-proof-heading">
+            <div><p class="cashflow-kicker">Built to be seen and used</p><h2>Give customers<br /><em>a reason to reply.</em></h2></div>
+            <a href="/portfolio" class="cashflow-text-link" data-track="proof_portfolio">See the full portfolio <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="cashflow-proof-cards">
+            <a href="/portfolio" class="cashflow-proof-card cashflow-proof-card-profile" data-track="proof_quick_launch">
+              <div class="cashflow-proof-image"><img src="/assets/demo-profile.jpg" alt="Single-page creative professional website example" loading="lazy" width="720" height="540" /><span>Quick Launch</span></div>
+              <div><h3>A clear first impression.</h3><p>One focused page for a consultant, freelancer or single-service business.</p></div>
+            </a>
+            <a href="/portfolio" class="cashflow-proof-card cashflow-proof-card-clinic" data-track="proof_business">
+              <div class="cashflow-proof-image"><img src="/assets/demo-clinic.jpg" alt="Business website example for a clinic" loading="lazy" width="720" height="540" /><span>Business</span></div>
+              <div><h3>Trust before the first call.</h3><p>Services, proof and enquiry routes arranged for a local business.</p></div>
+            </a>
+            <a href="/demos/saffron-and-smoke" class="cashflow-proof-card cashflow-proof-card-restaurant" data-track="proof_premium">
+              <div class="cashflow-proof-image"><img src="/assets/demos/saffron-and-smoke/hero-dish.jpg" alt="Restaurant website example for the Premium Flagship package" loading="lazy" width="720" height="540" /><span>Premium Flagship</span></div>
+              <div><h3>Make the brand memorable.</h3><p>A richer visual experience for hospitality and premium businesses.</p></div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="cashflow-section cashflow-container" id="how-it-works" aria-labelledby="process-heading">
+        <div class="cashflow-section-heading"><div><p class="cashflow-kicker">No complicated agency process</p><h2 id="process-heading">From “hello”<br /><em>to live link.</em></h2></div><p>WhatsApp is the front door. The rest is a short, visible sprint with clear handoffs.</p></div>
+        <div class="cashflow-process-grid">
+          <div class="cashflow-process-step"><span>01</span><h3>Choose your direction</h3><p>Message us with your business type, the package you are considering and your target launch date.</p></div>
+          <div class="cashflow-process-step"><span>02</span><h3>Confirm the scope</h3><p>We reply with the recommended package, exact deliverables, timeline and the 50% booking amount.</p></div>
+          <div class="cashflow-process-step"><span>03</span><h3>Send the essentials</h3><p>Share your logo, services, contact details, photos and domain information. We start the sprint.</p></div>
+          <div class="cashflow-process-step"><span>04</span><h3>Review and launch</h3><p>You review a staging link, we make the agreed refinements, then launch and hand over the site.</p></div>
+        </div>
+      </section>
+
+      <section class="cashflow-lead-section" id="recommendation" aria-labelledby="recommendation-heading">
+        <div class="cashflow-container cashflow-lead-grid">
+          <div>
+            <p class="cashflow-kicker">Prefer a form?</p>
+            <h2 id="recommendation-heading">Tell us a little.<br /><em>We’ll point you right.</em></h2>
+            <p>Leave the basics and we’ll reply with a package recommendation. If you want the fastest response, use WhatsApp instead.</p>
+            <a href={primaryWhatsAppUrl} target="_blank" rel="noopener noreferrer" class="cashflow-text-link" data-track="form_side_whatsapp" data-whatsapp-cta>Message us directly <span aria-hidden="true">↗</span></a>
+          </div>
+          <form action={FORM_ENDPOINT} method="POST" class="cashflow-form" data-lead-form>
+            <input type="hidden" name="_subject" value="New fast website lead from campaign page" />
+            <input type="hidden" name="_next" value={formNextUrl} />
+            <input type="hidden" name="source_page" value="/fast-websites" />
+            <input type="hidden" name="utm_source" data-campaign-field="utm_source" />
+            <input type="hidden" name="utm_medium" data-campaign-field="utm_medium" />
+            <input type="hidden" name="utm_campaign" data-campaign-field="utm_campaign" />
+            <input type="hidden" name="utm_content" data-campaign-field="utm_content" />
+            <input type="hidden" name="landing_session" data-campaign-field="landing_session" />
+            <div class="cashflow-form-row"><label>Name<input type="text" name="name" required autocomplete="name" placeholder="Your name" /></label><label>Business<input type="text" name="business" required autocomplete="organization" placeholder="Business name" /></label></div>
+            <div class="cashflow-form-row"><label>WhatsApp number<input type="tel" name="whatsapp" required autocomplete="tel" placeholder="+91 ..." /></label><label>Business type<input type="text" name="business_type" required placeholder="Clinic, salon, contractor..." /></label></div>
+            <label>Which package sounds closest?<select name="package_interest" required><option value="" disabled selected>Choose one</option>{websitePackages.map((pkg) => <option value={pkg.id}>{pkg.name} — {pkg.priceLabel}</option>)}<option value="not-sure">I’m not sure yet</option></select></label>
+            <label>What do you want the website to help with?<textarea name="goal" rows={3} required placeholder="More calls, WhatsApp enquiries, bookings, credibility..."></textarea></label>
+            <button type="submit" class="cashflow-button cashflow-button-primary" data-track="recommendation_form_submit">Get my recommendation <span aria-hidden="true">↗</span></button>
+            <p class="cashflow-form-note">We use these details only to respond to your enquiry. No newsletter.</p>
+          </form>
+        </div>
+      </section>
+
+      <section class="cashflow-section cashflow-container cashflow-faq-section" aria-labelledby="faq-heading">
+        <div class="cashflow-section-heading"><div><p class="cashflow-kicker">Before you message</p><h2 id="faq-heading">Good questions.<br /><em>Straight answers.</em></h2></div></div>
+        <div class="cashflow-faq-list">{faqs.map((faq) => <details><summary>{faq.question}<span aria-hidden="true">+</span></summary><p>{faq.answer}</p></details>)}</div>
+      </section>
+
+      <section class="cashflow-final-cta">
+        <div class="cashflow-container cashflow-final-inner">
+          <div><p class="cashflow-kicker">Ready when you are</p><h2>Make it easier<br /><em>to choose you.</em></h2></div>
+          <a href={primaryWhatsAppUrl} target="_blank" rel="noopener noreferrer" class="cashflow-button cashflow-button-light" data-track="final_whatsapp" data-whatsapp-cta>Start on WhatsApp <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="cashflow-footer cashflow-container"><a href="/" class="cashflow-brand"><img src="/brand/logo-mark.png" alt="" width="24" height="30" /> <span>NextReach <b>Studio</b></span></a><span>Fast websites for businesses in Pune and beyond.</span><a href="/privacy">Privacy</a></footer>
+    <div class="cashflow-mobile-cta"><a href={primaryWhatsAppUrl} target="_blank" rel="noopener noreferrer" data-track="mobile_sticky_whatsapp" data-whatsapp-cta>Get a package recommendation on WhatsApp <span aria-hidden="true">↗</span></a></div>
+  </div>
+
+  <script is:inline>
+    const campaignKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_content"];
+    const campaignStorageKey = "nextreach-fast-website-campaign";
+    const landingSessionKey = "nextreach-fast-website-session";
+
+    function getCampaignData() {
+      const url = new URL(window.location.href);
+      const current = Object.fromEntries(campaignKeys.filter((key) => url.searchParams.get(key)).map((key) => [key, url.searchParams.get(key)]));
+      let stored = {};
+      try { stored = JSON.parse(sessionStorage.getItem(campaignStorageKey) || "{}"); } catch { /* Continue without stored attribution. */ }
+      const merged = { ...stored, ...current };
+      if (Object.keys(current).length) {
+        try { sessionStorage.setItem(campaignStorageKey, JSON.stringify(merged)); } catch { /* Attribution is best effort. */ }
+      }
+      return merged;
+    }
+
+    const campaignData = getCampaignData();
+    let landingSession = "";
+    try {
+      landingSession = sessionStorage.getItem(landingSessionKey) || crypto.randomUUID();
+      sessionStorage.setItem(landingSessionKey, landingSession);
+    } catch { landingSession = "browser-session"; }
+
+    document.querySelectorAll("[data-campaign-field]").forEach((field) => {
+      const key = field.getAttribute("data-campaign-field");
+      if (!key || !(field instanceof HTMLInputElement)) return;
+      field.value = key === "landing_session" ? landingSession : campaignData[key] || "direct";
+    });
+
+    document.querySelectorAll("[data-lead-form]").forEach((form) => form.addEventListener("submit", () => {
+      window.gtag?.("event", "lead_form_submitted", { form_name: "fast_website_recommendation", source: campaignData.utm_source || "direct" });
+    }));
+  </script>
+
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Fast Website Launch Packages",
+    "provider": { "@type": "Organization", "name": "NextReach Studio", "url": "https://www.nextreachstudio.in" },
+    "areaServed": ["Pune", "Pimpri-Chinchwad", "Maharashtra", "India"],
+    "offers": websitePackages.map((pkg) => ({ "@type": "Offer", "name": pkg.name, "price": pkg.price, "priceCurrency": "INR", "url": "https://www.nextreachstudio.in/fast-websites" })),
+  })} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map((faq) => ({ "@type": "Question", "name": faq.question, "acceptedAnswer": { "@type": "Answer", "text": faq.answer } })),
+  })} />
+</Layout>
+
+<style>
+  .cashflow-page { --cf-ink: #242522; --cf-muted: #5e5f58; --cf-line: #d8d8ce; --cf-bg: #f7f6f2; --cf-surface: #eeede8; --cf-accent: #97402e; --cf-accent-dark: #713022; --cf-light: #fffaf5; background: var(--cf-bg); color: var(--cf-ink); min-height: 100vh; font-family: "Studio Jakarta", system-ui, sans-serif; }
+  .cashflow-page h1, .cashflow-page h2, .cashflow-page h3 { font-family: "Studio Cabinet", system-ui, sans-serif; letter-spacing: -.055em; }
+  .cashflow-page a, .cashflow-page button, .cashflow-page summary { -webkit-tap-highlight-color: transparent; }
+  .cashflow-container { width: min(1180px, calc(100% - 48px)); margin-inline: auto; }
+  .cashflow-header { width: min(1180px, calc(100% - 48px)); min-height: 76px; margin-inline: auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; border-bottom: 1px solid var(--cf-line); }
+  .cashflow-brand { display: inline-flex; align-items: center; gap: 10px; color: var(--cf-ink); font-family: "Studio Cabinet", system-ui, sans-serif; font-size: 20px; font-weight: 700; letter-spacing: -.03em; white-space: nowrap; }
+  .cashflow-brand img { object-fit: contain; }
+  .cashflow-brand b { color: var(--cf-accent); }
+  .cashflow-header-meta { display: flex; align-items: center; gap: 24px; color: var(--cf-muted); font-size: 11px; }
+  .cashflow-header-meta a { color: var(--cf-accent); font-weight: 700; }
+  .cashflow-header-meta a span, .cashflow-text-link span { transition: transform .25s; display: inline-block; }
+  .cashflow-header-meta a:hover span, .cashflow-text-link:hover span { transform: translate(3px, -3px); }
+  .cashflow-hero { display: grid; grid-template-columns: minmax(0, 1.02fr) minmax(380px, .98fr); align-items: center; gap: 76px; padding-block: 86px 92px; }
+  .cashflow-kicker { color: var(--cf-accent); font-family: "Studio Mono", ui-monospace, monospace; font-size: 10px; font-weight: 700; letter-spacing: .16em; line-height: 1.5; text-transform: uppercase; }
+  .cashflow-hero h1 { max-width: 650px; margin: 24px 0 25px; font-size: clamp(52px, 7vw, 94px); font-weight: 700; line-height: .94; }
+  .cashflow-page em { color: var(--cf-accent); font-style: normal; }
+  .cashflow-hero-lede { max-width: 520px; color: var(--cf-muted); font-size: 16px; line-height: 1.85; }
+  .cashflow-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 31px; }
+  .cashflow-button { display: inline-flex; align-items: center; justify-content: center; gap: 22px; min-height: 50px; padding: 13px 20px; border: 1px solid transparent; font-size: 12px; font-weight: 700; line-height: 1.2; text-align: center; transition: transform .25s, background .25s, color .25s, border-color .25s; }
+  .cashflow-button:hover { transform: translateY(-3px); }
+  .cashflow-button-primary { background: var(--cf-accent); color: var(--cf-light); }
+  .cashflow-button-primary:hover { background: var(--cf-accent-dark); }
+  .cashflow-button-quiet { border-color: var(--cf-line); color: var(--cf-ink); }
+  .cashflow-button-quiet:hover { border-color: var(--cf-ink); background: var(--cf-surface); }
+  .cashflow-button-light { background: var(--cf-light); color: var(--cf-accent-dark); }
+  .cashflow-proof-row { display: flex; flex-wrap: wrap; gap: 10px 24px; margin-top: 36px; color: var(--cf-muted); font-family: "Studio Mono", ui-monospace, monospace; font-size: 9px; line-height: 1.5; text-transform: uppercase; }
+  .cashflow-proof-row span { position: relative; }
+  .cashflow-proof-row span:not(:last-child)::after { content: ""; position: absolute; top: 50%; right: -14px; width: 3px; height: 3px; border-radius: 50%; background: var(--cf-accent); }
+  .cashflow-proof-row b { color: var(--cf-ink); }
+  .cashflow-hero-visual { position: relative; min-height: 485px; display: grid; place-items: center; }
+  .cashflow-hero-visual::before { content: ""; position: absolute; width: 78%; aspect-ratio: 1; border: 1px solid var(--cf-line); border-radius: 50%; transform: rotate(-20deg) scaleY(.68); }
+  .cashflow-brief-window { position: relative; z-index: 1; width: min(100%, 420px); background: var(--cf-light); border: 1px solid var(--cf-ink); box-shadow: 18px 22px 0 var(--cf-accent); transform: rotate(3deg); }
+  .cashflow-window-bar { display: flex; align-items: center; gap: 5px; padding: 13px 15px; border-bottom: 1px solid var(--cf-line); color: var(--cf-muted); font-family: "Studio Mono", ui-monospace, monospace; font-size: 8px; }
+  .cashflow-window-bar span { width: 6px; height: 6px; border: 1px solid var(--cf-muted); border-radius: 50%; }
+  .cashflow-window-bar small { margin-left: auto; font-size: 8px; letter-spacing: .04em; }
+  .cashflow-brief-body { padding: 48px 42px 45px; background: linear-gradient(135deg, var(--cf-light), #e5e3da); }
+  .cashflow-brief-label { color: var(--cf-accent); font-family: "Studio Mono", ui-monospace, monospace; font-size: 9px; letter-spacing: .16em; }
+  .cashflow-brief-title { margin-top: 19px; font-family: "Studio Cabinet", system-ui, sans-serif; font-size: clamp(38px, 5vw, 60px); font-weight: 500; letter-spacing: -.065em; line-height: .91; }
+  .cashflow-brief-title strong { color: var(--cf-accent); font-weight: 700; }
+  .cashflow-brief-lines { display: grid; gap: 8px; margin-top: 35px; }
+  .cashflow-brief-lines span { display: block; width: 80%; height: 5px; background: #c7c7bd; }
+  .cashflow-brief-lines span:nth-child(2) { width: 65%; }.cashflow-brief-lines span:nth-child(3) { width: 44%; }
+  .cashflow-brief-cta { display: flex; align-items: center; justify-content: space-between; width: 185px; margin-top: 39px; padding: 13px 15px; background: var(--cf-accent); color: var(--cf-light); font-size: 10px; font-weight: 700; }
+  .cashflow-brief-footer { display: flex; justify-content: space-between; padding: 13px 15px; border-top: 1px solid var(--cf-line); color: var(--cf-muted); font-family: "Studio Mono", ui-monospace, monospace; font-size: 8px; text-transform: uppercase; }
+  .cashflow-sticker { position: absolute; z-index: 2; padding: 13px 16px; background: var(--cf-ink); color: var(--cf-light); font-family: "Studio Mono", ui-monospace, monospace; font-size: 10px; line-height: 1.4; text-transform: uppercase; transform: rotate(-8deg); }
+  .cashflow-sticker strong { color: #e9a48e; font-size: 14px; }.cashflow-sticker-one { left: 0; bottom: 41px; }.cashflow-sticker-two { right: 3px; top: 31px; background: var(--cf-accent); transform: rotate(8deg); }
+  .cashflow-reassurance { background: var(--cf-ink); color: var(--cf-light); }
+  .cashflow-reassurance-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+  .cashflow-reassurance-grid > div { display: flex; gap: 18px; padding: 31px 28px 31px 0; border-right: 1px solid #4b4c47; }
+  .cashflow-reassurance-grid > div + div { padding-left: 28px; }.cashflow-reassurance-grid > div:last-child { border-right: 0; }
+  .cashflow-reassurance-number { color: #e9a48e; font-family: "Studio Mono", ui-monospace, monospace; font-size: 10px; }.cashflow-reassurance strong { display: block; font-family: "Studio Cabinet", system-ui, sans-serif; font-size: 17px; letter-spacing: -.03em; }.cashflow-reassurance p { max-width: 250px; margin-top: 8px; color: #b9b9ae; font-size: 11px; line-height: 1.7; }
+  .cashflow-section { padding-block: 118px; }.cashflow-section-heading { display: flex; align-items: end; justify-content: space-between; gap: 36px; margin-bottom: 51px; }.cashflow-section-heading h2, .cashflow-lead-section h2, .cashflow-final-cta h2 { margin-top: 19px; font-size: clamp(42px, 5.5vw, 72px); font-weight: 700; line-height: .98; }.cashflow-section-heading > p { max-width: 295px; color: var(--cf-muted); font-size: 12px; line-height: 1.8; }
+  .cashflow-package-grid { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--cf-line); }.cashflow-package { display: flex; flex-direction: column; min-width: 0; padding: 28px; border-right: 1px solid var(--cf-line); }.cashflow-package:last-child { border-right: 0; }.cashflow-package-featured { background: var(--cf-surface); }.cashflow-package-top { display: flex; align-items: start; justify-content: space-between; gap: 10px; min-height: 35px; color: var(--cf-accent); font-family: "Studio Mono", ui-monospace, monospace; font-size: 9px; font-weight: 700; line-height: 1.4; text-transform: uppercase; }.cashflow-package-top small { color: var(--cf-muted); font-size: 8px; font-weight: 400; white-space: nowrap; }.cashflow-package h3 { margin-top: 35px; font-size: 31px; }.cashflow-package-tagline { min-height: 66px; margin-top: 13px; color: var(--cf-muted); font-size: 12px; line-height: 1.7; }.cashflow-price { display: flex; align-items: baseline; gap: 9px; padding-block: 23px; border-block: 1px solid var(--cf-line); }.cashflow-price strong { font-family: "Studio Cabinet", system-ui, sans-serif; font-size: 43px; letter-spacing: -.06em; }.cashflow-price span { color: var(--cf-muted); font-family: "Studio Mono", ui-monospace, monospace; font-size: 8px; text-transform: uppercase; }.cashflow-package-ideal { min-height: 65px; margin-top: 20px; color: var(--cf-muted); font-size: 11px; line-height: 1.6; }.cashflow-package-ideal b { display: block; margin-bottom: 4px; color: var(--cf-ink); font-family: "Studio Mono", ui-monospace, monospace; font-size: 8px; letter-spacing: .1em; text-transform: uppercase; }.cashflow-package ul { display: grid; gap: 11px; margin: 22px 0 30px; color: var(--cf-muted); font-size: 11px; line-height: 1.55; }.cashflow-package li { display: flex; align-items: start; gap: 9px; }.cashflow-package li span { color: var(--cf-accent); font-weight: 700; }.cashflow-package-actions { margin-top: auto; }.cashflow-package-actions .cashflow-button { width: 100%; }.cashflow-package-link { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 42px; margin-top: 10px; color: var(--cf-muted); font-family: "Studio Mono", ui-monospace, monospace; font-size: 9px; }.cashflow-package-link:hover { color: var(--cf-accent); }.cashflow-under-packages { margin-top: 24px; color: var(--cf-muted); font-size: 11px; }.cashflow-under-packages a { color: var(--cf-accent); font-weight: 700; }
+  .cashflow-proof-section { padding-block: 110px 120px; background: var(--cf-surface); }.cashflow-proof-heading { margin-bottom: 46px; }.cashflow-text-link { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; border-bottom: 1px solid var(--cf-ink); color: var(--cf-ink); font-size: 11px; font-weight: 700; }.cashflow-proof-cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 22px; }.cashflow-proof-card { color: var(--cf-ink); }.cashflow-proof-image { position: relative; overflow: hidden; aspect-ratio: 1.17; background: #d4d2c9; }.cashflow-proof-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.16, 1, .3, 1); }.cashflow-proof-card:hover img { transform: scale(1.05); }.cashflow-proof-image span { position: absolute; top: 14px; left: 14px; padding: 7px 9px; background: var(--cf-light); color: var(--cf-accent); font-family: "Studio Mono", ui-monospace, monospace; font-size: 8px; font-weight: 700; text-transform: uppercase; }.cashflow-proof-card > div:last-child { padding-top: 19px; }.cashflow-proof-card h3 { font-size: 25px; }.cashflow-proof-card p { margin-top: 8px; color: var(--cf-muted); font-size: 11px; line-height: 1.65; }
+  .cashflow-process-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--cf-line); }.cashflow-process-step { min-height: 250px; padding: 25px 23px 23px 0; border-right: 1px solid var(--cf-line); }.cashflow-process-step + .cashflow-process-step { padding-left: 23px; }.cashflow-process-step:last-child { border-right: 0; }.cashflow-process-step > span { color: var(--cf-accent); font-family: "Studio Mono", ui-monospace, monospace; font-size: 11px; }.cashflow-process-step h3 { margin-top: 54px; font-size: 22px; }.cashflow-process-step p { margin-top: 13px; color: var(--cf-muted); font-size: 11px; line-height: 1.75; }
+  .cashflow-lead-section { padding-block: 112px; background: var(--cf-ink); color: var(--cf-light); }.cashflow-lead-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 90px; align-items: start; }.cashflow-lead-section h2 { color: var(--cf-light); }.cashflow-lead-section > .cashflow-container > div:first-child > p:not(.cashflow-kicker) { max-width: 365px; margin-top: 24px; color: #b9b9ae; font-size: 13px; line-height: 1.85; }.cashflow-lead-section .cashflow-text-link { margin-top: 23px; border-color: #8d8e87; color: var(--cf-light); }.cashflow-form { padding: 31px; background: var(--cf-light); color: var(--cf-ink); }.cashflow-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }.cashflow-form label { display: grid; gap: 7px; margin-bottom: 16px; color: var(--cf-muted); font-family: "Studio Mono", ui-monospace, monospace; font-size: 9px; text-transform: uppercase; }.cashflow-form input, .cashflow-form select, .cashflow-form textarea { width: 100%; min-height: 45px; padding: 11px 12px; border: 1px solid var(--cf-line); border-radius: 0; background: white; color: var(--cf-ink); font: 12px "Studio Jakarta", system-ui, sans-serif; text-transform: none; outline: none; }.cashflow-form textarea { min-height: 87px; resize: vertical; }.cashflow-form :is(input, select, textarea):focus { border-color: var(--cf-accent); box-shadow: 0 0 0 2px #97402e22; }.cashflow-form .cashflow-button { width: 100%; margin-top: 3px; border: 0; cursor: pointer; }.cashflow-form-note { margin-top: 13px; color: var(--cf-muted); font-size: 9px; line-height: 1.5; text-align: center; }
+  .cashflow-faq-section { padding-bottom: 135px; }.cashflow-faq-list { border-top: 1px solid var(--cf-line); }.cashflow-faq-list details { border-bottom: 1px solid var(--cf-line); }.cashflow-faq-list summary { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 68px; cursor: pointer; list-style: none; font-family: "Studio Cabinet", system-ui, sans-serif; font-size: 21px; font-weight: 600; }.cashflow-faq-list summary::-webkit-details-marker { display: none; }.cashflow-faq-list summary span { color: var(--cf-accent); font-family: "Studio Mono", ui-monospace, monospace; font-size: 20px; font-weight: 400; }.cashflow-faq-list details[open] summary span { transform: rotate(45deg); }.cashflow-faq-list details p { max-width: 680px; padding: 0 50px 23px 0; color: var(--cf-muted); font-size: 12px; line-height: 1.8; }
+  .cashflow-final-cta { padding-block: 85px; background: var(--cf-accent); color: var(--cf-light); }.cashflow-final-inner { display: flex; align-items: center; justify-content: space-between; gap: 30px; }.cashflow-final-cta .cashflow-kicker { color: #f4c5b4; }.cashflow-final-cta h2 { margin-top: 16px; }.cashflow-footer { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 85px; color: var(--cf-muted); font-family: "Studio Mono", ui-monospace, monospace; font-size: 9px; }.cashflow-footer .cashflow-brand { font-size: 16px; }.cashflow-footer > a:last-child:hover { color: var(--cf-accent); }
+  .cashflow-mobile-cta { display: none; }
+  @media (max-width: 900px) { .cashflow-hero { grid-template-columns: 1fr; gap: 40px; padding-block: 62px 78px; }.cashflow-hero-visual { min-height: 400px; max-width: 600px; }.cashflow-package-grid { grid-template-columns: 1fr; }.cashflow-package { border-right: 0; border-bottom: 1px solid var(--cf-line); }.cashflow-package:last-child { border-bottom: 0; }.cashflow-package-tagline, .cashflow-package-ideal { min-height: auto; }.cashflow-proof-cards { grid-template-columns: 1fr 1fr; }.cashflow-proof-card:last-child { grid-column: 1 / -1; max-width: calc(50% - 11px); }.cashflow-process-grid { grid-template-columns: 1fr 1fr; }.cashflow-process-step:nth-child(2) { border-right: 0; }.cashflow-process-step:nth-child(-n+2) { border-bottom: 1px solid var(--cf-line); }.cashflow-process-step:nth-child(3) { padding-left: 0; }.cashflow-process-step:nth-child(4) { border-right: 0; }.cashflow-lead-grid { grid-template-columns: 1fr; gap: 45px; } }
+  @media (max-width: 620px) { .cashflow-container, .cashflow-header { width: min(100% - 32px, 1180px); }.cashflow-header { min-height: 68px; }.cashflow-header-meta > span { display: none; }.cashflow-header-meta { gap: 0; }.cashflow-hero h1 { font-size: clamp(48px, 15vw, 76px); }.cashflow-hero-lede { font-size: 14px; }.cashflow-actions { align-items: stretch; flex-direction: column; }.cashflow-actions .cashflow-button { width: 100%; }.cashflow-proof-row { gap: 9px 19px; }.cashflow-proof-row span:not(:last-child)::after { right: -11px; }.cashflow-hero-visual { min-height: 335px; }.cashflow-brief-window { width: 84%; box-shadow: 11px 14px 0 var(--cf-accent); }.cashflow-brief-body { padding: 34px 27px 30px; }.cashflow-brief-title { font-size: 42px; }.cashflow-sticker { font-size: 8px; padding: 9px 11px; }.cashflow-sticker strong { font-size: 11px; }.cashflow-sticker-one { left: -3px; bottom: 13px; }.cashflow-sticker-two { right: -1px; top: 4px; }.cashflow-reassurance-grid { grid-template-columns: 1fr; }.cashflow-reassurance-grid > div, .cashflow-reassurance-grid > div + div { padding: 23px 0; border-right: 0; border-bottom: 1px solid #4b4c47; }.cashflow-reassurance-grid > div:last-child { border-bottom: 0; }.cashflow-section { padding-block: 78px; }.cashflow-section-heading { display: block; margin-bottom: 34px; }.cashflow-section-heading > p { margin-top: 20px; }.cashflow-section-heading h2, .cashflow-lead-section h2, .cashflow-final-cta h2 { font-size: 46px; }.cashflow-package { padding: 24px 20px; }.cashflow-price strong { font-size: 39px; }.cashflow-proof-section { padding-block: 78px; }.cashflow-proof-cards { grid-template-columns: 1fr; }.cashflow-proof-card:last-child { grid-column: auto; max-width: none; }.cashflow-process-grid { grid-template-columns: 1fr; }.cashflow-process-step, .cashflow-process-step + .cashflow-process-step, .cashflow-process-step:nth-child(3) { min-height: auto; padding: 23px 0; border-right: 0; border-bottom: 1px solid var(--cf-line); }.cashflow-process-step:last-child { border-bottom: 0; }.cashflow-process-step h3 { margin-top: 26px; }.cashflow-lead-section { padding-block: 78px; }.cashflow-form { padding: 22px 18px; }.cashflow-form-row { grid-template-columns: 1fr; gap: 0; }.cashflow-faq-section { padding-bottom: 85px; }.cashflow-faq-list summary { min-height: 63px; font-size: 17px; }.cashflow-faq-list details p { padding-right: 25px; }.cashflow-final-cta { padding-block: 66px; }.cashflow-final-inner { display: block; }.cashflow-final-inner .cashflow-button { width: 100%; margin-top: 30px; }.cashflow-footer { flex-wrap: wrap; padding-block: 24px 84px; }.cashflow-footer > span { width: 100%; order: 3; }.cashflow-mobile-cta { position: fixed; right: 12px; bottom: 12px; left: 12px; z-index: 10; display: block; padding: 5px; background: var(--cf-ink); box-shadow: 0 8px 30px rgba(36,37,34,.2); }.cashflow-mobile-cta a { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 45px; padding: 11px 13px; background: var(--cf-accent); color: var(--cf-light); font-size: 10px; font-weight: 700; }.cashflow-mobile-cta a span { font-size: 16px; } }
+  @media (prefers-reduced-motion: reduce) { .cashflow-page *, .cashflow-page *::before, .cashflow-page *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; } }
+</style>

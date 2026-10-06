@@ -7,14 +7,14 @@ Send this kickoff message right after receiving the deposit to establish clear e
 ```text
 🎉 Welcome to NextReach Studio! Your sprint is officially locked in.
 
-Here is what will happen over the next 3 to 7 days:
+Here is what will happen over the next 1 to 3 days:
 
 ---
 🗓️ SPRINT ROADMAP:
 • DAY 0 (Today): Onboarding & asset collection
 • DAY 1–2: UI/UX layout engineering, mobile optimization & copy build
-• DAY 3: Private Staging Preview Link delivered to your WhatsApp for review
-• DAY 3 / 7: Revisions completed + Live Domain Launch on your custom .com/.in!
+• DAY 1–2: Private Staging Preview Link delivered to your WhatsApp for review
+• DAY 1–3: Revisions completed + Live Domain Launch on your custom .com/.in!
 
 ---
 📋 DAY 0 ASSET CHECKLIST (Please share whatever you have ready):

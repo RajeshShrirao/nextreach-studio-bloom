@@ -5,8 +5,11 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { ArrowLeftIcon, ArrowRightIcon, StarIcon, QuotesIcon } from "@phosphor-icons/react";
 
 // Existing homepage testimonials, with verbatim excerpts for the featured card.
+//
+// Saffron & Smoke is deliberately absent. The page presents it as a demo two sections
+// above this one, so a testimonial attributed to its founder contradicted the page's own
+// labelling — and a reader who spots that discounts every other quote here.
 const reviews = [
-  { name: "Vikram Singhania", role: "Founder & Culinary Director", company: "Saffron & Smoke", initials: "VS", excerpt: "NextReach delivered the entire site in 48 hours.", quote: "We needed our multi-sitting reservation engine and tasting menu live before our weekend media launch. NextReach delivered the entire site in 48 hours. Zero bugs, sub-second mobile speed, and our guests love the automated WhatsApp booking codes." },
   { name: "Dr. Ananya Joshi", role: "Medical Director", company: "Kaya Aesthetics Atelier", initials: "AJ", excerpt: "Direct developer access was a breath of fresh air.", quote: "Traditional agencies quoted us ₹80k and a 6-week timeline with account managers who knew nothing about tech. NextReach built our patient consultation funnel for ₹10,000 in 3 days. Direct developer access was a breath of fresh air." },
   { name: "Rohan Kulkarni", role: "VP of Product", company: "LogiCore Systems", initials: "RK", excerpt: "Clean code, comprehensive documentation, and full Git repository handover on day one.", quote: "They engineered our internal operations dashboard and client portal. Clean code, comprehensive documentation, and full Git repository handover on day one. No hostage retainers." },
   { name: "Sherrill B.", role: "Managing Director", company: "Horizon Strategic B2B", initials: "SB", excerpt: "NextReach guided the entire architecture and launched in 72 hours.", quote: "I was ready to take the next step in professionalizing my consulting firm with a bespoke digital presence. I didn't know the first thing about web frameworks. NextReach guided the entire architecture and launched in 72 hours." },

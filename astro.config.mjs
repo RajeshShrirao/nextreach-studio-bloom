@@ -17,6 +17,7 @@ export default defineConfig({
       changefreq: "weekly",
       priority: 0.7,
       lastmod: new Date(),
+      filter: (page) => !page.endsWith("/fast-websites/thanks"),
       customPages: [
         "https://www.nextreachstudio.in/tools/ai-token-calculator",
         "https://www.nextreachstudio.in/tools/llm-cost-calculator",
@@ -26,7 +27,8 @@ export default defineConfig({
         "https://www.nextreachstudio.in/privacy",
         "https://www.nextreachstudio.in/terms",
         "https://www.nextreachstudio.in/about",
-        "https://www.nextreachstudio.in/contact",
+         "https://www.nextreachstudio.in/contact",
+         "https://www.nextreachstudio.in/fast-websites",
         "https://www.nextreachstudio.in/services/ai-agent-development-pune",
         "https://www.nextreachstudio.in/services/ai-automation-pune",
         "https://www.nextreachstudio.in/services/custom-software-development-pune",

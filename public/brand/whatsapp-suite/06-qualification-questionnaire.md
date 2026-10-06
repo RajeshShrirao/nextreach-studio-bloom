@@ -11,9 +11,9 @@ To make sure we recommend the exact right package for your business, could you a
 (e.g., Kulkarni Dental Clinic, Pune)
 
 2️⃣ Project Scope:
-A) 1-Page High-Converting Fast Website (₹5,000 | 3 Days)
-B) 5–8 Page Business Growth Website with SEO (₹15,000 | 7 Days)
-C) Custom Web App or AI Automation Agent (₹25,000+ | 14 Days)
+A) 1-Page Quick Launch Website (₹5,000 | 1–2 Days)
+B) 3–5 Section Business Website (₹7,500 | 2–3 Days)
+C) 5–7 Page Premium Flagship Website (₹10,000 | 3 Days)
 
 3️⃣ Do you already have a domain name (like yourbusiness.com)?
 [ Yes / No / Need help choosing ]

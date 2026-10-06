@@ -6,14 +6,21 @@ import {
   LightningIcon,
   CpuIcon,
   CodeIcon,
-  ShieldCheckIcon,
   GaugeIcon,
   CheckCircleIcon,
   PauseIcon,
   PlayIcon,
+  ArrowUpRightIcon,
 } from "@phosphor-icons/react";
 
 const AUTO_SWITCH_INTERVAL = 2600; // 2.6s per tab snappy auto-cycle
+
+// Every figure below is a property of THIS site, and the reader can re-run all of
+// them with the PageSpeed link at the foot of the card. That is the whole point of
+// the section: a claim someone can falsify in ten seconds beats a badge they have to
+// take on faith. Do not add a number here that PageSpeed would not reproduce.
+const PAGESPEED_URL =
+  "https://pagespeed.web.dev/analysis?url=https%3A%2F%2Fwww.nextreachstudio.in%2F";
 
 const tabs = [
   {
@@ -33,10 +40,6 @@ const tabs = [
       { name: "Total Blocking Time (TBT)", value: "0ms", status: "Instant" },
       { name: "Total Bundle Size", value: "38 KB", status: "Ultra-light" },
     ],
-    comparison: {
-      nextreach: { label: "NextReach Studio", value: "38 KB", percent: 6 },
-      legacy: { label: "Typical WordPress Agency Site", value: "2.8 MB", percent: 100 },
-    },
   },
   {
     id: "engine",
@@ -55,10 +58,6 @@ const tabs = [
       { name: "CSS Architecture", value: "Tailwind CSS v4 (Zero runtime)", status: "Active" },
       { name: "Mobile Viewport Calibration", value: "iOS Safari & Android Tested", status: "Active" },
     ],
-    comparison: {
-      nextreach: { label: "NextReach (Static Islands)", value: "0.2s Render", percent: 8 },
-      legacy: { label: "Monolithic CMS (40+ Plugins)", value: "3.4s Render", percent: 92 },
-    },
   },
   {
     id: "integrity",
@@ -77,32 +76,6 @@ const tabs = [
       { name: "Accessibility Contrast", value: "WCAG 2.1 AA Compliant", status: "Passed" },
       { name: "Sitemap & Robots", value: "Automated XML Generator", status: "Included" },
     ],
-    comparison: {
-      nextreach: { label: "Clean Modular Components", value: "100% Maintainable", percent: 100 },
-      legacy: { label: "Unmaintainable Page Builder Bloat", value: "Fragmented Code", percent: 25 },
-    },
-  },
-  {
-    id: "ownership",
-    label: "100% IP Handover",
-    icon: ShieldCheckIcon,
-    metric: "Day 1",
-    metricLabel: "Full Git Rights & Keys",
-    score: 100,
-    scoreLabel: "Client Ownership Index",
-    badge: "Zero Vendor Lock-in",
-    description:
-      "You receive the complete Git repository, raw design assets, and DNS keys upon launch. No hostage hosting, no monthly retainer traps.",
-    stats: [
-      { name: "Source Code Transfer", value: "GitHub / GitLab Repository", status: "Full Rights" },
-      { name: "Domain & DNS Routing", value: "Your Cloudflare / Namecheap Account", status: "Your Control" },
-      { name: "Zero Retainer Hostage", value: "Host anywhere, pay ₹0 forced fees", status: "Guaranteed" },
-      { name: "Post-Launch Warranty", value: "30-Day Zero-Downtime Guarantee", status: "Included" },
-    ],
-    comparison: {
-      nextreach: { label: "Full Ownership & Independence", value: "Your Assets", percent: 100 },
-      legacy: { label: "Proprietary Hostage Retainers", value: "Locked In", percent: 20 },
-    },
   },
 ];
 
@@ -131,13 +104,20 @@ export default function StudioSpecInteractive() {
   return (
     <section
       className="studio-spec-section studio-container"
-      aria-label="Interactive Studio Benchmarks"
+      aria-label="Performance measured on this website"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       onFocusCapture={() => setIsPaused(true)}
       onBlurCapture={() => setIsPaused(false)}
     >
-      <div className="studio-spec-interactive-card">
+      <div className="studio-spec-head" data-reveal>
+        <p className="studio-eyebrow">Proof, not adjectives.</p>
+        <h2>
+          Every number below is measured on <span className="studio-muted">this website.</span>
+        </h2>
+      </div>
+
+      <div className="studio-spec-interactive-card" data-reveal>
         {/* Header Navigation Tabs with Auto-Progress */}
         <div className="studio-spec-tabs-header">
           <div className="studio-spec-tabs-list" role="tablist">
@@ -187,7 +167,7 @@ export default function StudioSpecInteractive() {
               {isPaused ? <PlayIcon size={13} weight="bold" /> : <PauseIcon size={13} weight="bold" />}
             </button>
             <span className={`studio-live-dot ${isPaused ? "is-paused-dot" : ""}`} aria-hidden="true" />
-            <span>{isPaused ? "AUTO-CYCLE PAUSED" : "LIVE AUDIT BENCHMARK"}</span>
+            <span>{isPaused ? "AUTO-CYCLE PAUSED" : "MEASURED ON THIS SITE"}</span>
           </div>
         </div>
 
@@ -229,40 +209,6 @@ export default function StudioSpecInteractive() {
               </div>
 
               <p className="studio-spec-description">{current.description}</p>
-
-              {/* Visual Bundle / Payload Comparison Bar */}
-              <div className="studio-spec-compare-bar">
-                <div className="studio-compare-labels">
-                  <span className="studio-compare-title">Payload Efficiency Benchmark</span>
-                  <span className="studio-compare-diff">98% Lighter</span>
-                </div>
-                <div className="studio-compare-tracks">
-                  <div className="studio-track-row">
-                    <span className="studio-track-name">{current.comparison.nextreach.label}</span>
-                    <div className="studio-track-rail">
-                      <motion.div
-                        className="studio-track-fill studio-fill-accent"
-                        initial={{ width: 0 }}
-                        animate={{ width: `${current.comparison.nextreach.percent}%` }}
-                        transition={{ duration: 0.35, ease: "easeOut" }}
-                      />
-                    </div>
-                    <span className="studio-track-val studio-accent">{current.comparison.nextreach.value}</span>
-                  </div>
-                  <div className="studio-track-row">
-                    <span className="studio-track-name">{current.comparison.legacy.label}</span>
-                    <div className="studio-track-rail">
-                      <motion.div
-                        className="studio-track-fill studio-fill-muted"
-                        initial={{ width: 0 }}
-                        animate={{ width: `${current.comparison.legacy.percent}%` }}
-                        transition={{ duration: 0.35, ease: "easeOut" }}
-                      />
-                    </div>
-                    <span className="studio-track-val studio-muted">{current.comparison.legacy.value}</span>
-                  </div>
-                </div>
-              </div>
             </div>
 
             {/* Right Column: 4 Micro-Diagnostic Stats */}
@@ -291,6 +237,26 @@ export default function StudioSpecInteractive() {
             </div>
           </motion.div>
         </AnimatePresence>
+
+        {/* Deliberately outside the animated body: a stable affordance the reader can
+            act on without chasing a tab that cycles underneath their cursor. */}
+        <div className="studio-spec-verify">
+          <p>
+            These are our own figures for this page — not a case study, not an estimate. Run the same
+            audit Google runs and check them.
+          </p>
+          <a
+            className="studio-verify-link"
+            href={PAGESPEED_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-track="home_proof_pagespeed"
+          >
+            <GaugeIcon size={16} weight="fill" />
+            <span>Verify on PageSpeed Insights</span>
+            <ArrowUpRightIcon size={15} weight="bold" />
+          </a>
+        </div>
       </div>
     </section>
   );

@@ -9,8 +9,8 @@ Here is our transparent, fixed-scope pricing breakdown. Zero hidden agency retai
 
 📌 PRICING TIERS:
 1️⃣ Quick Launch Website (1-Page): ₹5,000 flat
-2️⃣ Business Growth Platform (5-8 Pages): ₹15,000 flat
-3️⃣ Autonomous AI Agent + Custom App: ₹25,000 – ₹50,000+
+2️⃣ Business Website (3-5 sections/pages): ₹7,500 flat
+3️⃣ Premium Flagship Website (5-7 pages): ₹10,000 flat
 
 ---
 💳 PAYMENT TERMS (Milestone-Based):
@@ -21,8 +21,8 @@ Here is our transparent, fixed-scope pricing breakdown. Zero hidden agency retai
 🛡️ WHAT IS 100% INCLUDED (₹0 Extra):
 ✅ Custom UI/UX design (tailored to your brand)
 ✅ Mobile & tablet responsive architecture
-✅ Free hosting setup on Vercel (Fast global CDN)
-✅ Free lifetime SSL security certificate (HTTPS)
+✅ Domain connection and deployment setup
+✅ SSL configuration (HTTPS)
 ✅ 1-Tap WhatsApp lead capture setup
 ✅ 30-Day post-launch support warranty for any minor text/image edits
 

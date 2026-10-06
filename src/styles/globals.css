@@ -145,8 +145,14 @@
 .studio-client-logo text[font-family*="Cabinet"] { font-family: var(--font-display); }
 .studio-client-logo text[font-family*="Jakarta"] { font-family: var(--font-body); }
 .studio-client-logo text[font-family*="JetBrains"] { font-family: var(--font-mono); }
-.studio-proof { border-top: 0; }
 .studio-reviews { border-top: 1px solid var(--studio-line); }
+/* The ownership band answers the reviews' half of the same question — can I trust
+   these people, and what happens to me afterwards. When it follows the carousel the
+   carousel gives up its bottom padding, or 100px of air splits one argument in two.
+   The 34px that remains is what keeps the ownership's top rule off the selector chips:
+   the chips already carry a 3px underline, and a rule landing on top of it reads as a
+   rendering fault rather than a divider. */
+.studio-reviews:has(+ .studio-ownership) { padding-block: 100px 34px; }
 .studio-reviews-main { display: grid; grid-template-columns: .85fr 1.15fr; gap: 90px; align-items: center; }
 .studio-review-heading-icon { color: var(--studio-accent); margin-bottom: 25px; }
 .studio-reviews-heading p { margin-top: 26px; font-size: 13px; color: var(--studio-muted); line-height: 1.9; }
@@ -178,11 +184,57 @@
 .studio-review-selector button { display: inline-flex; align-items: center; gap: 8px; min-height: 34px; color: var(--studio-muted); font-size: 10px; cursor: pointer; border-bottom: 1px solid transparent; padding-bottom: 3px; }
 .studio-review-selector button > span { font-family: var(--font-mono); font-size: 9px; }
 .studio-review-selector button.is-active { color: var(--studio-accent); border-color: var(--studio-accent); }
-.studio-proof { padding-block: 31px; border-top: 1px solid var(--studio-line); border-bottom: 1px solid var(--studio-line); display: grid; grid-template-columns: 1fr 1fr 1fr auto; align-items: center; gap: 24px; }
+
+/* Ownership band. Follows the reviews so trust and risk are answered together:
+   the quotes say who we are, this says what happens to your project afterwards.
+   The bottom padding is load-bearing: the FAQ section below opens with its own top
+   rule, and without this the rule lands flush on the last line of the ownership list. */
+.studio-ownership { padding-block: 62px; border-top: 1px solid var(--studio-line); }
+.studio-ownership-head { display: grid; grid-template-columns: .85fr 1.15fr; gap: 90px; align-items: end; margin-bottom: 48px; }
+.studio-ownership-head h2 { font-size: clamp(30px, 3.4vw, 48px); }
+.studio-ownership-head p { max-width: 480px; font-size: 13px; line-height: 1.85; color: var(--studio-muted); }
+.studio-ownership-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 44px; }
+.studio-ownership-item { padding-top: 24px; border-top: 1px solid var(--studio-line); }
+.studio-ownership-item > svg { color: var(--studio-accent); }
+.studio-ownership-item h3 { margin-top: 16px; font-size: 19px; font-weight: 700; letter-spacing: -.025em; }
+.studio-ownership-item p { margin-top: 12px; font-size: 12px; line-height: 1.8; color: var(--studio-muted); }
+/* Credibility strip. Sits directly under the hero CTAs; the logo marquee's own
+   top border closes it, so this carries a top rule only. */
+.studio-proof { padding-block: 31px; border-top: 1px solid var(--studio-line); display: grid; grid-template-columns: repeat(3, 1fr); align-items: center; gap: 24px; }
 .studio-proof > div { display: flex; flex-direction: column; gap: 8px; }
 .studio-proof-value { font-family: var(--font-display); font-size: 24px; font-weight: 700; letter-spacing: -.04em; }
 .studio-proof > div > span:last-child { color: var(--studio-muted); font-size: 11px; }
-.studio-proof-link { display: flex; gap: 30px; font-size: 12px; align-items: center; }
+
+/* Who this is for. Deliberately the lightest section on the page: one line of
+   display type and four labels, read in under four seconds. No icons, no cards —
+   the problem section below it is the loud one. */
+.studio-audience { border-top: 1px solid var(--studio-line); }
+/* The marquee above carries a bottom rule, so the two would stack into a 2px line. */
+.studio-logo-section + .studio-audience { border-top: 0; }
+/* Selector is `.studio-audience h2`, not a bare class: `.studio-home h2` (0,1,1) would
+   otherwise out-specify it and the statement would inherit the section-heading size. */
+.studio-audience h2 { max-width: 1080px; font-family: var(--font-display); font-size: clamp(30px, 3.8vw, 56px); font-weight: 500; letter-spacing: -.04em; line-height: 1.14; }
+.studio-audience h2 span { color: var(--studio-muted); }
+.studio-audience-list { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 52px; border-top: 1px solid var(--studio-line); }
+.studio-audience-item { display: flex; align-items: baseline; gap: 14px; padding: 24px 26px 0; border-right: 1px solid var(--studio-line); font-size: 14px; font-weight: 600; }
+.studio-audience-item:first-child { padding-left: 0; }
+.studio-audience-item:last-child { padding-right: 0; border-right: 0; }
+.studio-audience-item > span { font-family: var(--font-mono); font-size: 10px; font-weight: 500; color: var(--studio-accent); }
+
+/* The problem. Full-bleed on the raised surface so it breaks the rhythm of the
+   cream canvas instead of blending into it, with the index numerals carried at a
+   size nothing else on the page uses. The section below (Services) supplies the
+   closing rule, so this carries a top border only. */
+.studio-problem { padding-block: 110px; background: var(--studio-surface); border-top: 1px solid var(--studio-line); }
+.studio-problem-head { max-width: 900px; }
+.studio-problem-head h2 { margin-top: 24px; }
+.studio-problem-list { margin-top: 70px; border-top: 1px solid var(--studio-line); }
+.studio-problem-row { display: grid; grid-template-columns: minmax(90px, 190px) 1fr; gap: 30px; align-items: start; padding-block: 38px; border-bottom: 1px solid var(--studio-line); }
+.studio-problem-index { font-family: var(--font-display); font-size: clamp(56px, 7vw, 104px); font-weight: 800; letter-spacing: -.06em; line-height: .8; color: var(--studio-accent); opacity: .2; }
+.studio-problem-row h3 { font-size: clamp(26px, 3.2vw, 44px); font-weight: 600; letter-spacing: -.04em; }
+.studio-problem-row p { margin-top: 14px; max-width: 540px; font-size: 13px; line-height: 1.8; color: var(--studio-muted); }
+.studio-problem-turn { margin-top: 64px; font-family: var(--font-display); font-size: clamp(30px, 3.6vw, 54px); font-weight: 500; letter-spacing: -.04em; line-height: 1.15; }
+.studio-problem-turn em { font-style: normal; color: var(--studio-accent); }
 .studio-section-title { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 48px; }
 .studio-projects { display: grid; grid-template-columns: 1.35fr 1fr; gap: 42px; align-items: start; }
 .studio-project-secondary { padding-top: 110px; }
@@ -207,6 +259,7 @@
 .studio-manifesto p:not(.studio-eyebrow) { max-width: 490px; font-size: 14px; line-height: 1.85; color: var(--studio-muted); }
 .studio-manifesto .studio-text-link { margin-top: 20px; }
 .studio-services { border-top: 1px solid var(--studio-line); }
+.studio-services-intro { max-width: 620px; margin-top: 26px; font-size: 14px; line-height: 1.85; color: var(--studio-muted); }
 .studio-service-list { margin-top: 50px; }
 .studio-service { display: grid; grid-template-columns: 40px 70px 1fr 40px; gap: 30px; padding: 40px 0; align-items: start; border-bottom: 1px solid var(--studio-line); }
 .studio-service-index { font-family: var(--font-mono); font-size: 11px; color: var(--studio-muted); padding-top: 7px; }
@@ -244,6 +297,7 @@
 .studio-package-demo { min-height: 44px; display: flex; justify-content: center; align-items: center; gap: 12px; font-size: 11px; margin-top: 7px; }
 .studio-custom-note { text-align: center; font-size: 12px; color: var(--studio-muted); margin-top: 30px; }
 .studio-custom-note a { display: inline-flex; align-items: center; gap: 8px; color: var(--studio-ink); margin-left: 6px; }
+.studio-custom-note + .studio-custom-note { margin-top: 10px; }
 .studio-faq { display: grid; grid-template-columns: .9fr 1.1fr; gap: 80px; border-top: 1px solid var(--studio-line); }
 .studio-faq h2 { font-size: clamp(32px, 3.5vw, 50px); }
 .studio-faq details { border-bottom: 1px solid var(--studio-line); }
@@ -268,7 +322,14 @@
 .studio-contact-button:hover { background: var(--studio-accent); color: var(--studio-on-accent); transform: rotate(45deg); }
 .studio-contact-bottom { display: flex; justify-content: space-between; align-items: end; margin-top: 45px; gap: 24px; }
 .studio-contact-bottom p { color: var(--studio-muted); font-size: 13px; line-height: 1.75; }
+/* Two buying journeys, kept visibly separate: a fixed-scope website, or a
+   scoped web app / AI system. Both routes existed before; only one was offered. */
+.studio-contact-actions { display: flex; flex-wrap: wrap; gap: 16px 34px; }
+/* The single technical-proof section. It carries its own heading now, and the section
+   above it (Services) supplies the top gap, so this owns only the bottom one. */
 .studio-spec-section { padding-block: 0 40px; }
+.studio-spec-head { max-width: 880px; margin-bottom: 40px; }
+.studio-spec-head h2 { margin-top: 22px; }
 .studio-spec-interactive-card { border: 1px solid var(--studio-line); background: var(--studio-surface); }
 .studio-spec-tabs-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--studio-line); padding: 12px 18px; flex-wrap: wrap; gap: 14px; background: var(--studio-bg); }
 .studio-spec-tabs-list { display: flex; gap: 6px; flex-wrap: wrap; }
@@ -290,18 +351,13 @@
 .studio-metric-subtitle { font-size: 14px; font-weight: 700; color: var(--studio-ink); }
 .studio-metric-score-detail { font-family: var(--font-mono); font-size: 11px; color: var(--studio-muted); margin-top: 3px; }
 .studio-spec-description { font-size: 13px; line-height: 1.7; color: var(--studio-muted); max-width: 500px; }
-.studio-spec-compare-bar { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--studio-line); }
-.studio-compare-labels { display: flex; justify-content: space-between; font-size: 11px; font-family: var(--font-mono); margin-bottom: 10px; }
-.studio-compare-title { color: var(--studio-muted); }
-.studio-compare-diff { color: var(--studio-accent); font-weight: 600; }
-.studio-compare-tracks { display: flex; flex-direction: column; gap: 10px; }
-.studio-track-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(40px, 1fr) auto; align-items: center; gap: 14px; font-size: 11px; }
-.studio-track-name { font-family: var(--font-mono); color: var(--studio-muted); font-size: 10px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.studio-track-rail { height: 8px; background: var(--studio-bg); border: 1px solid var(--studio-line); overflow: hidden; }
-.studio-track-fill { height: 100%; }
-.studio-fill-accent { background: var(--studio-accent); }
-.studio-fill-muted { background: var(--studio-muted); }
-.studio-track-val { font-family: var(--font-mono); font-size: 10px; text-align: right; font-weight: 600; }
+/* Verification strip. Replaces a comparison against an unnamed "typical WordPress agency
+   site" — a claim about third parties nobody can check — with a link to the audit that
+   produced the numbers above, which the reader can re-run in about ten seconds. */
+.studio-spec-verify { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 30px; padding: 18px 40px; border-top: 1px solid var(--studio-line); background: var(--studio-bg); }
+.studio-spec-verify p { max-width: 560px; font-size: 12px; line-height: 1.7; color: var(--studio-muted); }
+.studio-verify-link { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 11px 16px; border: 1px solid var(--studio-line); background: var(--studio-surface); color: var(--studio-ink); font-family: var(--font-mono); font-size: 11px; font-weight: 500; transition: border-color .2s, color .2s; }
+.studio-verify-link:hover { border-color: var(--studio-accent); color: var(--studio-accent); }
 .studio-stats-heading { font-family: var(--font-mono); font-size: 10px; letter-spacing: .12em; color: var(--studio-muted); margin-bottom: 16px; }
 .studio-stats-list { display: flex; flex-direction: column; gap: 10px; }
 .studio-stat-row { display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 14px 18px; border: 1px solid var(--studio-line); background: var(--studio-bg); }
@@ -313,29 +369,6 @@
 .studio-stat-badge { flex-shrink: 0; }
 .studio-spec-primary, .studio-spec-secondary { min-width: 0; }
 .studio-home .studio-stats-heading { font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em; color: var(--studio-muted); font-weight: 500; }
-
-.studio-comparison { border-top: 1px solid var(--studio-line); }
-.studio-comparison-header-actions { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
-.studio-comparison-interactive-wrap { margin-top: 36px; }
-.studio-factor-nav { display: flex; flex-wrap: wrap; gap: 8px; border-bottom: 1px solid var(--studio-line); padding-bottom: 16px; margin-bottom: 28px; }
-.studio-factor-tab { position: relative; display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; font-size: 12px; font-weight: 600; cursor: pointer; border: 0; background: transparent; color: var(--studio-muted); z-index: 1; transition: color .2s; }
-.studio-factor-tab.is-active { color: var(--studio-ink); }
-.studio-factor-indicator { position: absolute; inset: 0; background: var(--studio-surface); border: 1px solid var(--studio-line); z-index: -1; overflow: hidden; }
-.studio-comparison-cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-.studio-side-card { border: 1px solid var(--studio-line); padding: 36px; display: flex; flex-direction: column; justify-content: space-between; min-height: 260px; background: var(--studio-surface); }
-.studio-card-nextreach { border-color: var(--studio-accent); background: rgba(180,84,60,.03); }
-.studio-card-top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px; gap: 12px; flex-wrap: wrap; }
-.studio-badge-accent, .studio-badge-muted { font-family: var(--font-mono); font-size: 11px; color: var(--studio-muted); }
-.studio-pill-tag { font-family: var(--font-mono); font-size: 10px; color: var(--studio-accent); background: rgba(180,84,60,.1); padding: 4px 8px; font-weight: 600; }
-.studio-pill-muted { font-family: var(--font-mono); font-size: 10px; color: var(--studio-muted); background: var(--studio-bg); padding: 4px 8px; }
-.studio-card-icon-title { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
-.studio-card-icon-title h3 { font-size: 22px; font-weight: 700; letter-spacing: -.02em; }
-.studio-check-icon { display: grid; place-items: center; width: 28px; height: 28px; background: var(--studio-accent); color: var(--studio-on-accent); flex-shrink: 0; }
-.studio-x-icon { display: grid; place-items: center; width: 28px; height: 28px; border: 1px solid var(--studio-line); color: var(--studio-muted); flex-shrink: 0; }
-.studio-card-desc { font-size: 13px; line-height: 1.7; color: var(--studio-muted); }
-.studio-card-footer { border-top: 1px solid var(--studio-line); padding-top: 16px; margin-top: 24px; font-size: 11px; font-family: var(--font-mono); }
-.studio-footer-status { display: inline-flex; align-items: center; gap: 6px; color: var(--studio-accent); font-weight: 600; }
-.studio-footer-alert { color: var(--studio-muted); }
 
 .studio-industries { border-top: 1px solid var(--studio-line); }
 .studio-industry-interactive-grid { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
@@ -354,17 +387,6 @@
 .studio-industry-arrow { transition: transform .3s; }
 .studio-industry-interactive-card:hover .studio-industry-arrow { transform: translate(3px, -3px); color: var(--studio-accent); }
 
-.studio-baseline { border-top: 1px solid var(--studio-line); }
-.studio-baseline-interactive-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.studio-baseline-interactive-card { border: 1px solid var(--studio-line); padding: 30px; display: flex; flex-direction: column; gap: 16px; background: var(--studio-surface); transition: border-color .3s; }
-.studio-baseline-interactive-card:hover { border-color: var(--studio-accent); }
-.studio-baseline-card-top { display: flex; align-items: center; justify-content: space-between; }
-.studio-baseline-index { font-family: var(--font-mono); font-size: 11px; color: var(--studio-accent); font-weight: 600; }
-.studio-baseline-spec-tag { font-family: var(--font-mono); font-size: 9px; letter-spacing: .08em; color: var(--studio-muted); text-transform: uppercase; }
-.studio-baseline-icon-wrap { color: var(--studio-accent); }
-.studio-baseline-card-body h3 { font-size: 18px; font-weight: 700; letter-spacing: -.02em; }
-.studio-baseline-card-body p { font-size: 12px; line-height: 1.7; color: var(--studio-muted); margin-top: 8px; }
-
 .studio-footer { border-top: 1px solid var(--studio-line); padding-block: 36px 26px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 30px; }
 .studio-footer-brand { font-size: 19px; gap: 8px; }
 .studio-footer-brand img { margin-right: 5px; }
@@ -376,7 +398,10 @@
   @keyframes studio-logo-loop { to { transform: translateX(-50%); } }
   .studio-hero-enter { animation: studio-enter .85s cubic-bezier(.16, 1, .3, 1) both; }
   .studio-title-word { animation: studio-type-reveal 1.05s .08s cubic-bezier(.16, 1, .3, 1) both; }
-  .studio-title-accent .studio-title-word { animation-delay: .18s; }
+  /* Stagger the three title lines by position. `.studio-title-period` is the fourth
+     child of the h1 and is not a `.studio-title-line`, so :nth-child(3) cannot reach it. */
+  .studio-title-line:nth-child(2) .studio-title-word { animation-delay: .18s; }
+  .studio-title-line:nth-child(3) .studio-title-word { animation-delay: .28s; }
   @keyframes studio-type-reveal { from { transform: translateY(120%) rotate(3deg); } to { transform: translateY(0) rotate(0); } }
   .studio-hero-description { animation-delay: .16s; }
   .studio-hero-actions { animation-delay: .24s; }
@@ -404,26 +429,22 @@
   .studio-mobile-group[open] > summary > svg { transform: rotate(180deg); }
   .studio-mobile-group > div { padding: 10px 0 16px 16px; }
   .studio-mobile-group > div > a { font-family: var(--font-body); font-size: 14px; padding-block: 14px; }
-  .studio-hero h1 { font-size: clamp(72px, 10vw, 112px); }
+  /* 4.5% down from the previous clamp: the hero headline is now three lines rather
+     than two, and its longest line ("that pays") is ~4% wider than the old one, so
+     the same proportion of the copy column only holds at a slightly smaller size. */
+  .studio-hero h1 { font-size: clamp(70px, 9.6vw, 105px); }
   .studio-title-period { right: -32px; font-size: 50px; }
   .studio-hero-actions { gap: 17px; }
-  .studio-proof { grid-template-columns: repeat(3, 1fr); }
-  .studio-proof-link { display: none; }
   .studio-process { gap: 50px; }
   .studio-manifesto { gap: 30px; }
   .studio-faq { gap: 40px; }
   .studio-package-price { font-size: 47px; }
   .studio-package-time { line-height: 1.7; }
-  .studio-spec-grid { grid-template-columns: repeat(2, 1fr); }
-  .studio-spec-card:nth-child(2) { border-right: 0; }
-  .studio-spec-card:nth-child(-n+2) { border-bottom: 1px solid var(--studio-line); }
-  .studio-comparison-header, .studio-comparison-row { grid-template-columns: 180px 1fr 1fr; }
-  .studio-baseline-grid { grid-template-columns: repeat(2, 1fr); }
-  .studio-baseline-card:nth-child(3n) { border-right: 1px solid var(--studio-line); }
-  .studio-baseline-card:nth-child(2n) { border-right: 0; }
-  .studio-baseline-card:nth-child(n+5) { border-bottom: 0; }
   .studio-spec-content-grid { grid-template-columns: 1fr; gap: 28px; }
-  .studio-industry-interactive-grid, .studio-baseline-interactive-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .studio-industry-interactive-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .studio-problem { padding-block: 80px; }
+  .studio-problem-row { grid-template-columns: minmax(70px, 130px) 1fr; gap: 24px; }
+  .studio-ownership-head { gap: 45px; }
 }
 @media (max-width: 767px) {
   .studio-container { width: calc(100% - 40px); }
@@ -458,17 +479,29 @@
   .studio-review-selector { margin-top: 35px; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 10px; scroll-snap-type: x proximity; }
   .studio-review-selector button { flex-shrink: 0; scroll-snap-align: start; }
   .studio-review-controls { margin-top: 25px; }
-  .studio-proof { grid-template-columns: repeat(3, 1fr); gap: 12px; padding-block: 25px; }
+  .studio-proof { gap: 12px; padding-block: 25px; }
   .studio-proof-value { font-size: clamp(14px, 3.5vw, 21px); }
   .studio-proof > div > span:last-child { font-size: 9px; line-height: 1.6; }
+  .studio-audience-list { grid-template-columns: repeat(2, 1fr); gap: 14px 20px; margin-top: 34px; border-top: 0; }
+  .studio-audience-item { padding: 16px 0 0; border-right: 0; border-top: 1px solid var(--studio-line); }
+  .studio-problem { padding-block: 64px; }
+  .studio-problem-list { margin-top: 44px; }
+  .studio-problem-row { grid-template-columns: 1fr; gap: 6px; padding-block: 30px; }
+  .studio-problem-row h3 { font-size: 27px; }
+  .studio-problem-turn { margin-top: 44px; }
+  .studio-services-intro { font-size: 13px; }
+  .studio-ownership { padding-block: 44px; }
+  .studio-ownership-head { grid-template-columns: 1fr; gap: 18px; margin-bottom: 34px; }
+  .studio-ownership-list { grid-template-columns: 1fr; gap: 28px; }
+  .studio-contact-actions { flex-direction: column; gap: 14px; }
   .studio-spec-tabs-header { align-items: flex-start; padding: 12px; }
   .studio-spec-tabs-list { flex-wrap: nowrap; max-width: 100%; overflow-x: auto; padding: 4px; scrollbar-width: thin; }
   .studio-spec-tab-btn { flex-shrink: 0; padding-inline: 13px; min-height: 44px; }
   .studio-spec-live-badge { flex-wrap: wrap; font-size: 9px; letter-spacing: .02em; }
   .studio-spec-content-grid { grid-template-columns: 1fr; gap: 28px; padding: 26px 20px; }
   .studio-spec-hero-metric { gap: 16px; }
-  .studio-track-row { gap: 8px; }
-  .studio-track-val { font-size: 9px; }
+  .studio-spec-verify { padding: 16px 20px; }
+  .studio-verify-link { width: 100%; justify-content: center; }
   .studio-home h2 { font-size: clamp(36px, 7.8vw, 54px); }
   .studio-section-title { display: block; margin-bottom: 32px; }
   .studio-section-title > .studio-text-link { margin-top: 20px; }
@@ -479,16 +512,6 @@
   .studio-project-wordmark { font-size: 49px; top: 22px; left: 22px; }
   .studio-project-info h3 { font-size: 24px; }
   .studio-project-info { margin-top: 18px; }
-  .studio-comparison-header { display: none; }
-  .studio-comparison-row { grid-template-columns: 1fr; }
-  .studio-cell-factor { border-right: 0; border-bottom: 1px solid var(--studio-line); background: var(--studio-surface); padding: 14px 18px; font-size: 12px; }
-  .studio-cell-studio { border-right: 0; border-bottom: 1px solid var(--studio-line); padding: 18px; }
-  .studio-cell-legacy { padding: 18px; }
-  .studio-comparison-header-actions { margin-top: 22px; }
-  .studio-factor-nav { flex-wrap: nowrap; overflow-x: auto; padding: 4px 4px 14px; }
-  .studio-factor-tab { flex-shrink: 0; min-height: 44px; padding-inline: 12px; }
-  .studio-comparison-cards-grid { grid-template-columns: 1fr; gap: 16px; }
-  .studio-side-card { min-height: 0; padding: 24px; }
   .studio-manifesto { grid-template-columns: 1fr; gap: 30px; }
   .studio-manifesto-mark { justify-content: start; }
   .studio-manifesto-mark img { width: 55px; height: 70px; }
@@ -504,8 +527,6 @@
   .studio-process { grid-template-columns: 1fr; gap: 40px; }
   .studio-process-heading { position: static; }
   .studio-process-step { padding-left: 55px; }
-  .studio-baseline-interactive-grid { grid-template-columns: 1fr; gap: 16px; }
-  .studio-baseline-interactive-card { padding: 24px; }
   .studio-package-grid { grid-template-columns: 1fr; }
   .studio-package { padding: 28px; border-right: 0; border-bottom: 1px solid var(--studio-line); }
   .studio-package:last-child { border-bottom: 0; }
@@ -533,7 +554,9 @@
 }
 @media (max-width: 359px) {
   .studio-container { width: calc(100% - 32px); }
-  .studio-hero h1 { font-size: 73px; }
+  /* The longest headline line is ~4.37em wide; at 320px the container is 288px, so
+     anything above ~65px overflows it. */
+  .studio-hero h1 { font-size: 60px; }
   .studio-title-period { font-size: 40px; right: -25px; }
   .studio-hero-actions { gap: 15px; }
 }

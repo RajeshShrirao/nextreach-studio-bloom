@@ -13,6 +13,8 @@ export interface Props {
   author?: string;
   tags?: string[];
   localFonts?: boolean;
+  noIndex?: boolean;
+  skipLoader?: boolean;
 }
 
 const {
@@ -25,11 +27,28 @@ const {
   author = "NextReach Studio",
   tags = [],
   localFonts = false,
+  noIndex = false,
+  skipLoader = false,
 } = Astro.props;
 
 const siteURL = "https://www.nextreachstudio.in";
-const siteTitle = title ? `${title} | NextReach Studio` : "NextReach Studio - Tools & Resources for AI Builders";
-const siteDescription = description || "Practical tools, guides, and resources for AI builders, Claude Code users, indie hackers, and full-stack developers building with LLMs.";
+
+// The studio's self-description — used for the Organization and WebSite entities, and
+// nowhere else.
+//
+// It is deliberately NOT the page's description. Both entities are referenced by a stable
+// @id from every URL, so their properties must say the same thing everywhere. Feeding them
+// the page description meant the Organization was a different business on every URL — a
+// studio about "how much does SEO cost in Pune" on one page, a restaurant demo on the next.
+// An entity that redefines itself per URL is worse than one with no description at all.
+const STUDIO_DESCRIPTION =
+  "NextReach Studio is a software studio in Pune, India. We build custom websites, web applications, and AI systems for businesses — designed, written, and delivered by the same senior engineer you talk to, on fixed scope.";
+
+// Fallbacks only — every page currently passes its own. They exist so that a new page which
+// forgets to cannot silently describe the studio as an AI-tools blog, which is what the
+// previous fallback did (and what it was still doing in the site's meta description).
+const siteTitle = title ? `${title} | NextReach Studio` : "NextReach Studio - Custom Websites, Web Apps & AI Systems";
+const siteDescription = description || STUDIO_DESCRIPTION;
 const ogImage = image ? (image.startsWith("http") ? image : `${siteURL}${image}`) : `${siteURL}/link-previews.jpg`;
 const canonical = canonicalURL || Astro.url.href;
 
@@ -137,7 +156,7 @@ const founder = {
     <link rel="apple-touch-icon" href="/logo.png" />
     <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#2A2A2D" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content={noIndex ? "noindex, nofollow" : "index, follow"} />
 
     <!-- RSS -->
     <link rel="alternate" type="application/rss+xml" title="NextReach Studio Blog" href="/rss.xml" />
@@ -145,15 +164,30 @@ const founder = {
     <!-- Google Analytics (non-blocking: loads after first paint) -->
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-1DVFSD0J9Y');
+      window.gtag = window.gtag || function(){window.dataLayer.push(arguments);};
+      window.gtag('js', new Date());
+      window.gtag('config', 'G-1DVFSD0J9Y');
       (function() {
         var s = document.createElement('script');
         s.async = true;
         s.src = 'https://www.googletagmanager.com/gtag/js?id=G-1DVFSD0J9Y';
         document.head.appendChild(s);
       })();
+
+      // Conversion events are deliberately small and action-oriented. Campaign pages
+      // add data-track attributes; this keeps the same event names usable in GA4 and
+      // avoids collecting message contents, names, phone numbers, or other PII.
+      document.addEventListener('click', function(event) {
+        var target = event.target;
+        var link = target && target.closest ? target.closest('[data-track]') : null;
+        if (!link) return;
+        var eventName = link.hasAttribute('data-whatsapp-cta') ? 'whatsapp_cta_clicked' : 'cta_clicked';
+        window.gtag('event', eventName, {
+          cta_name: link.getAttribute('data-track'),
+          cta_location: window.location.pathname,
+          package: link.getAttribute('data-package') || undefined,
+        });
+      });
     </script>
 
     <!-- Open Graph -->
@@ -209,7 +243,7 @@ const founder = {
       "@id": WEBSITE_ID,
       "name": "NextReach Studio",
       "url": siteURL,
-      "description": siteDescription,
+      "description": STUDIO_DESCRIPTION,
       "publisher": { "@id": ORG_ID },
       "inLanguage": "en-IN",
     })} />
@@ -227,7 +261,7 @@ const founder = {
       "url": siteURL,
       "logo": `${siteURL}/logo.png`,
       "image": `${siteURL}/link-previews.jpg`,
-      "description": siteDescription,
+      "description": STUDIO_DESCRIPTION,
       "email": CONTACT.email,
       "telephone": CONTACT.phone,
       "founder": { "@id": PERSON_ID },
@@ -289,7 +323,7 @@ const founder = {
     )}
   </head>
   <body class="font-body text-zinc-300 antialiased min-h-screen">
-    <LoadingScreen />
+    {!skipLoader && <LoadingScreen />}
     <SmoothScrollProvider />
     <div data-site-content>
       <slot />

@@ -1,6 +1,6 @@
 # NextReach Studio — WhatsApp Fast Website Sales & Delivery Suite
 
-A comprehensive 14-part playbook engineered for selling, onboarding, and delivering **Fast Websites (₹5,000 to ₹50,000+)** directly over WhatsApp.
+A comprehensive 19-part playbook engineered for selling, onboarding, and delivering **Fast Websites (₹5,000 to ₹10,000)** directly over WhatsApp.
 
 ---
 
@@ -8,25 +8,34 @@ A comprehensive 14-part playbook engineered for selling, onboarding, and deliver
 
 | Phase | Step # | Template Name | File | Description |
 |---|---|---|---|---|
-| **Inbound & First-Touch** | **01** | [Welcome & Auto-Responder](file:///Users/rajeshshrirao/Desktop/nextreach-studio-bloom/public/brand/whatsapp-suite/01-welcome-message.md) | `01-welcome-message.md` | Instant greetings for ads, website clicks, and after-hours inbounds. |
-| **Menu & Packages** | **02** | [Package Menu](file:///Users/rajeshshrirao/Desktop/nextreach-studio-bloom/public/brand/whatsapp-suite/02-package-menu.md) | `02-package-menu.md` | Mobile-scannable pricing menu (₹5k Quick Launch, ₹15k Growth, ₹25k+ AI). |
-| **Social Proof & Demos** | **03** | [Portfolio Showcase](file:///Users/rajeshshrirao/Desktop/nextreach-studio-bloom/public/brand/whatsapp-suite/03-portfolio-message.md) | `03-portfolio-message.md` | Fast link drops of live high-performance demos. |
-| **Pricing Transparency** | **04** | [Pricing & Terms](file:///Users/rajeshshrirao/Desktop/nextreach-studio-bloom/public/brand/whatsapp-suite/04-pricing-message.md) | `04-pricing-message.md` | Transparent milestone breakdown (50% upfront / 50% launch). |
-| **Industry Demos** | **05** | [Website Examples Gallery](file:///Users/rajeshshrirao/Desktop/nextreach-studio-bloom/public/brand/whatsapp-suite/05-website-examples-gallery.md) | `05-website-examples-gallery.md` | Niche-specific links for Clinics, Restaurants, Real Estate, Manufacturing. |
-| **Lead Qualification** | **06** | [Qualification Questionnaire](file:///Users/rajeshshrirao/Desktop/nextreach-studio-bloom/public/brand/whatsapp-suite/06-qualification-questionnaire.md) | `06-qualification-questionnaire.md` | 5 rapid-fire questions to qualify budget, scope, and timeline in 60 seconds. |
-| **Client Intake** | **07** | [Requirement Form](file:///Users/rajeshshrirao/Desktop/nextreach-studio-bloom/public/brand/whatsapp-suite/07-requirement-form.md) | `07-requirement-form.md` | Structured intake format capturing logo, offerings, colors, and WhatsApp routing. |
-| **Closing Deals** | **08** | [Quotation Template](file:///Users/rajeshshrirao/Desktop/nextreach-studio-bloom/public/brand/whatsapp-suite/08-quote-template.md) | `08-quote-template.md` | Itemized formal quote ready to send on WhatsApp. |
-| **Formal Sign-off** | **09** | [Proposal Template](file:///Users/rajeshshrirao/Desktop/nextreach-studio-bloom/public/brand/whatsapp-suite/09-proposal-template.md) | `09-proposal-template.md` | 1-page sprint proposal document for corporate clients. |
-| **Nurturing Silent Leads** | **10** | [Follow-Up Sequences](file:///Users/rajeshshrirao/Desktop/nextreach-studio-bloom/public/brand/whatsapp-suite/10-follow-up-sequences.md) | `10-follow-up-sequences.md` | 3-stage polite follow-up framework (24h, 48h proof, 7d slot closing). |
-| **Handling Objections** | **11** | [Objection Handling Cards](file:///Users/rajeshshrirao/Desktop/nextreach-studio-bloom/public/brand/whatsapp-suite/11-objection-handling-cards.md) | `11-objection-handling-cards.md` | Battle-tested scripts for price, WordPress vs custom, speed, and asset readiness. |
-| **Payment Collection** | **12** | [Payment Instructions](file:///Users/rajeshshrirao/Desktop/nextreach-studio-bloom/public/brand/whatsapp-suite/12-payment-instructions.md) | `12-payment-instructions.md` | UPI QR, IMPS Bank Transfer, and Razorpay payment details. |
-| **Sprint Kickoff** | **13** | [Client Onboarding Guide](file:///Users/rajeshshrirao/Desktop/nextreach-studio-bloom/public/brand/whatsapp-suite/13-client-onboarding-document.md) | `13-client-onboarding-document.md` | Day 0 kickoff checklist and timeline expectations. |
-| **Handoff & Warranty** | **14** | [Project Handoff Document](file:///Users/rajeshshrirao/Desktop/nextreach-studio-bloom/public/brand/whatsapp-suite/14-project-handoff-document.md) | `14-project-handoff-document.md` | Live domain verification, DNS handover, analytics, and 30-day warranty. |
+| **Inbound & First-Touch** | **01** | [Welcome & Auto-Responder](01-welcome-message.md) | `01-welcome-message.md` | Instant greetings for ads, website clicks, and after-hours inbounds. |
+| **Menu & Packages** | **02** | [Package Menu](02-package-menu.md) | `02-package-menu.md` | Mobile-scannable pricing menu for the three website packages. |
+| **Social Proof & Demos** | **03** | [Portfolio Showcase](03-portfolio-message.md) | `03-portfolio-message.md` | Fast link drops of live high-performance demos. |
+| **Pricing Transparency** | **04** | [Pricing & Terms](04-pricing-message.md) | `04-pricing-message.md` | Transparent milestone breakdown (50% upfront / 50% launch). |
+| **Industry Demos** | **05** | [Website Examples Gallery](05-website-examples-gallery.md) | `05-website-examples-gallery.md` | Niche-specific links for Clinics, Restaurants, Real Estate, Manufacturing. |
+| **Lead Qualification** | **06** | [Qualification Questionnaire](06-qualification-questionnaire.md) | `06-qualification-questionnaire.md` | 5 rapid-fire questions to qualify scope and timeline in 60 seconds. |
+| **Client Intake** | **07** | [Requirement Form](07-requirement-form.md) | `07-requirement-form.md` | Structured intake format capturing logo, offerings, colors, and WhatsApp routing. |
+| **Closing Deals** | **08** | [Quotation Template](08-quote-template.md) | `08-quote-template.md` | Itemized formal quote ready to send on WhatsApp. |
+| **Formal Sign-off** | **09** | [Proposal Template](09-proposal-template.md) | `09-proposal-template.md` | 1-page sprint proposal document for corporate clients. |
+| **Nurturing Silent Leads** | **10** | [Follow-Up Sequences](10-follow-up-sequences.md) | `10-follow-up-sequences.md` | 3-stage polite follow-up framework (24h, 48h proof, 7d slot closing). |
+| **Handling Objections** | **11** | [Objection Handling Cards](11-objection-handling-cards.md) | `11-objection-handling-cards.md` | Battle-tested scripts for price, WordPress vs custom, speed, and asset readiness. |
+| **Payment Collection** | **12** | [Payment Instructions](12-payment-instructions.md) | `12-payment-instructions.md` | UPI, bank transfer, and payment-link instructions. |
+| **Sprint Kickoff** | **13** | [Client Onboarding Guide](13-client-onboarding-document.md) | `13-client-onboarding-document.md` | Day 0 kickoff checklist and timeline expectations. |
+| **Handoff & Warranty** | **14** | [Project Handoff Document](14-project-handoff-document.md) | `14-project-handoff-document.md` | Live domain verification, DNS handover, analytics, and 30-day warranty. |
+| **Pipeline & Follow-through** | **15** | [Sales Command Center](15-sales-ops-dashboard.md) | `15-sales-ops-dashboard.md` | Lead fields, stages, daily rhythm, targets, and bottleneck review. |
+| **Measurement** | **16** | [Campaign Tracking Plan](16-campaign-tracking-plan.md) | `16-campaign-tracking-plan.md` | UTM naming, GA4 events, and WhatsApp campaign review. |
+| **Commercial Sign-off** | **17** | [Client Agreement Template](17-client-agreement-template.md) | `17-client-agreement-template.md` | Plain-language scope, payment, revisions, ownership, and support terms. |
+| **Launch QA** | **18** | [Delivery QA Checklist](18-delivery-qa-checklist.md) | `18-delivery-qa-checklist.md` | Mobile, conversion, technical, SEO, and handoff checks before launch. |
+| **Retention & Referrals** | **19** | [Retainer and Referral Offer](19-retainer-and-referral-offer.md) | `19-retainer-and-referral-offer.md` | Optional maintenance offer and a permission-based referral request. |
 
 ---
 
 ### Core Value Proposition Highlights
-- **Speed Guarantee:** 3-Day Turnaround for Quick Launch (₹5,000) / 7-Day for Growth (₹15,000).
+- **Speed promise:** 1–2 days for Quick Launch (₹5,000) / 2–3 days for Business (₹7,500) / 3 days for Premium Flagship (₹10,000).
 - **Sub-Second Performance:** 100/100 Core Web Vitals on Astro 6 engine.
 - **Direct Lead Pipeline:** 1-Tap WhatsApp pre-filled action buttons built into every user journey.
 - **Zero Retainers:** 100% full source code and domain ownership for the client.
+
+### Campaign entry point
+
+Direct WhatsApp ads should open a pre-filled WhatsApp chat using the package-specific messages in this suite. Use `/fast-websites` for organic traffic, Instagram/profile links, warm prospects, and visitors who want to compare packages. It shows the three packages, tracks website CTA clicks in GA4, and provides a Formspree-backed recommendation form for people who do not open WhatsApp.
