@@ -54,19 +54,28 @@ const pipMessages = [
   { title: "Pip ✦ high five!", text: "Wheee! ✦ Ready to build something exceptional? Let's talk!" },
 ];
 
+const reactionEmojis = ["✦", "♥", "✨", "🎉", "★", "💖", "⚡"];
+
 export default function StudioArtwork() {
   const hostRef = useRef<HTMLDivElement>(null);
+  const cursorRef = useRef<HTMLDivElement>(null);
   const bubbleRef = useRef<HTMLDivElement>(null);
+  const reactionRef = useRef<HTMLDivElement>(null);
   const bubbleVisibleRef = useRef(false);
   const pausedRef = useRef(false);
+
   const [paused, setPaused] = useState(false);
   const [ready, setReady] = useState(false);
   const [hasWebgl, setHasWebgl] = useState(false);
   const [showBubble, setShowBubble] = useState(false);
   const [msgIndex, setMsgIndex] = useState(0);
+  const [hoverPip, setHoverPip] = useState(false);
+  const [cursorActive, setCursorActive] = useState(false);
+  const [reactionEmoji, setReactionEmoji] = useState("✦");
 
   useEffect(() => {
     const host = hostRef.current;
+    const cursorEl = cursorRef.current;
     if (!host) return;
 
     let cancelled = false;
@@ -123,7 +132,7 @@ export default function StudioArtwork() {
       scene.add(world);
 
       // =========================================================================
-      // 1. TRAJECTORY: Luminous Fiber Spline with GLSL Travelling Energy Pulse
+      // 1. TRAJECTORY: Luminous Fiber Spline with Travelling Pulse
       // =========================================================================
       const trajectoryGroup = new THREE.Group();
       world.add(trajectoryGroup);
@@ -201,7 +210,7 @@ export default function StudioArtwork() {
       const trajectoryLine = new THREE.Mesh(trajectoryGeometry, trajectoryMaterial);
       trajectoryGroup.add(trajectoryGlow, trajectoryLine);
 
-      // Moving energetic quantum pulse
+      // Travelling pulse
       const pulseGeometry = new THREE.SphereGeometry(0.1, 16, 16);
       const pulseMaterial = new THREE.ShaderMaterial({
         uniforms: {
@@ -289,8 +298,6 @@ export default function StudioArtwork() {
       // =========================================================================
       // 3. DESTINATION MONUMENT: Real 3D NextReach Monogram Sculpture
       // =========================================================================
-      // Generated from the exact vectors of public/brand/logo-mark.svg:
-      // An arrow pointing forward/up with integrated "N" and "R" architecture.
       const destination = new THREE.Group();
       destination.position.copy(path.getPointAt(0.992));
 
@@ -350,14 +357,10 @@ export default function StudioArtwork() {
       };
 
       // Exact normalized brand strokes from logo-mark.svg
-      // 1. Arrow Head
       addBrandTube(new THREE.LineCurve3(new THREE.Vector3(-0.23, 0.28, 0), new THREE.Vector3(0, 0.5, 0)));
       addBrandTube(new THREE.LineCurve3(new THREE.Vector3(0, 0.5, 0), new THREE.Vector3(0.23, 0.28, 0)));
-      // 2. Central Arrow Spine
       addBrandTube(new THREE.LineCurve3(new THREE.Vector3(0, 0.5, 0), new THREE.Vector3(0, -0.5, 0)));
-      // 3. Left 'N' Stem
       addBrandTube(new THREE.LineCurve3(new THREE.Vector3(-0.375, -0.5, 0), new THREE.Vector3(-0.375, 0.26, 0)));
-      // 4. 'N' Diagonal to Base
       addBrandTube(
         new THREE.CatmullRomCurve3([
           new THREE.Vector3(-0.375, 0.26, 0),
@@ -365,7 +368,6 @@ export default function StudioArtwork() {
           new THREE.Vector3(0, -0.5, 0),
         ]),
       );
-      // 5. 'R' Loop
       addBrandTube(
         new THREE.CatmullRomCurve3([
           new THREE.Vector3(0, 0.16, 0),
@@ -375,10 +377,8 @@ export default function StudioArtwork() {
           new THREE.Vector3(0, -0.22, 0),
         ]),
       );
-      // 6. 'R' Leg
       addBrandTube(new THREE.LineCurve3(new THREE.Vector3(0, -0.22, 0), new THREE.Vector3(0.375, -0.5, 0)));
 
-      // Glowing core aura behind the brand mark
       if (glowTexture) {
         const monumentGlow = new THREE.Sprite(
           new THREE.SpriteMaterial({
@@ -394,7 +394,6 @@ export default function StudioArtwork() {
         destination.add(monumentGlow);
       }
 
-      // Vertical beacon of light ("Reach What's Next")
       const beaconGeo = new THREE.CylinderGeometry(0.015, 0.08, 3.2, 16, 1, true);
       const beaconMat = new THREE.MeshBasicMaterial({
         color: 0xffd1a6,
@@ -412,11 +411,18 @@ export default function StudioArtwork() {
       world.add(destination);
 
       // =========================================================================
-      // 4. PIP THE STUDIO BUDDY: Premium 3D Mascot with Welcoming Craft
+      // 4. PIP THE STUDIO BUDDY: Premium 3D Mascot with Decoupled Transforms
       // =========================================================================
       const pip = new THREE.Group();
+      const pipScaleGroup = new THREE.Group();
+      const pipHopGroup = new THREE.Group();
+      const pipSpinGroup = new THREE.Group();
       const pipInner = new THREE.Group();
-      pip.add(pipInner);
+
+      pip.add(pipScaleGroup);
+      pipScaleGroup.add(pipHopGroup);
+      pipHopGroup.add(pipSpinGroup);
+      pipSpinGroup.add(pipInner);
 
       const vinylCream = new THREE.MeshPhysicalMaterial({
         color: 0xfffaf2,
@@ -455,14 +461,13 @@ export default function StudioArtwork() {
       const vest = new THREE.Mesh(new THREE.CylinderGeometry(0.205, 0.185, 0.18, 24), vestMat);
       vest.position.y = 0.01;
 
-      // Miniature 3D NextReach arrow crest embossed on the vest
       const crestArrow = new THREE.Mesh(new THREE.ConeGeometry(0.04, 0.08, 4), badgeMat);
       crestArrow.position.set(0, 0.02, 0.2);
       crestArrow.rotation.x = 0.1;
 
       bodyG.add(tummy, vest, crestArrow);
 
-      // --- Little Boots ---
+      // --- Boots ---
       const bootGeo = new THREE.SphereGeometry(0.068, 16, 16);
       const bootMat = new THREE.MeshPhysicalMaterial({
         color: 0x2b2220,
@@ -477,7 +482,7 @@ export default function StudioArtwork() {
       bootR.scale.set(1, 0.6, 1.35);
       bodyG.add(bootL, bootR);
 
-      // --- Articulated Arms for Welcoming Wave ---
+      // --- Arms for Waving ---
       const armGeo = new THREE.CapsuleGeometry(0.036, 0.1, 4, 12);
       const armLPivot = new THREE.Group();
       armLPivot.position.set(-0.2, 0.07, 0.02);
@@ -504,7 +509,7 @@ export default function StudioArtwork() {
       skull.scale.set(1, 0.95, 0.92);
       headG.add(skull);
 
-      // Big Kawaii Anime Eyes with Dual Catchlights
+      // Anime Eyes with Dual Catchlights
       const eyeWhiteGeo = new THREE.SphereGeometry(0.068, 20, 20);
       const eyeWhiteMat = new THREE.MeshPhysicalMaterial({
         color: 0xffffff,
@@ -526,7 +531,6 @@ export default function StudioArtwork() {
       const pupilR = new THREE.Mesh(pupilGeo, pipDark);
       pupilR.position.z = 0.042;
 
-      // Primary top-left sparkle
       const glintL1 = new THREE.Mesh(glintGeo1, glintMat);
       glintL1.position.set(-0.011, 0.012, 0.026);
       const glintR1 = new THREE.Mesh(glintGeo1, glintMat);
@@ -534,7 +538,6 @@ export default function StudioArtwork() {
       pupilL.add(glintL1);
       pupilR.add(glintR1);
 
-      // Secondary bottom-right cute star glint
       const glintL2 = new THREE.Mesh(glintGeo2, glintMat);
       glintL2.position.set(0.011, -0.01, 0.026);
       const glintR2 = new THREE.Mesh(glintGeo2, glintMat);
@@ -551,7 +554,7 @@ export default function StudioArtwork() {
       eyeR.add(eyeWhiteR, pupilR);
       headG.add(eyeL, eyeR);
 
-      // Sweet Gentle Smile
+      // Smile
       const smile = new THREE.Mesh(
         new THREE.TorusGeometry(0.054, 0.0135, 12, 30, Math.PI),
         pipDark,
@@ -561,7 +564,7 @@ export default function StudioArtwork() {
       smile.rotation.x = -0.16;
       headG.add(smile);
 
-      // Blushing Rosy Cheeks
+      // Blushing Cheeks
       const cheekGeo = new THREE.SphereGeometry(0.038, 14, 14);
       const cheekL = new THREE.Mesh(cheekGeo, pipBlush);
       cheekL.position.set(-0.165, -0.028, 0.16);
@@ -571,7 +574,7 @@ export default function StudioArtwork() {
       cheekR.scale.set(1, 0.7, 0.55);
       headG.add(cheekL, cheekR);
 
-      // Studio Headset Ear-Cups
+      // Headset
       const earCupMat = new THREE.MeshPhysicalMaterial({ color: 0x3d322f, roughness: 0.35, clearcoat: 0.5 });
       const earCupGeo = new THREE.CylinderGeometry(0.05, 0.05, 0.03, 16);
       const earCupL = new THREE.Mesh(earCupGeo, earCupMat);
@@ -582,7 +585,7 @@ export default function StudioArtwork() {
       earCupR.rotation.z = Math.PI / 2;
       headG.add(earCupL, earCupR);
 
-      // Springy Antenna with Reactive Orb Light
+      // Antenna with Energy Orb
       const antennaG = new THREE.Group();
       antennaG.position.set(0.08, 0.22, 0);
       const antennaStem = new THREE.Mesh(
@@ -603,7 +606,7 @@ export default function StudioArtwork() {
 
       pipInner.add(headG);
 
-      // Soft back halo
+      // Back halo
       if (glowTexture) {
         const halo = new THREE.Sprite(
           new THREE.SpriteMaterial({
@@ -620,23 +623,110 @@ export default function StudioArtwork() {
         pip.add(halo);
       }
 
-      // Seat Pip comfortably along the trajectory
+      // -----------------------------------------------------------------------
+      // DEDICATED HITBOX FOR PIP (Rock-Solid Raycasting, Zero Hitbox Jitter)
+      // Attached directly to pipHopGroup: scales & hops dynamically with Pip!
+      // -----------------------------------------------------------------------
+      const pipHitbox = new THREE.Mesh(
+        new THREE.SphereGeometry(0.56, 16, 16),
+        new THREE.MeshBasicMaterial({ visible: false }),
+      );
+      pipHitbox.position.set(0, 0.08, 0.04);
+      pipHopGroup.add(pipHitbox);
+
+      // Seat Pip stably along trajectory
       const pipSeat = path.getPointAt(0.44);
       pip.position.copy(pipSeat).add(new THREE.Vector3(0.12, 0.52, 0.4));
-      pip.userData.baseY = pip.position.y;
       const pipBaseScale = isCompact.matches ? 0.82 : 1.05;
-      pip.scale.setScalar(0.001);
+      pipScaleGroup.scale.setScalar(0.001);
 
-      // Pip's dedicated warm point light
       const pipLight = new THREE.PointLight(0xffdfcb, 2.8, 5.5);
       pipLight.position.set(0.8, 1.3, 1.6);
       pip.add(pipLight);
       world.add(pip);
 
       // =========================================================================
-      // 5. CLICK SPARKLES: Particle Burst on Mascot Click
+      // 5. 3D SHOCKWAVE RING ON PIP CLICK
       // =========================================================================
-      const sparkleCount = 28;
+      const shockwaveGeo = new THREE.RingGeometry(0.08, 0.16, 36);
+      const shockwaveMat = new THREE.MeshBasicMaterial({
+        color: 0xffd1a6,
+        transparent: true,
+        opacity: 0,
+        side: THREE.DoubleSide,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false,
+      });
+      const shockwave = new THREE.Mesh(shockwaveGeo, shockwaveMat);
+      shockwave.position.copy(pip.position);
+      shockwave.position.z += 0.1;
+      world.add(shockwave);
+
+      const triggerShockwave = () => {
+        shockwave.position.copy(pip.position);
+        shockwave.position.y += pipHopGroup.position.y * pipScaleGroup.scale.x;
+        shockwave.scale.set(1, 1, 1);
+        shockwaveMat.opacity = 0.95;
+        gsap.to(shockwave.scale, {
+          x: 14,
+          y: 14,
+          z: 14,
+          duration: 0.8,
+          ease: "power2.out",
+          overwrite: "auto",
+        });
+        gsap.to(shockwaveMat, {
+          opacity: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          overwrite: "auto",
+        });
+      };
+
+      // =========================================================================
+      // 6. 3D MOUSE STARDUST TRAIL (Living Particle Ribbon with Dynamic Decay)
+      // =========================================================================
+      const trailCount = 64;
+      const trailPositions = new Float32Array(trailCount * 3);
+      const trailColors = new Float32Array(trailCount * 3);
+      const trailVels = new Float32Array(trailCount * 3);
+      const trailLifes = new Float32Array(trailCount);
+      const trailDecays = new Float32Array(trailCount);
+      const trailPalette = [
+        new THREE.Color(0xffd1a6),
+        new THREE.Color(0xf2b397),
+        new THREE.Color(0xdf896b),
+        new THREE.Color(0xffffff),
+      ];
+      const trailBaseColors: InstanceType<typeof THREE.Color>[] = [];
+
+      for (let i = 0; i < trailCount; i++) {
+        trailPositions[i * 3] = -999;
+        trailPositions[i * 3 + 1] = -999;
+        trailPositions[i * 3 + 2] = -999;
+        trailLifes[i] = 0;
+        trailDecays[i] = 1.6;
+        trailBaseColors.push(trailPalette[i % trailPalette.length]);
+      }
+
+      const trailGeo = new THREE.BufferGeometry();
+      trailGeo.setAttribute("position", new THREE.BufferAttribute(trailPositions, 3));
+      trailGeo.setAttribute("color", new THREE.BufferAttribute(trailColors, 3));
+
+      const trailMat = new THREE.PointsMaterial({
+        size: isCompact.matches ? 0.042 : 0.055,
+        vertexColors: true,
+        transparent: true,
+        opacity: 0.85,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false,
+      });
+      const trailPoints = new THREE.Points(trailGeo, trailMat);
+      world.add(trailPoints);
+      let trailSpawnIndex = 0;
+
+      // Radial click starburst
+      const sparkleCount = 36;
       const sparkleGeo = new THREE.BufferGeometry();
       const sparklePositions = new Float32Array(sparkleCount * 3);
       const sparkleVelocities = new Float32Array(sparkleCount * 3);
@@ -644,7 +734,7 @@ export default function StudioArtwork() {
 
       const sparkleMat = new THREE.PointsMaterial({
         color: 0xffd1a6,
-        size: 0.07,
+        size: 0.075,
         transparent: true,
         opacity: 0,
         blending: THREE.AdditiveBlending,
@@ -657,25 +747,26 @@ export default function StudioArtwork() {
 
       const triggerSparkles = () => {
         sparklesActive = true;
-        sparkleTimer = 1.0;
-        sparkleMat.opacity = 0.9;
+        sparkleTimer = 1.1;
+        sparkleMat.opacity = 0.95;
         const pPos = pip.position;
+        const hopY = pipHopGroup.position.y * pipScaleGroup.scale.x;
         for (let i = 0; i < sparkleCount; i++) {
-          sparklePositions[i * 3] = pPos.x;
-          sparklePositions[i * 3 + 1] = pPos.y + 0.2;
-          sparklePositions[i * 3 + 2] = pPos.z;
+          sparklePositions[i * 3] = pPos.x + (Math.random() - 0.5) * 0.1;
+          sparklePositions[i * 3 + 1] = pPos.y + 0.2 + hopY;
+          sparklePositions[i * 3 + 2] = pPos.z + 0.1;
 
           const angle = Math.random() * Math.PI * 2;
-          const speed = 0.5 + Math.random() * 0.9;
+          const speed = 0.7 + Math.random() * 1.1;
           sparkleVelocities[i * 3] = Math.cos(angle) * speed;
-          sparkleVelocities[i * 3 + 1] = Math.sin(angle) * speed + 0.3;
+          sparkleVelocities[i * 3 + 1] = Math.sin(angle) * speed + 0.5;
           sparkleVelocities[i * 3 + 2] = (Math.random() - 0.5) * speed;
         }
         sparkleGeo.attributes.position.needsUpdate = true;
       };
 
       // =========================================================================
-      // 6. ATMOSPHERE & LIGHTING
+      // 7. ATMOSPHERE & LIGHTING
       // =========================================================================
       const particleCount = isCompact.matches ? 96 : 160;
       const particlePositions = new Float32Array(particleCount * 3);
@@ -716,21 +807,28 @@ export default function StudioArtwork() {
       scene.add(sourceLight);
 
       // =========================================================================
-      // 7. INTERACTION CONTROLLERS & GSAP CHOREOGRAPHY
+      // 8. INTERACTION & RAYCASTING (Zero Glitch Hit Detection)
       // =========================================================================
       const pointer = { x: 0, y: 0, yaw: 0 };
       const targetPointer = { x: 0, y: 0, yaw: 0 };
+      const mouseCursor = { x: -100, y: -100, targetX: -100, targetY: -100 };
       const raycaster = new THREE.Raycaster();
       const raycastPointer = new THREE.Vector2();
       const pipScreen = new THREE.Vector3();
-      const raycastTargets = [destinationRing, brandMonument];
+      const cursorPlane = new THREE.Plane(new THREE.Vector3(0, 0, 1), -0.3);
+      const cursorIntersection = new THREE.Vector3();
 
       let dragging = false;
       let dragStartX = 0;
       let dragStartYaw = 0;
+      let downX = 0;
+      let downY = 0;
+      let downTime = 0;
+      let lastGreetTime = 0;
       let visible = true;
       let lastTime = 0;
       let elapsed = 0;
+      let isPipHovered = false;
 
       const layoutWorld = (width: number) => {
         world.position.x = width >= 1100 ? 1.15 : width >= 768 ? 0.55 : 0;
@@ -742,7 +840,7 @@ export default function StudioArtwork() {
         pulse.position.copy(path.getPointAt(0.62));
         pulse.scale.setScalar(1.05);
         destination.scale.setScalar(0.86);
-        pip.scale.setScalar(pipBaseScale);
+        pipScaleGroup.scale.setScalar(pipBaseScale);
         armRPivot.rotation.z = 2.2;
         headG.rotation.z = -0.12;
         camera.position.set(0.1, 0.02, 8.6);
@@ -770,23 +868,60 @@ export default function StudioArtwork() {
         const localY = (event.clientY - rect.top) / rect.height - 0.5;
         targetPointer.x = THREE.MathUtils.clamp(localX * 2, -1, 1);
         targetPointer.y = THREE.MathUtils.clamp(localY * 2, -1, 1);
+
+        mouseCursor.targetX = event.clientX - rect.left;
+        mouseCursor.targetY = event.clientY - rect.top;
+
         raycastPointer.set(targetPointer.x, -targetPointer.y);
         raycaster.setFromCamera(raycastPointer, camera);
 
-        destination.userData.hovered = raycaster.intersectObjects(raycastTargets, true).length > 0;
-        const pipHit = raycaster.intersectObject(pip, true).length > 0;
-        pip.userData.hovered = pipHit;
-        renderer.domElement.style.cursor = pipHit ? "pointer" : dragging ? "grabbing" : "grab";
+        // Raycast ONLY on dedicated simple Hitbox inside pipHopGroup — 100% glitch-free!
+        const hitPip = raycaster.intersectObject(pipHitbox, false).length > 0;
+        if (hitPip !== isPipHovered) {
+          isPipHovered = hitPip;
+          setHoverPip(hitPip);
+          if (cursorEl) {
+            cursorEl.classList.toggle("is-on-pip", hitPip);
+          }
+        }
+        renderer.domElement.style.cursor = hitPip ? "pointer" : (dragging ? "grabbing" : "grab");
+
+        destination.userData.hovered = raycaster.intersectObject(destinationRing, false).length > 0;
 
         if (dragging) {
           targetPointer.yaw = dragStartYaw + ((event.clientX - dragStartX) / rect.width) * 0.72;
         } else if (event.pointerType === "mouse") {
           targetPointer.yaw = localX * 0.18;
         }
+
+        // Project mouse position to 3D stardust trail plane
+        if (raycaster.ray.intersectPlane(cursorPlane, cursorIntersection)) {
+          for (let s = 0; s < 2; s++) {
+            const idx = trailSpawnIndex;
+            trailSpawnIndex = (trailSpawnIndex + 1) % trailCount;
+
+            trailPositions[idx * 3] = cursorIntersection.x + (Math.random() - 0.5) * 0.08;
+            trailPositions[idx * 3 + 1] = cursorIntersection.y + (Math.random() - 0.5) * 0.08;
+            trailPositions[idx * 3 + 2] = cursorIntersection.z + (Math.random() - 0.5) * 0.06;
+
+            trailVels[idx * 3] = (Math.random() - 0.5) * 0.35;
+            trailVels[idx * 3 + 1] = (Math.random() - 0.5) * 0.35 + 0.12;
+            trailVels[idx * 3 + 2] = (Math.random() - 0.5) * 0.2;
+
+            trailLifes[idx] = 1.0;
+            trailDecays[idx] = 1.4 + Math.random() * 0.8;
+            trailBaseColors[idx] = trailPalette[Math.floor(Math.random() * trailPalette.length)];
+
+            const bc = trailBaseColors[idx];
+            trailColors[idx * 3] = bc.r;
+            trailColors[idx * 3 + 1] = bc.g;
+            trailColors[idx * 3 + 2] = bc.b;
+          }
+          trailGeo.attributes.position.needsUpdate = true;
+          trailGeo.attributes.color.needsUpdate = true;
+        }
       };
 
-      let downX = 0;
-      let downY = 0;
       const onPointerDown = (event: PointerEvent) => {
         if (reduceMotion.matches) return;
         dragging = true;
@@ -794,21 +929,59 @@ export default function StudioArtwork() {
         dragStartYaw = targetPointer.yaw;
         downX = event.clientX;
         downY = event.clientY;
+        downTime = Date.now();
+        setCursorActive(true);
+        renderer.domElement.style.cursor = "grabbing";
+        if (cursorEl) cursorEl.classList.add("is-active");
         renderer.domElement.setPointerCapture(event.pointerId);
         setPointer(event);
       };
+
       const onPointerMove = (event: PointerEvent) => setPointer(event);
+
+      const triggerTapAt = (clientX: number, clientY: number) => {
+        const now = Date.now();
+        if (now - lastGreetTime < 280) return;
+        const rect = renderer.domElement.getBoundingClientRect();
+        raycastPointer.set(
+          ((clientX - rect.left) / rect.width) * 2 - 1,
+          -(((clientY - rect.top) / rect.height) * 2 - 1),
+        );
+        raycaster.setFromCamera(raycastPointer, camera);
+        if (raycaster.intersectObject(pipHitbox, false).length > 0) {
+          lastGreetTime = now;
+          greetPip(true);
+        }
+      };
+
       const onPointerUp = (event: PointerEvent) => {
         dragging = false;
+        setCursorActive(false);
+        if (cursorEl) cursorEl.classList.remove("is-active");
+        renderer.domElement.style.cursor = isPipHovered ? "pointer" : "grab";
         if (renderer.domElement.hasPointerCapture(event.pointerId)) {
           renderer.domElement.releasePointerCapture(event.pointerId);
         }
+        const dist = Math.hypot(event.clientX - downX, event.clientY - downY);
+        const duration = Date.now() - downTime;
+        if (dist < 18 && duration < 500) {
+          triggerTapAt(event.clientX, event.clientY);
+        }
       };
+
       const resetPointer = () => {
         if (!dragging) {
           targetPointer.x = 0;
           targetPointer.y = 0;
           targetPointer.yaw = 0;
+          isPipHovered = false;
+          setHoverPip(false);
+          setCursorActive(false);
+          renderer.domElement.style.cursor = "grab";
+          if (cursorEl) {
+            cursorEl.classList.remove("is-on-pip");
+            cursorEl.classList.remove("is-active");
+          }
         }
       };
 
@@ -833,16 +1006,49 @@ export default function StudioArtwork() {
         }, 5000);
 
         const hopHeight = excited ? 0.48 : 0.28;
-        if (excited) triggerSparkles();
+        if (excited) {
+          triggerSparkles();
+          triggerShockwave();
 
-        // Squash, jump, spin & land with elastic bounce
-        const tl = gsap.timeline({ overwrite: "auto" });
-        tl.to(pipInner.scale, { x: 1.2, y: 0.74, z: 1.15, duration: 0.12, ease: "power2.in" })
-          .to(pip.position, { y: pip.userData.baseY + hopHeight, duration: 0.36, ease: "power2.out" }, "<")
-          .to(pipInner.scale, { x: 0.9, y: 1.18, z: 0.92, duration: 0.36, ease: "power2.out" }, "<")
-          .to(pip.rotation, { y: excited ? pip.rotation.y + Math.PI * 2 : pip.rotation.y, duration: 0.6, ease: "power2.out" }, "<")
-          .to(pip.position, { y: pip.userData.baseY, duration: 0.44, ease: "bounce.out" }, ">-0.02")
-          .to(pipInner.scale, { x: 1, y: 1, z: 1, duration: 0.58, ease: "elastic.out(1,0.45)" }, "<");
+          // Trigger floating reaction emoji badge
+          const emoji = reactionEmojis[Math.floor(Math.random() * reactionEmojis.length)];
+          setReactionEmoji(emoji);
+          if (reactionRef.current && host) {
+            const hostW = host.clientWidth;
+            const hostH = host.clientHeight;
+            pip.getWorldPosition(pipScreen);
+            pipScreen.y += (0.95 + hopHeight) * pipScaleGroup.scale.x;
+            pipScreen.project(camera);
+            const rx = (pipScreen.x * 0.5 + 0.5) * hostW;
+            const ry = (-pipScreen.y * 0.5 + 0.5) * hostH;
+            reactionRef.current.style.transform = `translate(${rx.toFixed(1)}px, ${ry.toFixed(1)}px)`;
+            reactionRef.current.classList.remove("is-popping");
+            void reactionRef.current.offsetWidth;
+            reactionRef.current.classList.add("is-popping");
+          }
+        }
+
+        // Clean decoupled animation:
+        // 1. Hop on pipHopGroup (returns reliably to 0)
+        gsap.timeline({ overwrite: "auto" })
+          .to(pipHopGroup.position, { y: hopHeight, duration: 0.35, ease: "power2.out" })
+          .to(pipHopGroup.position, { y: 0, duration: 0.45, ease: "bounce.out" });
+
+        // 2. Squash and stretch on pipInner
+        gsap.timeline({ overwrite: "auto" })
+          .to(pipInner.scale, { x: 1.22, y: 0.74, z: 1.18, duration: 0.12, ease: "power2.in" })
+          .to(pipInner.scale, { x: 0.88, y: 1.2, z: 0.9, duration: 0.35, ease: "power2.out" }, ">")
+          .to(pipInner.scale, { x: 1, y: 1, z: 1, duration: 0.55, ease: "elastic.out(1,0.45)" }, ">");
+
+        // 3. 360 spin on pipSpinGroup
+        if (excited) {
+          gsap.to(pipSpinGroup.rotation, {
+            y: pipSpinGroup.rotation.y + Math.PI * 2,
+            duration: 0.65,
+            ease: "power2.out",
+            overwrite: "auto",
+          });
+        }
 
         gsap.fromTo(
           waveState,
@@ -870,14 +1076,7 @@ export default function StudioArtwork() {
 
       const onTap = (event: PointerEvent) => {
         if (reduceMotion.matches) return;
-        if (Math.hypot(event.clientX - downX, event.clientY - downY) > 8) return;
-        const rect = renderer.domElement.getBoundingClientRect();
-        raycastPointer.set(
-          ((event.clientX - rect.left) / rect.width) * 2 - 1,
-          -(((event.clientY - rect.top) / rect.height) * 2 - 1),
-        );
-        raycaster.setFromCamera(raycastPointer, camera);
-        if (raycaster.intersectObject(pip, true).length > 0) greetPip(true);
+        triggerTapAt(event.clientX, event.clientY);
       };
       renderer.domElement.addEventListener("click", onTap);
 
@@ -905,8 +1104,8 @@ export default function StudioArtwork() {
       if (reduceMotion.matches) {
         paintStaticFrame();
       } else {
-        // Pop-in welcome animation for Pip
-        gsap.to(pip.scale, {
+        // Entrance animation for Pip
+        gsap.to(pipScaleGroup.scale, {
           x: pipBaseScale,
           y: pipBaseScale,
           z: pipBaseScale,
@@ -915,6 +1114,7 @@ export default function StudioArtwork() {
           delay: 0.5,
           overwrite: "auto",
         });
+
         welcomeTimer = setTimeout(() => {
           if (!cancelled) greetPip(false);
         }, 1300);
@@ -925,11 +1125,47 @@ export default function StudioArtwork() {
           lastTime = time;
           elapsed += delta;
 
-          // Sparkle particles update
+          // Update DOM Cursor Position with Lerp
+          if (cursorEl && mouseCursor.targetX > 0) {
+            mouseCursor.x = THREE.MathUtils.lerp(mouseCursor.x, mouseCursor.targetX, 0.2);
+            mouseCursor.y = THREE.MathUtils.lerp(mouseCursor.y, mouseCursor.targetY, 0.2);
+            cursorEl.style.transform = `translate3d(${mouseCursor.x.toFixed(1)}px, ${mouseCursor.y.toFixed(1)}px, 0)`;
+          }
+
+          // Update living stardust particle decay and gentle drift
+          let trailHasActive = false;
+          for (let i = 0; i < trailCount; i++) {
+            if (trailLifes[i] > 0) {
+              trailLifes[i] -= delta * trailDecays[i];
+              if (trailLifes[i] <= 0) {
+                trailLifes[i] = 0;
+                trailPositions[i * 3] = -999;
+                trailPositions[i * 3 + 1] = -999;
+                trailPositions[i * 3 + 2] = -999;
+              } else {
+                trailPositions[i * 3] += trailVels[i * 3] * delta;
+                trailPositions[i * 3 + 1] += trailVels[i * 3 + 1] * delta;
+                trailPositions[i * 3 + 2] += trailVels[i * 3 + 2] * delta;
+                const l = trailLifes[i];
+                const bc = trailBaseColors[i];
+                trailColors[i * 3] = bc.r * l;
+                trailColors[i * 3 + 1] = bc.g * l;
+                trailColors[i * 3 + 2] = bc.b * l;
+                trailHasActive = true;
+              }
+            }
+          }
+          if (trailHasActive) {
+            trailGeo.attributes.position.needsUpdate = true;
+            trailGeo.attributes.color.needsUpdate = true;
+          }
+
+          // Sparkle particles update with gravity and velocity
           if (sparklesActive) {
             sparkleTimer -= delta;
             sparkleMat.opacity = Math.max(0, sparkleTimer);
             for (let i = 0; i < sparkleCount; i++) {
+              sparkleVelocities[i * 3 + 1] -= 2.2 * delta; // gentle gravity
               sparklePositions[i * 3] += sparkleVelocities[i * 3] * delta;
               sparklePositions[i * 3 + 1] += sparkleVelocities[i * 3 + 1] * delta;
               sparklePositions[i * 3 + 2] += sparkleVelocities[i * 3 + 2] * delta;
@@ -976,29 +1212,36 @@ export default function StudioArtwork() {
             originPoint.z + Math.sin(moonAngle) * 0.5,
           );
 
-          // --- Pip is Alive: Expressive Animation & Eye Tracking ---
+          // --- Pip Animation & Responsive Life ---
           const waveAmp = 0.22 + waveState.boost * 0.55;
           armRPivot.rotation.z = 0.35 + waveState.boost * 1.45 + Math.sin(elapsed * 9.5) * waveAmp * 0.5;
           armLPivot.rotation.z = -0.35 - Math.sin(elapsed * 2.1) * 0.06;
 
-          const headTilt = -0.16 * Math.min(waveState.boost / 1.2, 1);
-          headG.rotation.y = THREE.MathUtils.lerp(headG.rotation.y, pointer.x * 0.45, 0.07);
-          headG.rotation.x = THREE.MathUtils.lerp(headG.rotation.x, -pointer.y * 0.22, 0.07);
-          headG.rotation.z = THREE.MathUtils.lerp(headG.rotation.z, headTilt, 0.08);
-          headG.position.y = 0.17 + Math.sin(elapsed * 2.1) * 0.012;
+          // Smooth curious head-tilt when hovered
+          const hoverHeadZ = isPipHovered ? 0.14 : 0;
+          const headTilt = -0.16 * Math.min(waveState.boost / 1.2, 1) + hoverHeadZ;
+          headG.rotation.y = THREE.MathUtils.lerp(headG.rotation.y, pointer.x * 0.45, 0.08);
+          headG.rotation.x = THREE.MathUtils.lerp(headG.rotation.x, -pointer.y * 0.24, 0.08);
+          headG.rotation.z = THREE.MathUtils.lerp(headG.rotation.z, headTilt, 0.1);
+          headG.position.y = 0.17 + Math.sin(elapsed * 2.1) * 0.012 + (isPipHovered ? 0.015 : 0);
 
           const breathe = 1 + Math.sin(elapsed * 2.1 + 0.6) * 0.015;
           bodyG.scale.set(2 - breathe, breathe, breathe);
 
           antennaG.rotation.z = 0.12 + Math.sin(elapsed * 2.6) * 0.07 - pointer.x * 0.12;
           antennaG.rotation.x = Math.sin(elapsed * 1.9) * 0.05 - pointer.y * 0.1;
-          antennaTipMat.emissiveIntensity = 2.2 + Math.sin(elapsed * 4.2) * 0.8;
+
+          // Reactive glow: cheeks blush and antenna radiates on hover
+          const targetBlush = isPipHovered ? 1.4 : 0.58;
+          pipBlush.emissiveIntensity = THREE.MathUtils.lerp(pipBlush.emissiveIntensity, targetBlush, 0.12);
+          const baseAntennaGlow = isPipHovered ? 4.2 : 2.4;
+          antennaTipMat.emissiveIntensity = baseAntennaGlow + Math.sin(elapsed * 5.0) * (isPipHovered ? 1.6 : 0.8);
 
           // Eye pupil tracking
-          pupilL.position.x = THREE.MathUtils.lerp(pupilL.position.x, pointer.x * 0.02, 0.12);
-          pupilR.position.x = THREE.MathUtils.lerp(pupilR.position.x, pointer.x * 0.02, 0.12);
-          pupilL.position.y = THREE.MathUtils.lerp(pupilL.position.y, -pointer.y * 0.016, 0.12);
-          pupilR.position.y = THREE.MathUtils.lerp(pupilR.position.y, -pointer.y * 0.016, 0.12);
+          pupilL.position.x = THREE.MathUtils.lerp(pupilL.position.x, pointer.x * 0.024, 0.14);
+          pupilR.position.x = THREE.MathUtils.lerp(pupilR.position.x, pointer.x * 0.024, 0.14);
+          pupilL.position.y = THREE.MathUtils.lerp(pupilL.position.y, -pointer.y * 0.018, 0.14);
+          pupilR.position.y = THREE.MathUtils.lerp(pupilR.position.y, -pointer.y * 0.018, 0.14);
 
           // Natural blinking rhythm
           if (elapsed > nextBlink) {
@@ -1013,13 +1256,6 @@ export default function StudioArtwork() {
             });
           }
 
-          // Hover puff effect on Pip
-          if (elapsed > 1.4) {
-            const target = pipBaseScale * (pip.userData.hovered ? 1.1 : 1);
-            const s = THREE.MathUtils.lerp(pip.scale.x, target, 0.12);
-            pip.scale.setScalar(s);
-          }
-
           camera.position.x = THREE.MathUtils.lerp(
             camera.position.x,
             0.1 + pointer.x * 0.18 + Math.sin(elapsed * 0.3) * 0.04,
@@ -1028,13 +1264,13 @@ export default function StudioArtwork() {
           camera.position.y = THREE.MathUtils.lerp(camera.position.y, pointer.y * -0.14, 0.035);
           camera.lookAt(0, 0, 0);
 
-          // Speech bubble floating above Pip's head
+          // Speech bubble follows Pip in projected screenspace
           if (bubbleVisibleRef.current && bubbleRef.current && !isCompact.matches) {
             const hostW = host.clientWidth;
             const hostH = host.clientHeight;
             if (hostW > 0 && hostH > 0) {
               pip.getWorldPosition(pipScreen);
-              pipScreen.y += 0.88 * pip.scale.x;
+              pipScreen.y += 0.88 * pipScaleGroup.scale.x + pipHopGroup.position.y;
               pipScreen.project(camera);
               const bx = (pipScreen.x * 0.5 + 0.5) * hostW;
               const by = (-pipScreen.y * 0.5 + 0.5) * hostH;
@@ -1054,7 +1290,17 @@ export default function StudioArtwork() {
       dispose = () => {
         renderer.setAnimationLoop(null);
         media.revert();
-        gsap.killTweensOf([pip.scale, pip.position, pipInner.scale, waveState, eyeL.scale, eyeR.scale]);
+        gsap.killTweensOf([
+          pipScaleGroup.scale,
+          pipHopGroup.position,
+          pipSpinGroup.rotation,
+          pipInner.scale,
+          waveState,
+          eyeL.scale,
+          eyeR.scale,
+          shockwave.scale,
+          shockwaveMat,
+        ]);
         if (bubbleTimer) clearTimeout(bubbleTimer);
         if (welcomeTimer) clearTimeout(welcomeTimer);
         if (glowTexture) glowTexture.dispose();
@@ -1109,7 +1355,7 @@ export default function StudioArtwork() {
     >
       <div className="studio-signal-atmosphere" aria-hidden="true" />
 
-      {/* High-fidelity SVG Fallback for SEO & No-JS */}
+      {/* SVG Fallback */}
       <svg
         className="studio-signal-fallback"
         viewBox="0 0 640 560"
@@ -1165,7 +1411,18 @@ export default function StudioArtwork() {
 
       <div ref={hostRef} className="studio-signal-canvas" aria-hidden="true" />
 
-      {/* Coordinate & Narrative Markers */}
+      {/* Interactive Desktop Custom Magnetic Pointer */}
+      <div
+        ref={cursorRef}
+        className={`studio-hero-cursor ${hoverPip ? "is-on-pip" : ""} ${cursorActive ? "is-active" : ""}`}
+        aria-hidden="true"
+      >
+        <div className="studio-cursor-ring" />
+        <div className="studio-cursor-dot" />
+        <span className="studio-cursor-badge">✦ Click Pip</span>
+      </div>
+
+      {/* Narrative & Coordinate Markers */}
       <span className="studio-signal-label studio-signal-label--origin" aria-hidden="true">
         origin / 18.52° N · Pune
       </span>
@@ -1189,7 +1446,12 @@ export default function StudioArtwork() {
         <span>{activeMsg.text}</span>
       </div>
 
-      {/* Audio-visual Animation Pause/Play Control */}
+      {/* Floating Reaction Emoji on Pip Tap */}
+      <div ref={reactionRef} className="studio-pip-reaction" aria-hidden="true">
+        {reactionEmoji}
+      </div>
+
+      {/* Play/Pause Accessibility Control */}
       <button
         className="studio-signal-control"
         type="button"
