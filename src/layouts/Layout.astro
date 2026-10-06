@@ -151,6 +151,8 @@ const founder = {
     </>
     )}
 
+    <slot name="head" />
+
     <!-- Icons & PWA -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="alternate icon" href="/favicon.ico" />
@@ -162,18 +164,28 @@ const founder = {
     <!-- RSS -->
     <link rel="alternate" type="application/rss+xml" title="NextReach Studio Blog" href="/rss.xml" />
 
-    <!-- Google Analytics (non-blocking: loads after first paint) -->
+    <!-- Google Analytics (deferred until idle/post-paint to protect FCP & main thread) -->
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
-      window.gtag = window.gtag || function(){window.dataLayer.push(arguments);};
-      window.gtag('js', new Date());
-      window.gtag('config', 'G-1DVFSD0J9Y');
-      (function() {
+      function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', 'G-1DVFSD0J9Y');
+
+      function initGA() {
+        if (window.__gaInitialized) return;
+        window.__gaInitialized = true;
         var s = document.createElement('script');
         s.async = true;
         s.src = 'https://www.googletagmanager.com/gtag/js?id=G-1DVFSD0J9Y';
         document.head.appendChild(s);
-      })();
+      }
+
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(initGA, { timeout: 3500 });
+      } else {
+        window.addEventListener('load', function() { setTimeout(initGA, 1500); }, { once: true });
+      }
 
       // Conversion events are deliberately small and action-oriented. Campaign pages
       // add data-track attributes; this keeps the same event names usable in GA4 and
@@ -322,7 +334,6 @@ const founder = {
         ...(tags.length > 0 ? { keywords: tags.join(", ") } : {}),
       })} />
     )}
-    <slot name="head" />
   </head>
   <body class="font-body text-zinc-300 antialiased min-h-screen">
     {!skipLoader && <LoadingScreen />}

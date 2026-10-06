@@ -82,11 +82,11 @@ const faqs = [
   <link slot="head" rel="preload" as="image" href="/assets/carousel/hero-dish.webp" type="image/webp" fetchpriority="high" />
   <div class="studio-home" data-studio-home>
     <a class="studio-skip" href="#main-content">Skip to content</a>
-    <StudioNav client:load />
+    <StudioNav client:idle />
     <main id="main-content">
       <section class="studio-hero" aria-labelledby="hero-title">
         <div class="studio-hero-scrim" aria-hidden="true"></div>
-        <StudioArtwork client:load />
+        <StudioArtwork client:idle />
         <div class="studio-hero-inner">
           <div class="studio-hero-copy">
             <p class="studio-eyebrow studio-hero-enter"><span class="studio-eyebrow-dot" aria-hidden="true"></span>NextReach Studio</p>

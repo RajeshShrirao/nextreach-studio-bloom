@@ -121,6 +121,7 @@ export default function StudioArtwork() {
   const stageRef = useRef<HTMLDivElement>(null);
   const cylinderRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const scrimsRef = useRef<(HTMLDivElement | null)[]>([]);
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -151,10 +152,10 @@ export default function StudioArtwork() {
     radius: 560,
   });
 
-  // Calculate dynamic dimensions and cylinder radius
+  // Calculate dynamic dimensions and cylinder radius without forced reflow
   const updateDimensions = useCallback(() => {
     if (!stageRef.current) return;
-    const stageW = stageRef.current.clientWidth || window.innerWidth;
+    const stageW = typeof window !== "undefined" ? window.innerWidth : 1200;
     let cardW = 320;
     let cardH = 420;
 
@@ -471,13 +472,15 @@ export default function StudioArtwork() {
           card.style.pointerEvents = "auto";
           card.style.zIndex = Math.round((1 - dist) * 100).toString();
 
-          const scrimEl = card.querySelector<HTMLElement>(".studio-carousel-card-scrim");
+          const scrimEl = scrimsRef.current[idx];
           if (scrimEl) {
             scrimEl.style.opacity = scrimOpacity.toFixed(3);
           }
 
           const isCenter = absAngle < 16;
-          card.classList.toggle("is-center", isCenter);
+          if (card.classList.contains("is-center") !== isCenter) {
+            card.classList.toggle("is-center", isCenter);
+          }
         }
       });
 
@@ -558,7 +561,13 @@ export default function StudioArtwork() {
                 />
 
                 {/* Ambient Dimming Vignette for Depth Curvature */}
-                <div className="studio-carousel-card-scrim" aria-hidden="true" />
+                <div
+                  ref={(el) => {
+                    scrimsRef.current[idx] = el;
+                  }}
+                  className="studio-carousel-card-scrim"
+                  aria-hidden="true"
+                />
 
                 {/* Floating Glassmorphic Metadata Overlay */}
                 <div className="studio-carousel-card-meta">

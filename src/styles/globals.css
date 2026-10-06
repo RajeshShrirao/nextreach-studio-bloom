@@ -679,6 +679,8 @@
   .studio-hero { min-height: 0; }
   .studio-hero-scrim { display: none; }
   .studio-hero-inner { width: calc(100% - 40px); min-height: 0; padding-block: 68px 8px; }
+  .studio-hero-enter { animation-duration: .35s !important; animation-delay: 0s !important; }
+  .studio-hero h1, .studio-hero-description, .studio-hero-actions, .studio-hero-index, .studio-hero-foot { animation-delay: 0s !important; }
   .studio-hero-copy { max-width: 100%; }
   .studio-hero h1 { font-size: clamp(60px, 17vw, 104px); margin-block: 24px 26px; letter-spacing: -.07em; }
   .studio-eyebrow { font-size: 9px; letter-spacing: .1em; }
