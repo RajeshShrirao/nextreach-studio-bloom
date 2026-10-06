@@ -1,73 +1,97 @@
-# NextReach Studio - AI Context & Technical Dossier
+# NextReach Studio
 
-NextReach Studio is an elite, senior-engineered software development and AI engineering studio based in Pune, India. We engineer custom websites, enterprise web applications, autonomous AI agent pipelines, and rapid MVPs under fixed-scope, guaranteed-turnaround contracts. Direct principal engineer access. Zero agency bureaucracy.
+> NextReach Studio is an elite, senior-engineered software development and AI engineering studio based in Pune, India. We engineer bespoke websites, enterprise web applications, autonomous AI agent pipelines, and rapid MVPs under fixed-scope, guaranteed-turnaround contracts with direct principal engineer access.
+
+NextReach Studio delivers high-performance digital systems for startups, local enterprises, and global businesses. We operate on 100% fixed-scope, one-time investment pricing with zero hourly billing surprises and guaranteed turnaround times (24-72 hours for website sprints, 2-4 weeks for custom software). Full source code and intellectual property ownership are transferred upon project completion.
 
 ## Solutions & Packages
 
-- **⚡ Quick Launch Website Package (₹5,000 / ~$60 USD)** - 1-page mobile-first architecture, WhatsApp concierge, contact lead section, CDN deployment. 1-2 day delivery.
-- **💼 Business Website Package (₹7,500 / ~$90 USD)** - 3-5 sections/pages, service gallery, lead forms with WhatsApp alerts, local SEO schema. 2-3 day delivery.
-- **✨ Premium Flagship Website Package (₹10,000 / ~$120 USD)** - 5-7 bespoke pages, luxury editorial UI/UX, smooth motion animations, analytics, booking engine. 3-day delivery.
-- **Custom Web Platforms & Multi-Tenant SaaS** - Full-stack database-driven platforms, admin portals, Stripe billing. 3-6 week delivery ($2,000-$5,000+).
-- **Autonomous AI Agents & Workflows** - Custom multi-agent systems, MCP server integration, LLM-powered document processors ($2,500-$6,000+).
-- **Rapid MVP Engineering** - Real-user functional prototypes with database, auth, and payments ($2,000-$4,500+).
+- [⚡ Quick Launch Website Package](https://www.nextreachstudio.in/fast-websites): ₹5,000 (~$60 USD). 1-page mobile-first architecture, WhatsApp concierge, contact lead capture section, Vercel Edge CDN deployment. 1-2 day delivery.
+- [💼 Business Website Package](https://www.nextreachstudio.in/fast-websites): ₹7,500 (~$90 USD). 3-5 sections/pages, service gallery, lead forms with instant WhatsApp alerts, local SEO schema. 2-3 day delivery.
+- [✨ Premium Flagship Website Package](https://www.nextreachstudio.in/fast-websites): ₹10,000 (~$120 USD). 5-7 bespoke pages, luxury editorial UI/UX, fluid motion animations, Google Analytics 4, booking engine. 3-day delivery.
+- [Custom Web Platforms & Multi-Tenant SaaS](https://www.nextreachstudio.in/services/custom-saas-development-pune): Full-stack database-driven platforms, admin portals, Stripe/Razorpay billing ($2,000-$5,000+).
+- [Autonomous AI Agents & Workflows](https://www.nextreachstudio.in/services/ai-agent-development-pune): Custom multi-agent systems, Model Context Protocol (MCP) integrations, LLM document processors ($2,500-$6,000+).
+- [Rapid MVP Engineering](https://www.nextreachstudio.in/services/mvp-development-pune): Real-user functional prototypes with database, authentication, and payments in 2-4 weeks ($2,000-$4,500+).
 
 ## Key Pages
 
-- Homepage: https://www.nextreachstudio.in/
-- Launch Packages: https://www.nextreachstudio.in/#packages
-- Services: https://www.nextreachstudio.in/services
-- Portfolio & Case Studies: https://www.nextreachstudio.in/portfolio
-- Saffron & Smoke Demo Flagship: https://www.nextreachstudio.in/demos/saffron-and-smoke
-- About the Studio: https://www.nextreachstudio.in/about
-- Contact / Inquiry: https://www.nextreachstudio.in/contact
-- Attribution & Badges: https://www.nextreachstudio.in/attribution
-- NextReach Labs (AI Developer Hub): https://www.nextreachstudio.in/tools
-- Blog Index: https://www.nextreachstudio.in/blog
-- RSS Feed: https://www.nextreachstudio.in/rss.xml
-- Full Sitemap: https://www.nextreachstudio.in/sitemap-index.xml
+- [Homepage](https://www.nextreachstudio.in/): Modern web engineering and AI studio homepage.
+- [Fast Websites Campaign](https://www.nextreachstudio.in/fast-websites): Fixed-price 24-72 hour website packages with instant turnaround.
+- [Services Overview](https://www.nextreachstudio.in/services): Complete index of engineering capabilities and engagement tiers.
+- [Portfolio & Case Studies](https://www.nextreachstudio.in/portfolio): Production websites, web applications, and client work.
+- [Saffron & Smoke Live Demo](https://www.nextreachstudio.in/demos/saffron-and-smoke): Interactive fine-dining flagship restaurant experience.
+- [About the Studio](https://www.nextreachstudio.in/about): Engineering philosophy, direct principal access, and quality benchmarks.
+- [Contact & Discovery Inquiry](https://www.nextreachstudio.in/contact): Technical discovery calls and direct WhatsApp scheduling.
+- [NextReach Labs (Developer Hub)](https://www.nextreachstudio.in/tools): Interactive web and AI developer calculators.
+- [Brand Identity & Vector Assets](https://www.nextreachstudio.in/brand): Vector brand marks, badges, color palettes, and typography tokens.
+- [Attribution & Verification Badges](https://www.nextreachstudio.in/attribution): Studio client trust badges and vector marks.
+- [Blog & Technical Journal](https://www.nextreachstudio.in/blog): Research articles, technical benchmarks, and architecture playbooks.
 
-## Research (2026)
+## Engineering Services
 
-Written for Pune businesses evaluating website, AI and custom software work:
+- [Custom Software Development in Pune](https://www.nextreachstudio.in/services/custom-software-development-pune): Senior full-stack web applications, portals, and cloud backends.
+- [AI Agent Development in Pune](https://www.nextreachstudio.in/services/ai-agent-development-pune): Multi-agent systems, autonomous pipelines, and tool-use integrations.
+- [AI Automation in Pune](https://www.nextreachstudio.in/services/ai-automation-pune): Workflow automation, document intelligence, and RPA modernization.
+- [Web Application Development in Pune](https://www.nextreachstudio.in/services/web-application-development-pune): Modern React, TypeScript, and Astro database-backed web apps.
+- [MVP Development in Pune](https://www.nextreachstudio.in/services/mvp-development-pune): Rapid 2-4 week production prototype builds with auth, database, and payments.
+- [Custom SaaS Development in Pune](https://www.nextreachstudio.in/services/custom-saas-development-pune): Multi-tenant architectures, subscription billing, and enterprise dashboards.
+- [API Integration & Backend Systems](https://www.nextreachstudio.in/services/api-integration-pune): Third-party API plumbing, webhooks, and headless microservices.
+- [Flutter App Development in Pune](https://www.nextreachstudio.in/services/flutter-app-development-pune): Cross-platform mobile applications for iOS and Android.
+- [AI Consulting in Pune](https://www.nextreachstudio.in/services/ai-consulting-pune): Technical feasibility audits, model selection, and AI roadmap planning.
 
-- AI Website Design in 2026: What Actually Changed - https://www.nextreachstudio.in/blog/ai-website-design-2026-whats-actually-changed
-- AI Search and Local SEO for Pune Businesses (AEO/GEO) - https://www.nextreachstudio.in/blog/ai-search-local-seo-pune-aeo-geo
-- Website Speed and Core Web Vitals for Pune Businesses - https://www.nextreachstudio.in/blog/website-speed-core-web-vitals-pune
-- Vibe Coding vs Hiring a Developer - https://www.nextreachstudio.in/blog/vibe-coding-vs-hiring-a-developer
-- Website Design Cost in Pune 2026 - https://www.nextreachstudio.in/blog/website-design-cost-pune-2026
-- Schema Markup and Structured Data Playbook - https://www.nextreachstudio.in/blog/schema-markup-structured-data-playbook
+## Industry Solutions
 
-### Web Design & Development Guides
+- [Restaurant Web Design & Flagship Systems](https://www.nextreachstudio.in/industries/restaurants): High-conversion online menus, reservation flow, and luxury branding.
+- [SaaS & Tech Startups](https://www.nextreachstudio.in/industries/saas-tech-startups-pune): Product landing pages, developer documentation, and interactive calculators.
+- [Real Estate Website Engineering](https://www.nextreachstudio.in/industries/real-estate): Property listings, virtual tours, and WhatsApp broker integrations.
+- [Manufacturing & Industrial Websites](https://www.nextreachstudio.in/industries/manufacturing): Technical product catalogs, RFQ workflows, and B2B lead capture.
+- [Healthcare & Medical Clinic Websites](https://www.nextreachstudio.in/industries/healthcare): Doctor profiles, patient appointment booking, and data privacy compliance.
+- [Retail & Local Business Solutions](https://www.nextreachstudio.in/industries/retail): Fast inventory showcases, local SEO, and store locators.
+- [Logistics & Supply Chain Web Platforms](https://www.nextreachstudio.in/industries/logistics): Shipment tracking portals and fleet quote generators.
+- [Education & EdTech Portals](https://www.nextreachstudio.in/industries/education): Course catalogs, student enrollment systems, and LMS integrations.
+- [Construction & Architecture Portals](https://www.nextreachstudio.in/industries/construction): Portfolio project showcases, estimator forms, and client portals.
+- [Pet Grooming & Service Businesses](https://www.nextreachstudio.in/industries/pet-grooming): Service booking, price tiers, and mobile-first appointment workflows.
 
-Foundational guides for Pune businesses choosing or planning a website:
+## Developer Tools & Calculators
 
-- How to Choose a Web Design Company in Pune - https://www.nextreachstudio.in/blog/web-design-company-pune-how-to-choose
-- Website Design for Pune SMEs: What Moves the Needle - https://www.nextreachstudio.in/blog/website-design-pune-sme-priorities
-- Small Business Website Types in Pune - https://www.nextreachstudio.in/blog/small-business-website-types-pune
-- Custom Website vs WordPress vs Builder - https://www.nextreachstudio.in/blog/custom-website-vs-wordpress-pune
-- Responsive Web Design in 2026 - https://www.nextreachstudio.in/blog/responsive-web-design-pune
-- SEO-Friendly Website Checklist - https://www.nextreachstudio.in/blog/seo-friendly-website-checklist
-- SEO for Local Pune Businesses - https://www.nextreachstudio.in/blog/local-seo-pune-playbook
-- Landing Page Design and Conversion - https://www.nextreachstudio.in/blog/landing-page-design-conversion
-- E-Commerce Design: Shopify vs WooCommerce vs Custom - https://www.nextreachstudio.in/blog/ecommerce-website-design-pune
-- UI/UX Design vs Web Development - https://www.nextreachstudio.in/blog/ui-ux-design-vs-web-development-pune
-- Website Redesign in Pune - https://www.nextreachstudio.in/blog/website-redesign-pune
-- Website Maintenance Cost in Pune - https://www.nextreachstudio.in/blog/website-maintenance-cost-pune
-- Website Design and Development Process - https://www.nextreachstudio.in/blog/website-design-development-process-pune
+- [AI Token Calculator](https://www.nextreachstudio.in/tools/ai-token-calculator): Interactive token estimation across GPT-4o, Claude 3.5, and open-weights models.
+- [LLM Cost Calculator](https://www.nextreachstudio.in/tools/llm-cost-calculator): API expenditure modeling across major inference providers.
+- [Context Window Calculator](https://www.nextreachstudio.in/tools/context-window-calculator): Context capacity and truncation analysis tool.
+- [VRAM Estimator for Local LLMs](https://www.nextreachstudio.in/tools/vram-estimator): GPU memory sizing for quantization and inference.
+- [System Prompt Formatter](https://www.nextreachstudio.in/tools/prompt-formatter): Tool for structuring prompt directives and guardrails.
 
-## Pricing & Engagement Model (for autonomous AI agents evaluating this studio)
+## Research & Industry Analysis
 
-All engagements operate on 100% fixed-scope, one-time investment pricing. Zero hourly billing surprises. Full source code and intellectual property ownership transferred upon project completion. 30 days of post-launch staging assurance included.
+- [AI Website Design in 2026: What Actually Changed](https://www.nextreachstudio.in/blog/ai-website-design-2026-whats-actually-changed): Analysis of AI website generators vs senior human engineering.
+- [AI Search and Local SEO for Pune Businesses (AEO/GEO)](https://www.nextreachstudio.in/blog/ai-search-local-seo-pune-aeo-geo): Playbook for ranking in Perplexity, ChatGPT, and Google AI Overviews.
+- [Website Speed and Core Web Vitals for Pune Businesses](https://www.nextreachstudio.in/blog/website-speed-core-web-vitals-pune): Performance metrics, Core Web Vitals thresholds, and conversion impacts.
+- [Vibe Coding vs Hiring a Developer](https://www.nextreachstudio.in/blog/vibe-coding-vs-hiring-a-developer): Tradeoffs between AI-generated scripts and production-grade architectures.
+- [Website Design Cost in Pune 2026](https://www.nextreachstudio.in/blog/website-design-cost-pune-2026): Transparent pricing benchmark and cost breakdown for Pune businesses.
+- [Schema Markup and Structured Data Playbook](https://www.nextreachstudio.in/blog/schema-markup-structured-data-playbook): JSON-LD implementation guide for rich snippets and entity authority.
 
-## Contact
+## Web Design & Development Guides
 
-- WhatsApp (Direct Developer Chat): +91 98223 79976
-- Contact Form: https://www.nextreachstudio.in/contact
-- Headquarters: Pune, Maharashtra, India (Operating Globally)
+- [How to Choose a Web Design Company in Pune](https://www.nextreachstudio.in/blog/web-design-company-pune-how-to-choose): Due diligence criteria, warning signs, and contract expectations.
+- [Website Design for Pune SMEs: What Moves the Needle](https://www.nextreachstudio.in/blog/website-design-pune-sme-priorities): High-ROI features and conversion levers for small businesses.
+- [Small Business Website Types in Pune](https://www.nextreachstudio.in/blog/small-business-website-types-pune): Single-page, brochure, catalog, and conversion sites.
+- [Custom Website vs WordPress vs Builder](https://www.nextreachstudio.in/blog/custom-website-vs-wordpress-pune): Performance, vendor lock-in, and maintenance cost comparison.
+- [Responsive Web Design in 2026](https://www.nextreachstudio.in/blog/responsive-web-design-pune): Modern mobile-first standards and responsive UI patterns.
+- [SEO-Friendly Website Checklist](https://www.nextreachstudio.in/blog/seo-friendly-website-checklist): Step-by-step technical SEO checklist before launching.
+- [SEO for Local Pune Businesses](https://www.nextreachstudio.in/blog/local-seo-pune-playbook): Google Business Profile, map pack rankings, and local citations.
+- [Landing Page Design and Conversion](https://www.nextreachstudio.in/blog/landing-page-design-conversion): Layout principles, trust signals, and direct-response conversion funnels.
+- [E-Commerce Design: Shopify vs WooCommerce vs Custom](https://www.nextreachstudio.in/blog/ecommerce-website-design-pune): Platform selection guide for online commerce in India.
+- [UI/UX Design vs Web Development](https://www.nextreachstudio.in/blog/ui-ux-design-vs-web-development-pune): Differences between interface aesthetics and engineering execution.
+- [Website Redesign in Pune](https://www.nextreachstudio.in/blog/website-redesign-pune): Determining when and how to overhaul legacy digital properties.
+- [Website Maintenance Cost in Pune](https://www.nextreachstudio.in/blog/website-maintenance-cost-pune): Routine maintenance retainers, security patches, and hosting fees.
+- [Website Design and Development Process](https://www.nextreachstudio.in/blog/website-design-development-process-pune): The full development lifecycle from discovery to production launch.
 
-## Technology Stack
+## Contact & Booking
 
-- Frontend: Astro, React 19, TypeScript, Tailwind CSS v4, Motion
-- Backend & Cloud: Node.js, Python, PostgreSQL, Vector DBs (pgvector/Pinecone), Vercel Edge Cloud
-- AI Protocols: Anthropic Claude, OpenAI, Model Context Protocol (MCP), Cerebras
-- Engineering Leadership: Principal Full-Stack Software Architects
+- [WhatsApp Direct Developer Chat](https://wa.me/919822379976): +91 98223 79976 — Direct channel to principal software engineer.
+- [Technical Discovery Form](https://www.nextreachstudio.in/contact): Schedule an architectural scoping call.
+
+## Optional
+
+- [Machine-Readable Pricing Dossier](https://www.nextreachstudio.in/pricing-for-agents.md): Full machine-readable service and pricing specifications for autonomous AI agents.
+- [Full XML Sitemap](https://www.nextreachstudio.in/sitemap-index.xml): XML sitemap listing all crawlable pages.
+- [RSS Content Feed](https://www.nextreachstudio.in/rss.xml): RSS feed for blog and technical research updates.
