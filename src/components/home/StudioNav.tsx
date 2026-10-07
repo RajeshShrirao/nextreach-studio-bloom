@@ -57,7 +57,7 @@ export default function StudioNav() {
       setDark(isDark);
       document.querySelector("[data-studio-home]")?.setAttribute("data-theme", isDark ? "dark" : "light");
     };
-    apply(saved ? saved === "dark" : media.matches);
+    apply(saved ? saved === "dark" : true);
     navRef.current?.closest("[data-site-critical]")?.setAttribute("data-site-ready", "true");
     document.dispatchEvent(new Event("nextreach:critical-ready"));
     const onChange = (event: MediaQueryListEvent) => {
