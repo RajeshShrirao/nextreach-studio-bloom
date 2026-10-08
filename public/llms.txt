@@ -4,6 +4,8 @@
 
 NextReach Studio delivers high-performance digital systems for startups, local enterprises, and global businesses. We operate on 100% fixed-scope, one-time investment pricing with zero hourly billing surprises and guaranteed turnaround times (24-72 hours for website sprints, 2-4 weeks for custom software). Full source code and intellectual property ownership are transferred upon project completion.
 
+> Identity: NextReach Studio is an independent studio based in Pune, India, operating exclusively at nextreachstudio.in. It is not affiliated with any other company using the name "NextReach".
+
 ## Solutions & Packages
 
 - [⚡ Quick Launch Website Package](https://www.nextreachstudio.in/fast-websites): ₹5,000 (~$60 USD). 1-page mobile-first architecture, WhatsApp concierge, contact lead capture section, Vercel Edge CDN deployment. 1-2 day delivery.

@@ -1,0 +1,240 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Page from "@/components/brand/BrandBookPage.astro";
+import { websitePackages } from "@/data/websitePackages";
+
+// Print-emulating editorial document: 6 / 1 / 2 (variance / motion / density).
+// The cream reader is fixed; dark and rust panels demonstrate brand colorways.
+const colors = [
+  { name: "Terracotta Rust", hex: "#C76B50", rgb: "199 / 107 / 80", role: "Signature & graphic emphasis", class: "rust" },
+  { name: "Deep Charcoal", hex: "#2A2A2D", rgb: "42 / 42 / 45", role: "Dark canvas & primary text", class: "charcoal" },
+  { name: "Warm Canvas Cream", hex: "#F5F1E9", rgb: "245 / 241 / 233", role: "Light canvas & reverse text", class: "cream" },
+  { name: "Stone Gray", hex: "#A69D92", rgb: "166 / 157 / 146", role: "Quiet detail on dark surfaces", class: "stone" },
+  { name: "Pure White", hex: "#FFFFFF", rgb: "255 / 255 / 255", role: "One-color marks & clean contrast", class: "white" },
+];
+const chapters = [
+  { page: "03", title: "The brand", detail: "Positioning / voice", href: "#essence" },
+  { page: "05", title: "The signature", detail: "Logos / space / size", href: "#logos" },
+  { page: "10", title: "The palette", detail: "Color / contrast", href: "#palette" },
+  { page: "13", title: "The system", detail: "Type / grid / imagery", href: "#typography" },
+  { page: "22", title: "The applications", detail: "Ads / social / print", href: "#feed" },
+  { page: "28", title: "The handover", detail: "Export / assets / references", href: "#production" },
+];
+const templates = [
+  { name: "Offer / portrait", file: "offer-portrait", size: "1080 × 1350" },
+  { name: "Brand / square", file: "brand-square", size: "1080 × 1080" },
+  { name: "Story / vertical", file: "story-vertical", size: "1080 × 1920" },
+  { name: "Brand / landscape", file: "brand-landscape", size: "1200 × 628" },
+];
+const references = [
+  { name: "NASA", title: "Graphic Standards", takeaway: "Precise logo variants, protected space, and visual misuse examples.", url: "https://www.nasa.gov/nasa-brand-center/brand-guidelines/", label: "nasa.gov / NASA Brand Center" },
+  { name: "IBM", title: "Design Language / 2x Grid", takeaway: "A repeatable spatial unit connects type, margins, and image proportions.", url: "https://www.ibm.com/design/language/2x-grid/", label: "ibm.com / design / language / 2x-grid" },
+  { name: "Spotify", title: "Design & Branding Guidelines", takeaway: "Show the correct treatment beside the incorrect one; make assets easy to find.", url: "https://developer.spotify.com/documentation/design", label: "developer.spotify.com / documentation / design" },
+  { name: "Mailchimp", title: "Voice & Tone", takeaway: "Keep the voice consistent; adapt the tone to the reader and situation.", url: "https://styleguide.mailchimp.com/voice-and-tone/", label: "styleguide.mailchimp.com / voice-and-tone" },
+];
+---
+
+<Layout localFonts skipLoader title="Visual Brand Book" description="The NextReach Studio visual brand book: logo, colors, typography, image direction, editable ad templates, and print-ready design specifications." image="/brand/brandkit-overview.jpg">
+  <div class="bb-shell">
+    <a class="bb-skip" href="#book">Skip to brand book</a>
+    <nav class="bb-topbar" aria-label="Brand book tools">
+      <a href="/brand" class="bb-back">← Brand kit</a>
+      <span class="bb-toolbar-title">NextReach Studio / Visual Brand Book</span>
+      <div class="bb-toolbar-actions">
+        <a href="/brand/book/NextReach-Studio-Brand-Book.pdf" download>Download PDF ↓</a>
+        <a href="/brand/book/NextReach-Studio-Brand-Assets.zip" download>Asset pack ↓</a>
+      </div>
+    </nav>
+    <div class="bb-intro"><p>A working reference for every next design.</p><a href="#index">Explore the chapters ↓</a></div>
+    <main class="bb-book" id="book">
+      <Page number={1} id="cover" class="bb-cover">
+        <div class="bb-cover-top"><img src="/brand/logo-horizontal.png" width="360" height="64" alt="NextReach Studio" fetchpriority="high" /><span>Visual identity & campaign system<br />October 2026</span></div>
+        <div class="bb-cover-main"><div><p class="bb-cover-label">The brand book.</p><h1>Reach<br />what’s next.</h1><p class="bb-cover-description">One identity. Every next expression.</p></div><div class="bb-cover-mark"><img src="/brand/logo-mark.svg" width="120" height="150" alt="NextReach’s architectural ascending emblem" /></div></div>
+        <div class="bb-cover-bottom"><span>Identity / Digital / Campaign / Print</span><span>nextreachstudio.in</span></div>
+      </Page>
+
+      <Page number={2} id="index" title="The whole system, at a glance." note="Start with the signature. Build with the system. Express it in context.">
+        <div class="bb-index-layout"><img class="bb-overview" src="/brand/brandkit-overview.jpg" width="1200" height="896" alt="Existing NextReach identity board showing logo, geometry, colors, type, stationery, architecture, and interface direction" loading="lazy" /><div class="bb-chapters">{chapters.map(c => <a href={c.href}><span>{c.page}</span><div><h3>{c.title}</h3><p>{c.detail}</p></div><span aria-hidden="true">↗</span></a>)}</div></div>
+        <p class="bb-caption">The overview is a mood reference. The exact colors, typefaces, and dimensions on the following pages are the production specifications.</p>
+      </Page>
+
+      <Page number={3} id="essence" title="Creative direction. Engineering ownership.">
+        <div class="bb-essence-statement">An independent studio<br />for your business’s<br /><span>next move.</span></div>
+        <div class="bb-principles"><div><span>01</span><h3>Make it distinctive.</h3><p>Visual craft that makes the business recognizable.</p></div><div><span>02</span><h3>Make it work.</h3><p>Websites, digital products, and connected AI systems.</p></div><div><span>03</span><h3>Make it yours.</h3><p>A direct founder relationship and source-code ownership.</p></div></div>
+        <p class="bb-caption">For founders and growing businesses. Confident, technical, human, and understated. The core line is “Reach what’s next.”</p>
+      </Page>
+
+      <Page number={4} id="voice" title="Sound like the person building it." note="Plain words. Specific outcomes. Confidence without exaggeration.">
+        <div class="bb-voice-grid">
+          <div class="bb-voice-example"><p class="bb-small-label">Say this</p><h3>“Your website.<br />Your source code.”</h3><p>Direct / ownership-led</p></div>
+          <div class="bb-voice-example bb-quiet"><p class="bb-small-label">Avoid this</p><h3>“Unlock limitless<br />digital excellence.”</h3><p>Abstract / agency cliché</p></div>
+          <div class="bb-voice-example"><p class="bb-small-label">Say this</p><h3>“Less busywork.<br />More possibility.”</h3><p>Human / outcome-first</p></div>
+          <div class="bb-voice-example bb-quiet"><p class="bb-small-label">Avoid this</p><h3>“Guaranteed 10× leads.<br />Only two slots left!”</h3><p>Unverified / manufactured urgency</p></div>
+        </div>
+        <div class="bb-note-strip"><span>Ads: one clear idea.</span><span>Proposals: scope and facts.</span><span>Support: calm and helpful.</span></div>
+      </Page>
+
+      <Page number={5} id="logos" title="A signature, in four arrangements." note="Use the supplied masters. The geometric symbol stays separate from the wordmark.">
+        <div class="bb-logo-grid">
+          <figure class="bb-logo-panel"><img src="/brand/logo-horizontal.png" width="360" height="64" alt="Primary horizontal logo on cream" loading="lazy" /><figcaption>Horizontal / light backgrounds</figcaption></figure>
+          <figure class="bb-logo-panel bb-dark"><img src="/brand/logo-horizontal-dark.png" width="360" height="64" alt="Reverse horizontal logo on charcoal" loading="lazy" /><figcaption>Horizontal / dark backgrounds</figcaption></figure>
+          <figure class="bb-logo-panel"><img class="bb-stacked-logo" src="/brand/logo-stacked.png" width="240" height="200" alt="Stacked logo on cream" loading="lazy" /><figcaption>Stacked / portrait & square formats</figcaption></figure>
+          <figure class="bb-logo-panel bb-dark"><img class="bb-standalone-logo" src="/brand/logo-mark.svg" width="120" height="150" alt="Standalone terracotta emblem on charcoal" loading="lazy" /><figcaption>Symbol / avatars & established brand contexts</figcaption></figure>
+        </div>
+      </Page>
+
+      <Page number={6} id="geometry" title="Direction, drawn with precision.">
+        <div class="bb-geometry-layout"><div class="bb-mark-blueprint"><div class="bb-blueprint-axis bb-axis-x"></div><div class="bb-blueprint-axis bb-axis-y"></div><img src="/brand/logo-mark.svg" width="120" height="150" alt="Actual master emblem on a measured grid: upward arrow, central stem, and integrated N and R geometry" loading="lazy" /><span class="bb-dimension-horizontal">120 SVG units</span><span class="bb-dimension-vertical">150 SVG units</span></div><div class="bb-geometry-details"><div><h3>Ascent</h3><p>The arrow expresses reach and forward ambition.</p></div><div><h3>Structure</h3><p>A central pillar connects the geometric N and R forms.</p></div><div><h3>Restraint</h3><p>One monoline drawing. No lettering inside the symbol.</p></div><div class="bb-spec-note">Master viewBox: 120 × 150<br />Stroke: 7.5 SVG units<br />Round caps / round joins</div></div></div>
+        <p class="bb-caption">Scale the entire SVG proportionally. The master paths, rather than a reconstruction or approximate angle, define the emblem.</p>
+      </Page>
+
+      <Page number={7} id="clearspace" title="Space is part of the signature." note="Keep at least 1X clear around the visible emblem or complete lockup.">
+        <div class="bb-clearspace-layout"><div class="bb-space-stage"><div class="bb-exclusion"><span class="bb-space-top">1X</span><span class="bb-space-left">1X</span><img src="/brand/logo-mark.svg" width="120" height="150" alt="Emblem with a clear exclusion zone on all four sides" loading="lazy" /><span class="bb-space-right">1X</span><span class="bb-space-bottom">1X</span></div></div><div class="bb-space-rule"><h3>X = arrowhead height.</h3><p>30 units in the 150-unit master canvas.</p><div class="bb-space-lockup"><img src="/brand/logo-horizontal.png" width="360" height="64" alt="Horizontal logo with clear space outside its entire lockup" loading="lazy" /></div><p>For lockups, derive X from the scaled emblem. Protect the entire group, including the wordmark.</p></div></div>
+        <div class="bb-note-strip"><span>No type in the exclusion zone.</span><span>No graphic edges through the mark.</span><span>Use more space when the layout allows.</span></div>
+      </Page>
+
+      <Page number={8} id="minimum-size" title="Small enough to fit. Big enough to read.">
+        <div class="bb-size-specs"><div><div class="bb-size-visual"><img src="/brand/logo-mark.svg" width="16" height="20" alt="Emblem at a 20-pixel digital minimum" /><img src="/brand/logo-mark.svg" width="32" height="40" alt="Emblem at a 40-pixel digital size" /></div><h3>Symbol</h3><strong>20 px high</strong><p>Digital minimum / 6.25 mm high in print</p></div><div><div class="bb-size-visual"><img src="/brand/logo-horizontal.png" width="120" height="22" alt="Horizontal logo at a 120-pixel digital minimum" /></div><h3>Horizontal</h3><strong>120 px wide</strong><p>Digital minimum / 28 mm wide in print</p></div><div><div class="bb-size-visual"><img src="/brand/logo-stacked.png" width="80" height="67" alt="Stacked logo at an 80-pixel digital minimum" /></div><h3>Stacked</h3><strong>80 px wide</strong><p>Digital minimum / 20 mm wide in print</p></div></div>
+        <div class="bb-size-recommendation"><img src="/brand/social/instagram-profile.svg" width="1080" height="1080" alt="Circle-safe NextReach profile avatar" loading="lazy" /><div><h3>Campaign recommendation</h3><p>On a 1080 px ad, start at 240 px for the full lockup. Judge it at a 360 px phone preview.</p><p>Use the supplied favicon and avatar assets for tiny UI placements. Do not squeeze in the full wordmark.</p></div></div>
+        <p class="bb-caption">Digital minimum previews are rendered at their stated CSS sizes on screen; print and device scaling can change their physical size.</p>
+      </Page>
+
+      <Page number={9} id="misuse" title="Recognizable means consistent.">
+        <div class="bb-misuse-grid">{[
+          { name: "Keep the master", class: "correct", label: "Use" },
+          { name: "Stretch the proportions", class: "stretched", label: "Avoid" },
+          { name: "Rotate the signature", class: "rotated", label: "Avoid" },
+          { name: "Add glow or shadow", class: "glowing", label: "Avoid" },
+          { name: "Recolor outside the palette", class: "recolored", label: "Avoid" },
+          { name: "Hide it in low contrast", class: "low-contrast", label: "Avoid" },
+        ].map(item => <figure class:list={["bb-misuse-example", item.class]}><div><img src="/brand/logo-mark.svg" width="120" height="150" alt={`${item.label}: ${item.name}`} loading="lazy" /></div><figcaption><span>{item.label === "Use" ? "✓" : "×"}</span>{item.name}</figcaption></figure>)}</div>
+        <p class="bb-caption">Also avoid redrawing the paths, changing stroke weight, adding letters inside the symbol, or cropping the identifying logo.</p>
+      </Page>
+
+      <Page number={10} id="palette" title="Warmth, with a technical backbone.">
+        <div class="bb-palette">{colors.map(c => <div class:list={["bb-swatch", `bb-${c.class}`]}><div><h3>{c.name}</h3><strong>{c.hex}</strong></div><div><p>RGB {c.rgb}</p><p>{c.role}</p></div></div>)}</div>
+        <div class="bb-color-functional"><div><span class="bb-functional-chip bb-deep-rust"></span><div><strong>Deep Rust / #97402E</strong><p>Accessible small text and buttons on cream.</p></div></div><div><span class="bb-functional-chip bb-soft-rust"></span><div><strong>Soft Rust / #E58D72</strong><p>Accessible small text and buttons on charcoal.</p></div></div></div>
+        <p class="bb-caption">The five core colors follow BRANDING.md. Functional rust shades come from the live homepage. Legacy asset backgrounds are not new palette tokens.</p>
+      </Page>
+
+      <Page number={11} id="color-behavior" title="Three expressions. One palette.">
+        <div class="bb-colorways"><figure class="bb-colorway bb-dark"><img src="/brand/logo-mark.svg" width="120" height="150" alt="Terracotta emblem on charcoal" loading="lazy" /><h3>Engineered<br />with care.</h3><figcaption>Dark / technical & product-led</figcaption></figure><figure class="bb-colorway"><img src="/brand/logo-mark.svg" width="120" height="150" alt="Terracotta emblem on cream" loading="lazy" /><h3>Room for<br />what’s next.</h3><figcaption>Light / editorial & human</figcaption></figure><figure class="bb-colorway bb-rust"><img src="/brand/logo-mark-white.svg" width="120" height="150" alt="White emblem on terracotta" loading="lazy" /><h3>Make the<br />next move.</h3><figcaption>Rust / a large-format statement</figcaption></figure></div>
+        <div class="bb-note-strip"><span>Neutral canvas first.</span><span>One accent focal point.</span><span>Terracotta carries recognition.</span></div>
+        <p class="bb-caption">Treat the rust canvas as a display composition. Move small essential copy to a charcoal or cream panel.</p>
+      </Page>
+
+      <Page number={12} id="contrast" title="Beautiful is also readable." note="Measured WCAG contrast. Body and button text need at least 4.5:1; large text needs 3:1.">
+        <div class="bb-contrast-grid"><div class="bb-contrast-sample"><strong>Aa</strong><div><h3>Charcoal on cream</h3><p>12.70:1 / body & display</p></div></div><div class="bb-contrast-sample bb-dark bb-soft-rust-text"><strong>Aa</strong><div><h3>Soft rust on charcoal</h3><p>5.71:1 / body & buttons</p></div></div><div class="bb-contrast-sample bb-deep-rust-text"><strong>Aa</strong><div><h3>Deep rust on cream</h3><p>6.04:1 / body & buttons</p></div></div><div class="bb-contrast-sample bb-brand-rust-text"><strong>Aa</strong><div><h3>Signature rust on cream</h3><p>3.30:1 / large text only</p></div></div></div>
+        <div class="bb-contrast-rule"><span class="bb-small-label">The practical rule</span><h3>Keep signature rust in the mark.<br />Use functional rust for small copy.</h3><p>Stone on cream is 2.37:1: decorative use only. Stone on charcoal is 5.36:1. White on signature rust fails normal-size text.</p></div>
+      </Page>
+
+      <Page number={13} id="typography" title="Three voices. Clear roles.">
+        <div class="bb-font-specimen bb-cabinet"><span>Display / Cabinet Grotesk</span><h3>Make the next move.</h3><p>ABCDEFGHIJKLMNOPQRSTUVWXYZ / abcdefghijklmnopqrstuvwxyz / 0123456789</p><small>700 to 800 weight / tight tracking / short headlines</small></div>
+        <div class="bb-font-specimen bb-jakarta"><span>Body & interface / Plus Jakarta Sans</span><h3>Good ideas deserve good engineering.</h3><small>400 to 600 weight / natural tracking / calm supporting copy</small></div>
+        <div class="bb-font-specimen bb-mono"><span>Technical detail / JetBrains Mono</span><h3>Design → Build → Launch</h3><small>400 to 500 weight / specifications, metadata, and code</small></div>
+        <p class="bb-caption">Use the bundled font files, not lookalikes. Preserve supplied logo artwork instead of resetting its wordmark.</p>
+      </Page>
+
+      <Page number={14} id="type-scale" title="A headline, not a paragraph." note="Starting sizes for a 1080 px social canvas. Scale the whole hierarchy when adapting formats.">
+        <div class="bb-type-scale"><div class="bb-type-hero"><span class="bb-scale-meta">Cabinet / 88 to 112 px / 0.95 line height</span><h3>Reach<br />what’s next.</h3></div><div class="bb-type-support"><span class="bb-scale-meta">Jakarta / 36 to 40 px / 1.4 line height</span><p>Websites and digital products<br />built to move your business forward.</p><span class="bb-scale-meta">Mono / 28 to 32 px / 1.3 line height</span><p class="bb-mono">Websites / AI / Digital products</p></div></div>
+        <div class="bb-note-strip"><span>Headline: 3 to 7 words.</span><span>Support: 18 words or fewer.</span><span>One CTA: 2 to 4 words.</span></div>
+        <p class="bb-caption">Display tracking: −0.04em. Body: 0. Labels: +0.06em. Use sentence case; avoid condensed caps and long mono paragraphs.</p>
+      </Page>
+
+      <Page number={15} id="grid" title="A framework, not a formula.">
+        <div class="bb-grid-layout"><div class="bb-grid-demo"><div class="bb-grid-columns">{Array.from({ length: 12 }, (_, i) => <span>{i + 1}</span>)}</div><div class="bb-grid-demo-content"><img src="/brand/logo-horizontal.png" width="360" height="64" alt="Logo aligned to the left grid edge" loading="lazy" /><h3>Give the idea<br />some space.</h3><div class="bb-grid-image"><img src="/assets/demos/saffron-and-smoke/hero-dish.jpg" width="1200" height="800" alt="Restaurant demo photography aligned to the grid" loading="lazy" /></div></div></div><div class="bb-grid-spec"><strong>12</strong><p>columns for campaign masters</p><strong>72 px</strong><p>outer margin on a 1080 px canvas</p><strong>24 px</strong><p>gutters between columns</p><strong>8 px</strong><p>base spacing unit</p></div></div>
+        <p class="bb-caption">Spacing scale: 8 / 16 / 24 / 32 / 48 / 64 / 96. Align type and images to the live-area columns. Mobile layouts simplify to one column.</p>
+      </Page>
+
+      <Page number={16} id="composition" title="One idea. Three ways to frame it.">
+        <div class="bb-compositions"><figure><div class="bb-mini-poster bb-mini-type"><img src="/brand/logo-mark.svg" width="120" height="150" alt="Emblem" loading="lazy" /><h3>Reach<br />what’s<br />next.</h3><span>Start a project ↗</span></div><figcaption><strong>Type-led</strong><span>For positioning & founder ideas.</span></figcaption></figure><figure><div class="bb-mini-poster bb-mini-photo"><img class="bb-mini-photo-image" src="/assets/demos/saffron-and-smoke/hero-dish.jpg" width="1200" height="800" alt="Food photography fills the upper part of a campaign layout" loading="lazy" /><div><h3>A website<br />worth booking.</h3><span>Explore the demo ↗</span></div></div><figcaption><strong>Image-led</strong><span>For a service in its real context.</span></figcaption></figure><figure><div class="bb-mini-poster bb-mini-offer bb-dark"><img src="/brand/logo-mark.svg" width="120" height="150" alt="Emblem" loading="lazy" /><span>Fixed-scope websites</span><h3>From<br />₹5,000.</h3><p>One clear starting point.</p><span>Chat on WhatsApp ↗</span></div><figcaption><strong>Offer-led</strong><span>For one package & one next action.</span></figcaption></figure></div>
+        <p class="bb-caption">Keep a dominant focal point and generous negative space. The service can change; the identity, type hierarchy, and grid stay familiar.</p>
+      </Page>
+
+      <Page number={17} id="imagery" title="Show the world the work belongs in.">
+        <div class="bb-image-direction"><figure class="bb-image-large"><img src="/assets/demos/saffron-and-smoke/hero-dish.jpg" width="1200" height="800" alt="Warm, editorial food photography from the Saffron and Smoke demo" loading="lazy" /><figcaption>Hospitality / tactile detail, directional light</figcaption></figure><figure><img src="/assets/demos/business-clinic.jpg" width="1000" height="700" alt="Clinic environment from the website demo image library" loading="lazy" /><figcaption>Services / calm, credible environments</figcaption></figure><figure><img src="/assets/demos/premium-vayu.jpg" width="1000" height="700" alt="Architectural hospitality image from the existing demo image library" loading="lazy" /><figcaption>Premium / structure, material, atmosphere</figcaption></figure></div>
+        <div class="bb-note-strip"><span>One subject per frame.</span><span>Natural light & real texture.</span><span>Space for the headline.</span></div>
+        <p class="bb-caption">Existing demo images illustrate direction, not client endorsements. Use original project photography or properly licensed images for new campaigns.</p>
+      </Page>
+
+      <Page number={18} id="image-treatment" title="Let the image breathe.">
+        <div class="bb-treatment-grid"><figure><div><img src="/assets/demos/saffron-and-smoke/hero-dish.jpg" width="1200" height="800" alt="Original demo photography with natural color" loading="lazy" /></div><figcaption><strong>Natural color</strong><span>Default for services & case studies.</span></figcaption></figure><figure><div class="bb-treatment-mono"><img src="/assets/demos/saffron-and-smoke/hero-dish.jpg" width="1200" height="800" alt="The same photography in monochrome" loading="lazy" /></div><figcaption><strong>Monochrome</strong><span>For a quiet, editorial statement.</span></figcaption></figure><figure><div class="bb-treatment-scrim"><img src="/assets/demos/saffron-and-smoke/hero-dish.jpg" width="1200" height="800" alt="The same photograph under a dark scrim with readable cream headline" loading="lazy" /><h3>A website<br />worth booking.</h3></div><figcaption><strong>Directional scrim</strong><span>Darken the text area; preserve the subject.</span></figcaption></figure></div>
+        <div class="bb-image-rule"><h3>Crop for focus.<br />Never crop away the story.</h3><p>Place type in quiet space. Check actual contrast. Avoid heavy color casts, gratuitous blur, or filters that hide the work.</p></div>
+      </Page>
+
+      <Page number={19} id="graphics" title="Structure is the graphic language.">
+        <div class="bb-graphic-grid"><figure class="bb-graphic-panel bb-dark"><div class="bb-ascent-lines" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div><figcaption>Ascent / repeated vertical rhythm</figcaption></figure><figure class="bb-graphic-panel"><div class="bb-offset-frames" aria-hidden="true"><span></span><span></span><span></span></div><figcaption>Frames / a system taking shape</figcaption></figure><figure class="bb-graphic-panel bb-blueprint-fill"><div class="bb-precision-mark"><img src="/brand/logo-mark.svg" width="120" height="150" alt="Emblem within a subtle technical grid" loading="lazy" /></div><figcaption>Construction / precision made visible</figcaption></figure></div>
+        <div class="bb-note-strip"><span>Thin rules: 1 to 2 px at 1080.</span><span>Grid opacity: 4 to 8%.</span><span>Keep artwork behind the message.</span></div>
+        <p class="bb-caption">Use simple architectural geometry, not decorative tech clutter. No neon halos, random blobs, generic AI brains, or competing accent colors.</p>
+      </Page>
+
+      <Page number={20} id="interface" title="The identity should work, too.">
+        <div class="bb-interface-layout"><div class="bb-interface-demo"><h3>Your next move<br />starts here.</h3><p>A focused website, a useful product,<br />or a workflow that gives time back.</p><div class="bb-demo-buttons"><button type="button" class="bb-demo-primary">Start a project ↗</button><button type="button" class="bb-demo-secondary">See our work ↗</button></div><label class="bb-demo-input-label" for="bb-project-name">Project name</label><input id="bb-project-name" class="bb-demo-input" placeholder="Your next project" autocomplete="off" /><p class="bb-demo-helper">Interactive specimens only; no information is submitted.</p></div><div class="bb-interface-spec"><h3>Sharp, calm surfaces.</h3><p>Campaign frames: 0 px radius.<br />Controls: 0 to 4 px radius.<br />App icons: use the supplied squircle.</p><h3>A clear next action.</h3><p>Primary: deep rust + cream.<br />Hover: a subtle tone change.<br />Focus: a visible 2 px outline.</p><div class="bb-demo-state-row"><button class="bb-demo-primary" type="button">Default</button><button class="bb-demo-primary" type="button" disabled>Disabled</button></div><p>44 px minimum touch target.<br />Never communicate state through color alone.</p></div></div>
+      </Page>
+
+      <Page number={21} id="motion" title="Move with purpose. Then settle.">
+        <div class="bb-motion-sequence"><div><span>01 / Prepare</span><div class="bb-motion-object bb-motion-start"></div><p>Small distance. Clear hierarchy.</p></div><div><span>02 / Resolve</span><div class="bb-motion-object bb-motion-middle"></div><p>Reveal the next piece of information.</p></div><div><span>03 / Rest</span><div class="bb-motion-object"></div><p>Leave the message still and readable.</p></div></div>
+        <div class="bb-motion-spec"><div><strong>180 ms</strong><p>Hover & pressed feedback</p></div><div><strong>400 to 600 ms</strong><p>Single entrance or scene change</p></div><div><strong>Ease out</strong><p>cubic-bezier(.23, 1, .32, 1)</p></div></div>
+        <p class="bb-caption">Animate opacity and transform. Avoid constant spinning, flashing, or motion behind body text. Reduced-motion users receive a static or instant transition.</p>
+      </Page>
+
+      <Page number={22} id="feed" title="A feed that looks like one studio." note="Editable vector masters and matching PNGs. Change the message, not the identity.">
+        <div class="bb-feed-layout"><figure><img class="bb-ad-portrait" src="/brand/book/templates/offer-portrait.svg" width="1080" height="1350" alt="Portrait ad: Your business. Online. Websites from ₹5,000. Chat on WhatsApp." loading="lazy" /><figcaption><strong>4:5 / offer-led</strong><a href="/brand/book/templates/offer-portrait.svg" download>Editable SVG ↓</a></figcaption></figure><figure><img class="bb-ad-square" src="/brand/book/templates/brand-square.svg" width="1080" height="1080" alt="Square brand ad: Reach what’s next. Websites, AI and digital products." loading="lazy" /><figcaption><strong>1:1 / brand-led</strong><a href="/brand/book/templates/brand-square.svg" download>Editable SVG ↓</a></figcaption></figure><div class="bb-feed-rules"><h3>Keep the scan short.</h3><p>Logo → headline → offer → action.</p><h3>Keep the promise specific.</h3><p>One service or package per creative.</p><h3>Keep the footer quiet.</h3><p>One domain. One necessary condition.</p></div></div>
+      </Page>
+
+      <Page number={23} id="stories" title="Design for the screen. And its edges.">
+        <div class="bb-story-layout"><figure><img class="bb-story-ad" src="/brand/book/templates/story-vertical.svg" width="1080" height="1920" alt="Vertical story campaign: Less busywork. More possibility. AI agents and connected workflows. Start a project." loading="lazy" /></figure><div class="bb-story-guide"><div class="bb-story-guide-inner"><div class="bb-story-unsafe">Top UI / 250 px</div><div class="bb-story-safe"><span>Keep logo, headline<br />and CTA here.</span><small>90 px side margins</small></div><div class="bb-story-unsafe">Bottom UI / 340 px</div></div></div><div class="bb-story-rules"><strong>1080 × 1920</strong><p>9:16 / stories & vertical placements</p><h3>A practical starting safe area.</h3><p>250 px top and 340 px bottom. Placement UI can vary; confirm the current ad preview before publishing.</p><a href="/brand/book/templates/story-vertical.svg" download>Editable SVG ↓</a></div></div>
+        <p class="bb-caption">Compose the vertical version separately. Do not simply stretch a feed design or move the CTA into the platform’s overlay area.</p>
+      </Page>
+
+      <Page number={24} id="landscape" title="Same identity. A wider canvas.">
+        <img class="bb-landscape-ad" src="/brand/book/templates/brand-landscape.svg" width="1200" height="628" alt="Landscape campaign: Reach what’s next. Websites, AI and digital products. Start a project." loading="lazy" />
+        <div class="bb-landscape-spec"><div><strong>1200 × 628</strong><p>Approximately 1.91:1 / landscape ad reference</p></div><div><h3>Recompose, don’t resize.</h3><p>Keep the headline left. Give the emblem room on the right.</p></div><a href="/brand/book/templates/brand-landscape.svg" download>Editable SVG ↓</a></div>
+        <p class="bb-caption">For a 1200 × 630 link-preview image, use the separate exported variant. Check the destination platform’s current crop and compression.</p>
+      </Page>
+
+      <Page number={25} id="carousel" title="A carousel should tell one story.">
+        <div class="bb-carousel-example">{[
+          { n: "01", label: "Hook", text: "Your website.\nYour next\nfirst impression." },
+          { n: "02", label: "Problem", text: "Make it easy\nto understand\nwhat you do." },
+          { n: "03", label: "Approach", text: "Clear message.\nReal work.\nOne next action." },
+          { n: "04", label: "Evidence", text: "Show the\nactual work.", image: true },
+          { n: "05", label: "Action", text: "Let’s build\nyour next\nchapter." },
+        ].map((s, i) => <figure><div class:list={["bb-carousel-card", i % 2 === 0 && "bb-dark"]}><img class="bb-carousel-mark" src={i % 2 === 0 ? "/brand/logo-mark-white.svg" : "/brand/logo-mark.svg"} width="120" height="150" alt="NextReach emblem" loading="lazy" /><h3>{s.text.split("\n").map(line => <span>{line}</span>)}</h3>{s.image && <img class="bb-carousel-photo" src="/assets/demos/saffron-and-smoke/hero-dish.jpg" width="1200" height="800" alt="Restaurant demo, clearly labeled as demo work" loading="lazy" />}<span class="bb-carousel-number">{s.image ? "Demo work / " : ""}{s.n} / 05</span></div><figcaption>{s.label}</figcaption></figure>)}</div>
+        <div class="bb-carousel-rule"><h3>Hook → problem → approach → evidence → action.</h3><p>One thought per slide. Repeat margins and logo placement. For results, show only measured, attributed project evidence.</p></div>
+      </Page>
+
+      <Page number={26} id="applications" title="The system leaves the screen.">
+        <div class="bb-stationery-scene"><div class="bb-business-card bb-dark"><img src="/brand/logo-mark.svg" width="120" height="150" alt="NextReach mark on a charcoal business-card front" loading="lazy" /><span>Reach what’s next.</span></div><div class="bb-business-card bb-card-back"><img src="/brand/logo-horizontal.png" width="360" height="64" alt="NextReach logo on a cream business-card back" loading="lazy" /><div><strong>Rajesh Shrirao</strong><p>Founder & Principal Engineer</p><p>hello@nextreachstudio.in<br />+91 98223 79976</p></div></div><div class="bb-proposal-cover"><img src="/brand/logo-horizontal.png" width="360" height="64" alt="NextReach logo on a proposal cover" loading="lazy" /><h3>Your next<br />chapter.</h3><p>Project proposal<br />Scope / Timeline / Investment</p><span>nextreachstudio.in</span></div></div>
+        <div class="bb-note-strip"><span>Business card: 85 × 55 mm.</span><span>Proposal: A4 / 210 × 297 mm.</span><span>One-color mark for embossing or foil.</span></div>
+        <p class="bb-caption">Layout specimens, not photographs of manufactured items. Keep logo clear space and use stock and finishes that preserve fine strokes.</p>
+      </Page>
+
+      <Page number={27} id="campaign" title="Build the next ad in five moves.">
+        <div class="bb-campaign-recipe">{[{ n: "1", title: "Choose the job", text: "Awareness, a specific offer, or a demo." }, { n: "2", title: "Choose the frame", text: "Type-led, image-led, or offer-led." }, { n: "3", title: "Write one idea", text: "One headline and one next action." }, { n: "4", title: "Add real proof", text: "Show work; attribute measured results." }, { n: "5", title: "Check the preview", text: "Phone size, crop, contrast, destination." }].map(s => <div><strong>{s.n}</strong><h3>{s.title}</h3><p>{s.text}</p></div>)}</div>
+        <div class="bb-package-reference"><h3>Current website offer reference</h3><div>{websitePackages.map(p => <div><span>{p.name}</span><strong>{p.priceLabel}</strong><p>{p.deliveryTime.replace("–", " to ")} / fixed scope</p></div>)}</div><p>Delivery begins after approved scope, content, and assets. Verify current inclusions and pricing at /fast-websites before each campaign.</p></div>
+        <p class="bb-caption">WhatsApp ad action: “Chat on WhatsApp” → a prefilled chat. General project action: “Start a project” → /contact. Demo action: “Explore the demo” → the actual demo.</p>
+      </Page>
+
+      <Page number={28} id="production" title="Ready for the actual output.">
+        <div class="bb-production-grid"><div><span class="bb-production-symbol">RGB</span><h3>Digital</h3><p>sRGB / PNG for graphics<br />JPEG or WebP for photography<br />Export at exact placement dimensions</p><p>Keep an editable SVG master.<br />Recheck text after platform compression.</p></div><div><span class="bb-production-symbol">CMYK</span><h3>Print</h3><p>Use the printer’s ICC profile.<br />300 ppi for placed raster images<br />3 mm bleed / 5 mm safe margin</p><p>Convert fonts to outlines in final print artwork.<br />Proof terracotta on the chosen paper.</p></div><div><span class="bb-production-symbol">SVG</span><h3>Vectors & handover</h3><p>Preserve viewBox and proportions.<br />Use supplied monochrome masters.<br />Keep live text in the editable file.</p><p>The book PDF is a reference document.<br />Create press artwork to the printer’s spec.</p></div></div>
+        <div class="bb-naming-example"><span>File naming</span><code>nextreach_[campaign]_[format]_[variant]_v01.png</code></div>
+        <p class="bb-caption">HEX and RGB are the digital source of truth. CMYK is output-profile dependent; there is no invented universal Pantone or CMYK match.</p>
+      </Page>
+
+      <Page number={29} id="assets" title="Everything you need for the next one.">
+        <div class="bb-assets-layout"><div class="bb-assets-primary bb-dark"><img src="/brand/logo-mark.svg" width="120" height="150" alt="NextReach master emblem" loading="lazy" /><h3>Make it yours.<br />Keep it NextReach.</h3><a href="/brand/book/NextReach-Studio-Brand-Assets.zip" download>Download asset pack ↓</a><p>Logo masters / fonts / tokens / ad templates / PNGs</p></div><div class="bb-asset-links">{templates.map(t => <div><div><h3>{t.name}</h3><p>{t.size} / live text & embedded fonts</p></div><div><a href={`/brand/book/templates/${t.file}.svg`} download>SVG ↓</a><a href={`/brand/book/templates/${t.file}.png`} download>PNG ↓</a></div></div>)}<div><div><h3>Design tokens</h3><p>Core palette, functional colors, type & spacing</p></div><div><a href="/brand/book/tokens.json" download>JSON ↓</a><a href="/brand/book/tokens.css" download>CSS ↓</a></div></div><div><div><h3>Full identity library</h3><p>Monochrome, stacked, app & profile variants</p></div><a href="/brand">Brand kit ↗</a></div></div></div>
+        <p class="bb-caption">This book extends the existing identity with practical campaign rules. Brand contact: hello@nextreachstudio.in / nextreachstudio.in/contact.</p>
+      </Page>
+
+      <Page number={30} id="references" title="Studied from systems that endure." note="Primary-source web research completed with TinyFish CLI on 7 October 2026.">
+        <div class="bb-reference-grid">{references.map(r => <a href={r.url} target="_blank" rel="noopener noreferrer"><h3>{r.name}</h3><strong>{r.title}</strong><p>{r.takeaway}</p><span>{r.label} ↗</span></a>)}</div>
+        <div class="bb-reference-footer"><p>Reference principles inform the document’s structure. All NextReach colors, marks, and applications remain its own identity.</p><p>Identity sources: BRANDING.md / PRODUCT.md / homepage tokens / supplied brand masters. New layout and production rules are defined in this book.</p></div>
+      </Page>
+    </main>
+    <footer class="bb-reader-footer"><a href="/brand">← Back to the brand kit</a><span>NextReach Studio / Reach what’s next.</span><button type="button" data-print-book>Print book ↗</button></footer>
+  </div>
+  <script>
+    document.querySelector<HTMLButtonElement>("[data-print-book]")?.addEventListener("click", () => window.print());
+  </script>
+</Layout>

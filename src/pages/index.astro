@@ -1,121 +1,312 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import ReachBackground from "@/components/reach/ReachBackground";
-import ReachNav from "@/components/reach/ReachNav";
-import ReachHero from "@/components/reach/ReachHero";
-import ReachProblem from "@/components/reach/ReachProblem";
-import ReachOutcome from "@/components/reach/ReachOutcome";
-import ReachWork from "@/components/reach/ReachWork";
-import ReachSystem from "@/components/reach/ReachSystem";
-import ReachServices from "@/components/reach/ReachServices";
-import ReachProcess from "@/components/reach/ReachProcess";
-import ReachPricing from "@/components/reach/ReachPricing";
-import ReachPsychology from "@/components/reach/ReachPsychology";
-import ReachWhy from "@/components/reach/ReachWhy";
-import ReachFaq, { FAQS } from "@/components/reach/ReachFaq";
-import ReachFinalCta from "@/components/reach/ReachFinalCta";
-import ReachFooter from "@/components/reach/ReachFooter";
+import StudioNav from "@/components/home/StudioNav";
+import StudioArtwork from "@/components/home/StudioArtwork";
+import LogoMarquee from "@/components/brand/LogoMarquee.astro";
+import StudioSpecInteractive from "@/components/home/StudioSpecInteractive";
+import StudioIndustryInteractive from "@/components/home/StudioIndustryInteractive";
+import StudioReviews from "@/components/home/StudioReviews";
+import { ArrowUpRightIcon as ArrowUpRight, ArrowRightIcon as ArrowRight, ArrowDownIcon as ArrowDown, PlusIcon as Plus, CheckIcon as Check, CodeIcon as Code, SparkleIcon as Sparkle, GlobeIcon as Globe } from "@phosphor-icons/react";
+import { getImage } from "astro:assets";
+import diningPhoto from "../../public/assets/demos/saffron-and-smoke/hero-dish.jpg";
+import clinicPhoto from "../../public/assets/demos/business-clinic.jpg";
+import { getCollection } from "astro:content";
+import { buildWhatsAppUrl, websitePackages } from "@/data/websitePackages";
 
-const pageTitle = "NextReach Studio | Websites That Move Businesses Forward";
-const pageDescription = "NextReach Studio creates premium, conversion-focused websites for ambitious small businesses and startups. Fixed-scope packages from ₹5,000 with 1 to 3 days turnaround, local SEO foundations, and WhatsApp conversion.";
+const [diningImage, clinicImage] = await Promise.all([
+  getImage({ src: diningPhoto, width: 1200, format: "webp" }),
+  getImage({ src: clinicPhoto, width: 1000, format: "webp" }),
+]);
 
-const servicesSchema = [
-  { name: "Web Design", description: "Premium bespoke interfaces designed around your business positioning." },
-  { name: "Development", description: "Fast, responsive, production-ready websites built on Astro and modern static architecture." },
-  { name: "SEO Foundation", description: "Schema.org structured data, local map pack signals, and AI search indexing." },
-  { name: "WhatsApp Conversion", description: "Turn visitors into paying conversations with 1-click lead routing." },
-  { name: "Analytics", description: "Privacy-first event tracking and commercial attribution." },
+const posts = (await getCollection("blog", ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()).slice(0, 3);
+const packages = websitePackages.map((pkg) => ({
+  ...pkg,
+  price: pkg.price.toLocaleString("en-IN"),
+  time: pkg.deliveryTime,
+  description: pkg.tagline,
+  demo: pkg.demoUrl,
+}));
+
+// The credibility strip under the hero CTAs. Every value traces to a documented source —
+// public/pricing-for-agents.md for the first two, CONTACT in src/layouts/Layout.astro for
+// the third — so the strip stays checkable instead of becoming decoration.
+const proofPoints = [
+  { value: "4", label: "Systems in production" },
+  { value: "100%", label: "On-time delivery" },
+  { value: "Pune", label: "Studio base · clients across India and abroad" },
+];
+
+const audience = ["Local businesses", "Professional services", "Startups", "Growing companies"];
+
+// The three failure modes every website is judged on, and the beats the rest of the page
+// answers. Order is deliberate: found, then trusted, then contacted.
+const problems = [
+  { title: "Nobody finds you", text: "Not in the map pack, not in AI answers, not on page one — so the people already searching for what you sell never arrive." },
+  { title: "Nobody trusts you at a glance", text: "Slow, dated, or unclearly worded. The judgement lands in the first few seconds, long before anyone reads a sentence." },
+  { title: "Nobody contacts you", text: "No obvious next step, so the visit ends in a back-button instead of an enquiry in your inbox." },
+];
+
+const services = [
+  { name: "Websites with presence.", description: "Distinctive digital experiences that turn first impressions into real inquiries.", tags: "Strategy / Design / Development", icon: Globe, href: "/services" },
+  { name: "Products with purpose.", description: "From your first MVP to the platform your business runs on. Built for real people.", tags: "Web apps / SaaS / MVPs", icon: Code, href: "/services/web-application-development-pune" },
+  { name: "Less busywork. More possibility.", description: "AI agents and connected workflows that give your team its time back.", tags: "AI agents / Automation / APIs", icon: Sparkle, href: "/services/ai-automation-pune" },
+];
+
+const processSteps = [
+  { name: "Find the focus", text: "We talk about your goals, your audience, and what a great result looks like." },
+  { name: "Make it real", text: "We agree the scope and price, then design and build with live previews." },
+  { name: "Launch", text: "We check the details, go live, and watch the first week's enquiries with you." },
+  { name: "You own it", text: "Source code, design assets and deployment, handed over in your name. No hostage retainers." },
+];
+
+const ownership = [
+  { icon: Code, title: "The source code", text: "The full repository arrives on delivery, with a README that explains how to run and deploy it." },
+  { icon: Globe, title: "Your domain and hosting", text: "Registered in your name, so you hold the logins rather than asking us for access." },
+  { icon: Check, title: "No lock-in", text: "No licence fees and no retainer you cannot leave. Take it in-house whenever you want." },
+];
+
+const faqs = [
+  { question: "Can a custom website really launch in three days?", answer: "Yes, for our fixed-scope website packages. Delivery starts once your content, assets, and scope are approved. Custom applications and AI systems have their own agreed project timeline." },
+  { question: "What does a website actually cost?", answer: "Fixed-scope websites are ₹5,000, ₹7,500 and ₹10,000 — one-time, with the price agreed before we start. Web apps and AI systems are quoted after a scoping call, because an honest number there depends on what you need built." },
+  { question: "Do I own the finished website?", answer: "Yes. You receive the source code, design assets, and deployment handover. Your domain and project belong to you." },
+  { question: "Do you only work with businesses in Pune?", answer: "No. The studio is based in Pune and most clients are across India, but we have delivered for founders and businesses abroad too. Everything runs on calls and shared previews, so distance has never been the constraint." },
+  { question: "Will my website show up on Google?", answer: "Every build ships with clean semantic markup, structured data, fast Core Web Vitals and a sitemap — the technical groundwork that makes ranking possible. Ranking itself depends on your content and your competition, so we will tell you what is realistic rather than promise a position." },
+  { question: "What about the domain and hosting?", answer: "Both are registered in your name and set up as part of the build. You keep the logins, so you are never dependent on us for access to your own site." },
+  { question: "What if I need changes after launch?", answer: "Content and image edits are yours to make, because the code and content are handed over. Anything structural we quote as a small fixed-scope change instead of putting you on a monthly retainer." },
+  { question: "Who will I actually work with?", answer: "You work directly with the senior engineer building your project. You get clear updates and staging previews throughout the build." },
 ];
 ---
 
-<Layout 
-  localFonts 
-  skipLoader 
-  title={pageTitle} 
-  description={pageDescription}
->
-  <div class="reach-dark-studio" data-reach-home>
-    {/* Monochromatic Grain and Radial Lighting Overlay */}
-    <ReachBackground client:idle />
+<Layout localFonts skipLoader title="Websites That Pay Off, Built in Pune" description="Fixed-scope websites from ₹5,000, plus web apps and AI systems. Built in Pune by the senior engineer you actually talk to. See the work and the real prices.">
+  <link slot="head" rel="preload" as="image" href="/assets/carousel/hero-dish.webp" type="image/webp" fetchpriority="high" />
+  <div class="studio-home" data-studio-home>
+    <a class="studio-skip" href="#main-content">Skip to content</a>
+    <StudioNav client:idle />
+    <main id="main-content">
+      <section class="studio-hero" aria-labelledby="hero-title">
+        <div class="studio-hero-scrim" aria-hidden="true"></div>
+        <StudioArtwork client:idle />
+        <div class="studio-hero-inner">
+          <div class="studio-hero-copy">
+            <p class="studio-eyebrow studio-hero-enter"><span class="studio-eyebrow-dot" aria-hidden="true"></span>NextReach Studio</p>
+            <h1 id="hero-title" class="studio-hero-enter"><span>Reach</span><span class="studio-hero-next">what’s next.</span></h1>
+            <p class="studio-hero-description studio-hero-enter">Websites, AI &amp; digital products built to move your business forward.</p>
+            <div class="studio-hero-actions studio-hero-enter">
+              <a href="/contact" class="studio-button" data-magnetic data-track="home_hero_start_project">Start a project <ArrowUpRight size={19} weight="bold" aria-hidden="true" /></a>
+              <a href="#live-demo" class="studio-text-link" data-magnetic data-track="home_hero_see_work">See our work <ArrowDown size={18} aria-hidden="true" /></a>
+            </div>
+            <ul class="studio-hero-index studio-hero-enter" aria-label="What we build">
+              <li>Websites</li>
+              <li>AI agents</li>
+              <li>Apps</li>
+              <li>Automations</li>
+            </ul>
+          </div>
+          <div class="studio-hero-foot studio-hero-enter" aria-hidden="true">
+            <span>Pune — working worldwide</span>
+            <span class="studio-hero-scroll">Scroll ↓</span>
+          </div>
+        </div>
+      </section>
 
-    {/* Floating Minimalist Navigation */}
-    <ReachNav client:load />
+      <div class="studio-proof studio-container">
+        {proofPoints.map((point) => <div><span class="studio-proof-value">{point.value}</span><span>{point.label}</span></div>)}
+      </div>
 
-    {/* Main Content Sections */}
-    <main id="main-content" tabindex="-1">
-      {/* 01: Master Cinematic Hero + 3D Multi-Depth Browser */}
-      <ReachHero client:load />
+      <LogoMarquee variant="studio" />
 
-      {/* 02: The Problem */}
-      <ReachProblem client:visible />
+      <section class="studio-audience studio-container studio-section" aria-labelledby="audience-title">
+        <p class="studio-eyebrow" data-reveal>Who this is for</p>
+        <h2 id="audience-title" data-reveal>For businesses that need <span>more than a brochure website.</span></h2>
+        <div class="studio-audience-list" data-reveal>
+          {audience.map((item, i) => <div class="studio-audience-item"><span>{`0${i + 1}`}</span>{item}</div>)}
+        </div>
+      </section>
 
-      {/* 03: The Conversion Outcome (Search -> Land -> Trust -> Message -> Customer) */}
-      <ReachOutcome client:visible />
+      <section class="studio-problem" aria-labelledby="problem-title">
+        <div class="studio-container">
+          <div class="studio-problem-head">
+            <p class="studio-eyebrow" data-reveal>The problem</p>
+            <h2 id="problem-title" data-reveal>Your website shouldn’t<br />just exist.</h2>
+          </div>
+          <div class="studio-problem-list">
+            {problems.map((problem, i) => <div class="studio-problem-row" data-reveal>
+              <span class="studio-problem-index" aria-hidden="true">{`0${i + 1}`}</span>
+              <div><h3>{problem.title}</h3><p>{problem.text}</p></div>
+            </div>)}
+          </div>
+          <p class="studio-problem-turn" data-reveal>Ours are built to <em>do all three.</em></p>
+        </div>
+      </section>
 
-      {/* 04: Selected Concept Work / Portfolio */}
-      <ReachWork client:visible />
+      <section class="studio-services studio-container studio-section" id="services" aria-labelledby="services-title">
+        <h2 id="services-title" data-reveal>One studio.<br /><span class="studio-muted">Three ways to work together.</span></h2>
+        <p class="studio-services-intro" data-reveal>A website is one system with three jobs: be found, earn trust in the first few seconds, and make getting in touch the obvious next step. Web apps and AI workflows are how that system reaches into the rest of your business.</p>
+        <div class="studio-service-list">
+          {services.map((service, i) => <a href={service.href} class="studio-service" data-reveal>
+            <span class="studio-service-index">0{i + 1}</span>
+            <span class="studio-service-icon"><service.icon size={32} weight="light" /></span>
+            <div><h3>{service.name}</h3><p>{service.description}</p><span class="studio-service-tags">{service.tags}</span></div>
+            <span class="studio-service-arrow"><ArrowUpRight size={32} weight="light" /></span>
+          </a>)}
+        </div>
+      </section>
 
-      {/* 05: The Signature "NextReach" Orbital System */}
-      <ReachSystem client:visible />
+      <StudioSpecInteractive client:visible />
 
-      {/* 06: Core Capabilities (Everything Your Digital Front Door Needs) */}
-      <ReachServices client:visible />
+      <section class="studio-work studio-container studio-section" id="live-demo" aria-labelledby="work-title">
+        <div class="studio-section-title" data-reveal>
+          <h2 id="work-title">Good ideas.<br /><span class="studio-muted">Great execution.</span></h2>
+          <a href="/portfolio" class="studio-text-link">Explore our work <ArrowUpRight size={20} /></a>
+        </div>
+        <div class="studio-projects">
+          <article class="studio-project studio-project-featured" data-reveal>
+            <a class="studio-project-image studio-dining-image" href="/demos/saffron-and-smoke" aria-label="Explore Saffron and Smoke restaurant website demo">
+              <img src={diningImage.src} alt="The signature dish from the Saffron and Smoke fine-dining website demo" width="1200" height="670" loading="lazy" decoding="async" />
+              <div class="studio-project-wordmark" aria-hidden="true">Saffron<br /><span>&amp; Smoke</span></div>
+              <span class="studio-project-open" aria-hidden="true"><ArrowUpRight size={26} /></span>
+            </a>
+            <div class="studio-project-info"><div><h3>Saffron &amp; Smoke</h3><p>A dining experience, reimagined online.</p></div><span>Hospitality · Flagship demo</span></div>
+          </article>
+          <article class="studio-project studio-project-secondary" data-reveal>
+              <a class="studio-project-image studio-clinic-image" href="/portfolio" aria-label="Explore Oak and Elm clinic website demo">
+              <img src={clinicImage.src} alt="Warm, light-filled Oak and Elm clinic interior featured in our business website demo" width="1000" height="558" loading="lazy" decoding="async" />
+              <span class="studio-project-open" aria-hidden="true"><ArrowUpRight size={26} /></span>
+            </a>
+            <div class="studio-project-info"><div><h3>Oak &amp; Elm</h3><p>Care starts with a better first impression.</p></div><span>Healthcare · Business demo</span></div>
+          </article>
+        </div>
+      </section>
 
-      {/* 07: Process & Interactive 3-Day Sprint Timeline */}
-      <ReachProcess client:visible />
+      <section class="studio-manifesto studio-container studio-section" id="why-us" aria-labelledby="manifesto-title">
+        <div class="studio-manifesto-mark" aria-hidden="true"><img src="/brand/logo-mark.png" alt="" width="500" height="625" loading="lazy" /></div>
+        <div data-reveal>
+          <p class="studio-eyebrow">A small studio. A bigger perspective.</p>
+          <h2 id="manifesto-title">The sweet spot between<br /><span class="studio-accent">creative instinct</span><br />and engineering rigor.</h2>
+          <p>Beautiful is the beginning. We care just as much about the speed, the experience, and what happens after someone clicks.</p>
+          <a href="/about" class="studio-text-link">Meet the studio <ArrowUpRight size={20} /></a>
+        </div>
+      </section>
 
-      {/* 08: Transparent Pricing Tiers (₹5,000 / ₹7,500 / ₹10,000) */}
-      <ReachPricing client:visible />
+      <section class="studio-process studio-container studio-section" id="process" aria-labelledby="process-title">
+        <div class="studio-process-heading" data-reveal><h2 id="process-title">Big on craft.<br />Light on complications.</h2><p>A clear scope. A direct line to your engineer. Working previews, all the way to launch — and the keys at the end of it.</p></div>
+        <div class="studio-process-steps">
+          {processSteps.map((step, i) => <div class="studio-process-step" data-reveal><span class="studio-step-number">0{i + 1}</span><h3>{step.name}</h3><p>{step.text}</p></div>)}
+        </div>
+      </section>
 
-      {/* 09: Typographic Pricing Psychology */}
-      <ReachPsychology client:visible />
+      <section class="studio-pricing studio-container studio-section" id="packages" aria-labelledby="packages-title">
+        <div class="studio-section-title" data-reveal><h2 id="packages-title">Serious craft.<br /><span class="studio-muted">Sensible starting points.</span></h2><span class="studio-pricing-note">Fixed-scope websites.<br />One-time pricing. Full ownership.</span></div>
+        <div class="studio-package-grid">
+          {packages.map((pkg, i) => <article class={`studio-package ${i === 2 ? "studio-package-featured" : ""}`} data-reveal>
+            <div class="studio-package-top"><span>{i === 2 ? "The signature experience" : "Made for your next step"}</span><ArrowUpRight size={22} /></div>
+            <h3>{pkg.name}</h3><p class="studio-package-description">{pkg.description}</p>
+            <p class="studio-package-price"><span>₹</span>{pkg.price}</p><p class="studio-package-time">Ready in {pkg.time} · After scope approval</p>
+            <ul>{pkg.features.map(feature => <li><Check size={16} weight="bold" /><span>{feature}</span></li>)}</ul>
+             <a class="studio-button" href={buildWhatsAppUrl(pkg.whatsappMessage)} target="_blank" rel="noopener noreferrer" data-track={`home_package_${pkg.id}`} data-package={pkg.id} data-whatsapp-cta>Start a project <ArrowUpRight size={18} /></a>
+            <a href={pkg.demo} class="studio-package-demo">View demo <ArrowRight size={16} /></a>
+          </article>)}
+        </div>
+        <p class="studio-custom-note">Comparing the three? <a href="/fast-websites">See full package details <ArrowUpRight size={17} /></a></p>
+         <p class="studio-custom-note">Something more ambitious? <a href="/contact">Let’s scope your web app or AI system <ArrowUpRight size={17} /></a></p>
+      </section>
 
-      {/* 10: Studio Principles (Small Team. Big Digital Energy.) */}
-      <ReachWhy client:visible />
+      <StudioReviews client:visible />
 
-      {/* 11: Frequently Asked Questions Accordion */}
-      <ReachFaq client:visible />
+      <section class="studio-ownership studio-container" aria-labelledby="ownership-title">
+        <div class="studio-ownership-head">
+          <div data-reveal>
+            <p class="studio-eyebrow">The part most studios skip</p>
+            <h2 id="ownership-title">You own it.<br /><span class="studio-muted">All of it.</span></h2>
+          </div>
+          <p data-reveal>The reason to ask about ownership before you sign anything: a website you cannot leave is not an asset. Everything below is handed over on delivery, in your name, as standard.</p>
+        </div>
+        <div class="studio-ownership-list">
+          {ownership.map((item) => <div class="studio-ownership-item" data-reveal>
+            <item.icon size={28} weight="light" />
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </div>)}
+        </div>
+      </section>
 
-      {/* 12: Massive Final Call to Action */}
-      <ReachFinalCta client:visible />
+      <section class="studio-faq studio-container studio-section" aria-labelledby="faq-title">
+        <h2 id="faq-title" data-reveal>A few good questions.</h2>
+        <div class="studio-faq-list" data-reveal>{faqs.map(faq => <details><summary>{faq.question}<Plus size={22} /></summary><p>{faq.answer}</p></details>)}</div>
+      </section>
+
+      <StudioIndustryInteractive client:visible />
+
+      {posts.length > 0 && <section class="studio-journal studio-container studio-section" id="ai-dev-hub" aria-labelledby="journal-title">
+        <div class="studio-section-title" data-reveal><h2 id="journal-title">Always building.<br /><span class="studio-muted">Always exploring.</span></h2><a href="/tools" class="studio-text-link">Explore our tools <ArrowUpRight size={20} /></a></div>
+        <div class="studio-journal-grid">{posts.map((post, i) => <a class="studio-journal-entry" href={`/blog/${post.id}`} data-reveal><span class="studio-journal-number">0{i + 1}</span><span class="studio-journal-type">From the studio journal</span><h3>{post.data.title}</h3><span class="studio-journal-read">Read story <ArrowUpRight size={19} /></span></a>)}</div>
+      </section>}
+
+      <section class="studio-contact studio-container studio-section" aria-labelledby="contact-title">
+        <p class="studio-eyebrow" data-reveal>Two ways to start.</p>
+         <div class="studio-contact-main" data-reveal><h2 id="contact-title">Let’s make<br />a <span>mark.</span></h2><a href="/fast-websites" class="studio-contact-button" aria-label="Start a fast website project" data-track="home_contact_orb"><ArrowUpRight size={64} weight="light" /></a></div>
+         <div class="studio-contact-bottom"><p>Bring the idea.<br />We’ll bring the craft.</p>
+          <div class="studio-contact-actions">
+            <a href="/fast-websites" class="studio-button" data-track="home_footer_fast_websites">Ready for a website <ArrowUpRight size={19} /></a>
+            <a href="/contact" class="studio-text-link" data-track="home_footer_custom_scope">Need a web app or AI system? <ArrowRight size={19} /></a>
+          </div>
+        </div>
+      </section>
     </main>
 
-    {/* Footer */}
-    <ReachFooter client:visible />
+    <footer class="studio-footer studio-container">
+      <a href="/" class="studio-footer-brand"><img src="/brand/logo-mark.png" width="28" height="35" alt="" />NextReach <span>Studio</span></a>
+      <div class="studio-footer-links"><a href="/services">Services</a><a href="/industries/restaurants">Industries</a><a href="/blog">Blog</a><a href="/guides">Guides</a><a href="/resources">Resources</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a></div>
+      <div class="studio-footer-bottom"><span>© {new Date().getFullYear()} NextReach Studio</span><span>Thoughtfully designed. Carefully engineered.</span></div>
+    </footer>
   </div>
-
-  {/* Structured Data: Service ItemList for Google */}
-  <script type="application/ld+json" is:inline set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": "NextReach Studio Services",
-    "itemListElement": servicesSchema.map((item, index) => ({
-      "@type": "ListItem",
-      "position": index + 1,
-      "item": {
-        "@type": "Service",
-        "name": item.name,
-        "description": item.description,
-        "provider": {
-          "@type": "ProfessionalService",
-          "name": "NextReach Studio",
-          "url": "https://www.nextreachstudio.in"
-        }
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({ "@context": "https://schema.org", "@type": "ItemList", itemListElement: services.map((service, i) => ({ "@type": "ListItem", position: i + 1, item: { "@type": "Service", name: service.name.replace(/\.$/, ""), description: service.description } })) })} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map((faq) => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } })) })} />
+  <script>
+    function revealContent() {
+      const root = document.querySelector<HTMLElement>("[data-studio-home]");
+      if (root && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1 });
+        root.querySelectorAll<HTMLElement>("[data-reveal]").forEach(element => {
+          element.classList.add("studio-reveal-ready");
+          observer.observe(element);
+        });
+        document.addEventListener("astro:before-swap", () => observer.disconnect(), { once: true });
       }
-    }))
-  })} />
-
-  {/* Structured Data: FAQPage for AI search engines & Google Rich Results */}
-  <script type="application/ld+json" is:inline set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": FAQS.map((faq) => ({
-      "@type": "Question",
-      "name": faq.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": faq.answer
-      }
-    }))
-  })} />
+    }
+    if (document.documentElement.hasAttribute("data-site-loading")) {
+      document.addEventListener("nextreach:page-revealed", revealContent, { once: true });
+    } else revealContent();
+  </script>
+  <script>
+    // Magnetic CTA pull — desktop fine-pointer only, transform-safe via `translate`
+    // so the :hover lift and :active press scale keep composing underneath.
+    (function magneticCtas() {
+      if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      const ctas = Array.from(document.querySelectorAll<HTMLElement>("[data-magnetic]"));
+      if (!ctas.length) return;
+      const strength = 6;
+      ctas.forEach((cta) => {
+        cta.addEventListener("pointermove", (event: PointerEvent) => {
+          const rect = cta.getBoundingClientRect();
+          const dx = event.clientX - (rect.left + rect.width / 2);
+          const dy = event.clientY - (rect.top + rect.height / 2);
+          const x = Math.max(-strength, Math.min(strength, dx * 0.18));
+          const y = Math.max(-strength, Math.min(strength, dy * 0.22));
+          cta.style.setProperty("translate", `${x.toFixed(1)}px ${y.toFixed(1)}px`);
+        });
+        cta.addEventListener("pointerleave", () => { cta.style.removeProperty("translate"); });
+        cta.addEventListener("pointerdown", () => { cta.style.removeProperty("translate"); });
+      });
+    })();
+  </script>
 </Layout>

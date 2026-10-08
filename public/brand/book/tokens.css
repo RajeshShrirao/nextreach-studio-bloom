@@ -1,0 +1,24 @@
+:root {
+  /* Core identity: BRANDING.md. Functional colors: the existing homepage. */
+  --nr-terracotta: #c76b50;
+  --nr-charcoal: #2a2a2d;
+  --nr-cream: #f5f1e9;
+  --nr-stone: #a69d92;
+  --nr-white: #ffffff;
+  --nr-deep-rust: #97402e;
+  --nr-soft-rust: #e58d72;
+  --nr-font-display: "Cabinet Grotesk", "Studio Cabinet", system-ui, sans-serif;
+  --nr-font-body: "Plus Jakarta Sans", "Studio Jakarta", system-ui, sans-serif;
+  --nr-font-mono: "JetBrains Mono", "Studio Mono", ui-monospace, monospace;
+  --nr-space-1: 8px;
+  --nr-space-2: 16px;
+  --nr-space-3: 24px;
+  --nr-space-4: 32px;
+  --nr-space-6: 48px;
+  --nr-space-8: 64px;
+  --nr-space-12: 96px;
+  --nr-radius-campaign: 0px;
+  --nr-radius-control: 4px;
+  --nr-ease-out: cubic-bezier(.23, 1, .32, 1);
+  --nr-duration-control: 180ms;
+}

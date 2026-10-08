@@ -54,6 +54,7 @@ export default defineConfig({
         "https://www.nextreachstudio.in/demos/saffron-and-smoke",
         "https://www.nextreachstudio.in/attribution",
         "https://www.nextreachstudio.in/brand",
+        "https://www.nextreachstudio.in/brand/book",
       ],
     }),
   ],

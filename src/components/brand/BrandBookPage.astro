@@ -1,0 +1,16 @@
+---
+interface Props {
+  number: number;
+  title?: string;
+  note?: string;
+  id: string;
+  class?: string;
+}
+const { number, title, note, id, class: className = "" } = Astro.props;
+---
+
+<article class:list={["bb-sheet", className]} id={id} aria-label={`Page ${number}: ${title || "Cover"}`}>
+  {title && <header class="bb-page-heading"><h2>{title}</h2>{note && <p>{note}</p>}</header>}
+  <div class="bb-page-content"><slot /></div>
+  <footer class="bb-page-footer"><span>NextReach Studio / Brand Book</span><span>{String(number).padStart(2, "0")} / 30</span></footer>
+</article>

@@ -1,22 +1,28 @@
 import { useState, useCallback } from "react";
 import { estimateTokens } from "@/utils/tokens";
 
+// Model lineup synced with the open-source ai-token-estimator
+// (github.com/RajeshShrirao/ai-token-estimator) — verified Oct 2026.
+// Context windows: provider docs; GPT-6 family shares the 1M-class window
+// (6.1 Sol published as 1,050,000), Gemini standard is 1M.
 const MODEL_CONFIGS = {
-  "claude-3-5-sonnet": { label: "Claude 3.5 Sonnet", contextWindow: 200000, provider: "Anthropic" },
-  "claude-3-5-haiku": { label: "Claude 3.5 Haiku", contextWindow: 200000, provider: "Anthropic" },
-  "claude-3-opus": { label: "Claude 3 Opus", contextWindow: 200000, provider: "Anthropic" },
-  "gpt-4o": { label: "GPT-4o", contextWindow: 128000, provider: "OpenAI" },
-  "gpt-4o-mini": { label: "GPT-4o Mini", contextWindow: 128000, provider: "OpenAI" },
-  "gpt-4-turbo": { label: "GPT-4 Turbo", contextWindow: 128000, provider: "OpenAI" },
-  "gemini-1-5-pro": { label: "Gemini 1.5 Pro", contextWindow: 2000000, provider: "Google" },
-  "gemini-1-5-flash": { label: "Gemini 1.5 Flash", contextWindow: 1000000, provider: "Google" },
-  "gemini-2-0-flash": { label: "Gemini 2.0 Flash", contextWindow: 1000000, provider: "Google" },
-  "llama-3-70b": { label: "Llama 3 70B", contextWindow: 128000, provider: "Meta" },
-  "llama-3-8b": { label: "Llama 3 8B", contextWindow: 8192, provider: "Meta" },
-  "mistral-large": { label: "Mistral Large", contextWindow: 131072, provider: "Mistral AI" },
-  "mistral-7b": { label: "Mistral 7B", contextWindow: 32768, provider: "Mistral AI" },
-  "phi-3-mini": { label: "Phi-3 Mini", contextWindow: 128000, provider: "Microsoft" },
-  "deepseek-v3": { label: "DeepSeek V3", contextWindow: 64000, provider: "DeepSeek" },
+  "gpt-6-astra": { label: "GPT-6 Astra (flagship)", contextWindow: 1000000, provider: "OpenAI" },
+  "gpt-6-1-sol": { label: "GPT-6.1 Sol", contextWindow: 1050000, provider: "OpenAI" },
+  "gpt-6-luna": { label: "GPT-6 Luna", contextWindow: 1000000, provider: "OpenAI" },
+  "gpt-5-6-sol": { label: "GPT-5.6 Sol", contextWindow: 1000000, provider: "OpenAI" },
+  "claude-fable-5-1": { label: "Claude Fable 5.1 (reasoning)", contextWindow: 1000000, provider: "Anthropic" },
+  "claude-opus-5-5": { label: "Claude Opus 5.5", contextWindow: 1000000, provider: "Anthropic" },
+  "claude-sonnet-5-5": { label: "Claude Sonnet 5.5", contextWindow: 1000000, provider: "Anthropic" },
+  "claude-haiku-4-5": { label: "Claude Haiku 4.5 (fastest)", contextWindow: 200000, provider: "Anthropic" },
+  "gemini-3-pro": { label: "Gemini 3 Pro", contextWindow: 1000000, provider: "Google" },
+  "gemini-3-flash": { label: "Gemini 3 Flash", contextWindow: 1000000, provider: "Google" },
+  "gemini-3-5-flash-lite": { label: "Gemini 3.5 Flash-Lite", contextWindow: 1000000, provider: "Google" },
+  "deepseek-v4-pro": { label: "DeepSeek V4 Pro", contextWindow: 1000000, provider: "DeepSeek" },
+  "deepseek-flash": { label: "DeepSeek V4.1 Flash", contextWindow: 1000000, provider: "DeepSeek" },
+  "llama-4-maverick": { label: "Llama 4 Maverick", contextWindow: 1048576, provider: "Meta" },
+  "mistral-large-3": { label: "Mistral Large 3", contextWindow: 260000, provider: "Mistral AI" },
+  "mistral-medium-3-5": { label: "Mistral Medium 3.5", contextWindow: 256000, provider: "Mistral AI" },
+  "mistral-small-4": { label: "Mistral Small 4", contextWindow: 256000, provider: "Mistral AI" },
 };
 
 type ModelKey = keyof typeof MODEL_CONFIGS;
@@ -61,7 +67,7 @@ July,1500,0.021,$30000`,
 
 export default function TokenCalculator() {
   const [text, setText] = useState("");
-  const [selectedModel, setSelectedModel] = useState<ModelKey>("claude-3-5-sonnet");
+  const [selectedModel, setSelectedModel] = useState<ModelKey>("claude-sonnet-5-5");
 
   const handleTextChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setText(e.target.value);
@@ -225,7 +231,16 @@ export default function TokenCalculator() {
         {/* Info Box */}
         <div className="p-4 rounded-xl border border-[#1F1F23]/8 bg-[#FAF8F5] text-center">
           <p className="text-[11px] text-[#6E6862] leading-relaxed">
-            Estimates are computed using Byte Pair Encoding (BPE) algorithms resembling Anthropic & OpenAI rules. Raw counts may fluctuate slightly.
+            Estimates are computed using Byte Pair Encoding (BPE) algorithms resembling Anthropic & OpenAI rules. Raw counts may fluctuate slightly. Model lineup verified Oct 2026 — same engine as our{" "}
+            <a
+              href="https://github.com/RajeshShrirao/ai-token-estimator"
+              target="_blank"
+              rel="noopener"
+              className="text-[#C76B50] hover:underline font-medium"
+            >
+              open-source token estimator
+            </a>
+            .
           </p>
         </div>
       </div>

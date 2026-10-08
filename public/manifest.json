@@ -1,6 +1,6 @@
 {
   "name": "NextReach Studio",
-  "short_name": "NextReach",
+  "short_name": "NR Studio",
   "description": "AI developer tools, guides, and resources for building with LLMs.",
   "start_url": "/",
   "display": "standalone",
