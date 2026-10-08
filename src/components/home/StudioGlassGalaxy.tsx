@@ -9,14 +9,7 @@ import {
   ChatCircleDotsIcon,
   CrownIcon,
 } from "@phosphor-icons/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { curtains, iris } from "@/utils/curtains";
-
-// Register ScrollTrigger safely in browser context
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
 
 export interface GalaxyCardItem {
   id: string;
@@ -259,11 +252,15 @@ export default function StudioGlassGalaxy() {
 
   // Advanced 3D Reveal and Scroll Parallax Animations
   useEffect(() => {
+    if (typeof window === "undefined" || window.innerWidth < 900) {
+      return;
+    }
+
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
 
-    if (prefersReducedMotion || isMobile) {
+    if (prefersReducedMotion) {
       return;
     }
 
@@ -275,7 +272,17 @@ export default function StudioGlassGalaxy() {
     const heroIndex = document.querySelector(".studio-hero-index") as HTMLElement;
     const heroFoot = document.querySelector(".studio-hero-foot") as HTMLElement;
 
-    const ctx = gsap.context(() => {
+    let ctx: any = null;
+    let stRef: any = null;
+
+    Promise.all([
+      import("gsap"),
+      import("gsap/ScrollTrigger"),
+    ]).then(([{ default: gsap }, { ScrollTrigger }]) => {
+      stRef = ScrollTrigger;
+      gsap.registerPlugin(ScrollTrigger);
+
+      ctx = gsap.context(() => {
       // =========================================================================
       // 1. MASTER 3D REVEAL TIMELINE
       // =========================================================================
@@ -520,7 +527,8 @@ export default function StudioGlassGalaxy() {
           );
         }
       }
-    }, containerRef);
+      }, containerRef);
+    });
 
     // =========================================================================
     // 3. DESKTOP 3D MOUSE PARALLAX & SPECULAR SHEEN (Tilt Wrapper)
@@ -573,11 +581,11 @@ export default function StudioGlassGalaxy() {
     mouseState.current.rafId = requestAnimationFrame(tick);
 
     return () => {
-      ctx.revert();
+      if (ctx) ctx.revert();
       cancelAnimationFrame(mouseState.current.rafId);
       window.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseleave", handleMouseLeave);
-      ScrollTrigger.getAll().forEach((t) => t.kill());
+      if (stRef) stRef.getAll().forEach((t: any) => t.kill());
     };
   }, [isMobile]);
 
@@ -687,8 +695,8 @@ export default function StudioGlassGalaxy() {
                       className="studio-card-img"
                       width={480}
                       height={300}
-                      loading={idx < 2 ? "eager" : "lazy"}
-                      decoding={idx < 2 ? "sync" : "async"}
+                      loading="lazy"
+                      decoding="async"
                       draggable={false}
                     />
                     <div className="studio-card-preview-vignette" />
@@ -768,8 +776,8 @@ export default function StudioGlassGalaxy() {
                     className="studio-mobile-card-img"
                     width={360}
                     height={225}
-                    loading={idx === 0 ? "eager" : "lazy"}
-                    decoding={idx === 0 ? "sync" : "async"}
+                    loading="lazy"
+                    decoding="async"
                   />
                   <div className="studio-card-preview-vignette" />
                 </div>

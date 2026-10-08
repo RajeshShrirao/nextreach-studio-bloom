@@ -181,10 +181,20 @@ const founder = {
         document.head.appendChild(s);
       }
 
+      var triggerGA = function() {
+        initGA();
+        ['scroll', 'touchstart', 'pointerdown', 'keydown'].forEach(function(e) {
+          window.removeEventListener(e, triggerGA, { passive: true });
+        });
+      };
+      ['scroll', 'touchstart', 'pointerdown', 'keydown'].forEach(function(e) {
+        window.addEventListener(e, triggerGA, { passive: true, once: true });
+      });
+
       if ('requestIdleCallback' in window) {
-        requestIdleCallback(initGA, { timeout: 3500 });
+        requestIdleCallback(function() { setTimeout(initGA, 5000); });
       } else {
-        window.addEventListener('load', function() { setTimeout(initGA, 1500); }, { once: true });
+        window.addEventListener('load', function() { setTimeout(initGA, 5000); }, { once: true });
       }
 
       // Conversion events are deliberately small and action-oriented. Campaign pages
