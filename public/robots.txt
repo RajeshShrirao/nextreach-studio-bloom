@@ -17,6 +17,30 @@ Allow: /
 
 # AI crawlers - explicitly allowed for maximum AI search visibility
 # Training bots (model knowledge) + search/index bots (citations in AI answers)
+# Google AI tokens per https://developers.google.com/crawling/docs/crawlers-fetchers/
+User-agent: Google-Extended
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+User-agent: GoogleOther-Image
+Allow: /
+
+User-agent: GoogleOther-Video
+Allow: /
+
+User-agent: Google-CloudVertexBot
+Allow: /
+
+# User-triggered fetchers (Gemini chat / Notebook) ignore robots.txt per Google docs,
+# listed here explicitly so there is zero ambiguity about consent.
+User-agent: Google-Agent
+Allow: /
+
+User-agent: Google-GeminiNotebook
+Allow: /
+
 User-agent: GPTBot
 Allow: /
 
@@ -44,9 +68,6 @@ Allow: /
 User-agent: Perplexity-User
 Allow: /
 
-User-agent: Google-Extended
-Allow: /
-
 User-agent: Applebot-Extended
 Allow: /
 
@@ -70,5 +91,3 @@ Disallow: /
 
 User-agent: SemrushBot
 Disallow: /
-
-Host: https://www.nextreachstudio.in
