@@ -47,9 +47,9 @@ const isIndustriesActive = industryLinks.some(
 );
 ---
 
-<nav class="fixed w-full top-0 z-50 bg-[#FAF8F5]/92 backdrop-blur-md border-b border-[#1F1F23]/8 !rounded-none !overflow-visible" aria-label="Main navigation">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-    <a href="/" class="flex items-center gap-2.5 group -ml-2" aria-label="NextReach Studio - Home">
+<nav class="site-nav fixed w-full top-0 z-50 bg-[#FAF8F5]/92 backdrop-blur-md border-b border-[#1F1F23]/8 !rounded-none !overflow-visible" aria-label="Main navigation">
+  <div class="site-nav-inner max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+    <a href="/" class="site-nav-brand flex items-center gap-2.5 group -ml-2" aria-label="NextReach Studio - Home">
       <img src="/logo.svg" alt="" width="34" height="34" class="rounded-lg shadow-sm transition-transform duration-300 group-hover:scale-105" />
       <span class="text-[#1F1F23] text-base tracking-[0.03em] font-bold font-display flex items-center gap-1.5">
         NextReach <span class="text-[#C76B50] font-bold">Studio</span>
@@ -89,7 +89,7 @@ const isIndustriesActive = industryLinks.some(
           data-dd-panel
           class="absolute left-0 top-full pt-2 w-56 opacity-0 pointer-events-none -translate-y-1 transition-all duration-200 ease-out z-50 group-hover:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:pointer-events-auto group-focus-within:translate-y-0"
         >
-          <div class="bg-white/98 border border-[#1F1F23]/10 rounded-xl p-1.5 shadow-2xl backdrop-blur-xl max-h-[75vh] overflow-y-auto">
+          <div class="site-nav-panel bg-white/98 border border-[#1F1F23]/10 rounded-xl p-1.5 shadow-2xl backdrop-blur-xl max-h-[75vh] overflow-y-auto">
             {serviceLinks.map(({ href, label }) => {
               const isSubActive = currentPath === href || (href !== "/" && currentPath.startsWith(href));
               return (
@@ -131,7 +131,7 @@ const isIndustriesActive = industryLinks.some(
           data-dd-panel
           class="absolute left-0 top-full pt-2 w-52 opacity-0 pointer-events-none -translate-y-1 transition-all duration-200 ease-out z-50 group-hover:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:pointer-events-auto group-focus-within:translate-y-0"
         >
-          <div class="bg-white/98 border border-[#1F1F23]/10 rounded-xl p-1.5 shadow-2xl backdrop-blur-xl max-h-[75vh] overflow-y-auto">
+          <div class="site-nav-panel bg-white/98 border border-[#1F1F23]/10 rounded-xl p-1.5 shadow-2xl backdrop-blur-xl max-h-[75vh] overflow-y-auto">
             {industryLinks.map(({ href, label }) => {
               const isSubActive = currentPath === href || (href !== "/" && currentPath.startsWith(href));
               return (
@@ -191,7 +191,7 @@ const isIndustriesActive = industryLinks.some(
           data-dd-panel
           class="absolute right-0 top-full pt-2 w-48 opacity-0 pointer-events-none -translate-y-1 transition-all duration-200 ease-out z-50 group-hover:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:pointer-events-auto group-focus-within:translate-y-0"
         >
-          <div class="bg-white/98 border border-[#1F1F23]/10 rounded-xl p-1.5 shadow-2xl backdrop-blur-xl">
+          <div class="site-nav-panel bg-white/98 border border-[#1F1F23]/10 rounded-xl p-1.5 shadow-2xl backdrop-blur-xl">
             {resourceLinks.map(({ href, label }) => {
               const isSubActive = currentPath === href || (href !== "/" && currentPath.startsWith(href));
               return (
@@ -257,7 +257,7 @@ const isIndustriesActive = industryLinks.some(
   <!-- Mobile Dropdown Menu -->
   <div
     id="mobile-menu"
-    class="hidden xl:hidden border-t border-[#1F1F23]/8 bg-[#FAF8F5]/98 backdrop-blur-xl max-h-[80vh] overflow-y-auto shadow-2xl"
+    class="site-mobile-menu hidden xl:hidden border-t border-[#1F1F23]/8 bg-[#FAF8F5]/98 backdrop-blur-xl max-h-[80vh] overflow-y-auto shadow-2xl"
   >
     <ul class="px-4 py-4 space-y-2">
       <!-- High-Conversion Mobile Packages Banner -->

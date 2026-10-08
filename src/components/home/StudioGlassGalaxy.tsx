@@ -187,6 +187,7 @@ export default function StudioGlassGalaxy() {
   const mobileReelRef = useRef<HTMLDivElement>(null);
 
   const [activeMobileIdx, setActiveMobileIdx] = useState(0);
+  const activeMobileIdxRef = useRef(0);
   const [isMobile, setIsMobile] = useState(false);
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
 
@@ -216,7 +217,11 @@ export default function StudioGlassGalaxy() {
     const scrollLeft = el.scrollLeft;
     const cardWidth = el.offsetWidth * 0.82;
     const idx = Math.round(scrollLeft / (cardWidth + 14));
-    setActiveMobileIdx(Math.min(Math.max(0, idx), GALAXY_CARDS.length - 1));
+    const nextIdx = Math.min(Math.max(0, idx), GALAXY_CARDS.length - 1);
+    if (nextIdx !== activeMobileIdxRef.current) {
+      activeMobileIdxRef.current = nextIdx;
+      setActiveMobileIdx(nextIdx);
+    }
   }, []);
 
   const scrollToCard = (index: number) => {
@@ -227,6 +232,7 @@ export default function StudioGlassGalaxy() {
       left: index * (cardWidth + 14),
       behavior: "smooth",
     });
+    activeMobileIdxRef.current = index;
     setActiveMobileIdx(index);
   };
 
@@ -695,6 +701,7 @@ export default function StudioGlassGalaxy() {
                       className="studio-card-img"
                       width={480}
                       height={300}
+                      sizes="(max-width: 1199px) 245px, 310px"
                       loading="lazy"
                       decoding="async"
                       draggable={false}
@@ -776,7 +783,9 @@ export default function StudioGlassGalaxy() {
                     className="studio-mobile-card-img"
                     width={360}
                     height={225}
-                    loading="lazy"
+                    sizes="82vw"
+                    loading={idx === 0 ? "eager" : "lazy"}
+                    fetchPriority={idx === 0 ? "high" : "auto"}
                     decoding="async"
                   />
                   <div className="studio-card-preview-vignette" />

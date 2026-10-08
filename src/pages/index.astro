@@ -114,7 +114,6 @@ const faqs = [
       <LogoMarquee variant="studio" />
 
       <section class="studio-audience studio-container studio-section" aria-labelledby="audience-title">
-        <p class="studio-eyebrow" data-reveal>Who this is for</p>
         <h2 id="audience-title" data-reveal>For businesses that need <span>more than a brochure website.</span></h2>
         <div class="studio-audience-list" data-reveal>
           {audience.map((item, i) => <div class="studio-audience-item"><span>{`0${i + 1}`}</span>{item}</div>)}
@@ -124,7 +123,6 @@ const faqs = [
       <section class="studio-problem" aria-labelledby="problem-title">
         <div class="studio-container">
           <div class="studio-problem-head">
-            <p class="studio-eyebrow" data-reveal>The problem</p>
             <h2 id="problem-title" data-reveal>Your website shouldn’t<br />just exist.</h2>
           </div>
           <div class="studio-problem-list">
@@ -154,7 +152,7 @@ const faqs = [
 
       <section class="studio-work studio-container studio-section" id="live-demo" aria-labelledby="work-title">
         <div class="studio-section-title" data-reveal>
-          <h2 id="work-title">Good ideas.<br /><span class="studio-muted">Great execution.</span></h2>
+          <h2 id="work-title">Selected work.<br /><span class="studio-muted">Built to be used.</span></h2>
           <a href="/portfolio" class="studio-text-link">Explore our work <ArrowUpRight size={20} /></a>
         </div>
         <div class="studio-projects">
@@ -179,15 +177,14 @@ const faqs = [
       <section class="studio-manifesto studio-container studio-section" id="why-us" aria-labelledby="manifesto-title">
         <div class="studio-manifesto-mark" aria-hidden="true"><img src="/brand/logo-mark.png" alt="" width="500" height="625" loading="lazy" /></div>
         <div data-reveal>
-          <p class="studio-eyebrow">A small studio. A bigger perspective.</p>
-          <h2 id="manifesto-title">The sweet spot between<br /><span class="studio-accent">creative instinct</span><br />and engineering rigor.</h2>
+          <h2 id="manifesto-title">Design that holds up<br /><span class="studio-accent">in the real world.</span></h2>
           <p>Beautiful is the beginning. We care just as much about the speed, the experience, and what happens after someone clicks.</p>
           <a href="/about" class="studio-text-link">Meet the studio <ArrowUpRight size={20} /></a>
         </div>
       </section>
 
       <section class="studio-process studio-container studio-section" id="process" aria-labelledby="process-title">
-        <div class="studio-process-heading" data-reveal><h2 id="process-title">Big on craft.<br />Light on complications.</h2><p>A clear scope. A direct line to your engineer. Working previews, all the way to launch — and the keys at the end of it.</p></div>
+        <div class="studio-process-heading" data-reveal><h2 id="process-title">A clear path<br />from idea to launch.</h2><p>A clear scope. A direct line to your engineer. Working previews, all the way to launch — and the keys at the end of it.</p></div>
         <div class="studio-process-steps">
           {processSteps.map((step, i) => <div class="studio-process-step" data-reveal><span class="studio-step-number">0{i + 1}</span><h3>{step.name}</h3><p>{step.text}</p></div>)}
         </div>
@@ -214,7 +211,6 @@ const faqs = [
       <section class="studio-ownership studio-container" aria-labelledby="ownership-title">
         <div class="studio-ownership-head">
           <div data-reveal>
-            <p class="studio-eyebrow">The part most studios skip</p>
             <h2 id="ownership-title">You own it.<br /><span class="studio-muted">All of it.</span></h2>
           </div>
           <p data-reveal>The reason to ask about ownership before you sign anything: a website you cannot leave is not an asset. Everything below is handed over on delivery, in your name, as standard.</p>
@@ -241,8 +237,7 @@ const faqs = [
       </section>}
 
       <section class="studio-contact studio-container studio-section" aria-labelledby="contact-title">
-        <p class="studio-eyebrow" data-reveal>Two ways to start.</p>
-         <div class="studio-contact-main" data-reveal><h2 id="contact-title">Let’s make<br />a <span>mark.</span></h2><a href="/fast-websites" class="studio-contact-button" aria-label="Start a fast website project" data-track="home_contact_orb"><ArrowUpRight size={64} weight="light" /></a></div>
+         <div class="studio-contact-main" data-reveal><h2 id="contact-title">Build what’s<br /><span>next.</span></h2><a href="/fast-websites" class="studio-contact-button" aria-label="Start a fast website project" data-track="home_contact_orb"><ArrowUpRight size={64} weight="light" /></a></div>
          <div class="studio-contact-bottom"><p>Bring the idea.<br />We’ll bring the craft.</p>
           <div class="studio-contact-actions">
             <a href="/fast-websites" class="studio-button" data-track="home_footer_fast_websites">Ready for a website <ArrowUpRight size={19} /></a>

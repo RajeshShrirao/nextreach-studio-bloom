@@ -73,16 +73,16 @@ const structuredOffering = offerings.map((o, i) => ({
     itemListElement: structuredOffering,
   })} />
   <Nav />
-  <main class="container-page-wide relative pt-28">
+  <main class="service-layout container-page-wide relative pt-28">
     <div class="absolute top-0 left-1/4 -translate-y-12 w-[500px] h-[300px] bg-[#C76B50]/6 rounded-full blur-[110px] pointer-events-none -z-10" aria-hidden="true"></div>
 
-    <header class="text-center max-w-3xl mx-auto px-4 mb-16 stagger-parent">
+    <header class="service-hero text-center max-w-3xl mx-auto px-4 mb-16 stagger-parent">
       <p class="text-xs font-mono uppercase tracking-[0.2em] text-[#C76B50] font-semibold mb-4">{serviceTag}</p>
       <h1 class="text-hero text-[#1F1F23] mb-6 font-display font-bold text-balance-wide">{headline}</h1>
       <p class="text-[#6E6862] text-base sm:text-lg leading-relaxed font-body">{subheadline}</p>
     </header>
 
-    <div class="max-w-4xl mx-auto px-4 mb-16 space-y-6 stagger-parent">
+    <div class="service-offerings max-w-4xl mx-auto px-4 mb-16 space-y-6 stagger-parent">
       {offerings.map((o) => (
         <div class="card-studio p-6 sm:p-8 shadow-sm">
           <h2 class="text-lg sm:text-xl font-bold text-[#1F1F23] font-display mb-3">{o.title}</h2>
@@ -94,7 +94,7 @@ const structuredOffering = offerings.map((o, i) => ({
     <slot />
 
     <div class="max-w-4xl mx-auto px-4 mb-16">
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div class="service-spec-grid grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div class="dashboard-panel p-4 text-center shadow-sm">
           <p class="text-[10px] text-[#6E6862] font-mono mb-1">Ideal Client</p>
           <p class="text-sm text-[#1F1F23] font-semibold">{idealClient}</p>
@@ -112,7 +112,7 @@ const structuredOffering = offerings.map((o, i) => ({
 
     {researchLinks && researchLinks.length > 0 && (
       <div class="max-w-4xl mx-auto px-4 mb-16 stagger-parent">
-        <div class="text-center mb-6">
+        <div class="service-research-head text-center mb-6">
           <p class="text-[10px] font-mono uppercase tracking-[0.2em] text-[#6E6862] font-semibold mb-2">Research</p>
           <h2 class="text-lg font-bold text-[#1F1F23] font-display">Read Before You Decide</h2>
         </div>
