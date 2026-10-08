@@ -1,34 +1,43 @@
 # 04. WhatsApp Pricing & Transparency Message
 
-Send this message when leads ask: *"How much does it cost?", "Any hidden charges?", "What are your payment terms?"*
+Send this when leads ask: *"How much does it cost?"* Give price → what they get → recommendation first. Share payment terms **after** they've picked a direction, not in the same breath.
 
 ---
+
+### Message 1: pricing + recommendation
 
 ```text
-Here is our transparent, fixed-scope pricing breakdown. Zero hidden agency retainers. 🤝
+We have three options:
 
-📌 PRICING TIERS:
-1️⃣ Quick Launch Website (1-Page): ₹5,000 flat
-2️⃣ Business Website (3-5 sections/pages): ₹7,500 flat
-3️⃣ Premium Flagship Website (5-7 pages): ₹10,000 flat
+⚡ Quick Launch — ₹5,000
+Best for getting a professional online presence quickly.
 
----
-💳 PAYMENT TERMS (Milestone-Based):
-• 50% Upfront Booking Deposit (To lock your sprint slot & start design)
-• 50% Final Payment (Only after you review & approve your site on your live domain)
+💼 Business — ₹7,500
+Best for established businesses that need services, gallery, trust elements and a clear enquiry flow.
 
----
-🛡️ WHAT IS 100% INCLUDED (₹0 Extra):
-✅ Custom UI/UX design (tailored to your brand)
-✅ Mobile & tablet responsive architecture
-✅ Domain connection and deployment setup
-✅ SSL configuration (HTTPS)
-✅ 1-Tap WhatsApp lead capture setup
-✅ 30-Day post-launch support warranty for any minor text/image edits
+✨ Premium — ₹10,000
+Best if you want a more polished multi-page presence.
 
----
-🌐 ONLY THIRD-PARTY COST (If you don't already own it):
-• Domain Name (.com / .in): ~₹800–₹1,000/year (paid directly to GoDaddy/Namecheap in your name).
+All three are one-time project prices — no mandatory monthly agency retainer, and you own the finished website and source code.
 
-Ready to lock in a sprint slot this week? 🚀
+If you tell me what your business does, I'll tell you which one I'd choose for you. 👍
+```
+
+### Message 2: after they confirm a package (payment + what's included)
+
+```text
+Great — here's how we start:
+
+💳 We take 50% to reserve the build slot, and the remaining 50% after you've reviewed the finished site. 👍
+
+Included at no extra charge:
+✅ Design matched to your brand
+✅ Mobile-friendly layout
+✅ Domain connection and launch setup
+✅ WhatsApp contact button
+✅ 30-day support window after launch for minor text/image fixes
+
+The only ongoing third-party cost is normally the domain renewal (~₹800–₹1,000/year), which you pay directly in your own name.
+
+Shall I reserve a build slot for you this week? 🚀
 ```

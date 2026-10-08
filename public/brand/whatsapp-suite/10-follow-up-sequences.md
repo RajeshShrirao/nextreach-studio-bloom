@@ -21,12 +21,12 @@ Happy to jump on a quick 5-minute call or answer right here on WhatsApp! 🚀
 > **Tone:** Value-led demonstration with industry proof.
 
 ```text
-Hey {{Name}}! Sharing a quick reference: 🌟
-
-We just delivered a flagship platform for a Pune client in your industry that achieved a 0.3-second load speed and generated 10+ WhatsApp inquiries in its first week:
+Hey {{Name}}! Sharing a quick reference since you're in a similar space: 🌟
 👉 https://www.nextreachstudio.in/demos/saffron-and-smoke
 
-We have a small number of engineering sprint slots open this week. Would you like to lock in one for {{BusinessName}}? ⚡
+Notice how the services and contact action are visible immediately — that's the same structure I'd recommend for {{BusinessName}}.
+
+If you're still considering it, tell me what your business does and I'll confirm which package fits. 👍
 ```
 
 ---

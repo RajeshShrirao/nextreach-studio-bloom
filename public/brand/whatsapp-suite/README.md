@@ -4,6 +4,31 @@ A comprehensive 19-part playbook engineered for selling, onboarding, and deliver
 
 ---
 
+### Sales philosophy: don't sell the website. Diagnose the business.
+
+Every message in this suite follows one hierarchy: **customer → business → problem → desired outcome → recommendation → price → technical details.** Never the reverse.
+
+1. Understand their business.
+2. Understand why they want a website.
+3. Find the problem they're trying to solve.
+4. Recommend the smallest solution that solves it.
+5. Explain why.
+6. Give proof (closest relevant example first).
+7. Give the next step.
+8. Close confidently.
+
+**Never discount before understanding the objection.**
+**Never apologize for the price.**
+**Never chase with "?" or "???".**
+**Never send a giant technical explanation when one clear sentence will do.**
+**Never offer free custom work before buying intent is established.** If they want proof, review their current website or business page and give 2–3 specific improvements — minutes of expertise, not a free homepage.
+
+Customer-facing positioning is always outcome language: *"your business will look professional, load well, be easy for customers to contact, and you'll own what we build."* Technical details are proof you bring out only if asked, never the headline.
+
+**Funnel:** ad → WhatsApp → business → problem → diagnosis → relevant proof → recommendation → price → objection handling → payment. Not: packages → portfolio blast → free work → follow-up → desperation.
+
+---
+
 ### Playbook Structure & Index
 
 | Phase | Step # | Template Name | File | Description |

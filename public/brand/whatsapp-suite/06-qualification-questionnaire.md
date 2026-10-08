@@ -1,29 +1,43 @@
 # 06. 60-Second Lead Qualification Questionnaire
 
-Send these 5 quick questions to qualify prospects and determine project scope, timeline urgency, and budget tier before sending a quote.
+Send these 5 quick questions to understand the prospect's business and goal first — then **you** recommend the package. Never ask the customer to pick a package before you've diagnosed what they need.
 
 ---
 
 ```text
-To make sure we recommend the exact right package for your business, could you answer these 5 quick questions? (Takes ~60 seconds): ⏱️
+To recommend the right website for your business, can I quickly understand what you're looking for? Takes about 60 seconds. 👇
 
-1️⃣ Business Name & Industry:
-(e.g., Kulkarni Dental Clinic, Pune)
+1️⃣ What does your business do?
 
-2️⃣ Project Scope:
-A) 1-Page Quick Launch Website (₹5,000 | 1–2 Days)
-B) 3–5 Section Business Website (₹7,500 | 2–3 Days)
-C) 5–7 Page Premium Flagship Website (₹10,000 | 3 Days)
+2️⃣ Do you currently have a website? If yes, send me the link.
 
-3️⃣ Do you already have a domain name (like yourbusiness.com)?
-[ Yes / No / Need help choosing ]
+3️⃣ What would you mainly like the website to do?
+- Get WhatsApp enquiries
+- Build credibility
+- Generate Google enquiries
+- Showcase products/services
+- Sell online
 
-4️⃣ Do you have logo, text, or photos ready?
-[ Yes ready / Partial / Need NextReach to write the copy & provide graphics ]
+4️⃣ Roughly when would you like it live?
+- ASAP
+- This week
+- This month
+- Just exploring
 
-5️⃣ What is your ideal launch date?
-[ As soon as possible / Within 7 days / Later this month ]
+5️⃣ Do you already have your logo, photos and business information?
+- Ready
+- Some ready
+- Need help
+```
 
 ---
-Just reply with your answers (e.g., 1: Apex Real Estate, 2: B, 3: Yes, 4: Partial, 5: This week) and we’ll share your custom project plan! 🚀
+
+### After they reply: recommend, don't ask them to pick
+
+> **Rule:** the customer describes the business and goal — you recommend the smallest package that solves it.
+
+```text
+Based on what you've told me, I'd recommend the ₹7,500 Business website for you. You don't need the ₹10,000 package for this — the Business option covers [their goal] and keeps the enquiry flow simple. Want me to share exactly what it includes? 👍
 ```
+
+Adjust the package name, price and reason to fit their answers. If the ₹5,000 option is enough, say so — recommending down builds trust and closes more often than upselling.

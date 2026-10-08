@@ -1,30 +1,37 @@
 # 03. WhatsApp Portfolio Message
 
-Send this message when leads ask to see past work, live links, or want proof of quality before committing.
+When leads ask to see past work, send the **closest relevant example first** — not the whole list. One link with one sentence about what to notice beats four URLs.
 
 ---
+
+### How to reply (template)
 
 ```text
-Here are a few live websites and flagships we've engineered recently: 🌟
+Absolutely. Since you're a [clinic / restaurant / service business], this is the closest example I'd show you first:
 
-🍽️ Luxury Dining & Hospitality Demo:
-👉 https://www.nextreachstudio.in/demos/saffron-and-smoke
-(Load time: 0.38s • 100/100 Core Web Vitals • Instant WhatsApp reservation flow)
+👉 [closest link from the library below]
 
-🏥 Healthcare & Clinic Flagship:
-👉 https://www.nextreachstudio.in/industries/healthcare
-(Engineered for patient appointment booking & medical specialty trust)
+Notice how the services, credibility and contact action are immediately visible — I'd adapt the same level of structure to your brand. If you like this direction, tell me what your business does and I'll recommend the right package for it. 👍
+```
 
-🏢 High-Growth Business & SaaS Architecture:
-👉 https://www.nextreachstudio.in/portfolio
-(Case studies, tech benchmarks, and lead conversion data)
-
-🛠️ Live AI Developer Tools Hub (Engineered by us):
-👉 https://www.nextreachstudio.in/tools/ai-token-calculator
-(Interactive React calculators used by developers daily)
+Pick the closest link from the library below. Only send a second link if they ask for more.
 
 ---
-All our sites are built using modern Astro 6 & React 19 architecture — meaning they load 4x faster than typical WordPress sites and convert significantly more mobile traffic.
 
-Would you like us to put together a quick 3-day sprint concept for your business? 🚀
+### Link library (internal — don't paste all four at once)
+
+```text
+🍽️ Restaurant & hospitality example:
+👉 https://www.nextreachstudio.in/demos/saffron-and-smoke
+
+🏥 Clinic & healthcare example:
+👉 https://www.nextreachstudio.in/industries/healthcare
+
+🏢 Business & service examples:
+👉 https://www.nextreachstudio.in/portfolio
+
+🛠️ Interactive tools we've built:
+👉 https://www.nextreachstudio.in/tools/ai-token-calculator
 ```
+
+> **Rules:** one relevant link first. No speed-test numbers, no "4x faster than WordPress" claims, no "sprint concept" offers before buying intent is established. If they share their current website or business page instead, reply with 2–3 specific improvements you'd make — that demonstrates expertise in minutes without giving away free custom work.

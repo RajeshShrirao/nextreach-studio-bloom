@@ -8,16 +8,16 @@ Use these instant auto-responder and first-touch messages when a prospective cli
 > **Trigger:** Prospect clicks WhatsApp button from website or Instagram ad (`wa.me/919822379976`).
 
 ```text
-Hey there! 👋 Welcome to NextReach Studio.
+Hey! 👋 Welcome to NextReach Studio.
 
-We build senior-engineered, ultra-fast websites and AI workflows that actually generate leads for Pune businesses. ⚡
+We help businesses launch professional websites that make them look credible online and turn visitors into enquiries.
 
-To get you the exact timeline & package in 2 minutes:
-1️⃣ What is your business name & industry?
-2️⃣ Are you launching a new website or redesigning an existing one?
-3️⃣ What is your target launch date?
+A few quick questions and I'll recommend the right option for you:
+1️⃣ What does your business do?
+2️⃣ Do you already have a website or is this a new one?
+3️⃣ What's the main goal — getting enquiries, showcasing your business, selling online, or simply establishing your online presence?
 
-(Or if you'd like to browse our packages first, just reply "MENU"!) 🚀
+I'll recommend what you actually need — not the most expensive package. 👍
 ```
 
 ---
@@ -28,16 +28,16 @@ To get you the exact timeline & package in 2 minutes:
 ```text
 Hi! Great to connect with you. 🚀
 
-Yes, our ₹5,000 Quick Launch Website is our most popular package for businesses needing a high-converting digital presence shipped in 3 days.
+Yes, our ₹5,000 Quick Launch Website is our most popular starting point for businesses that need a professional one-page presence live fast — typically in 1–2 days once your content is ready.
 
-Here is what's included:
-✅ Custom modern 1-page design (Astro 6 engine — sub-second load times)
-✅ 1-Tap direct WhatsApp lead capture button
-✅ Mobile-first responsiveness (100/100 Core Web Vitals)
-✅ Free hosting setup on Vercel + Free SSL Certificate
-✅ 3-day turnaround guarantee
+Here's what it covers:
+✅ Clean, modern 1-page design matched to your brand
+✅ Mobile-friendly layout that looks sharp on phones
+✅ 1-tap WhatsApp button so visitors can reach you instantly
+✅ Domain connection and launch handled for you
+✅ 30-day support window after launch
 
-Would you like to see a live demo of this package in action? (Reply "YES") 📱
+Tell me what your business does and I'll confirm whether this is the right fit — or whether one of the larger options suits you better. 👍
 ```
 
 ---
@@ -48,9 +48,9 @@ Would you like to see a live demo of this package in action? (Reply "YES") 📱
 ```text
 Hi there! Thanks for reaching out to NextReach Studio. 🌙
 
-Our engineering team is currently offline, but we have received your message! We'll review your requirements and get back to you by 9:30 AM tomorrow with custom demo links and package options.
+We've received your message and will get back to you by 9:30 AM tomorrow.
 
-In the meantime, feel free to explore our live flagship demo here:
+In the meantime, feel free to look at a recent example of our work here:
 👉 www.nextreachstudio.in/demos/saffron-and-smoke
 
 Talk soon! 🚀
