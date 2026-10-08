@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && npm run audit:lighthouse",
+    "audit:lighthouse": "python3 scripts/lighthouse_audit.py",
     "preview": "astro preview",
     "lint": "astro lint",
     "typecheck": "astro check",
@@ -42,6 +43,7 @@
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@types/three": "^0.186.0",
+    "lighthouse": "^13.5.0",
     "typescript": "^6.0.0"
   }
 }

@@ -1,0 +1,20 @@
+{
+  "comment": "Lighthouse gate thresholds for `npm run audit:lighthouse` (runs inside `npm run build`). Scores are simulated-mobile on localhost. RATCHET POLICY: baselines below are measured values minus run-to-run tolerance — never lower a number to make red green; only raise them as the site gets faster. a11y/BP/SEO/agentic stay at Google's green bands (90+) and fail the build on breach.",
+
+  "performance": 60,
+  "performance_baseline_note": "BASELINE 2026-10-08: homepage measures 66/100 (LCP ~7.4s simulated, JS-driven hero). Deliberately set below measured to absorb variance. Raise toward 90 only via real perf work (defer three.js hero, preload LCP image, cut blocking JS) — not by editing this file down.",
+
+  "accessibility": 90,
+  "best-practices": 90,
+  "seo": 90,
+
+  "max_lcp_ms": 8000,
+  "max_lcp_baseline_note": "BASELINE 2026-10-08: homepage LCP ~7430ms simulated-mobile. Same root cause as performance baseline above; tighten toward 2500ms with the same perf work.",
+
+  "max_cls": 0.1,
+
+  "agentic_min_ratio": 1.0,
+  "agentic_required_pass": ["llms-txt", "agent-accessibility-tree"],
+
+  "studio_robots_ai_crawlers": true
+}

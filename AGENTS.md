@@ -4,9 +4,18 @@
 
 ```sh
 npm run dev        # Astro dev server
-npm run build      # Production build (static output via @astrojs/vercel)
+npm run build      # Production build (static output via @astrojs/vercel) + Lighthouse audit gate
 npm run typecheck  # astro check
+npm run audit:lighthouse  # Re-run the Lighthouse gate alone (no rebuild)
 ```
+
+Build runs `scripts/lighthouse_audit.py` automatically after `astro build`:
+official Lighthouse engine (Performance / Accessibility / Best Practices / SEO)
++ Agentic Browsing fraction (llms.txt, a11y tree, CLS, WebMCP, ARD) cloned 1:1
+from GoogleChrome/lighthouse, plus stdlib-only static clones when Chrome is
+absent. Thresholds live in `scripts/lighthouse_budgets.json` (ratchet policy
+inside). Fails the build on breach. `SKIP_LIGHTHOUSE=1` skips (e.g. constrained
+CI); `--no-browser` runs static clones only.
 
 Order: `typecheck` → `build`. No test framework configured.
 
