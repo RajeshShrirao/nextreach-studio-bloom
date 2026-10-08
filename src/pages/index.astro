@@ -1,7 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import StudioNav from "@/components/home/StudioNav";
-import StudioArtwork from "@/components/home/StudioArtwork";
+import StudioGlassGalaxy from "@/components/home/StudioGlassGalaxy";
 import LogoMarquee from "@/components/brand/LogoMarquee.astro";
 import StudioSpecInteractive from "@/components/home/StudioSpecInteractive";
 import StudioIndustryInteractive from "@/components/home/StudioIndustryInteractive";
@@ -79,16 +79,15 @@ const faqs = [
 ---
 
 <Layout localFonts skipLoader title="Websites That Pay Off, Built in Pune" description="Fixed-scope websites from ₹5,000, plus web apps and AI systems. Built in Pune by the senior engineer you actually talk to. See the work and the real prices.">
-  <link slot="head" rel="preload" as="image" href="/assets/carousel/hero-dish.webp" type="image/webp" fetchpriority="high" />
+  <link slot="head" rel="preload" as="image" href="/assets/hero/card-website.jpg" type="image/jpeg" fetchpriority="high" />
   <div class="studio-home" data-studio-home>
     <a class="studio-skip" href="#main-content">Skip to content</a>
     <StudioNav client:idle />
     <main id="main-content">
-      <section class="studio-hero" aria-labelledby="hero-title">
-        <div class="studio-hero-scrim" aria-hidden="true"></div>
-        <StudioArtwork client:idle />
-        <div class="studio-hero-inner">
-          <div class="studio-hero-copy">
+      <section class="studio-hero studio-hero-galaxy" aria-labelledby="hero-title">
+        <StudioGlassGalaxy client:load />
+        <div class="studio-hero-inner studio-hero-galaxy-inner">
+          <div class="studio-hero-copy studio-hero-galaxy-copy">
             <p class="studio-eyebrow studio-hero-enter"><span class="studio-eyebrow-dot" aria-hidden="true"></span>NextReach Studio</p>
             <h1 id="hero-title" class="studio-hero-enter"><span>Reach</span><span class="studio-hero-next">what’s next.</span></h1>
             <p class="studio-hero-description studio-hero-enter">Websites, AI &amp; digital products built to move your business forward.</p>
