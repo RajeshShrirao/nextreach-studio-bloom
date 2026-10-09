@@ -55,7 +55,10 @@ export default function StudioNav() {
     try { saved = localStorage.getItem("nextreach-studio-theme"); } catch { /* System theme remains available. */ }
     const apply = (isDark: boolean) => {
       setDark(isDark);
-      document.querySelector("[data-studio-home]")?.setAttribute("data-theme", isDark ? "dark" : "light");
+      const theme = isDark ? "dark" : "light";
+      document.documentElement.setAttribute("data-theme", theme);
+      document.body.setAttribute("data-theme", theme);
+      document.querySelector("[data-studio-home]")?.setAttribute("data-theme", theme);
     };
     apply(saved ? saved === "dark" : media.matches);
     navRef.current?.closest("[data-site-critical]")?.setAttribute("data-site-ready", "true");
@@ -108,8 +111,11 @@ export default function StudioNav() {
   function toggleTheme() {
     const next = !dark;
     setDark(next);
-    document.querySelector("[data-studio-home]")?.setAttribute("data-theme", next ? "dark" : "light");
-    try { localStorage.setItem("nextreach-studio-theme", next ? "dark" : "light"); } catch { /* Theme changes still work without storage. */ }
+    const theme = next ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", theme);
+    document.body.setAttribute("data-theme", theme);
+    document.querySelector("[data-studio-home]")?.setAttribute("data-theme", theme);
+    try { localStorage.setItem("nextreach-studio-theme", theme); } catch { /* Theme changes still work without storage. */ }
   }
 
   return <header className="studio-header" data-site-critical="navigation">
