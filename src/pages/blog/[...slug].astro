@@ -24,6 +24,10 @@ const faqSchema = buildFaqPageSchema(post.body, post.data.canonicalURL || Astro.
 // Escape "<" so authored content can never terminate the script element early. The FAQ
 // answers are long-form prose on a site whose articles discuss HTML — cheap insurance.
 const faqJson = faqSchema ? JSON.stringify(faqSchema).replace(/</g, "\\u003c") : null;
+
+// Word count and reading time calculation
+const wordCount = (post.body || "").trim().split(/\s+/).filter(Boolean).length;
+const readingTimeMin = Math.max(2, Math.round(wordCount / 220));
 ---
 
 <Layout
@@ -37,63 +41,170 @@ const faqJson = faqSchema ? JSON.stringify(faqSchema).replace(/</g, "\\u003c") :
   canonicalURL={post.data.canonicalURL}
 >
   {faqJson && <script type="application/ld+json" set:html={faqJson} />}
-  <Nav />
-  <main class="pt-28 pb-20 relative overflow-hidden">
-    <div class="absolute top-0 left-1/4 -translate-y-12 w-[400px] h-[250px] bg-[#c76b50]/8 rounded-full blur-[100px] pointer-events-none -z-10" aria-hidden="true"></div>
-    <article class="px-6 sm:px-8 max-w-3xl mx-auto relative z-10">
-      <header class="mb-12">
-        <div class="flex flex-wrap items-center gap-3 mb-6">
-          <a href="/blog" class="text-xs text-[#6E6862] hover:text-[#1F1F23] transition-colors font-mono">
-            ← All articles
-          </a>
-        </div>
+  
+  <!-- Subtle Reading Progress Indicator -->
+  <div
+    id="reading-progress"
+    class="fixed top-0 left-0 h-[3px] bg-[#C76B50] z-[60] transition-all duration-75 w-0 pointer-events-none"
+    aria-hidden="true"
+  ></div>
 
-        <h1 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-[#1F1F23] tracking-[-0.01em] leading-[1.2] mb-4">
+  <Nav />
+
+  <main class="pt-28 sm:pt-32 pb-24 relative overflow-hidden">
+    <!-- Ambient architectural gradient matching homepage aesthetic -->
+    <div
+      class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-16 w-[700px] h-[340px] bg-[#C76B50]/6 rounded-full blur-[120px] pointer-events-none -z-10"
+      aria-hidden="true"
+    ></div>
+
+    <article class="max-w-3xl sm:max-w-4xl mx-auto px-5 sm:px-8 relative z-10">
+      
+      <!-- Editorial Header -->
+      <header class="mb-12 pb-8 border-b border-[#1F1F23]/8">
+        <nav class="flex flex-wrap items-center gap-2 mb-6 text-xs font-mono text-[#6E6862]" aria-label="Breadcrumb">
+          <a href="/blog" class="hover:text-[#1F1F23] transition-colors inline-flex items-center gap-1">
+            <span>←</span> Studio Journal
+          </a>
+          <span class="text-[#1F1F23]/25">/</span>
+          <span class="text-[#C76B50] font-semibold">Research &amp; Engineering</span>
+        </nav>
+
+        <h1 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-[#1F1F23] tracking-[-0.02em] leading-[1.18] mb-6">
           {post.data.title}
         </h1>
-        <p class="text-lg text-[#6E6862] leading-relaxed mb-6 font-body">{post.data.description}</p>
 
-        <div class="flex flex-wrap items-center gap-3 text-xs text-[#6E6862] font-mono">
-          <time datetime={post.data.pubDate.toISOString()}>
-            {post.data.pubDate.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
-          </time>
-          {post.data.updatedDate && (
-            <>
-              <span>·</span>
-              <span>Updated {post.data.updatedDate.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</span>
-            </>
-          )}
-          <span>·</span>
-          <span>{post.data.author}</span>
-          {(post.data.tags ?? []).length > 0 && (
-            <>
-              <span>·</span>
-              <div class="flex gap-1.5 flex-wrap">
-                {(post.data.tags ?? []).map((tag) => (
-                  <span class="badge-premium-neutral text-[9px]">{tag}</span>
-                ))}
-              </div>
-            </>
-          )}
+        <p class="text-lg sm:text-xl text-[#56564F] leading-relaxed mb-8 font-body font-normal">
+          {post.data.description}
+        </p>
+
+        <!-- Byline & Verification strip -->
+        <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-[#1F1F23]/6 text-xs text-[#6E6862]">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-[#EAE7DF] border border-[#1F1F23]/10 flex items-center justify-center font-bold text-[#1F1F23] text-xs font-display">
+              RS
+            </div>
+            <div>
+              <div class="font-semibold text-[#1F1F23]">{post.data.author || "Rajesh Shrirao"}</div>
+              <div class="text-[11px] text-[#6E6862]">Founder &amp; Principal Engineer</div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-3 font-mono text-xs">
+            <time datetime={post.data.pubDate.toISOString()}>
+              {post.data.pubDate.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}
+            </time>
+            <span>·</span>
+            <span>{readingTimeMin} min read</span>
+            {post.data.updatedDate && (
+              <>
+                <span>·</span>
+                <span class="text-[#C76B50]">Updated {post.data.updatedDate.toLocaleDateString("en-US", { year: "numeric", month: "short" })}</span>
+              </>
+            )}
+          </div>
         </div>
+
+        {(post.data.tags ?? []).length > 0 && (
+          <div class="flex gap-1.5 flex-wrap mt-4">
+            {(post.data.tags ?? []).map((tag) => (
+              <span class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-mono font-medium bg-[#F0ECE4] text-[#56564F] border border-[#1F1F23]/6">
+                #{tag}
+              </span>
+            ))}
+          </div>
+        )}
       </header>
 
-      <div class="card-studio rounded-2xl p-8 sm:p-10 mb-12">
-        <Prose>
+      <!-- Main Long-form Prose Body -->
+      <div class="editorial-body">
+        <Prose class="max-w-none">
           <Content />
         </Prose>
       </div>
 
-      <div class="flex flex-col sm:flex-row gap-4 justify-between items-start border-t border-[#1F1F23]/8 pt-8">
-        <a href="/blog" class="inline-flex items-center gap-2 text-[#c76b50] hover:text-[#d97a5e] transition-colors text-sm font-medium font-mono">
+      <!-- Author Bio & Engineering Accountability Box -->
+      <section class="mt-16 pt-10 border-t border-[#1F1F23]/10" aria-label="About the Author">
+        <div class="p-6 sm:p-8 rounded-2xl bg-[#F5F2EB]/80 border border-[#1F1F23]/8 flex flex-col sm:flex-row items-start sm:items-center gap-6">
+          <div class="w-14 h-14 rounded-2xl bg-[#E6E1D6] border border-[#1F1F23]/12 flex items-center justify-center font-display font-bold text-lg text-[#1F1F23] shrink-0">
+            RS
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2 mb-1">
+              <h3 class="font-display font-bold text-base text-[#1F1F23]">Rajesh Shrirao</h3>
+              <span class="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded bg-[#C76B50]/10 text-[#C76B50] font-semibold">Principal Engineer</span>
+            </div>
+            <p class="text-xs sm:text-sm text-[#56564F] leading-relaxed font-body">
+              Founder &amp; Principal Engineer at NextReach Studio. Every website, application, and AI system is designed, architected, and coded directly by him on fixed scope. Direct WhatsApp updates, verified 100/100 Core Web Vitals, and zero junior handoffs.
+            </p>
+          </div>
+          <a
+            href="https://wa.me/919822379976"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg text-xs font-mono font-semibold bg-[#1F1F23] text-[#FAF8F5] hover:bg-[#C76B50] transition-colors shrink-0 shadow-sm"
+          >
+            Chat on WhatsApp →
+          </a>
+        </div>
+      </section>
+
+      <!-- Discovery Call & Tools Banner -->
+      <aside class="mt-8 p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-[#FAF8F5] to-[#F2EFE8] border border-[#1F1F23]/8 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div>
+          <p class="text-xs font-mono uppercase tracking-wider text-[#C76B50] font-semibold mb-1">Transparent Scoping</p>
+          <h4 class="font-display font-bold text-lg text-[#1F1F23] mb-1">Planning a website or web app in Maharashtra?</h4>
+          <p class="text-xs sm:text-sm text-[#6E6862] max-w-md">
+            Skip vague agency sales calls. Get a clear engineering architecture breakdown and fixed-price quote from the engineer who builds it.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-2.5 shrink-0">
+          <a
+            href="/tools/pune-website-cost-calculator"
+            class="px-4 py-2 rounded-lg text-xs font-mono font-medium border border-[#1F1F23]/12 text-[#1F1F23] hover:border-[#C76B50] hover:text-[#C76B50] transition-colors"
+          >
+            Cost Calculator
+          </a>
+          <a
+            href="/contact"
+            class="px-4 py-2 rounded-lg text-xs font-mono font-semibold bg-[#C76B50] text-[#FAF8F5] hover:bg-[#D97A5E] transition-colors shadow-sm"
+          >
+            Schedule Discovery Call
+          </a>
+        </div>
+      </aside>
+
+      <!-- Article Navigation Footer -->
+      <nav class="flex flex-col sm:flex-row gap-4 justify-between items-center border-t border-[#1F1F23]/8 mt-12 pt-8" aria-label="Article navigation">
+        <a href="/blog" class="inline-flex items-center gap-2 text-[#C76B50] hover:text-[#D97A5E] transition-colors text-xs font-mono font-semibold">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
           Back to all articles
         </a>
-        <a href="/tools" class="inline-flex items-center gap-2 text-[#6E6862] hover:text-[#1F1F23] transition-colors text-sm font-mono">
-          Browse free tools →
-        </a>
-      </div>
+        <div class="flex items-center gap-4 text-xs font-mono text-[#6E6862]">
+          <a href="/services" class="hover:text-[#1F1F23] transition-colors">Our Services</a>
+          <span>·</span>
+          <a href="/tools" class="hover:text-[#1F1F23] transition-colors">Engineering Tools</a>
+          <span>·</span>
+          <a href="/portfolio" class="hover:text-[#1F1F23] transition-colors">Case Studies</a>
+        </div>
+      </nav>
+
     </article>
   </main>
+
   <Footer />
+
+  <script is:inline>
+    // Smooth reading progress calculation
+    const progressEl = document.getElementById("reading-progress");
+    if (progressEl) {
+      window.addEventListener("scroll", () => {
+        const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+        if (totalHeight > 0) {
+          const progress = (window.scrollY / totalHeight) * 100;
+          progressEl.style.width = `${Math.min(100, Math.max(0, progress))}%`;
+        }
+      }, { passive: true });
+    }
+  </script>
 </Layout>

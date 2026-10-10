@@ -6,61 +6,151 @@ import { getCollection } from "astro:content";
 
 const posts = await getCollection("blog", ({ data }) => !data.draft);
 posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
+const featuredPost = posts[0];
+const remainingPosts = posts.slice(1);
 ---
 
-<Layout title="Blog" description="Practical tutorials and insights for AI builders, Claude Code users, indie hackers, and developers working with LLMs.">
+<Layout
+  title="Studio Journal & Engineering Research"
+  description="In-depth website design cost breakdowns, Core Web Vitals benchmarks, tech stack matrices, and local SEO analysis from NextReach Studio in Pune."
+>
   <Nav />
-  <main class="container-page relative">
-    <div class="absolute top-0 left-1/4 -translate-y-12 w-[400px] h-[250px] bg-[#C76B50]/6 rounded-full blur-[100px] pointer-events-none -z-10" aria-hidden="true"></div>
+  
+  <main class="max-w-6xl mx-auto px-5 sm:px-8 pt-28 sm:pt-32 pb-24 relative">
+    <!-- Ambient subtle architectural glow -->
+    <div
+      class="absolute top-0 left-1/3 -translate-y-12 w-[600px] h-[320px] bg-[#C76B50]/6 rounded-full blur-[120px] pointer-events-none -z-10"
+      aria-hidden="true"
+    ></div>
 
-    <header class="header-page animate-fade-in-up">
-      <p class="header-page-pretitle font-mono text-[#C76B50] font-bold">Blog</p>
-      <h1 class="header-page-title text-[#1F1F23]">Tutorials &amp; insights</h1>
-      <p class="header-page-subtitle text-[#6E6862]">
-        Practical articles for developers building with AI. No hype, no generic tips - just useful techniques for real workflows.
+    <!-- Journal Editorial Header -->
+    <header class="max-w-3xl mb-16 animate-fade-in-up">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F0ECE4] border border-[#1F1F23]/8 mb-4">
+        <span class="w-1.5 h-1.5 rounded-full bg-[#C76B50]"></span>
+        <span class="text-xs font-mono font-semibold uppercase tracking-wider text-[#C76B50]">NextReach Studio Journal</span>
+      </div>
+      <h1 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-[#1F1F23] tracking-[-0.02em] leading-[1.15] mb-4">
+        Engineering, architecture &amp; market research
+      </h1>
+      <p class="text-base sm:text-lg text-[#56564F] leading-relaxed font-body font-normal max-w-2xl">
+        Transparent pricing analyses, performance audits, tech stack comparisons, and practical guides from our engineering desk. Zero generic fluff.
       </p>
     </header>
 
-    <div class="space-y-4 mb-16">
-      {posts.length === 0 && (
-        <div class="card-premium-flat text-center shadow-sm">
-          <p class="text-[#6E6862]">No posts yet. Check back soon.</p>
-        </div>
-      )}
+    <!-- Featured Flagship Article Card -->
+    {featuredPost && (
+      <section class="mb-14" aria-label="Featured Article">
+        <a
+          href={`/blog/${featuredPost.id}`}
+          class="block p-8 sm:p-10 rounded-2xl bg-gradient-to-br from-[#FAF8F5] via-[#F6F3EB] to-[#EFEBE1] border border-[#1F1F23]/10 hover:border-[#C76B50]/40 transition-all duration-300 group shadow-sm hover:shadow-md relative overflow-hidden"
+        >
+          <div class="flex items-center gap-3 mb-4 text-xs font-mono text-[#6E6862]">
+            <span class="px-2.5 py-0.5 rounded-full bg-[#C76B50] text-[#FAF8F5] font-semibold text-[10px] tracking-wider uppercase">
+              Featured Research
+            </span>
+            <span>·</span>
+            <time datetime={featuredPost.data.pubDate.toISOString()}>
+              {featuredPost.data.pubDate.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+            </time>
+          </div>
 
-      {posts.map((post) => (
-        <a href={`/blog/${post.id}`} class="card-premium-interactive group p-6 sm:p-8 hover:border-[#C76B50]/40 shadow-sm">
-          <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
-            <div class="flex-1 min-w-0">
+          <h2 class="font-display font-bold text-2xl sm:text-3xl text-[#1F1F23] group-hover:text-[#C76B50] transition-colors leading-[1.25] mb-4 max-w-3xl">
+            {featuredPost.data.title}
+          </h2>
+
+          <p class="text-sm sm:text-base text-[#56564F] leading-relaxed max-w-3xl font-body mb-6">
+            {featuredPost.data.description}
+          </p>
+
+          <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-[#1F1F23]/8 text-xs font-mono">
+            <div class="flex items-center gap-2 text-[#6E6862]">
+              <span class="w-5 h-5 rounded-full bg-[#1F1F23] text-[#FAF8F5] inline-flex items-center justify-center text-[10px] font-display font-bold">
+                RS
+              </span>
+              <span>{featuredPost.data.author || "Rajesh Shrirao"}</span>
+            </div>
+
+            <span class="inline-flex items-center gap-1.5 text-[#C76B50] font-semibold group-hover:translate-x-0.5 transition-transform">
+              Read in-depth report →
+            </span>
+          </div>
+        </a>
+      </section>
+    )}
+
+    <!-- Editorial Feed of Recent Articles -->
+    <section aria-label="All Articles">
+      <div class="flex items-center justify-between mb-8 pb-3 border-b border-[#1F1F23]/8">
+        <h3 class="font-display font-bold text-lg text-[#1F1F23]">All Publications &amp; Guides</h3>
+        <span class="text-xs font-mono text-[#6E6862]">{posts.length} articles</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {remainingPosts.map((post) => (
+          <a
+            href={`/blog/${post.id}`}
+            class="group p-6 sm:p-7 rounded-xl bg-[#FAF8F5] border border-[#1F1F23]/8 hover:border-[#C76B50]/35 hover:bg-[#FDFBF7] transition-all duration-200 flex flex-col justify-between shadow-[0_2px_8px_-4px_rgba(31,31,35,0.04)]"
+          >
+            <div>
               <div class="flex flex-wrap items-center gap-2 mb-3 text-xs text-[#6E6862] font-mono">
                 <time datetime={post.data.pubDate.toISOString()}>
-                  {post.data.pubDate.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+                  {post.data.pubDate.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}
                 </time>
-                {post.data.tags.length > 0 && (
+                {(post.data.tags ?? []).length > 0 && (
                   <>
                     <span>·</span>
-                    <div class="flex gap-1.5 flex-wrap">
-                      {post.data.tags.map((tag) => (
-                        <span class="badge-premium-neutral font-mono text-[9px]">{tag}</span>
-                      ))}
-                    </div>
+                    <span class="text-[10px] text-[#C76B50] font-semibold">
+                      #{post.data.tags[0]}
+                    </span>
                   </>
                 )}
               </div>
-              <h2 class="text-xl sm:text-2xl font-display font-bold text-[#1F1F23] mb-3 group-hover:text-[#C76B50] transition-colors duration-200">
+
+              <h4 class="font-display font-bold text-lg sm:text-xl text-[#1F1F23] group-hover:text-[#C76B50] transition-colors leading-snug mb-3">
                 {post.data.title}
-              </h2>
-              <p class="text-sm text-[#6E6862] leading-relaxed font-body">
+              </h4>
+
+              <p class="text-xs sm:text-sm text-[#56564F] leading-relaxed font-body line-clamp-3 mb-6">
                 {post.data.description}
               </p>
             </div>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-5 h-5 shrink-0 text-[#8C847B] group-hover:text-[#C76B50] transition-colors mt-1 hidden sm:block">
-              <path d="M9 18l6-6-6-6"/>
-            </svg>
-          </div>
+
+            <div class="flex items-center justify-between pt-4 border-t border-[#1F1F23]/6 text-xs font-mono text-[#6E6862]">
+              <span>{post.data.author || "Rajesh Shrirao"}</span>
+              <span class="text-[#C76B50] group-hover:translate-x-1 transition-transform inline-flex items-center gap-1 font-semibold">
+                Read article →
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Bottom Discovery Banner -->
+    <section class="mt-20 p-8 rounded-2xl bg-[#F0ECE4]/70 border border-[#1F1F23]/8 text-center max-w-3xl mx-auto">
+      <h3 class="font-display font-bold text-xl text-[#1F1F23] mb-2">Need advice on an upcoming web project?</h3>
+      <p class="text-xs sm:text-sm text-[#6E6862] leading-relaxed mb-6 max-w-lg mx-auto font-body">
+        Discuss your requirements directly with principal engineer Rajesh Shrirao. Clear scope, realistic timelines, and zero sales commissions.
+      </p>
+      <div class="flex flex-wrap justify-center gap-3">
+        <a
+          href="/contact"
+          class="px-5 py-2.5 rounded-lg text-xs font-mono font-semibold bg-[#1F1F23] text-[#FAF8F5] hover:bg-[#C76B50] transition-colors shadow-sm"
+        >
+          Book Discovery Call
         </a>
-      ))}
-    </div>
+        <a
+          href="https://wa.me/919822379976"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="px-5 py-2.5 rounded-lg text-xs font-mono font-semibold bg-emerald-700 text-white hover:bg-emerald-800 transition-colors shadow-sm"
+        >
+          Chat on WhatsApp
+        </a>
+      </div>
+    </section>
   </main>
+
   <Footer />
 </Layout>

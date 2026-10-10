@@ -13,6 +13,8 @@ export interface Props {
   idealClient: string;
   timeline: string;
   priceRange: string;
+  cityName?: string;
+  priceCurrency?: string;
   ctaText?: string;
   ctaHref?: string;
   relatedLinks?: { href: string; label: string }[];
@@ -30,6 +32,8 @@ const {
   idealClient,
   timeline,
   priceRange,
+  cityName = "Pune",
+  priceCurrency = "INR",
   ctaText = "Schedule a Technical Discovery Call",
   ctaHref = "/contact",
   relatedLinks,
@@ -59,10 +63,11 @@ const structuredOffering = offerings.map((o, i) => ({
     serviceType: serviceTag,
     description: subheadline,
     provider: { "@id": ORG_ID },
-    offers: { "@type": "Offer", price: priceRange, priceCurrency: "USD" },
+    offers: { "@type": "Offer", price: priceRange, priceCurrency: priceCurrency },
     areaServed: [
-      { "@type": "City", name: "Pune" },
+      { "@type": "City", name: cityName },
       { "@type": "AdministrativeArea", name: "Maharashtra" },
+      { "@type": "Country", name: "India" },
     ],
   })} />
   <script type="application/ld+json" set:html={JSON.stringify({
