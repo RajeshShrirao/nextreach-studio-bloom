@@ -1,0 +1,55 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Nav from "@/components/Nav.astro";
+import Footer from "@/components/Footer.astro";
+import Prose from "@/components/Prose.astro";
+import PuneWebsiteCostCalculator from "@/components/tools/PuneWebsiteCostCalculator";
+---
+
+<Layout
+  title="Pune Website Development Cost Calculator 2026 | NextReach Studio"
+  description="Estimate website development costs in Pune for 2026. Interactive pricing calculator for landing pages, business websites, e-commerce, and custom web apps with tech stack benchmarks."
+  canonicalURL="https://www.nextreachstudio.in/tools/pune-website-cost-calculator"
+>
+  <Nav />
+  <main class="container-page">
+    <header class="header-page animate-fade-in-up">
+      <p class="header-page-pretitle">Free Pune Business Tool</p>
+      <h1 class="header-page-title">Pune Website Cost Calculator</h1>
+      <p class="header-page-subtitle">
+        Real 2026 development benchmarks for businesses across Pune (Baner, Hinjewadi, Kharadi, Kothrud, Viman Nagar). Calculate realistic upfront and ongoing costs before hiring an agency or developer.
+      </p>
+    </header>
+
+    <div class="my-6">
+      <PuneWebsiteCostCalculator client:load />
+    </div>
+
+    <section class="mt-16">
+      <Prose>
+        <h2>How Pune Website Pricing Works in 2026</h2>
+        <p>
+          Website development quotes in Pune range from <strong>₹8,000 for basic landing pages</strong> to <strong>₹3,00,000+ for custom web applications</strong>. The wide variance exists because different vendors deliver fundamentally different assets:
+        </p>
+        <ul>
+          <li><strong>Template Assemblers (₹8,000 – ₹20,000):</strong> Pre-built WordPress or Wix themes. Cheap upfront, but 67% fail Google Core Web Vitals on mobile and frequently require complete rebuilds.</li>
+          <li><strong>Engineered Business Websites (₹30,000 – ₹70,000):</strong> Custom UI/UX, static architecture (Astro/Next.js), structured LocalBusiness schema, and sub-second page loads.</li>
+          <li><strong>Custom Web Applications (₹1,50,000+):</strong> Database design, user authentication, workflows, CRM sync, and proprietary backend logic.</li>
+        </ul>
+
+        <h2>Related In-Depth Guide</h2>
+        <p>
+          For a comprehensive line-by-line financial analysis of what Pune quotes actually buy and how AI has impacted pricing, read our flagship breakdown:
+          <a href="/blog/website-design-cost-pune-2026">Website Design & Development Cost in Pune 2026: Complete Pricing Breakdown</a>.
+        </p>
+
+        <h2>Need a Fixed-Scope Proposal?</h2>
+        <p>
+          NextReach Studio builds high-performance web applications and marketing sites with verified 100/100 Core Web Vitals. Talk directly to an engineer to get a transparent, single-number scope:
+          <a href="/contact">Schedule a technical discovery call</a>.
+        </p>
+      </Prose>
+    </section>
+  </main>
+  <Footer />
+</Layout>

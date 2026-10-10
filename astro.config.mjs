@@ -21,6 +21,7 @@ export default defineConfig({
       customPages: [
         "https://www.nextreachstudio.in/tools/ai-token-calculator",
         "https://www.nextreachstudio.in/tools/llm-cost-calculator",
+        "https://www.nextreachstudio.in/tools/pune-website-cost-calculator",
         "https://www.nextreachstudio.in/tools/context-window-calculator",
         "https://www.nextreachstudio.in/tools/vram-estimator",
         "https://www.nextreachstudio.in/tools/prompt-formatter",
