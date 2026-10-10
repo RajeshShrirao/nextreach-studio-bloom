@@ -8,7 +8,7 @@ const tools = [
   {
     name: "AI Token Calculator",
     description: "Count tokens for Claude, GPT-4, Gemini, Llama, and 15+ other models before sending prompts. Avoid context limit errors.",
-    href: "/tools/ai-token-calculator",
+    href: "/tools/ai-token-calculator/",
     icon: "⚡",
     category: "Estimation",
     tags: ["tokens", "context", "pricing"],
@@ -16,7 +16,7 @@ const tools = [
   {
     name: "Pune Website Cost Calculator",
     description: "Calculate real 2026 website development and design costs in Pune. Compare landing pages, business sites, e-commerce, and custom web app tiers.",
-    href: "/tools/pune-website-cost-calculator",
+    href: "/tools/pune-website-cost-calculator/",
     icon: "🏷️",
     category: "Estimation",
     tags: ["pune", "pricing", "website-cost", "web-development"],
@@ -24,7 +24,7 @@ const tools = [
   {
     name: "LLM Cost Calculator",
     description: "Calculate monthly API costs across providers. Compare Claude vs GPT-4 vs Gemini side-by-side and find the cheapest option.",
-    href: "/tools/llm-cost-calculator",
+    href: "/tools/llm-cost-calculator/",
     icon: "💰",
     category: "Estimation",
     tags: ["cost", "api", "comparison"],
@@ -32,7 +32,7 @@ const tools = [
   {
     name: "Context Window Calculator",
     description: "Break down your context window by type - system prompt, history, documents, query, and output reserve. Visual stacked bar.",
-    href: "/tools/context-window-calculator",
+    href: "/tools/context-window-calculator/",
     icon: "📐",
     category: "Planning",
     tags: ["context", "tokens", "planning"],
@@ -40,7 +40,7 @@ const tools = [
   {
     name: "VRAM Estimator",
     description: "Estimate GPU memory requirements for running any local LLM. Supports all quantization levels. Shows which GPUs are compatible.",
-    href: "/tools/vram-estimator",
+    href: "/tools/vram-estimator/",
     icon: "🖥️",
     category: "Local LLM",
     tags: ["vram", "gpu", "local-llm", "quantization"],
@@ -48,7 +48,7 @@ const tools = [
   {
     name: "Prompt Formatter",
     description: "Convert prompts between ChatML, Llama 3, Mistral, Gemma, Phi-3, and API JSON formats. Copy-ready output.",
-    href: "/tools/prompt-formatter",
+    href: "/tools/prompt-formatter/",
     icon: "✏️",
     category: "Formatting",
     tags: ["prompts", "format", "local-llm"],
@@ -56,6 +56,14 @@ const tools = [
 ];
 
 const categories = [...new Set(tools.map((t) => t.category))];
+
+const developerArticles = [
+  { href: "/blog/claude-code-workflow-tips/", title: "Claude Code Workflow Tips: How We Use the New CLI to Ship Faster", note: "Practical workflows, token usage strategies, and how to stay in flow." },
+  { href: "/blog/gemini-cli-developer-guide/", title: "Gemini CLI Developer Guide: Practical Workflows for Engineering Teams", note: "Integrating Google's long-context models into daily terminal and script pipelines." },
+  { href: "/blog/llm-context-window-management/", title: "LLM Context Window Management: Strategies for Cost and Latency Optimization", note: "Window partitioning, compaction, caching, and KV cache hit maximization." },
+  { href: "/blog/local-llm-setup-ollama-macos/", title: "Local LLM Setup with Ollama on macOS: A Practical Developer Guide", note: "Model selection, memory sizing, and tool calling setup on Apple Silicon." },
+  { href: "/blog/ai-developer-tools-stack/", title: "Our AI Developer Tools Stack for 2026: What We Actually Use", note: "The CLI tools, IDE extensions, and APIs we run in production." },
+];
 ---
 
 <Layout
@@ -95,6 +103,28 @@ const categories = [...new Set(tools.map((t) => t.category))];
         </div>
       </section>
     ))}
+
+    <section class="mb-12" aria-labelledby="developer-guides-title">
+      <div class="flex items-center justify-between mb-4">
+        <h2 id="developer-guides-title" class="text-xs uppercase tracking-[0.12em] text-[#6E6862] font-mono font-semibold">
+          Engineering &amp; LLM Guides
+        </h2>
+        <a href="/blog/" class="text-xs font-mono text-[#c76b50] hover:text-[#d97a5e] transition-colors">View all articles →</a>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        {developerArticles.map((article) => (
+          <a href={article.href} class="card-studio group flex flex-col p-5 hover:border-[#c76b50]/40 transition-colors">
+            <h3 class="text-sm font-bold text-[#1F1F23] font-display mb-2 group-hover:text-[#c76b50] transition-colors leading-snug">
+              {article.title}
+            </h3>
+            <p class="text-xs text-[#6E6862] leading-relaxed font-body mb-4">
+              {article.note}
+            </p>
+            <span class="text-[10px] font-mono text-[#c76b50] mt-auto font-medium">Read guide →</span>
+          </a>
+        ))}
+      </div>
+    </section>
 
     <div class="mt-8 card-studio text-center p-8">
       <p class="text-[#1F1F23] text-sm mb-2 font-semibold">More tools coming soon</p>

@@ -38,7 +38,7 @@ const references = [
   <div class="bb-shell">
     <a class="bb-skip" href="#book">Skip to brand book</a>
     <nav class="bb-topbar" aria-label="Brand book tools">
-      <a href="/brand" class="bb-back">← Brand kit</a>
+      <a href="/brand/" class="bb-back">← Brand kit</a>
       <span class="bb-toolbar-title">NextReach Studio / Visual Brand Book</span>
       <div class="bb-toolbar-actions">
         <a href="/brand/book/NextReach-Studio-Brand-Book.pdf" download>Download PDF ↓</a>
@@ -223,7 +223,7 @@ const references = [
       </Page>
 
       <Page number={29} id="assets" title="Everything you need for the next one.">
-        <div class="bb-assets-layout"><div class="bb-assets-primary bb-dark"><img src="/brand/logo-mark.svg" width="120" height="150" alt="NextReach master emblem" loading="lazy" /><h3>Make it yours.<br />Keep it NextReach.</h3><a href="/brand/book/NextReach-Studio-Brand-Assets.zip" download>Download asset pack ↓</a><p>Logo masters / fonts / tokens / ad templates / PNGs</p></div><div class="bb-asset-links">{templates.map(t => <div><div><h3>{t.name}</h3><p>{t.size} / live text & embedded fonts</p></div><div><a href={`/brand/book/templates/${t.file}.svg`} download>SVG ↓</a><a href={`/brand/book/templates/${t.file}.png`} download>PNG ↓</a></div></div>)}<div><div><h3>Design tokens</h3><p>Core palette, functional colors, type & spacing</p></div><div><a href="/brand/book/tokens.json" download>JSON ↓</a><a href="/brand/book/tokens.css" download>CSS ↓</a></div></div><div><div><h3>Full identity library</h3><p>Monochrome, stacked, app & profile variants</p></div><a href="/brand">Brand kit ↗</a></div></div></div>
+        <div class="bb-assets-layout"><div class="bb-assets-primary bb-dark"><img src="/brand/logo-mark.svg" width="120" height="150" alt="NextReach master emblem" loading="lazy" /><h3>Make it yours.<br />Keep it NextReach.</h3><a href="/brand/book/NextReach-Studio-Brand-Assets.zip" download>Download asset pack ↓</a><p>Logo masters / fonts / tokens / ad templates / PNGs</p></div><div class="bb-asset-links">{templates.map(t => <div><div><h3>{t.name}</h3><p>{t.size} / live text & embedded fonts</p></div><div><a href={`/brand/book/templates/${t.file}.svg`} download>SVG ↓</a><a href={`/brand/book/templates/${t.file}.png`} download>PNG ↓</a></div></div>)}<div><div><h3>Design tokens</h3><p>Core palette, functional colors, type & spacing</p></div><div><a href="/brand/book/tokens.json" download>JSON ↓</a><a href="/brand/book/tokens.css" download>CSS ↓</a></div></div><div><div><h3>Full identity library</h3><p>Monochrome, stacked, app & profile variants</p></div><a href="/brand/">Brand kit ↗</a></div></div></div>
         <p class="bb-caption">This book extends the existing identity with practical campaign rules. Brand contact: hello@nextreachstudio.in / nextreachstudio.in/contact.</p>
       </Page>
 
@@ -232,7 +232,7 @@ const references = [
         <div class="bb-reference-footer"><p>Reference principles inform the document’s structure. All NextReach colors, marks, and applications remain its own identity.</p><p>Identity sources: BRANDING.md / PRODUCT.md / homepage tokens / supplied brand masters. New layout and production rules are defined in this book.</p></div>
       </Page>
     </main>
-    <footer class="bb-reader-footer"><a href="/brand">← Back to the brand kit</a><span>NextReach Studio / Reach what’s next.</span><button type="button" data-print-book>Print book ↗</button></footer>
+    <footer class="bb-reader-footer"><a href="/brand/">← Back to the brand kit</a><span>NextReach Studio / Reach what’s next.</span><button type="button" data-print-book>Print book ↗</button></footer>
   </div>
   <script>
     document.querySelector<HTMLButtonElement>("[data-print-book]")?.addEventListener("click", () => window.print());

@@ -48,9 +48,9 @@ const problems = [
 ];
 
 const services = [
-  { name: "Websites with presence.", description: "Distinctive digital experiences that turn first impressions into real inquiries.", tags: "Strategy / Design / Development", icon: Globe, href: "/services" },
-  { name: "Products with purpose.", description: "From your first MVP to the platform your business runs on. Built for real people.", tags: "Web apps / SaaS / MVPs", icon: Code, href: "/services/web-application-development-pune" },
-  { name: "Less busywork. More possibility.", description: "AI agents and connected workflows that give your team its time back.", tags: "AI agents / Automation / APIs", icon: Sparkle, href: "/services/ai-automation-pune" },
+  { name: "Websites with presence.", description: "Distinctive digital experiences that turn first impressions into real inquiries.", tags: "Strategy / Design / Development", icon: Globe, href: "/services/" },
+  { name: "Products with purpose.", description: "From your first MVP to the platform your business runs on. Built for real people.", tags: "Web apps / SaaS / MVPs", icon: Code, href: "/services/web-application-development-pune/" },
+  { name: "Less busywork. More possibility.", description: "AI agents and connected workflows that give your team its time back.", tags: "AI agents / Automation / APIs", icon: Sparkle, href: "/services/ai-automation-pune/" },
 ];
 
 const processSteps = [
@@ -105,7 +105,7 @@ const faqs = [
             <h1 id="hero-title" class="studio-hero-enter"><span>Reach</span><span class="studio-hero-next">what’s next.</span></h1>
             <p class="studio-hero-description studio-hero-enter">Websites, AI &amp; digital products built to move your business forward.</p>
             <div class="studio-hero-actions studio-hero-enter">
-              <a href="/contact" class="studio-button" data-magnetic data-track="home_hero_start_project">Start a project <ArrowUpRight size={19} weight="bold" aria-hidden="true" /></a>
+              <a href="/contact/" class="studio-button" data-magnetic data-track="home_hero_start_project">Start a project <ArrowUpRight size={19} weight="bold" aria-hidden="true" /></a>
               <a href="#live-demo" class="studio-text-link" data-magnetic data-track="home_hero_see_work">See our work <ArrowDown size={18} aria-hidden="true" /></a>
             </div>
             <ul class="studio-hero-index studio-hero-enter" aria-label="What we build">
@@ -168,11 +168,11 @@ const faqs = [
       <section class="studio-work studio-container studio-section" id="live-demo" aria-labelledby="work-title">
         <div class="studio-section-title" data-reveal>
           <h2 id="work-title">Selected work.<br /><span class="studio-muted">Built to be used.</span></h2>
-          <a href="/portfolio" class="studio-text-link">Explore our work <ArrowUpRight size={20} /></a>
+          <a href="/portfolio/" class="studio-text-link">Explore our work <ArrowUpRight size={20} /></a>
         </div>
         <div class="studio-projects">
           <article class="studio-project studio-project-featured" data-reveal>
-            <a class="studio-project-image studio-dining-image" href="/demos/saffron-and-smoke" aria-label="Explore Saffron and Smoke restaurant website demo">
+            <a class="studio-project-image studio-dining-image" href="/demos/saffron-and-smoke/" aria-label="Explore Saffron and Smoke restaurant website demo">
               <img src={diningImage.src} alt="The signature dish from the Saffron and Smoke fine-dining website demo" width="1200" height="670" loading="lazy" decoding="async" />
               <div class="studio-project-wordmark" aria-hidden="true">Saffron<br /><span>&amp; Smoke</span></div>
               <span class="studio-project-open" aria-hidden="true"><ArrowUpRight size={26} /></span>
@@ -180,7 +180,7 @@ const faqs = [
             <div class="studio-project-info"><div><h3>Saffron &amp; Smoke</h3><p>A dining experience, reimagined online.</p></div><span>Hospitality · Flagship demo</span></div>
           </article>
           <article class="studio-project studio-project-secondary" data-reveal>
-              <a class="studio-project-image studio-clinic-image" href="/portfolio" aria-label="Explore Oak and Elm clinic website demo">
+              <a class="studio-project-image studio-clinic-image" href="/portfolio/" aria-label="Explore Oak and Elm clinic website demo">
               <img src={clinicImage.src} alt="Warm, light-filled Oak and Elm clinic interior featured in our business website demo" width="1000" height="558" loading="lazy" decoding="async" />
               <span class="studio-project-open" aria-hidden="true"><ArrowUpRight size={26} /></span>
             </a>
@@ -194,7 +194,7 @@ const faqs = [
         <div data-reveal>
           <h2 id="manifesto-title">Design that holds up<br /><span class="studio-accent">in the real world.</span></h2>
           <p>Beautiful is the beginning. We care just as much about the speed, the experience, and what happens after someone clicks.</p>
-          <a href="/about" class="studio-text-link">Meet the studio <ArrowUpRight size={20} /></a>
+          <a href="/about/" class="studio-text-link">Meet the studio <ArrowUpRight size={20} /></a>
         </div>
       </section>
 
@@ -217,8 +217,8 @@ const faqs = [
             <a href={pkg.demo} class="studio-package-demo">View demo <ArrowRight size={16} /></a>
           </article>)}
         </div>
-        <p class="studio-custom-note">Comparing the three? <a href="/fast-websites">See full package details <ArrowUpRight size={17} /></a></p>
-         <p class="studio-custom-note">Something more ambitious? <a href="/contact">Let’s scope your web app or AI system <ArrowUpRight size={17} /></a></p>
+        <p class="studio-custom-note">Comparing the three? <a href="/fast-websites/">See full package details <ArrowUpRight size={17} /></a></p>
+         <p class="studio-custom-note">Something more ambitious? <a href="/contact/">Let’s scope your web app or AI system <ArrowUpRight size={17} /></a></p>
       </section>
 
       <StudioReviews client:visible />
@@ -247,16 +247,16 @@ const faqs = [
       <StudioIndustryInteractive client:visible />
 
       {posts.length > 0 && <section class="studio-journal studio-container studio-section" id="ai-dev-hub" aria-labelledby="journal-title">
-        <div class="studio-section-title" data-reveal><h2 id="journal-title">Always building.<br /><span class="studio-muted">Always exploring.</span></h2><a href="/tools" class="studio-text-link">Explore our tools <ArrowUpRight size={20} /></a></div>
-        <div class="studio-journal-grid">{posts.map((post, i) => <a class="studio-journal-entry" href={`/blog/${post.id}`} data-reveal><span class="studio-journal-number">0{i + 1}</span><span class="studio-journal-type">From the studio journal</span><h3>{post.data.title}</h3><span class="studio-journal-read">Read story <ArrowUpRight size={19} /></span></a>)}</div>
+        <div class="studio-section-title" data-reveal><h2 id="journal-title">Always building.<br /><span class="studio-muted">Always exploring.</span></h2><a href="/tools/" class="studio-text-link">Explore our tools <ArrowUpRight size={20} /></a></div>
+        <div class="studio-journal-grid">{posts.map((post, i) => <a class="studio-journal-entry" href={`/blog/${post.id}/`} data-reveal><span class="studio-journal-number">0{i + 1}</span><span class="studio-journal-type">From the studio journal</span><h3>{post.data.title}</h3><span class="studio-journal-read">Read story <ArrowUpRight size={19} /></span></a>)}</div>
       </section>}
 
       <section class="studio-contact studio-container studio-section" aria-labelledby="contact-title">
-         <div class="studio-contact-main" data-reveal><h2 id="contact-title">Build what’s<br /><span>next.</span></h2><a href="/fast-websites" class="studio-contact-button" aria-label="Start a fast website project" data-track="home_contact_orb"><ArrowUpRight size={64} weight="light" /></a></div>
+         <div class="studio-contact-main" data-reveal><h2 id="contact-title">Build what’s<br /><span>next.</span></h2><a href="/fast-websites/" class="studio-contact-button" aria-label="Start a fast website project" data-track="home_contact_orb"><ArrowUpRight size={64} weight="light" /></a></div>
          <div class="studio-contact-bottom"><p>Bring the idea.<br />We’ll bring the craft.</p>
           <div class="studio-contact-actions">
-            <a href="/fast-websites" class="studio-button" data-track="home_footer_fast_websites">Ready for a website <ArrowUpRight size={19} /></a>
-            <a href="/contact" class="studio-text-link" data-track="home_footer_custom_scope">Need a web app or AI system? <ArrowRight size={19} /></a>
+            <a href="/fast-websites/" class="studio-button" data-track="home_footer_fast_websites">Ready for a website <ArrowUpRight size={19} /></a>
+            <a href="/contact/" class="studio-text-link" data-track="home_footer_custom_scope">Need a web app or AI system? <ArrowRight size={19} /></a>
           </div>
         </div>
       </section>
@@ -264,7 +264,7 @@ const faqs = [
 
     <footer class="studio-footer studio-container">
       <a href="/" class="studio-footer-brand"><img src="/brand/logo-mark.png" width="28" height="35" alt="" />NextReach <span>Studio</span></a>
-      <div class="studio-footer-links"><a href="/services">Services</a><a href="/industries/restaurants">Industries</a><a href="/blog">Blog</a><a href="/guides">Guides</a><a href="/resources">Resources</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a></div>
+      <div class="studio-footer-links"><a href="/services/">Services</a><a href="/industries/restaurants/">Industries</a><a href="/blog/">Blog</a><a href="/guides/">Guides</a><a href="/resources/">Resources</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></div>
       <div class="studio-footer-bottom"><span>© {new Date().getFullYear()} NextReach Studio</span><span>Thoughtfully designed. Carefully engineered.</span></div>
     </footer>
   </div>

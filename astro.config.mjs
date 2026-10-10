@@ -28,4 +28,8 @@ export default defineConfig({
   ],
   adapter: vercel(),
   output: "static",
+  redirects: {
+    "/services/ecommerce": "/services/ecommerce-website-development-pune/",
+    "/services/ecommerce/": "/services/ecommerce-website-development-pune/",
+  },
 });

@@ -507,7 +507,7 @@ Generated on nextreachstudio.in`;
             {copied ? "Copied Spec ✓" : "Copy Spec"}
           </button>
           <a
-            href="/contact"
+            href="/contact/"
             className="flex-1 md:flex-none text-xs font-mono font-medium px-5 py-2.5 rounded-lg bg-[#97402e] text-[#fffaf5] hover:bg-[#7e3425] transition-colors text-center inline-block"
           >
             Discuss Project →

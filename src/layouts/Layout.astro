@@ -47,11 +47,17 @@ const STUDIO_DESCRIPTION =
 
 // Fallbacks only — every page currently passes its own. They exist so that a new page which
 // forgets to cannot silently describe the studio as an AI-tools blog, which is what the
-// previous fallback did (and what it was still doing in the site's meta description).
-const siteTitle = title ? `${title} | NextReach Studio` : "NextReach Studio - Custom Websites, Web Apps & AI Systems";
+const siteTitle = title
+  ? (title.includes("NextReach Studio") || title.length > 50 ? title : `${title} | NextReach Studio`)
+  : "NextReach Studio - Custom Websites, Web Apps & AI Systems";
 const siteDescription = description || STUDIO_DESCRIPTION;
 const ogImage = image ? (image.startsWith("http") ? image : `${siteURL}${image}`) : `${siteURL}/link-previews.jpg`;
-const canonical = canonicalURL || Astro.url.href;
+
+let rawCanonical = canonicalURL || Astro.url.href;
+if (!rawCanonical.endsWith("/") && !rawCanonical.split("/").pop()?.includes(".")) {
+  rawCanonical += "/";
+}
+const canonical = rawCanonical;
 
 const breadcrumbItems = (() => {
   const path = Astro.url.pathname.replace(/\/+$/, "") || "/";

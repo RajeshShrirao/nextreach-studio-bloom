@@ -34,7 +34,7 @@ Common limits at time of writing:
 
 A 200K token context holds roughly 150,000 words - around 500 pages of text. That sounds enormous until you start loading files. A medium-sized TypeScript project with 50 files of 200 lines each is around 500KB of source code, which is roughly 125K tokens before you've said a word.
 
-Use [our Context Window Calculator](/tools/context-window-calculator) to estimate token counts for your actual files before starting a session.
+Use [our Context Window Calculator](/tools/context-window-calculator/) to estimate token counts for your actual files before starting a session.
 
 ## Why Large Context Doesn't Mean Free Context
 
@@ -46,7 +46,7 @@ Transformer attention is not uniform across the full context. Models pay more at
 
 **2. Increased latency and cost**
 
-API cost is linear with tokens. A 100K token request costs 10x a 10K token request. Latency scales similarly - time-to-first-token increases with context length. This is why sessions that start fast get slow as they accumulate history. Estimate your costs upfront with [our LLM Cost Calculator](/tools/llm-cost-calculator).
+API cost is linear with tokens. A 100K token request costs 10x a 10K token request. Latency scales similarly - time-to-first-token increases with context length. This is why sessions that start fast get slow as they accumulate history. Estimate your costs upfront with [our LLM Cost Calculator](/tools/llm-cost-calculator/).
 
 **3. Reasoning degradation in long chains**
 

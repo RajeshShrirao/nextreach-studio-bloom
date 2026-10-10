@@ -28,7 +28,7 @@ const verticals = [
     sector: "Manufacturing",
     outcome: "Shop floor and office, on one system",
     description: "Production tracking, inventory and auto-reorder thresholds, digital inspection forms, and an order-to-delivery pipeline built around your actual workflows.",
-    href: "/industries/manufacturing",
+    href: "/industries/manufacturing/",
     icon: FactoryIcon,
     tag: "Production & ERP",
     kpi: "Custom, not a template",
@@ -38,7 +38,7 @@ const verticals = [
     sector: "Logistics & Supply Chain",
     outcome: "Live dispatch and client portals",
     description: "Fleet interfaces, shipment tracking pipelines, and billing automation dashboards that replace the spreadsheet-and-phone-call workflow.",
-    href: "/industries/logistics",
+    href: "/industries/logistics/",
     icon: TruckIcon,
     tag: "Freight & Fleets",
     kpi: "Automated dispatch",
@@ -48,7 +48,7 @@ const verticals = [
     sector: "Education & EdTech",
     outcome: "Portals for staff, students and parents",
     description: "Attendance, grades and fees in one place, plus admission platforms with document upload and automated merit lists.",
-    href: "/industries/education",
+    href: "/industries/education/",
     icon: GraduationCapIcon,
     tag: "Schools & EdTech",
     kpi: "Admissions online",
@@ -58,7 +58,7 @@ const verticals = [
     sector: "Real Estate & Architecture",
     outcome: "High-ticket portfolio showcases",
     description: "Ultra-crisp property tours that stay sharp on a phone, lead qualification funnels, and automated broker routing.",
-    href: "/industries/real-estate",
+    href: "/industries/real-estate/",
     icon: BuildingsIcon,
     tag: "Estates & Architecture",
     kpi: "Sharp on every screen",
@@ -68,7 +68,7 @@ const verticals = [
     sector: "Healthcare & Aesthetics",
     outcome: "Booking without the phone call",
     description: "Practitioner profiles, appointment scheduling, and intake forms that respect patient privacy — for clinics, dentists and practitioners.",
-    href: "/industries/healthcare",
+    href: "/industries/healthcare/",
     icon: FirstAidKitIcon,
     tag: "Medical & Dental",
     kpi: "Booking flows that finish",
@@ -78,7 +78,7 @@ const verticals = [
     sector: "Retail & D2C Brands",
     outcome: "Catalog to checkout, without friction",
     description: "Catalog showcases, WhatsApp commerce, and conversion-focused checkouts that stay fast as the product list grows.",
-    href: "/industries/retail",
+    href: "/industries/retail/",
     icon: ShoppingBagIcon,
     tag: "Commerce & D2C",
     kpi: "Built to sell",
@@ -88,7 +88,7 @@ const verticals = [
     sector: "Restaurants & Hospitality",
     outcome: "A menu that opens instantly",
     description: "Culinary storytelling, menus that load on congested mobile networks, and reservation flows that hand off to WhatsApp.",
-    href: "/industries/restaurants",
+    href: "/industries/restaurants/",
     icon: ForkKnifeIcon,
     tag: "Dining & Cafes",
     kpi: "Mobile-first menus",
@@ -98,7 +98,7 @@ const verticals = [
     sector: "Construction & Contracting",
     outcome: "Project tracking that works on-site",
     description: "Milestone and budget visibility, material and procurement tracking, workforce attendance, and client portals with site photo updates.",
-    href: "/industries/construction",
+    href: "/industries/construction/",
     icon: HardHatIcon,
     tag: "Builders & Contractors",
     kpi: "Built for site conditions",
@@ -108,7 +108,7 @@ const verticals = [
     sector: "Tech Startups & SaaS",
     outcome: "Investor-grade pages and MVPs",
     description: "Fast landing pages for paid ad traffic, interactive product walkthroughs, and scalable full-stack applications.",
-    href: "/industries/saas-tech-startups-pune",
+    href: "/industries/saas-tech-startups-pune/",
     icon: RocketLaunchIcon,
     tag: "Software & AI",
     kpi: "Ad traffic ready",
@@ -118,7 +118,7 @@ const verticals = [
     sector: "Pet Grooming & Veterinary",
     outcome: "Bookings, reminders and pet records",
     description: "Online booking with automated reminders, pet profiles carrying medical history and grooming notes, and WhatsApp follow-ups.",
-    href: "/industries/pet-grooming",
+    href: "/industries/pet-grooming/",
     icon: DogIcon,
     tag: "Pet Care & Vets",
     kpi: "Fewer no-shows",
@@ -153,7 +153,7 @@ export default function StudioIndustryInteractive() {
             <span className="studio-muted">Engineered for your goals.</span>
           </h2>
         </div>
-        <a href="/industries" className="studio-text-link">
+        <a href="/industries/" className="studio-text-link">
           Explore all 10 sectors <ArrowUpRightIcon size={20} />
         </a>
       </div>

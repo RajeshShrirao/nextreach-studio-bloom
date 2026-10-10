@@ -35,7 +35,7 @@ const {
   cityName = "Pune",
   priceCurrency = "INR",
   ctaText = "Schedule a Technical Discovery Call",
-  ctaHref = "/contact",
+  ctaHref = "/contact/",
   relatedLinks,
   researchLinks,
   portfolioTags,
@@ -133,13 +133,16 @@ const structuredOffering = offerings.map((o, i) => ({
                   : "grid-cols-1 sm:grid-cols-2",
           ]}
         >
-          {researchLinks.map(({ href, label, note }) => (
-            <a href={href} class="card-studio group flex flex-col">
-              <h3 class="text-sm font-bold text-[#1F1F23] font-display mb-2 leading-snug group-hover:text-[#C76B50] transition-colors">{label}</h3>
-              <p class="text-xs text-[#6E6862] leading-relaxed font-body">{note}</p>
-              <span class="text-[10px] font-mono text-[#C76B50] mt-auto pt-3">Read →</span>
-            </a>
-          ))}
+          {researchLinks.map(({ href, label, note }) => {
+            const normalizedHref = href.endsWith('/') || href.includes('#') || href.includes('?') ? href : href + '/';
+            return (
+              <a href={normalizedHref} class="card-studio group flex flex-col">
+                <h3 class="text-sm font-bold text-[#1F1F23] font-display mb-2 leading-snug group-hover:text-[#C76B50] transition-colors">{label}</h3>
+                <p class="text-xs text-[#6E6862] leading-relaxed font-body">{note}</p>
+                <span class="text-[10px] font-mono text-[#C76B50] mt-auto pt-3">Read →</span>
+              </a>
+            );
+          })}
         </div>
       </div>
     )}
@@ -148,11 +151,14 @@ const structuredOffering = offerings.map((o, i) => ({
       <div class="max-w-4xl mx-auto px-4 mb-16 stagger-parent">
         <h2 class="text-lg font-bold text-[#1F1F23] font-display mb-4 text-center">Explore More</h2>
         <div class="flex flex-wrap justify-center gap-3">
-          {relatedLinks.map(({ href, label }) => (
-            <a href={href} class="px-4 py-2 rounded-lg text-sm text-[#4A4844] bg-white border border-[#1F1F23]/8 hover:text-[#C76B50] hover:border-[#C76B50]/30 transition-all duration-200 shadow-sm">
-              {label}
-            </a>
-          ))}
+          {relatedLinks.map(({ href, label }) => {
+            const normalizedHref = href.endsWith('/') || href.includes('#') || href.includes('?') ? href : href + '/';
+            return (
+              <a href={normalizedHref} class="px-4 py-2 rounded-lg text-sm text-[#4A4844] bg-white border border-[#1F1F23]/8 hover:text-[#C76B50] hover:border-[#C76B50]/30 transition-all duration-200 shadow-sm">
+                {label}
+              </a>
+            );
+          })}
         </div>
       </div>
     )}
@@ -161,7 +167,7 @@ const structuredOffering = offerings.map((o, i) => ({
       <div class="max-w-4xl mx-auto px-4 mb-16 stagger-parent text-center">
         <p class="text-[#6E6862] text-sm">
           See related work:{" "}
-          <a href="/portfolio" class="text-[#C76B50] hover:text-[#D97A5E] underline underline-offset-2 transition-colors font-medium">View our portfolio</a>
+          <a href="/portfolio/" class="text-[#C76B50] hover:text-[#D97A5E] underline underline-offset-2 transition-colors font-medium">View our portfolio</a>
         </p>
       </div>
     )}

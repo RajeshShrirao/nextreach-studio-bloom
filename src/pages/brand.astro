@@ -4,16 +4,16 @@ import Nav from "@/components/Nav.astro";
 import Footer from "@/components/Footer.astro";
 import BrandKitViewer from "@/components/brand/BrandKitViewer";
 
-const pageTitle = "Brand Kit, Logo Assets & Identity System | NextReach Studio";
-const pageDescription = "Official NextReach Studio brand assets, vector SVG logos, emblem construction blueprints, color palette tokens, typography rules, clear-space specifications, and usage guidelines.";
+const pageTitle = "Brand Kit, Logo Assets & Identity System";
+const pageDescription = "Official NextReach Studio brand assets: vector SVG logos, emblem blueprints, color palette tokens, typography rules, and identity usage guidelines.";
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "WebPage",
-      "@id": "https://www.nextreachstudio.in/brand#webpage",
-      "url": "https://www.nextreachstudio.in/brand",
+      "@id": "https://www.nextreachstudio.in/brand/#webpage",
+      "url": "https://www.nextreachstudio.in/brand/",
       "name": pageTitle,
       "description": pageDescription,
       "isPartOf": {
@@ -35,7 +35,7 @@ const jsonLd = {
             "@type": "ListItem",
             "position": 2,
             "name": "Brand Kit",
-            "item": "https://www.nextreachstudio.in/brand"
+            "item": "https://www.nextreachstudio.in/brand/"
           }
         ]
       }
@@ -76,7 +76,7 @@ const jsonLd = {
       <!-- Quick Action Pill Group -->
       <div class="flex flex-wrap items-center justify-center gap-2.5 mt-6">
         <a
-          href="/brand/book"
+          href="/brand/book/"
           class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold font-mono bg-[#1F1F23] text-white hover:bg-[#97402E] transition-colors shadow-sm"
         >
           <span>Visual Brand Book (30 pages) ↗</span>
@@ -144,7 +144,7 @@ const jsonLd = {
         The NextReach Studio logotype, geometric arrow monogram, and associated visual assets are proprietary trademarks of NextReach Studio.
       </p>
       <p>
-        For press inquiries, sponsorship agreements, or custom partnership co-branding permissions, please contact our team via <a href="/contact" class="text-[#C76B50] underline hover:text-[#D97A5E]">studio contact</a> or email <code class="font-mono text-[11px] text-[#1F1F23] bg-[#F0ECE4] px-1.5 py-0.5 rounded">team@nextreachstudio.in</code>.
+        For press inquiries, sponsorship agreements, or custom partnership co-branding permissions, please contact our team via <a href="/contact/" class="text-[#C76B50] underline hover:text-[#D97A5E]">studio contact</a> or email <code class="font-mono text-[11px] text-[#1F1F23] bg-[#F0ECE4] px-1.5 py-0.5 rounded">team@nextreachstudio.in</code>.
       </p>
     </section>
   </main>

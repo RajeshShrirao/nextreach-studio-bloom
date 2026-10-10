@@ -1,39 +1,39 @@
 ---
 const serviceLinks = [
-  { href: "/services", label: "Overview" },
-  { href: "/services/website-development-pune", label: "Website Development" },
-  { href: "/services/ai-agent-development-pune", label: "AI Agents" },
-  { href: "/services/ai-automation-pune", label: "AI Automation" },
-  { href: "/services/custom-software-development-pune", label: "Custom Software" },
-  { href: "/services/web-application-development-pune", label: "Web Apps" },
-  { href: "/services/mvp-development-pune", label: "MVP Development" },
-  { href: "/services/flutter-app-development-pune", label: "Mobile Apps" },
-  { href: "/services/api-integration-pune", label: "API Integration" },
-  { href: "/services/ai-consulting-pune", label: "AI Consulting" },
+  { href: "/services/", label: "Overview" },
+  { href: "/services/website-development-pune/", label: "Website Development" },
+  { href: "/services/ai-agent-development-pune/", label: "AI Agents" },
+  { href: "/services/ai-automation-pune/", label: "AI Automation" },
+  { href: "/services/custom-software-development-pune/", label: "Custom Software" },
+  { href: "/services/web-application-development-pune/", label: "Web Apps" },
+  { href: "/services/mvp-development-pune/", label: "MVP Development" },
+  { href: "/services/flutter-app-development-pune/", label: "Mobile Apps" },
+  { href: "/services/api-integration-pune/", label: "API Integration" },
+  { href: "/services/ai-consulting-pune/", label: "AI Consulting" },
 ];
 
 const industryLinks = [
-  { href: "/industries/manufacturing", label: "Manufacturing" },
-  { href: "/industries/logistics", label: "Logistics" },
-  { href: "/industries/education", label: "Education" },
-  { href: "/industries/real-estate", label: "Real Estate" },
-  { href: "/industries/healthcare", label: "Healthcare" },
-  { href: "/industries/retail", label: "Retail" },
-  { href: "/industries/restaurants", label: "Restaurants" },
-  { href: "/industries/construction", label: "Construction" },
-  { href: "/industries/pet-grooming", label: "Pet Grooming" },
+  { href: "/industries/manufacturing/", label: "Manufacturing" },
+  { href: "/industries/logistics/", label: "Logistics" },
+  { href: "/industries/education/", label: "Education" },
+  { href: "/industries/real-estate/", label: "Real Estate" },
+  { href: "/industries/healthcare/", label: "Healthcare" },
+  { href: "/industries/retail/", label: "Retail" },
+  { href: "/industries/restaurants/", label: "Restaurants" },
+  { href: "/industries/construction/", label: "Construction" },
+  { href: "/industries/pet-grooming/", label: "Pet Grooming" },
 ];
 
 const navLinks = [
-  { href: "/portfolio", label: "Portfolio" },
-  { href: "/about", label: "About" },
+  { href: "/portfolio/", label: "Portfolio" },
+  { href: "/about/", label: "About" },
 ];
 
 const resourceLinks = [
-  { href: "/blog", label: "Blog" },
-  { href: "/guides", label: "Guides" },
-  { href: "/tools", label: "Tools" },
-  { href: "/resources", label: "Resources" },
+  { href: "/blog/", label: "Blog" },
+  { href: "/guides/", label: "Guides" },
+  { href: "/tools/", label: "Tools" },
+  { href: "/resources/", label: "Resources" },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -62,7 +62,7 @@ const isIndustriesActive = industryLinks.some(
       <!-- High-Conversion Website Packages Link -->
       <li>
         <a
-           href="/fast-websites"
+           href="/fast-websites/"
           class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold font-mono text-[#C76B50] bg-[#C76B50]/10 border border-[#C76B50]/25 hover:bg-[#C76B50]/15 hover:border-[#C76B50]/40 transition-all duration-200"
         >
              <span>Fast websites (₹5k+)</span>
@@ -214,9 +214,9 @@ const isIndustriesActive = industryLinks.some(
 
       <li>
         <a
-          href="/contact"
+          href="/contact/"
           class={`px-3 py-1.5 rounded-lg text-sm transition-all duration-200 font-medium border ${
-            currentPath === "/contact"
+            currentPath === "/contact/" || currentPath === "/contact"
               ? "text-[#C76B50] bg-[#C76B50]/8 border-[#C76B50]/20 shadow-[0_0_15px_rgba(199,107,80,0.08)] font-semibold"
               : "text-[#4A4844] hover:text-[#1F1F23] hover:bg-[#1F1F23]/5 border-transparent hover:border-[#1F1F23]/5"
           }`}
@@ -264,7 +264,7 @@ const isIndustriesActive = industryLinks.some(
       <!-- High-Conversion Mobile Packages Banner -->
       <li class="mb-3">
         <a
-           href="/fast-websites"
+           href="/fast-websites/"
           class="flex items-center justify-between p-3 rounded-xl bg-[#C76B50]/10 border border-[#C76B50]/25 text-[#1F1F23] font-display font-bold text-sm shadow-[0_2px_10px_rgba(199,107,80,0.08)]"
         >
            <span>Fast Website Packages (₹5,000+)</span>
@@ -434,9 +434,9 @@ const isIndustriesActive = industryLinks.some(
       <!-- Mobile Contact Link -->
       <li class="pt-2 mt-2 border-t border-[#1F1F23]/8">
         <a
-          href="/contact"
+          href="/contact/"
           class={`block px-3 py-2.5 rounded-lg text-sm font-semibold transition-all duration-150 ${
-            currentPath === "/contact"
+            currentPath === "/contact/" || currentPath === "/contact"
               ? "text-[#C76B50] bg-[#C76B50]/10"
               : "text-[#4A4844] hover:text-[#1F1F23] hover:bg-[#1F1F23]/5"
           }`}

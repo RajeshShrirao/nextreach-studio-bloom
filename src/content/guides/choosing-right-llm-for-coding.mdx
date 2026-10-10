@@ -1,6 +1,6 @@
 ---
 title: "Choosing the Right LLM for Your Coding Workflow in 2026"
-description: "A practical comparison guide for developers choosing between Claude, Gemini, GPT-4o, Llama 3, and local models. Covers task fit, cost, context length, and real benchmark results."
+description: "Comparison guide for developers choosing between Claude, Gemini, GPT-4o, and local LLMs. Covers code task fit, cost, and context length tradeoffs."
 pubDate: 2026-05-18
 author: "NextReach Studio"
 tags: ["llm", "claude", "gemini", "comparison"]
@@ -36,7 +36,7 @@ As of mid-2026, these are the models actively used in developer workflows:
 | Llama 3.3 70B | Meta (self-hosted) | 128K | ~$0.05-$0.20* | ~$0.05-$0.20* |
 | Mistral Large 2 | Mistral | 128K | $2.00 | $6.00 |
 
-*Self-hosted cost depends heavily on GPU provisioning. See the [LLM Cost Calculator](/tools/llm-cost-calculator) for actual infrastructure breakdowns.
+*Self-hosted cost depends heavily on GPU provisioning. See the [LLM Cost Calculator](/tools/llm-cost-calculator/) for actual infrastructure breakdowns.
 
 ---
 
@@ -194,7 +194,7 @@ Context windows are marketed aggressively. Here's what actually matters:
 - Most coding tasks need 4K-20K tokens. You're paying for capability headroom, not constant usage.
 - Models with large context windows often degrade in retrieval accuracy at extreme lengths. Gemini 2.5 Pro at 1.5M tokens is not as sharp as Claude Sonnet at 50K tokens on the same task.
 
-Use the [Context Window Calculator](/tools/context-window-calculator) to model your actual token usage patterns before committing to a provider.
+Use the [Context Window Calculator](/tools/context-window-calculator/) to model your actual token usage patterns before committing to a provider.
 
 ---
 
@@ -214,7 +214,7 @@ Instead of picking one model, structure your workflow around task tiers:
 → Gemini 2.0 Flash, Gemini 2.5 Flash, or local Llama 4  
 → Budget: $0.30 or less per 1M output tokens
 
-This tiered approach typically cuts API costs by 40-60% without measurable quality loss on overall output. For detailed cost modeling, check the [LLM Cost Calculator](/tools/llm-cost-calculator).
+This tiered approach typically cuts API costs by 40-60% without measurable quality loss on overall output. For detailed cost modeling, check the [LLM Cost Calculator](/tools/llm-cost-calculator/).
 
 ---
 
@@ -315,8 +315,8 @@ Bigger context ≠ better model. Gemini 2.0 Flash's 1M context is a cost trap if
 
 ## Related Resources
 
-- [AI API Cost Optimization: Reduce Your Bill by 60%](/guides/ai-api-cost-optimization)
-- [How to Manage LLM Context Windows Without Losing Quality](/blog/llm-context-window-management)
-- [Claude Code Workflow Tips for Real Productivity](/blog/claude-code-workflow-tips)
-- [LLM Cost Calculator](/tools/llm-cost-calculator)
-- [Context Window Calculator](/tools/context-window-calculator)
+- [AI API Cost Optimization: Reduce Your Bill by 60%](/guides/ai-api-cost-optimization/)
+- [How to Manage LLM Context Windows Without Losing Quality](/blog/llm-context-window-management/)
+- [Claude Code Workflow Tips for Real Productivity](/blog/claude-code-workflow-tips/)
+- [LLM Cost Calculator](/tools/llm-cost-calculator/)
+- [Context Window Calculator](/tools/context-window-calculator/)

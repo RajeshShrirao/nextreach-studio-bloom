@@ -42,7 +42,7 @@ const remainingPosts = posts.slice(1);
     {featuredPost && (
       <section class="mb-14" aria-label="Featured Article">
         <a
-          href={`/blog/${featuredPost.id}`}
+          href={`/blog/${featuredPost.id}/`}
           class="block p-8 sm:p-10 rounded-2xl bg-gradient-to-br from-[#FAF8F5] via-[#F6F3EB] to-[#EFEBE1] border border-[#1F1F23]/10 hover:border-[#C76B50]/40 transition-all duration-300 group shadow-sm hover:shadow-md relative overflow-hidden"
         >
           <div class="flex items-center gap-3 mb-4 text-xs font-mono text-[#6E6862]">
@@ -89,7 +89,7 @@ const remainingPosts = posts.slice(1);
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         {remainingPosts.map((post) => (
           <a
-            href={`/blog/${post.id}`}
+            href={`/blog/${post.id}/`}
             class="group p-6 sm:p-7 rounded-xl bg-[#FAF8F5] border border-[#1F1F23]/8 hover:border-[#C76B50]/35 hover:bg-[#FDFBF7] transition-all duration-200 flex flex-col justify-between shadow-[0_2px_8px_-4px_rgba(31,31,35,0.04)]"
           >
             <div>
@@ -135,7 +135,7 @@ const remainingPosts = posts.slice(1);
       </p>
       <div class="flex flex-wrap justify-center gap-3">
         <a
-          href="/contact"
+          href="/contact/"
           class="px-5 py-2.5 rounded-lg text-xs font-mono font-semibold bg-[#1F1F23] text-[#FAF8F5] hover:bg-[#C76B50] transition-colors shadow-sm"
         >
           Book Discovery Call
