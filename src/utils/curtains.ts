@@ -410,10 +410,3 @@ export function initCurtainsPageTransitions(): void {
     });
   });
 }
-
-/**
- * React 19 hook matching Motion+ `useCurtains()`.
- */
-export function useCurtains() {
-  return curtains;
-}

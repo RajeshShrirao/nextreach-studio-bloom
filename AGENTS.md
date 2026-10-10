@@ -19,19 +19,18 @@ CI); `--no-browser` runs static clones only.
 
 Order: `typecheck` → `build`. No test framework configured.
 
-> `npm run lint` still exists in `package.json` but `astro lint` was removed in Astro 6 — it
-> prints CLI help and exits 0. It lints nothing. Do not treat a passing run as a signal.
-> Use `typecheck` for static verification and `build` as the real gate.
+Use `typecheck` for static verification and `build` as the real gate. Astro 6 removed
+`astro lint`; there is no lint script.
 
 ## Architecture
 
 - **Astro 6** static site on Vercel. One layout (`Layout.astro`), one global stylesheet (`src/styles/globals.css`).
 - **Tailwind CSS v4** via `@tailwindcss/vite` plugin (NOT PostCSS, no `tailwind.config.js` — use CSS‑first config).
-- **React 19** for interactive components only (tools, chat widget). Everything else is Astro.
+- **React 19** for interactive components only (tools, homepage islands, brand and attribution viewers). Everything else is Astro.
 - **Path alias**: `@/*` → `./src/*`.
 - **Content collections**: `src/content/` with subdirectories `blog/`, `guides/`, `resources/`. Schemas defined in `src/content.config.ts` using `astro:content` `defineCollection` + `glob` loader.
 - **Dynamic routes**: `[...slug].astro` pattern with `getStaticPaths` fetching via `getCollection`.
-- **API route** (`/api/chat`): serverless POST, `export const prerender = false`, requires `CEREBRAS_API_KEY` env var. Backend is Cerebras llama3.1-8b.
+- **API route** (`/api/chat`): standalone serverless POST, `export const prerender = false`, requires `CEREBRAS_API_KEY` env var. Backend is Cerebras llama3.1-8b. The site currently has no chat UI mounted.
 
 ## Content Collections
 
@@ -85,7 +84,7 @@ A `<slot />` sits between the offerings and the spec strip for page-specific con
 - **Internal linking rule**: every blog article must have at least one inbound link from a service page, industry page, or tool page. An article with zero inbound is orphaned and will not rank. When you add an article, wire it into `researchLinks` in the same change — verify with the orphan check under "Verification".
 - **Content structure**: articles open with a direct answer (answer-first, for AI citation), include at least one comparison table, and end with a 4-6 question FAQ block. This is deliberate — it is what generative engines quote.
 - **Fonts**: Plus Jakarta Sans (body), Cabinet Grotesk (headings), JetBrains Mono (code) — loaded with `media="print" onload="this.media='all'"` (non‑render‑blocking).
-- **PWA**: `/manifest.json`, `/sw.js`, `/robots.txt`, `/icon-192.svg`, `/icon-512.svg` in `public/`.
+- **PWA**: the layout links `/manifest.json` and its icons. `/sw.js` is retained for existing clients; the site currently does not register it for new visitors.
 - **AI agent files**: `/llms.txt` (AI context primer), `/pricing-for-agents.md` (machine-readable pricing & services), `/robots.txt` (15 AI crawlers explicitly allowed).
 - **Environment**: Copy `.env.example` to `.env`. Only `CEREBRAS_API_KEY` needed.
 
@@ -93,12 +92,12 @@ A `<slot />` sits between the offerings and the spec strip for page-specific con
 
 ```
 src/
-  components/    — Nav, Footer, HeroShowcase, BentoGrid, ServiceLayout, ChatWidget, ToolCard, tools/*
+  components/    — Nav, Footer, ServiceLayout, Prose, ResourceCard, ToolCard, attribution/, brand/, home/, tools/*
   content/       — blog/, guides/, resources/ (MDX)
   layouts/       — Layout.astro (site-wide)
   pages/         — index, about, services/ (overview + 12 location pages), industries/ (10 pages), portfolio, contact, blog/*, guides/*, resources/*, tools/*
   styles/        — globals.css (Tailwind v4 + design system)
-  utils/         — tokens.ts (token estimation)
+  utils/         — tokens.ts (token estimation), faq.ts (FAQ schema), curtains.ts (page transitions)
 .agents/         — Project planning docs
 public/
   llms.txt       — AI context file for LLM crawlers

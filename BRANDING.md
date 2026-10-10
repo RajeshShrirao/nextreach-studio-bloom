@@ -15,14 +15,19 @@
 - **Crucial Rule:** **NO LETTERS, WORDS, OR TEXT** inside the logo mark, favicon, or application icons. The emblem is a pure geometric symbol. All brand wordmarks ("NextReach Studio") are rendered exclusively in HTML/CSS typography beside or below the mark.
 - **Logotype:** Set in **Plus Jakarta Sans** (tracking +0.08em) paired with **Cabinet Grotesk** for display headlines and **JetBrains Mono** for technical telemetry.
 - **Primary Mark Files:**
-  - Pure Vector Mark: `/public/logo-mark.svg` & `/public/logo.svg`
-  - High-Res 1024x1024 Master Raster: `/public/logo.png` & `/public/logo-luxury.jpg`
-  - Favicon & App Icons (No Letters): `/public/favicon.svg`, `/public/favicon.ico`, `/public/icon-192.svg`, `/public/icon-512.svg`
+  - Site Vector Mark: `public/logo.svg` (legacy `/logo-mark.svg` redirects here)
+  - Brand Library Master Emblem: `public/brand/logo-mark.svg`
+  - High-Res 1024x1024 Master Raster: `public/logo.png` & `public/logo-luxury.jpg`
+  - Favicon & App Icons (No Letters): `public/favicon.svg`, `public/favicon.ico`, `public/icon-192.svg`, `public/icon-512.svg`
 - **Marketing & Campaign Collateral:**
-  - 1200x630 OpenGraph / Twitter Social Preview: `/public/link-previews.png` & `/public/link-previews.jpg`
-  - 3D Glassmorphic Ad Preview Graphic: `/public/social-media-packages.jpg`
-  - Luxury Tri-Fold Brochure & Stationery Showcase: `/public/brochure-showcase.jpg`
-  - Interactive Print-Ready Digital Brochure: `/public/brochure.html`
+  - 1200x630 OpenGraph / Twitter Social Preview: `public/link-previews.jpg` (site default) & `public/link-previews.png` (source variant)
+  - 3D Glassmorphic Ad Preview Graphic: `public/social-media-packages.jpg`
+  - Luxury Tri-Fold Brochure & Stationery Showcase: `public/brochure-showcase.jpg`
+  - Interactive Print-Ready Digital Brochure: `public/brochure.html`
+  - PDF Brochure: `public/brochure.pdf` (legacy `/NextReach-Studio-Brochure.pdf` redirects here)
+  - Visual Brand Book & Download Library: `/brand/book` & `/brand`
+
+Canonical marketing imagery lives in `public/assets/demos/`, with the quick-launch profile at `public/assets/demo-profile.jpg`. Standalone projects under `demos/` retain their own assets so they can deploy independently. Public aliases for consolidated assets are listed in `vercel.json`.
 
 ---
 

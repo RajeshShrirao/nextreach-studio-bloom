@@ -1,4 +1,12 @@
 {
+  "redirects": [
+    { "source": "/assets/demo-clinic.jpg", "destination": "/assets/demos/business-clinic.jpg", "permanent": true },
+    { "source": "/assets/demo-villa.jpg", "destination": "/assets/demos/premium-vayu.jpg", "permanent": true },
+    { "source": "/assets/demos/quick-launch.jpg", "destination": "/assets/demo-profile.jpg", "permanent": true },
+    { "source": "/NextReach-Studio-Brochure.pdf", "destination": "/brochure.pdf", "permanent": true },
+    { "source": "/social-ad-banner.jpg", "destination": "/social-media-packages.jpg", "permanent": true },
+    { "source": "/logo-mark.svg", "destination": "/logo.svg", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/(.*)",
